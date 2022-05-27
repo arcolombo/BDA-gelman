@@ -1,0 +1,33 @@
+--- 
+title: "Bayesian Data Analysis"
+author: "Anthony R. Colombo, Dr. Paul Marjoram"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+url: https://github.com/arcolombo/BDA-gelman
+# cover-image: path to the social sharing image like images/cover.jpg
+description: |
+  Bayesian Data Analysis review by Andrew Gelman, supervised by Dr. Paul Marjoram
+link-citations: yes
+github-repo: rstudio/bookdown-demo
+---
+
+# About {-}
+
+This is an independent study of the text **Bayesian Data Analysis** by Andrew Gelman and the more introductory text **A First Course In Bayesian Statistical Methods** by Peter D. Hoff.  We will read through most of the chapters and typeset the major definitions.  The Gelman text can be difficult, and for difficult chapters, we will lean more on the Hoff textbook.   
+
+
+## Independent study {-}
+
+We will typeset each chapter of the Gelman text book, unless the chapter is too difficult, then we will use the introductory text **A First Course In Bayesian Statistical Methods** by Hoff.  Each chapter will summarize the definitions, and attempt several problems selected.
+
+## Supervised learning {-}
+Dr. Paul Marjoram will supervise the learning and have a general oversight to the learning process.
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown', 'rstan', 'adaptMCMC'
+), 'packages.bib')
+```
