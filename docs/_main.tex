@@ -117,7 +117,7 @@
 
 \title{Bayesian Data Analysis}
 \author{Anthony R. Colombo, Dr.~Paul Marjoram}
-\date{2022-05-27}
+\date{2022-05-31}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -260,12 +260,15 @@ It is important to include as much background information as possible
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
+\tightlist
 \item
+  Suppose for \(\theta=1\), then y\(\sim N(1,\sigma)\), and if \(\theta=2, y\sim N(2,\sigma)\). Where P(\(\theta=1)=P(\theta=2)=0.5\).
+
   \begin{enumerate}
   \def\labelenumii{(\alph{enumii})}
   \tightlist
   \item
-    for \(\sigma=2\); \(p(y) = \int p(y|\theta)p(\theta)d\theta = (1/2)N(1,\sigma^2)+ (1/2)N(2,\sigma^2)\) as the marginal density
+    For \(\sigma=2\); we must write the formula for the pdf of y. \(p(y) = \sum_\theta p(y|\theta)p(\theta) = (1/2)N(1,\sigma^2)+ (1/2)N(2,\sigma^2)\) as the marginal density.
   \end{enumerate}
 \end{enumerate}
 
@@ -275,13 +278,9 @@ It is important to include as much background information as possible
 \end{Highlighting}
 \end{Shaded}
 
-\begin{enumerate}
-\def\labelenumi{(\alph{enumi})}
-\setcounter{enumi}{1}
-\tightlist
-\item
-  \(P(\theta=1 | y=1) = \frac{p(\theta=1)p(y|\theta=1)}{p(y)}= \frac{(1/2)N(1,4)}{(1/2)N(1,\sigma^2)+ (1/2)N(2,\sigma^2)}\) = 0.53
-\end{enumerate}
+\begin{verbatim}
+(b) $P(\theta=1 | y=1) = \frac{p(\theta=1)p(y|\theta=1)}{p(y)}= \frac{(1/2)N(1,4)}{(1/2)N(1,\sigma^2)+ (1/2)N(2,\sigma^2)}$ = 0.53 
+\end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -293,6 +292,535 @@ It is important to include as much background information as possible
 \begin{verbatim}
 ## [1] 0.5312094
 \end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  twelve games with point spread of 8 points.
+
+  \begin{enumerate}
+  \def\labelenumii{(\alph{enumii})}
+  \tightlist
+  \item
+    Using relative frequency, P(favorite wins \(|\) point spread =8) = 0.67.\\
+    P(favorite wins by at least 8 \(|\) point spread =8) = 0.42.\\
+    and P(fav. wins by at least 8 \(|\) spread =8, favorite team wins) = 0.62.
+  \end{enumerate}
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{spread}\OtherTok{\textless{}{-}}\DecValTok{8}
+
+\DocumentationTok{\#\# outcome of the games favor score {-} underdog score}
+\NormalTok{ games}\OtherTok{\textless{}{-}}\FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{7}\NormalTok{,}\SpecialCharTok{{-}}\DecValTok{5}\NormalTok{,}\SpecialCharTok{{-}}\DecValTok{3}\NormalTok{,}\SpecialCharTok{{-}}\DecValTok{3}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{7}\NormalTok{,}\DecValTok{13}\NormalTok{,}\DecValTok{15}\NormalTok{,}\DecValTok{16}\NormalTok{,}\DecValTok{20}\NormalTok{,}\DecValTok{21}\NormalTok{)}
+\DocumentationTok{\#\# frequentist approach}
+\NormalTok{ fav.wins}\OtherTok{\textless{}{-}}  \FunctionTok{mean}\NormalTok{(games}\SpecialCharTok{\textgreater{}}\DecValTok{0}\NormalTok{)}
+ \FunctionTok{message}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\StringTok{"(frequentist): fav wins: "}\NormalTok{, }\FunctionTok{round}\NormalTok{(fav.wins,}\DecValTok{2}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## (frequentist): fav wins: 0.67
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ fav.by}\FloatTok{.8}\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{((games}\SpecialCharTok{\textgreater{}}\DecValTok{8}\NormalTok{))}
+  \FunctionTok{message}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\StringTok{"(frequentist): fav wins by 8: "}\NormalTok{, }\FunctionTok{round}\NormalTok{(fav.by}\FloatTok{.8}\NormalTok{,}\DecValTok{2}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## (frequentist): fav wins by 8: 0.42
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \DocumentationTok{\#\# P( fav. wins \textgreater{}8 | fav. wins) = P(fav. wins \textgreater{} 8, fav. wins )/ P(fav. wins)}
+\NormalTok{ cond}\OtherTok{\textless{}{-}}\FunctionTok{sum}\NormalTok{(games}\SpecialCharTok{\textgreater{}}\DecValTok{8} \SpecialCharTok{\&}\NormalTok{ games}\SpecialCharTok{\textgreater{}}\DecValTok{0}\NormalTok{)}\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(games}\SpecialCharTok{\textgreater{}}\DecValTok{0}\NormalTok{)   }
+\NormalTok{  c}\OtherTok{\textless{}{-}}\NormalTok{fav.by}\FloatTok{.8}\SpecialCharTok{/}\NormalTok{fav.wins}
+ \FunctionTok{message}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\StringTok{"(frequentist): fav wins by 8 given fav. wins: "}\NormalTok{, }\FunctionTok{round}\NormalTok{(cond,}\DecValTok{2}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## (frequentist): fav wins by 8 given fav. wins: 0.62
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  now we assume a normal distribution with \(d|x \sim N(-1.25, 10.10)\). So \(P(d > -x)= P(Z\sigma+\mu > -x)=P(Z > -x-\mu / \sigma)\)
+\item
+  Probablity fav team wins is 0.75
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{(\roman{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  fav team wins by 8 (beats the spread) is 0.45, we expect this to be 0.5 (the middle of the normal distribution because we centered on the spread)
+\item
+  P(wins by 8 \(|\) favorite team wins) = P(favorite team wins \(|\) wins by 8)P(wins by 8)/P(favorite team wins) = P(wins by 8)/P(fav. team wins) since the conditional prob. =1 given the favorite team wins. The prob. that they win by at least 8 is 0.6.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# part b}
+\NormalTok{  d}\OtherTok{\textless{}{-}}\NormalTok{games}\DecValTok{{-}8}
+\NormalTok{  sample.mean }\OtherTok{\textless{}{-}}\FunctionTok{mean}\NormalTok{(d)}
+\NormalTok{  sample.sd}\OtherTok{\textless{}{-}}\FunctionTok{sd}\NormalTok{(d)}
+  \DocumentationTok{\#\# assume  d|x \textasciitilde{} N(0,10.10)}
+\NormalTok{  fav.wins.norm}\OtherTok{\textless{}{-}} \DecValTok{1}\SpecialCharTok{{-}}\FunctionTok{pnorm}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{8}\NormalTok{,}\AttributeTok{mean=}\NormalTok{sample.mean,}\AttributeTok{sd=}\NormalTok{sample.sd)}
+   \FunctionTok{message}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\StringTok{"(normal): fav wins: "}\NormalTok{, }\FunctionTok{round}\NormalTok{(fav.wins.norm,}\DecValTok{2}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## (normal): fav wins: 0.75
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{  fav.by.}\FloatTok{8.}\NormalTok{norm}\OtherTok{\textless{}{-}}\DecValTok{1}\SpecialCharTok{{-}}\FunctionTok{pnorm}\NormalTok{(}\DecValTok{0}\NormalTok{,}\AttributeTok{mean=}\NormalTok{sample.mean,}\AttributeTok{sd=}\NormalTok{sample.sd)}
+    \FunctionTok{message}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\StringTok{"(normal): fav wins by 8: "}\NormalTok{, }\FunctionTok{round}\NormalTok{(fav.by.}\FloatTok{8.}\NormalTok{norm,}\DecValTok{2}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## (normal): fav wins by 8: 0.45
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Pr(Wins by 8 | Fav. wins) = P(Fav. wins | wins by 8)P(wins by 8) / P(fav. wins)}
+    \DocumentationTok{\#\# P(Fav. wins | wins by 8) = 1}
+\NormalTok{  cond.norm}\OtherTok{\textless{}{-}}\NormalTok{fav.by.}\FloatTok{8.}\NormalTok{norm}\SpecialCharTok{/}\NormalTok{fav.wins.norm}
+   \FunctionTok{message}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\StringTok{"(normal): fav wins by 8 given fav. wins: "}\NormalTok{, }\FunctionTok{round}\NormalTok{(cond.norm,}\DecValTok{2}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## (normal): fav wins by 8 given fav. wins: 0.6
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  We need to estimate the probability that there is at least one congressional election that is tied in the next U.S. election. There are 435 senate elections.
+
+  \begin{enumerate}
+  \def\labelenumii{(\alph{enumii})}
+  \tightlist
+  \item
+    The parameters of interest are \(\theta_i\) the true probability that the election is tied. We can let the \emph{prior} \(\theta \sim Beta(\alpha,\beta)\). The \emph{likelihood} is \(y|\theta_i \sim Binomial(435,\theta_i) = \theta^{\sum y_i}(1-\theta)^{435-\sum y_i}\) follows a Binomial distribution (ignoring the binomial coefficient) where we assume each election is independent. Hence the posterior for theta \(f(\theta | y) \sim Beta(\sum y_i +\alpha, n-\sum y_i +\beta)\). where \(\alpha,\beta\) are set to 1 for the uniform prior. For this case we set \(\alpha, \beta\) equal to 1, 10 which has a prior mean of 0.09.
+  \end{enumerate}
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{theta}\OtherTok{=}\FunctionTok{seq}\NormalTok{(}\AttributeTok{from=}\DecValTok{0}\NormalTok{,}\AttributeTok{to=}\DecValTok{1}\NormalTok{,}\AttributeTok{by=}\NormalTok{.}\DecValTok{01}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(theta,}\FunctionTok{dbeta}\NormalTok{(theta,}\DecValTok{1}\NormalTok{,}\DecValTok{10}\NormalTok{),}\AttributeTok{type=}\StringTok{\textquotesingle{}l\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-6-1.pdf}
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  In the period of 1900-1992, there were 20,597 elections, out of which 6 were decided by less than 10 votes, and 49 were decided by less than 100 votes.\\
+  we can estimate the probability of a tie to be less than 6/20,597 and bounded by 49/20,597. So for the Binomial trials the sum of the successes is 6, and n=20,597, so the posterior could be \(\theta | y \sim Beta(1+6, 10+20,597 -6)\) is the posterior for \(\theta\). This assumes that 10 votes is within the neighborhood of an election tie.\\
+  The question asks to compute at least one election tie, from a total of 435 elections. This follows a Binomial(435, \(\hat{\theta})\). Where we use the posterior mean to estimate \(\theta\). The posterior mean using the Beta(7,20601) yields a mean of \(\hat{\theta}=\frac{7}{20608} = 3.4e-04\) as the posterior mean.
+\end{enumerate}
+
+Then the probability that at least 1 election is tied, from 435 total elections will follow a Binomial(435, \(\hat{\theta})\), where we can use the posterior distribution for \(\theta | y\) in the Binomial likelihood \(P(X\geq 1 | \hat{\theta})= 1-P(X\leq0 | \hat{\theta})\) which has a probability of 0.14 of at least 1 election tie.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+ \CommentTok{\# the posterior for theta is Beta(1+6,10+20597{-}6)}
+ \FunctionTok{plot}\NormalTok{(theta,}\FunctionTok{dbeta}\NormalTok{(theta,}\DecValTok{7}\NormalTok{,}\DecValTok{10}\SpecialCharTok{+}\DecValTok{20597{-}6}\NormalTok{),}\AttributeTok{type=}\StringTok{\textquotesingle{}l\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-7-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+ \DocumentationTok{\#\# posterior mean is 7/(20601)}
+\DocumentationTok{\#\# then P(X\textgreater{}=1) = 1{-}P(X\textless{}=0 | p)}
+  \DecValTok{1}\SpecialCharTok{{-}}\FunctionTok{pbinom}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{435}\NormalTok{,}\AttributeTok{prob=}\DecValTok{7}\SpecialCharTok{/}\DecValTok{20608}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.1373819
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{8}
+\item
+  A clinic has three doctors. Patients come into the clinic at random, starting at 9 a.m. according to a Poisson process, with a time parameter, t, of 10 minutes; that is after opening the first patient appears follows an exponential distribution with average waiting time of 10 minutes. Then the next patient arrives with a waiting time of an expected 10 minutes as iid exponential distribution. After a patient arrives, the patient waits until a doctor is available, and the doctor visits a patitient uniformly between 5-20 minutes. The clinic stops admitting patients at 4 pm, and closes after the last patient is completed with the visit.
+
+  \begin{enumerate}
+  \def\labelenumii{(\alph{enumii})}
+  \tightlist
+  \item
+    Simulate this process once. how many patients visited the office? how many had to wait for a doctor? what was the average wait? when did office close?
+  \end{enumerate}
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#\# waiting time for a new patient to arrive in the clinic}
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+ \CommentTok{\# patientList is the data frame of all patients}
+ \CommentTok{\# closeTime is the time to stop admitting (420 minutes)}
+ \CommentTok{\# currentPatient Number }
+ \CommentTok{\# current time is the running total of time}
+\NormalTok{  newPatientArrival}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(patientList,}
+                             \AttributeTok{closeTime=}\NormalTok{timeToClose,}
+\NormalTok{                              waitTime,}
+\NormalTok{                             visitTime,}
+                             \AttributeTok{currentPatientNumber=}\DecValTok{0}\NormalTok{,}
+\NormalTok{                             currentTime,}
+                             \AttributeTok{assignedDoctor=}\StringTok{"none"}\NormalTok{,}
+                             \AttributeTok{completionTime=}\DecValTok{0}\NormalTok{)\{}
+    \CommentTok{\# waiting time for next patient}
+\NormalTok{     patientTime}\OtherTok{\textless{}{-}}\FunctionTok{round}\NormalTok{(}\FunctionTok{rexp}\NormalTok{(}\DecValTok{1}\NormalTok{,}\AttributeTok{rate=}\DecValTok{1}\SpecialCharTok{/}\DecValTok{10}\NormalTok{),}\DecValTok{2}\NormalTok{)}
+    \CommentTok{\# current time of existing patients}
+\NormalTok{     current}\OtherTok{\textless{}{-}}\FunctionTok{max}\NormalTok{(patientList}\SpecialCharTok{$}\NormalTok{currentTime)}
+   \DocumentationTok{\#\# the clinic stops admitting patients at 4pm}
+   \ControlFlowTok{if}\NormalTok{( (current}\SpecialCharTok{+}\NormalTok{patientTime)}\SpecialCharTok{\textless{}=}\NormalTok{closeTime)\{}
+     \DocumentationTok{\#\# in minutes}
+\NormalTok{   newPatient}\OtherTok{\textless{}{-}}\FunctionTok{createPatientChart}\NormalTok{(currentPatientNumber,patientTime,waitTime,visitTime,currentTime,assignedDoctor,}\DecValTok{0}\NormalTok{)}
+\NormalTok{    \}}\ControlFlowTok{else}\NormalTok{\{}
+\NormalTok{    newPatient}\OtherTok{\textless{}{-}}\FunctionTok{createPatientChart}\NormalTok{(currentPatientNumber,patientTime,waitTime,visitTime,currentTime,}\StringTok{"closed\_notAdmitted"}\NormalTok{,}\DecValTok{0}\NormalTok{)}
+\NormalTok{   \}}
+   \FunctionTok{return}\NormalTok{(newPatient)}
+\NormalTok{ \}}
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\# }
+ 
+ 
+ 
+\NormalTok{ computeWaitTime}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(}\AttributeTok{doctors=}\ConstantTok{NULL}\NormalTok{,}
+                           \AttributeTok{patientList=}\ConstantTok{NULL}\NormalTok{,}
+                           \AttributeTok{patientID=}\DecValTok{1}\NormalTok{)\{}
+   \DocumentationTok{\#\# need to compute visiting time (booked)}
+   \DocumentationTok{\#\# next time available}
+   \DocumentationTok{\#\# required input current time for a specific doctor/patient ?}
+   \CommentTok{\# patient time (minutes)}
+   
+   \DocumentationTok{\#\# FIX ME: it is grabbing 2 patient IDs?}
+\NormalTok{   currentTime}\OtherTok{\textless{}{-}}\NormalTok{patientList}\SpecialCharTok{$}\NormalTok{currentTime[}\FunctionTok{which}\NormalTok{(patientList}\SpecialCharTok{$}\NormalTok{patient}\SpecialCharTok{==}\NormalTok{patientID)]}
+\NormalTok{   visitTime}\OtherTok{\textless{}{-}}\FunctionTok{runif}\NormalTok{(}\DecValTok{1}\NormalTok{,}\AttributeTok{min=}\DecValTok{5}\NormalTok{,}\AttributeTok{max=}\DecValTok{20}\NormalTok{) }\DocumentationTok{\#\# minutes}
+ 
+   
+   \ControlFlowTok{if}\NormalTok{(}\FunctionTok{any}\NormalTok{(doctors}\SpecialCharTok{$}\NormalTok{nextTimeAvail}\SpecialCharTok{\textless{}}\NormalTok{currentTime))\{}
+\NormalTok{     waitTime}\OtherTok{=}\DecValTok{0}
+\NormalTok{     assignedDr}\OtherTok{\textless{}{-}}\FunctionTok{sample}\NormalTok{(doctors}\SpecialCharTok{$}\NormalTok{dr[}\FunctionTok{which}\NormalTok{(doctors}\SpecialCharTok{$}\NormalTok{nextTimeAvail}\SpecialCharTok{\textless{}}\NormalTok{currentTime)],}\DecValTok{1}\NormalTok{)}
+     \DocumentationTok{\#\#\# current time + visitTime}
+\NormalTok{     nextAvailTime}\OtherTok{\textless{}{-}}\NormalTok{ visitTime}\SpecialCharTok{+}\NormalTok{currentTime}\SpecialCharTok{+}\NormalTok{waitTime}
+     \DocumentationTok{\#\# completion time for patient exit (closing time).}
+\NormalTok{   \}}\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{(}\FunctionTok{any}\NormalTok{(doctors}\SpecialCharTok{$}\NormalTok{nextTimeAvail}\SpecialCharTok{\textless{}}\NormalTok{currentTime)}\SpecialCharTok{==}\ConstantTok{FALSE}\NormalTok{)\{}
+     \CommentTok{\# all doctors are booked, no available doctors.}
+     \CommentTok{\# wait time is the difference between next available time (assuming all times are greater than patient time)}
+\NormalTok{     waitTime}\OtherTok{\textless{}{-}}\FunctionTok{min}\NormalTok{(doctors}\SpecialCharTok{$}\NormalTok{nextTimeAvail}\SpecialCharTok{{-}}\NormalTok{currentTime)}
+\NormalTok{     assignedDr}\OtherTok{\textless{}{-}}\NormalTok{doctors}\SpecialCharTok{$}\NormalTok{dr[}\FunctionTok{which}\NormalTok{( (doctors}\SpecialCharTok{$}\NormalTok{nextTimeAvail}\SpecialCharTok{{-}}\NormalTok{currentTime)}\SpecialCharTok{==}\FunctionTok{min}\NormalTok{(doctors}\SpecialCharTok{$}\NormalTok{nextTimeAvail}\SpecialCharTok{{-}}\NormalTok{currentTime))]}
+       \ControlFlowTok{if}\NormalTok{(}\FunctionTok{length}\NormalTok{(assignedDr)}\SpecialCharTok{\textgreater{}}\DecValTok{1}\NormalTok{)\{}
+\NormalTok{         assignedDr}\OtherTok{\textless{}{-}}\NormalTok{assignedDr[}\DecValTok{1}\NormalTok{]}
+\NormalTok{       \}}
+\NormalTok{     nextAvailTime}\OtherTok{\textless{}{-}}\NormalTok{ visitTime}\SpecialCharTok{+}\NormalTok{currentTime}\SpecialCharTok{+}\NormalTok{waitTime  }\DocumentationTok{\#\# completion time for patient to exit}
+\NormalTok{    \}}\DocumentationTok{\#\# if all doctors unavail}
+    \CommentTok{\#print(assignedDr)}
+    \CommentTok{\#print(currentTime)}
+    \DocumentationTok{\#\#  update doctor list}
+\NormalTok{     doctors[}\FunctionTok{which}\NormalTok{(doctors}\SpecialCharTok{$}\NormalTok{dr}\SpecialCharTok{==}\NormalTok{assignedDr),}\StringTok{\textquotesingle{}visitingPatient\textquotesingle{}}\NormalTok{]}\OtherTok{\textless{}{-}}\NormalTok{patientID}
+\NormalTok{     doctors[}\FunctionTok{which}\NormalTok{(doctors}\SpecialCharTok{$}\NormalTok{dr}\SpecialCharTok{==}\NormalTok{assignedDr),}\StringTok{\textquotesingle{}nextTimeAvail\textquotesingle{}}\NormalTok{]}\OtherTok{\textless{}{-}}\NormalTok{nextAvailTime}
+\NormalTok{     doctors[}\FunctionTok{which}\NormalTok{(doctors}\SpecialCharTok{$}\NormalTok{dr}\SpecialCharTok{==}\NormalTok{assignedDr),}\StringTok{\textquotesingle{}currentTime\textquotesingle{}}\NormalTok{]}\OtherTok{\textless{}{-}}\NormalTok{currentTime }\DocumentationTok{\#\# patient time}
+\NormalTok{     doctors[}\FunctionTok{which}\NormalTok{(doctors}\SpecialCharTok{$}\NormalTok{dr}\SpecialCharTok{==}\NormalTok{assignedDr),}\StringTok{\textquotesingle{}visitTimeLength\textquotesingle{}}\NormalTok{]}\OtherTok{\textless{}{-}}\NormalTok{visitTime}
+     \CommentTok{\# flag avail to no.}
+\NormalTok{     doctors[}\FunctionTok{which}\NormalTok{(doctors}\SpecialCharTok{$}\NormalTok{dr}\SpecialCharTok{==}\NormalTok{assignedDr),}\StringTok{\textquotesingle{}avail\textquotesingle{}}\NormalTok{]}\OtherTok{\textless{}{-}}\StringTok{\textquotesingle{}no\textquotesingle{}}
+     \DocumentationTok{\#\# update patient list}
+\NormalTok{     patientList[}\FunctionTok{which}\NormalTok{(patientList}\SpecialCharTok{$}\NormalTok{patient}\SpecialCharTok{==}\NormalTok{patientID),}\StringTok{\textquotesingle{}doctorWaitTime\textquotesingle{}}\NormalTok{]}\OtherTok{\textless{}{-}}\NormalTok{waitTime}
+\NormalTok{     patientList[}\FunctionTok{which}\NormalTok{(patientList}\SpecialCharTok{$}\NormalTok{patient}\SpecialCharTok{==}\NormalTok{patientID),}\StringTok{\textquotesingle{}doctorVisitTime\textquotesingle{}}\NormalTok{]}\OtherTok{\textless{}{-}}\NormalTok{visitTime}
+\NormalTok{     patientList[}\FunctionTok{which}\NormalTok{(patientList}\SpecialCharTok{$}\NormalTok{patient}\SpecialCharTok{==}\NormalTok{patientID),}\StringTok{\textquotesingle{}assignedDoctor\textquotesingle{}}\NormalTok{]}\OtherTok{\textless{}{-}}\NormalTok{assignedDr}
+\NormalTok{     patientList[}\FunctionTok{which}\NormalTok{(patientList}\SpecialCharTok{$}\NormalTok{patient}\SpecialCharTok{==}\NormalTok{patientID),}\StringTok{\textquotesingle{}completionTime\textquotesingle{}}\NormalTok{]}\OtherTok{\textless{}{-}}\NormalTok{nextAvailTime}
+   \FunctionTok{return}\NormalTok{(}\FunctionTok{list}\NormalTok{(}\AttributeTok{patient=}\NormalTok{patientList,}\AttributeTok{doctor=}\NormalTok{doctors))}
+\NormalTok{ \}}
+ 
+ 
+ \DocumentationTok{\#\# creates a patient object}
+\NormalTok{ createPatientChart}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(currentPatientNumber,arrivalTime,waitTime,visitTime,currentTime,assignedDoctor,completionTime)\{}
+\NormalTok{   patientID}\OtherTok{\textless{}{-}}\FunctionTok{data.frame}\NormalTok{(}\AttributeTok{patient=}\NormalTok{currentPatientNumber}\SpecialCharTok{+}\DecValTok{1}\NormalTok{,}
+                         \AttributeTok{arrivalTime=}\NormalTok{arrivalTime,}
+                         \AttributeTok{doctorWaitTime=}\NormalTok{waitTime,}
+                         \AttributeTok{doctorVisitTime=}\NormalTok{visitTime,}
+                         \AttributeTok{currentTime=}\NormalTok{currentTime,}
+                         \AttributeTok{assignedDoctor=}\NormalTok{assignedDoctor,}
+                         \AttributeTok{completionTime=}\DecValTok{0}\NormalTok{)}
+   \FunctionTok{return}\NormalTok{(patientID)}
+\NormalTok{ \}}
+ 
+\NormalTok{ updatePatientList}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(patientList,patientID)\{}
+\NormalTok{   patientList}\OtherTok{\textless{}{-}}\FunctionTok{rbind}\NormalTok{(patientList,patientID)}
+   \FunctionTok{return}\NormalTok{(patientList)}
+\NormalTok{ \}}
+ 
+\NormalTok{updateTime}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(currentTime,}\AttributeTok{newTime=}\ConstantTok{NULL}\NormalTok{,p1)\{}
+\NormalTok{  p1}\SpecialCharTok{$}\NormalTok{currentTime}\OtherTok{\textless{}{-}}\NormalTok{currentTime}\SpecialCharTok{+}\NormalTok{newTime}
+  \FunctionTok{return}\NormalTok{(p1)}
+\NormalTok{\}}
+\NormalTok{ totalPatients}\OtherTok{\textless{}{-}}\DecValTok{0}
+\DocumentationTok{\#\# this is the simulation}
+ \DocumentationTok{\#\# first task : loop through the time update for patients}
+ \DocumentationTok{\#\# second task : include the doctor assignment query.}
+\NormalTok{simulateProcess}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(}\AttributeTok{doctors=}\ConstantTok{NULL}\NormalTok{,}
+                          \AttributeTok{totalWait=}\ConstantTok{NULL}\NormalTok{,}
+                          \AttributeTok{totalPatients=}\DecValTok{0}\NormalTok{,}
+                          \AttributeTok{timeToClose=}\DecValTok{420}\NormalTok{,}
+                          \AttributeTok{currentTime=}\ConstantTok{NULL}\NormalTok{)\{}
+  \DocumentationTok{\#\# initiate Patient List}
+\NormalTok{ patientList}\OtherTok{\textless{}{-}}\FunctionTok{data.frame}\NormalTok{(}\AttributeTok{patient=}\DecValTok{0}\NormalTok{,}
+                         \AttributeTok{arrivalTime=}\DecValTok{0}\NormalTok{,}
+                         \AttributeTok{doctorWaitTime=}\DecValTok{0}\NormalTok{,}
+                         \AttributeTok{doctorVisitTime=}\DecValTok{0}\NormalTok{,}
+                         \AttributeTok{currentTime=}\DecValTok{0}\NormalTok{,}
+                         \AttributeTok{assignedDoctor=}\StringTok{\textquotesingle{}none\textquotesingle{}}\NormalTok{,}
+                         \AttributeTok{completionTime=}\DecValTok{0}\NormalTok{)}
+ \DocumentationTok{\#\# not sure what to put here.}
+\NormalTok{ currentTime}\OtherTok{\textless{}{-}}\NormalTok{patientList}\SpecialCharTok{$}\NormalTok{currentTime[}\FunctionTok{which}\NormalTok{(patientList}\SpecialCharTok{$}\NormalTok{patient}\SpecialCharTok{==}\FunctionTok{max}\NormalTok{(patientList}\SpecialCharTok{$}\NormalTok{patient))] }\DocumentationTok{\#\# current time is the max current time from patient chart.}
+\NormalTok{ currentPatientNumber}\OtherTok{\textless{}{-}}\DecValTok{0}
+ 
+ \DocumentationTok{\#\# timeToClose (minutes) is stopping to admit patients}
+  \ControlFlowTok{while}\NormalTok{(currentTime}\SpecialCharTok{\textless{}}\NormalTok{timeToClose)\{}
+    \DocumentationTok{\#\# patient enters after the (i{-}1) patient enters.}
+\NormalTok{    p1}\OtherTok{\textless{}{-}}\FunctionTok{newPatientArrival}\NormalTok{(patientList,}
+                             \AttributeTok{closeTime=}\NormalTok{timeToClose,}
+                          \AttributeTok{waitTime=}\DecValTok{0}\NormalTok{,}
+                          \AttributeTok{visitTime=}\DecValTok{0}\NormalTok{,}
+                             \AttributeTok{currentPatientNumber=}\NormalTok{currentPatientNumber,}
+\NormalTok{                             currentTime)}
+    \DocumentationTok{\#\# update time}
+\NormalTok{    p1}\OtherTok{\textless{}{-}}\FunctionTok{updateTime}\NormalTok{(p1}\SpecialCharTok{$}\NormalTok{currentTime,}\AttributeTok{newTime=}\NormalTok{p1}\SpecialCharTok{$}\NormalTok{arrivalTime,p1)}
+    
+    \CommentTok{\# given a patient time, switch the availability of any doctor}
+    \CommentTok{\# if a doctors next available time is less than the current time, switch him to available}
+    \DocumentationTok{\#\# FIX ME: need to ensure this flag is correct.}
+    \ControlFlowTok{if}\NormalTok{(}\FunctionTok{any}\NormalTok{(doctors}\SpecialCharTok{$}\NormalTok{nextTimeAvail}\SpecialCharTok{\textless{}}\NormalTok{p1}\SpecialCharTok{$}\NormalTok{currentTime))\{}
+\NormalTok{      doctors}\SpecialCharTok{$}\NormalTok{avail[}\FunctionTok{which}\NormalTok{(doctors}\SpecialCharTok{$}\NormalTok{nextTimeAvail}\SpecialCharTok{\textless{}}\NormalTok{p1}\SpecialCharTok{$}\NormalTok{currentTime)]}\OtherTok{\textless{}{-}}\StringTok{\textquotesingle{}yes\textquotesingle{}}
+\NormalTok{    \}}
+    
+    \DocumentationTok{\#\# create a patient list}
+    \ControlFlowTok{if}\NormalTok{(currentPatientNumber}\SpecialCharTok{==}\DecValTok{0}\NormalTok{)\{}
+\NormalTok{      patientList}\OtherTok{\textless{}{-}}\NormalTok{p1}
+     \CommentTok{\# update patient number  }
+\NormalTok{      currentPatientNumber}\OtherTok{\textless{}{-}}\NormalTok{currentPatientNumber}\SpecialCharTok{+}\DecValTok{1}
+\NormalTok{    \}}\ControlFlowTok{else}\NormalTok{\{}
+\NormalTok{      patientList}\OtherTok{\textless{}{-}}\FunctionTok{rbind}\NormalTok{(patientList,p1)}
+     \CommentTok{\# update patient number  }
+\NormalTok{      currentPatientNumber}\OtherTok{\textless{}{-}}\NormalTok{currentPatientNumber}\SpecialCharTok{+}\DecValTok{1}
+\NormalTok{    \}}
+    
+    \DocumentationTok{\#\# task 2 assign a doctor}
+     \DocumentationTok{\#\#\# check for doctor availability}
+     \DocumentationTok{\#\# compute wait time, and/or compute the next available time}
+     \DocumentationTok{\#\# returns a list object.}
+\NormalTok{    clinicList}\OtherTok{\textless{}{-}}\FunctionTok{computeWaitTime}\NormalTok{(doctors,patientList,}\AttributeTok{patientID=}\NormalTok{patientList}\SpecialCharTok{$}\NormalTok{patient[currentPatientNumber])}
+  
+\NormalTok{    doctors}\OtherTok{\textless{}{-}}\NormalTok{clinicList[[}\StringTok{"doctor"}\NormalTok{]]}
+\NormalTok{   patientList}\OtherTok{\textless{}{-}}\NormalTok{clinicList[[}\StringTok{"patient"}\NormalTok{]]}
+   \DocumentationTok{\#\# update flags}
+     \CommentTok{\# update currentTime}
+    \DocumentationTok{\#\# current time is cumulative sum of the arrival times.}
+\NormalTok{   currentTime}\OtherTok{\textless{}{-}}\NormalTok{patientList}\SpecialCharTok{$}\NormalTok{currentTime[}\FunctionTok{which}\NormalTok{(patientList}\SpecialCharTok{$}\NormalTok{patient}\SpecialCharTok{==}\FunctionTok{max}\NormalTok{(patientList}\SpecialCharTok{$}\NormalTok{patient))] }\DocumentationTok{\#\# current time is the max current time from patient chart.}
+   
+   \DocumentationTok{\#\# fix me:}
+   \DocumentationTok{\#\# reset doctor availability based on current patient time.}
+\NormalTok{   upID}\OtherTok{\textless{}{-}}\FunctionTok{which}\NormalTok{(doctors}\SpecialCharTok{$}\NormalTok{nextTimeAvail}\SpecialCharTok{\textless{}}\NormalTok{currentTime)}
+\NormalTok{   doctors}\SpecialCharTok{$}\NormalTok{nextTimeAvail[upID]}\OtherTok{\textless{}{-}}\NormalTok{currentTime}
+\NormalTok{   doctors}\SpecialCharTok{$}\NormalTok{currentTime[upID]}\OtherTok{\textless{}{-}}\NormalTok{currentTime }
+\NormalTok{   doctors}\SpecialCharTok{$}\NormalTok{visitTimeLength[upID]}\OtherTok{\textless{}{-}}\DecValTok{0} 
+\NormalTok{  \}}\DocumentationTok{\#\# while loop}
+  \FunctionTok{return}\NormalTok{(}\FunctionTok{list}\NormalTok{(}\AttributeTok{patient=}\NormalTok{patientList,}\AttributeTok{doctors=}\NormalTok{doctors))}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ doctors}\OtherTok{\textless{}{-}}\FunctionTok{data.frame}\NormalTok{(}\AttributeTok{dr=}\FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}a\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}b\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}c\textquotesingle{}}\NormalTok{),}
+                     \AttributeTok{visitingPatient=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{), }\DocumentationTok{\#\# who is doctor seeing (patient ID)}
+                     \AttributeTok{visitTimeLength=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{), }\CommentTok{\# length of doctor visit U(5,20)}
+                     \AttributeTok{currentTime=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{),    }\DocumentationTok{\#\# current Time}
+                     \AttributeTok{nextTimeAvail=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{),  }\DocumentationTok{\#\# current time + visitTimeLength = next avail time.}
+                     \AttributeTok{avail=}\FunctionTok{c}\NormalTok{(}\StringTok{"yes"}\NormalTok{,}\StringTok{"yes"}\NormalTok{,}\StringTok{"yes"}\NormalTok{))}
+\DocumentationTok{\#\# initiate times}
+\NormalTok{ totalWait}\OtherTok{\textless{}{-}}\DecValTok{0}
+\NormalTok{ currentPatientNumber}\OtherTok{\textless{}{-}}\DecValTok{0}
+ \DocumentationTok{\#\# clinic opens at 9am {-}4pm that is 7 hours (420 min.)}
+\NormalTok{ timeToClose}\OtherTok{\textless{}{-}}\DecValTok{7}\SpecialCharTok{*}\DecValTok{60} \DocumentationTok{\#\# stops admiting patienets in 420 minutes}
+ \DocumentationTok{\#\# current time is 0}
+ \DocumentationTok{\#\# this will be the running total of minutes.}
+\NormalTok{ currentTime}\OtherTok{\textless{}{-}}\DecValTok{0}
+ 
+ 
+ 
+\NormalTok{res}\OtherTok{\textless{}{-}}\FunctionTok{simulateProcess}\NormalTok{(doctors,}
+\NormalTok{                          totalWait,}
+\NormalTok{                          totalPatients,}
+\NormalTok{                          timeToClose,}
+\NormalTok{                          currentTime)}
+
+\NormalTok{pl}\OtherTok{\textless{}{-}}\NormalTok{res}\SpecialCharTok{$}\NormalTok{patient[}\FunctionTok{which}\NormalTok{(res}\SpecialCharTok{$}\NormalTok{patient}\SpecialCharTok{$}\NormalTok{currentTime}\SpecialCharTok{\textless{}=}\DecValTok{420}\NormalTok{),]}
+
+ \FunctionTok{hist}\NormalTok{(pl}\SpecialCharTok{$}\NormalTok{doctorVisitTime)}
+ \FunctionTok{abline}\NormalTok{(}\AttributeTok{v=}\NormalTok{(}\DecValTok{20}\SpecialCharTok{+}\DecValTok{5}\NormalTok{)}\SpecialCharTok{/}\DecValTok{2}\NormalTok{) }\DocumentationTok{\#\# should be \textasciitilde{}12}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-9-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+ \FunctionTok{hist}\NormalTok{(pl}\SpecialCharTok{$}\NormalTok{arrivalTime) }\DocumentationTok{\#\# should be close to 10  exp(1/10) has mean 10}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-9-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \FunctionTok{hist}\NormalTok{(pl}\SpecialCharTok{$}\NormalTok{doctorWaitTime[}\FunctionTok{which}\NormalTok{(pl}\SpecialCharTok{$}\NormalTok{doctorWaitTime}\SpecialCharTok{!=}\DecValTok{0}\NormalTok{)]) }\DocumentationTok{\#\# about 2.41}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-9-3.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \FunctionTok{print}\NormalTok{(}\FunctionTok{max}\NormalTok{(pl}\SpecialCharTok{$}\NormalTok{completionTime)}\SpecialCharTok{{-}}\DecValTok{420}\NormalTok{) }\DocumentationTok{\#\# closing time}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 8.080988
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \FunctionTok{print}\NormalTok{(}\FunctionTok{max}\NormalTok{(pl}\SpecialCharTok{$}\NormalTok{patient)) }\DocumentationTok{\#\# total patient  should be 42}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 54
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# (20{-}5)/6 + 10 this is about 12.5 minutes of arrival + visit time. which is approximately close to 10 }
+\DocumentationTok{\#\# the arrival time is about 10 minutes.  }
+
+\DocumentationTok{\#\# we should expect 42 patients}
+ \CommentTok{\#420/10}
+  
+  \DocumentationTok{\#\# sanity check}
+  \CommentTok{\#all(pl$currentTime+pl$doctorWaitTime+pl$doctorVisitTime{-}pl$completionTime==0)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{simulation-100-times}{%
+\section*{Simulation 100 times}\label{simulation-100-times}}
+\addcontentsline{toc}{section}{Simulation 100 times}
+
+total number of patients was approximately 42, which we expect since the total 420/10. The total number waiting with 3 doctors is 6.61 for 1 day. the average waiting time was about 4-5 minutes. For 1 day, the average closing time was 5.32 minutes after 4 pm
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ totalPat}\OtherTok{\textless{}{-}}\ConstantTok{NULL}
+\NormalTok{ totalWaiting}\OtherTok{\textless{}{-}}\ConstantTok{NULL}
+\NormalTok{ avgWaiting}\OtherTok{\textless{}{-}}\ConstantTok{NULL}
+\NormalTok{ closing}\OtherTok{\textless{}{-}}\ConstantTok{NULL}
+\NormalTok{ patientList}\OtherTok{\textless{}{-}}\ConstantTok{NULL}
+\NormalTok{ p1}\OtherTok{\textless{}{-}}\ConstantTok{NULL}
+ 
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{100}\NormalTok{)\{}
+  
+\NormalTok{ doctors}\OtherTok{\textless{}{-}}\FunctionTok{data.frame}\NormalTok{(}\AttributeTok{dr=}\FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}a\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}b\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}c\textquotesingle{}}\NormalTok{),}
+                     \AttributeTok{visitingPatient=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{), }\DocumentationTok{\#\# who is doctor seeing (patient ID)}
+                     \AttributeTok{visitTimeLength=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{), }\CommentTok{\# length of doctor visit U(5,20)}
+                     \AttributeTok{currentTime=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{),    }\DocumentationTok{\#\# current Time}
+                     \AttributeTok{nextTimeAvail=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{),  }\DocumentationTok{\#\# current time + visitTimeLength = next avail time.}
+                     \AttributeTok{avail=}\FunctionTok{c}\NormalTok{(}\StringTok{"yes"}\NormalTok{,}\StringTok{"yes"}\NormalTok{,}\StringTok{"yes"}\NormalTok{))}
+\DocumentationTok{\#\# initiate times}
+\NormalTok{ totalWait}\OtherTok{\textless{}{-}}\DecValTok{0}
+\NormalTok{ totalPatients}\OtherTok{\textless{}{-}}\DecValTok{0}
+\NormalTok{ currentPatientNumber}\OtherTok{\textless{}{-}}\DecValTok{0}
+ \DocumentationTok{\#\# clinic opens at 9am {-}4pm that is 7 hours (420 min.)}
+\NormalTok{ timeToClose}\OtherTok{\textless{}{-}}\DecValTok{7}\SpecialCharTok{*}\DecValTok{60} \DocumentationTok{\#\# stops admiting patienets in 420 minutes}
+ \DocumentationTok{\#\# current time is 0}
+ \DocumentationTok{\#\# this will be the running total of minutes.}
+\NormalTok{ currentTime}\OtherTok{\textless{}{-}}\DecValTok{0}
+ 
+ 
+\NormalTok{res}\OtherTok{\textless{}{-}}\FunctionTok{simulateProcess}\NormalTok{(doctors,}
+\NormalTok{                          totalWait,}
+\NormalTok{                          totalPatients,}
+\NormalTok{                          timeToClose,}
+\NormalTok{                          currentTime)}
+
+\NormalTok{pl}\OtherTok{\textless{}{-}}\NormalTok{res}\SpecialCharTok{$}\NormalTok{patient[}\FunctionTok{which}\NormalTok{(res}\SpecialCharTok{$}\NormalTok{patient}\SpecialCharTok{$}\NormalTok{currentTime}\SpecialCharTok{\textless{}=}\DecValTok{420}\NormalTok{),]}
+
+
+\NormalTok{ totalPat}\OtherTok{\textless{}{-}}\FunctionTok{c}\NormalTok{(totalPat,}\FunctionTok{max}\NormalTok{(pl}\SpecialCharTok{$}\NormalTok{patient))}
+\NormalTok{  totalWaiting}\OtherTok{\textless{}{-}}\FunctionTok{c}\NormalTok{(totalWaiting,}\FunctionTok{nrow}\NormalTok{(pl[}\FunctionTok{which}\NormalTok{(pl}\SpecialCharTok{$}\NormalTok{doctorWaitTime}\SpecialCharTok{!=}\DecValTok{0}\NormalTok{),]))}
+\NormalTok{ avgWaiting}\OtherTok{\textless{}{-}}\FunctionTok{c}\NormalTok{(avgWaiting,}\FunctionTok{mean}\NormalTok{(pl[}\FunctionTok{which}\NormalTok{(pl}\SpecialCharTok{$}\NormalTok{doctorWaitTime}\SpecialCharTok{!=}\DecValTok{0}\NormalTok{),}\StringTok{"doctorWaitTime"}\NormalTok{]))}
+\NormalTok{ closing}\OtherTok{\textless{}{-}}\FunctionTok{c}\NormalTok{(closing,}\FunctionTok{max}\NormalTok{(pl}\SpecialCharTok{$}\NormalTok{completionTime))}
+ 
+\NormalTok{\}}
+ 
+ \FunctionTok{hist}\NormalTok{(totalPat,}\AttributeTok{main=}\StringTok{"total patients"}\NormalTok{)}
+ \FunctionTok{abline}\NormalTok{(}\AttributeTok{v=}\DecValTok{420}\SpecialCharTok{/}\DecValTok{10}\NormalTok{,}\AttributeTok{col=}\StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/simul-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+ \FunctionTok{hist}\NormalTok{(totalWaiting,}\AttributeTok{main=}\StringTok{"total number waiting"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/simul-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+ \FunctionTok{hist}\NormalTok{(avgWaiting,}\AttributeTok{main=}\StringTok{"avg. waiting (min)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/simul-3.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+ \FunctionTok{hist}\NormalTok{(closing}\DecValTok{{-}420}\NormalTok{,}\AttributeTok{main=}\StringTok{"closing time"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/simul-4.pdf}
 
 \hypertarget{cross}{%
 \chapter{Cross-references}\label{cross}}
