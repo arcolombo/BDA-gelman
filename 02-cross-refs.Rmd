@@ -1,34 +1,62 @@
 # Single parameter models {#cross}
 
-Cross-references make it easier for your readers to find and link to elements in your book.
-
 ## Estimating a probability from binomial data
 
-There are two steps to cross-reference any heading:
+\begin{equation}
+p(y  | \theta) = {n \choose y}\theta^y(1-\theta)^{n-y}
+(\#eq:binomialProb)
+\end{equation}
 
-1. Label the heading: `# Hello world {#nice-label}`. 
-    - Leave the label off if you like the automated heading generated based on your heading title: for example, `# Hello world` = `# Hello world {#hello-world}`.
-    - To label an un-numbered heading, use: `# Hello world {-#nice-label}` or `{# Hello world .unnumbered}`.
+To perform Bayesian inference we assume $\theta \sim U(0,1)$ where the posterior is 
 
-1. Next, reference the labeled heading anywhere in the text using `\@ref(nice-label)`; for example, please see Chapter \@ref(cross). 
-    - If you prefer text as the link instead of a numbered reference use: [any text you want can go here](#cross).
+\begin{equation}
+p(\theta | y) \propto \theta^y(1-\theta)^{n-y}
+(\#eq:binomialPosterior)
+\end{equation}
 
-## Captioned figures and tables
+which is the form of a `beta` distribution $\theta | y \sim Beta(y+1, n-y+1)$
 
-Figures and tables *with captions* can also be cross-referenced from elsewhere in your book using `\@ref(fig:chunk-label)` and `\@ref(tab:chunk-label)`, respectively.
+## Posterior as a compromise between data and prior information
+ The posterior is less variable than the prior because it incorporates the information from the data.
+ 
+\begin{equation}
+E(\theta) = E(E(\theta | y))
+(\#eq:adamsLaw)
+\end{equation}
 
-See Figure \@ref(fig:nice-fig).
+\begin{equation}
+V(\theta) = E(V(\theta|y)) + V(E(\theta | y))
+(\#eq:evesLaw)
+\end{equation}
+ 
+where $\theta|y$ is the posterior.  So the average of the prior, is the average of the posterior means over the distribution of possible data.  The variance of the prior \@ref(eq:evesLaw) says the posterior variance is on average smaller than the prior variance.
 
-```{r nice-fig, fig.cap='Here is a nice figure!', out.width='80%', fig.asp=.75, fig.align='center', fig.alt='Plot with connected points showing that vapor pressure of mercury increases exponentially as temperature increases.'}
-par(mar = c(4, 4, .1, .1))
-plot(pressure, type = 'b', pch = 19)
-```
+## Summarizing the posterior inference
+The mean, median, mode, and standard deviation of the posterior distribution summarize the all the current information about a model.  
 
-Don't miss Table \@ref(tab:nice-tab).
+### Posterior quantiles and intervals{-}
 
-```{r nice-tab, tidy=FALSE}
-knitr::kable(
-  head(pressure, 10), caption = 'Here is a nice table!',
-  booktabs = TRUE
-)
-```
+The posterior uncertainty can be reported by presenting the quantiles of the posterior distribution.  The interval, a *central interval of posterior probability* corresponds to the case of 100($1-\alpha)\%$, to the range of values above and below which lies exactly 100($\alpha/2)\%$ of the posterior probability.  The interval estimates are *posterior intervals*.  This differences from the confidence interval because the confidence interval is not a probability interval, because either the parameter is within the region or it is not, but the confidence interval provides information in the long run over repeated experimentation as to how many experiments would contain the true parameter.
+
+There is also the *highest posterior interval* which is a probabilistic interval that is not less than any region outside of the interval.
+
+## Informative prior distributions
+
+the property that the posterior distribution follows the same parametric form as the prior distribution is called *conjugacy*.  Where the beta prior distribution is a *conjugate family* for the binomial likelihood.  
+
+so given the binomial likelihood $p(y|\theta)\propto \theta^a(1-\theta)^b$, and a prior density $p(\theta)\propto \theta^{\alpha-1}(1-\theta)^{\beta-1}$ the posterior is of the beta family.
+
+
+$$
+\begin{aligned}
+ p(\theta | y) &\propto \theta^y(1-\theta)^{n-y}\theta^{\alpha-1}(1-\theta)^{\beta-1}\\
+ &= \theta^{y+\alpha-1}(1-\theta)^{n-y+\beta-1}\\
+ &= Beta(\theta | \alpha+y, \beta+n-y)
+\end{aligned}
+$$
+
+
+### Conjugate prior distributions{-}
+Conjugacy is formally defined as if F is a class of sampling distributions $p(y|\theta)$, and P is a class of prior distributions for $\theta$, then the class P is conjugate for F if $p(\theta | y) \in P$ for all $p(.|\theta)\in F$ and $p(.)\in P$.
+
+

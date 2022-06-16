@@ -1,6 +1,8 @@
 h1:cross Single parameter models
 h2:estimating-a-probability-from-binomial-data Estimating a probability from binomial data
-h2:captioned-figures-and-tables Captioned figures and tables
-fig:nice-fig Here is a nice figure!
-tab:nice-tab Here is a nice table!
+h2:posterior-as-a-compromise-between-data-and-prior-information Posterior as a compromise between data and prior information
+h2:summarizing-the-posterior-inference Summarizing the posterior inference
+h3:posterior-quantiles-and-intervals Posterior quantiles and intervals
+h2:informative-prior-distributions Informative prior distributions
+h3:conjugate-prior-distributions Conjugate prior distributions
 
