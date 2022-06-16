@@ -23,7 +23,7 @@
 <meta name="author" content="Anthony R. Colombo, Dr. Paul Marjoram" />
 
 
-<meta name="date" content="2022-06-04" />
+<meta name="date" content="2022-06-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -180,8 +180,22 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="2" data-path="cross.html"><a href="cross.html"><i class="fa fa-check"></i><b>2</b> Single parameter models</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="cross.html"><a href="cross.html#chapters-and-sub-chapters"><i class="fa fa-check"></i><b>2.1</b> Chapters and sub-chapters</a></li>
-<li class="chapter" data-level="2.2" data-path="cross.html"><a href="cross.html#captioned-figures-and-tables"><i class="fa fa-check"></i><b>2.2</b> Captioned figures and tables</a></li>
+<li class="chapter" data-level="2.1" data-path="cross.html"><a href="cross.html#estimating-a-probability-from-binomial-data"><i class="fa fa-check"></i><b>2.1</b> Estimating a probability from binomial data</a></li>
+<li class="chapter" data-level="2.2" data-path="cross.html"><a href="cross.html#posterior-as-a-compromise-between-data-and-prior-information"><i class="fa fa-check"></i><b>2.2</b> Posterior as a compromise between data and prior information</a></li>
+<li class="chapter" data-level="2.3" data-path="cross.html"><a href="cross.html#summarizing-the-posterior-inference"><i class="fa fa-check"></i><b>2.3</b> Summarizing the posterior inference</a>
+<ul>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#posterior-quantiles-and-intervals"><i class="fa fa-check"></i>Posterior quantiles and intervals</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="cross.html"><a href="cross.html#informative-prior-distributions"><i class="fa fa-check"></i><b>2.4</b> Informative prior distributions</a>
+<ul>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#conjugate-prior-distributions"><i class="fa fa-check"></i>Conjugate prior distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="cross.html"><a href="cross.html#exercises-1"><i class="fa fa-check"></i><b>2.5</b> Exercises</a>
+<ul>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#question-1"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#normal-approximation-example"><i class="fa fa-check"></i>Normal approximation example</a></li>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#question-3"><i class="fa fa-check"></i>Question 3</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="parts.html"><a href="parts.html"><i class="fa fa-check"></i><b>3</b> Parts</a></li>
 <li class="chapter" data-level="4" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html"><i class="fa fa-check"></i><b>4</b> Footnotes and citations</a>
@@ -579,9 +593,9 @@ The question asks to compute at least one election tie, from a total of 435 elec
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="fundamentals-of-bayesian-inference.html#cb24-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hist</span>(pl<span class="sc">$</span>doctorWaitTime[<span class="fu">which</span>(pl<span class="sc">$</span>doctorWaitTime<span class="sc">!=</span><span class="dv">0</span>)]) <span class="do">## about 2.41</span></span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-9-3.png" width="672" /></p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="fundamentals-of-bayesian-inference.html#cb25-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">max</span>(pl<span class="sc">$</span>completionTime)<span class="sc">-</span><span class="dv">420</span>) <span class="do">## closing time</span></span></code></pre></div>
-<pre><code>## [1] 4.281647</code></pre>
+<pre><code>## [1] -6.034406</code></pre>
 <div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="fundamentals-of-bayesian-inference.html#cb27-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">max</span>(pl<span class="sc">$</span>patient)) <span class="do">## total patient  should be 42</span></span></code></pre></div>
-<pre><code>## [1] 39</code></pre>
+<pre><code>## [1] 49</code></pre>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="fundamentals-of-bayesian-inference.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="do">## (20-5)/6 + 10 this is about 12.5 minutes of arrival + visit time. which is approximately close to 10 </span></span>
 <span id="cb29-2"><a href="fundamentals-of-bayesian-inference.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="do">## the arrival time is about 10 minutes.  </span></span>
 <span id="cb29-3"><a href="fundamentals-of-bayesian-inference.html#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
