@@ -32,3 +32,4 @@ eq:evesLaw
 posterior-as-a-compromise-between-data-and-prior-information
 summarizing-the-posterior-inference
 informative-prior-distributions
+exercises-1

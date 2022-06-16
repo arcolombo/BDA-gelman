@@ -60,3 +60,73 @@ $$
 Conjugacy is formally defined as if F is a class of sampling distributions $p(y|\theta)$, and P is a class of prior distributions for $\theta$, then the class P is conjugate for F if $p(\theta | y) \in P$ for all $p(.|\theta)\in F$ and $p(.)\in P$.
 
 
+
+## Exercises
+
+### Question 1{-}
+prior Beta(4,4), where a coin is tossed 10 times and heads appears fewer than 3 times.  the exact posterior is Beta(4+y, 4+10-y) for y=0,1,2.  Since we don't know the observed heads, but that $y<3$ we plot the posterior distributions for each possibility.  For 2 heads it is closer to the prior, with posterior mean of 0.33,  which is closest to the prior mean of 1/2.
+```{r q1}
+ theta<-seq(from=0,to=1,by=0.01)
+
+ plot(theta,dbeta(theta,4,4),type='l') ## prior
+ lines(theta,dbeta(theta,4+1,4+10-1),lty=2) ## 1 success
+   lines(theta,dbeta(theta,4+2,4+10-2),lty=3,col='red') ## 2 succe
+   lines(theta,dbeta(theta,4,4+10),lty=4,col='blue')  ## 0 successes
+  
+```
+### Normal approximation example{-}
+For female births we have beta(438,544) we use the normal approximation 
+```{r}
+  theta<-seq(from=0.001,to=1,by=0.01)
+  ## example births
+   postMean <-function(alpha,beta,y,n){
+     return( (alpha+y)/(alpha+beta+n))
+   } 
+   postVar<-function(alpha,beta,y,n){
+     return( ((alpha+y)*(beta+n-y))/( (alpha+beta+n)^2*(alpha+beta+n+1)) )
+   }
+   sdnorm<-sqrt(postVar(438,544,0,0))
+   logitMean<-log( postMean(438,544,0,0)/(1-postMean(438,544,0,0)))
+   
+  logitTheta<-log(theta/(1-theta))
+
+  
+    plot(theta,dbeta(theta,438,544),type='l',xlim=c(0.35,0.55),main="posterior beta") ## prior
+    abline(v=0.446,col='red')
+  draws<-rbeta(1000,438,544)
+  plot(logitTheta,dnorm(logitTheta,mean =logitMean, sd=sd(log(draws/(1-draws))) ),type='l', xlim=c(-0.5,0.1),main="Normal approx.") ## prior
+    abline(v=-0.22,col='red')
+
+```
+
+### Question 3{-}
+Predictive distributions for the number of 6's in a fair roll, tossed 1,000 times.  Let y be the number of 6's in 1000 rolls of fair die, the probability for a 6 is 1/6, so the number of 6's in this trial is approximatley 167, and 833 failures.  We plot the beta distribution of the expected number of heads in 1000 tosses.  
+
+The normal approximation shows the probability of heads in a given 1000  tosses, using a non-informative prior beta(167,833) which is the same for number of success in 1000 tosses.  We find the distribution of a given success and the predictive interval follows a beta with 95% (0.12,0.17) for hte probability of rolling a 6
+```{r}
+  ## based on normal approximation sketch the distribution of y
+  ## for normal we use the logit transform
+  ## n = 1,000
+  ## first lets construct a beta distribution.
+  ## let the prior be beta(4,4) or even beta(1,1)
+    plot(theta,dbeta(theta,167,833),type='l',xlim=c(0.1,0.5),main="prior beta") ## prior
+    abline(v=0.167,col='red') ## 
+   #  qbeta(c(0.05,0.25,0.5,0.75,0.95),167,833)
+    ## predictive on normal scale.
+     draws<-rbeta(1000,167,833)
+     logitMean<-log( 167/1000)
+  sdd<-sd(log(draws/(1-draws)))
+
+  plot(logitTheta,dnorm(logitTheta,mean =logitMean, sd=sdd ),type='l',main="Normal approx.of a total heads", xlim=c(-2,-1.4)) ## prior
+    abline(v=logitMean,col='red')
+    ### the number of heads.    
+  #exp(logitMean)/(1+exp(logitMean))
+
+ qx<-(qnorm(c(0.05,0.25,0.5,0.75,0.95),mean =logitMean, sd=sdd ))
+ ## this is the probability of landing 6 for theta
+ exp(qx)/(1+exp(qx))
+## wald 95% prior interval
+c( exp(logitMean-1.96*sdd)/(1+exp(logitMean-1.96*sdd)),exp(logitMean+1.96*sdd)/(1+exp(logitMean+1.96*sdd)))
+```
+
+
