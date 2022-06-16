@@ -117,7 +117,7 @@
 
 \title{Bayesian Data Analysis}
 \author{Anthony R. Colombo, Dr.~Paul Marjoram}
-\date{2022-06-04}
+\date{2022-06-16}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -715,7 +715,7 @@ Then the probability that at least 1 election is tied, from 435 total elections 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] -0.4080558
+## [1] 14.23636
 \end{verbatim}
 
 \begin{Shaded}
@@ -725,7 +725,7 @@ Then the probability that at least 1 election is tied, from 435 total elections 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 38
+## [1] 44
 \end{verbatim}
 
 \begin{Shaded}
@@ -825,92 +825,200 @@ total number of patients was approximately 42, which we expect since the total 4
 \hypertarget{cross}{%
 \chapter{Single parameter models}\label{cross}}
 
-Cross-references make it easier for your readers to find and link to elements in your book.
+\hypertarget{estimating-a-probability-from-binomial-data}{%
+\section{Estimating a probability from binomial data}\label{estimating-a-probability-from-binomial-data}}
 
-\hypertarget{chapters-and-sub-chapters}{%
-\section{Chapters and sub-chapters}\label{chapters-and-sub-chapters}}
+\begin{equation}
+p(y  | \theta) = {n \choose y}\theta^y(1-\theta)^{n-y}
+\label{eq:binomialProb}
+\end{equation}
 
-There are two steps to cross-reference any heading:
+To perform Bayesian inference we assume \(\theta \sim U(0,1)\) where the posterior is
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  Label the heading: \texttt{\#\ Hello\ world\ \{\#nice-label\}}.
+\begin{equation}
+p(\theta | y) \propto \theta^y(1-\theta)^{n-y}
+\label{eq:binomialPosterior}
+\end{equation}
 
-  \begin{itemize}
-  \tightlist
-  \item
-    Leave the label off if you like the automated heading generated based on your heading title: for example, \texttt{\#\ Hello\ world} = \texttt{\#\ Hello\ world\ \{\#hello-world\}}.
-  \item
-    To label an un-numbered heading, use: \texttt{\#\ Hello\ world\ \{-\#nice-label\}} or \texttt{\{\#\ Hello\ world\ .unnumbered\}}.
-  \end{itemize}
-\item
-  Next, reference the labeled heading anywhere in the text using \texttt{\textbackslash{}@ref(nice-label)}; for example, please see Chapter \ref{cross}.
+which is the form of a \texttt{beta} distribution \(\theta | y \sim Beta(y+1, n-y+1)\)
 
-  \begin{itemize}
-  \tightlist
-  \item
-    If you prefer text as the link instead of a numbered reference use: \protect\hyperlink{cross}{any text you want can go here}.
-  \end{itemize}
-\end{enumerate}
+\hypertarget{posterior-as-a-compromise-between-data-and-prior-information}{%
+\section{Posterior as a compromise between data and prior information}\label{posterior-as-a-compromise-between-data-and-prior-information}}
 
-\hypertarget{captioned-figures-and-tables}{%
-\section{Captioned figures and tables}\label{captioned-figures-and-tables}}
+The posterior is less variable than the prior because it incorporates the information from the data.
 
-Figures and tables \emph{with captions} can also be cross-referenced from elsewhere in your book using \texttt{\textbackslash{}@ref(fig:chunk-label)} and \texttt{\textbackslash{}@ref(tab:chunk-label)}, respectively.
+\begin{equation}
+E(\theta) = E(E(\theta | y))
+\label{eq:adamsLaw}
+\end{equation}
 
-See Figure \ref{fig:nice-fig}.
+\begin{equation}
+V(\theta) = E(V(\theta|y)) + V(E(\theta | y))
+\label{eq:evesLaw}
+\end{equation}
+
+where \(\theta|y\) is the posterior. So the average of the prior, is the average of the posterior means over the distribution of possible data. The variance of the prior \eqref{eq:evesLaw} says the posterior variance is on average smaller than the prior variance.
+
+\hypertarget{summarizing-the-posterior-inference}{%
+\section{Summarizing the posterior inference}\label{summarizing-the-posterior-inference}}
+
+The mean, median, mode, and standard deviation of the posterior distribution summarize the all the current information about a model.
+
+\hypertarget{posterior-quantiles-and-intervals}{%
+\subsection*{Posterior quantiles and intervals}\label{posterior-quantiles-and-intervals}}
+\addcontentsline{toc}{subsection}{Posterior quantiles and intervals}
+
+The posterior uncertainty can be reported by presenting the quantiles of the posterior distribution. The interval, a \emph{central interval of posterior probability} corresponds to the case of 100(\(1-\alpha)\%\), to the range of values above and below which lies exactly 100(\(\alpha/2)\%\) of the posterior probability. The interval estimates are \emph{posterior intervals}. This differences from the confidence interval because the confidence interval is not a probability interval, because either the parameter is within the region or it is not, but the confidence interval provides information in the long run over repeated experimentation as to how many experiments would contain the true parameter.
+
+There is also the \emph{highest posterior interval} which is a probabilistic interval that is not less than any region outside of the interval.
+
+\hypertarget{informative-prior-distributions}{%
+\section{Informative prior distributions}\label{informative-prior-distributions}}
+
+the property that the posterior distribution follows the same parametric form as the prior distribution is called \emph{conjugacy}. Where the beta prior distribution is a \emph{conjugate family} for the binomial likelihood.
+
+so given the binomial likelihood \(p(y|\theta)\propto \theta^a(1-\theta)^b\), and a prior density \(p(\theta)\propto \theta^{\alpha-1}(1-\theta)^{\beta-1}\) the posterior is of the beta family.
+
+\[
+\begin{aligned}
+ p(\theta | y) &\propto \theta^y(1-\theta)^{n-y}\theta^{\alpha-1}(1-\theta)^{\beta-1}\\
+ &= \theta^{y+\alpha-1}(1-\theta)^{n-y+\beta-1}\\
+ &= Beta(\theta | \alpha+y, \beta+n-y)
+\end{aligned}
+\]
+
+\hypertarget{conjugate-prior-distributions}{%
+\subsection*{Conjugate prior distributions}\label{conjugate-prior-distributions}}
+\addcontentsline{toc}{subsection}{Conjugate prior distributions}
+
+Conjugacy is formally defined as if F is a class of sampling distributions \(p(y|\theta)\), and P is a class of prior distributions for \(\theta\), then the class P is conjugate for F if \(p(\theta | y) \in P\) for all \(p(.|\theta)\in F\) and \(p(.)\in P\).
+
+\hypertarget{exercises-1}{%
+\section{Exercises}\label{exercises-1}}
+
+\hypertarget{question-1}{%
+\subsection*{Question 1}\label{question-1}}
+\addcontentsline{toc}{subsection}{Question 1}
+
+prior Beta(4,4), where a coin is tossed 10 times and heads appears fewer than 3 times. the exact posterior is Beta(4+y, 4+10-y) for y=0,1,2. Since we don't know the observed heads, but that \(y<3\) we plot the posterior distributions for each possibility. For 2 heads it is closer to the prior, with posterior mean of 0.33, which is closest to the prior mean of 1/2.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{par}\NormalTok{(}\AttributeTok{mar =} \FunctionTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{, .}\DecValTok{1}\NormalTok{, .}\DecValTok{1}\NormalTok{))}
-\FunctionTok{plot}\NormalTok{(pressure, }\AttributeTok{type =} \StringTok{\textquotesingle{}b\textquotesingle{}}\NormalTok{, }\AttributeTok{pch =} \DecValTok{19}\NormalTok{)}
+\NormalTok{ theta}\OtherTok{\textless{}{-}}\FunctionTok{seq}\NormalTok{(}\AttributeTok{from=}\DecValTok{0}\NormalTok{,}\AttributeTok{to=}\DecValTok{1}\NormalTok{,}\AttributeTok{by=}\FloatTok{0.01}\NormalTok{)}
+
+ \FunctionTok{plot}\NormalTok{(theta,}\FunctionTok{dbeta}\NormalTok{(theta,}\DecValTok{4}\NormalTok{,}\DecValTok{4}\NormalTok{),}\AttributeTok{type=}\StringTok{\textquotesingle{}l\textquotesingle{}}\NormalTok{,}\AttributeTok{ylim=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{5}\NormalTok{)) }\DocumentationTok{\#\# prior}
+ \FunctionTok{lines}\NormalTok{(theta,}\FunctionTok{dbeta}\NormalTok{(theta,}\DecValTok{4}\SpecialCharTok{+}\DecValTok{1}\NormalTok{,}\DecValTok{4}\SpecialCharTok{+}\DecValTok{10{-}1}\NormalTok{),}\AttributeTok{lty=}\DecValTok{2}\NormalTok{) }\DocumentationTok{\#\# 1 success}
+   \FunctionTok{lines}\NormalTok{(theta,}\FunctionTok{dbeta}\NormalTok{(theta,}\DecValTok{4}\SpecialCharTok{+}\DecValTok{2}\NormalTok{,}\DecValTok{4}\SpecialCharTok{+}\DecValTok{10{-}2}\NormalTok{),}\AttributeTok{lty=}\DecValTok{3}\NormalTok{,}\AttributeTok{col=}\StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{) }\DocumentationTok{\#\# 2 succe}
+   \FunctionTok{lines}\NormalTok{(theta,}\FunctionTok{dbeta}\NormalTok{(theta,}\DecValTok{4}\NormalTok{,}\DecValTok{4}\SpecialCharTok{+}\DecValTok{10}\NormalTok{),}\AttributeTok{lty=}\DecValTok{4}\NormalTok{,}\AttributeTok{col=}\StringTok{\textquotesingle{}blue\textquotesingle{}}\NormalTok{)  }\DocumentationTok{\#\# 0 successes}
+  \FunctionTok{legend}\NormalTok{(}\FloatTok{0.6}\NormalTok{, }\DecValTok{4}\NormalTok{, }
+         \AttributeTok{legend=}\FunctionTok{c}\NormalTok{(}\StringTok{"prior"}\NormalTok{, }\StringTok{"0 H"}\NormalTok{, }\StringTok{"1 H"}\NormalTok{, }\StringTok{"2 H"}\NormalTok{),}
+       \AttributeTok{col=}\FunctionTok{c}\NormalTok{(}\StringTok{"black"}\NormalTok{,}\StringTok{"blue"}\NormalTok{,}\StringTok{"black"}\NormalTok{, }\StringTok{"red"}\NormalTok{), }\AttributeTok{lty=}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{), }\AttributeTok{cex=}\FloatTok{0.8}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{figure}
+\includegraphics{_main_files/figure-latex/q1-1.pdf}
 
-{\centering \includegraphics[width=0.8\linewidth]{_main_files/figure-latex/nice-fig-1} 
+\hypertarget{normal-approximation-example}{%
+\subsection*{Normal approximation example}\label{normal-approximation-example}}
+\addcontentsline{toc}{subsection}{Normal approximation example}
 
-}
-
-\caption{Here is a nice figure!}\label{fig:nice-fig}
-\end{figure}
-
-Don't miss Table \ref{tab:nice-tab}.
+For female births we have beta(438,544) we use the normal approximation
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(}
-  \FunctionTok{head}\NormalTok{(pressure, }\DecValTok{10}\NormalTok{), }\AttributeTok{caption =} \StringTok{\textquotesingle{}Here is a nice table!\textquotesingle{}}\NormalTok{,}
-  \AttributeTok{booktabs =} \ConstantTok{TRUE}
-\NormalTok{)}
+\NormalTok{  theta}\OtherTok{\textless{}{-}}\FunctionTok{seq}\NormalTok{(}\AttributeTok{from=}\FloatTok{0.001}\NormalTok{,}\AttributeTok{to=}\DecValTok{1}\NormalTok{,}\AttributeTok{by=}\FloatTok{0.01}\NormalTok{)}
+  \DocumentationTok{\#\# example births}
+\NormalTok{   postMean }\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(alpha,beta,y,n)\{}
+     \FunctionTok{return}\NormalTok{( (alpha}\SpecialCharTok{+}\NormalTok{y)}\SpecialCharTok{/}\NormalTok{(alpha}\SpecialCharTok{+}\NormalTok{beta}\SpecialCharTok{+}\NormalTok{n))}
+\NormalTok{   \} }
+\NormalTok{   postVar}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(alpha,beta,y,n)\{}
+     \FunctionTok{return}\NormalTok{( ((alpha}\SpecialCharTok{+}\NormalTok{y)}\SpecialCharTok{*}\NormalTok{(beta}\SpecialCharTok{+}\NormalTok{n}\SpecialCharTok{{-}}\NormalTok{y))}\SpecialCharTok{/}\NormalTok{( (alpha}\SpecialCharTok{+}\NormalTok{beta}\SpecialCharTok{+}\NormalTok{n)}\SpecialCharTok{\^{}}\DecValTok{2}\SpecialCharTok{*}\NormalTok{(alpha}\SpecialCharTok{+}\NormalTok{beta}\SpecialCharTok{+}\NormalTok{n}\SpecialCharTok{+}\DecValTok{1}\NormalTok{)) )}
+\NormalTok{   \}}
+\NormalTok{   sdnorm}\OtherTok{\textless{}{-}}\FunctionTok{sqrt}\NormalTok{(}\FunctionTok{postVar}\NormalTok{(}\DecValTok{438}\NormalTok{,}\DecValTok{544}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{))}
+\NormalTok{   logitMean}\OtherTok{\textless{}{-}}\FunctionTok{log}\NormalTok{( }\FunctionTok{postMean}\NormalTok{(}\DecValTok{438}\NormalTok{,}\DecValTok{544}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{)}\SpecialCharTok{/}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\FunctionTok{postMean}\NormalTok{(}\DecValTok{438}\NormalTok{,}\DecValTok{544}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{)))}
+   
+\NormalTok{  logitTheta}\OtherTok{\textless{}{-}}\FunctionTok{log}\NormalTok{(theta}\SpecialCharTok{/}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{theta))}
+
+  
+    \FunctionTok{plot}\NormalTok{(theta,}\FunctionTok{dbeta}\NormalTok{(theta,}\DecValTok{438}\NormalTok{,}\DecValTok{544}\NormalTok{),}\AttributeTok{type=}\StringTok{\textquotesingle{}l\textquotesingle{}}\NormalTok{,}\AttributeTok{xlim=}\FunctionTok{c}\NormalTok{(}\FloatTok{0.35}\NormalTok{,}\FloatTok{0.55}\NormalTok{),}\AttributeTok{main=}\StringTok{"posterior beta"}\NormalTok{) }\DocumentationTok{\#\# prior}
+    \FunctionTok{abline}\NormalTok{(}\AttributeTok{v=}\FloatTok{0.446}\NormalTok{,}\AttributeTok{col=}\StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{table}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-10-1.pdf}
 
-\caption{\label{tab:nice-tab}Here is a nice table!}
-\centering
-\begin{tabular}[t]{rr}
-\toprule
-temperature & pressure\\
-\midrule
-0 & 0.0002\\
-20 & 0.0012\\
-40 & 0.0060\\
-60 & 0.0300\\
-80 & 0.0900\\
-\addlinespace
-100 & 0.2700\\
-120 & 0.7500\\
-140 & 1.8500\\
-160 & 4.2000\\
-180 & 8.8000\\
-\bottomrule
-\end{tabular}
-\end{table}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{  draws}\OtherTok{\textless{}{-}}\FunctionTok{rbeta}\NormalTok{(}\DecValTok{1000}\NormalTok{,}\DecValTok{438}\NormalTok{,}\DecValTok{544}\NormalTok{)}
+  \FunctionTok{plot}\NormalTok{(logitTheta,}\FunctionTok{dnorm}\NormalTok{(logitTheta,}\AttributeTok{mean =}\NormalTok{logitMean, }\AttributeTok{sd=}\FunctionTok{sd}\NormalTok{(}\FunctionTok{log}\NormalTok{(draws}\SpecialCharTok{/}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{draws))) ),}\AttributeTok{type=}\StringTok{\textquotesingle{}l\textquotesingle{}}\NormalTok{, }\AttributeTok{xlim=}\FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\FloatTok{0.5}\NormalTok{,}\FloatTok{0.1}\NormalTok{),}\AttributeTok{main=}\StringTok{"Normal approx."}\NormalTok{) }\DocumentationTok{\#\# prior}
+    \FunctionTok{abline}\NormalTok{(}\AttributeTok{v=}\SpecialCharTok{{-}}\FloatTok{0.22}\NormalTok{,}\AttributeTok{col=}\StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-10-2.pdf}
+
+\hypertarget{question-3}{%
+\subsection*{Question 3}\label{question-3}}
+\addcontentsline{toc}{subsection}{Question 3}
+
+Predictive distributions for the number of 6's in a fair roll, tossed 1,000 times. Let y be the number of 6's in 1000 rolls of fair die, the probability for a 6 is 1/6, so the number of 6's in this trial is approximatley 167, and 833 failures. We plot the beta distribution of the expected number of heads in 1000 tosses.
+
+The normal approximation shows the probability of heads in a given 1000 tosses, using a non-informative prior beta(167,833) which is the same for number of success in 1000 tosses. We find the distribution of a given success and the predictive interval follows a beta with 95\% (0.12,0.17) for hte probability of rolling a 6
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \DocumentationTok{\#\# based on normal approximation sketch the distribution of y}
+  \DocumentationTok{\#\# for normal we use the logit transform}
+  \DocumentationTok{\#\# n = 1,000}
+  \DocumentationTok{\#\# first lets construct a beta distribution.}
+  \DocumentationTok{\#\# let the prior be beta(4,4) or even beta(1,1)}
+    \FunctionTok{plot}\NormalTok{(theta,}\FunctionTok{dbeta}\NormalTok{(theta,}\DecValTok{167}\NormalTok{,}\DecValTok{833}\NormalTok{),}\AttributeTok{type=}\StringTok{\textquotesingle{}l\textquotesingle{}}\NormalTok{,}\AttributeTok{xlim=}\FunctionTok{c}\NormalTok{(}\FloatTok{0.1}\NormalTok{,}\FloatTok{0.5}\NormalTok{),}\AttributeTok{main=}\StringTok{"prior beta"}\NormalTok{) }\DocumentationTok{\#\# prior}
+    \FunctionTok{abline}\NormalTok{(}\AttributeTok{v=}\FloatTok{0.167}\NormalTok{,}\AttributeTok{col=}\StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{) }\DocumentationTok{\#\# }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-11-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+   \CommentTok{\#  qbeta(c(0.05,0.25,0.5,0.75,0.95),167,833)}
+    \DocumentationTok{\#\# predictive on normal scale.}
+\NormalTok{     draws}\OtherTok{\textless{}{-}}\FunctionTok{rbeta}\NormalTok{(}\DecValTok{1000}\NormalTok{,}\DecValTok{167}\NormalTok{,}\DecValTok{833}\NormalTok{)}
+\NormalTok{     logitMean}\OtherTok{\textless{}{-}}\FunctionTok{log}\NormalTok{( }\DecValTok{167}\SpecialCharTok{/}\DecValTok{1000}\NormalTok{)}
+\NormalTok{  sdd}\OtherTok{\textless{}{-}}\FunctionTok{sd}\NormalTok{(}\FunctionTok{log}\NormalTok{(draws}\SpecialCharTok{/}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{draws)))}
+
+  \FunctionTok{plot}\NormalTok{(logitTheta,}\FunctionTok{dnorm}\NormalTok{(logitTheta,}\AttributeTok{mean =}\NormalTok{logitMean, }\AttributeTok{sd=}\NormalTok{sdd ),}\AttributeTok{type=}\StringTok{\textquotesingle{}l\textquotesingle{}}\NormalTok{,}\AttributeTok{main=}\StringTok{"Normal approx.of a total heads"}\NormalTok{, }\AttributeTok{xlim=}\FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{2}\NormalTok{,}\SpecialCharTok{{-}}\FloatTok{1.4}\NormalTok{)) }\DocumentationTok{\#\# prior}
+    \FunctionTok{abline}\NormalTok{(}\AttributeTok{v=}\NormalTok{logitMean,}\AttributeTok{col=}\StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-11-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \DocumentationTok{\#\#\# the number of heads.    }
+  \CommentTok{\#exp(logitMean)/(1+exp(logitMean))}
+
+\NormalTok{ qx}\OtherTok{\textless{}{-}}\NormalTok{(}\FunctionTok{qnorm}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\FloatTok{0.05}\NormalTok{,}\FloatTok{0.25}\NormalTok{,}\FloatTok{0.5}\NormalTok{,}\FloatTok{0.75}\NormalTok{,}\FloatTok{0.95}\NormalTok{),}\AttributeTok{mean =}\NormalTok{logitMean, }\AttributeTok{sd=}\NormalTok{sdd ))}
+ \DocumentationTok{\#\# this is the probability of landing 6 for theta}
+ \FunctionTok{exp}\NormalTok{(qx)}\SpecialCharTok{/}\NormalTok{(}\DecValTok{1}\SpecialCharTok{+}\FunctionTok{exp}\NormalTok{(qx))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.1275435 0.1365390 0.1431020 0.1499256 0.1602099
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# wald 95\% prior interval}
+\FunctionTok{c}\NormalTok{( }\FunctionTok{exp}\NormalTok{(logitMean}\FloatTok{{-}1.96}\SpecialCharTok{*}\NormalTok{sdd)}\SpecialCharTok{/}\NormalTok{(}\DecValTok{1}\SpecialCharTok{+}\FunctionTok{exp}\NormalTok{(logitMean}\FloatTok{{-}1.96}\SpecialCharTok{*}\NormalTok{sdd)),}\FunctionTok{exp}\NormalTok{(logitMean}\FloatTok{+1.96}\SpecialCharTok{*}\NormalTok{sdd)}\SpecialCharTok{/}\NormalTok{(}\DecValTok{1}\SpecialCharTok{+}\FunctionTok{exp}\NormalTok{(logitMean}\FloatTok{+1.96}\SpecialCharTok{*}\NormalTok{sdd)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.1247327 0.1636705
+\end{verbatim}
 
 \hypertarget{parts}{%
 \chapter{Parts}\label{parts}}
