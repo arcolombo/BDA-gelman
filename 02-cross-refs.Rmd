@@ -68,13 +68,19 @@ prior Beta(4,4), where a coin is tossed 10 times and heads appears fewer than 3 
 ```{r q1}
  theta<-seq(from=0,to=1,by=0.01)
 
- plot(theta,dbeta(theta,4,4),type='l') ## prior
+ plot(theta,dbeta(theta,4,4),type='l',ylim=c(0,5)) ## prior
  lines(theta,dbeta(theta,4+1,4+10-1),lty=2) ## 1 success
    lines(theta,dbeta(theta,4+2,4+10-2),lty=3,col='red') ## 2 succe
    lines(theta,dbeta(theta,4,4+10),lty=4,col='blue')  ## 0 successes
-  
+  legend(0.6, 4, 
+         legend=c("prior", "0 H", "1 H", "2 H"),
+       col=c("black","blue","black", "red"), lty=c(1,4,3,2), cex=0.8)
 ```
+
+
 ### Normal approximation example{-}
+
+
 For female births we have beta(438,544) we use the normal approximation 
 ```{r}
   theta<-seq(from=0.001,to=1,by=0.01)
@@ -99,7 +105,11 @@ For female births we have beta(438,544) we use the normal approximation
 
 ```
 
+
+
 ### Question 3{-}
+
+
 Predictive distributions for the number of 6's in a fair roll, tossed 1,000 times.  Let y be the number of 6's in 1000 rolls of fair die, the probability for a 6 is 1/6, so the number of 6's in this trial is approximatley 167, and 833 failures.  We plot the beta distribution of the expected number of heads in 1000 tosses.  
 
 The normal approximation shows the probability of heads in a given 1000  tosses, using a non-informative prior beta(167,833) which is the same for number of success in 1000 tosses.  We find the distribution of a given success and the predictive interval follows a beta with 95% (0.12,0.17) for hte probability of rolling a 6
