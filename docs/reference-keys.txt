@@ -23,3 +23,12 @@ sharing-your-book
 publishing
 pages
 metadata-for-sharing
+eq:binomialProb
+cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
+estimating-a-probability-from-binomial-data
+eq:binomialPosterior
+eq:adamsLaw
+eq:evesLaw
+posterior-as-a-compromise-between-data-and-prior-information
+summarizing-the-posterior-inference
+informative-prior-distributions

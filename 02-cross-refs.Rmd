@@ -1,8 +1,8 @@
-# Cross-references {#cross}
+# Single parameter models {#cross}
 
 Cross-references make it easier for your readers to find and link to elements in your book.
 
-## Chapters and sub-chapters
+## Estimating a probability from binomial data
 
 There are two steps to cross-reference any heading:
 
