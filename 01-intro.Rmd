@@ -21,7 +21,7 @@ for a model across patients across different cities, we can assume exchangabilit
 
 
 ## Bayesian inference
-The prior, p($\theta$), and the sampling distribution, or the *data distribution*, $p(y|\theta)$ is
+The prior, p($\theta$), and the sampling distribution, or the *data distribution*, $p(y|\theta)$ is related to the joint distribution by
 
 $$ p(\theta,y) = p(\theta)p(y | \theta)$$
 
@@ -41,7 +41,7 @@ p(\theta | y ) \propto p(\theta)p(y | \theta)
 Note that $p(y | \theta)$ is taken as a function of $\theta$, not of y.
 
 ## Prediction {-}
-Inferences about an unknown *observable* variable, are called predictive inferences.  Beofre the data y are considered, the distribution of the unknown, observable, y is $$ p(y) = \int p(y,\theta)d\theta = \int p(\theta)p(y | \theta)d\theta$$
+Inferences about an unknown *observable* variable, are called predictive inferences.  Before the data y are considered, the distribution of the unknown, observable, y is $$ p(y) = \int p(y,\theta)d\theta = \int p(\theta)p(y | \theta)d\theta$$
 
 this is defined as the marginal distribution of y, and also called *prior predictive distribution*.  Prior refers that the data is not conditional on any previous observation, and predictive refers to the data being observable.
 
