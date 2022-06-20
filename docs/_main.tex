@@ -117,7 +117,7 @@
 
 \title{Bayesian Data Analysis}
 \author{Anthony R. Colombo, Dr.~Paul Marjoram}
-\date{2022-06-16}
+\date{2022-06-20}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -715,7 +715,7 @@ Then the probability that at least 1 election is tied, from 435 total elections 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 14.23636
+## [1] 8.788191
 \end{verbatim}
 
 \begin{Shaded}
@@ -725,7 +725,7 @@ Then the probability that at least 1 election is tied, from 435 total elections 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 44
+## [1] 40
 \end{verbatim}
 
 \begin{Shaded}
@@ -893,6 +893,44 @@ so given the binomial likelihood \(p(y|\theta)\propto \theta^a(1-\theta)^b\), an
 
 Conjugacy is formally defined as if F is a class of sampling distributions \(p(y|\theta)\), and P is a class of prior distributions for \(\theta\), then the class P is conjugate for F if \(p(\theta | y) \in P\) for all \(p(.|\theta)\in F\) and \(p(.)\in P\).
 
+\hypertarget{conjugate-prior-distributions-exponential-families-and-sufficient-statistics}{%
+\subsection*{Conjugate prior, distributions, exponential families, and sufficient statistics}\label{conjugate-prior-distributions-exponential-families-and-sufficient-statistics}}
+\addcontentsline{toc}{subsection}{Conjugate prior, distributions, exponential families, and sufficient statistics}
+
+Posterior distributions can be derived using sufficient statistics from exponential families. The exponential family is defined as
+
+\[
+\begin{aligned}
+ p(y_i | \theta)=f(y_i)g(\theta)e^{\phi(\theta)^Tu(y_i)}
+\end{aligned}
+\]
+Where \(\phi(\theta), u(y_i)\) are vectors of equal dimension to that of \(\theta\). The \(\phi(\theta)\) is called the \emph{natural parameter} for the family (F). The likelihood of a sequence \(y=(y_1,...,y_n)\) iid is
+
+\[
+\begin{aligned}
+ p(y | \theta)&= (\prod_{i=1}^n f(y_i)) g(\theta)^n exp(\phi(\theta)^T \sum_{i=1}^n u(y_i)) \\
+  &\propto g(\theta)^ne^{\phi(\theta)^Tt(y)}, t(y)=\sum_{y=1}^n u(y_i)
+\end{aligned}
+\]
+
+The \emph{sufficient statistic} for \(\theta\) is \(t(y)\) because the likelihood for \$\theta depends on the data, y, only through the value of t(y).
+
+Sufficient statistics benefit posterior distributions because if the prior density is specified as
+\[
+\begin{aligned}
+ p(\theta)&\propto g(\theta)^{\eta} e^{\phi(\theta)^T \nu} \\
+ \end{aligned}
+\]
+Then the posterior density using sufficient statistics is
+
+\[
+\begin{aligned}
+ p(\theta | y ) &\propto g(\theta)^{\eta+n} e^{\phi(\theta)^T (\nu+t(y))} \\
+ \end{aligned}
+\]
+
+Exponential families are the only classes of distributions that have natural conjugate prior distributions.
+
 \hypertarget{exercises-1}{%
 \section{Exercises}\label{exercises-1}}
 
@@ -922,7 +960,7 @@ prior Beta(4,4), where a coin is tossed 10 times and heads appears fewer than 3 
 \subsection*{Normal approximation example}\label{normal-approximation-example}}
 \addcontentsline{toc}{subsection}{Normal approximation example}
 
-For female births we have beta(438,544) we use the normal approximation
+For female births we have beta(438,544) we use the normal approximation. This replicates Gelman's Figure 2.3 (a, b)
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -961,9 +999,13 @@ For female births we have beta(438,544) we use the normal approximation
 \subsection*{Question 3}\label{question-3}}
 \addcontentsline{toc}{subsection}{Question 3}
 
-Predictive distributions for the number of 6's in a fair roll, tossed 1,000 times. Let y be the number of 6's in 1000 rolls of fair die, the probability for a 6 is 1/6, so the number of 6's in this trial is approximatley 167, and 833 failures. We plot the beta distribution of the expected number of heads in 1000 tosses.
+The prior predictive distributions for the number of 6's in a fair roll, tossed 1,000 times will follow a beta distribution. Let y be the number of 6's in 1000 rolls of fair die, the probability for a 6 is 1/6, so the number of 6's in this trial is approximatley 167, and 833 failures as the prior prediction.
 
-The normal approximation shows the probability of heads in a given 1000 tosses, using a non-informative prior beta(167,833) which is the same for number of success in 1000 tosses. We find the distribution of a given success and the predictive interval follows a beta with 95\% (0.12,0.17) for hte probability of rolling a 6
+We plot the beta distribution of the expected number of heads in 1000 tosses.
+
+The normal approximation shows the probability of heads in a given 1000 tosses, using a non-informative prior beta(167,833) which has a prior predictive mean of \(exp(-1.79)/(1+exp(-1.79)) = 0.143\). This is not the same for number of success in 1000 tosses.
+
+We find the probability distribution of a given success and the prior probability predictive interval follows a beta with 95\% (0.12,0.17) for hte probability of rolling a 6
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -972,8 +1014,9 @@ The normal approximation shows the probability of heads in a given 1000 tosses, 
   \DocumentationTok{\#\# n = 1,000}
   \DocumentationTok{\#\# first lets construct a beta distribution.}
   \DocumentationTok{\#\# let the prior be beta(4,4) or even beta(1,1)}
-    \FunctionTok{plot}\NormalTok{(theta,}\FunctionTok{dbeta}\NormalTok{(theta,}\DecValTok{167}\NormalTok{,}\DecValTok{833}\NormalTok{),}\AttributeTok{type=}\StringTok{\textquotesingle{}l\textquotesingle{}}\NormalTok{,}\AttributeTok{xlim=}\FunctionTok{c}\NormalTok{(}\FloatTok{0.1}\NormalTok{,}\FloatTok{0.5}\NormalTok{),}\AttributeTok{main=}\StringTok{"prior beta"}\NormalTok{) }\DocumentationTok{\#\# prior}
-    \FunctionTok{abline}\NormalTok{(}\AttributeTok{v=}\FloatTok{0.167}\NormalTok{,}\AttributeTok{col=}\StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{) }\DocumentationTok{\#\# }
+   \FunctionTok{plot}\NormalTok{(theta,}\FunctionTok{dbeta}\NormalTok{(theta,}\DecValTok{167}\NormalTok{,}\DecValTok{833}\NormalTok{),}\AttributeTok{type=}\StringTok{\textquotesingle{}l\textquotesingle{}}\NormalTok{,}\AttributeTok{xlim=}\FunctionTok{c}\NormalTok{(}\FloatTok{0.1}\NormalTok{,}\FloatTok{0.5}\NormalTok{),}\AttributeTok{main=}\StringTok{"prior beta"}\NormalTok{) }\DocumentationTok{\#\# prior}
+  \CommentTok{\# plot(theta,dbeta(theta,1,5),type=\textquotesingle{}l\textquotesingle{},xlim=c(0.1,0.5), main=\textquotesingle{}prior beta\textquotesingle{}) }
+   \FunctionTok{abline}\NormalTok{(}\AttributeTok{v=}\FloatTok{0.167}\NormalTok{,}\AttributeTok{col=}\StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{) }\DocumentationTok{\#\# }
 \end{Highlighting}
 \end{Shaded}
 
@@ -997,8 +1040,16 @@ The normal approximation shows the probability of heads in a given 1000 tosses, 
 \begin{Shaded}
 \begin{Highlighting}[]
     \DocumentationTok{\#\#\# the number of heads.    }
-  \CommentTok{\#exp(logitMean)/(1+exp(logitMean))}
+  \FunctionTok{message}\NormalTok{(}\StringTok{"prior predictive mean:"}\NormalTok{ ,}\FunctionTok{round}\NormalTok{( }\FunctionTok{exp}\NormalTok{(logitMean)}\SpecialCharTok{/}\NormalTok{(}\DecValTok{1}\SpecialCharTok{+}\FunctionTok{exp}\NormalTok{(logitMean)),}\DecValTok{2}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
 
+\begin{verbatim}
+## prior predictive mean:0.14
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \NormalTok{ qx}\OtherTok{\textless{}{-}}\NormalTok{(}\FunctionTok{qnorm}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\FloatTok{0.05}\NormalTok{,}\FloatTok{0.25}\NormalTok{,}\FloatTok{0.5}\NormalTok{,}\FloatTok{0.75}\NormalTok{,}\FloatTok{0.95}\NormalTok{),}\AttributeTok{mean =}\NormalTok{logitMean, }\AttributeTok{sd=}\NormalTok{sdd ))}
  \DocumentationTok{\#\# this is the probability of landing 6 for theta}
  \FunctionTok{exp}\NormalTok{(qx)}\SpecialCharTok{/}\NormalTok{(}\DecValTok{1}\SpecialCharTok{+}\FunctionTok{exp}\NormalTok{(qx))}
@@ -1006,7 +1057,7 @@ The normal approximation shows the probability of heads in a given 1000 tosses, 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.1275435 0.1365390 0.1431020 0.1499256 0.1602099
+## [1] 0.1266791 0.1361628 0.1431020 0.1503332 0.1612608
 \end{verbatim}
 
 \begin{Shaded}
@@ -1017,8 +1068,108 @@ The normal approximation shows the probability of heads in a given 1000 tosses, 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.1247327 0.1636705
+## [1] 0.1237228 0.1649452
 \end{verbatim}
+
+\hypertarget{question-4}{%
+\subsection*{Question 4}\label{question-4}}
+\addcontentsline{toc}{subsection}{Question 4}
+
+We have a mixture of 3 normal distributions, and show the central intervals for 5,25,50,75, and 95\(\%\) predictive probabilities. The question gives \(\theta\) as the probability of a 6 on a die, possibly unfair, in 1,000 tosses. we have \(\theta= 1/12,1/6, 1/4\) types of biased die. Using the normal approximation, the predictive prior probability is \(\sum_{\theta}p(\theta)p(y| \theta)\) where the likelihood is approximated using a normal distribution \(\mu = n*\theta_i, \sigma = n*\theta_i(1-\theta_i)\)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x}\OtherTok{\textless{}{-}}\FunctionTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{1000}\NormalTok{)}\SpecialCharTok{{-}}\FloatTok{0.5} \CommentTok{\# continuity correction.}
+\NormalTok{theta}\OtherTok{\textless{}{-}}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{/}\DecValTok{12}\NormalTok{,}\DecValTok{1}\SpecialCharTok{/}\DecValTok{6}\NormalTok{,}\DecValTok{1}\SpecialCharTok{/}\DecValTok{4}\NormalTok{)}
+\NormalTok{n}\OtherTok{=}\DecValTok{1000}
+\NormalTok{normLikelihood}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(x,n,p)\{}
+\NormalTok{  mean}\OtherTok{\textless{}{-}}\NormalTok{n}\SpecialCharTok{*}\NormalTok{p}
+\NormalTok{  varz}\OtherTok{\textless{}{-}}\NormalTok{n}\SpecialCharTok{*}\NormalTok{p}\SpecialCharTok{*}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{p)}
+  \FunctionTok{return}\NormalTok{(}\FunctionTok{dnorm}\NormalTok{(x,}\AttributeTok{mean=}\NormalTok{mean,}\AttributeTok{sd=}\FunctionTok{sqrt}\NormalTok{(varz)))}
+  
+\NormalTok{\}}
+\NormalTok{a}\OtherTok{\textless{}{-}}\FunctionTok{dnorm}\NormalTok{(x,}\AttributeTok{mean=}\NormalTok{n}\SpecialCharTok{*}\NormalTok{theta[}\DecValTok{1}\NormalTok{],}\AttributeTok{sd=}\FunctionTok{sqrt}\NormalTok{(n}\SpecialCharTok{*}\NormalTok{theta[}\DecValTok{1}\NormalTok{]}\SpecialCharTok{*}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{theta[}\DecValTok{1}\NormalTok{]))  )}
+\NormalTok{b}\OtherTok{\textless{}{-}}\FunctionTok{dnorm}\NormalTok{(x,}\AttributeTok{mean=}\NormalTok{n}\SpecialCharTok{*}\NormalTok{theta[}\DecValTok{2}\NormalTok{],}\AttributeTok{sd=}\FunctionTok{sqrt}\NormalTok{(n}\SpecialCharTok{*}\NormalTok{theta[}\DecValTok{2}\NormalTok{]}\SpecialCharTok{*}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{theta[}\DecValTok{2}\NormalTok{]))  )}
+\NormalTok{c}\OtherTok{\textless{}{-}}\FunctionTok{dnorm}\NormalTok{(x,}\AttributeTok{mean=}\NormalTok{n}\SpecialCharTok{*}\NormalTok{theta[}\DecValTok{3}\NormalTok{],}\AttributeTok{sd=}\FunctionTok{sqrt}\NormalTok{(n}\SpecialCharTok{*}\NormalTok{theta[}\DecValTok{3}\NormalTok{]}\SpecialCharTok{*}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{theta[}\DecValTok{3}\NormalTok{]))  )}
+
+
+\NormalTok{mypri}\OtherTok{\textless{}{-}}\NormalTok{a}\SpecialCharTok{*}\FloatTok{0.25}\SpecialCharTok{+}\NormalTok{b}\SpecialCharTok{*}\FloatTok{0.5}\SpecialCharTok{+}\NormalTok{c}\SpecialCharTok{*}\FloatTok{0.25}
+
+\FunctionTok{sum}\NormalTok{(mypri) }\DocumentationTok{\#\# sums to 1 it is a distribution}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(x,mypri,}\AttributeTok{type=}\StringTok{\textquotesingle{}l\textquotesingle{}}\NormalTok{,}\AttributeTok{main=}\StringTok{\textquotesingle{}predictive prior number of heads\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-12-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data}\OtherTok{\textless{}{-}}\FunctionTok{data.frame}\NormalTok{(}\AttributeTok{x=}\NormalTok{x,}\AttributeTok{p=}\NormalTok{mypri)}
+
+\DocumentationTok{\#\# highest probability interval}
+\CommentTok{\# 95\%}
+
+\FunctionTok{plot}\NormalTok{(x,mypri,}\AttributeTok{type=}\StringTok{\textquotesingle{}l\textquotesingle{}}\NormalTok{,}\AttributeTok{main=}\StringTok{\textquotesingle{} 95\% predictive prior number of heads\textquotesingle{}}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{v=}\FunctionTok{max}\NormalTok{(data[}\FunctionTok{which}\NormalTok{(}\FunctionTok{cumsum}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{p)}\SpecialCharTok{\textless{}}\FloatTok{0.025}\NormalTok{),}\DecValTok{1}\NormalTok{])}
+\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{v=}\FunctionTok{max}\NormalTok{(data[}\FunctionTok{which}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\FunctionTok{cumsum}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{p)}\SpecialCharTok{\textgreater{}}\FloatTok{0.025}\NormalTok{),}\DecValTok{1}\NormalTok{]))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-12-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(x,mypri,}\AttributeTok{type=}\StringTok{\textquotesingle{}l\textquotesingle{}}\NormalTok{,}\AttributeTok{main=}\StringTok{\textquotesingle{}75\% predictive prior number of heads\textquotesingle{}}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{v=}\FunctionTok{max}\NormalTok{(data[}\FunctionTok{which}\NormalTok{(}\FunctionTok{cumsum}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{p)}\SpecialCharTok{\textless{}}\FloatTok{0.125}\NormalTok{),}\DecValTok{1}\NormalTok{]))}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{v=}\FunctionTok{max}\NormalTok{(data[}\FunctionTok{which}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\FunctionTok{cumsum}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{p)}\SpecialCharTok{\textgreater{}}\FloatTok{0.125}\NormalTok{),}\DecValTok{1}\NormalTok{])}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-12-3.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(x,mypri,}\AttributeTok{type=}\StringTok{\textquotesingle{}l\textquotesingle{}}\NormalTok{,}\AttributeTok{main=}\StringTok{\textquotesingle{}50\% predictive prior number of heads\textquotesingle{}}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{v=}\FunctionTok{max}\NormalTok{(data[}\FunctionTok{which}\NormalTok{(}\FunctionTok{cumsum}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{p)}\SpecialCharTok{\textless{}}\FloatTok{0.25}\NormalTok{),}\DecValTok{1}\NormalTok{]))}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{v=}\FunctionTok{max}\NormalTok{(data[}\FunctionTok{which}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\FunctionTok{cumsum}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{p)}\SpecialCharTok{\textgreater{}}\FloatTok{0.25}\NormalTok{),}\DecValTok{1}\NormalTok{])}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-12-4.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(x,mypri,}\AttributeTok{type=}\StringTok{\textquotesingle{}l\textquotesingle{}}\NormalTok{,}\AttributeTok{main=}\StringTok{\textquotesingle{}25\% predictive prior number of heads\textquotesingle{}}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{v=}\FunctionTok{max}\NormalTok{(data[}\FunctionTok{which}\NormalTok{(}\FunctionTok{cumsum}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{p)}\SpecialCharTok{\textless{}}\FloatTok{0.375}\NormalTok{),}\DecValTok{1}\NormalTok{]))}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{v=}\FunctionTok{max}\NormalTok{(data[}\FunctionTok{which}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\FunctionTok{cumsum}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{p)}\SpecialCharTok{\textgreater{}}\FloatTok{0.375}\NormalTok{),}\DecValTok{1}\NormalTok{])}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-12-5.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(x,mypri,}\AttributeTok{type=}\StringTok{\textquotesingle{}l\textquotesingle{}}\NormalTok{,}\AttributeTok{main=}\StringTok{\textquotesingle{}5\% predictive prior number of heads\textquotesingle{}}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{v=}\FunctionTok{max}\NormalTok{(data[}\FunctionTok{which}\NormalTok{(}\FunctionTok{cumsum}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{p)}\SpecialCharTok{\textless{}}\FloatTok{0.475}\NormalTok{),}\DecValTok{1}\NormalTok{]))}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{v=}\FunctionTok{max}\NormalTok{(data[}\FunctionTok{which}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\FunctionTok{cumsum}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{p)}\SpecialCharTok{\textgreater{}}\FloatTok{0.475}\NormalTok{),}\DecValTok{1}\NormalTok{])}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-12-6.pdf}
 
 \hypertarget{parts}{%
 \chapter{Parts}\label{parts}}

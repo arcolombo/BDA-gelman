@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 2 Single parameter models | Bayesian Data Analysis</title>
   <meta name="description" content="Chapter 2 Single parameter models | Bayesian Data Analysis review by Andrew Gelman, supervised by Dr. Paul Marjoram" />
-  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 Single parameter models | Bayesian Data Analysis" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Anthony R. Colombo, Dr. Paul Marjoram" />
 
 
-<meta name="date" content="2022-06-16" />
+<meta name="date" content="2022-06-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -189,12 +189,14 @@ div.csl-indent {
 <li class="chapter" data-level="2.4" data-path="cross.html"><a href="cross.html#informative-prior-distributions"><i class="fa fa-check"></i><b>2.4</b> Informative prior distributions</a>
 <ul>
 <li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#conjugate-prior-distributions"><i class="fa fa-check"></i>Conjugate prior distributions</a></li>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#conjugate-prior-distributions-exponential-families-and-sufficient-statistics"><i class="fa fa-check"></i>Conjugate prior, distributions, exponential families, and sufficient statistics</a></li>
 </ul></li>
 <li class="chapter" data-level="2.5" data-path="cross.html"><a href="cross.html#exercises-1"><i class="fa fa-check"></i><b>2.5</b> Exercises</a>
 <ul>
 <li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#question-1"><i class="fa fa-check"></i>Question 1</a></li>
 <li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#normal-approximation-example"><i class="fa fa-check"></i>Normal approximation example</a></li>
 <li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#question-3"><i class="fa fa-check"></i>Question 3</a></li>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#question-4"><i class="fa fa-check"></i>Question 4</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="parts.html"><a href="parts.html"><i class="fa fa-check"></i><b>3</b> Parts</a></li>
@@ -288,6 +290,36 @@ p(\theta | y) &amp;\propto \theta^y(1-\theta)^{n-y}\theta^{\alpha-1}(1-\theta)^{
 <h3>Conjugate prior distributions<a href="cross.html#conjugate-prior-distributions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Conjugacy is formally defined as if F is a class of sampling distributions <span class="math inline">\(p(y|\theta)\)</span>, and P is a class of prior distributions for <span class="math inline">\(\theta\)</span>, then the class P is conjugate for F if <span class="math inline">\(p(\theta | y) \in P\)</span> for all <span class="math inline">\(p(.|\theta)\in F\)</span> and <span class="math inline">\(p(.)\in P\)</span>.</p>
 </div>
+<div id="conjugate-prior-distributions-exponential-families-and-sufficient-statistics" class="section level3 unnumbered hasAnchor">
+<h3>Conjugate prior, distributions, exponential families, and sufficient statistics<a href="cross.html#conjugate-prior-distributions-exponential-families-and-sufficient-statistics" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Posterior distributions can be derived using sufficient statistics from exponential families. The exponential family is defined as</p>
+<p><span class="math display">\[
+\begin{aligned}
+p(y_i | \theta)=f(y_i)g(\theta)e^{\phi(\theta)^Tu(y_i)}
+\end{aligned}
+\]</span>
+Where <span class="math inline">\(\phi(\theta), u(y_i)\)</span> are vectors of equal dimension to that of <span class="math inline">\(\theta\)</span>. The <span class="math inline">\(\phi(\theta)\)</span> is called the <em>natural parameter</em> for the family (F). The likelihood of a sequence <span class="math inline">\(y=(y_1,...,y_n)\)</span> iid is</p>
+<p><span class="math display">\[
+\begin{aligned}
+p(y | \theta)&amp;= (\prod_{i=1}^n f(y_i)) g(\theta)^n exp(\phi(\theta)^T \sum_{i=1}^n u(y_i)) \\
+  &amp;\propto g(\theta)^ne^{\phi(\theta)^Tt(y)}, t(y)=\sum_{y=1}^n u(y_i)
+\end{aligned}
+\]</span></p>
+<p>The <em>sufficient statistic</em> for <span class="math inline">\(\theta\)</span> is <span class="math inline">\(t(y)\)</span> because the likelihood for $depends on the data, y, only through the value of t(y).</p>
+<p>Sufficient statistics benefit posterior distributions because if the prior density is specified as
+<span class="math display">\[
+\begin{aligned}
+p(\theta)&amp;\propto g(\theta)^{\eta} e^{\phi(\theta)^T \nu} \\
+\end{aligned}
+\]</span>
+Then the posterior density using sufficient statistics is</p>
+<p><span class="math display">\[
+\begin{aligned}
+p(\theta | y ) &amp;\propto g(\theta)^{\eta+n} e^{\phi(\theta)^T (\nu+t(y))} \\
+\end{aligned}
+\]</span></p>
+<p>Exponential families are the only classes of distributions that have natural conjugate prior distributions.</p>
+</div>
 </div>
 <div id="exercises-1" class="section level2 hasAnchor" number="2.5">
 <h2><span class="header-section-number">2.5</span> Exercises<a href="cross.html#exercises-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -307,7 +339,7 @@ p(\theta | y) &amp;\propto \theta^y(1-\theta)^{n-y}\theta^{\alpha-1}(1-\theta)^{
 </div>
 <div id="normal-approximation-example" class="section level3 unnumbered hasAnchor">
 <h3>Normal approximation example<a href="cross.html#normal-approximation-example" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>For female births we have beta(438,544) we use the normal approximation</p>
+<p>For female births we have beta(438,544) we use the normal approximation. This replicates Gelman’s Figure 2.3 (a, b)</p>
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="cross.html#cb35-1" aria-hidden="true" tabindex="-1"></a>  theta<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="at">from=</span><span class="fl">0.001</span>,<span class="at">to=</span><span class="dv">1</span>,<span class="at">by=</span><span class="fl">0.01</span>)</span>
 <span id="cb35-2"><a href="cross.html#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="do">## example births</span></span>
 <span id="cb35-3"><a href="cross.html#cb35-3" aria-hidden="true" tabindex="-1"></a>   postMean <span class="ot">&lt;-</span><span class="cf">function</span>(alpha,beta,y,n){</span>
@@ -332,15 +364,18 @@ p(\theta | y) &amp;\propto \theta^y(1-\theta)^{n-y}\theta^{\alpha-1}(1-\theta)^{
 </div>
 <div id="question-3" class="section level3 unnumbered hasAnchor">
 <h3>Question 3<a href="cross.html#question-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Predictive distributions for the number of 6’s in a fair roll, tossed 1,000 times. Let y be the number of 6’s in 1000 rolls of fair die, the probability for a 6 is 1/6, so the number of 6’s in this trial is approximatley 167, and 833 failures. We plot the beta distribution of the expected number of heads in 1000 tosses.</p>
-<p>The normal approximation shows the probability of heads in a given 1000 tosses, using a non-informative prior beta(167,833) which is the same for number of success in 1000 tosses. We find the distribution of a given success and the predictive interval follows a beta with 95% (0.12,0.17) for hte probability of rolling a 6</p>
+<p>The prior predictive distributions for the number of 6’s in a fair roll, tossed 1,000 times will follow a beta distribution. Let y be the number of 6’s in 1000 rolls of fair die, the probability for a 6 is 1/6, so the number of 6’s in this trial is approximatley 167, and 833 failures as the prior prediction.</p>
+<p>We plot the beta distribution of the expected number of heads in 1000 tosses.</p>
+<p>The normal approximation shows the probability of heads in a given 1000 tosses, using a non-informative prior beta(167,833) which has a prior predictive mean of <span class="math inline">\(exp(-1.79)/(1+exp(-1.79)) = 0.143\)</span>. This is not the same for number of success in 1000 tosses.</p>
+<p>We find the probability distribution of a given success and the prior probability predictive interval follows a beta with 95% (0.12,0.17) for hte probability of rolling a 6</p>
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="cross.html#cb37-1" aria-hidden="true" tabindex="-1"></a>  <span class="do">## based on normal approximation sketch the distribution of y</span></span>
 <span id="cb37-2"><a href="cross.html#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="do">## for normal we use the logit transform</span></span>
 <span id="cb37-3"><a href="cross.html#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="do">## n = 1,000</span></span>
 <span id="cb37-4"><a href="cross.html#cb37-4" aria-hidden="true" tabindex="-1"></a>  <span class="do">## first lets construct a beta distribution.</span></span>
 <span id="cb37-5"><a href="cross.html#cb37-5" aria-hidden="true" tabindex="-1"></a>  <span class="do">## let the prior be beta(4,4) or even beta(1,1)</span></span>
-<span id="cb37-6"><a href="cross.html#cb37-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plot</span>(theta,<span class="fu">dbeta</span>(theta,<span class="dv">167</span>,<span class="dv">833</span>),<span class="at">type=</span><span class="st">&#39;l&#39;</span>,<span class="at">xlim=</span><span class="fu">c</span>(<span class="fl">0.1</span>,<span class="fl">0.5</span>),<span class="at">main=</span><span class="st">&quot;prior beta&quot;</span>) <span class="do">## prior</span></span>
-<span id="cb37-7"><a href="cross.html#cb37-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">abline</span>(<span class="at">v=</span><span class="fl">0.167</span>,<span class="at">col=</span><span class="st">&#39;red&#39;</span>) <span class="do">## </span></span></code></pre></div>
+<span id="cb37-6"><a href="cross.html#cb37-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">plot</span>(theta,<span class="fu">dbeta</span>(theta,<span class="dv">167</span>,<span class="dv">833</span>),<span class="at">type=</span><span class="st">&#39;l&#39;</span>,<span class="at">xlim=</span><span class="fu">c</span>(<span class="fl">0.1</span>,<span class="fl">0.5</span>),<span class="at">main=</span><span class="st">&quot;prior beta&quot;</span>) <span class="do">## prior</span></span>
+<span id="cb37-7"><a href="cross.html#cb37-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># plot(theta,dbeta(theta,1,5),type=&#39;l&#39;,xlim=c(0.1,0.5), main=&#39;prior beta&#39;) </span></span>
+<span id="cb37-8"><a href="cross.html#cb37-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">abline</span>(<span class="at">v=</span><span class="fl">0.167</span>,<span class="at">col=</span><span class="st">&#39;red&#39;</span>) <span class="do">## </span></span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 <div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="cross.html#cb38-1" aria-hidden="true" tabindex="-1"></a>   <span class="co">#  qbeta(c(0.05,0.25,0.5,0.75,0.95),167,833)</span></span>
 <span id="cb38-2"><a href="cross.html#cb38-2" aria-hidden="true" tabindex="-1"></a>    <span class="do">## predictive on normal scale.</span></span>
@@ -352,15 +387,69 @@ p(\theta | y) &amp;\propto \theta^y(1-\theta)^{n-y}\theta^{\alpha-1}(1-\theta)^{
 <span id="cb38-8"><a href="cross.html#cb38-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">abline</span>(<span class="at">v=</span>logitMean,<span class="at">col=</span><span class="st">&#39;red&#39;</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-11-2.png" width="672" /></p>
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="cross.html#cb39-1" aria-hidden="true" tabindex="-1"></a>    <span class="do">### the number of heads.    </span></span>
-<span id="cb39-2"><a href="cross.html#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">#exp(logitMean)/(1+exp(logitMean))</span></span>
-<span id="cb39-3"><a href="cross.html#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-4"><a href="cross.html#cb39-4" aria-hidden="true" tabindex="-1"></a> qx<span class="ot">&lt;-</span>(<span class="fu">qnorm</span>(<span class="fu">c</span>(<span class="fl">0.05</span>,<span class="fl">0.25</span>,<span class="fl">0.5</span>,<span class="fl">0.75</span>,<span class="fl">0.95</span>),<span class="at">mean =</span>logitMean, <span class="at">sd=</span>sdd ))</span>
-<span id="cb39-5"><a href="cross.html#cb39-5" aria-hidden="true" tabindex="-1"></a> <span class="do">## this is the probability of landing 6 for theta</span></span>
-<span id="cb39-6"><a href="cross.html#cb39-6" aria-hidden="true" tabindex="-1"></a> <span class="fu">exp</span>(qx)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(qx))</span></code></pre></div>
-<pre><code>## [1] 0.1273542 0.1364568 0.1431020 0.1500146 0.1604390</code></pre>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="cross.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="do">## wald 95% prior interval</span></span>
-<span id="cb41-2"><a href="cross.html#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>( <span class="fu">exp</span>(logitMean<span class="fl">-1.96</span><span class="sc">*</span>sdd)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(logitMean<span class="fl">-1.96</span><span class="sc">*</span>sdd)),<span class="fu">exp</span>(logitMean<span class="fl">+1.96</span><span class="sc">*</span>sdd)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(logitMean<span class="fl">+1.96</span><span class="sc">*</span>sdd)))</span></code></pre></div>
-<pre><code>## [1] 0.1245115 0.1639484</code></pre>
+<span id="cb39-2"><a href="cross.html#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(<span class="st">&quot;prior predictive mean:&quot;</span> ,<span class="fu">round</span>( <span class="fu">exp</span>(logitMean)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(logitMean)),<span class="dv">2</span>))</span></code></pre></div>
+<pre><code>## prior predictive mean:0.14</code></pre>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="cross.html#cb41-1" aria-hidden="true" tabindex="-1"></a> qx<span class="ot">&lt;-</span>(<span class="fu">qnorm</span>(<span class="fu">c</span>(<span class="fl">0.05</span>,<span class="fl">0.25</span>,<span class="fl">0.5</span>,<span class="fl">0.75</span>,<span class="fl">0.95</span>),<span class="at">mean =</span>logitMean, <span class="at">sd=</span>sdd ))</span>
+<span id="cb41-2"><a href="cross.html#cb41-2" aria-hidden="true" tabindex="-1"></a> <span class="do">## this is the probability of landing 6 for theta</span></span>
+<span id="cb41-3"><a href="cross.html#cb41-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">exp</span>(qx)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(qx))</span></code></pre></div>
+<pre><code>## [1] 0.1269966 0.1363012 0.1431020 0.1501831 0.1608735</code></pre>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="cross.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="do">## wald 95% prior interval</span></span>
+<span id="cb43-2"><a href="cross.html#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>( <span class="fu">exp</span>(logitMean<span class="fl">-1.96</span><span class="sc">*</span>sdd)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(logitMean<span class="fl">-1.96</span><span class="sc">*</span>sdd)),<span class="fu">exp</span>(logitMean<span class="fl">+1.96</span><span class="sc">*</span>sdd)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(logitMean<span class="fl">+1.96</span><span class="sc">*</span>sdd)))</span></code></pre></div>
+<pre><code>## [1] 0.1240936 0.1644752</code></pre>
+</div>
+<div id="question-4" class="section level3 unnumbered hasAnchor">
+<h3>Question 4<a href="cross.html#question-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We have a mixture of 3 normal distributions, and show the central intervals for 5,25,50,75, and 95<span class="math inline">\(\%\)</span> predictive probabilities. The question gives <span class="math inline">\(\theta\)</span> as the probability of a 6 on a die, possibly unfair, in 1,000 tosses. we have <span class="math inline">\(\theta= 1/12,1/6, 1/4\)</span> types of biased die. Using the normal approximation, the predictive prior probability is <span class="math inline">\(\sum_{\theta}p(\theta)p(y| \theta)\)</span> where the likelihood is approximated using a normal distribution <span class="math inline">\(\mu = n*\theta_i, \sigma = n*\theta_i(1-\theta_i)\)</span></p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="cross.html#cb45-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1000</span>)<span class="sc">-</span><span class="fl">0.5</span> <span class="co"># continuity correction.</span></span>
+<span id="cb45-2"><a href="cross.html#cb45-2" aria-hidden="true" tabindex="-1"></a>theta<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">12</span>,<span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>,<span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>)</span>
+<span id="cb45-3"><a href="cross.html#cb45-3" aria-hidden="true" tabindex="-1"></a>n<span class="ot">=</span><span class="dv">1000</span></span>
+<span id="cb45-4"><a href="cross.html#cb45-4" aria-hidden="true" tabindex="-1"></a>normLikelihood<span class="ot">&lt;-</span><span class="cf">function</span>(x,n,p){</span>
+<span id="cb45-5"><a href="cross.html#cb45-5" aria-hidden="true" tabindex="-1"></a>  mean<span class="ot">&lt;-</span>n<span class="sc">*</span>p</span>
+<span id="cb45-6"><a href="cross.html#cb45-6" aria-hidden="true" tabindex="-1"></a>  varz<span class="ot">&lt;-</span>n<span class="sc">*</span>p<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>p)</span>
+<span id="cb45-7"><a href="cross.html#cb45-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">dnorm</span>(x,<span class="at">mean=</span>mean,<span class="at">sd=</span><span class="fu">sqrt</span>(varz)))</span>
+<span id="cb45-8"><a href="cross.html#cb45-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb45-9"><a href="cross.html#cb45-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb45-10"><a href="cross.html#cb45-10" aria-hidden="true" tabindex="-1"></a>a<span class="ot">&lt;-</span><span class="fu">dnorm</span>(x,<span class="at">mean=</span>n<span class="sc">*</span>theta[<span class="dv">1</span>],<span class="at">sd=</span><span class="fu">sqrt</span>(n<span class="sc">*</span>theta[<span class="dv">1</span>]<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>theta[<span class="dv">1</span>]))  )</span>
+<span id="cb45-11"><a href="cross.html#cb45-11" aria-hidden="true" tabindex="-1"></a>b<span class="ot">&lt;-</span><span class="fu">dnorm</span>(x,<span class="at">mean=</span>n<span class="sc">*</span>theta[<span class="dv">2</span>],<span class="at">sd=</span><span class="fu">sqrt</span>(n<span class="sc">*</span>theta[<span class="dv">2</span>]<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>theta[<span class="dv">2</span>]))  )</span>
+<span id="cb45-12"><a href="cross.html#cb45-12" aria-hidden="true" tabindex="-1"></a>c<span class="ot">&lt;-</span><span class="fu">dnorm</span>(x,<span class="at">mean=</span>n<span class="sc">*</span>theta[<span class="dv">3</span>],<span class="at">sd=</span><span class="fu">sqrt</span>(n<span class="sc">*</span>theta[<span class="dv">3</span>]<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>theta[<span class="dv">3</span>]))  )</span>
+<span id="cb45-13"><a href="cross.html#cb45-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-14"><a href="cross.html#cb45-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-15"><a href="cross.html#cb45-15" aria-hidden="true" tabindex="-1"></a>mypri<span class="ot">&lt;-</span>a<span class="sc">*</span><span class="fl">0.25</span><span class="sc">+</span>b<span class="sc">*</span><span class="fl">0.5</span><span class="sc">+</span>c<span class="sc">*</span><span class="fl">0.25</span></span>
+<span id="cb45-16"><a href="cross.html#cb45-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-17"><a href="cross.html#cb45-17" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(mypri) <span class="do">## sums to 1 it is a distribution</span></span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="cross.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,mypri,<span class="at">type=</span><span class="st">&#39;l&#39;</span>,<span class="at">main=</span><span class="st">&#39;predictive prior number of heads&#39;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="cross.html#cb48-1" aria-hidden="true" tabindex="-1"></a>data<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">x=</span>x,<span class="at">p=</span>mypri)</span>
+<span id="cb48-2"><a href="cross.html#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-3"><a href="cross.html#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="do">## highest probability interval</span></span>
+<span id="cb48-4"><a href="cross.html#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 95%</span></span>
+<span id="cb48-5"><a href="cross.html#cb48-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-6"><a href="cross.html#cb48-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,mypri,<span class="at">type=</span><span class="st">&#39;l&#39;</span>,<span class="at">main=</span><span class="st">&#39; 95% predictive prior number of heads&#39;</span>)</span>
+<span id="cb48-7"><a href="cross.html#cb48-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">max</span>(data[<span class="fu">which</span>(<span class="fu">cumsum</span>(data<span class="sc">$</span>p)<span class="sc">&lt;</span><span class="fl">0.025</span>),<span class="dv">1</span>])</span>
+<span id="cb48-8"><a href="cross.html#cb48-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb48-9"><a href="cross.html#cb48-9" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">max</span>(data[<span class="fu">which</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">cumsum</span>(data<span class="sc">$</span>p)<span class="sc">&gt;</span><span class="fl">0.025</span>),<span class="dv">1</span>]))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-12-2.png" width="672" /></p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="cross.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,mypri,<span class="at">type=</span><span class="st">&#39;l&#39;</span>,<span class="at">main=</span><span class="st">&#39;75% predictive prior number of heads&#39;</span>)</span>
+<span id="cb49-2"><a href="cross.html#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">max</span>(data[<span class="fu">which</span>(<span class="fu">cumsum</span>(data<span class="sc">$</span>p)<span class="sc">&lt;</span><span class="fl">0.125</span>),<span class="dv">1</span>]))</span>
+<span id="cb49-3"><a href="cross.html#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">max</span>(data[<span class="fu">which</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">cumsum</span>(data<span class="sc">$</span>p)<span class="sc">&gt;</span><span class="fl">0.125</span>),<span class="dv">1</span>])</span>
+<span id="cb49-4"><a href="cross.html#cb49-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-12-3.png" width="672" /></p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="cross.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,mypri,<span class="at">type=</span><span class="st">&#39;l&#39;</span>,<span class="at">main=</span><span class="st">&#39;50% predictive prior number of heads&#39;</span>)</span>
+<span id="cb50-2"><a href="cross.html#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">max</span>(data[<span class="fu">which</span>(<span class="fu">cumsum</span>(data<span class="sc">$</span>p)<span class="sc">&lt;</span><span class="fl">0.25</span>),<span class="dv">1</span>]))</span>
+<span id="cb50-3"><a href="cross.html#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">max</span>(data[<span class="fu">which</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">cumsum</span>(data<span class="sc">$</span>p)<span class="sc">&gt;</span><span class="fl">0.25</span>),<span class="dv">1</span>])</span>
+<span id="cb50-4"><a href="cross.html#cb50-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-12-4.png" width="672" /></p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="cross.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,mypri,<span class="at">type=</span><span class="st">&#39;l&#39;</span>,<span class="at">main=</span><span class="st">&#39;25% predictive prior number of heads&#39;</span>)</span>
+<span id="cb51-2"><a href="cross.html#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">max</span>(data[<span class="fu">which</span>(<span class="fu">cumsum</span>(data<span class="sc">$</span>p)<span class="sc">&lt;</span><span class="fl">0.375</span>),<span class="dv">1</span>]))</span>
+<span id="cb51-3"><a href="cross.html#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">max</span>(data[<span class="fu">which</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">cumsum</span>(data<span class="sc">$</span>p)<span class="sc">&gt;</span><span class="fl">0.375</span>),<span class="dv">1</span>])</span>
+<span id="cb51-4"><a href="cross.html#cb51-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-12-5.png" width="672" /></p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="cross.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,mypri,<span class="at">type=</span><span class="st">&#39;l&#39;</span>,<span class="at">main=</span><span class="st">&#39;5% predictive prior number of heads&#39;</span>)</span>
+<span id="cb52-2"><a href="cross.html#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">max</span>(data[<span class="fu">which</span>(<span class="fu">cumsum</span>(data<span class="sc">$</span>p)<span class="sc">&lt;</span><span class="fl">0.475</span>),<span class="dv">1</span>]))</span>
+<span id="cb52-3"><a href="cross.html#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">max</span>(data[<span class="fu">which</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">cumsum</span>(data<span class="sc">$</span>p)<span class="sc">&gt;</span><span class="fl">0.475</span>),<span class="dv">1</span>])</span>
+<span id="cb52-4"><a href="cross.html#cb52-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-12-6.png" width="672" /></p>
 
 </div>
 </div>

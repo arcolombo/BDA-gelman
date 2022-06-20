@@ -59,6 +59,44 @@ $$
 ### Conjugate prior distributions{-}
 Conjugacy is formally defined as if F is a class of sampling distributions $p(y|\theta)$, and P is a class of prior distributions for $\theta$, then the class P is conjugate for F if $p(\theta | y) \in P$ for all $p(.|\theta)\in F$ and $p(.)\in P$.
 
+### Conjugate prior, distributions, exponential families, and sufficient statistics{-}
+Posterior distributions can be derived using sufficient statistics from exponential families.  The exponential family is defined as 
+
+$$
+\begin{aligned}
+ p(y_i | \theta)=f(y_i)g(\theta)e^{\phi(\theta)^Tu(y_i)}
+\end{aligned}
+$$
+Where $\phi(\theta), u(y_i)$ are vectors of equal dimension to that of $\theta$.  The $\phi(\theta)$ is called the *natural parameter* for the family (F).  The likelihood of a sequence $y=(y_1,...,y_n)$ iid is
+
+$$
+\begin{aligned}
+ p(y | \theta)&= (\prod_{i=1}^n f(y_i)) g(\theta)^n exp(\phi(\theta)^T \sum_{i=1}^n u(y_i)) \\
+  &\propto g(\theta)^ne^{\phi(\theta)^Tt(y)}, t(y)=\sum_{y=1}^n u(y_i)
+\end{aligned}
+$$
+
+The *sufficient statistic* for $\theta$ is $t(y)$ because the likelihood for $\theta depends on the data, y, only through the value of t(y).
+
+Sufficient statistics benefit posterior distributions because if the prior density is specified as 
+$$
+\begin{aligned}
+ p(\theta)&\propto g(\theta)^{\eta} e^{\phi(\theta)^T \nu} \\
+ \end{aligned}
+$$
+Then the posterior density using sufficient statistics is
+
+$$
+\begin{aligned}
+ p(\theta | y ) &\propto g(\theta)^{\eta+n} e^{\phi(\theta)^T (\nu+t(y))} \\
+ \end{aligned}
+$$
+
+Exponential families are the only classes of distributions that have natural conjugate prior distributions. 
+
+## Normal distribution with known variance
+
+
 
 
 ## Exercises
@@ -81,7 +119,7 @@ prior Beta(4,4), where a coin is tossed 10 times and heads appears fewer than 3 
 ### Normal approximation example{-}
 
 
-For female births we have beta(438,544) we use the normal approximation 
+For female births we have beta(438,544) we use the normal approximation.  This replicates Gelman's Figure 2.3 (a, b) 
 ```{r}
   theta<-seq(from=0.001,to=1,by=0.01)
   ## example births
@@ -110,17 +148,22 @@ For female births we have beta(438,544) we use the normal approximation
 ### Question 3{-}
 
 
-Predictive distributions for the number of 6's in a fair roll, tossed 1,000 times.  Let y be the number of 6's in 1000 rolls of fair die, the probability for a 6 is 1/6, so the number of 6's in this trial is approximatley 167, and 833 failures.  We plot the beta distribution of the expected number of heads in 1000 tosses.  
+The prior predictive distributions for the number of 6's in a fair roll, tossed 1,000 times will follow a beta distribution.  Let y be the number of 6's in 1000 rolls of fair die, the probability for a 6 is 1/6, so the number of 6's in this trial is approximatley 167, and 833 failures as the prior prediction.  
 
-The normal approximation shows the probability of heads in a given 1000  tosses, using a non-informative prior beta(167,833) which is the same for number of success in 1000 tosses.  We find the distribution of a given success and the predictive interval follows a beta with 95% (0.12,0.17) for hte probability of rolling a 6
+We plot the beta distribution of the expected number of heads in 1000 tosses.  
+
+The normal approximation shows the probability of heads in a given 1000  tosses, using a non-informative prior beta(167,833) which has a prior predictive mean of $exp(-1.79)/(1+exp(-1.79)) = 0.143$.  This is not the same for number of success in 1000 tosses.  
+
+We find the probability distribution of a given success and the prior probability predictive interval follows a beta with 95% (0.12,0.17) for hte probability of rolling a 6
 ```{r}
   ## based on normal approximation sketch the distribution of y
   ## for normal we use the logit transform
   ## n = 1,000
   ## first lets construct a beta distribution.
   ## let the prior be beta(4,4) or even beta(1,1)
-    plot(theta,dbeta(theta,167,833),type='l',xlim=c(0.1,0.5),main="prior beta") ## prior
-    abline(v=0.167,col='red') ## 
+   plot(theta,dbeta(theta,167,833),type='l',xlim=c(0.1,0.5),main="prior beta") ## prior
+  # plot(theta,dbeta(theta,1,5),type='l',xlim=c(0.1,0.5), main='prior beta') 
+   abline(v=0.167,col='red') ## 
    #  qbeta(c(0.05,0.25,0.5,0.75,0.95),167,833)
     ## predictive on normal scale.
      draws<-rbeta(1000,167,833)
@@ -130,7 +173,7 @@ The normal approximation shows the probability of heads in a given 1000  tosses,
   plot(logitTheta,dnorm(logitTheta,mean =logitMean, sd=sdd ),type='l',main="Normal approx.of a total heads", xlim=c(-2,-1.4)) ## prior
     abline(v=logitMean,col='red')
     ### the number of heads.    
-  #exp(logitMean)/(1+exp(logitMean))
+  message("prior predictive mean:" ,round( exp(logitMean)/(1+exp(logitMean)),2))
 
  qx<-(qnorm(c(0.05,0.25,0.5,0.75,0.95),mean =logitMean, sd=sdd ))
  ## this is the probability of landing 6 for theta
@@ -138,5 +181,59 @@ The normal approximation shows the probability of heads in a given 1000  tosses,
 ## wald 95% prior interval
 c( exp(logitMean-1.96*sdd)/(1+exp(logitMean-1.96*sdd)),exp(logitMean+1.96*sdd)/(1+exp(logitMean+1.96*sdd)))
 ```
+### Question 4{-}
+We have a mixture of 3 normal distributions, and show the central intervals for 5,25,50,75, and 95$\%$ predictive probabilities.  The question gives $\theta$ as the probability of a 6 on a die, possibly unfair, in 1,000 tosses.  we have $\theta= 1/12,1/6, 1/4$ types of biased die. Using the normal approximation, the predictive prior probability is $\sum_{\theta}p(\theta)p(y| \theta)$ where the likelihood is approximated using a normal distribution $\mu = n*\theta_i, \sigma = n*\theta_i(1-\theta_i)$
+```{r}
+x<-seq(0,1000)-0.5 # continuity correction.
+theta<-c(1/12,1/6,1/4)
+n=1000
+normLikelihood<-function(x,n,p){
+  mean<-n*p
+  varz<-n*p*(1-p)
+  return(dnorm(x,mean=mean,sd=sqrt(varz)))
+  
+}
+a<-dnorm(x,mean=n*theta[1],sd=sqrt(n*theta[1]*(1-theta[1]))  )
+b<-dnorm(x,mean=n*theta[2],sd=sqrt(n*theta[2]*(1-theta[2]))  )
+c<-dnorm(x,mean=n*theta[3],sd=sqrt(n*theta[3]*(1-theta[3]))  )
 
+
+mypri<-a*0.25+b*0.5+c*0.25
+
+sum(mypri) ## sums to 1 it is a distribution
+
+plot(x,mypri,type='l',main='predictive prior number of heads')
+
+
+
+data<-data.frame(x=x,p=mypri)
+
+## highest probability interval
+# 95%
+
+plot(x,mypri,type='l',main=' 95% predictive prior number of heads')
+abline(v=max(data[which(cumsum(data$p)<0.025),1])
+)
+abline(v=max(data[which(1-cumsum(data$p)>0.025),1]))
+
+plot(x,mypri,type='l',main='75% predictive prior number of heads')
+abline(v=max(data[which(cumsum(data$p)<0.125),1]))
+abline(v=max(data[which(1-cumsum(data$p)>0.125),1])
+)
+
+plot(x,mypri,type='l',main='50% predictive prior number of heads')
+abline(v=max(data[which(cumsum(data$p)<0.25),1]))
+abline(v=max(data[which(1-cumsum(data$p)>0.25),1])
+)
+
+plot(x,mypri,type='l',main='25% predictive prior number of heads')
+abline(v=max(data[which(cumsum(data$p)<0.375),1]))
+abline(v=max(data[which(1-cumsum(data$p)>0.375),1])
+)
+
+plot(x,mypri,type='l',main='5% predictive prior number of heads')
+abline(v=max(data[which(cumsum(data$p)<0.475),1]))
+abline(v=max(data[which(1-cumsum(data$p)>0.475),1])
+)
+```
 
