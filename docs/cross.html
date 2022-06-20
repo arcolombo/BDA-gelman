@@ -191,12 +191,21 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#conjugate-prior-distributions"><i class="fa fa-check"></i>Conjugate prior distributions</a></li>
 <li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#conjugate-prior-distributions-exponential-families-and-sufficient-statistics"><i class="fa fa-check"></i>Conjugate prior, distributions, exponential families, and sufficient statistics</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="cross.html"><a href="cross.html#exercises-1"><i class="fa fa-check"></i><b>2.5</b> Exercises</a>
+<li class="chapter" data-level="2.5" data-path="cross.html"><a href="cross.html#normal-distribution-with-known-variance"><i class="fa fa-check"></i><b>2.5</b> Normal distribution with known variance</a>
+<ul>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#likelihood-of-one-data-point"><i class="fa fa-check"></i>Likelihood of one data point</a></li>
+<li class="chapter" data-level="2.5.1" data-path="cross.html"><a href="cross.html#conjugate-prior-and-posterior-distributions"><i class="fa fa-check"></i><b>2.5.1</b> Conjugate prior and posterior distributions</a></li>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#posterior-predictive-distribution"><i class="fa fa-check"></i>Posterior predictive distribution</a></li>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#normal-model-with-multiple-observations"><i class="fa fa-check"></i>Normal model with multiple observations</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="cross.html"><a href="cross.html#other-standard-single-parameter-models"><i class="fa fa-check"></i><b>2.6</b> Other standard single-parameter models</a></li>
+<li class="chapter" data-level="2.7" data-path="cross.html"><a href="cross.html#exercises-1"><i class="fa fa-check"></i><b>2.7</b> Exercises</a>
 <ul>
 <li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#question-1"><i class="fa fa-check"></i>Question 1</a></li>
 <li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#normal-approximation-example"><i class="fa fa-check"></i>Normal approximation example</a></li>
 <li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#question-3"><i class="fa fa-check"></i>Question 3</a></li>
 <li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#question-4"><i class="fa fa-check"></i>Question 4</a></li>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#question-8-normal-distribution-with-unknown-mean"><i class="fa fa-check"></i>Question 8 (Normal distribution with unknown mean)</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="parts.html"><a href="parts.html"><i class="fa fa-check"></i><b>3</b> Parts</a></li>
@@ -321,8 +330,62 @@ p(\theta | y ) &amp;\propto g(\theta)^{\eta+n} e^{\phi(\theta)^T (\nu+t(y))} \\
 <p>Exponential families are the only classes of distributions that have natural conjugate prior distributions.</p>
 </div>
 </div>
-<div id="exercises-1" class="section level2 hasAnchor" number="2.5">
-<h2><span class="header-section-number">2.5</span> Exercises<a href="cross.html#exercises-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="normal-distribution-with-known-variance" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Normal distribution with known variance<a href="cross.html#normal-distribution-with-known-variance" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The normal distribution is foundational to statistical modeling, with the central limit theorem (CLT) allowing for the use of normal likelihood in many statistical problems which can approximate complex likelihoods. If the normal distribution does not provide a good model fit, finite mixtures of distributions can identify useful solutions.</p>
+<div id="likelihood-of-one-data-point" class="section level3 unnumbered hasAnchor">
+<h3>Likelihood of one data point<a href="cross.html#likelihood-of-one-data-point" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>With mean <span class="math inline">\(\theta\)</span> and known variance <span class="math inline">\(\sigma^2\)</span> the sampling distribution of a given point is defined</p>
+<p><span class="math inline">\(p(y|\theta) = \frac{1}{\sqrt{2*\pi*\sigma^2}}e^{-\frac{1}{2\sigma^2} (y-\theta)^2}\)</span></p>
+</div>
+<div id="conjugate-prior-and-posterior-distributions" class="section level3 hasAnchor" number="2.5.1">
+<h3><span class="header-section-number">2.5.1</span> Conjugate prior and posterior distributions<a href="cross.html#conjugate-prior-and-posterior-distributions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The prior has the exponential family form given as <span class="math inline">\(\theta \sim N(\mu_0, \tau_0^2)\)</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+p(\theta ) &amp;\propto exp( \frac{1}{2\tau_0^2}(\theta-\mu_0)^2) \\
+\end{aligned}
+\]</span></p>
+<p>WHere completing the square can find the posterior distribution</p>
+<p><span class="math display">\[
+\begin{aligned}
+p(\theta | y ) &amp;\propto exp(-1/2(\frac{(y-\theta)^2}{\sigma^2} +\frac{(\theta-\mu_0)^2}{\tau_0^2} )  ) \\
+p(\theta | y ) &amp;\propto exp( \frac{1}{2\tau_1^2}(\theta-\mu_1)^2),  \theta|y \sim N(\mu_1,\tau_1^2)
+\end{aligned}
+\]</span>
+where <span class="math inline">\(\mu_1 = \frac{1/\tau_0^2 \mu_0 + 1/\sigma^2 y}{1/\tau_0^2 + 1/\sigma^2}\)</span> and <span class="math inline">\(1/\tau_1^2 = 1/\tau_0^2 +1/\sigma^2\)</span></p>
+<p>In manipulating the distributions the inverse of the variance is defined as the <em>precision</em>. The posterior precision is equal to the prior precision plus the data precision. And the posterior mean is a weighted average of the prior mean and the observed value, y, proportional to the total precision.</p>
+</div>
+<div id="posterior-predictive-distribution" class="section level3 unnumbered hasAnchor">
+<h3>Posterior predictive distribution<a href="cross.html#posterior-predictive-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>the posterior predictive distribution of a future observation, x, p(x|y) can be calculated</p>
+<p><span class="math display">\[
+\begin{aligned}
+p(x|y) &amp;= \int p(x|\theta)p(\theta|y) d\theta
+&amp;\propto \int exp(-1/2\sigma^2 (x-\theta)^2) exp(-1/2\tau_1^2 (\theta-\mu_1)^2) d\theta
+\end{aligned}
+\]</span>
+the future observations, x, does not depend on the past observations y given <span class="math inline">\(\theta\)</span>.</p>
+</div>
+<div id="normal-model-with-multiple-observations" class="section level3 unnumbered hasAnchor">
+<h3>Normal model with multiple observations<a href="cross.html#normal-model-with-multiple-observations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>For multiple observations, y, the posterior density is formulated as:</p>
+<p><span class="math display">\[
+\begin{aligned}
+p(\theta | y ) &amp;\propto p(\theta)p(y|\theta) \\
+   &amp;=p(\theta)\prod_i p(y_i | \theta)\\
+   &amp;\propto exp(-1/2\tau_0^2 (\theta-\mu_0)^2)\prod_i exp(-1/2\sigma^2 (y_i -\theta)^2)\\
+   &amp;\propto exp(-1/2 (1/\tau_0^2(\theta-\mu_0)^2+ 1/\sigma^2\sum_i(y_i-\theta)^2) )\\
+\end{aligned}
+\]</span>
+Simplfying the algebra shows the posterior depends on y only through the sample mean (sufficient statistic), <span class="math inline">\(\bar{y}\)</span> is the sufficient statistic for <span class="math inline">\(\theta\)</span>, and the final model is <span class="math inline">\(\bar{y} | \theta,\sigma^2 \sim N(\theta, \sigma^2/n)\)</span></p>
+</div>
+</div>
+<div id="other-standard-single-parameter-models" class="section level2 hasAnchor" number="2.6">
+<h2><span class="header-section-number">2.6</span> Other standard single-parameter models<a href="cross.html#other-standard-single-parameter-models" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="exercises-1" class="section level2 hasAnchor" number="2.7">
+<h2><span class="header-section-number">2.7</span> Exercises<a href="cross.html#exercises-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="question-1" class="section level3 unnumbered hasAnchor">
 <h3>Question 1<a href="cross.html#question-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>prior Beta(4,4), where a coin is tossed 10 times and heads appears fewer than 3 times. the exact posterior is Beta(4+y, 4+10-y) for y=0,1,2. Since we don’t know the observed heads, but that <span class="math inline">\(y&lt;3\)</span> we plot the posterior distributions for each possibility. For 2 heads it is closer to the prior, with posterior mean of 0.33, which is closest to the prior mean of 1/2.</p>
@@ -335,7 +398,7 @@ p(\theta | y ) &amp;\propto g(\theta)^{\eta+n} e^{\phi(\theta)^T (\nu+t(y))} \\
 <span id="cb34-7"><a href="cross.html#cb34-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">legend</span>(<span class="fl">0.6</span>, <span class="dv">4</span>, </span>
 <span id="cb34-8"><a href="cross.html#cb34-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">legend=</span><span class="fu">c</span>(<span class="st">&quot;prior&quot;</span>, <span class="st">&quot;0 H&quot;</span>, <span class="st">&quot;1 H&quot;</span>, <span class="st">&quot;2 H&quot;</span>),</span>
 <span id="cb34-9"><a href="cross.html#cb34-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;black&quot;</span>,<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;black&quot;</span>, <span class="st">&quot;red&quot;</span>), <span class="at">lty=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>), <span class="at">cex=</span><span class="fl">0.8</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/q1-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 </div>
 <div id="normal-approximation-example" class="section level3 unnumbered hasAnchor">
 <h3>Normal approximation example<a href="cross.html#normal-approximation-example" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -353,14 +416,13 @@ p(\theta | y ) &amp;\propto g(\theta)^{\eta+n} e^{\phi(\theta)^T (\nu+t(y))} \\
 <span id="cb35-11"><a href="cross.html#cb35-11" aria-hidden="true" tabindex="-1"></a>   </span>
 <span id="cb35-12"><a href="cross.html#cb35-12" aria-hidden="true" tabindex="-1"></a>  logitTheta<span class="ot">&lt;-</span><span class="fu">log</span>(theta<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>theta))</span>
 <span id="cb35-13"><a href="cross.html#cb35-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-14"><a href="cross.html#cb35-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb35-14"><a href="cross.html#cb35-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
 <span id="cb35-15"><a href="cross.html#cb35-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plot</span>(theta,<span class="fu">dbeta</span>(theta,<span class="dv">438</span>,<span class="dv">544</span>),<span class="at">type=</span><span class="st">&#39;l&#39;</span>,<span class="at">xlim=</span><span class="fu">c</span>(<span class="fl">0.35</span>,<span class="fl">0.55</span>),<span class="at">main=</span><span class="st">&quot;posterior beta&quot;</span>) <span class="do">## prior</span></span>
-<span id="cb35-16"><a href="cross.html#cb35-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">abline</span>(<span class="at">v=</span><span class="fl">0.446</span>,<span class="at">col=</span><span class="st">&#39;red&#39;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="cross.html#cb36-1" aria-hidden="true" tabindex="-1"></a>  draws<span class="ot">&lt;-</span><span class="fu">rbeta</span>(<span class="dv">1000</span>,<span class="dv">438</span>,<span class="dv">544</span>)</span>
-<span id="cb36-2"><a href="cross.html#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(logitTheta,<span class="fu">dnorm</span>(logitTheta,<span class="at">mean =</span>logitMean, <span class="at">sd=</span><span class="fu">sd</span>(<span class="fu">log</span>(draws<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>draws))) ),<span class="at">type=</span><span class="st">&#39;l&#39;</span>, <span class="at">xlim=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.5</span>,<span class="fl">0.1</span>),<span class="at">main=</span><span class="st">&quot;Normal approx.&quot;</span>) <span class="do">## prior</span></span>
-<span id="cb36-3"><a href="cross.html#cb36-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">abline</span>(<span class="at">v=</span><span class="sc">-</span><span class="fl">0.22</span>,<span class="at">col=</span><span class="st">&#39;red&#39;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-10-2.png" width="672" /></p>
+<span id="cb35-16"><a href="cross.html#cb35-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">abline</span>(<span class="at">v=</span><span class="fl">0.446</span>,<span class="at">col=</span><span class="st">&#39;red&#39;</span>)</span>
+<span id="cb35-17"><a href="cross.html#cb35-17" aria-hidden="true" tabindex="-1"></a>  draws<span class="ot">&lt;-</span><span class="fu">rbeta</span>(<span class="dv">1000</span>,<span class="dv">438</span>,<span class="dv">544</span>)</span>
+<span id="cb35-18"><a href="cross.html#cb35-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(logitTheta,<span class="fu">dnorm</span>(logitTheta,<span class="at">mean =</span>logitMean, <span class="at">sd=</span><span class="fu">sd</span>(<span class="fu">log</span>(draws<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>draws))) ),<span class="at">type=</span><span class="st">&#39;l&#39;</span>, <span class="at">xlim=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.5</span>,<span class="fl">0.1</span>),<span class="at">main=</span><span class="st">&quot;Normal approx.&quot;</span>) <span class="do">## prior</span></span>
+<span id="cb35-19"><a href="cross.html#cb35-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">abline</span>(<span class="at">v=</span><span class="sc">-</span><span class="fl">0.22</span>,<span class="at">col=</span><span class="st">&#39;red&#39;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 </div>
 <div id="question-3" class="section level3 unnumbered hasAnchor">
 <h3>Question 3<a href="cross.html#question-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -368,88 +430,141 @@ p(\theta | y ) &amp;\propto g(\theta)^{\eta+n} e^{\phi(\theta)^T (\nu+t(y))} \\
 <p>We plot the beta distribution of the expected number of heads in 1000 tosses.</p>
 <p>The normal approximation shows the probability of heads in a given 1000 tosses, using a non-informative prior beta(167,833) which has a prior predictive mean of <span class="math inline">\(exp(-1.79)/(1+exp(-1.79)) = 0.143\)</span>. This is not the same for number of success in 1000 tosses.</p>
 <p>We find the probability distribution of a given success and the prior probability predictive interval follows a beta with 95% (0.12,0.17) for hte probability of rolling a 6</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="cross.html#cb37-1" aria-hidden="true" tabindex="-1"></a>  <span class="do">## based on normal approximation sketch the distribution of y</span></span>
-<span id="cb37-2"><a href="cross.html#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="do">## for normal we use the logit transform</span></span>
-<span id="cb37-3"><a href="cross.html#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="do">## n = 1,000</span></span>
-<span id="cb37-4"><a href="cross.html#cb37-4" aria-hidden="true" tabindex="-1"></a>  <span class="do">## first lets construct a beta distribution.</span></span>
-<span id="cb37-5"><a href="cross.html#cb37-5" aria-hidden="true" tabindex="-1"></a>  <span class="do">## let the prior be beta(4,4) or even beta(1,1)</span></span>
-<span id="cb37-6"><a href="cross.html#cb37-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">plot</span>(theta,<span class="fu">dbeta</span>(theta,<span class="dv">167</span>,<span class="dv">833</span>),<span class="at">type=</span><span class="st">&#39;l&#39;</span>,<span class="at">xlim=</span><span class="fu">c</span>(<span class="fl">0.1</span>,<span class="fl">0.5</span>),<span class="at">main=</span><span class="st">&quot;prior beta&quot;</span>) <span class="do">## prior</span></span>
-<span id="cb37-7"><a href="cross.html#cb37-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># plot(theta,dbeta(theta,1,5),type=&#39;l&#39;,xlim=c(0.1,0.5), main=&#39;prior beta&#39;) </span></span>
-<span id="cb37-8"><a href="cross.html#cb37-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">abline</span>(<span class="at">v=</span><span class="fl">0.167</span>,<span class="at">col=</span><span class="st">&#39;red&#39;</span>) <span class="do">## </span></span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="cross.html#cb38-1" aria-hidden="true" tabindex="-1"></a>   <span class="co">#  qbeta(c(0.05,0.25,0.5,0.75,0.95),167,833)</span></span>
-<span id="cb38-2"><a href="cross.html#cb38-2" aria-hidden="true" tabindex="-1"></a>    <span class="do">## predictive on normal scale.</span></span>
-<span id="cb38-3"><a href="cross.html#cb38-3" aria-hidden="true" tabindex="-1"></a>     draws<span class="ot">&lt;-</span><span class="fu">rbeta</span>(<span class="dv">1000</span>,<span class="dv">167</span>,<span class="dv">833</span>)</span>
-<span id="cb38-4"><a href="cross.html#cb38-4" aria-hidden="true" tabindex="-1"></a>     logitMean<span class="ot">&lt;-</span><span class="fu">log</span>( <span class="dv">167</span><span class="sc">/</span><span class="dv">1000</span>)</span>
-<span id="cb38-5"><a href="cross.html#cb38-5" aria-hidden="true" tabindex="-1"></a>  sdd<span class="ot">&lt;-</span><span class="fu">sd</span>(<span class="fu">log</span>(draws<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>draws)))</span>
-<span id="cb38-6"><a href="cross.html#cb38-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-7"><a href="cross.html#cb38-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(logitTheta,<span class="fu">dnorm</span>(logitTheta,<span class="at">mean =</span>logitMean, <span class="at">sd=</span>sdd ),<span class="at">type=</span><span class="st">&#39;l&#39;</span>,<span class="at">main=</span><span class="st">&quot;Normal approx.of a total heads&quot;</span>, <span class="at">xlim=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>,<span class="sc">-</span><span class="fl">1.4</span>)) <span class="do">## prior</span></span>
-<span id="cb38-8"><a href="cross.html#cb38-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">abline</span>(<span class="at">v=</span>logitMean,<span class="at">col=</span><span class="st">&#39;red&#39;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-11-2.png" width="672" /></p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="cross.html#cb39-1" aria-hidden="true" tabindex="-1"></a>    <span class="do">### the number of heads.    </span></span>
-<span id="cb39-2"><a href="cross.html#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(<span class="st">&quot;prior predictive mean:&quot;</span> ,<span class="fu">round</span>( <span class="fu">exp</span>(logitMean)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(logitMean)),<span class="dv">2</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="cross.html#cb36-1" aria-hidden="true" tabindex="-1"></a>  <span class="do">## based on normal approximation sketch the distribution of y</span></span>
+<span id="cb36-2"><a href="cross.html#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="do">## for normal we use the logit transform</span></span>
+<span id="cb36-3"><a href="cross.html#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="do">## n = 1,000</span></span>
+<span id="cb36-4"><a href="cross.html#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="do">## first lets construct a beta distribution.</span></span>
+<span id="cb36-5"><a href="cross.html#cb36-5" aria-hidden="true" tabindex="-1"></a>  <span class="do">## let the prior be beta(4,4) or even beta(1,1)</span></span>
+<span id="cb36-6"><a href="cross.html#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb36-7"><a href="cross.html#cb36-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-8"><a href="cross.html#cb36-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">plot</span>(theta,<span class="fu">dbeta</span>(theta,<span class="dv">167</span>,<span class="dv">833</span>),<span class="at">type=</span><span class="st">&#39;l&#39;</span>,<span class="at">xlim=</span><span class="fu">c</span>(<span class="fl">0.1</span>,<span class="fl">0.5</span>),<span class="at">main=</span><span class="st">&quot;prior beta&quot;</span>) <span class="do">## prior</span></span>
+<span id="cb36-9"><a href="cross.html#cb36-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># plot(theta,dbeta(theta,1,5),type=&#39;l&#39;,xlim=c(0.1,0.5), main=&#39;prior beta&#39;) </span></span>
+<span id="cb36-10"><a href="cross.html#cb36-10" aria-hidden="true" tabindex="-1"></a>   <span class="fu">abline</span>(<span class="at">v=</span><span class="fl">0.167</span>,<span class="at">col=</span><span class="st">&#39;red&#39;</span>) <span class="do">## </span></span>
+<span id="cb36-11"><a href="cross.html#cb36-11" aria-hidden="true" tabindex="-1"></a>   <span class="co">#  qbeta(c(0.05,0.25,0.5,0.75,0.95),167,833)</span></span>
+<span id="cb36-12"><a href="cross.html#cb36-12" aria-hidden="true" tabindex="-1"></a>    <span class="do">## predictive on normal scale.</span></span>
+<span id="cb36-13"><a href="cross.html#cb36-13" aria-hidden="true" tabindex="-1"></a>     draws<span class="ot">&lt;-</span><span class="fu">rbeta</span>(<span class="dv">1000</span>,<span class="dv">167</span>,<span class="dv">833</span>)</span>
+<span id="cb36-14"><a href="cross.html#cb36-14" aria-hidden="true" tabindex="-1"></a>     logitMean<span class="ot">&lt;-</span><span class="fu">log</span>( <span class="dv">167</span><span class="sc">/</span><span class="dv">1000</span>)</span>
+<span id="cb36-15"><a href="cross.html#cb36-15" aria-hidden="true" tabindex="-1"></a>  sdd<span class="ot">&lt;-</span><span class="fu">sd</span>(<span class="fu">log</span>(draws<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>draws)))</span>
+<span id="cb36-16"><a href="cross.html#cb36-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-17"><a href="cross.html#cb36-17" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb36-18"><a href="cross.html#cb36-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(logitTheta,<span class="fu">dnorm</span>(logitTheta,<span class="at">mean =</span>logitMean, <span class="at">sd=</span>sdd ),<span class="at">type=</span><span class="st">&#39;l&#39;</span>,<span class="at">main=</span><span class="st">&quot;Normal approx.of a total heads&quot;</span>, <span class="at">xlim=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>,<span class="sc">-</span><span class="fl">1.4</span>)) <span class="do">## prior</span></span>
+<span id="cb36-19"><a href="cross.html#cb36-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">abline</span>(<span class="at">v=</span>logitMean,<span class="at">col=</span><span class="st">&#39;red&#39;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="cross.html#cb37-1" aria-hidden="true" tabindex="-1"></a>    <span class="do">### the number of heads.    </span></span>
+<span id="cb37-2"><a href="cross.html#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(<span class="st">&quot;prior predictive mean:&quot;</span> ,<span class="fu">round</span>( <span class="fu">exp</span>(logitMean)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(logitMean)),<span class="dv">2</span>))</span></code></pre></div>
 <pre><code>## prior predictive mean:0.14</code></pre>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="cross.html#cb41-1" aria-hidden="true" tabindex="-1"></a> qx<span class="ot">&lt;-</span>(<span class="fu">qnorm</span>(<span class="fu">c</span>(<span class="fl">0.05</span>,<span class="fl">0.25</span>,<span class="fl">0.5</span>,<span class="fl">0.75</span>,<span class="fl">0.95</span>),<span class="at">mean =</span>logitMean, <span class="at">sd=</span>sdd ))</span>
-<span id="cb41-2"><a href="cross.html#cb41-2" aria-hidden="true" tabindex="-1"></a> <span class="do">## this is the probability of landing 6 for theta</span></span>
-<span id="cb41-3"><a href="cross.html#cb41-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">exp</span>(qx)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(qx))</span></code></pre></div>
-<pre><code>## [1] 0.1269966 0.1363012 0.1431020 0.1501831 0.1608735</code></pre>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="cross.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="do">## wald 95% prior interval</span></span>
-<span id="cb43-2"><a href="cross.html#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>( <span class="fu">exp</span>(logitMean<span class="fl">-1.96</span><span class="sc">*</span>sdd)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(logitMean<span class="fl">-1.96</span><span class="sc">*</span>sdd)),<span class="fu">exp</span>(logitMean<span class="fl">+1.96</span><span class="sc">*</span>sdd)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(logitMean<span class="fl">+1.96</span><span class="sc">*</span>sdd)))</span></code></pre></div>
-<pre><code>## [1] 0.1240936 0.1644752</code></pre>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="cross.html#cb39-1" aria-hidden="true" tabindex="-1"></a> qx<span class="ot">&lt;-</span>(<span class="fu">qnorm</span>(<span class="fu">c</span>(<span class="fl">0.05</span>,<span class="fl">0.25</span>,<span class="fl">0.5</span>,<span class="fl">0.75</span>,<span class="fl">0.95</span>),<span class="at">mean =</span>logitMean, <span class="at">sd=</span>sdd ))</span>
+<span id="cb39-2"><a href="cross.html#cb39-2" aria-hidden="true" tabindex="-1"></a> <span class="do">## this is the probability of landing 6 for theta</span></span>
+<span id="cb39-3"><a href="cross.html#cb39-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">exp</span>(qx)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(qx))</span></code></pre></div>
+<pre><code>## [1] 0.1269613 0.1362858 0.1431020 0.1501998 0.1609164</code></pre>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="cross.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="do">## wald 95% prior interval</span></span>
+<span id="cb41-2"><a href="cross.html#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>( <span class="fu">exp</span>(logitMean<span class="fl">-1.96</span><span class="sc">*</span>sdd)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(logitMean<span class="fl">-1.96</span><span class="sc">*</span>sdd)),<span class="fu">exp</span>(logitMean<span class="fl">+1.96</span><span class="sc">*</span>sdd)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(logitMean<span class="fl">+1.96</span><span class="sc">*</span>sdd)))</span></code></pre></div>
+<pre><code>## [1] 0.1240524 0.1645274</code></pre>
 </div>
 <div id="question-4" class="section level3 unnumbered hasAnchor">
 <h3>Question 4<a href="cross.html#question-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We have a mixture of 3 normal distributions, and show the central intervals for 5,25,50,75, and 95<span class="math inline">\(\%\)</span> predictive probabilities. The question gives <span class="math inline">\(\theta\)</span> as the probability of a 6 on a die, possibly unfair, in 1,000 tosses. we have <span class="math inline">\(\theta= 1/12,1/6, 1/4\)</span> types of biased die. Using the normal approximation, the predictive prior probability is <span class="math inline">\(\sum_{\theta}p(\theta)p(y| \theta)\)</span> where the likelihood is approximated using a normal distribution <span class="math inline">\(\mu = n*\theta_i, \sigma = n*\theta_i(1-\theta_i)\)</span></p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="cross.html#cb45-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1000</span>)<span class="sc">-</span><span class="fl">0.5</span> <span class="co"># continuity correction.</span></span>
-<span id="cb45-2"><a href="cross.html#cb45-2" aria-hidden="true" tabindex="-1"></a>theta<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">12</span>,<span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>,<span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>)</span>
-<span id="cb45-3"><a href="cross.html#cb45-3" aria-hidden="true" tabindex="-1"></a>n<span class="ot">=</span><span class="dv">1000</span></span>
-<span id="cb45-4"><a href="cross.html#cb45-4" aria-hidden="true" tabindex="-1"></a>normLikelihood<span class="ot">&lt;-</span><span class="cf">function</span>(x,n,p){</span>
-<span id="cb45-5"><a href="cross.html#cb45-5" aria-hidden="true" tabindex="-1"></a>  mean<span class="ot">&lt;-</span>n<span class="sc">*</span>p</span>
-<span id="cb45-6"><a href="cross.html#cb45-6" aria-hidden="true" tabindex="-1"></a>  varz<span class="ot">&lt;-</span>n<span class="sc">*</span>p<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>p)</span>
-<span id="cb45-7"><a href="cross.html#cb45-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">dnorm</span>(x,<span class="at">mean=</span>mean,<span class="at">sd=</span><span class="fu">sqrt</span>(varz)))</span>
-<span id="cb45-8"><a href="cross.html#cb45-8" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb45-9"><a href="cross.html#cb45-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb45-10"><a href="cross.html#cb45-10" aria-hidden="true" tabindex="-1"></a>a<span class="ot">&lt;-</span><span class="fu">dnorm</span>(x,<span class="at">mean=</span>n<span class="sc">*</span>theta[<span class="dv">1</span>],<span class="at">sd=</span><span class="fu">sqrt</span>(n<span class="sc">*</span>theta[<span class="dv">1</span>]<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>theta[<span class="dv">1</span>]))  )</span>
-<span id="cb45-11"><a href="cross.html#cb45-11" aria-hidden="true" tabindex="-1"></a>b<span class="ot">&lt;-</span><span class="fu">dnorm</span>(x,<span class="at">mean=</span>n<span class="sc">*</span>theta[<span class="dv">2</span>],<span class="at">sd=</span><span class="fu">sqrt</span>(n<span class="sc">*</span>theta[<span class="dv">2</span>]<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>theta[<span class="dv">2</span>]))  )</span>
-<span id="cb45-12"><a href="cross.html#cb45-12" aria-hidden="true" tabindex="-1"></a>c<span class="ot">&lt;-</span><span class="fu">dnorm</span>(x,<span class="at">mean=</span>n<span class="sc">*</span>theta[<span class="dv">3</span>],<span class="at">sd=</span><span class="fu">sqrt</span>(n<span class="sc">*</span>theta[<span class="dv">3</span>]<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>theta[<span class="dv">3</span>]))  )</span>
-<span id="cb45-13"><a href="cross.html#cb45-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-14"><a href="cross.html#cb45-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-15"><a href="cross.html#cb45-15" aria-hidden="true" tabindex="-1"></a>mypri<span class="ot">&lt;-</span>a<span class="sc">*</span><span class="fl">0.25</span><span class="sc">+</span>b<span class="sc">*</span><span class="fl">0.5</span><span class="sc">+</span>c<span class="sc">*</span><span class="fl">0.25</span></span>
-<span id="cb45-16"><a href="cross.html#cb45-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-17"><a href="cross.html#cb45-17" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(mypri) <span class="do">## sums to 1 it is a distribution</span></span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="cross.html#cb43-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1000</span>)<span class="sc">-</span><span class="fl">0.5</span> <span class="co"># continuity correction.</span></span>
+<span id="cb43-2"><a href="cross.html#cb43-2" aria-hidden="true" tabindex="-1"></a>theta<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">12</span>,<span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>,<span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>)</span>
+<span id="cb43-3"><a href="cross.html#cb43-3" aria-hidden="true" tabindex="-1"></a>n<span class="ot">=</span><span class="dv">1000</span></span>
+<span id="cb43-4"><a href="cross.html#cb43-4" aria-hidden="true" tabindex="-1"></a>normLikelihood<span class="ot">&lt;-</span><span class="cf">function</span>(x,n,p){</span>
+<span id="cb43-5"><a href="cross.html#cb43-5" aria-hidden="true" tabindex="-1"></a>  mean<span class="ot">&lt;-</span>n<span class="sc">*</span>p</span>
+<span id="cb43-6"><a href="cross.html#cb43-6" aria-hidden="true" tabindex="-1"></a>  varz<span class="ot">&lt;-</span>n<span class="sc">*</span>p<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>p)</span>
+<span id="cb43-7"><a href="cross.html#cb43-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">dnorm</span>(x,<span class="at">mean=</span>mean,<span class="at">sd=</span><span class="fu">sqrt</span>(varz)))</span>
+<span id="cb43-8"><a href="cross.html#cb43-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb43-9"><a href="cross.html#cb43-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb43-10"><a href="cross.html#cb43-10" aria-hidden="true" tabindex="-1"></a>a<span class="ot">&lt;-</span><span class="fu">dnorm</span>(x,<span class="at">mean=</span>n<span class="sc">*</span>theta[<span class="dv">1</span>],<span class="at">sd=</span><span class="fu">sqrt</span>(n<span class="sc">*</span>theta[<span class="dv">1</span>]<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>theta[<span class="dv">1</span>]))  )</span>
+<span id="cb43-11"><a href="cross.html#cb43-11" aria-hidden="true" tabindex="-1"></a>b<span class="ot">&lt;-</span><span class="fu">dnorm</span>(x,<span class="at">mean=</span>n<span class="sc">*</span>theta[<span class="dv">2</span>],<span class="at">sd=</span><span class="fu">sqrt</span>(n<span class="sc">*</span>theta[<span class="dv">2</span>]<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>theta[<span class="dv">2</span>]))  )</span>
+<span id="cb43-12"><a href="cross.html#cb43-12" aria-hidden="true" tabindex="-1"></a>c<span class="ot">&lt;-</span><span class="fu">dnorm</span>(x,<span class="at">mean=</span>n<span class="sc">*</span>theta[<span class="dv">3</span>],<span class="at">sd=</span><span class="fu">sqrt</span>(n<span class="sc">*</span>theta[<span class="dv">3</span>]<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>theta[<span class="dv">3</span>]))  )</span>
+<span id="cb43-13"><a href="cross.html#cb43-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-14"><a href="cross.html#cb43-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-15"><a href="cross.html#cb43-15" aria-hidden="true" tabindex="-1"></a>mypri<span class="ot">&lt;-</span>a<span class="sc">*</span><span class="fl">0.25</span><span class="sc">+</span>b<span class="sc">*</span><span class="fl">0.5</span><span class="sc">+</span>c<span class="sc">*</span><span class="fl">0.25</span></span>
+<span id="cb43-16"><a href="cross.html#cb43-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-17"><a href="cross.html#cb43-17" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(mypri) <span class="do">## sums to 1 it is a distribution</span></span></code></pre></div>
 <pre><code>## [1] 1</code></pre>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="cross.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,mypri,<span class="at">type=</span><span class="st">&#39;l&#39;</span>,<span class="at">main=</span><span class="st">&#39;predictive prior number of heads&#39;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="cross.html#cb48-1" aria-hidden="true" tabindex="-1"></a>data<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">x=</span>x,<span class="at">p=</span>mypri)</span>
-<span id="cb48-2"><a href="cross.html#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-3"><a href="cross.html#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="do">## highest probability interval</span></span>
-<span id="cb48-4"><a href="cross.html#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 95%</span></span>
-<span id="cb48-5"><a href="cross.html#cb48-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-6"><a href="cross.html#cb48-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,mypri,<span class="at">type=</span><span class="st">&#39;l&#39;</span>,<span class="at">main=</span><span class="st">&#39; 95% predictive prior number of heads&#39;</span>)</span>
-<span id="cb48-7"><a href="cross.html#cb48-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">max</span>(data[<span class="fu">which</span>(<span class="fu">cumsum</span>(data<span class="sc">$</span>p)<span class="sc">&lt;</span><span class="fl">0.025</span>),<span class="dv">1</span>])</span>
-<span id="cb48-8"><a href="cross.html#cb48-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb48-9"><a href="cross.html#cb48-9" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">max</span>(data[<span class="fu">which</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">cumsum</span>(data<span class="sc">$</span>p)<span class="sc">&gt;</span><span class="fl">0.025</span>),<span class="dv">1</span>]))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-12-2.png" width="672" /></p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="cross.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,mypri,<span class="at">type=</span><span class="st">&#39;l&#39;</span>,<span class="at">main=</span><span class="st">&#39;75% predictive prior number of heads&#39;</span>)</span>
-<span id="cb49-2"><a href="cross.html#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">max</span>(data[<span class="fu">which</span>(<span class="fu">cumsum</span>(data<span class="sc">$</span>p)<span class="sc">&lt;</span><span class="fl">0.125</span>),<span class="dv">1</span>]))</span>
-<span id="cb49-3"><a href="cross.html#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">max</span>(data[<span class="fu">which</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">cumsum</span>(data<span class="sc">$</span>p)<span class="sc">&gt;</span><span class="fl">0.125</span>),<span class="dv">1</span>])</span>
-<span id="cb49-4"><a href="cross.html#cb49-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-12-3.png" width="672" /></p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="cross.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,mypri,<span class="at">type=</span><span class="st">&#39;l&#39;</span>,<span class="at">main=</span><span class="st">&#39;50% predictive prior number of heads&#39;</span>)</span>
-<span id="cb50-2"><a href="cross.html#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">max</span>(data[<span class="fu">which</span>(<span class="fu">cumsum</span>(data<span class="sc">$</span>p)<span class="sc">&lt;</span><span class="fl">0.25</span>),<span class="dv">1</span>]))</span>
-<span id="cb50-3"><a href="cross.html#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">max</span>(data[<span class="fu">which</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">cumsum</span>(data<span class="sc">$</span>p)<span class="sc">&gt;</span><span class="fl">0.25</span>),<span class="dv">1</span>])</span>
-<span id="cb50-4"><a href="cross.html#cb50-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-12-4.png" width="672" /></p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="cross.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,mypri,<span class="at">type=</span><span class="st">&#39;l&#39;</span>,<span class="at">main=</span><span class="st">&#39;25% predictive prior number of heads&#39;</span>)</span>
-<span id="cb51-2"><a href="cross.html#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">max</span>(data[<span class="fu">which</span>(<span class="fu">cumsum</span>(data<span class="sc">$</span>p)<span class="sc">&lt;</span><span class="fl">0.375</span>),<span class="dv">1</span>]))</span>
-<span id="cb51-3"><a href="cross.html#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">max</span>(data[<span class="fu">which</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">cumsum</span>(data<span class="sc">$</span>p)<span class="sc">&gt;</span><span class="fl">0.375</span>),<span class="dv">1</span>])</span>
-<span id="cb51-4"><a href="cross.html#cb51-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-12-5.png" width="672" /></p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="cross.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,mypri,<span class="at">type=</span><span class="st">&#39;l&#39;</span>,<span class="at">main=</span><span class="st">&#39;5% predictive prior number of heads&#39;</span>)</span>
-<span id="cb52-2"><a href="cross.html#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">max</span>(data[<span class="fu">which</span>(<span class="fu">cumsum</span>(data<span class="sc">$</span>p)<span class="sc">&lt;</span><span class="fl">0.475</span>),<span class="dv">1</span>]))</span>
-<span id="cb52-3"><a href="cross.html#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">max</span>(data[<span class="fu">which</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">cumsum</span>(data<span class="sc">$</span>p)<span class="sc">&gt;</span><span class="fl">0.475</span>),<span class="dv">1</span>])</span>
-<span id="cb52-4"><a href="cross.html#cb52-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-12-6.png" width="672" /></p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="cross.html#cb45-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">2</span>))</span>
+<span id="cb45-2"><a href="cross.html#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,mypri,<span class="at">type=</span><span class="st">&#39;l&#39;</span>,<span class="at">main=</span><span class="st">&#39;predictive prior number of heads&#39;</span>)</span>
+<span id="cb45-3"><a href="cross.html#cb45-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-4"><a href="cross.html#cb45-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-5"><a href="cross.html#cb45-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-6"><a href="cross.html#cb45-6" aria-hidden="true" tabindex="-1"></a>data<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">x=</span>x,<span class="at">p=</span>mypri)</span>
+<span id="cb45-7"><a href="cross.html#cb45-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-8"><a href="cross.html#cb45-8" aria-hidden="true" tabindex="-1"></a><span class="do">## highest probability interval</span></span>
+<span id="cb45-9"><a href="cross.html#cb45-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 95%</span></span>
+<span id="cb45-10"><a href="cross.html#cb45-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-11"><a href="cross.html#cb45-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,mypri,<span class="at">type=</span><span class="st">&#39;l&#39;</span>,<span class="at">main=</span><span class="st">&#39; 95% predictive prior number of heads&#39;</span>)</span>
+<span id="cb45-12"><a href="cross.html#cb45-12" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">max</span>(data[<span class="fu">which</span>(<span class="fu">cumsum</span>(data<span class="sc">$</span>p)<span class="sc">&lt;</span><span class="fl">0.025</span>),<span class="dv">1</span>])</span>
+<span id="cb45-13"><a href="cross.html#cb45-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb45-14"><a href="cross.html#cb45-14" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">max</span>(data[<span class="fu">which</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">cumsum</span>(data<span class="sc">$</span>p)<span class="sc">&gt;</span><span class="fl">0.025</span>),<span class="dv">1</span>]))</span>
+<span id="cb45-15"><a href="cross.html#cb45-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-16"><a href="cross.html#cb45-16" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,mypri,<span class="at">type=</span><span class="st">&#39;l&#39;</span>,<span class="at">main=</span><span class="st">&#39;75% predictive prior number of heads&#39;</span>)</span>
+<span id="cb45-17"><a href="cross.html#cb45-17" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">max</span>(data[<span class="fu">which</span>(<span class="fu">cumsum</span>(data<span class="sc">$</span>p)<span class="sc">&lt;</span><span class="fl">0.125</span>),<span class="dv">1</span>]))</span>
+<span id="cb45-18"><a href="cross.html#cb45-18" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">max</span>(data[<span class="fu">which</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">cumsum</span>(data<span class="sc">$</span>p)<span class="sc">&gt;</span><span class="fl">0.125</span>),<span class="dv">1</span>])</span>
+<span id="cb45-19"><a href="cross.html#cb45-19" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb45-20"><a href="cross.html#cb45-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-21"><a href="cross.html#cb45-21" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,mypri,<span class="at">type=</span><span class="st">&#39;l&#39;</span>,<span class="at">main=</span><span class="st">&#39;50% predictive prior number of heads&#39;</span>)</span>
+<span id="cb45-22"><a href="cross.html#cb45-22" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">max</span>(data[<span class="fu">which</span>(<span class="fu">cumsum</span>(data<span class="sc">$</span>p)<span class="sc">&lt;</span><span class="fl">0.25</span>),<span class="dv">1</span>]))</span>
+<span id="cb45-23"><a href="cross.html#cb45-23" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">max</span>(data[<span class="fu">which</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">cumsum</span>(data<span class="sc">$</span>p)<span class="sc">&gt;</span><span class="fl">0.25</span>),<span class="dv">1</span>])</span>
+<span id="cb45-24"><a href="cross.html#cb45-24" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb45-25"><a href="cross.html#cb45-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-26"><a href="cross.html#cb45-26" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,mypri,<span class="at">type=</span><span class="st">&#39;l&#39;</span>,<span class="at">main=</span><span class="st">&#39;25% predictive prior number of heads&#39;</span>)</span>
+<span id="cb45-27"><a href="cross.html#cb45-27" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">max</span>(data[<span class="fu">which</span>(<span class="fu">cumsum</span>(data<span class="sc">$</span>p)<span class="sc">&lt;</span><span class="fl">0.375</span>),<span class="dv">1</span>]))</span>
+<span id="cb45-28"><a href="cross.html#cb45-28" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">max</span>(data[<span class="fu">which</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">cumsum</span>(data<span class="sc">$</span>p)<span class="sc">&gt;</span><span class="fl">0.375</span>),<span class="dv">1</span>])</span>
+<span id="cb45-29"><a href="cross.html#cb45-29" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb45-30"><a href="cross.html#cb45-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-31"><a href="cross.html#cb45-31" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,mypri,<span class="at">type=</span><span class="st">&#39;l&#39;</span>,<span class="at">main=</span><span class="st">&#39;5% predictive prior number of heads&#39;</span>)</span>
+<span id="cb45-32"><a href="cross.html#cb45-32" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">max</span>(data[<span class="fu">which</span>(<span class="fu">cumsum</span>(data<span class="sc">$</span>p)<span class="sc">&lt;</span><span class="fl">0.475</span>),<span class="dv">1</span>]))</span>
+<span id="cb45-33"><a href="cross.html#cb45-33" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">max</span>(data[<span class="fu">which</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">cumsum</span>(data<span class="sc">$</span>p)<span class="sc">&gt;</span><span class="fl">0.475</span>),<span class="dv">1</span>])</span>
+<span id="cb45-34"><a href="cross.html#cb45-34" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+</div>
+<div id="question-8-normal-distribution-with-unknown-mean" class="section level3 unnumbered hasAnchor">
+<h3>Question 8 (Normal distribution with unknown mean)<a href="cross.html#question-8-normal-distribution-with-unknown-mean" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A random sample of n students is drawn from a large population, and weights are measured. The average height of the n sampled students is <span class="math inline">\(\bar{y}= 150\)</span> lbs. Assume the weights in the population are normally distribution with unknown mean, <span class="math inline">\(\theta\)</span>, and known standard deviation 20 lbs. Suppose the prior for <span class="math inline">\(\theta \sim N(180, 40^2)\)</span></p>
+<p>For known variance, the limit of the posterior is <span class="math inline">\(p(\theta,y)\approx N(\theta| \bar{y}, \sigma^2/n)\)</span>. And the direct formulation is <span class="math inline">\(p(\theta | \bar{y})= N(\theta | \mu_n,\tau_n^2).\)</span> using equations 2.12.</p>
+<p>For a posterior predictive interval, the marginal distribution for new data <span class="math inline">\(p(\tilde{y} | y) \sim N(\mu_n, \sigma^2+\tau_n^2)\)</span></p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="cross.html#cb46-1" aria-hidden="true" tabindex="-1"></a>mu_n<span class="ot">&lt;-</span><span class="cf">function</span>(mu0,ybar,n,tau02,sigma2){</span>
+<span id="cb46-2"><a href="cross.html#cb46-2" aria-hidden="true" tabindex="-1"></a>  mun<span class="ot">&lt;-</span> (mu0<span class="sc">/</span>tau02 <span class="sc">+</span> (ybar<span class="sc">*</span>n)<span class="sc">/</span>sigma2)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">/</span>tau02 <span class="sc">+</span> n<span class="sc">/</span>sigma2)</span>
+<span id="cb46-3"><a href="cross.html#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(mun)</span>
+<span id="cb46-4"><a href="cross.html#cb46-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb46-5"><a href="cross.html#cb46-5" aria-hidden="true" tabindex="-1"></a>taun2<span class="ot">&lt;-</span><span class="cf">function</span>(tau02,n,sigma2){</span>
+<span id="cb46-6"><a href="cross.html#cb46-6" aria-hidden="true" tabindex="-1"></a>  inv.taun2<span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span>tau02 <span class="sc">+</span>n<span class="sc">/</span>sigma2</span>
+<span id="cb46-7"><a href="cross.html#cb46-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="dv">1</span><span class="sc">/</span>inv.taun2)</span>
+<span id="cb46-8"><a href="cross.html#cb46-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb46-9"><a href="cross.html#cb46-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-10"><a href="cross.html#cb46-10" aria-hidden="true" tabindex="-1"></a>ybar<span class="ot">=</span><span class="dv">150</span></span>
+<span id="cb46-11"><a href="cross.html#cb46-11" aria-hidden="true" tabindex="-1"></a>sigma2<span class="ot">=</span><span class="dv">20</span><span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb46-12"><a href="cross.html#cb46-12" aria-hidden="true" tabindex="-1"></a>mu0<span class="ot">=</span><span class="dv">180</span></span>
+<span id="cb46-13"><a href="cross.html#cb46-13" aria-hidden="true" tabindex="-1"></a>  tau02<span class="ot">=</span><span class="dv">40</span><span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb46-14"><a href="cross.html#cb46-14" aria-hidden="true" tabindex="-1"></a>  n<span class="ot">=</span><span class="dv">10</span></span>
+<span id="cb46-15"><a href="cross.html#cb46-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-16"><a href="cross.html#cb46-16" aria-hidden="true" tabindex="-1"></a><span class="do">## posterior interval n=10</span></span>
+<span id="cb46-17"><a href="cross.html#cb46-17" aria-hidden="true" tabindex="-1"></a>  <span class="co">#lower&lt;-round(qnorm(0.025,mu_n(mu0,ybar,tau02,10,sigma2),sd=sqrt(taun2(tau02,10,sigma2))),2)</span></span>
+<span id="cb46-18"><a href="cross.html#cb46-18" aria-hidden="true" tabindex="-1"></a>    upper<span class="ot">&lt;-</span><span class="fu">round</span>(<span class="fu">qnorm</span>(<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>),<span class="fu">mu_n</span>(mu0,ybar,tau02,<span class="dv">10</span>,sigma2),<span class="at">sd=</span><span class="fu">sqrt</span>(<span class="fu">taun2</span>(tau02,<span class="dv">10</span>,sigma2))),<span class="dv">2</span>)</span>
+<span id="cb46-19"><a href="cross.html#cb46-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-20"><a href="cross.html#cb46-20" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">&quot;posterior interval n=10: &quot;</span>,upper[<span class="dv">1</span>],<span class="st">&quot; &quot;</span>,upper[<span class="dv">2</span>])</span></code></pre></div>
+<pre><code>## posterior interval n=10: 138.49 162.98</code></pre>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="cross.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="do">## posterior predictive interval</span></span>
+<span id="cb48-2"><a href="cross.html#cb48-2" aria-hidden="true" tabindex="-1"></a>  upper2<span class="ot">&lt;-</span><span class="fu">round</span>(<span class="fu">qnorm</span>(<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>),<span class="fu">mu_n</span>(mu0,ybar,tau02,<span class="dv">10</span>,sigma2),<span class="at">sd=</span><span class="fu">sqrt</span>(<span class="fu">taun2</span>(tau02,<span class="dv">10</span>,sigma2)<span class="sc">+</span>sigma2) ),<span class="dv">2</span>)</span>
+<span id="cb48-3"><a href="cross.html#cb48-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-4"><a href="cross.html#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">&quot;posterior predictive interval n=10: &quot;</span>,upper2[<span class="dv">1</span>],<span class="st">&quot; &quot;</span>,upper2[<span class="dv">2</span>])</span></code></pre></div>
+<pre><code>## posterior predictive interval n=10: 109.66 191.8</code></pre>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="cross.html#cb50-1" aria-hidden="true" tabindex="-1"></a> lower<span class="ot">&lt;-</span><span class="fu">round</span>(<span class="fu">qnorm</span>(<span class="fl">0.025</span>,<span class="fu">mu_n</span>(mu0,ybar,tau02,<span class="dv">100</span>,sigma2),<span class="at">sd=</span><span class="fu">sqrt</span>(<span class="fu">taun2</span>(tau02,<span class="dv">100</span>,sigma2))),<span class="dv">2</span>)</span>
+<span id="cb50-2"><a href="cross.html#cb50-2" aria-hidden="true" tabindex="-1"></a>    upper<span class="ot">&lt;-</span><span class="fu">round</span>(<span class="fu">qnorm</span>(<span class="fl">0.975</span>,<span class="fu">mu_n</span>(mu0,ybar,tau02,<span class="dv">100</span>,sigma2),<span class="at">sd=</span><span class="fu">sqrt</span>(<span class="fu">taun2</span>(tau02,<span class="dv">100</span>,sigma2))),<span class="dv">2</span>)</span>
+<span id="cb50-3"><a href="cross.html#cb50-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-4"><a href="cross.html#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">&quot;posterior interval n=100: &quot;</span>,lower,<span class="st">&quot; &quot;</span>,upper)</span></code></pre></div>
+<pre><code>## posterior interval n=100: 146.16 153.99</code></pre>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="cross.html#cb52-1" aria-hidden="true" tabindex="-1"></a> <span class="do">## this approximately equals the limit</span></span>
+<span id="cb52-2"><a href="cross.html#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;The asymptotic approximation&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;The asymptotic approximation&quot;</code></pre>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="cross.html#cb54-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">qnorm</span>(<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>),<span class="at">mean=</span><span class="dv">150</span>, sigma2<span class="sc">/</span><span class="dv">100</span>)</span></code></pre></div>
+<pre><code>## [1] 142.1601 157.8399</code></pre>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="cross.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="do">## posterior predictive interval</span></span>
+<span id="cb56-2"><a href="cross.html#cb56-2" aria-hidden="true" tabindex="-1"></a> lower2<span class="ot">&lt;-</span><span class="fu">round</span>(<span class="fu">qnorm</span>(<span class="fl">0.025</span>,<span class="fu">mu_n</span>(mu0,ybar,tau02,<span class="dv">100</span>,sigma2),<span class="at">sd=</span><span class="fu">sqrt</span>(<span class="fu">taun2</span>(tau02,<span class="dv">100</span>,sigma2)<span class="sc">+</span>sigma2) ),<span class="dv">2</span>)</span>
+<span id="cb56-3"><a href="cross.html#cb56-3" aria-hidden="true" tabindex="-1"></a>    upper2<span class="ot">&lt;-</span><span class="fu">round</span>(<span class="fu">qnorm</span>(<span class="fl">0.975</span>,<span class="fu">mu_n</span>(mu0,ybar,tau02,<span class="dv">100</span>,sigma2),<span class="at">sd=</span><span class="fu">sqrt</span>(<span class="fu">taun2</span>(tau02,<span class="dv">100</span>,sigma2)<span class="sc">+</span>sigma2) ),<span class="dv">2</span>)</span>
+<span id="cb56-4"><a href="cross.html#cb56-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-5"><a href="cross.html#cb56-5" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">&quot;posterior predictive interval n=100: &quot;</span>,lower2,<span class="st">&quot; &quot;</span>,upper2)</span></code></pre></div>
+<pre><code>## posterior predictive interval n=100: 110.68 189.47</code></pre>
 
 </div>
 </div>
@@ -491,7 +606,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/02-cross-refs.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/02-single-parameter-models.Rmd",
 "text": "Edit"
 },
 "history": {

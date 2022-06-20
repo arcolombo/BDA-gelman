@@ -96,14 +96,71 @@ Exponential families are the only classes of distributions that have natural con
 
 ## Normal distribution with known variance
 
+The normal distribution is foundational to statistical modeling, with the central limit theorem (CLT) allowing for the use of normal likelihood in many statistical problems which can approximate complex likelihoods.  If the normal distribution does not provide a good model fit, finite mixtures of distributions can identify useful solutions.
 
+### Likelihood of one data point{-}
+
+With mean $\theta$ and known variance $\sigma^2$ the sampling distribution of a given point is defined 
+
+$p(y|\theta) = \frac{1}{\sqrt{2*\pi*\sigma^2}}e^{-\frac{1}{2\sigma^2} (y-\theta)^2}$
+
+### Conjugate prior and posterior distributions
+The prior has the exponential family form given as $\theta \sim N(\mu_0, \tau_0^2)$
+
+
+$$
+\begin{aligned}
+ p(\theta ) &\propto exp( \frac{1}{2\tau_0^2}(\theta-\mu_0)^2) \\
+ \end{aligned}
+$$
+
+WHere completing the square can find the posterior distribution
+
+$$
+\begin{aligned}
+ p(\theta | y ) &\propto exp(-1/2(\frac{(y-\theta)^2}{\sigma^2} +\frac{(\theta-\mu_0)^2}{\tau_0^2} )  ) \\
+ p(\theta | y ) &\propto exp( \frac{1}{2\tau_1^2}(\theta-\mu_1)^2),  \theta|y \sim N(\mu_1,\tau_1^2)
+ \end{aligned}
+$$
+where $\mu_1 = \frac{1/\tau_0^2 \mu_0 + 1/\sigma^2 y}{1/\tau_0^2 + 1/\sigma^2}$ and $1/\tau_1^2 = 1/\tau_0^2 +1/\sigma^2$
+
+In manipulating the distributions the inverse of the variance is defined as the *precision*.  The posterior precision is equal to the prior precision plus the data precision.  And the posterior mean is a weighted average of the prior mean and the observed value, y, proportional to the total precision.
+
+### Posterior predictive distribution{-}
+
+the posterior predictive distribution of a future observation, x, p(x|y) can be calculated 
+
+$$
+\begin{aligned}
+p(x|y) &= \int p(x|\theta)p(\theta|y) d\theta
+&\propto \int exp(-1/2\sigma^2 (x-\theta)^2) exp(-1/2\tau_1^2 (\theta-\mu_1)^2) d\theta
+\end{aligned}
+$$
+ the future observations, x, does not depend on the past observations y given $\theta$.  
+
+
+### Normal model with multiple observations{-}
+
+For multiple observations, y, the posterior density is formulated as:
+
+$$
+\begin{aligned}
+ p(\theta | y ) &\propto p(\theta)p(y|\theta) \\
+   &=p(\theta)\prod_i p(y_i | \theta)\\
+   &\propto exp(-1/2\tau_0^2 (\theta-\mu_0)^2)\prod_i exp(-1/2\sigma^2 (y_i -\theta)^2)\\
+   &\propto exp(-1/2 (1/\tau_0^2(\theta-\mu_0)^2+ 1/\sigma^2\sum_i(y_i-\theta)^2) )\\
+ \end{aligned}
+$$
+Simplfying the algebra shows the posterior depends on y only through the sample mean (sufficient statistic), $\bar{y}$ is the sufficient statistic for $\theta$, and the final model is $\bar{y} | \theta,\sigma^2 \sim N(\theta, \sigma^2/n)$
+
+## Other standard single-parameter models
 
 
 ## Exercises
 
 ### Question 1{-}
 prior Beta(4,4), where a coin is tossed 10 times and heads appears fewer than 3 times.  the exact posterior is Beta(4+y, 4+10-y) for y=0,1,2.  Since we don't know the observed heads, but that $y<3$ we plot the posterior distributions for each possibility.  For 2 heads it is closer to the prior, with posterior mean of 0.33,  which is closest to the prior mean of 1/2.
-```{r q1}
+```{r}
  theta<-seq(from=0,to=1,by=0.01)
 
  plot(theta,dbeta(theta,4,4),type='l',ylim=c(0,5)) ## prior
@@ -134,7 +191,7 @@ For female births we have beta(438,544) we use the normal approximation.  This r
    
   logitTheta<-log(theta/(1-theta))
 
-  
+  par(mfrow=c(1,2))
     plot(theta,dbeta(theta,438,544),type='l',xlim=c(0.35,0.55),main="posterior beta") ## prior
     abline(v=0.446,col='red')
   draws<-rbeta(1000,438,544)
@@ -161,6 +218,8 @@ We find the probability distribution of a given success and the prior probabilit
   ## n = 1,000
   ## first lets construct a beta distribution.
   ## let the prior be beta(4,4) or even beta(1,1)
+par(mfrow=c(1,2))
+
    plot(theta,dbeta(theta,167,833),type='l',xlim=c(0.1,0.5),main="prior beta") ## prior
   # plot(theta,dbeta(theta,1,5),type='l',xlim=c(0.1,0.5), main='prior beta') 
    abline(v=0.167,col='red') ## 
@@ -170,6 +229,7 @@ We find the probability distribution of a given success and the prior probabilit
      logitMean<-log( 167/1000)
   sdd<-sd(log(draws/(1-draws)))
 
+   
   plot(logitTheta,dnorm(logitTheta,mean =logitMean, sd=sdd ),type='l',main="Normal approx.of a total heads", xlim=c(-2,-1.4)) ## prior
     abline(v=logitMean,col='red')
     ### the number of heads.    
@@ -202,6 +262,7 @@ mypri<-a*0.25+b*0.5+c*0.25
 
 sum(mypri) ## sums to 1 it is a distribution
 
+ par(mfrow=c(3,2))
 plot(x,mypri,type='l',main='predictive prior number of heads')
 
 
@@ -237,3 +298,51 @@ abline(v=max(data[which(1-cumsum(data$p)>0.475),1])
 )
 ```
 
+
+### Question 8 (Normal distribution with unknown mean){-}
+A random sample of n students is drawn from a large population, and weights are measured.  The average height of the n sampled students is $\bar{y}= 150$ lbs.  Assume the weights in the population are normally distribution with unknown mean, $\theta$, and known standard deviation 20 lbs.  Suppose the prior for $\theta \sim N(180, 40^2)$
+
+For known variance, the limit of the posterior is $p(\theta,y)\approx N(\theta| \bar{y}, \sigma^2/n)$.  And the direct formulation is $p(\theta | \bar{y})= N(\theta | \mu_n,\tau_n^2).$ using equations 2.12.
+
+For a posterior predictive interval, the marginal distribution for new data $p(\tilde{y}  | y) \sim N(\mu_n, \sigma^2+\tau_n^2)$
+```{r}
+mu_n<-function(mu0,ybar,n,tau02,sigma2){
+  mun<- (mu0/tau02 + (ybar*n)/sigma2)/(1/tau02 + n/sigma2)
+  return(mun)
+}
+taun2<-function(tau02,n,sigma2){
+  inv.taun2<- 1/tau02 +n/sigma2
+  return(1/inv.taun2)
+}
+
+ybar=150
+sigma2=20^2
+mu0=180
+  tau02=40^2
+  n=10
+
+## posterior interval n=10
+  #lower<-round(qnorm(0.025,mu_n(mu0,ybar,tau02,10,sigma2),sd=sqrt(taun2(tau02,10,sigma2))),2)
+    upper<-round(qnorm(c(0.025,0.975),mu_n(mu0,ybar,tau02,10,sigma2),sd=sqrt(taun2(tau02,10,sigma2))),2)
+
+message("posterior interval n=10: ",upper[1]," ",upper[2])
+
+## posterior predictive interval
+  upper2<-round(qnorm(c(0.025,0.975),mu_n(mu0,ybar,tau02,10,sigma2),sd=sqrt(taun2(tau02,10,sigma2)+sigma2) ),2)
+
+message("posterior predictive interval n=10: ",upper2[1]," ",upper2[2])
+
+
+ lower<-round(qnorm(0.025,mu_n(mu0,ybar,tau02,100,sigma2),sd=sqrt(taun2(tau02,100,sigma2))),2)
+    upper<-round(qnorm(0.975,mu_n(mu0,ybar,tau02,100,sigma2),sd=sqrt(taun2(tau02,100,sigma2))),2)
+
+message("posterior interval n=100: ",lower," ",upper)
+ ## this approximately equals the limit
+print("The asymptotic approximation")
+ qnorm(c(0.025,0.975),mean=150, sigma2/100)
+## posterior predictive interval
+ lower2<-round(qnorm(0.025,mu_n(mu0,ybar,tau02,100,sigma2),sd=sqrt(taun2(tau02,100,sigma2)+sigma2) ),2)
+    upper2<-round(qnorm(0.975,mu_n(mu0,ybar,tau02,100,sigma2),sd=sqrt(taun2(tau02,100,sigma2)+sigma2) ),2)
+
+message("posterior predictive interval n=100: ",lower2," ",upper2)
+```

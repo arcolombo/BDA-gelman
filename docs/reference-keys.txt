@@ -15,6 +15,9 @@ estimating-a-probability-from-binomial-data
 posterior-as-a-compromise-between-data-and-prior-information
 summarizing-the-posterior-inference
 informative-prior-distributions
+normal-distribution-with-known-variance
+conjugate-prior-and-posterior-distributions
+other-standard-single-parameter-models
 exercises-1
 parts
 footnotes-and-citations

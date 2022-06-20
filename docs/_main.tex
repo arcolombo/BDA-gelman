@@ -203,7 +203,7 @@ for a model across patients across different cities, we can assume exchangabilit
 \hypertarget{bayesian-inference}{%
 \section{Bayesian inference}\label{bayesian-inference}}
 
-The prior, p(\(\theta\)), and the sampling distribution, or the \emph{data distribution}, \(p(y|\theta)\) is
+The prior, p(\(\theta\)), and the sampling distribution, or the \emph{data distribution}, \(p(y|\theta)\) is related to the joint distribution by
 
 \[ p(\theta,y) = p(\theta)p(y | \theta)\]
 
@@ -226,7 +226,7 @@ Note that \(p(y | \theta)\) is taken as a function of \(\theta\), not of y.
 \section*{Prediction}\label{prediction}}
 \addcontentsline{toc}{section}{Prediction}
 
-Inferences about an unknown \emph{observable} variable, are called predictive inferences. Beofre the data y are considered, the distribution of the unknown, observable, y is \[ p(y) = \int p(y,\theta)d\theta = \int p(\theta)p(y | \theta)d\theta\]
+Inferences about an unknown \emph{observable} variable, are called predictive inferences. Before the data y are considered, the distribution of the unknown, observable, y is \[ p(y) = \int p(y,\theta)d\theta = \int p(\theta)p(y | \theta)d\theta\]
 
 this is defined as the marginal distribution of y, and also called \emph{prior predictive distribution}. Prior refers that the data is not conditional on any previous observation, and predictive refers to the data being observable.
 
@@ -715,7 +715,7 @@ Then the probability that at least 1 election is tied, from 435 total elections 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 8.788191
+## [1] 12.1931
 \end{verbatim}
 
 \begin{Shaded}
@@ -725,7 +725,7 @@ Then the probability that at least 1 election is tied, from 435 total elections 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 40
+## [1] 46
 \end{verbatim}
 
 \begin{Shaded}
@@ -796,7 +796,7 @@ total number of patients was approximately 42, which we expect since the total 4
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/simul-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-10-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -804,7 +804,7 @@ total number of patients was approximately 42, which we expect since the total 4
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/simul-2.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-10-2.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -812,7 +812,7 @@ total number of patients was approximately 42, which we expect since the total 4
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/simul-3.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-10-3.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -820,7 +820,7 @@ total number of patients was approximately 42, which we expect since the total 4
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/simul-4.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-10-4.pdf}
 
 \hypertarget{cross}{%
 \chapter{Single parameter models}\label{cross}}
@@ -931,6 +931,75 @@ Then the posterior density using sufficient statistics is
 
 Exponential families are the only classes of distributions that have natural conjugate prior distributions.
 
+\hypertarget{normal-distribution-with-known-variance}{%
+\section{Normal distribution with known variance}\label{normal-distribution-with-known-variance}}
+
+The normal distribution is foundational to statistical modeling, with the central limit theorem (CLT) allowing for the use of normal likelihood in many statistical problems which can approximate complex likelihoods. If the normal distribution does not provide a good model fit, finite mixtures of distributions can identify useful solutions.
+
+\hypertarget{likelihood-of-one-data-point}{%
+\subsection*{Likelihood of one data point}\label{likelihood-of-one-data-point}}
+\addcontentsline{toc}{subsection}{Likelihood of one data point}
+
+With mean \(\theta\) and known variance \(\sigma^2\) the sampling distribution of a given point is defined
+
+\(p(y|\theta) = \frac{1}{\sqrt{2*\pi*\sigma^2}}e^{-\frac{1}{2\sigma^2} (y-\theta)^2}\)
+
+\hypertarget{conjugate-prior-and-posterior-distributions}{%
+\subsection{Conjugate prior and posterior distributions}\label{conjugate-prior-and-posterior-distributions}}
+
+The prior has the exponential family form given as \(\theta \sim N(\mu_0, \tau_0^2)\)
+
+\[
+\begin{aligned}
+ p(\theta ) &\propto exp( \frac{1}{2\tau_0^2}(\theta-\mu_0)^2) \\
+ \end{aligned}
+\]
+
+WHere completing the square can find the posterior distribution
+
+\[
+\begin{aligned}
+ p(\theta | y ) &\propto exp(-1/2(\frac{(y-\theta)^2}{\sigma^2} +\frac{(\theta-\mu_0)^2}{\tau_0^2} )  ) \\
+ p(\theta | y ) &\propto exp( \frac{1}{2\tau_1^2}(\theta-\mu_1)^2),  \theta|y \sim N(\mu_1,\tau_1^2)
+ \end{aligned}
+\]
+where \(\mu_1 = \frac{1/\tau_0^2 \mu_0 + 1/\sigma^2 y}{1/\tau_0^2 + 1/\sigma^2}\) and \(1/\tau_1^2 = 1/\tau_0^2 +1/\sigma^2\)
+
+In manipulating the distributions the inverse of the variance is defined as the \emph{precision}. The posterior precision is equal to the prior precision plus the data precision. And the posterior mean is a weighted average of the prior mean and the observed value, y, proportional to the total precision.
+
+\hypertarget{posterior-predictive-distribution}{%
+\subsection*{Posterior predictive distribution}\label{posterior-predictive-distribution}}
+\addcontentsline{toc}{subsection}{Posterior predictive distribution}
+
+the posterior predictive distribution of a future observation, x, p(x\textbar y) can be calculated
+
+\[
+\begin{aligned}
+p(x|y) &= \int p(x|\theta)p(\theta|y) d\theta
+&\propto \int exp(-1/2\sigma^2 (x-\theta)^2) exp(-1/2\tau_1^2 (\theta-\mu_1)^2) d\theta
+\end{aligned}
+\]
+the future observations, x, does not depend on the past observations y given \(\theta\).
+
+\hypertarget{normal-model-with-multiple-observations}{%
+\subsection*{Normal model with multiple observations}\label{normal-model-with-multiple-observations}}
+\addcontentsline{toc}{subsection}{Normal model with multiple observations}
+
+For multiple observations, y, the posterior density is formulated as:
+
+\[
+\begin{aligned}
+ p(\theta | y ) &\propto p(\theta)p(y|\theta) \\
+   &=p(\theta)\prod_i p(y_i | \theta)\\
+   &\propto exp(-1/2\tau_0^2 (\theta-\mu_0)^2)\prod_i exp(-1/2\sigma^2 (y_i -\theta)^2)\\
+   &\propto exp(-1/2 (1/\tau_0^2(\theta-\mu_0)^2+ 1/\sigma^2\sum_i(y_i-\theta)^2) )\\
+ \end{aligned}
+\]
+Simplfying the algebra shows the posterior depends on y only through the sample mean (sufficient statistic), \(\bar{y}\) is the sufficient statistic for \(\theta\), and the final model is \(\bar{y} | \theta,\sigma^2 \sim N(\theta, \sigma^2/n)\)
+
+\hypertarget{other-standard-single-parameter-models}{%
+\section{Other standard single-parameter models}\label{other-standard-single-parameter-models}}
+
 \hypertarget{exercises-1}{%
 \section{Exercises}\label{exercises-1}}
 
@@ -954,7 +1023,7 @@ prior Beta(4,4), where a coin is tossed 10 times and heads appears fewer than 3 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/q1-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-11-1.pdf}
 
 \hypertarget{normal-approximation-example}{%
 \subsection*{Normal approximation example}\label{normal-approximation-example}}
@@ -977,23 +1046,16 @@ For female births we have beta(438,544) we use the normal approximation. This re
    
 \NormalTok{  logitTheta}\OtherTok{\textless{}{-}}\FunctionTok{log}\NormalTok{(theta}\SpecialCharTok{/}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{theta))}
 
-  
+  \FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow=}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{))}
     \FunctionTok{plot}\NormalTok{(theta,}\FunctionTok{dbeta}\NormalTok{(theta,}\DecValTok{438}\NormalTok{,}\DecValTok{544}\NormalTok{),}\AttributeTok{type=}\StringTok{\textquotesingle{}l\textquotesingle{}}\NormalTok{,}\AttributeTok{xlim=}\FunctionTok{c}\NormalTok{(}\FloatTok{0.35}\NormalTok{,}\FloatTok{0.55}\NormalTok{),}\AttributeTok{main=}\StringTok{"posterior beta"}\NormalTok{) }\DocumentationTok{\#\# prior}
     \FunctionTok{abline}\NormalTok{(}\AttributeTok{v=}\FloatTok{0.446}\NormalTok{,}\AttributeTok{col=}\StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{_main_files/figure-latex/unnamed-chunk-10-1.pdf}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \NormalTok{  draws}\OtherTok{\textless{}{-}}\FunctionTok{rbeta}\NormalTok{(}\DecValTok{1000}\NormalTok{,}\DecValTok{438}\NormalTok{,}\DecValTok{544}\NormalTok{)}
   \FunctionTok{plot}\NormalTok{(logitTheta,}\FunctionTok{dnorm}\NormalTok{(logitTheta,}\AttributeTok{mean =}\NormalTok{logitMean, }\AttributeTok{sd=}\FunctionTok{sd}\NormalTok{(}\FunctionTok{log}\NormalTok{(draws}\SpecialCharTok{/}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{draws))) ),}\AttributeTok{type=}\StringTok{\textquotesingle{}l\textquotesingle{}}\NormalTok{, }\AttributeTok{xlim=}\FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\FloatTok{0.5}\NormalTok{,}\FloatTok{0.1}\NormalTok{),}\AttributeTok{main=}\StringTok{"Normal approx."}\NormalTok{) }\DocumentationTok{\#\# prior}
     \FunctionTok{abline}\NormalTok{(}\AttributeTok{v=}\SpecialCharTok{{-}}\FloatTok{0.22}\NormalTok{,}\AttributeTok{col=}\StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-10-2.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-12-1.pdf}
 
 \hypertarget{question-3}{%
 \subsection*{Question 3}\label{question-3}}
@@ -1014,28 +1076,24 @@ We find the probability distribution of a given success and the prior probabilit
   \DocumentationTok{\#\# n = 1,000}
   \DocumentationTok{\#\# first lets construct a beta distribution.}
   \DocumentationTok{\#\# let the prior be beta(4,4) or even beta(1,1)}
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow=}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{))}
+
    \FunctionTok{plot}\NormalTok{(theta,}\FunctionTok{dbeta}\NormalTok{(theta,}\DecValTok{167}\NormalTok{,}\DecValTok{833}\NormalTok{),}\AttributeTok{type=}\StringTok{\textquotesingle{}l\textquotesingle{}}\NormalTok{,}\AttributeTok{xlim=}\FunctionTok{c}\NormalTok{(}\FloatTok{0.1}\NormalTok{,}\FloatTok{0.5}\NormalTok{),}\AttributeTok{main=}\StringTok{"prior beta"}\NormalTok{) }\DocumentationTok{\#\# prior}
   \CommentTok{\# plot(theta,dbeta(theta,1,5),type=\textquotesingle{}l\textquotesingle{},xlim=c(0.1,0.5), main=\textquotesingle{}prior beta\textquotesingle{}) }
    \FunctionTok{abline}\NormalTok{(}\AttributeTok{v=}\FloatTok{0.167}\NormalTok{,}\AttributeTok{col=}\StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{) }\DocumentationTok{\#\# }
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{_main_files/figure-latex/unnamed-chunk-11-1.pdf}
-
-\begin{Shaded}
-\begin{Highlighting}[]
    \CommentTok{\#  qbeta(c(0.05,0.25,0.5,0.75,0.95),167,833)}
     \DocumentationTok{\#\# predictive on normal scale.}
 \NormalTok{     draws}\OtherTok{\textless{}{-}}\FunctionTok{rbeta}\NormalTok{(}\DecValTok{1000}\NormalTok{,}\DecValTok{167}\NormalTok{,}\DecValTok{833}\NormalTok{)}
 \NormalTok{     logitMean}\OtherTok{\textless{}{-}}\FunctionTok{log}\NormalTok{( }\DecValTok{167}\SpecialCharTok{/}\DecValTok{1000}\NormalTok{)}
 \NormalTok{  sdd}\OtherTok{\textless{}{-}}\FunctionTok{sd}\NormalTok{(}\FunctionTok{log}\NormalTok{(draws}\SpecialCharTok{/}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{draws)))}
 
+   
   \FunctionTok{plot}\NormalTok{(logitTheta,}\FunctionTok{dnorm}\NormalTok{(logitTheta,}\AttributeTok{mean =}\NormalTok{logitMean, }\AttributeTok{sd=}\NormalTok{sdd ),}\AttributeTok{type=}\StringTok{\textquotesingle{}l\textquotesingle{}}\NormalTok{,}\AttributeTok{main=}\StringTok{"Normal approx.of a total heads"}\NormalTok{, }\AttributeTok{xlim=}\FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{2}\NormalTok{,}\SpecialCharTok{{-}}\FloatTok{1.4}\NormalTok{)) }\DocumentationTok{\#\# prior}
     \FunctionTok{abline}\NormalTok{(}\AttributeTok{v=}\NormalTok{logitMean,}\AttributeTok{col=}\StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-11-2.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-13-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1057,7 +1115,7 @@ We find the probability distribution of a given success and the prior probabilit
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.1266791 0.1361628 0.1431020 0.1503332 0.1612608
+## [1] 0.1267482 0.1361930 0.1431020 0.1503005 0.1611764
 \end{verbatim}
 
 \begin{Shaded}
@@ -1068,7 +1126,7 @@ We find the probability distribution of a given success and the prior probabilit
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.1237228 0.1649452
+## [1] 0.1238035 0.1648427
 \end{verbatim}
 
 \hypertarget{question-4}{%
@@ -1105,14 +1163,11 @@ We have a mixture of 3 normal distributions, and show the central intervals for 
 
 \begin{Shaded}
 \begin{Highlighting}[]
+ \FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow=}\FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{))}
 \FunctionTok{plot}\NormalTok{(x,mypri,}\AttributeTok{type=}\StringTok{\textquotesingle{}l\textquotesingle{}}\NormalTok{,}\AttributeTok{main=}\StringTok{\textquotesingle{}predictive prior number of heads\textquotesingle{}}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-12-1.pdf}
 
-\begin{Shaded}
-\begin{Highlighting}[]
+
 \NormalTok{data}\OtherTok{\textless{}{-}}\FunctionTok{data.frame}\NormalTok{(}\AttributeTok{x=}\NormalTok{x,}\AttributeTok{p=}\NormalTok{mypri)}
 
 \DocumentationTok{\#\# highest probability interval}
@@ -1122,46 +1177,22 @@ We have a mixture of 3 normal distributions, and show the central intervals for 
 \FunctionTok{abline}\NormalTok{(}\AttributeTok{v=}\FunctionTok{max}\NormalTok{(data[}\FunctionTok{which}\NormalTok{(}\FunctionTok{cumsum}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{p)}\SpecialCharTok{\textless{}}\FloatTok{0.025}\NormalTok{),}\DecValTok{1}\NormalTok{])}
 \NormalTok{)}
 \FunctionTok{abline}\NormalTok{(}\AttributeTok{v=}\FunctionTok{max}\NormalTok{(data[}\FunctionTok{which}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\FunctionTok{cumsum}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{p)}\SpecialCharTok{\textgreater{}}\FloatTok{0.025}\NormalTok{),}\DecValTok{1}\NormalTok{]))}
-\end{Highlighting}
-\end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-12-2.pdf}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \FunctionTok{plot}\NormalTok{(x,mypri,}\AttributeTok{type=}\StringTok{\textquotesingle{}l\textquotesingle{}}\NormalTok{,}\AttributeTok{main=}\StringTok{\textquotesingle{}75\% predictive prior number of heads\textquotesingle{}}\NormalTok{)}
 \FunctionTok{abline}\NormalTok{(}\AttributeTok{v=}\FunctionTok{max}\NormalTok{(data[}\FunctionTok{which}\NormalTok{(}\FunctionTok{cumsum}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{p)}\SpecialCharTok{\textless{}}\FloatTok{0.125}\NormalTok{),}\DecValTok{1}\NormalTok{]))}
 \FunctionTok{abline}\NormalTok{(}\AttributeTok{v=}\FunctionTok{max}\NormalTok{(data[}\FunctionTok{which}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\FunctionTok{cumsum}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{p)}\SpecialCharTok{\textgreater{}}\FloatTok{0.125}\NormalTok{),}\DecValTok{1}\NormalTok{])}
 \NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-12-3.pdf}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \FunctionTok{plot}\NormalTok{(x,mypri,}\AttributeTok{type=}\StringTok{\textquotesingle{}l\textquotesingle{}}\NormalTok{,}\AttributeTok{main=}\StringTok{\textquotesingle{}50\% predictive prior number of heads\textquotesingle{}}\NormalTok{)}
 \FunctionTok{abline}\NormalTok{(}\AttributeTok{v=}\FunctionTok{max}\NormalTok{(data[}\FunctionTok{which}\NormalTok{(}\FunctionTok{cumsum}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{p)}\SpecialCharTok{\textless{}}\FloatTok{0.25}\NormalTok{),}\DecValTok{1}\NormalTok{]))}
 \FunctionTok{abline}\NormalTok{(}\AttributeTok{v=}\FunctionTok{max}\NormalTok{(data[}\FunctionTok{which}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\FunctionTok{cumsum}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{p)}\SpecialCharTok{\textgreater{}}\FloatTok{0.25}\NormalTok{),}\DecValTok{1}\NormalTok{])}
 \NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-12-4.pdf}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \FunctionTok{plot}\NormalTok{(x,mypri,}\AttributeTok{type=}\StringTok{\textquotesingle{}l\textquotesingle{}}\NormalTok{,}\AttributeTok{main=}\StringTok{\textquotesingle{}25\% predictive prior number of heads\textquotesingle{}}\NormalTok{)}
 \FunctionTok{abline}\NormalTok{(}\AttributeTok{v=}\FunctionTok{max}\NormalTok{(data[}\FunctionTok{which}\NormalTok{(}\FunctionTok{cumsum}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{p)}\SpecialCharTok{\textless{}}\FloatTok{0.375}\NormalTok{),}\DecValTok{1}\NormalTok{]))}
 \FunctionTok{abline}\NormalTok{(}\AttributeTok{v=}\FunctionTok{max}\NormalTok{(data[}\FunctionTok{which}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\FunctionTok{cumsum}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{p)}\SpecialCharTok{\textgreater{}}\FloatTok{0.375}\NormalTok{),}\DecValTok{1}\NormalTok{])}
 \NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-12-5.pdf}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \FunctionTok{plot}\NormalTok{(x,mypri,}\AttributeTok{type=}\StringTok{\textquotesingle{}l\textquotesingle{}}\NormalTok{,}\AttributeTok{main=}\StringTok{\textquotesingle{}5\% predictive prior number of heads\textquotesingle{}}\NormalTok{)}
 \FunctionTok{abline}\NormalTok{(}\AttributeTok{v=}\FunctionTok{max}\NormalTok{(data[}\FunctionTok{which}\NormalTok{(}\FunctionTok{cumsum}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{p)}\SpecialCharTok{\textless{}}\FloatTok{0.475}\NormalTok{),}\DecValTok{1}\NormalTok{]))}
 \FunctionTok{abline}\NormalTok{(}\AttributeTok{v=}\FunctionTok{max}\NormalTok{(data[}\FunctionTok{which}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\FunctionTok{cumsum}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{p)}\SpecialCharTok{\textgreater{}}\FloatTok{0.475}\NormalTok{),}\DecValTok{1}\NormalTok{])}
@@ -1169,7 +1200,107 @@ We have a mixture of 3 normal distributions, and show the central intervals for 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-12-6.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-14-1.pdf}
+
+\hypertarget{question-8-normal-distribution-with-unknown-mean}{%
+\subsection*{Question 8 (Normal distribution with unknown mean)}\label{question-8-normal-distribution-with-unknown-mean}}
+\addcontentsline{toc}{subsection}{Question 8 (Normal distribution with unknown mean)}
+
+A random sample of n students is drawn from a large population, and weights are measured. The average height of the n sampled students is \(\bar{y}= 150\) lbs. Assume the weights in the population are normally distribution with unknown mean, \(\theta\), and known standard deviation 20 lbs. Suppose the prior for \(\theta \sim N(180, 40^2)\)
+
+For known variance, the limit of the posterior is \(p(\theta,y)\approx N(\theta| \bar{y}, \sigma^2/n)\). And the direct formulation is \(p(\theta | \bar{y})= N(\theta | \mu_n,\tau_n^2).\) using equations 2.12.
+
+For a posterior predictive interval, the marginal distribution for new data \(p(\tilde{y} | y) \sim N(\mu_n, \sigma^2+\tau_n^2)\)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mu\_n}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(mu0,ybar,n,tau02,sigma2)\{}
+\NormalTok{  mun}\OtherTok{\textless{}{-}}\NormalTok{ (mu0}\SpecialCharTok{/}\NormalTok{tau02 }\SpecialCharTok{+}\NormalTok{ (ybar}\SpecialCharTok{*}\NormalTok{n)}\SpecialCharTok{/}\NormalTok{sigma2)}\SpecialCharTok{/}\NormalTok{(}\DecValTok{1}\SpecialCharTok{/}\NormalTok{tau02 }\SpecialCharTok{+}\NormalTok{ n}\SpecialCharTok{/}\NormalTok{sigma2)}
+  \FunctionTok{return}\NormalTok{(mun)}
+\NormalTok{\}}
+\NormalTok{taun2}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(tau02,n,sigma2)\{}
+\NormalTok{  inv.taun2}\OtherTok{\textless{}{-}} \DecValTok{1}\SpecialCharTok{/}\NormalTok{tau02 }\SpecialCharTok{+}\NormalTok{n}\SpecialCharTok{/}\NormalTok{sigma2}
+  \FunctionTok{return}\NormalTok{(}\DecValTok{1}\SpecialCharTok{/}\NormalTok{inv.taun2)}
+\NormalTok{\}}
+
+\NormalTok{ybar}\OtherTok{=}\DecValTok{150}
+\NormalTok{sigma2}\OtherTok{=}\DecValTok{20}\SpecialCharTok{\^{}}\DecValTok{2}
+\NormalTok{mu0}\OtherTok{=}\DecValTok{180}
+\NormalTok{  tau02}\OtherTok{=}\DecValTok{40}\SpecialCharTok{\^{}}\DecValTok{2}
+\NormalTok{  n}\OtherTok{=}\DecValTok{10}
+
+\DocumentationTok{\#\# posterior interval n=10}
+  \CommentTok{\#lower\textless{}{-}round(qnorm(0.025,mu\_n(mu0,ybar,tau02,10,sigma2),sd=sqrt(taun2(tau02,10,sigma2))),2)}
+\NormalTok{    upper}\OtherTok{\textless{}{-}}\FunctionTok{round}\NormalTok{(}\FunctionTok{qnorm}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\FloatTok{0.025}\NormalTok{,}\FloatTok{0.975}\NormalTok{),}\FunctionTok{mu\_n}\NormalTok{(mu0,ybar,tau02,}\DecValTok{10}\NormalTok{,sigma2),}\AttributeTok{sd=}\FunctionTok{sqrt}\NormalTok{(}\FunctionTok{taun2}\NormalTok{(tau02,}\DecValTok{10}\NormalTok{,sigma2))),}\DecValTok{2}\NormalTok{)}
+
+\FunctionTok{message}\NormalTok{(}\StringTok{"posterior interval n=10: "}\NormalTok{,upper[}\DecValTok{1}\NormalTok{],}\StringTok{" "}\NormalTok{,upper[}\DecValTok{2}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## posterior interval n=10: 138.49 162.98
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# posterior predictive interval}
+\NormalTok{  upper2}\OtherTok{\textless{}{-}}\FunctionTok{round}\NormalTok{(}\FunctionTok{qnorm}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\FloatTok{0.025}\NormalTok{,}\FloatTok{0.975}\NormalTok{),}\FunctionTok{mu\_n}\NormalTok{(mu0,ybar,tau02,}\DecValTok{10}\NormalTok{,sigma2),}\AttributeTok{sd=}\FunctionTok{sqrt}\NormalTok{(}\FunctionTok{taun2}\NormalTok{(tau02,}\DecValTok{10}\NormalTok{,sigma2)}\SpecialCharTok{+}\NormalTok{sigma2) ),}\DecValTok{2}\NormalTok{)}
+
+\FunctionTok{message}\NormalTok{(}\StringTok{"posterior predictive interval n=10: "}\NormalTok{,upper2[}\DecValTok{1}\NormalTok{],}\StringTok{" "}\NormalTok{,upper2[}\DecValTok{2}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## posterior predictive interval n=10: 109.66 191.8
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ lower}\OtherTok{\textless{}{-}}\FunctionTok{round}\NormalTok{(}\FunctionTok{qnorm}\NormalTok{(}\FloatTok{0.025}\NormalTok{,}\FunctionTok{mu\_n}\NormalTok{(mu0,ybar,tau02,}\DecValTok{100}\NormalTok{,sigma2),}\AttributeTok{sd=}\FunctionTok{sqrt}\NormalTok{(}\FunctionTok{taun2}\NormalTok{(tau02,}\DecValTok{100}\NormalTok{,sigma2))),}\DecValTok{2}\NormalTok{)}
+\NormalTok{    upper}\OtherTok{\textless{}{-}}\FunctionTok{round}\NormalTok{(}\FunctionTok{qnorm}\NormalTok{(}\FloatTok{0.975}\NormalTok{,}\FunctionTok{mu\_n}\NormalTok{(mu0,ybar,tau02,}\DecValTok{100}\NormalTok{,sigma2),}\AttributeTok{sd=}\FunctionTok{sqrt}\NormalTok{(}\FunctionTok{taun2}\NormalTok{(tau02,}\DecValTok{100}\NormalTok{,sigma2))),}\DecValTok{2}\NormalTok{)}
+
+\FunctionTok{message}\NormalTok{(}\StringTok{"posterior interval n=100: "}\NormalTok{,lower,}\StringTok{" "}\NormalTok{,upper)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## posterior interval n=100: 146.16 153.99
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+ \DocumentationTok{\#\# this approximately equals the limit}
+\FunctionTok{print}\NormalTok{(}\StringTok{"The asymptotic approximation"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "The asymptotic approximation"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+ \FunctionTok{qnorm}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\FloatTok{0.025}\NormalTok{,}\FloatTok{0.975}\NormalTok{),}\AttributeTok{mean=}\DecValTok{150}\NormalTok{, sigma2}\SpecialCharTok{/}\DecValTok{100}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 142.1601 157.8399
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# posterior predictive interval}
+\NormalTok{ lower2}\OtherTok{\textless{}{-}}\FunctionTok{round}\NormalTok{(}\FunctionTok{qnorm}\NormalTok{(}\FloatTok{0.025}\NormalTok{,}\FunctionTok{mu\_n}\NormalTok{(mu0,ybar,tau02,}\DecValTok{100}\NormalTok{,sigma2),}\AttributeTok{sd=}\FunctionTok{sqrt}\NormalTok{(}\FunctionTok{taun2}\NormalTok{(tau02,}\DecValTok{100}\NormalTok{,sigma2)}\SpecialCharTok{+}\NormalTok{sigma2) ),}\DecValTok{2}\NormalTok{)}
+\NormalTok{    upper2}\OtherTok{\textless{}{-}}\FunctionTok{round}\NormalTok{(}\FunctionTok{qnorm}\NormalTok{(}\FloatTok{0.975}\NormalTok{,}\FunctionTok{mu\_n}\NormalTok{(mu0,ybar,tau02,}\DecValTok{100}\NormalTok{,sigma2),}\AttributeTok{sd=}\FunctionTok{sqrt}\NormalTok{(}\FunctionTok{taun2}\NormalTok{(tau02,}\DecValTok{100}\NormalTok{,sigma2)}\SpecialCharTok{+}\NormalTok{sigma2) ),}\DecValTok{2}\NormalTok{)}
+
+\FunctionTok{message}\NormalTok{(}\StringTok{"posterior predictive interval n=100: "}\NormalTok{,lower2,}\StringTok{" "}\NormalTok{,upper2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## posterior predictive interval n=100: 110.68 189.47
+\end{verbatim}
 
 \hypertarget{parts}{%
 \chapter{Parts}\label{parts}}

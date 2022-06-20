@@ -1,11 +1,11 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.6.17)  20 JUN 2022 08:10
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.6.20)  20 JUN 2022 12:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **_main.tex
 (./_main.tex
-LaTeX2e <2022-06-01> pre-release-0 (develop 2022-6-17 branch)
-L3 programming layer <2022-06-02> (c:/texlive/2022/texmf-dist/tex/latex/base/bo
+LaTeX2e <2022-06-01> patch level 1
+L3 programming layer <2022-06-16> (c:/texlive/2022/texmf-dist/tex/latex/base/bo
 ok.cls
 Document Class: book 2021/10/04 v1.4n Standard LaTeX document class
 (c:/texlive/2022/texmf-dist/tex/latex/base/bk10.clo
@@ -133,7 +133,7 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 Package: iftex 2022/02/03 v1.0f TeX engine tests
 ) (c:/texlive/2022/texmf-dist/tex/latex/unicode-math/unicode-math.sty (c:/texli
 ve/2022/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2022-06-02 L3 programming layer (loader) 
+Package: expl3 2022-06-16 L3 programming layer (loader) 
 (c:/texlive/2022/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
 File: l3backend-xetex.def 2022-04-20 L3 backend support: XeTeX
 \g__graphics_track_int=\count268
@@ -147,9 +147,9 @@ Package: unicode-math 2020/01/31 v0.8q Unicode maths in XeLaTeX and LuaLaTeX
 Package: unicode-math-xetex 2020/01/31 v0.8q Unicode maths in XeLaTeX and LuaLa
 TeX
 (c:/texlive/2022/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
-Package: xparse 2022-06-07 L3 Experimental document command parser
+Package: xparse 2022-06-16 L3 Experimental document command parser
 ) (c:/texlive/2022/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
-Package: l3keys2e 2022-06-07 LaTeX2e option processing using LaTeX3 keys
+Package: l3keys2e 2022-06-16 LaTeX2e option processing using LaTeX3 keys
 ) (c:/texlive/2022/texmf-dist/tex/latex/fontspec/fontspec.sty
 Package: fontspec 2022/01/15 v2.8a Font selection for XeLaTeX and LuaLaTeX
 (c:/texlive/2022/texmf-dist/tex/latex/fontspec/fontspec-xetex.sty
@@ -217,7 +217,7 @@ File: microtype.cfg 2022/03/14 v3.0d microtype main configuration file (RS)
 )) (c:/texlive/2022/texmf-dist/tex/latex/parskip/parskip.sty
 Package: parskip 2021-03-14 v2.0h non-zero parskip adjustments
 (c:/texlive/2022/texmf-dist/tex/latex/kvoptions/kvoptions.sty
-Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 (c:/texlive/2022/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
 Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
 ) (c:/texlive/2022/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty
@@ -836,11 +836,11 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 (Font)              scaled to size 6.99925pt on input line 2.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 (Font)              scaled to size 4.99947pt on input line 2.
-)
+[3])
 \tf@toc=\write4
 \openout4 = `_main.toc'.
 
-[3] [4] [5
+[4] [5
 
 ] [6
 
@@ -918,18 +918,18 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 File: _main_files/figure-latex/unnamed-chunk-9-3.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-9-3.pdf>
 [19] [20]
-File: _main_files/figure-latex/simul-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/simul-1.pdf>
-File: _main_files/figure-latex/simul-2.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/simul-2.pdf>
+File: _main_files/figure-latex/unnamed-chunk-10-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-10-1.pdf>
+File: _main_files/figure-latex/unnamed-chunk-10-2.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-10-2.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [21]
-File: _main_files/figure-latex/simul-3.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/simul-3.pdf>
-File: _main_files/figure-latex/simul-4.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/simul-4.pdf>
+File: _main_files/figure-latex/unnamed-chunk-10-3.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-10-3.pdf>
+File: _main_files/figure-latex/unnamed-chunk-10-4.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-10-4.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -945,69 +945,32 @@ Package amsmath Warning: Foreign command \atopwithdelims;
 [25] [26]
 Missing character: There is no 𝜃 (U+1D703) in font [lmroman10-regular]:mapping=
 tex-text;!
-File: _main_files/figure-latex/q1-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/q1-1.pdf>
-[27]
-File: _main_files/figure-latex/unnamed-chunk-10-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-10-1.pdf>
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[28]
-File: _main_files/figure-latex/unnamed-chunk-10-2.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-10-2.pdf>
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[29]
+[27] [28]
 File: _main_files/figure-latex/unnamed-chunk-11-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-11-1.pdf>
-
-Underfull \vbox (badness 1552) has occurred while \output is active []
-
-[30]
-File: _main_files/figure-latex/unnamed-chunk-11-2.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-11-2.pdf>
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[31]
+[29]
 File: _main_files/figure-latex/unnamed-chunk-12-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-12-1.pdf>
+[30]
+File: _main_files/figure-latex/unnamed-chunk-13-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-13-1.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[32]
-File: _main_files/figure-latex/unnamed-chunk-12-2.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-12-2.pdf>
+[31] [32] [33]
+File: _main_files/figure-latex/unnamed-chunk-14-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-14-1.pdf>
+[34] [35] [36
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[33]
-File: _main_files/figure-latex/unnamed-chunk-12-3.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-12-3.pdf>
-[34]
-File: _main_files/figure-latex/unnamed-chunk-12-4.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-12-4.pdf>
-File: _main_files/figure-latex/unnamed-chunk-12-5.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-12-5.pdf>
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[35]
-File: _main_files/figure-latex/unnamed-chunk-12-6.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-12-6.pdf>
-[36]
+]
 Chapter 3.
 
-Underfull \hbox (badness 1924) in paragraph at lines 1181--1182
+Underfull \hbox (badness 1924) in paragraph at lines 1312--1313
 []\TU/lmr/m/n/10 Add an unnumbered part: \TU/lmtt/m/n/10 # (PART\*) Act one {-}
  \TU/lmr/m/n/10 (followed by \TU/lmtt/m/n/10 # A
  []
 
-[37
-
-] [38
+[37] [38
 
 ]
 Chapter 4.
@@ -1023,10 +986,10 @@ Chapter 6.
 
 ] (./_main.aux) ) 
 Here is how much of TeX's memory you used:
- 19647 strings out of 475885
- 364122 string characters out of 5806093
- 861613 words of memory out of 5000000
- 40373 multiletter control sequences out of 15000+600000
+ 19602 strings out of 475883
+ 362130 string characters out of 5806043
+ 862108 words of memory out of 5000000
+ 40337 multiletter control sequences out of 15000+600000
  475774 words of font info for 89 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  86i,15n,121p,1002b,489s stack positions out of 10000i,1000n,20000p,200000b,200000s

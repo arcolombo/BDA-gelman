@@ -191,12 +191,21 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#conjugate-prior-distributions"><i class="fa fa-check"></i>Conjugate prior distributions</a></li>
 <li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#conjugate-prior-distributions-exponential-families-and-sufficient-statistics"><i class="fa fa-check"></i>Conjugate prior, distributions, exponential families, and sufficient statistics</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="cross.html"><a href="cross.html#exercises-1"><i class="fa fa-check"></i><b>2.5</b> Exercises</a>
+<li class="chapter" data-level="2.5" data-path="cross.html"><a href="cross.html#normal-distribution-with-known-variance"><i class="fa fa-check"></i><b>2.5</b> Normal distribution with known variance</a>
+<ul>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#likelihood-of-one-data-point"><i class="fa fa-check"></i>Likelihood of one data point</a></li>
+<li class="chapter" data-level="2.5.1" data-path="cross.html"><a href="cross.html#conjugate-prior-and-posterior-distributions"><i class="fa fa-check"></i><b>2.5.1</b> Conjugate prior and posterior distributions</a></li>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#posterior-predictive-distribution"><i class="fa fa-check"></i>Posterior predictive distribution</a></li>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#normal-model-with-multiple-observations"><i class="fa fa-check"></i>Normal model with multiple observations</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="cross.html"><a href="cross.html#other-standard-single-parameter-models"><i class="fa fa-check"></i><b>2.6</b> Other standard single-parameter models</a></li>
+<li class="chapter" data-level="2.7" data-path="cross.html"><a href="cross.html#exercises-1"><i class="fa fa-check"></i><b>2.7</b> Exercises</a>
 <ul>
 <li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#question-1"><i class="fa fa-check"></i>Question 1</a></li>
 <li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#normal-approximation-example"><i class="fa fa-check"></i>Normal approximation example</a></li>
 <li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#question-3"><i class="fa fa-check"></i>Question 3</a></li>
 <li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#question-4"><i class="fa fa-check"></i>Question 4</a></li>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#question-8-normal-distribution-with-unknown-mean"><i class="fa fa-check"></i>Question 8 (Normal distribution with unknown mean)</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="parts.html"><a href="parts.html"><i class="fa fa-check"></i><b>3</b> Parts</a></li>
@@ -264,7 +273,7 @@ div.csl-indent {
 </div>
 <div id="bayesian-inference" class="section level2 hasAnchor" number="1.2">
 <h2><span class="header-section-number">1.2</span> Bayesian inference<a href="fundamentals-of-bayesian-inference.html#bayesian-inference" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The prior, p(<span class="math inline">\(\theta\)</span>), and the sampling distribution, or the <em>data distribution</em>, <span class="math inline">\(p(y|\theta)\)</span> is</p>
+<p>The prior, p(<span class="math inline">\(\theta\)</span>), and the sampling distribution, or the <em>data distribution</em>, <span class="math inline">\(p(y|\theta)\)</span> is related to the joint distribution by</p>
 <p><span class="math display">\[ p(\theta,y) = p(\theta)p(y | \theta)\]</span></p>
 <p>Where using Bayes’ rule the posterior distribution
 <span class="math display" id="eq:bayes">\[\begin{equation}
@@ -280,7 +289,7 @@ p(\theta | y ) \propto p(\theta)p(y | \theta)
 </div>
 <div id="prediction" class="section level2 unnumbered hasAnchor">
 <h2>Prediction<a href="fundamentals-of-bayesian-inference.html#prediction" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Inferences about an unknown <em>observable</em> variable, are called predictive inferences. Beofre the data y are considered, the distribution of the unknown, observable, y is <span class="math display">\[ p(y) = \int p(y,\theta)d\theta = \int p(\theta)p(y | \theta)d\theta\]</span></p>
+<p>Inferences about an unknown <em>observable</em> variable, are called predictive inferences. Before the data y are considered, the distribution of the unknown, observable, y is <span class="math display">\[ p(y) = \int p(y,\theta)d\theta = \int p(\theta)p(y | \theta)d\theta\]</span></p>
 <p>this is defined as the marginal distribution of y, and also called <em>prior predictive distribution</em>. Prior refers that the data is not conditional on any previous observation, and predictive refers to the data being observable.</p>
 <p>The <em>posterior predictive distribution</em> is conditional on the observed y, but is predictive because it is predicting observable values.</p>
 <p><span class="math display" id="eq:postpred">\[\begin{equation}
@@ -595,9 +604,9 @@ The question asks to compute at least one election tie, from a total of 435 elec
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="fundamentals-of-bayesian-inference.html#cb24-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hist</span>(pl<span class="sc">$</span>doctorWaitTime[<span class="fu">which</span>(pl<span class="sc">$</span>doctorWaitTime<span class="sc">!=</span><span class="dv">0</span>)]) <span class="do">## about 2.41</span></span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-9-3.png" width="672" /></p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="fundamentals-of-bayesian-inference.html#cb25-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">max</span>(pl<span class="sc">$</span>completionTime)<span class="sc">-</span><span class="dv">420</span>) <span class="do">## closing time</span></span></code></pre></div>
-<pre><code>## [1] -8.708411</code></pre>
+<pre><code>## [1] 8.20426</code></pre>
 <div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="fundamentals-of-bayesian-inference.html#cb27-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">max</span>(pl<span class="sc">$</span>patient)) <span class="do">## total patient  should be 42</span></span></code></pre></div>
-<pre><code>## [1] 38</code></pre>
+<pre><code>## [1] 39</code></pre>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="fundamentals-of-bayesian-inference.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="do">## (20-5)/6 + 10 this is about 12.5 minutes of arrival + visit time. which is approximately close to 10 </span></span>
 <span id="cb29-2"><a href="fundamentals-of-bayesian-inference.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="do">## the arrival time is about 10 minutes.  </span></span>
 <span id="cb29-3"><a href="fundamentals-of-bayesian-inference.html#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -654,13 +663,13 @@ The question asks to compute at least one election tie, from a total of 435 elec
 <span id="cb30-42"><a href="fundamentals-of-bayesian-inference.html#cb30-42" aria-hidden="true" tabindex="-1"></a> </span>
 <span id="cb30-43"><a href="fundamentals-of-bayesian-inference.html#cb30-43" aria-hidden="true" tabindex="-1"></a> <span class="fu">hist</span>(totalPat,<span class="at">main=</span><span class="st">&quot;total patients&quot;</span>)</span>
 <span id="cb30-44"><a href="fundamentals-of-bayesian-inference.html#cb30-44" aria-hidden="true" tabindex="-1"></a> <span class="fu">abline</span>(<span class="at">v=</span><span class="dv">420</span><span class="sc">/</span><span class="dv">10</span>,<span class="at">col=</span><span class="st">&#39;red&#39;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/simul-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="fundamentals-of-bayesian-inference.html#cb31-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">hist</span>(totalWaiting,<span class="at">main=</span><span class="st">&quot;total number waiting&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/simul-2.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-10-2.png" width="672" /></p>
 <div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="fundamentals-of-bayesian-inference.html#cb32-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">hist</span>(avgWaiting,<span class="at">main=</span><span class="st">&quot;avg. waiting (min)&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/simul-3.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-10-3.png" width="672" /></p>
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="fundamentals-of-bayesian-inference.html#cb33-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">hist</span>(closing<span class="dv">-420</span>,<span class="at">main=</span><span class="st">&quot;closing time&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/simul-4.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-10-4.png" width="672" /></p>
 
 </div>
 </div>

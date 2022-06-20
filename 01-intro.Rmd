@@ -381,7 +381,7 @@ total number of patients was approximately 42, which we expect since the total 4
  
  
 
-```{r,simul,eval=T}
+```{r,eval=T}
 
  totalPat<-NULL
  totalWaiting<-NULL
