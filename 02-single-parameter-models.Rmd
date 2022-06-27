@@ -396,9 +396,9 @@ we use the sampled thetas from the posterior to sample from the Cauchy distribut
 ### Question 13{-}
 - (a) Use the normal approximation to gamma and poisson to determine a posterior for fatal accidents using table 2.2.  Compute the 95$\%$ predictive interval.
 
-We set the prior alpha =200 and beta =10 because the effective sample size ($\beta$) is 10 years, and the prior mean is approximately 20 which is reasonably close to the table 2.2 values, although a sensitivity analysis is recommended.
+We set the prior alpha =25 and beta =1 because the effective sample size ($\beta$) is mean is approximately 25, and given these the quantiles of the prior distribution is 16.2 and 35.7 which contains the observed data well. and the prior mean is approximately 25 which is reasonably close to the table 2.2 values, although a sensitivity analysis is recommended.
 
-We use the conjugate prior for Gamma to find the posterior distribution, which closely is approximated by the normal distribution.  The posterior distributions are similar.   The normal approximation prior followed $N(\alpha/\beta, \sqrt{\alpha}/\beta)$.  we set the variance to be known $\sigma^2=100$.   Using the gamma conjugate prior the predictive interval is $95\% $ (13,32).
+We use the conjugate prior for Gamma to find the posterior distribution, which closely is approximated by the normal distribution.  The posterior distributions are similar.   The normal approximation prior followed $N(\alpha/\beta, \sqrt{\alpha}/\beta)$.  we set the variance to be known $\sigma^2=100$.   Using the gamma conjugate prior the predictive interval is $95\% $ (21.1,26.9).
 
 ```{r}
 # data entry
@@ -419,10 +419,11 @@ We use the conjugate prior for Gamma to find the posterior distribution, which c
     ## Pois(a) ~ N(a,sd= sqrt(a))
  
  ## gamma prior of total count a-1,  in b observations 
- ## the mean rate of deaths is 0.126
- ## we approximate a prior to have an average of 20 deaths across the decade.
-   alpha= 200
-   beta<- 10
+ ## 
+ ## we approximate a prior to have an average of 25 deaths across the decade.  the empirical mean is 23.8 ~ 24
+ #  the beta parameter is set rate is set such that gamma(25,1) has quantiles  16.2, 35.7 which matches well the observed data.
+   alpha= 25
+   beta<- 1
    ## the mean rate given the data is 0.126, so we find the beta parameter to match the mean rate.
    n<-nrow(data)
 
@@ -493,7 +494,7 @@ mean(post.draws) ### posterior mean is arout 21.92
 ```
 
 
-Using the normal approximation, the variance of the predictive posterior is $\sigma^2+\tau^2$ and is a larger interval (0.87, 40.4).   sampling values from the predictive posterior is much larger interval, but the predictive posterior mean is $\mu_n \approx 21$.  The Gamma conjugate prior has a smaller predictive interval but similar posterior.
+Using the normal approximation, the variance of the predictive posterior is $\sigma^2+\tau^2$ and is a larger interval (3.9, 44.5).   sampling values from the predictive posterior is much larger interval, but the predictive posterior mean is $\mu_n \approx 24$.  The Gamma conjugate prior has a smaller predictive interval but similar posterior.
 ```{r}
  
   ## Predictive with normal
@@ -522,4 +523,32 @@ Using the normal approximation, the variance of the predictive posterior is $\si
  
  
  
+```
+
+- (b) Assume fatal accidents follow a Poisson distribution with a constant rate and an exposure in each year proportional to the number of passanger miles flown.  Set a prior and determine a posterior and predictive distribution.  estimate the number of passanger miles flown in each year by dividing
+
+```{r}
+miles<-death/rate ## 100 million miles
+
+## y ~ Pois( miles*theta)
+  ##posterior
+theta=seq(from=0,to=50,by=.01)
+  alpha= 200
+   beta<- 10
+   ## the mean rate given the data is 0.126, so we find the beta parameter to match the mean rate.
+   n<-nrow(data)
+   
+     
+  
+ plot(theta,dgamma(theta,alpha,rate=beta),lty=2)
+lines(theta,dgamma(theta,alpha+sum(fatal),rate=beta+sum(miles)))
+ ## credible interval of the posterior
+ pois_credible<-qgamma(c(.025,0.975),alpha+n*mean(fatal),rate=beta+n)
+ message("posterior gamma interval n=10: ",pois_credible[1]," ",pois_credible[2]) ## 
+
+ post_pois<-dgamma(theta,alpha+n*mean(fatal),rate=beta+n)
+  ## posterior mean is 21.9
+ sum(theta*post_pois/sum(post_pois))
+ 
+
 ```
