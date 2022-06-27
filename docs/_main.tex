@@ -117,7 +117,7 @@
 
 \title{Bayesian Data Analysis}
 \author{Anthony R. Colombo, Dr.~Paul Marjoram}
-\date{2022-06-20}
+\date{2022-06-26}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -715,7 +715,7 @@ Then the probability that at least 1 election is tied, from 435 total elections 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 12.1931
+## [1] 10.1471
 \end{verbatim}
 
 \begin{Shaded}
@@ -725,7 +725,7 @@ Then the probability that at least 1 election is tied, from 435 total elections 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 46
+## [1] 48
 \end{verbatim}
 
 \begin{Shaded}
@@ -1115,7 +1115,7 @@ We find the probability distribution of a given success and the prior probabilit
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.1267482 0.1361930 0.1431020 0.1503005 0.1611764
+## [1] 0.1267783 0.1362061 0.1431020 0.1502862 0.1611396
 \end{verbatim}
 
 \begin{Shaded}
@@ -1126,7 +1126,7 @@ We find the probability distribution of a given success and the prior probabilit
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.1238035 0.1648427
+## [1] 0.1238386 0.1647981
 \end{verbatim}
 
 \hypertarget{question-4}{%
@@ -1300,6 +1300,118 @@ For a posterior predictive interval, the marginal distribution for new data \(p(
 
 \begin{verbatim}
 ## posterior predictive interval n=100: 110.68 189.47
+\end{verbatim}
+
+\hypertarget{question-10}{%
+\subsection*{Question 10}\label{question-10}}
+\addcontentsline{toc}{subsection}{Question 10}
+
+suppose y1,\ldots,y5 are iid Cauchy(\(\theta,1\)) r.vs. and the prior distribution for\(\theta \sim U[0,100]\). the given observations are y=43,44,45,46.5,47.5.
+
+\begin{itemize}
+\item
+  \begin{enumerate}
+  \def\labelenumi{(\alph{enumi})}
+  \tightlist
+  \item
+    compute the unnormalized posterior density on a grid of points \(\theta=0 1/m, 2/m, ... 100\). using the grid approximation, compute and plot the posterior density as a function of \(\theta\)
+  \end{enumerate}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ y}\OtherTok{=} \FunctionTok{c}\NormalTok{(}\DecValTok{43}\NormalTok{,}\DecValTok{44}\NormalTok{,}\DecValTok{45}\NormalTok{,}\FloatTok{46.5}\NormalTok{,}\FloatTok{47.5}\NormalTok{)}
+\NormalTok{ m}\OtherTok{=}\DecValTok{1000}
+\NormalTok{theta}\OtherTok{\textless{}{-}}\FunctionTok{seq}\NormalTok{(}\AttributeTok{from=}\DecValTok{0}\NormalTok{,}\AttributeTok{to=}\DecValTok{100000}\NormalTok{)}\SpecialCharTok{/}\NormalTok{m}
+ \DocumentationTok{\#\# p(theta | y) \textasciitilde{} p(y|theta)*p(theta)}
+\NormalTok{ unnorm.post}\OtherTok{\textless{}{-}}\FunctionTok{dcauchy}\NormalTok{(y,}\AttributeTok{location=}\NormalTok{theta,}\AttributeTok{scale=}\DecValTok{1}\NormalTok{)}\SpecialCharTok{*}\FunctionTok{dunif}\NormalTok{(theta,}\AttributeTok{min=}\DecValTok{0}\NormalTok{,}\AttributeTok{max=}\DecValTok{100}\NormalTok{) }\DocumentationTok{\#\# un norm post}
+ 
+\NormalTok{ post}\OtherTok{\textless{}{-}}\NormalTok{unnorm.post}\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(unnorm.post)}
+ \FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow=}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{))}
+ \FunctionTok{plot}\NormalTok{(theta,post,}\AttributeTok{type=}\StringTok{\textquotesingle{}l\textquotesingle{}}\NormalTok{,}\AttributeTok{main=}\StringTok{\textquotesingle{}Normalized posterior\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-16-1.pdf}
+
+\begin{itemize}
+\item
+  \begin{enumerate}
+  \def\labelenumi{(\alph{enumi})}
+  \setcounter{enumi}{1}
+  \tightlist
+  \item
+    Sample 1000 draws from theta from posterior density and plot histogram
+    we sample from theta {[}0,100{]} using the grid approximation, and the probability is from the posterior distribution.
+  \end{enumerate}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{  samps}\OtherTok{\textless{}{-}}\NormalTok{(}\FunctionTok{sample}\NormalTok{(theta,}\DecValTok{1000}\NormalTok{,}\AttributeTok{prob=}\NormalTok{post,}\AttributeTok{replace=}\NormalTok{T))}
+  \FunctionTok{hist}\NormalTok{(samps,}\AttributeTok{main=}\FunctionTok{mean}\NormalTok{(samps))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-17-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \DocumentationTok{\#\#sample mean is close to the mean of the observed.}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\item
+  \begin{enumerate}
+  \def\labelenumi{(\alph{enumi})}
+  \setcounter{enumi}{2}
+  \tightlist
+  \item
+    Using the previous 1000 samples of \(\theta\) to obtain 1000 samples from the predictive distribution of a future observation \(y_6\), and plot the predictive draws.
+    we use the sampled thetas from the posterior to sample from the Cauchy distribution. The predictive probability follows \(p(x|y) =\int p(x|\theta)p(\theta|y)d\theta\) where \(p(x|\theta)\) follows from the Cauchy distribution, and we have the posterior values for each theta (given the uniform grid of thetas). then for each predictive value, we sum the total probability across all thetas to compute the predictive probability. The maximum predictive value probability 44.745 with probability of 0.10.
+  \end{enumerate}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# predictive distribution ? ?? }
+ \CommentTok{\# p(x | y) = int p(x|theta)*p(theta|y ) dtheta}
+\DocumentationTok{\#\# the posterior is p(theta|y) }
+ \CommentTok{\# the likelihood p(x|theta)  \#\# we use the sampled thetas using the posterior}
+\NormalTok{ ytilde}\OtherTok{\textless{}{-}}\FunctionTok{rcauchy}\NormalTok{(}\DecValTok{1000}\NormalTok{,}\AttributeTok{location=}\NormalTok{samps,}\AttributeTok{scale=}\DecValTok{1}\NormalTok{) }
+ \DocumentationTok{\#\# probability of the samples }
+ \CommentTok{\#prob\_samp\textless{}{-}post[match(samps,theta)]}
+  \FunctionTok{summary}\NormalTok{(ytilde) }\DocumentationTok{\#\# we have a wide distribution of predictive values.}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+## -834.59   42.87   45.28   46.31   48.02 1456.07
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# for all predictive values,  find the total probability  }
+   \DocumentationTok{\#\# int p(x|theta)*p(theta|y) d\textbackslash{}theta  note that p(x|theta) is a function of theta, so we input hte theta grid.}
+\NormalTok{ pred.prob}\OtherTok{\textless{}{-}}\FunctionTok{sapply}\NormalTok{(ytilde,}\ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{sum}\NormalTok{(}\FunctionTok{dcauchy}\NormalTok{(x,}\AttributeTok{location=}\NormalTok{theta,}\AttributeTok{scale=}\DecValTok{1}\NormalTok{)}\SpecialCharTok{*}\NormalTok{post))  }
+  
+  \FunctionTok{plot}\NormalTok{(ytilde,pred.prob, }\AttributeTok{main=}\StringTok{\textquotesingle{}predictive distribution\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-18-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \DocumentationTok{\#\# maximum predictive probability}
+  \FunctionTok{message}\NormalTok{(}\StringTok{\textquotesingle{}max pred. prob \textquotesingle{}}\NormalTok{, }\FunctionTok{round}\NormalTok{(ytilde[}\FunctionTok{which}\NormalTok{(pred.prob}\SpecialCharTok{==}\FunctionTok{max}\NormalTok{(pred.prob))],}\DecValTok{3}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## max pred. prob 44.754
 \end{verbatim}
 
 \hypertarget{parts}{%

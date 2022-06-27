@@ -346,3 +346,180 @@ print("The asymptotic approximation")
 
 message("posterior predictive interval n=100: ",lower2," ",upper2)
 ```
+
+
+### Question 10{-}
+suppose y1,...,y5 are iid Cauchy($\theta,1$) r.vs. and the prior distribution for$\theta \sim U[0,100]$.  the given observations are y=43,44,45,46.5,47.5.
+
+- (a) compute the unnormalized posterior density on a grid of points $\theta=0 1/m, 2/m, ... 100$.  using the grid approximation, compute and plot the posterior density as a function of $\theta$
+```{r}
+ y= c(43,44,45,46.5,47.5)
+ m=1000
+theta<-seq(from=0,to=100000)/m
+ ## p(theta | y) ~ p(y|theta)*p(theta)
+ unnorm.post<-dcauchy(y,location=theta,scale=1)*dunif(theta,min=0,max=100) ## un norm post
+ 
+ post<-unnorm.post/sum(unnorm.post)
+ plot(theta,post,type='l',main='Normalized posterior')
+```
+
+- (b) Sample 1000 draws from theta from posterior density and plot histogram
+we sample from theta [0,100] using the grid approximation, and the probability is from the posterior distribution.
+```{r}
+  samps<-(sample(theta,1000,prob=post,replace=T))
+  hist(samps,main=mean(samps))
+  ##sample mean is close to the mean of the observed.
+
+```
+- (c) Using the previous 1000 samples of $\theta$ to obtain 1000 samples from the predictive distribution of a future observation $y_6$, and plot the predictive draws.
+we use the sampled thetas from the posterior to sample from the Cauchy distribution.  The predictive probability follows $p(x|y) =\int p(x|\theta)p(\theta|y)d\theta$ where $p(x|\theta)$ follows from the Cauchy distribution, and we have the posterior values for each theta (given the uniform grid of thetas).  then for each predictive value, we sum the total probability across all thetas to compute the predictive probability.  The maximum predictive value probability 44.745 with probability of 0.10.
+```{r}
+## predictive distribution ? ?? 
+ # p(x | y) = int p(x|theta)*p(theta|y ) dtheta
+## the posterior is p(theta|y) 
+ # the likelihood p(x|theta)  ## we use the sampled thetas using the posterior
+ ytilde<-rcauchy(1000,location=samps,scale=1) 
+ ## probability of the samples 
+ #prob_samp<-post[match(samps,theta)]
+  summary(ytilde) ## we have a wide distribution of predictive values.
+  
+## for all predictive values,  find the total probability  
+   ## int p(x|theta)*p(theta|y) d\theta  note that p(x|theta) is a function of theta, so we input hte theta grid.
+ pred.prob<-sapply(ytilde,function(x) sum(dcauchy(x,location=theta,scale=1)*post))  
+  
+  plot(ytilde,pred.prob, main='predictive distribution')
+  
+  ## maximum predictive probability
+  message('max pred. prob ', round(ytilde[which(pred.prob==max(pred.prob))],3))
+```
+
+### Question 13{-}
+- (a) Use the normal approximation to gamma and poisson to determine a posterior for fatal accidents using table 2.2.  Compute the 95$\%$ predictive interval.
+
+We set the prior alpha =200 and beta =10 because the effective sample size ($\beta$) is 10 years, and the prior mean is approximately 20 which is reasonably close to the table 2.2 values, although a sensitivity analysis is recommended.
+
+We use the conjugate prior for Gamma to find the posterior distribution, which closely is approximated by the normal distribution.  The posterior distributions are similar.   The normal approximation prior followed $N(\alpha/\beta, \sqrt{\alpha}/\beta)$.  we set the variance to be known $\sigma^2=100$.   Using the gamma conjugate prior the predictive interval is $95\% $ (13,32).
+
+```{r}
+# data entry
+ year<-seq(1976,1985)
+ fatal<-c(24,25,31,31,22,21,26,20,16,22)
+ death<-c(734,516,754,877,814,362,764,809,223,1066)
+ rate<-c(0.19,0.12,0.15,0.16,0.14,0.06,0.13,0.13,0.03,0.15)
+ data<-data.frame(year=year,fatal=fatal,pass.deaths=death,death.rate=rate)
+ 
+ ## gamma prior on theta>0
+ theta=seq(from=0,to=50,by=.01)
+
+ ## normal approximation to gamma
+  ## Gamma(a,b) ,  mean = a/b,  var = a/b^2  ## where beta is the inverse-scale
+   ## gamma(a,b) ~  N (a/b, sd= sqrt(a)/b)
+ ## normal approx to Pois
+   ## Pois(a) ,  mean =a, var= a
+    ## Pois(a) ~ N(a,sd= sqrt(a))
+ 
+ ## gamma prior of total count a-1,  in b observations 
+ ## the mean rate of deaths is 0.126
+ ## we approximate a prior to have an average of 20 deaths across the decade.
+   alpha= 200
+   beta<- 10
+   ## the mean rate given the data is 0.126, so we find the beta parameter to match the mean rate.
+   n<-nrow(data)
+
+   
+  
+ plot(theta,dgamma(theta,alpha,rate=beta),lty=2)
+lines(theta,dgamma(theta,alpha+n*mean(fatal),rate=beta+n))
+ ## credible interval of the posterior
+ pois_credible<-qgamma(c(.025,0.975),alpha+n*mean(fatal),rate=beta+n)
+ message("posterior gamma interval n=10: ",pois_credible[1]," ",pois_credible[2]) ## 
+
+ post_pois<-dgamma(theta,alpha+n*mean(fatal),rate=beta+n)
+  ## posterior mean is 21.9
+ sum(theta*post_pois/sum(post_pois))
+ 
+ 
+ # normal approximation
+  mu_0<- alpha/beta  ## average of 12.6 fatal accidents
+  tau2_0<- alpha/beta^2 ## 
+  
+  sigma2<-10^2  ## we assume we know the variance of the fatalities (empirical variance is 22.2) so we set it to 50 (large enough)
+  
+  
+  mu_n<-function(mu0,ybar,n,tau02,sigma2){
+  mun<- (mu0/tau02 + (ybar*n)/sigma2)/(1/tau02 + n/sigma2)
+  return(mun)
+}
+taun2<-function(tau02,n,sigma2){
+  inv.taun2<- 1/tau02 +n/sigma2
+  return(1/inv.taun2)
+}
+
+ybar=mean(fatal)
+
+ mn<-mu_n(mu_0,ybar,tau2_0,n,sigma2)
+ tn<-taun2(tau2_0,n,sigma2)
+## posterior interval n=10
+  #lower<-round(qnorm(0.025,mu_n(mu0,ybar,tau02,10,sigma2),sd=sqrt(taun2(tau02,10,sigma2))),2)
+  upper<-round(qnorm(c(0.025,0.975),mn,sd=sqrt(tn)),2)
+
+message("posterior interval n=10: ",upper[1]," ",upper[2]) ## 
+## the normal approximation is close to the gamma posterior!  woot.
+  post_norm<-(dnorm(theta,mn,sqrt(tn))/sum(dnorm(theta,mn,sqrt(tn))))
+
+
+#### check with simulations ?  check posterior with simulations  posterior mean/sd ?
+post.draws<-sample(theta,size=1000,prob=post_pois,replace=T)
+mean(post.draws) ### posterior mean is arout 21.92
+
+
+
+
+   ## check this with the grid approach in the Gamma framework.  
+  theta_samps<-sample(theta,100000,prob=post_pois,replace=T)
+   ytilde<-rpois(100000,lambda=theta_samps) 
+ ## probability of the samples 
+ #prob_samp<-post[match(samps,theta)]
+  summary(ytilde) ## we have a wide distribution of predictive values.
+  
+## for all predictive values,  find the total probability  
+   ## int p(x|theta)*p(theta|y) d\theta  note that p(x|theta) is a function of theta, so we input hte theta grid.
+ pred.prob<-sapply(ytilde,function(x) sum(dpois(x,lambda = theta)*post_pois/sum(post_pois)))  
+  
+ plot(ytilde,pred.prob, main='predictive distribution for future 1986')
+ abline(v=quantile(ytilde,c(0.025,0.975)),col='red')
+ lines(theta,post_pois)
+ quantile(ytilde,c(0.025,0.975))
+```
+
+
+Using the normal approximation, the variance of the predictive posterior is $\sigma^2+\tau^2$ and is a larger interval (0.87, 40.4).   sampling values from the predictive posterior is much larger interval, but the predictive posterior mean is $\mu_n \approx 21$.  The Gamma conjugate prior has a smaller predictive interval but similar posterior.
+```{r}
+ 
+  ## Predictive with normal
+
+## using the normal approximation
+## predictive interval must use a grid approach.
+     pred<-round(qnorm(c(0.025,0.975),mn,sd=sqrt(tn+sigma2)),2)
+  message("predictive interval n=10: ",pred[1]," ",pred[2])
+
+  
+   ## check this with the grid approach in the normal framework.  
+  post_pred_norm<-(dnorm(theta,mn,sqrt(tn+sigma2))/sum(dnorm(theta,mn,sqrt(tn+sigma2))))
+   ytilde_norm<-rnorm(100000,mean=mn,sd=sqrt(tn+sigma2)) 
+ ## probability of the samples 
+ #prob_samp<-post[match(samps,theta)]
+  summary(ytilde_norm) ## we have a wide distribution of predictive values.
+  
+## for all predictive values,  find the total probability  
+   ## int p(x|theta)*p(theta|y) d\theta  note that p(x|theta) is a function of theta, so we input hte theta grid.
+ pred.prob_norm<-sapply(ytilde_norm,function(x) sum(dnorm(x,mn,sqrt(tn+sigma2))*post_pred_norm))  
+  
+ plot(ytilde_norm,pred.prob_norm, main='predictive distribution for future 1986')
+ abline(v=quantile(ytilde_norm,c(0.025,0.975)),col='red')
+ lines(theta,post_pred_norm)
+ quantile(ytilde_norm,c(0.025,0.975))
+ 
+ 
+ 
+```
