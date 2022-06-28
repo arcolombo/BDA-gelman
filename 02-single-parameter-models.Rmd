@@ -592,3 +592,57 @@ lines(theta,dgamma(theta,alpha+sum(fatal),rate=beta+sum(miles)),col='red')
 
 
 ```
+- (c) we repeat part (a) but for passenger deaths.  we need to find a prior and determine the posterior distribution with a predictive interval.
+
+ Note that the death rate mean is not equal to the variance so the performance is not as good compared to the fatal accidents.  The 1986 prediction is 692 (638, 750) which is not the expected predction of 546 passenger deaths.  This is likely because Poisson is not a good fit because it is constrained.
+```{r}
+
+ theta=seq(from=200,to=1500,by=.1)
+
+ ## normal approximation to gamma
+  ## Gamma(a,b) ,  mean = a/b,  var = a/b^2  ## where beta is the inverse-scale
+   ## gamma(a,b) ~  N (a/b, sd= sqrt(a)/b)
+ ## normal approx to Pois
+   ## Pois(a) ,  mean =a, var= a
+    ## Pois(a) ~ N(a,sd= sqrt(a))
+ 
+ ## gamma prior of total count a-1,  in b observations 
+ ## 
+ ## we approximate a prior to have an average of 600 passenger deaths across the decade.  the empirical mean is 691 
+ #  the beta parameter is set rate is set such that   404, 832 which matches well the observed data.
+   alpha= 8
+   beta<- 0.011
+   ## the pr
+   n<-nrow(data)
+
+   
+  
+ plot(theta,dgamma(theta,alpha,rate=beta),lty=2)
+lines(theta,dgamma(theta,alpha+n*mean(death),rate=beta+n))
+ ## credible interval of the posterior
+ pois_credible<-qgamma(c(.025,0.975),alpha+n*mean(death),rate=beta+n)
+ message("posterior gamma interval n=10: ",pois_credible[1]," ",pois_credible[2]) ## 
+
+ post_pois<-dgamma(theta,alpha+n*mean(death),rate=beta+n)
+  ## posterior mean is 21.9
+ sum(theta*post_pois/sum(post_pois))
+ 
+ 
+ 
+  ## check this with the grid approach in the Gamma framework.  
+  theta_samps<-sample(theta,1000,prob=post_pois,replace=T)
+   ytilde<-rpois(1000,lambda=theta_samps) 
+ ## probability of the samples 
+ #prob_samp<-post[match(samps,theta)]
+  summary(ytilde) ## we have a wide distribution of predictive values.
+  
+## for all predictive values,  find the total probability  
+   ## int p(x|theta)*p(theta|y) d\theta  note that p(x|theta) is a function of theta, so we input hte theta grid.
+ pred.prob<-sapply(ytilde,function(x) sum(dpois(x,lambda = theta)*post_pois/sum(post_pois)))  
+  
+ plot(ytilde,pred.prob, main='predictive distribution for future 1986')
+ abline(v=quantile(ytilde,c(0.025,0.975)),col='red')
+ lines(theta,post_pois)
+ quantile(ytilde,c(0.025,0.975))
+
+```
