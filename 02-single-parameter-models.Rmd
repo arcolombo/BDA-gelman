@@ -160,16 +160,27 @@ Simplfying the algebra shows the posterior depends on y only through the sample 
 
 ### Question 1{-}
 prior Beta(4,4), where a coin is tossed 10 times and heads appears fewer than 3 times.  the exact posterior is Beta(4+y, 4+10-y) for y=0,1,2.  Since we don't know the observed heads, but that $y<3$ we plot the posterior distributions for each possibility.  For 2 heads it is closer to the prior, with posterior mean of 0.33,  which is closest to the prior mean of 1/2.
+
+The random event is that $Y=(0,1,2)$ and we sum all possibilities for the total likelihood.
+
+The likelihood of the total event is $\theta^0(1-\theta)^{10}+\binom{10}{1}\theta(1-\theta)^9+\binom{10}{2}\theta^2(1-\theta)^8$
+
+the posterior is  $\theta^3(1-\theta)^{13}+\binom{10}{1}\theta^4(1-\theta)^{12}+\binom{10}{2}\theta^5(1-\theta)^{11}$
 ```{r}
  theta<-seq(from=0,to=1,by=0.01)
 
- plot(theta,dbeta(theta,4,4),type='l',ylim=c(0,5)) ## prior
+ plot(theta,dbeta(theta,4,4),type='l',ylim=c(0,5),main='individual posteriors') ## prior
  lines(theta,dbeta(theta,4+1,4+10-1),lty=2) ## 1 success
    lines(theta,dbeta(theta,4+2,4+10-2),lty=3,col='red') ## 2 succe
    lines(theta,dbeta(theta,4,4+10),lty=4,col='blue')  ## 0 successes
+   
   legend(0.6, 4, 
          legend=c("prior", "0 H", "1 H", "2 H"),
        col=c("black","blue","black", "red"), lty=c(1,4,3,2), cex=0.8)
+  
+post<- theta^3*(1-theta)^(13)+choose(10,1)*theta^4*(1-theta)^12+choose(10,2)*theta^5*(1-theta)^11
+
+plot(theta,post,main='total posterior Y=0,1,2')
 ```
 
 
@@ -205,9 +216,13 @@ For female births we have beta(438,544) we use the normal approximation.  This r
 ### Question 3{-}
 
 
-The prior predictive distributions for the number of 6's in a fair roll, tossed 1,000 times will follow a beta distribution.  Let y be the number of 6's in 1000 rolls of fair die, the probability for a 6 is 1/6, so the number of 6's in this trial is approximatley 167, and 833 failures as the prior prediction.  
+The prior predictive distributions for the number of 6's in a fair roll, tossed 1,000 times will follow a beta distribution.  Let y be the number of 6's in 1000 rolls of fair die, the probability for a 6 is 1/6, so the number of 6's (successes) in this trial is approximateley 167, and 833 failures as the prior prediction. with probabiliy of success (1/6).  
 
 We plot the beta distribution of the expected number of heads in 1000 tosses.  
+
+The normal approximation for the prior prediction uses the binomial distribution is $\mu = n*p = 167$ and $\sigma^2 = npq $=  138.89 $\sim N(167, 138.89)$
+
+
 
 The normal approximation shows the probability of heads in a given 1000  tosses, using a non-informative prior beta(167,833) which has a prior predictive mean of $exp(-1.79)/(1+exp(-1.79)) = 0.143$.  This is not the same for number of success in 1000 tosses.  
 
@@ -218,28 +233,23 @@ We find the probability distribution of a given success and the prior probabilit
   ## n = 1,000
   ## first lets construct a beta distribution.
   ## let the prior be beta(4,4) or even beta(1,1)
-par(mfrow=c(1,2))
+## prior prediction
+  theta<-seq(from=100,to=250,by=0.11)
+     plot(theta,dnorm(theta,167,sqrt(138.89)),type='l',main="prior normal prediction for binomial likelihood") ## prior
+     lines(theta,dbinom(round(theta),size=1000,prob=(1/6)),main="prior binom prediction for binomial likelihood",col='red') ## prior
 
-   plot(theta,dbeta(theta,167,833),type='l',xlim=c(0.1,0.5),main="prior beta") ## prior
-  # plot(theta,dbeta(theta,1,5),type='l',xlim=c(0.1,0.5), main='prior beta') 
-   abline(v=0.167,col='red') ## 
-   #  qbeta(c(0.05,0.25,0.5,0.75,0.95),167,833)
-    ## predictive on normal scale.
-     draws<-rbeta(1000,167,833)
-     logitMean<-log( 167/1000)
-  sdd<-sd(log(draws/(1-draws)))
+     
+  ## posterior prediction (normal).
+     ## assume p=1/6 we expect 167 successes under likelihood.
+## simulation     
+     priordraws<-sample(theta,size=1000,replace=T,prob=dnorm(theta,167,sqrt(138.89)))
+     priorpred<-rnorm(1000,mean=priordraws,sd=sqrt(138.89))
+     ## prior prediction interval
+     quantile(priorpred,c(0.05,0.25,0.5,0.75,0.95))
+     qnorm(c(0.05,0.25,0.5,0.75,0.95),167,sqrt(138.89))
+     
 
-   
-  plot(logitTheta,dnorm(logitTheta,mean =logitMean, sd=sdd ),type='l',main="Normal approx.of a total heads", xlim=c(-2,-1.4)) ## prior
-    abline(v=logitMean,col='red')
-    ### the number of heads.    
-  message("prior predictive mean:" ,round( exp(logitMean)/(1+exp(logitMean)),2))
 
- qx<-(qnorm(c(0.05,0.25,0.5,0.75,0.95),mean =logitMean, sd=sdd ))
- ## this is the probability of landing 6 for theta
- exp(qx)/(1+exp(qx))
-## wald 95% prior interval
-c( exp(logitMean-1.96*sdd)/(1+exp(logitMean-1.96*sdd)),exp(logitMean+1.96*sdd)/(1+exp(logitMean+1.96*sdd)))
 ```
 ### Question 4{-}
 We have a mixture of 3 normal distributions, and show the central intervals for 5,25,50,75, and 95$\%$ predictive probabilities.  The question gives $\theta$ as the probability of a 6 on a die, possibly unfair, in 1,000 tosses.  we have $\theta= 1/12,1/6, 1/4$ types of biased die. Using the normal approximation, the predictive prior probability is $\sum_{\theta}p(\theta)p(y| \theta)$ where the likelihood is approximated using a normal distribution $\mu = n*\theta_i, \sigma = n*\theta_i(1-\theta_i)$
@@ -247,18 +257,18 @@ We have a mixture of 3 normal distributions, and show the central intervals for 
 x<-seq(0,1000)-0.5 # continuity correction.
 theta<-c(1/12,1/6,1/4)
 n=1000
-normLikelihood<-function(x,n,p){
-  mean<-n*p
-  varz<-n*p*(1-p)
-  return(dnorm(x,mean=mean,sd=sqrt(varz)))
-  
-}
+
 a<-dnorm(x,mean=n*theta[1],sd=sqrt(n*theta[1]*(1-theta[1]))  )
 b<-dnorm(x,mean=n*theta[2],sd=sqrt(n*theta[2]*(1-theta[2]))  )
 c<-dnorm(x,mean=n*theta[3],sd=sqrt(n*theta[3]*(1-theta[3]))  )
 
+ ## posterior computation
+ ##p(y) =  p(y| theta1 )*p(theta1)+ p(y| theta2 )*p(theta2)+ p(y| theta3 )*p(theta3)
+ # total law of probability
+mypost<-a*0.25+b*0.5+c*0.25
 
-mypri<-a*0.25+b*0.5+c*0.25
+## prior pred  p(y) = p(y|theta)*p(theta) / p(theta| y)
+
 
 sum(mypri) ## sums to 1 it is a distribution
 
@@ -346,33 +356,50 @@ print("The asymptotic approximation")
 
 message("posterior predictive interval n=100: ",lower2," ",upper2)
 ```
+## Question 10{-}
+```{r}
 
+```
 
-### Question 10{-}
+### Question 11{-}
 suppose y1,...,y5 are iid Cauchy($\theta,1$) r.vs. and the prior distribution for$\theta \sim U[0,100]$.  the given observations are y=43,44,45,46.5,47.5.
 
 - (a) compute the unnormalized posterior density on a grid of points $\theta=0 1/m, 2/m, ... 100$.  using the grid approximation, compute and plot the posterior density as a function of $\theta$
+
+for the likelihood  $L(\theta | y) = \prod_{i=1}^n f(y_i|\theta)$ requires the product of $y$ for a given theta. this was a mistake i made in the first attempt.  The posterior is $p(\theta|y) = L(\theta |y)p(\theta)$  wher p($\theta)= 1/100$
 ```{r}
  y= c(43,44,45,46.5,47.5)
- m=1000
-theta<-seq(from=0,to=100000)/m
+## previous editions values for checking
+ #y=c(-2,-1,0,1.5,2.5)
+  step=0.01
+#theta<-seq(from=0,to=100000)/m
+ theta<-seq(step/2, 1-step/2,step)
  ## p(theta | y) ~ p(y|theta)*p(theta)
- unnorm.post<-dcauchy(y,location=theta,scale=1)*dunif(theta,min=0,max=100) ## un norm post
- 
- post<-unnorm.post/sum(unnorm.post)
- plot(theta,post,type='l',main='Normalized posterior')
+ dens<-function(y,th){
+   dens0<-NULL
+   for(i in 1:length(th)){
+     dens0<-c(dens0, prod (dcauchy(y, th[i],1)))
+   }
+   dens0
+ }
+ #dens(y,theta)
+  # L(theta | y) = prod_{i=1}^n  f(y| theta)  we need the product term here.
+ unnorm.post<-sapply(theta, function(x)  prod(dcauchy(y,location=x,scale=1) )) ## un norm post
+   ## p(theta| y ) = p(y| theta)p(theta)  where p(theta) is U(0,100)
+ post<-unnorm.post/(step*sum(unnorm.post))
+ plot(theta,post,type='l',main='Normalized posterior', ylim=c(0, 1.1*max(post)))
 ```
 
 - (b) Sample 1000 draws from theta from posterior density and plot histogram
 we sample from theta [0,100] using the grid approximation, and the probability is from the posterior distribution.
 ```{r}
-  samps<-(sample(theta,1000,prob=post,replace=T))
+  samps<-(sample(theta,1000,prob=post*step,replace=T))
   hist(samps,main=mean(samps))
   ##sample mean is close to the mean of the observed.
 
 ```
 - (c) Using the previous 1000 samples of $\theta$ to obtain 1000 samples from the predictive distribution of a future observation $y_6$, and plot the predictive draws.
-we use the sampled thetas from the posterior to sample from the Cauchy distribution.  The predictive probability follows $p(x|y) =\int p(x|\theta)p(\theta|y)d\theta$ where $p(x|\theta)$ follows from the Cauchy distribution, and we have the posterior values for each theta (given the uniform grid of thetas).  then for each predictive value, we sum the total probability across all thetas to compute the predictive probability.  The maximum predictive value probability 44.745 with probability of 0.10.
+we use the sampled thetas from the posterior to sample from the Cauchy distribution.  The predictive probability follows $p(x|y) =\int p(x|\theta)p(\theta|y)d\theta$ where $p(x|\theta)$ follows from the Cauchy distribution, given original sequence of thetas.  We have the posterior values for each theta (given the uniform grid of thetas) and take the product.  then for each predictive value, we sum the total probability across all thetas to compute the predictive probability.  The maximum predictive value probability 0.52 with probability of 0.29.
 ```{r}
 ## predictive distribution ? ?? 
  # p(x | y) = int p(x|theta)*p(theta|y ) dtheta
@@ -385,7 +412,7 @@ we use the sampled thetas from the posterior to sample from the Cauchy distribut
   
 ## for all predictive values,  find the total probability  
    ## int p(x|theta)*p(theta|y) d\theta  note that p(x|theta) is a function of theta, so we input hte theta grid.
- pred.prob<-sapply(ytilde,function(x) sum(dcauchy(x,location=theta,scale=1)*post))  
+ pred.prob<-sapply(ytilde,function(x) sum(dcauchy(x,location=theta,scale=1)*post*step))  
   
   plot(ytilde,pred.prob, main='predictive distribution')
   
@@ -400,7 +427,9 @@ We set the prior alpha =25 and beta =1 because the effective sample size ($\beta
 
 We use the conjugate prior for Gamma to find the posterior distribution, which closely is approximated by the normal distribution.  The posterior distributions are similar.   The normal approximation prior followed $N(\alpha/\beta, \sqrt{\alpha}/\beta)$.  we set the variance to be known $\sigma^2=100$.   Using the gamma conjugate prior the predictive interval is $95\% $ (21.1,26.9).
 
+The posterior predictive value was determined by sample values from the posterior, and using the parameters sampled from posterior to generate a Poisson random variable.  The average predictive value is 23.9 fatal accidents.     
 
+The true observed value for 1986 is 22 fatal accidents
 
 ```{r}
 # data entry
@@ -428,7 +457,7 @@ We use the conjugate prior for Gamma to find the posterior distribution, which c
    beta<- 1
    ## the mean rate given the data is 0.126, so we find the beta parameter to match the mean rate.
    n<-nrow(data)
-
+ message("the prior interval:",qgamma(c(0.025,0.975),alpha,beta))
    
   
  plot(theta,dgamma(theta,alpha,rate=beta),lty=2)
@@ -477,10 +506,10 @@ post.draws<-sample(theta,size=1000,prob=post_pois,replace=T)
 
 
 
-
+## posterior predictive value
    ## check this with the grid approach in the Gamma framework.  
-  theta_samps<-sample(theta,100000,prob=post_pois,replace=T)
-   ytilde<-rpois(100000,lambda=theta_samps) 
+  theta_samps<-sample(theta,10000,prob=post_pois,replace=T)
+   ytilde<-rpois(10000,lambda=theta_samps) 
  ## probability of the samples 
  #prob_samp<-post[match(samps,theta)]
   summary(ytilde) ## we have a wide distribution of predictive values.
@@ -497,6 +526,8 @@ post.draws<-sample(theta,size=1000,prob=post_pois,replace=T)
 
 
 Using the normal approximation, the variance of the predictive posterior is $\sigma^2+\tau^2$ and is a larger interval (3.9, 44.5).   sampling values from the predictive posterior is much larger interval, but the predictive posterior mean is $\mu_n \approx 24$.  The Gamma conjugate prior has a smaller predictive interval but similar posterior.
+
+The average predictive value from 1986 is 23.9 which is close to the true value 22 fatal accidents.
 ```{r}
  
   ## Predictive with normal
@@ -523,19 +554,19 @@ Using the normal approximation, the variance of the predictive posterior is $\si
  lines(theta,post_pred_norm)
  quantile(ytilde_norm,c(0.025,0.975))
  
- 
+ message("average predictive value from posterior:", mean(ytilde))
  
 ```
 
 - (b) Assume fatal accidents follow a Poisson distribution with a constant rate and an exposure in each year proportional to the number of passanger miles flown.  Set a prior and determine a posterior and predictive distribution.  estimate the number of passanger miles flown in each year by dividing
 
-let $\theta$ be the fatal accidents per 100,000 million miles flow.  and let $x_i$ be the number per 100,000 million miles flown.   We compute the miles by dividing the passenger deaths divided by the death rate (deaths per 100,000 million miles flown).
+let $\theta$ be the fatal accidents *rate* per 100,000 million miles flown.  and let $x_i$ be the number per 100,000 million miles flown.   We compute the miles by dividing the passenger deaths divided by the death rate (deaths per 100,000 million miles flown).
 
 We then compute the fatal accident rate by computing the (passanger deaths per 100,000 million miles)*(number of fatal accidents / number of passenger deaths).  We let $\theta$ = fatal accidents per 100 million miles flown.
 
 THe mean accident rate is 0.004, so we set alpha =5 and beta = 1000,  so the prior mean is 0.005 (95$\%$: 0.002,0.01) which is similar to the observed ranges.  
 
-If we take the posterior fatal accident rate per 100,000 miles and multiple by the average miles (5716),  we have the observed fatal accidents as 24.4 (which is approximately 22). The posterior credible interval for average miles per 100,000 is (20.97, 26.97) which is close to the gamma interval of counts (21.1, 27).
+If we take the posterior fatal accident rate per 100,000 miles and multiple by the average miles (5716),  we have the observed fatal accidents as 22.1 (which is approximately 22). The posterior credible interval for average miles per 100,000 is (20.97, 26.97) which is close to the gamma interval of counts (21.1, 27).
 
 For 8 x 10$^11$ miles flown, the fatal accidents is 34.16.
 
@@ -577,7 +608,7 @@ lines(theta,dgamma(theta,alpha+sum(fatal),rate=beta+sum(miles)),col='red')
 
  
   post_pois<-dgamma(theta,alpha+sum(fatal),rate=beta+sum(miles))
-
+ ### i think i need to use the formuls  f(x | y ) to find the probability and sample there ?
   post.draws<-sample(theta,size=1000,prob=post_pois,replace=T)
    message('posterior mean is: ', mean(post.draws)) ### posterior mean is arout 21.92
 
@@ -594,7 +625,7 @@ lines(theta,dgamma(theta,alpha+sum(fatal),rate=beta+sum(miles)),col='red')
 ```
 - (c) we repeat part (a) but for passenger deaths.  we need to find a prior and determine the posterior distribution with a predictive interval.
 
- Note that the death rate mean is not equal to the variance so the performance is not as good compared to the fatal accidents.  The 1986 prediction is 692 (638, 750) which is not the expected predction of 546 passenger deaths.  This is likely because Poisson is not a good fit because it is constrained.
+ Note that the death rate mean is not equal to the variance so the performance is not as good compared to the fatal accidents.  The 1986 prediction is 692 (638, 750) which is not the expected prediction of 546 passenger deaths.  This is likely because Poisson is not a good fit because it is constrained.
 ```{r}
 
  theta=seq(from=200,to=1500,by=.1)
@@ -608,15 +639,17 @@ lines(theta,dgamma(theta,alpha+sum(fatal),rate=beta+sum(miles)),col='red')
  
  ## gamma prior of total count a-1,  in b observations 
  ## 
- ## we approximate a prior to have an average of 600 passenger deaths across the decade.  the empirical mean is 691 
+ ## we approximate a prior to have an average of 600 passenger deaths across the decade.  
+#the empirical mean is 691 and variance is  63700.32
+# a/b =  691  and a/b^2 = 63700.32,  we solve for a and b
  #  the beta parameter is set rate is set such that   404, 832 which matches well the observed data.
    alpha= 8
-   beta<- 0.011
+   beta<- 0.0108618
    ## the pr
    n<-nrow(data)
-
+qgamma(c(0.025,0.795),alpha,beta)
    
-  
+ 
  plot(theta,dgamma(theta,alpha,rate=beta),lty=2)
 lines(theta,dgamma(theta,alpha+n*mean(death),rate=beta+n))
  ## credible interval of the posterior
@@ -629,7 +662,7 @@ lines(theta,dgamma(theta,alpha+n*mean(death),rate=beta+n))
  
  
  
-  ## check this with the grid approach in the Gamma framework.  
+  ## prediction:  with the grid approach in the Gamma framework.  
   theta_samps<-sample(theta,1000,prob=post_pois,replace=T)
    ytilde<-rpois(1000,lambda=theta_samps) 
  ## probability of the samples 
@@ -644,5 +677,180 @@ lines(theta,dgamma(theta,alpha+n*mean(death),rate=beta+n))
  abline(v=quantile(ytilde,c(0.025,0.975)),col='red')
  lines(theta,post_pois)
  quantile(ytilde,c(0.025,0.975))
+
+```
+- (d) Using the rate the posterior rate mean is 0.12 estimated from sampling the posterior distribution.  For 8 x 10$^11$ miles flown the deaths are 960. this is higher than the 1986 observed value.
+
+```{r}
+
+  theta=seq(from=0,to=0.1,by=.001)
+ miles<-death/rate ## 100 million miles
+# print("summary of miles driv")
+#summary(miles)
+ #death_by_accident<-death/fatal
+ 
+ ## fatal accident per 100,000 million miles driven
+ #acc_rate<-rate*(1/death_by_accident) ## fatal accidents by 100 million miles.
+ 
+ # miles*acc_rate  ## number of fatal accidents.
+ print("passanger death rate per 100 million flown miles summary")
+   summary(rate)
+  ## crude rate 23.8 fatal accidents by 100 million miles driven.
+  
+## y ~ Pois( miles*theta)
+  ##posterior
+ theta=seq(from=0,to=1,by=.001)
+  alpha= 57*0.13
+   beta<- 57 
+   ## the mean is 0.005 and quantiles 0.002 and 0.01 which is close to the observed rates 
+   #mean(acc_rate) ## fatal accidents per 100,000 million miles driven
+   # a/b = 0.13 a/b^2 = 0.0022
+   print("prior 95% quantiles: ")
+   qgamma(c(0.025,0.975),alpha,rate=beta)
+   ## the mean rate given the data is 0.126, so we find the beta parameter to match the mean rate.
+   n<-nrow(data)
+   
+     
+  
+ plot(theta,dgamma(theta,alpha,rate=beta),lty=2, xlab='fatal accident rate per 100 million miles')
+lines(theta,dgamma(theta,alpha+sum(death),rate=beta+sum(miles)),col='red')
+ ## credible interval of the posterior
+ pois_credible<-qgamma(c(.025,0.975),alpha+sum(death),rate=beta+sum(miles))
+ message("posterior gamma interval n=10: ",round(pois_credible[1],3)," ",round(pois_credible[2],3)) ## 
+
+ 
+  post_pois<-dgamma(theta,alpha+sum(death),rate=beta+sum(miles))
+
+  post.draws<-sample(theta,size=1000,prob=post_pois,replace=T)
+   message('posterior mean is: ', mean(post.draws)) ### posterior mean is arout 21.92
+
+
+
+   ## check this with the grid approach in the Gamma framework.  
+  theta_samps<-sample(theta,100000,prob=post_pois,replace=T)
+   ytilde<-rpois(100000,lambda=theta_samps) 
+   
+ message(" 8,000 per 100 million miles flown has fatality rate: ", mean(ytilde)*8000)
+ message("5716 per 100 million miles flown has fatality rate: ", mean(ytilde)*mean(miles))
+
+
+```
+
+
+
+### Question 21
+estimate percentage of adult population in each state (excluding alaska and hawaii) who label themselves as very liberal.  plot estimate vs. obama's vote share in 2008.
+
+For each state we measure $y_j\sim Pois(n_j\theta_j)$ from section 2.7 where y is the number of adult population who identify themselves as *very liberal* in ideology for a given state.    
+
+we do not have population of each state, but we do have the number of respondents of each state, and denote $n_j$ as the integer representing the total respondents.
+
+Alternatively, we do have census density category for each state (1-5) which can account for the populaiton density. 
+
+
+- (a) graph the proportion of liberal in each state vs obama vote share.  here the proportion of liberal votes was weighted by the total respondents
+
+we see that the highest proportion of very liberal polls is associated with the states with the highest obama percentage of votes in CA, NY, WA, and IL.  Conversely we see that WY UT, OK are very red states with low polls in very liberal voters, with the lowest support for obama.  
+
+For those that identify as *liberal* we see a much linear trend.
+```{r}
+ library(foreign)
+ library(dplyr)
+ library(magrittr)
+ library(ggplot2)
+polls<-read.dta("C:/Users/UOSC/Documents/Keck-graduate-school/PM590-Bayesian/bookdown-files/pew_research_center_june_elect_wknd_data.dta")
+ #proportion of very liberal
+table(polls$ideo)
+ ## adult pop
+table(polls$age)
+table(polls$age2)
+## each state
+ table(polls$state)
+ # drop AL and HA
+polls<-polls[which(polls$state!="alaska" & polls$state!="hawaii"),] 
+# average the points that are missing.
+polls$density[which(is.na(polls$density))]<-mean(polls$density[which(!is.na(polls$density))])
+
+ele<-read.csv("C:/Users/UOSC/Documents/Keck-graduate-school/PM590-Bayesian/bookdown-files/2008ElectionResult.csv")
+ele<-ele[which(ele$state!="Alaska"& ele$state!="Hawaii"),]
+ele$state<-tolower(ele$state)
+## graph poprotion liberal in each state vs obama vote share scatter.
+
+yj<-as.data.frame.matrix(table(polls$state,polls$ideo))
+nj<-as.data.frame.matrix(table(polls$state,polls$density))
+## ideology
+head(yj)
+## density
+head(nj)
+
+ tally<-polls%>%group_by(state,ideo)%>%summarize(n=n())
+ statetotal<-tally%>%group_by(state)%>%summarise(statetotal=sum(n))
+ tally<-left_join(tally,statetotal,by='state')
+ ## average the density of the polling regions by state taking the density of each zip code (category 1-5)
+ densit<-polls%>%group_by(state)%>%summarize(density=mean(density))
+ 
+ # highest states with highest density
+ densit[order(densit$density,decreasing = T),]
+ 
+ tally<-left_join(tally,densit,by='state')
+  tally$popdensity<-tally$n/tally$density
+    tally$stateperc<-100*tally$n/tally$statetotal
+    tally$stateperc_density<-100*tally$n/(tally$statetotal*tally$density)
+
+  
+
+tt<-left_join(ele,tally,by="state")
+
+ggplot(tt[which(tt$ideo=='very liberal'),],aes(x=stateperc,y=vote_Obama_pct,label=state))+geom_point(size=3)+geom_text(hjust=0,vjust=0)+ggtitle("very liberal proportion vs. obama vote (%)")
+
+ggplot(tt[which(tt$ideo=='liberal'),],aes(x=stateperc,y=vote_Obama_pct,label=state))+geom_point(size=3)+geom_text(hjust=0,vjust=0)+ggtitle("liberal proportion vs. obama vote (%)")
+
+```
+
+- (b) Graph the posterior Bayes mean vs. the Obama vote share.
+In order to construct the prior we use equations (2.17, 2.18) where we match the moments from the prior predictive distribution to the observed data for each state.  $p(\tilde{y})\sim Neg-Bin(\alpha, \beta)$ follows a negative binomial distribution.
+
+
+
+```{r}
+ ## we need to understand the underlying rates in a prior for gamma given multiple states.
+ vl<-subset(tally,tally$ideo=='very liberal')
+  hist(vl$stateperc, xlab="very lib. (%)", ylab="frequency")
+
+  ## for each state we must identify the estimate
+  
+  ## empircal bayesian prior for percentage of respondents
+ emp.mean<-mean(vl$stateperc)
+ emp.var<-var(vl$stateperc)
+
+  beta=beta<-1/((var(vl$stateperc)-(mean(1/vl$density))*emp.mean)/(emp.mean))
+  alpha = beta*emp.mean
+  
+alpha_unif= 0.01
+beta_unif = 0.01
+
+qgamma(c(0.025,0.975),alpha,beta)
+quantile(tally$prop,c(0.025,0.975))  
+
+  theta=seq(from=0,to=0.1,by=.001)
+ plot(theta,dgamma(theta,alpha,rate=beta),lty=2, xlab='very liberal voters by state')
+lines(theta,dgamma(theta,alpha_unif,rate=beta_unif),col='red')
+
+dat<-tt[which(tt$ideo=='very liberal'),]
+
+
+post<-function(theta,yj,nj){
+ dd<-dgamma(theta,alpha+yj,rate=beta+nj)
+ return(dd)
+}
+postMean<-function(alpha,yj,beta,nj){
+  (alpha+yj)/(beta+nj)
+  }
+ 
+post_thetaj<- postMean(alpha_unif,dat$n,beta_unif,dat$density)
+pp<-data.frame(state=dat$state,post=postMean(alpha_unif,dat$n,beta_unif,dat$density))
+tt2<-left_join(ele,pp,by="state")
+ggplot(tt2,aes(x=post,y=vote_Obama_pct,label=state))+geom_point(size=3)+geom_text(hjust=0,vjust=0)
+
 
 ```
