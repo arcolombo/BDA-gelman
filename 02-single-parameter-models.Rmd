@@ -419,6 +419,18 @@ we use the sampled thetas from the posterior to sample from the Cauchy distribut
   ## maximum predictive probability
   message('max pred. prob ', round(ytilde[which(pred.prob==max(pred.prob))],3))
 ```
+### Question 12{-}
+Suppose $y|\theta \sim Poisson(\theta)$, find Jeffreys' prior density for $\theta$ and then find $\alpha,\beta$ for which Gamma(a,b) density is a close match to Jeffreys' density.
+
+$$
+\begin{aligned}
+ log(p(y|\theta))&= y*log(\theta)-\theta -log(y!)\\
+ &\implies y' = y/\theta - 1 ,  y'' = -y/\theta^2 \\
+ &\implies J(\theta)= E(- l'')= E(y/\theta^2)= 1/\theta \\
+ &= p(\theta)\propto |J(\theta)^{1/2}| = \sqrt{1/\theta} = \theta^{-1/2}\\
+\end{aligned}
+$$
+ So the closes prior is $\alpha=1/2 , \beta=0$.
 
 ### Question 13{-}
 - (a) Use the normal approximation to gamma and poisson to determine a posterior for fatal accidents using table 2.2.  Compute the 95$\%$ predictive interval.
