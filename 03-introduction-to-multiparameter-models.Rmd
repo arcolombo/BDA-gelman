@@ -1,0 +1,317 @@
+# Chapter 3
+
+# Exercises{-}
+
+## Question 1
+- (a) find the marginal posterior of $\alpha = \theta_1/(\theta_1+\theta_2)$ 
+We need to find the joint posterior of $\theta_1, \theta_2$ and then perform a change of variables to ($\alpha,\beta)$.  Let the prior $p(\theta)=Diri(a_1,...,a_J)$ where y follows a multinomial likelihood.
+$$
+\begin{aligned}
+p(\theta | y) &= \prod \theta_j^{y_j}\theta_j^{a_j-1}\\
+&= \prod \theta_j^{y_j+a_j-1}\\
+& \sim Diri(y_j+a_j)\\
+\end{aligned}
+$$
+The posterior follows a Dirichlet distribution, but we are interested only in the $\theta_1,\theta_2$ parameters and need to find the marginal posterior of these subvectors.  The prior marginal follows  for $a_0= \sum a_i$ and $y_0= \sum y_i$
+
+From the Appendix A the joint posterior of the sub vector is 
+$$
+\begin{aligned}
+(\theta_1, \theta_2, 1-\theta_1-\theta_2| y ) &\sim Diri(y_1+a_1,y_2+a_2, a_0+y_0-y_1-y_2-a_1-a_2)\\
+&p(\theta_1,\theta_2,1-\theta_1-\theta_2) \propto \theta_1^{y_1+a_1-1}\theta_2^{y_2+a_2-1}(1-\theta_1-\theta_2)^{a_0+y_0-y_1-y_2-a_1-a_2-1}
+\end{aligned}
+$$
+In order to find the distribution of $\theta_1/(\theta_1+\theta_2)$ we need the jacobian, let ($\alpha,\beta) = (\theta_1/(\theta_1+\theta_2) , \theta_1+\theta_2)$.
+Rearranging the terms we have $\theta_1 = \alpha*\beta$ , and $\theta_2= \beta(1-\alpha)$
+$$
+\begin{aligned}
+|J| &= \begin{bmatrix}
+ \beta & \alpha \\
+ -\beta & (1-\alpha)\\
+\end{bmatrix} \\
+ &=|\beta|
+\end{aligned}
+$$
+where $a'_0 = \sum a_i -a_1 -a_2$, and $y'_0 =\sum y_i-y_1-y_2$
+$$
+\begin{aligned}
+p(\alpha,\beta) &= (\alpha*\beta)^{y_1+a_1-1}(\beta(1-\alpha))^{y_2+a_2-1}(1-\alpha*\beta-\beta(1-\alpha))^{a'_0+y'_0-1}|\beta|\\
+&=\alpha^{y_1+a_1-1}(1-\alpha)^{y_2+a_2-1}\beta^{y_1+a_1+y_2+a_2-1}(1-\beta)^{a'_0+y'_0-1}\\
+&= Beta(y_1+a_1,y_2+a_2)Beta(y_1+a_1+y_2+a_2, a'_0+y'_0)
+\end{aligned}
+$$
+By factorization we integrate out with respect $\beta$ which yields the marginal posterior for $\alpha \sim Beta(y_1+a_1,y_2+a_2)$
+
+- (b)  To show the relation with binomial let the likelihood $p(y|\alpha) \propto \alpha^y_1 (1-\alpha)^y_2$ and a p($\alpha)=Beta(a_1,a_2)$ then the posterior is 
+$$
+p(\alpha | y) = p(y|\alpha)p(\alpha)\\
+= \alpha^{y_1+a_1-1}(1-\alpha)^{y_2+a_2-1}\\
+= Beta(y_1+a_1,y_2+a_2)
+$$
+
+## Question 2{-}
+
+639 were polled before the debate and 639 different persons were polled afterward.  we let j=1,2 let $\alpha_j$ be proprtion of voters who preferred Bush out of those who had a preference for bush or Dukakis at the time of the survey j.  we need to model two different multinomial distributions, and find the posterior probability in $\alpha_2-\alpha_1$.  what was the posterior probability for support of Bush?
+
+There was a 0.355 probability of a shift toward Bush after both debates.
+```{r}
+debate<-data.frame(survey=c("pre","post"), bush=c(294,288), dukakis=c(307,332),none=c(38,19),total=c(639,639))
+
+# we have 3 outcomes bush,duk, none
+## we examine the proportion.
+
+# need to set a theta parameter with sum theta =1
+ theta1<-seq(0.45,1,by=0.01)/2
+ theta2<-seq(0.45,1,by=0.01)/2
+ theta3<-1-(theta1+theta2)
+ all(theta1+theta2+theta3 ==1) ## sums to  1 for each j
+ theta<-data.frame(theta1,theta2,theta3)
+ ## need the pre posterior
+ ## the prior alpha1, alpha2 =0 for improper prior
+ library(gtools)
+  pre.post<-rdirichlet(1000, c(as.numeric(debate[1,2:4])))
+   p.post<-rdirichlet(1000, c(as.numeric(debate[2,2:4])))
+  ## differences between bush post .vs pre
+   hist(p.post[,1]-pre.post[,1],main='bush')
+   table((p.post[,1]-pre.post[,1])>0) ## 0.355% supported bush post debate.
+   
+ pre.post2<-apply(theta,1, function(x) ddirichlet(x,as.numeric(debate[1,2:4])))
+ post.post2<-apply(theta,1, function(x) ddirichlet(x,as.numeric(debate[2,2:4])))
+ 
+  plot(theta[,1],pre.post2,col='blue',lty=2)
+  lines(theta[,1],post.post2,col='red')
+```
+
+## Question 3{-}
+we are given two independent normal random variables with unknown variances and unknown true means.
+- (a) Assume a uniform prior on $(\mu_c, \mu_t, log(\sigma_c),log(\sigma_t))$ find the posterior of $\mu_c$ and $\mu_t$.
+```{r}
+ nc =32
+ nt= 36
+ mc = 1.013
+ sdc = 0.24
+ mt = 1.173
+ sdt = 0.24
+ 
+ ### unknow true mean/variances  we only have sample data.
+ ## we have two unknowns and need to find the joint posterior distribution.
+ 
+ # the marginal posterior of mc follows a t-dist.
+  mc_range<-c(mc-sdc/sqrt(nc)*qt(0.975,df=nc-1),mc+sdc/sqrt(nc)*qt(0.975,df=nc-1))
+   mt_range<-c(mt-sdt/sqrt(nt)*qt(0.975,df=nt-1),mt+sdt/sqrt(nt)*qt(0.975,df=nt-1))
+
+## to sample from the posterior we use 3.5 and 3.3 equations
+   posterior_sample<-function( mc=1, sdc=1, nc=10){
+   invx2<-((nc-1)*sdc^2)/rchisq(1,nc-1)
+    post.mu<-rnorm(1,mean=mc,sd=sqrt(invx2/nc))
+    return(post.mu)
+   }
+   post_mc<-sapply(1:1000,function(x) posterior_sample(mc=mc,sdc=sdc,nc=nc))
+    hist(post_mc,main='posterior marginal control')
+    post_mt<-sapply(1:1000,function(x) posterior_sample(mc=mt,sdc=sdt,nc=nt))
+     hist(post_mt,main='posterior marginal treat')
+
+    message("95% posterior margin control:", round(mc_range[1],2)," ",round(mc_range[2],2)) 
+        message("95% posterior margin control:", round(mt_range[1],2)," ",round(mt_range[2],2)) 
+
+        quantile(post_mc,c(0.025,0.975))
+        quantile(post_mt,c(0.025,0.975))
+```
+
+- (b) what is $\mu_t - \mu_c$  
+
+The posterior interval (central) of the differences between 2 independent t-distributoins is 0.16 (0.04, 0.28), which closely matches the posterior simulation interval (0.0338, 0.281).  Here since both are independent we use $X-Y\sim N(\mu_x-\mu_y, sd_x+sd_y)$ as the sampling distribution.
+```{r}
+ hist(post_mt-post_mc, main = ' Difference between sampled posteriors')
+         quantile(post_mt-post_mc,c(0.025,0.975))
+         
+
+  ## diff
+         post_diff<-sapply(1:1000,function(x) posterior_sample(mc=mt-mc,sdc=sdt+sdc,nc=nt+nc))
+    hist(post_diff, main='simulated difference')
+             quantile(post_diff,c(0.025,0.975))
+        
+  ## theoretical (two independent t distributions)
+  md = mt-mc
+  sdd = sdt+sdc
+  nd = nt+nc
+  d_range<-c(md-sdd/sqrt(nd)*qt(0.975,df=nd-1),md+sdd/sqrt(nd)*qt(0.975,df=nd-1))
+  print(d_range)
+
+```
+
+## Question 4{-}
+- (4a) set up a noninformative prior on $(p_0,p_1)$ and obtain posterior simulations.  Assume outcomes are independent and binomially distributed.  The posterior for probability of death is Diri(39+1, 22+1). 
+```{r}
+ nc= 674
+ dc= 39
+ nt = 680
+ dt = 22
+
+ 
+ 
+ ## we have two categories Control ~Bin(p0) and Treat~Bin(p1) we use multinomial
+ ## non-informative prior Diri(a1=1, a2=1)
+ library(gtools)
+  ## p( p0, p1) = Diri( 1,1) noninfom prior
+  # p( p0,p1 | y) = Diri(  39+1, 22+1) ##  posterior
+ 
+ treat.post<-rdirichlet(1000, c(39+1,22+1))
+ par(mfrow=c(1,2))
+  hist(treat.post[,1],main="post control")
+  hist(treat.post[,2],main='post treat')
+```
+
+- (4b)  The posterior odds has a mean of 0.3657 using non-informative prior.  Using the empirical odds ratio we see the odds of death is 0.546 comparing treatment to controls.   
+```{r}
+ ## data table
+ dd<-data.frame(none=c(674-39,680-22),outcome=c(39,22),row.names=c('unexp','exp'))
+ library(epitools)
+ oddsratio(as.matrix(dd))$measure
+  ## b
+  or<-(treat.post[,2]/(1-treat.post[,2]))/(treat.post[,1]/(1-treat.post[,1]))
+summary(or)
+  hist(or,main='treatment odds')
+```
+
+- (4c) showing the improper prior (a=0), the posterior odds is 0.363 which is very robust and similar to the noninformative.  Using the emprical prior that sets the prior hyperparameters to the cohort expected number of deaths $(39/674)*Total = 79$,  and $(22/658)*Total = 45$, yields a similar posterior mean of approximately 0.35 for the odds ratio.   Hence the posterior is robust to the choice of prior but does not match well with the empirical non-parametric odds.
+```{r}
+ treat.post<-rdirichlet(1000, c(39,22))
+ 
+  
+  ## b
+  or<-(treat.post[,2]/(1-treat.post[,2]))/(treat.post[,1]/(1-treat.post[,1]))
+  hist(or,main='treatment odds ')
+  summary(or)
+
+  ## empirical
+  # control = (39/674)*1354 = 78.34718
+  # treat = (22/658)*1354 = 45.27052
+  treat.post<-rdirichlet(1000, c(39+79,22+46))
+ 
+  
+  ## b
+  or<-(treat.post[,2]/(1-treat.post[,2]))/(treat.post[,1]/(1-treat.post[,1]))
+  hist(or,main='treatment odds empriical posterior')
+  summary(or)
+```
+## Question 5{-}
+- (a) Give the posterior distribution of $\mu, \sigma^2$ obtained by pretending the observations are exact, unrounded, measurements. we choose a prior for $\theta \sim Gamma(0.1,0.01)$ which has a mean and variance of 10.4 and 1000.   Using a Poisson likelihood, the mean is 10.4 and variance 2.2 from the posterior.  
+```{r}
+ obs=c(10,10,12,11,9)
+ ### under the exact model, we can not use a binomial because we do not have a proportion (p0) that we can estimate. we do not have a r.v. for 'successes'.
+ # we can use the Poisson distribution 
+ ## not sure how to use jeffreys prior
+  a=0.1
+  b=0.01
+  pois.post<-rgamma(1000,a+5*mean(obs),b+5)
+  hist(pois.post,main='count posterior')
+  # post summary  mean : 8.8,  var= 1.47
+  summary(pois.post)
+  mean(pois.post)
+  var(pois.post)
+  plot(density(pois.post),ylim=c(0,0.4),main='pois posterior')
+  lines(density(obs),col='red')
+```
+
+- (b) Give the correct posterior distribution treating the measurements as rounded
+Using non informative prior for both unknowns,  the posterior mean is 10.4 and posterior variance is 0.433
+```{r}
+ ## normal with 2 unknowns.
+ ## joint poisterior
+ ## need the  sigma2 | y ~ inv-x2(n-1,s2)
+  nu = length(obs)-1
+  s2 = var(obs)
+  chi2= rchisq(1000, nu)
+   ## inv-chi2  v*s^2/X  (Appendix A)
+  sigma2 = nu*s2/chi2
+  ## posterior prob   =  p(m | sigma2, y)p(sigma2|y)
+   ## for each variance term  draw   N( ybar,  sd= sqrt(sigma2/n))
+  y<-sapply(sigma2,function(x) rnorm(1, mean=mean(obs), sd=sqrt(x)/sqrt(5)))
+  hist(y,main='posterior normal')
+
+  plot(density(y),main='posterior normal density')
+  lines(density(obs),col='red')
+```
+- (c) how do the correct/incorrect differ, compare means/variances
+
+The difference in means is approximately 0, with a variance (residual) of 2.7.
+```{r}
+ mean( y - pois.post) # 0.002926538
+ var( y - pois.post) # 2.7
+ hist(y-pois.post)
+ plot(y,pois.post,main="normal vs. pois likelihoods")
+```
+
+- (d) Let z=(z1,z2,z3,z4,z5) be the original unrounded measurements corresponding to the five observations above. draw simulations of z and compare the posterior $(z1-z2)^2$.
+
+For this we sample from the normal posterior distribution, conditioned on the rounded values to match the observed.  For each sample of the posterior, the rounded values are conditioned to match the observed data.  The mean difference of ($z_1-z_2)^2$ is 0.14, with variance of 0.03.  
+```{r}
+ 
+ generateObs<-function(obs){
+   z<-NULL
+    for(i in 1:5){
+ zi= sample(y,1)
+  while( round(zi)!=obs[i]){
+    zi=sample(y,1)
+  }
+  z<-c(z,zi)
+    }
+   stopifnot(all(round(z)==obs))
+   return(z)
+ }
+ 
+ ERR<-NULL
+
+ for(j in 1:1000){
+   ## generate z samples such that round(z) == obs
+  z<-generateObs(obs)
+  err<- (z[1]-z[2])^2
+ ERR<-c(ERR,err)
+ }
+ message("mean error:",mean(ERR))
+ hist(ERR)
+```
+## Question 6{-}
+Consider data y1,...,yn modeled as independent Bin(N,$\theta$) with both N and $\theta$ unknown.  
+
+First we examine that $p(\lambda,\theta)\propto 1/\lambda$ described by Raftery (1988).  We take the product of a vague prior for $\lambda$ and the uniform prior for $\theta$.  let $\theta \sim U[0,1]$ be uniform and use the uniform prior for $\lambda$ as a vague prior. The motivation here is to use a uniform vague prior on the hyperparameter.   Alternatively we can use Jeffreys' Prior for Pois($\lambda) = 1/\sqrt{\lambda}$ where the $-E(\partial l^2 / \partial \lambda^2) = 1/\lambda$ is known for the Poisson.
+$$
+\begin{aligned}
+ p(\lambda,\theta) &\propto (1)1/\lambda\\
+ &\propto \lambda^{-1}
+\end{aligned}
+$$
+- (a) to write the prior N$\sim P(\lambda)$ as a sampling distribution, but we can let N follow a Poisson, with a Gamma(0,0) vague prior initially. where $\theta \sim U(0,1)$ as a uniform probability.  Alternatively we can let $N\sim U(0, N)$ for N as a large value and this follows similarly to the previous derivation.  Note this is an improprer prior.   
+$$
+\begin{aligned}
+ p(N,\theta) &\propto (1)e^{-\beta*N}N^{\alpha-1}\\
+ &\propto N^{-1}, \text{for  } \alpha,\beta =0
+\end{aligned}
+$$
+
+ So we can let N follow  vague prior from the Gamma(0,0) distribution, or call it a uniform on (0,N) to derive p(N,$\theta)$.
+ 
+- (b)
+```{r}
+ x<-c(53,57,66,67,72)
+ M=seq(max(x),1000)
+ 
+ marginal.post<-function(N,x){
+   n=length(x)
+   S=sum(x)
+   # choose on the log scale
+   a<-sum( lchoose(N,x))
+   b<-lgamma(n*N-S+1)
+   c<-log(N)
+   d<-lgamma(n*N+2)
+   #rez<-(a*b)/c
+   rez<-a+b-c-d
+   return((rez))
+ } ## problems here
+ 
+ ## can we condition we can derive the analytic form of the joint posterior.
+ ## 
+
+```
+
