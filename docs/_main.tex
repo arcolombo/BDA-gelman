@@ -117,7 +117,7 @@
 
 \title{Bayesian Data Analysis}
 \author{Anthony R. Colombo, Dr.~Paul Marjoram}
-\date{2022-06-20}
+\date{2022-06-24}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -715,7 +715,7 @@ Then the probability that at least 1 election is tied, from 435 total elections 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 12.1931
+## [1] 7.429254
 \end{verbatim}
 
 \begin{Shaded}
@@ -1000,6 +1000,76 @@ Simplfying the algebra shows the posterior depends on y only through the sample 
 \hypertarget{other-standard-single-parameter-models}{%
 \section{Other standard single-parameter models}\label{other-standard-single-parameter-models}}
 
+The binomial model is motivated by counting exchangeable outcomes. The normal distribution applies to a random variable that is the sum of many exchangeable- or independent terms. The poisson and exponential distribution applies to number of counts, rates, or waiting times for events modeled as occurring exchangeably in all time intervals, i.e.~independently in time, and with a constant rate of occurrence.
+
+\hypertarget{normal-distribution-with-known-mean-but-unknown-variance}{%
+\subsection*{Normal distribution with known mean but unknown variance}\label{normal-distribution-with-known-mean-but-unknown-variance}}
+\addcontentsline{toc}{subsection}{Normal distribution with known mean but unknown variance}
+
+For \(p(y|\theta,\sigma^2)=N(y|\theta,\sigma^2)\) with known mean and unknown variance the likelihood vector with iid observations follows
+
+\[
+\begin{aligned}
+ p( y | \sigma^2 ) &\propto \sigma^{-n}exp(-1/2\sigma^2 \sum (y_i - \theta)^2) \\
+   &= (\sigma^2)^{-n/2}exp(-n/2\sigma^2 \nu)
+   \end{aligned}
+\]
+The sufficient statistic \(\nu = -1/n \sum (y_i-\theta)^2\). The corresponding conjugate prior density is the inverse-gamma
+\[
+\begin{aligned}
+p(\sigma^2)\propto (\sigma^2)^{-(\alpha+1)}e^{-\beta/\sigma^2}
+\end{aligned}
+\]
+THe convenient parameterization is as a scaled inverse-\(\chi^2\) distribution with scale \(\sigma_0^2\) and \(\nu_0\) degrees of freedom. The prior distribution for \(\sigma^2\) is taken as \(\sigma_0^2\nu_0/X\), where \(X\sim \chi_{\nu_0}^2\) random variable.
+
+The resulting posterior density for \(\sigma^2\) is
+
+\[
+\begin{aligned}
+p(\sigma^2| y) &\propto p(\sigma^2)p(y|\sigma^2)\\
+&\propto \frac{\sigma_0^2}{\sigma^2}^{\nu_0/2+1}exp(\frac{\nu_0\sigma_0^2}{2\sigma^2})((\sigma^2)^{-n/2} exp(-n/2\frac{\nu}{\sigma^2}))\\ 
+&\propto (\sigma^2)^{-(n+\nu_0)/(2+1)}exp(\frac{-1}{2\sigma^2}(\nu_0\sigma_0^2+n\nu))\\
+&\text{then   } \sigma^2 | y \sim Inv.\chi^2 (\nu_0+n, \frac{\nu_0\sigma_0^2+ n\nu}{\nu_0+n})\\
+\end{aligned}
+\]
+Which is a scaled inverse-\(\chi^2\) with scale equal to the degrees-of-freedom weighted average of the prior and data scales, and the d.f. equal to the sum of the prior and data degrees-of-freedom.
+
+\hypertarget{poisson-model}{%
+\subsection*{Poisson model}\label{poisson-model}}
+\addcontentsline{toc}{subsection}{Poisson model}
+
+The Poisson model arises in data in the form of counts; in epidemiology studies disease incidence is modeled using Poisson framework.
+
+the likelihood is
+\[
+\begin{aligned}
+p(y|\theta)&= \prod_i^n \frac{1}{y_i!}\theta^{y_i}e^{-\theta}\\
+&=\theta^{t(y)}e^{-n\theta}\\
+\end{aligned}
+\]
+Where the sufficient statistic is t(y)=\(\sum y_i\) and the likelihood in exponential family form is written as
+
+\[
+p(y|\theta)\propto e^{-n\theta}e^{t(y)log(\theta)}
+\]
+where the natural parameter \(\phi(\theta)=log(\theta)\) and the natural conjugate prior distribution is
+
+\[
+p(\theta)\propto (e^{-\theta})^{\eta}e^{\nu *log(\theta)}
+\]
+indexed by hyperparameters (\(\eta,\nu\)). We can rewrite the likelihood in the form \(\theta^a e^{-b\theta}\) and so the conjugate prior must be in the form of \(p(\theta)\propto \theta^Ae^{-B\theta}\) which can be re-written to follow a Gamma density as
+\[
+p(\theta)\propto e^{-\beta\theta}\theta^{\alpha-1}
+\]
+and this follows a Gamma(\(\alpha,\beta)\) equivalent to prior total count of \(\alpha-1\) in \(\beta\) prior observations. The posterior is
+\[
+\theta|y \sim Gamma(\alpha+n\bar{y}, \beta+n)
+\]
+
+\hypertarget{negative-binomial-distribution}{%
+\subsection*{Negative Binomial distribution}\label{negative-binomial-distribution}}
+\addcontentsline{toc}{subsection}{Negative Binomial distribution}
+
 \hypertarget{exercises-1}{%
 \section{Exercises}\label{exercises-1}}
 
@@ -1115,7 +1185,7 @@ We find the probability distribution of a given success and the prior probabilit
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.1267482 0.1361930 0.1431020 0.1503005 0.1611764
+## [1] 0.1275769 0.1365536 0.1431020 0.1499099 0.1601695
 \end{verbatim}
 
 \begin{Shaded}
@@ -1126,7 +1196,7 @@ We find the probability distribution of a given success and the prior probabilit
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.1238035 0.1648427
+## [1] 0.1247718 0.1636216
 \end{verbatim}
 
 \hypertarget{question-4}{%
@@ -1202,15 +1272,64 @@ We have a mixture of 3 normal distributions, and show the central intervals for 
 
 \includegraphics{_main_files/figure-latex/unnamed-chunk-14-1.pdf}
 
+\hypertarget{question-7}{%
+\subsection*{Question 7}\label{question-7}}
+\addcontentsline{toc}{subsection}{Question 7}
+
+\begin{itemize}
+\item
+  \begin{enumerate}
+  \def\labelenumi{(\alph{enumi})}
+  \tightlist
+  \item
+    for the binomial likelihood \(y\sim Bin(n,\theta)\), show that p(\(\theta)\propto \theta^-1(1-\theta)^-1\) is the uniform prior for the natural parameter of the exponential family.
+  \end{enumerate}
+\item
+  first we write the binomial likelihood in exponential family form, note that we are not deriving the posterior of any function, but just studying the likelihood.
+\end{itemize}
+
+\[
+\begin{aligned}
+p(y|\theta) &= \theta^y(1-\theta)^{n-y}\\
+\implies log(p)&= ylog(\theta/(1-\theta))+nlog(1-\theta) \\
+\implies p(y|\theta) &= exp(y*log(\theta/(1-\theta)))*g(\theta)\\
+\text{hence } \phi(\theta)= log(\theta/1-\theta), \text{  and we're given uniformity  } p(\phi(\theta))\propto 1\\
+\end{aligned}
+\]
+Inverting \(\phi(\theta)=log(\theta/1-\theta)\) yields \(\theta=\frac{e^\phi}{1+e^\phi}\) and we know that p(\(\phi)\propto 1\). Using the jacobian we can derive \(p(\theta)=p(\phi)\frac{d\phi}{d\theta}\) shown as
+
+\[
+\begin{aligned}
+p(\theta)&=p(\phi)\frac{d\phi}{d\theta}\\
+&= p(\phi)d/d\theta (log(\theta/1-\theta))\\
+&\propto (1) (1-\theta / \theta)(1/(1-\theta)^2) \\
+&= 1/\theta *(1/1-\theta) 
+\end{aligned}
+\]
+
 \hypertarget{question-8-normal-distribution-with-unknown-mean}{%
 \subsection*{Question 8 (Normal distribution with unknown mean)}\label{question-8-normal-distribution-with-unknown-mean}}
 \addcontentsline{toc}{subsection}{Question 8 (Normal distribution with unknown mean)}
 
 A random sample of n students is drawn from a large population, and weights are measured. The average height of the n sampled students is \(\bar{y}= 150\) lbs. Assume the weights in the population are normally distribution with unknown mean, \(\theta\), and known standard deviation 20 lbs. Suppose the prior for \(\theta \sim N(180, 40^2)\)
 
-For known variance, the limit of the posterior is \(p(\theta,y)\approx N(\theta| \bar{y}, \sigma^2/n)\). And the direct formulation is \(p(\theta | \bar{y})= N(\theta | \mu_n,\tau_n^2).\) using equations 2.12.
-
-For a posterior predictive interval, the marginal distribution for new data \(p(\tilde{y} | y) \sim N(\mu_n, \sigma^2+\tau_n^2)\)
+\begin{itemize}
+\item
+  \begin{enumerate}
+  \def\labelenumi{(\alph{enumi})}
+  \tightlist
+  \item
+    For known variance, the limit of the posterior is \(p(\theta,y)\approx N(\theta| \bar{y}, \sigma^2/n)\). And the direct formulation is \(p(\theta | \bar{y})= N(\theta | \mu_n,\tau_n^2).\) using equations 2.12.
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{(\alph{enumi})}
+  \setcounter{enumi}{1}
+  \tightlist
+  \item
+    For a posterior predictive interval, the marginal distribution for new data \(p(\tilde{y} | y) \sim N(\mu_n, \sigma^2+\tau_n^2)\)
+  \end{enumerate}
+\end{itemize}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1222,7 +1341,22 @@ For a posterior predictive interval, the marginal distribution for new data \(p(
 \NormalTok{  inv.taun2}\OtherTok{\textless{}{-}} \DecValTok{1}\SpecialCharTok{/}\NormalTok{tau02 }\SpecialCharTok{+}\NormalTok{n}\SpecialCharTok{/}\NormalTok{sigma2}
   \FunctionTok{return}\NormalTok{(}\DecValTok{1}\SpecialCharTok{/}\NormalTok{inv.taun2)}
 \NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
 
+\begin{itemize}
+\item
+  \begin{enumerate}
+  \def\labelenumi{(\alph{enumi})}
+  \setcounter{enumi}{2}
+  \tightlist
+  \item
+    Here we give the posterior interval and predictive interval for n=10
+  \end{enumerate}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \NormalTok{ybar}\OtherTok{=}\DecValTok{150}
 \NormalTok{sigma2}\OtherTok{=}\DecValTok{20}\SpecialCharTok{\^{}}\DecValTok{2}
 \NormalTok{mu0}\OtherTok{=}\DecValTok{180}
@@ -1253,6 +1387,17 @@ For a posterior predictive interval, the marginal distribution for new data \(p(
 \begin{verbatim}
 ## posterior predictive interval n=10: 109.66 191.8
 \end{verbatim}
+
+\begin{itemize}
+\item
+  \begin{enumerate}
+  \def\labelenumi{(\alph{enumi})}
+  \setcounter{enumi}{3}
+  \tightlist
+  \item
+    the posterior and predictive for n=100
+  \end{enumerate}
+\end{itemize}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1301,6 +1446,129 @@ For a posterior predictive interval, the marginal distribution for new data \(p(
 \begin{verbatim}
 ## posterior predictive interval n=100: 110.68 189.47
 \end{verbatim}
+
+\hypertarget{question-10}{%
+\subsection*{Question 10}\label{question-10}}
+\addcontentsline{toc}{subsection}{Question 10}
+
+Suppose there are N cable cars numbered sequentially 1 to N. You see a car at random labeled 203 and wish to estimate N. (a) assume the prior follows Geo(1/100) what is the posterior for N?
+
+\begin{itemize}
+\item
+  \begin{enumerate}
+  \def\labelenumi{(\alph{enumi})}
+  \tightlist
+  \item
+    The car X=203 was observed, and the likelihood of this observation (data) is uniform p(\(X|N=203)=1/N\) which assumes each car is equally likely. So the posterior \(p(N|X) = (1/N)(1/100)(99/100)^{N-1}\). So the posterior is proportional to \((1/N)(99/100)^{N-1}\) with \(N\geq 203\).
+  \end{enumerate}
+\item
+  what is the posterior mean and std. deviation for N?.
+  we use Bayes' theorem \(p(N|X) = \frac{p(X|N)p(N)}{p(X)}\). And use a computer to approximation p(X) which is approximately 0.0471 (ignoring constant).
+  the infinite series \(\sum_{n=203}^\infty (1/n)(99/100)^{n-1}\) converges by using the ratio test with \(\rho<1\) to \$\approx 0.0471.
+  The posterior mean and standard deviation is 279.09 a.nd 79.96, which was evaluated using the posterior distribution \(p(N|X)\) defined as
+  \[
+   p(N|X) \propto \frac{(1/N)(99/100)^{N-1}}{p(X)}  
+  \]
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ totalSum}\OtherTok{=}\DecValTok{0}
+ 
+ \ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \DecValTok{203}\SpecialCharTok{:}\DecValTok{30000}\NormalTok{)\{}
+\NormalTok{  sum\_i}\OtherTok{=}\NormalTok{ (}\DecValTok{1}\SpecialCharTok{/}\NormalTok{i)}\SpecialCharTok{*}\NormalTok{(}\DecValTok{99}\SpecialCharTok{/}\DecValTok{100}\NormalTok{)}\SpecialCharTok{\^{}}\NormalTok{(i}\DecValTok{{-}1}\NormalTok{)}
+\NormalTok{  totalSum}\OtherTok{=}\NormalTok{ totalSum}\SpecialCharTok{+}\NormalTok{sum\_i}
+  
+\NormalTok{ \}}
+ \FunctionTok{print}\NormalTok{(totalSum)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.04705084
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+ \DocumentationTok{\#\# approximate the distribution}
+\NormalTok{ px}\OtherTok{\textless{}{-}}\NormalTok{totalSum}
+\NormalTok{ X}\OtherTok{\textless{}{-}}\FunctionTok{seq}\NormalTok{(}\DecValTok{203}\NormalTok{,}\DecValTok{300000}\NormalTok{)}
+ 
+\NormalTok{ dpx}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(N,px)\{}
+\NormalTok{   dd}\OtherTok{\textless{}{-}}\NormalTok{ (}\DecValTok{1}\SpecialCharTok{/}\NormalTok{px)}\SpecialCharTok{*}\NormalTok{(}\DecValTok{1}\SpecialCharTok{/}\NormalTok{N)}\SpecialCharTok{*}\NormalTok{(}\DecValTok{99}\SpecialCharTok{/}\DecValTok{100}\NormalTok{)}\SpecialCharTok{\^{}}\NormalTok{(N}\DecValTok{{-}1}\NormalTok{)}
+   
+   \FunctionTok{return}\NormalTok{(dd)}
+\NormalTok{ \}}
+ \DocumentationTok{\#\# the posterior mean is}
+  \DocumentationTok{\#\# E(X) = x*f(x)}
+\NormalTok{ postMean}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(N,px)\{}
+\NormalTok{   fx}\OtherTok{\textless{}{-}} \FunctionTok{dpx}\NormalTok{(N,px)}
+\NormalTok{   ex}\OtherTok{\textless{}{-}}\NormalTok{ N}\SpecialCharTok{*}\NormalTok{fx}
+   \FunctionTok{return}\NormalTok{(ex)}
+\NormalTok{ \}}
+\NormalTok{  EX}\OtherTok{\textless{}{-}}\FunctionTok{sum}\NormalTok{(}\FunctionTok{postMean}\NormalTok{(X,px))}
+  
+\DocumentationTok{\#\# posterior variance}
+   \DocumentationTok{\#\# VX = EX\^{}2 {-} (EX)\^{}2}
+\NormalTok{postMean.sq}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(N,px)\{}
+\NormalTok{   fx}\OtherTok{\textless{}{-}} \FunctionTok{dpx}\NormalTok{(N,px)}
+\NormalTok{   ex2}\OtherTok{\textless{}{-}}\NormalTok{ N}\SpecialCharTok{*}\NormalTok{N}\SpecialCharTok{*}\NormalTok{fx}
+   \FunctionTok{return}\NormalTok{(ex2)}
+\NormalTok{\}}
+ \DocumentationTok{\#\# the variance term has to be evaluated at smaller limit to avoid overflow}
+\NormalTok{sdX}\OtherTok{\textless{}{-}}\FunctionTok{sqrt}\NormalTok{(}\FunctionTok{sum}\NormalTok{(}\FunctionTok{postMean.sq}\NormalTok{(}\FunctionTok{seq}\NormalTok{(}\DecValTok{203}\NormalTok{,}\DecValTok{35000}\NormalTok{),px))}\SpecialCharTok{{-}}\NormalTok{(EX)}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}
+\FunctionTok{message}\NormalTok{(}\StringTok{"posterior mean and sd is:"}\NormalTok{, }\FunctionTok{round}\NormalTok{(EX,}\DecValTok{2}\NormalTok{),}\StringTok{" "}\NormalTok{,}\FunctionTok{round}\NormalTok{(sdX,}\DecValTok{2}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## posterior mean and sd is:279.09 79.96
+\end{verbatim}
+
+\begin{itemize}
+\item
+  \begin{enumerate}
+  \def\labelenumi{(\alph{enumi})}
+  \setcounter{enumi}{1}
+  \tightlist
+  \item
+    we use a simulation to estimate the posterior. We sample with replacement, with a distribution size equal to a large number (N), with probability of observing a number equal to the posterior distribution. The empirial mean and std.dev are 280.5, and 80.9
+  \end{enumerate}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ N}\OtherTok{\textless{}{-}}\DecValTok{203}\SpecialCharTok{:}\DecValTok{100000}
+\NormalTok{ Nsim}\OtherTok{\textless{}{-}}\DecValTok{10000}
+\NormalTok{ unnorm.post}\OtherTok{\textless{}{-}}\NormalTok{(}\DecValTok{1}\SpecialCharTok{/}\NormalTok{N)}\SpecialCharTok{*}\NormalTok{(}\DecValTok{99}\SpecialCharTok{/}\DecValTok{100}\NormalTok{)}\SpecialCharTok{\^{}}\NormalTok{(N}\DecValTok{{-}10}\NormalTok{)}
+ \FunctionTok{mean}\NormalTok{(}\FunctionTok{sample}\NormalTok{(N,}\AttributeTok{size=}\NormalTok{Nsim,}\AttributeTok{prob=}\NormalTok{unnorm.post,}\AttributeTok{replace=}\NormalTok{T))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 278.0094
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+ \FunctionTok{sd}\NormalTok{(}\FunctionTok{sample}\NormalTok{(N,}\AttributeTok{size=}\NormalTok{Nsim,}\AttributeTok{prob=}\NormalTok{unnorm.post,}\AttributeTok{replace=}\NormalTok{T))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 79.34755
+\end{verbatim}
+
+\begin{itemize}
+\item
+  \begin{enumerate}
+  \def\labelenumi{(\alph{enumi})}
+  \setcounter{enumi}{2}
+  \tightlist
+  \item
+    we can use a uniform prior \(p(N) = 1/N\) with a geometric likelihood p(\(X|N)=(1/100)(99/100)^(N-1)\) which will not change the result. We can also change the parameter p to be distributed under a binomial model.
+  \end{enumerate}
+\end{itemize}
 
 \hypertarget{parts}{%
 \chapter{Parts}\label{parts}}
