@@ -329,7 +329,7 @@ c<-dnorm(x,mean=n*theta[3],sd=sqrt(n*theta[3]*(1-theta[3]))  )
 mypost<-a*0.25+b*0.5+c*0.25
 
 ## prior pred  p(y) = p(y|theta)*p(theta) / p(theta| y)
-
+mypri<-mypost
 
 sum(mypri) ## sums to 1 it is a distribution
 
@@ -699,7 +699,7 @@ ybar=mean(fatal)
   
  plot(ytilde,pred.prob, main='predictive distribution for future 1986')
  abline(v=quantile(ytilde,c(0.025,0.975)),col='red')
- lines(theta,post_pois)
+ #lines(theta,post_pois)
  quantile(ytilde,c(0.025,0.975))
 ```
 
@@ -897,7 +897,7 @@ lines(theta,dgamma(theta,alpha+n*mean(death),rate=beta+n),col='blue')
   
  plot(ytilde,pred.prob, main='predictive distribution for future 1986')
  abline(v=quantile(ytilde,c(0.025,0.975)),col='red')
- lines(theta,post_pois)
+# lines(theta,post_pois)
  quantile(ytilde,c(0.025,0.975))
 
 ```
@@ -966,7 +966,8 @@ For those that identify as *liberal* we see a much linear trend.
  library(dplyr)
  library(magrittr)
  library(ggplot2)
-polls<-read.dta("C:/Users/UOSC/Documents/Keck-graduate-school/PM590-Bayesian/bookdown-files/pew_research_center_june_elect_wknd_data.dta")
+#polls<-read.dta("C:/Users/UOSC/Documents/Keck-graduate-school/PM590-Bayesian/bookdown-files/pew_research_center_june_elect_wknd_data.dta")
+polls<-read.dta("C:/Users/antho/Documents/Keck-graduate-school/PM590-Bayesian/bookdown-files/pew_research_center_june_elect_wknd_data.dta")
  #proportion of very liberal
 table(polls$ideo)
  ## adult pop
@@ -979,7 +980,8 @@ polls<-polls[which(polls$state!="alaska" & polls$state!="hawaii"),]
 # average the points that are missing.
 polls$density[which(is.na(polls$density))]<-mean(polls$density[which(!is.na(polls$density))])
 
-ele<-read.csv("C:/Users/UOSC/Documents/Keck-graduate-school/PM590-Bayesian/bookdown-files/2008ElectionResult.csv")
+#ele<-read.csv("C:/Users/UOSC/Documents/Keck-graduate-school/PM590-Bayesian/bookdown-files/2008ElectionResult.csv")
+ele<-read.csv("C:/Users/antho/Documents/Keck-graduate-school/PM590-Bayesian/bookdown-files/2008ElectionResult.csv")
 ele<-ele[which(ele$state!="Alaska"& ele$state!="Hawaii"),]
 ele$state<-tolower(ele$state)
 ## graph poprotion liberal in each state vs obama vote share scatter.

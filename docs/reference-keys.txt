@@ -1,4 +1,11 @@
-cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
+eq:bayes
+eq:unnorm
+eq:postpred
+eq:binomialProb
+eq:binomialPosterior
+eq:adamsLaw
+eq:evesLaw
+eq:binom
 fundamentals-of-bayesian-inference
 general-notation-for-statistical-inference
 bayesian-inference
@@ -13,8 +20,8 @@ conjugate-prior-and-posterior-distributions
 other-standard-single-parameter-models
 exercises-1
 question-21
-parts
-parts-1
+chapter-3
+question-1-1
 footnotes-and-citations
 footnotes
 citations
@@ -26,4 +33,4 @@ sharing-your-book
 publishing
 pages
 metadata-for-sharing
-a-chapter
+parts
