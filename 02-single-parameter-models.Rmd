@@ -447,7 +447,6 @@ print("The asymptotic approximation")
 
 message("posterior predictive interval n=100: ",lower2," ",upper2)
 ```
-<<<<<<< HEAD
 
 ### Question 10{-}
 Suppose there are N cable cars numbered sequentially 1 to N.  You see a car at random labeled 203 and wish to estimate N.  (a) assume the prior follows Geo(1/100) what is the posterior for N?
@@ -511,11 +510,7 @@ message("posterior mean and sd is:", round(EX,2)," ",round(sdX,2))
 ```
 
 - (c) we can use a uniform prior $p(N) = 1/N$ with a geometric likelihood p($X|N)=(1/100)(99/100)^(N-1)$ which will not change the result.  We can also change the parameter p to be distributed under a binomial model.
-=======
-## Question 10{-}
-```{r}
 
-```
 
 ### Question 11{-}
 suppose y1,...,y5 are iid Cauchy($\theta,1$) r.vs. and the prior distribution for$\theta \sim U[0,100]$.  the given observations are y=43,44,45,46.5,47.5.
@@ -1067,4 +1062,3 @@ ggplot(tt2,aes(x=post,y=vote_Obama_pct,label=state))+geom_point(size=3)+geom_tex
 
 
 ```
->>>>>>> 52554785a958a9d48c5c385131b0fa5bd876520b

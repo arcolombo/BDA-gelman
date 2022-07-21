@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 2 Single parameter models | Bayesian Data Analysis</title>
   <meta name="description" content="Chapter 2 Single parameter models | Bayesian Data Analysis review by Andrew Gelman, supervised by Dr. Paul Marjoram" />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 Single parameter models | Bayesian Data Analysis" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,11 @@
 <meta name="author" content="Anthony R. Colombo, Dr. Paul Marjoram" />
 
 
+<<<<<<< HEAD
 <meta name="date" content="2022-06-24" />
+=======
+<meta name="date" content="2022-06-26" />
+>>>>>>> 52554785a958a9d48c5c385131b0fa5bd876520b
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -521,10 +525,17 @@ and this follows a Gamma(<span class="math inline">\(\alpha,\beta)\)</span> equi
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="cross.html#cb39-1" aria-hidden="true" tabindex="-1"></a> qx<span class="ot">&lt;-</span>(<span class="fu">qnorm</span>(<span class="fu">c</span>(<span class="fl">0.05</span>,<span class="fl">0.25</span>,<span class="fl">0.5</span>,<span class="fl">0.75</span>,<span class="fl">0.95</span>),<span class="at">mean =</span>logitMean, <span class="at">sd=</span>sdd ))</span>
 <span id="cb39-2"><a href="cross.html#cb39-2" aria-hidden="true" tabindex="-1"></a> <span class="do">## this is the probability of landing 6 for theta</span></span>
 <span id="cb39-3"><a href="cross.html#cb39-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">exp</span>(qx)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(qx))</span></code></pre></div>
+<<<<<<< HEAD
 <pre><code>## [1] 0.1273147 0.1364396 0.1431020 0.1500332 0.1604869</code></pre>
 <div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="cross.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="do">## wald 95% prior interval</span></span>
 <span id="cb41-2"><a href="cross.html#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>( <span class="fu">exp</span>(logitMean<span class="fl">-1.96</span><span class="sc">*</span>sdd)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(logitMean<span class="fl">-1.96</span><span class="sc">*</span>sdd)),<span class="fu">exp</span>(logitMean<span class="fl">+1.96</span><span class="sc">*</span>sdd)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(logitMean<span class="fl">+1.96</span><span class="sc">*</span>sdd)))</span></code></pre></div>
 <pre><code>## [1] 0.1244653 0.1640064</code></pre>
+=======
+<pre><code>## [1] 0.1268384 0.1362323 0.1431020 0.1502578 0.1610662</code></pre>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="cross.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="do">## wald 95% prior interval</span></span>
+<span id="cb41-2"><a href="cross.html#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>( <span class="fu">exp</span>(logitMean<span class="fl">-1.96</span><span class="sc">*</span>sdd)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(logitMean<span class="fl">-1.96</span><span class="sc">*</span>sdd)),<span class="fu">exp</span>(logitMean<span class="fl">+1.96</span><span class="sc">*</span>sdd)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(logitMean<span class="fl">+1.96</span><span class="sc">*</span>sdd)))</span></code></pre></div>
+<pre><code>## [1] 0.1239089 0.1647091</code></pre>
+>>>>>>> 52554785a958a9d48c5c385131b0fa5bd876520b
 </div>
 <div id="question-4" class="section level3 unnumbered hasAnchor">
 <h3>Question 4<a href="cross.html#question-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -674,6 +685,7 @@ p(\theta)&amp;=p(\phi)\frac{d\phi}{d\theta}\\
 </div>
 <div id="question-10" class="section level3 unnumbered hasAnchor">
 <h3>Question 10<a href="cross.html#question-10" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<<<<<<< HEAD
 <p>Suppose there are N cable cars numbered sequentially 1 to N. You see a car at random labeled 203 and wish to estimate N. (a) assume the prior follows Geo(1/100) what is the posterior for N?</p>
 <ul>
 <li><ol style="list-style-type: lower-alpha">
@@ -742,6 +754,59 @@ p(N|X) \propto \frac{(1/N)(99/100)^{N-1}}{p(X)}
 <li>we can use a uniform prior <span class="math inline">\(p(N) = 1/N\)</span> with a geometric likelihood p(<span class="math inline">\(X|N)=(1/100)(99/100)^(N-1)\)</span> which will not change the result. We can also change the parameter p to be distributed under a binomial model.</li>
 </ol></li>
 </ul>
+=======
+<p>suppose y1,…,y5 are iid Cauchy(<span class="math inline">\(\theta,1\)</span>) r.vs. and the prior distribution for<span class="math inline">\(\theta \sim U[0,100]\)</span>. the given observations are y=43,44,45,46.5,47.5.</p>
+<ul>
+<li><ol style="list-style-type: lower-alpha">
+<li>compute the unnormalized posterior density on a grid of points <span class="math inline">\(\theta=0 1/m, 2/m, ... 100\)</span>. using the grid approximation, compute and plot the posterior density as a function of <span class="math inline">\(\theta\)</span></li>
+</ol></li>
+</ul>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="cross.html#cb58-1" aria-hidden="true" tabindex="-1"></a> y<span class="ot">=</span> <span class="fu">c</span>(<span class="dv">43</span>,<span class="dv">44</span>,<span class="dv">45</span>,<span class="fl">46.5</span>,<span class="fl">47.5</span>)</span>
+<span id="cb58-2"><a href="cross.html#cb58-2" aria-hidden="true" tabindex="-1"></a> m<span class="ot">=</span><span class="dv">1000</span></span>
+<span id="cb58-3"><a href="cross.html#cb58-3" aria-hidden="true" tabindex="-1"></a>theta<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="at">from=</span><span class="dv">0</span>,<span class="at">to=</span><span class="dv">100000</span>)<span class="sc">/</span>m</span>
+<span id="cb58-4"><a href="cross.html#cb58-4" aria-hidden="true" tabindex="-1"></a> <span class="do">## p(theta | y) ~ p(y|theta)*p(theta)</span></span>
+<span id="cb58-5"><a href="cross.html#cb58-5" aria-hidden="true" tabindex="-1"></a> unnorm.post<span class="ot">&lt;-</span><span class="fu">dcauchy</span>(y,<span class="at">location=</span>theta,<span class="at">scale=</span><span class="dv">1</span>)<span class="sc">*</span><span class="fu">dunif</span>(theta,<span class="at">min=</span><span class="dv">0</span>,<span class="at">max=</span><span class="dv">100</span>) <span class="do">## un norm post</span></span>
+<span id="cb58-6"><a href="cross.html#cb58-6" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb58-7"><a href="cross.html#cb58-7" aria-hidden="true" tabindex="-1"></a> post<span class="ot">&lt;-</span>unnorm.post<span class="sc">/</span><span class="fu">sum</span>(unnorm.post)</span>
+<span id="cb58-8"><a href="cross.html#cb58-8" aria-hidden="true" tabindex="-1"></a> <span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))</span>
+<span id="cb58-9"><a href="cross.html#cb58-9" aria-hidden="true" tabindex="-1"></a> <span class="fu">plot</span>(theta,post,<span class="at">type=</span><span class="st">&#39;l&#39;</span>,<span class="at">main=</span><span class="st">&#39;Normalized posterior&#39;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<ul>
+<li><ol start="2" style="list-style-type: lower-alpha">
+<li>Sample 1000 draws from theta from posterior density and plot histogram
+we sample from theta [0,100] using the grid approximation, and the probability is from the posterior distribution.</li>
+</ol></li>
+</ul>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="cross.html#cb59-1" aria-hidden="true" tabindex="-1"></a>  samps<span class="ot">&lt;-</span>(<span class="fu">sample</span>(theta,<span class="dv">1000</span>,<span class="at">prob=</span>post,<span class="at">replace=</span>T))</span>
+<span id="cb59-2"><a href="cross.html#cb59-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hist</span>(samps,<span class="at">main=</span><span class="fu">mean</span>(samps))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="cross.html#cb60-1" aria-hidden="true" tabindex="-1"></a>  <span class="do">##sample mean is close to the mean of the observed.</span></span></code></pre></div>
+<ul>
+<li><ol start="3" style="list-style-type: lower-alpha">
+<li>Using the previous 1000 samples of <span class="math inline">\(\theta\)</span> to obtain 1000 samples from the predictive distribution of a future observation <span class="math inline">\(y_6\)</span>, and plot the predictive draws.
+we use the sampled thetas from the posterior to sample from the Cauchy distribution. The predictive probability follows <span class="math inline">\(p(x|y) =\int p(x|\theta)p(\theta|y)d\theta\)</span> where <span class="math inline">\(p(x|\theta)\)</span> follows from the Cauchy distribution, and we have the posterior values for each theta (given the uniform grid of thetas). then for each predictive value, we sum the total probability across all thetas to compute the predictive probability. The maximum predictive value probability 44.745 with probability of 0.10.</li>
+</ol></li>
+</ul>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="cross.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="do">## predictive distribution ? ?? </span></span>
+<span id="cb61-2"><a href="cross.html#cb61-2" aria-hidden="true" tabindex="-1"></a> <span class="co"># p(x | y) = int p(x|theta)*p(theta|y ) dtheta</span></span>
+<span id="cb61-3"><a href="cross.html#cb61-3" aria-hidden="true" tabindex="-1"></a><span class="do">## the posterior is p(theta|y) </span></span>
+<span id="cb61-4"><a href="cross.html#cb61-4" aria-hidden="true" tabindex="-1"></a> <span class="co"># the likelihood p(x|theta)  ## we use the sampled thetas using the posterior</span></span>
+<span id="cb61-5"><a href="cross.html#cb61-5" aria-hidden="true" tabindex="-1"></a> ytilde<span class="ot">&lt;-</span><span class="fu">rcauchy</span>(<span class="dv">1000</span>,<span class="at">location=</span>samps,<span class="at">scale=</span><span class="dv">1</span>) </span>
+<span id="cb61-6"><a href="cross.html#cb61-6" aria-hidden="true" tabindex="-1"></a> <span class="do">## probability of the samples </span></span>
+<span id="cb61-7"><a href="cross.html#cb61-7" aria-hidden="true" tabindex="-1"></a> <span class="co">#prob_samp&lt;-post[match(samps,theta)]</span></span>
+<span id="cb61-8"><a href="cross.html#cb61-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>(ytilde) <span class="do">## we have a wide distribution of predictive values.</span></span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+## -156.02   42.75   45.20   48.98   47.83 3328.92</code></pre>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="cross.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="do">## for all predictive values,  find the total probability  </span></span>
+<span id="cb63-2"><a href="cross.html#cb63-2" aria-hidden="true" tabindex="-1"></a>   <span class="do">## int p(x|theta)*p(theta|y) d\theta  note that p(x|theta) is a function of theta, so we input hte theta grid.</span></span>
+<span id="cb63-3"><a href="cross.html#cb63-3" aria-hidden="true" tabindex="-1"></a> pred.prob<span class="ot">&lt;-</span><span class="fu">sapply</span>(ytilde,<span class="cf">function</span>(x) <span class="fu">sum</span>(<span class="fu">dcauchy</span>(x,<span class="at">location=</span>theta,<span class="at">scale=</span><span class="dv">1</span>)<span class="sc">*</span>post))  </span>
+<span id="cb63-4"><a href="cross.html#cb63-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb63-5"><a href="cross.html#cb63-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(ytilde,pred.prob, <span class="at">main=</span><span class="st">&#39;predictive distribution&#39;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="cross.html#cb64-1" aria-hidden="true" tabindex="-1"></a>  <span class="do">## maximum predictive probability</span></span>
+<span id="cb64-2"><a href="cross.html#cb64-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(<span class="st">&#39;max pred. prob &#39;</span>, <span class="fu">round</span>(ytilde[<span class="fu">which</span>(pred.prob<span class="sc">==</span><span class="fu">max</span>(pred.prob))],<span class="dv">3</span>))</span></code></pre></div>
+<pre><code>## max pred. prob 44.74</code></pre>
+>>>>>>> 52554785a958a9d48c5c385131b0fa5bd876520b
 
 </div>
 </div>
