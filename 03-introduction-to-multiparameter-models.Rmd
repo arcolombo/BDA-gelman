@@ -139,9 +139,56 @@ The posterior interval (central) of the differences between 2 independent t-dist
   print(d_range)
 
 ```
+## Question 4 (independent binomial){-}
+so using the multinomial is not correct because we do not have k outcomes, instead we have 2 independent binomial processes (as the question states!) so we modeled the independent likelihoods, which is a product of independent beta distributions.
 
-## Question 4{-}
-- (4a) set up a noninformative prior on $(p_0,p_1)$ and obtain posterior simulations.  Assume outcomes are independent and binomially distributed.  The posterior for probability of death is Diri(39+1, 22+1). 
+$p(p_0,p_1) \propto p(x| p_0,p_1)p(p_0,p_1) = p_0^{38.5}(1-p_0)^{634.5}p_1^{21.5}(1-p_1)^{657.5}$
+```{r}
+p0= seq(0.01,0.99,by=0.01)
+p1= seq(0.01,0.99,by=0.01)
+
+post.bin<-function(p0,p1){
+  pos<- p0^(38.5)*(1-p0)^(634.5)*p1^(21.5)*(1-p1)^(657.5)
+  return(pos)
+}
+ posts<-NULL
+ 
+p0p1<- expand.grid(p0, p1)
+
+for(i in 1:nrow(p0p1)){
+  posts[i]<-post.bin(p0p1[i,"Var1"],p0p1[i,"Var2"]) 
+}
+
+ ggplot(p0p1)+
+ geom_contour(mapping = aes(x = Var1, y = Var2, z = posts), bins = 20)
+```
+
+- (b) summarize the odds ratio
+Note that using a 2x2 table the OR is 0.54 and the independent binomials do approximate well.
+```{r}
+b1<-sapply(p0,function(x) pbeta(x,38.5,634.5))
+ post.control<-rbeta(1000, 38.5,634.5)
+  post.treat<-rbeta(1000, 21.5,657.5)
+
+  or<-(post.treat/(1-post.treat))/(post.control/(1-post.control))
+  hist(or,main='treatment odds empriical posterior')
+  summary(or)
+  message("the empricial OR: ", round((22*635)/(39*658),2))
+```
+- (c) the sensitivity of the noninformative prior density
+ If we use the prior Beta(1,1) as the uniform prior we do see marginal changes to the posterior mean 0.5639.
+```{r}
+b1<-sapply(p0,function(x) pbeta(x,39.5,635.5))
+ post.control<-rbeta(1000, 39.5,635.5)
+  post.treat<-rbeta(1000, 22.5,658.5)
+
+  or<-(post.treat/(1-post.treat))/(post.control/(1-post.control))
+  hist(or,main='treatment odds empriical posterior')
+  summary(or)
+```
+### Question 4 (dirichlet){-}
+- (4a) set up a noninformative prior on $(p_0,p_1)$ and obtain posterior simulations.  Assume outcomes are independent and binomially distributed.  The posterior for probability of death is Diri(39+1, 22+1, 675,681)
+- the dirichlet is the event of rolling a 4 sided die, whereas this problem is rolling independent 2 sided die, however the dirichlet does approximate independnet binomial processes well.
 ```{r}
  nc= 674
  dc= 39
@@ -156,13 +203,13 @@ The posterior interval (central) of the differences between 2 independent t-dist
   ## p( p0, p1) = Diri( 1,1) noninfom prior
   # p( p0,p1 | y) = Diri(  39+1, 22+1) ##  posterior
  
- treat.post<-rdirichlet(1000, c(39+1,22+1))
+ treat.post<-rdirichlet(1000, c(39+1,22+1, 674+1,680+1))
  par(mfrow=c(1,2))
   hist(treat.post[,1],main="post control")
   hist(treat.post[,2],main='post treat')
 ```
 
-- (4b)  The posterior odds has a mean of 0.3657 using non-informative prior.  Using the empirical odds ratio we see the odds of death is 0.546 comparing treatment to controls.   
+- (4b)  The posterior odds has a mean of 0.58 using non-informative prior.  Using the empirical odds ratio we see the odds of death is 0.546 comparing treatment to controls.   
 ```{r}
  ## data table
  dd<-data.frame(none=c(674-39,680-22),outcome=c(39,22),row.names=c('unexp','exp'))
@@ -174,9 +221,9 @@ summary(or)
   hist(or,main='treatment odds')
 ```
 
-- (4c) showing the improper prior (a=0), the posterior odds is 0.363 which is very robust and similar to the noninformative.  Using the emprical prior that sets the prior hyperparameters to the cohort expected number of deaths $(39/674)*Total = 79$,  and $(22/658)*Total = 45$, yields a similar posterior mean of approximately 0.35 for the odds ratio.   Hence the posterior is robust to the choice of prior but does not match well with the empirical non-parametric odds.
+- (4c) showing the improper prior (a=0), the posterior odds is 0.5793 which is very robust and similar to the noninformative.  Using the emprical prior that sets the prior hyperparameters to the cohort expected number of deaths $(39/674)*Total = 79$,  and $(22/658)*Total = 45$ and a prior cohort size of 677 =(674+680)/2, yields a similar posterior mean of approximately 0.57 for the odds ratio.   Hence the posterior is robust to the choice of prior but does not match well with the empirical non-parametric odds.
 ```{r}
- treat.post<-rdirichlet(1000, c(39,22))
+ treat.post<-rdirichlet(1000, c(39,22,674,680))
  
   
   ## b
@@ -187,7 +234,7 @@ summary(or)
   ## empirical
   # control = (39/674)*1354 = 78.34718
   # treat = (22/658)*1354 = 45.27052
-  treat.post<-rdirichlet(1000, c(39+79,22+46))
+  treat.post<-rdirichlet(1000, c(39+79,22+46,674+677,680+677))
  
   
   ## b
@@ -195,6 +242,8 @@ summary(or)
   hist(or,main='treatment odds empriical posterior')
   summary(or)
 ```
+
+
 ## Question 5{-}
 - (a) Give the posterior distribution of $\mu, \sigma^2$ obtained by pretending the observations are exact, unrounded, measurements. we choose a prior for $\theta \sim Gamma(0.1,0.01)$ which has a mean and variance of 10.4 and 1000.   Using a Poisson likelihood, the mean is 10.4 and variance 2.2 from the posterior.  
 ```{r}
@@ -282,36 +331,160 @@ $$
  &\propto \lambda^{-1}
 \end{aligned}
 $$
-- (a) to write the prior N$\sim P(\lambda)$ as a sampling distribution, but we can let N follow a Poisson, with a Gamma(0,0) vague prior initially. where $\theta \sim U(0,1)$ as a uniform probability.  Alternatively we can let $N\sim U(0, N)$ for N as a large value and this follows similarly to the previous derivation.  Note this is an improprer prior.   
+- (a) to write the prior N$\sim P(\lambda)$ as a sampling distribution, but we can let N follow a Gamma, with a Gamma(0,0) vague prior initially and independent of $\theta$. where $\theta \sim U(0,1)$ as a uniform probability. Then $P(N,\theta) = P(N|\theta)p(\theta)$.  Note this is an improprer prior.   
 $$
 \begin{aligned}
  p(N,\theta) &\propto (1)e^{-\beta*N}N^{\alpha-1}\\
  &\propto N^{-1}, \text{for  } \alpha,\beta =0
 \end{aligned}
 $$
-
- So we can let N follow  vague prior from the Gamma(0,0) distribution, or call it a uniform on (0,N) to derive p(N,$\theta)$.
+We can solve for $p(N,\theta)$ using the prior $p(\lambda,\theta)\propto \lambda^{-1}$.  and $N\sim Pois(\lambda)$.
+$$ 
+\begin{aligned}
+p(N,\lambda,\theta) &= p(N|\lambda,\theta)p(\lambda,\theta) \to p(N,\theta) = \int p(N,\lambda,\theta)d\lambda \\
+&= \int \frac{(\lambda/N)^Ne^{-\lambda/\theta}}{N!}(\frac{1}{\lambda}) d\lambda\\
+&= \frac{1}{N! \theta^N} \int \lambda^{N-1}e^{-\lambda/\theta}d\lambda\\
+&= \frac{1}{N! \theta^N}\frac{\Gamma{(N)}}{1/\theta^N} = 1/N
+\end{aligned}
+$$
+ So we can let N follow  vague prior from the Gamma(0,0) distribution, or call N a uniform on (0,N) and independent of $\lambda$ to derive p(N,$\theta)$.
  
-- (b)
+- (b) we need to find the marginal posterior of N, first we find the joint posterior which follows a Beta distribution
+
+$$
+\begin{aligned}
+p(\theta,N | y) &=  p(y | N,\theta)p(N,\theta) \\
+&\propto \theta^{\sum y_i} (1-\theta)^{nN-\sum y_i}(1/N)\\
+&\propto (1/N)Beta(\sum y_i+1, nN-\sum y_i +1)
+\end{aligned}
+$$
+Then we integrate with respect to $\theta$ to find the marginal posterior, where the integrand is the kernel for the Beta distribution, and we have the beta coefficient that remains in the marginal equation.
+
+$$
+\begin{aligned}
+ p(N| y) &= \int (1/N) \prod {N \choose y_i} \theta^{S}(1-\theta)^{nN-S}d\theta, S=\sum y_i \\
+ & = (1/N) \prod {N \choose y_i} \int \theta^{S}(1-\theta)^{nN-S}d\theta \\
+ & = (1/N) \prod {N \choose y_i} Beta(S+1, nN-S+1)
+\end{aligned}
+$$
+The maximum probability is 122 trials with the highest marginal, 
 ```{r}
  x<-c(53,57,66,67,72)
- M=seq(max(x),1000)
+ totalN=seq(max(x),1000)
  
  marginal.post<-function(N,x){
    n=length(x)
    S=sum(x)
    # choose on the log scale
    a<-sum( lchoose(N,x))
-   b<-lgamma(n*N-S+1)
-   c<-log(N)
-   d<-lgamma(n*N+2)
+    b = (-1)*log(N)
+  # b=0
+   c = lbeta( S+1, n*N- S +1)
+   
    #rez<-(a*b)/c
-   rez<-a+b-c-d
-   return((rez))
+   rez<-a+b+c
+   return(exp(rez))
  } ## problems here
  
  ## can we condition we can derive the analytic form of the joint posterior.
  ## 
+  marg.n<-sapply(totalN,function(y) marginal.post(y,x))
+ ## we use a grid approach to theta
+totalN[which.max(exp(marg.n))]
+  ##
+norm.n<-marg.n/sum(marg.n)
+plot(totalN,norm.n)
+abline(v=totalN[which.max(exp(marg.n))])
+
+```
+The joint posterior distribution given the data and N=122 (which was maximal marginal) has the maximum theta = 0.52.
+```{r}
+ theta=seq(0.01,0.99,by=0.01)
+
+ posterior.joint<-dbeta(theta, sum(x)+1, 5*122-sum(x)+1)/122
+ norm.post<-posterior.joint/sum(posterior.joint)
+  plot(theta,norm.post, main='joint posterior N=122')
+  
+  theta[which.max(norm.post)]
+```
+- (b ii) and for P$(N>100) \approx 0.95$.  We had to use the normalized marginal posterior distribution to correctly compute the probability.
+```{r}
+1-sum(norm.n[totalN<=100])
+```
+- (d)  the poisson distribution using $\mu$ for N only gives the probability for N as a fixed realization, however we want to study the uncertainity over all possible N values.
+
+
+
+## Question 7{-}
+for 2 independent poisson distributions for x and y with $\lambda_1,\lambda_2$.  And the outcome $X$ has a binomial distribution with N=x+y and unknown p.  show that the two models have the same likelihood.
+
+We need to solve for the conditional probability of X given X+Y using the Poisson likelihoods.  Here if you input the Poisson likelihoods, and use X+Y $\sim Poi(\lambda_1+\lambda_2)$ this returns to a Binomial(n, $\lambda_1/(\lambda_1+\lambda_2))$.
+$$
+\begin{aligned}
+p(X =k| X+Y=n) &= \frac{P(X+Y=n | X=k)P(X=k)}{P(X+Y=n)} \\
+ &=  \frac{P(Y=n-k)P(X=k)}{P(X+Y=n)} \\
+ 
+\end{aligned}
+$$
+
+## question 8{-}
+ notes:  dirichlet distribution? 
+- (a) For a given block there are only two outcomes,  bicycles, and other vehicles.  So a binomial distribution is appropriate (2 outcomes only).  We model y and binomial $(N_y,\theta_y)$ independent of z$\sim Binomial(N_z,\theta_z)$.
+
+We assume $\theta_y,\theta_z$ are independent, so the posteriors are independent Beta models.
+$$
+\begin{aligned}
+p(\theta_y,\theta_z| y,z) &= p(\theta_y | y)p(\theta_z|z) \\
+&= Beta(\theta_y  | 1/2 +\sum y_i, 1/2+N_y-\sum y_i)*Beta(\theta_z  | 1/2 +\sum z_i, 1/2+N_z-\sum z_i)
+\end{aligned}
+$$
+- (b) the prior uses Jeffreys' Beta(1/2,1/2) for each parameter independently.
+```{r}
+rez.lane.bike<-c(16,9,10,13,19,20,18,17,35,55)
+rez.lane.other<-c(58,90,48,57,103,57,86,112,273,64)
+NY<-(rez.lane.bike+rez.lane.other)
+rez.lane.p<-rez.lane.bike/(rez.lane.bike+rez.lane.other)
+
+rez.nolane.bike<-c(12,1,2,4,9,7,9,8)
+rez.nolane.other<-c(113,18,14,44,208,67,29,154)
+NZ<-(rez.nolane.bike+rez.nolane.other)
+
+rez.nolane.p<-rez.nolane.bike/(rez.nolane.bike+rez.nolane.other)
 
 ```
 
+- (c) we determine the posterior distribution using the beta distribution by sampline independently.  Using a grid a pproach we see the contour map centered around 0.18 and 0.09 which is equivalent to the MLEs.  
+```{r}
+bike.post<-rbeta(1000, (1/2 + sum(rez.lane.bike)), (1/2+sum(rez.lane.other)))
+bike.post2<-rbeta(1000, (1/2 + sum(rez.nolane.bike)), (1/2+sum(rez.nolane.other)))
+
+
+
+p0= seq(0.01,0.99,by=0.01)
+p1= seq(0.01,0.99,by=0.01)
+
+
+post.bike<-function(p0,p1,y,z,ny,nz){
+  pos<- p0^(sum(y))*(1-p0)^(sum(ny)-sum(y))*p1^(sum(z))*(1-p1)^(sum(nz)-sum(z))*dbeta(p0,1/2,1/2)*dbeta(p1,1/2,1/2)
+  return(pos)
+}
+ posts<-NULL
+ 
+p0p1<- expand.grid(p0, p1)
+
+for(i in 1:nrow(p0p1)){
+  posts[i]<-post.bike(p0p1[i,"Var1"],p0p1[i,"Var2"], rez.lane.bike,rez.nolane.bike, NY,NZ) 
+}
+
+ ggplot(p0p1)+
+ geom_contour(mapping = aes(x = Var1, y = Var2, z = posts), bins = 20)
+```
+
+- (d) expected difference and the posterior distribution 
+```{r}
+ hist(bike.post-bike.post2)
+ abline(v=mean(bike.post)-mean(bike.post2))
+ 
+ 
+ 
+```

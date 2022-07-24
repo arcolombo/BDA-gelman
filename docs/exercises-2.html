@@ -23,7 +23,7 @@
 <meta name="author" content="Anthony R. Colombo, Dr. Paul Marjoram" />
 
 
-<meta name="date" content="2022-07-20" />
+<meta name="date" content="2022-07-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -225,8 +225,12 @@ div.csl-indent {
 <li class="chapter" data-level="3.1" data-path="exercises-2.html"><a href="exercises-2.html#question-1-1"><i class="fa fa-check"></i><b>3.1</b> Question 1</a></li>
 <li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#question-2"><i class="fa fa-check"></i>Question 2</a></li>
 <li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#question-3-1"><i class="fa fa-check"></i>Question 3</a></li>
-<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#question-4-1"><i class="fa fa-check"></i>Question 4</a></li>
+<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#question-4-independent-binomial"><i class="fa fa-check"></i>Question 4 (independent binomial)</a>
+<ul>
+<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#question-4-dirichlet"><i class="fa fa-check"></i>Question 4 (dirichlet)</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#question-5"><i class="fa fa-check"></i>Question 5</a></li>
+<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#question-7-1"><i class="fa fa-check"></i>Question 7</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html"><i class="fa fa-check"></i><b>4</b> Footnotes and citations</a>
 <ul>
@@ -351,7 +355,7 @@ p(\alpha | y) = p(y|\alpha)p(\alpha)\\
 <div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="exercises-2.html#cb190-1" aria-hidden="true" tabindex="-1"></a>   <span class="fu">table</span>((p.post[,<span class="dv">1</span>]<span class="sc">-</span>pre.post[,<span class="dv">1</span>])<span class="sc">&gt;</span><span class="dv">0</span>) <span class="do">## 0.355% supported bush post debate.</span></span></code></pre></div>
 <pre><code>## 
 ## FALSE  TRUE 
-##   653   347</code></pre>
+##   631   369</code></pre>
 <div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="exercises-2.html#cb192-1" aria-hidden="true" tabindex="-1"></a> pre.post2<span class="ot">&lt;-</span><span class="fu">apply</span>(theta,<span class="dv">1</span>, <span class="cf">function</span>(x) <span class="fu">ddirichlet</span>(x,<span class="fu">as.numeric</span>(debate[<span class="dv">1</span>,<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>])))</span>
 <span id="cb192-2"><a href="exercises-2.html#cb192-2" aria-hidden="true" tabindex="-1"></a> post.post2<span class="ot">&lt;-</span><span class="fu">apply</span>(theta,<span class="dv">1</span>, <span class="cf">function</span>(x) <span class="fu">ddirichlet</span>(x,<span class="fu">as.numeric</span>(debate[<span class="dv">2</span>,<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>])))</span>
 <span id="cb192-3"><a href="exercises-2.html#cb192-3" aria-hidden="true" tabindex="-1"></a> </span>
@@ -395,10 +399,10 @@ p(\alpha | y) = p(y|\alpha)p(\alpha)\\
 <pre><code>## 95% posterior margin control:1.09 1.25</code></pre>
 <div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="exercises-2.html#cb199-1" aria-hidden="true" tabindex="-1"></a>        <span class="fu">quantile</span>(post_mc,<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>))</span></code></pre></div>
 <pre><code>##     2.5%    97.5% 
-## 0.919229 1.094369</code></pre>
+## 0.919881 1.104625</code></pre>
 <div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="exercises-2.html#cb201-1" aria-hidden="true" tabindex="-1"></a>        <span class="fu">quantile</span>(post_mt,<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>))</span></code></pre></div>
 <pre><code>##     2.5%    97.5% 
-## 1.097501 1.248646</code></pre>
+## 1.091814 1.252757</code></pre>
 <ul>
 <li><ol start="2" style="list-style-type: lower-alpha">
 <li>what is <span class="math inline">\(\mu_t - \mu_c\)</span></li>
@@ -408,15 +412,15 @@ p(\alpha | y) = p(y|\alpha)p(\alpha)\\
 <div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="exercises-2.html#cb203-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">hist</span>(post_mt<span class="sc">-</span>post_mc, <span class="at">main =</span> <span class="st">&#39; Difference between sampled posteriors&#39;</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
 <div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="exercises-2.html#cb204-1" aria-hidden="true" tabindex="-1"></a>         <span class="fu">quantile</span>(post_mt<span class="sc">-</span>post_mc,<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>))</span></code></pre></div>
-<pre><code>##      2.5%     97.5% 
-## 0.0453840 0.2830443</code></pre>
+<pre><code>##       2.5%      97.5% 
+## 0.04359341 0.28209086</code></pre>
 <div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="exercises-2.html#cb206-1" aria-hidden="true" tabindex="-1"></a>  <span class="do">## diff</span></span>
 <span id="cb206-2"><a href="exercises-2.html#cb206-2" aria-hidden="true" tabindex="-1"></a>         post_diff<span class="ot">&lt;-</span><span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>,<span class="cf">function</span>(x) <span class="fu">posterior_sample</span>(<span class="at">mc=</span>mt<span class="sc">-</span>mc,<span class="at">sdc=</span>sdt<span class="sc">+</span>sdc,<span class="at">nc=</span>nt<span class="sc">+</span>nc))</span>
 <span id="cb206-3"><a href="exercises-2.html#cb206-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">hist</span>(post_diff, <span class="at">main=</span><span class="st">&#39;simulated difference&#39;</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-32-2.png" width="672" /></p>
 <div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="exercises-2.html#cb207-1" aria-hidden="true" tabindex="-1"></a>             <span class="fu">quantile</span>(post_diff,<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>))</span></code></pre></div>
 <pre><code>##       2.5%      97.5% 
-## 0.04348581 0.27471578</code></pre>
+## 0.04558905 0.27533038</code></pre>
 <div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="exercises-2.html#cb209-1" aria-hidden="true" tabindex="-1"></a>  <span class="do">## theoretical (two independent t distributions)</span></span>
 <span id="cb209-2"><a href="exercises-2.html#cb209-2" aria-hidden="true" tabindex="-1"></a>  md <span class="ot">=</span> mt<span class="sc">-</span>mc</span>
 <span id="cb209-3"><a href="exercises-2.html#cb209-3" aria-hidden="true" tabindex="-1"></a>  sdd <span class="ot">=</span> sdt<span class="sc">+</span>sdc</span>
@@ -425,73 +429,131 @@ p(\alpha | y) = p(y|\alpha)p(\alpha)\\
 <span id="cb209-6"><a href="exercises-2.html#cb209-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(d_range)</span></code></pre></div>
 <pre><code>## [1] 0.04381525 0.27618475</code></pre>
 </div>
-<div id="question-4-1" class="section level2 unnumbered hasAnchor">
-<h2>Question 4<a href="exercises-2.html#question-4-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li>(4a) set up a noninformative prior on <span class="math inline">\((p_0,p_1)\)</span> and obtain posterior simulations. Assume outcomes are independent and binomially distributed. The posterior for probability of death is Diri(39+1, 22+1).</li>
-</ul>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="exercises-2.html#cb211-1" aria-hidden="true" tabindex="-1"></a> nc<span class="ot">=</span> <span class="dv">674</span></span>
-<span id="cb211-2"><a href="exercises-2.html#cb211-2" aria-hidden="true" tabindex="-1"></a> dc<span class="ot">=</span> <span class="dv">39</span></span>
-<span id="cb211-3"><a href="exercises-2.html#cb211-3" aria-hidden="true" tabindex="-1"></a> nt <span class="ot">=</span> <span class="dv">680</span></span>
-<span id="cb211-4"><a href="exercises-2.html#cb211-4" aria-hidden="true" tabindex="-1"></a> dt <span class="ot">=</span> <span class="dv">22</span></span>
-<span id="cb211-5"><a href="exercises-2.html#cb211-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb211-6"><a href="exercises-2.html#cb211-6" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb211-7"><a href="exercises-2.html#cb211-7" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb211-8"><a href="exercises-2.html#cb211-8" aria-hidden="true" tabindex="-1"></a> <span class="do">## we have two categories Control ~Bin(p0) and Treat~Bin(p1) we use multinomial</span></span>
-<span id="cb211-9"><a href="exercises-2.html#cb211-9" aria-hidden="true" tabindex="-1"></a> <span class="do">## non-informative prior Diri(a1=1, a2=1)</span></span>
-<span id="cb211-10"><a href="exercises-2.html#cb211-10" aria-hidden="true" tabindex="-1"></a> <span class="fu">library</span>(gtools)</span>
-<span id="cb211-11"><a href="exercises-2.html#cb211-11" aria-hidden="true" tabindex="-1"></a>  <span class="do">## p( p0, p1) = Diri( 1,1) noninfom prior</span></span>
-<span id="cb211-12"><a href="exercises-2.html#cb211-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># p( p0,p1 | y) = Diri(  39+1, 22+1) ##  posterior</span></span>
-<span id="cb211-13"><a href="exercises-2.html#cb211-13" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb211-14"><a href="exercises-2.html#cb211-14" aria-hidden="true" tabindex="-1"></a> treat.post<span class="ot">&lt;-</span><span class="fu">rdirichlet</span>(<span class="dv">1000</span>, <span class="fu">c</span>(<span class="dv">39</span><span class="sc">+</span><span class="dv">1</span>,<span class="dv">22</span><span class="sc">+</span><span class="dv">1</span>))</span>
-<span id="cb211-15"><a href="exercises-2.html#cb211-15" aria-hidden="true" tabindex="-1"></a> <span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb211-16"><a href="exercises-2.html#cb211-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hist</span>(treat.post[,<span class="dv">1</span>],<span class="at">main=</span><span class="st">&quot;post control&quot;</span>)</span>
-<span id="cb211-17"><a href="exercises-2.html#cb211-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hist</span>(treat.post[,<span class="dv">2</span>],<span class="at">main=</span><span class="st">&#39;post treat&#39;</span>)</span></code></pre></div>
+<div id="question-4-independent-binomial" class="section level2 unnumbered hasAnchor">
+<h2>Question 4 (independent binomial)<a href="exercises-2.html#question-4-independent-binomial" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>so using the multinomial is not correct because we do not have k outcomes, instead we have 2 independent binomial processes (as the question states!) so we modeled the independent likelihoods, which is a product of independent beta distributions.</p>
+<p><span class="math inline">\(p(p_0,p_1) \propto p(x| p_0,p_1)p(p_0,p_1) = p_0^{38.5}(1-p_0)^{634.5}p_1^{21.5}(1-p_1)^{657.5}\)</span></p>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="exercises-2.html#cb211-1" aria-hidden="true" tabindex="-1"></a>p0<span class="ot">=</span> <span class="fu">seq</span>(<span class="fl">0.01</span>,<span class="fl">0.99</span>,<span class="at">by=</span><span class="fl">0.01</span>)</span>
+<span id="cb211-2"><a href="exercises-2.html#cb211-2" aria-hidden="true" tabindex="-1"></a>p1<span class="ot">=</span> <span class="fu">seq</span>(<span class="fl">0.01</span>,<span class="fl">0.99</span>,<span class="at">by=</span><span class="fl">0.01</span>)</span>
+<span id="cb211-3"><a href="exercises-2.html#cb211-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb211-4"><a href="exercises-2.html#cb211-4" aria-hidden="true" tabindex="-1"></a>post.bin<span class="ot">&lt;-</span><span class="cf">function</span>(p0,p1){</span>
+<span id="cb211-5"><a href="exercises-2.html#cb211-5" aria-hidden="true" tabindex="-1"></a>  pos<span class="ot">&lt;-</span> p0<span class="sc">^</span>(<span class="fl">38.5</span>)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>p0)<span class="sc">^</span>(<span class="fl">634.5</span>)<span class="sc">*</span>p1<span class="sc">^</span>(<span class="fl">21.5</span>)<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>p1)<span class="sc">^</span>(<span class="fl">657.5</span>)</span>
+<span id="cb211-6"><a href="exercises-2.html#cb211-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(pos)</span>
+<span id="cb211-7"><a href="exercises-2.html#cb211-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb211-8"><a href="exercises-2.html#cb211-8" aria-hidden="true" tabindex="-1"></a> posts<span class="ot">&lt;-</span><span class="cn">NULL</span></span>
+<span id="cb211-9"><a href="exercises-2.html#cb211-9" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb211-10"><a href="exercises-2.html#cb211-10" aria-hidden="true" tabindex="-1"></a>p0p1<span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(p0, p1)</span>
+<span id="cb211-11"><a href="exercises-2.html#cb211-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb211-12"><a href="exercises-2.html#cb211-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(p0p1)){</span>
+<span id="cb211-13"><a href="exercises-2.html#cb211-13" aria-hidden="true" tabindex="-1"></a>  posts[i]<span class="ot">&lt;-</span><span class="fu">post.bin</span>(p0p1[i,<span class="st">&quot;Var1&quot;</span>],p0p1[i,<span class="st">&quot;Var2&quot;</span>]) </span>
+<span id="cb211-14"><a href="exercises-2.html#cb211-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb211-15"><a href="exercises-2.html#cb211-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb211-16"><a href="exercises-2.html#cb211-16" aria-hidden="true" tabindex="-1"></a> <span class="fu">ggplot</span>(p0p1)<span class="sc">+</span></span>
+<span id="cb211-17"><a href="exercises-2.html#cb211-17" aria-hidden="true" tabindex="-1"></a> <span class="fu">geom_contour</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> Var1, <span class="at">y =</span> Var2, <span class="at">z =</span> posts), <span class="at">bins =</span> <span class="dv">20</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
 <ul>
-<li>(4b) The posterior odds has a mean of 0.3657 using non-informative prior. Using the empirical odds ratio we see the odds of death is 0.546 comparing treatment to controls.</li>
+<li><ol start="2" style="list-style-type: lower-alpha">
+<li>summarize the odds ratio
+Note that using a 2x2 table the OR is 0.54 and the independent binomials do approximate well.</li>
+</ol></li>
 </ul>
-<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="exercises-2.html#cb212-1" aria-hidden="true" tabindex="-1"></a> <span class="do">## data table</span></span>
-<span id="cb212-2"><a href="exercises-2.html#cb212-2" aria-hidden="true" tabindex="-1"></a> dd<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">none=</span><span class="fu">c</span>(<span class="dv">674-39</span>,<span class="dv">680-22</span>),<span class="at">outcome=</span><span class="fu">c</span>(<span class="dv">39</span>,<span class="dv">22</span>),<span class="at">row.names=</span><span class="fu">c</span>(<span class="st">&#39;unexp&#39;</span>,<span class="st">&#39;exp&#39;</span>))</span>
-<span id="cb212-3"><a href="exercises-2.html#cb212-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">library</span>(epitools)</span>
-<span id="cb212-4"><a href="exercises-2.html#cb212-4" aria-hidden="true" tabindex="-1"></a> <span class="fu">oddsratio</span>(<span class="fu">as.matrix</span>(dd))<span class="sc">$</span>measure</span></code></pre></div>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="exercises-2.html#cb212-1" aria-hidden="true" tabindex="-1"></a>b1<span class="ot">&lt;-</span><span class="fu">sapply</span>(p0,<span class="cf">function</span>(x) <span class="fu">pbeta</span>(x,<span class="fl">38.5</span>,<span class="fl">634.5</span>))</span>
+<span id="cb212-2"><a href="exercises-2.html#cb212-2" aria-hidden="true" tabindex="-1"></a> post.control<span class="ot">&lt;-</span><span class="fu">rbeta</span>(<span class="dv">1000</span>, <span class="fl">38.5</span>,<span class="fl">634.5</span>)</span>
+<span id="cb212-3"><a href="exercises-2.html#cb212-3" aria-hidden="true" tabindex="-1"></a>  post.treat<span class="ot">&lt;-</span><span class="fu">rbeta</span>(<span class="dv">1000</span>, <span class="fl">21.5</span>,<span class="fl">657.5</span>)</span>
+<span id="cb212-4"><a href="exercises-2.html#cb212-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb212-5"><a href="exercises-2.html#cb212-5" aria-hidden="true" tabindex="-1"></a>  or<span class="ot">&lt;-</span>(post.treat<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>post.treat))<span class="sc">/</span>(post.control<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>post.control))</span>
+<span id="cb212-6"><a href="exercises-2.html#cb212-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hist</span>(or,<span class="at">main=</span><span class="st">&#39;treatment odds empriical posterior&#39;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="exercises-2.html#cb213-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>(or)</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##  0.1830  0.4397  0.5347  0.5545  0.6423  1.2431</code></pre>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="exercises-2.html#cb215-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(<span class="st">&quot;the empricial OR: &quot;</span>, <span class="fu">round</span>((<span class="dv">22</span><span class="sc">*</span><span class="dv">635</span>)<span class="sc">/</span>(<span class="dv">39</span><span class="sc">*</span><span class="dv">658</span>),<span class="dv">2</span>))</span></code></pre></div>
+<pre><code>## the empricial OR: 0.54</code></pre>
+<ul>
+<li><ol start="3" style="list-style-type: lower-alpha">
+<li>the sensitivity of the noninformative prior density
+If we use the prior Beta(1,1) as the uniform prior we do see marginal changes to the posterior mean 0.5639.</li>
+</ol></li>
+</ul>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="exercises-2.html#cb217-1" aria-hidden="true" tabindex="-1"></a>b1<span class="ot">&lt;-</span><span class="fu">sapply</span>(p0,<span class="cf">function</span>(x) <span class="fu">pbeta</span>(x,<span class="fl">39.5</span>,<span class="fl">635.5</span>))</span>
+<span id="cb217-2"><a href="exercises-2.html#cb217-2" aria-hidden="true" tabindex="-1"></a> post.control<span class="ot">&lt;-</span><span class="fu">rbeta</span>(<span class="dv">1000</span>, <span class="fl">39.5</span>,<span class="fl">635.5</span>)</span>
+<span id="cb217-3"><a href="exercises-2.html#cb217-3" aria-hidden="true" tabindex="-1"></a>  post.treat<span class="ot">&lt;-</span><span class="fu">rbeta</span>(<span class="dv">1000</span>, <span class="fl">22.5</span>,<span class="fl">658.5</span>)</span>
+<span id="cb217-4"><a href="exercises-2.html#cb217-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb217-5"><a href="exercises-2.html#cb217-5" aria-hidden="true" tabindex="-1"></a>  or<span class="ot">&lt;-</span>(post.treat<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>post.treat))<span class="sc">/</span>(post.control<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>post.control))</span>
+<span id="cb217-6"><a href="exercises-2.html#cb217-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hist</span>(or,<span class="at">main=</span><span class="st">&#39;treatment odds empriical posterior&#39;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="exercises-2.html#cb218-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>(or)</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##  0.2309  0.4577  0.5457  0.5699  0.6589  1.1497</code></pre>
+<div id="question-4-dirichlet" class="section level3 unnumbered hasAnchor">
+<h3>Question 4 (dirichlet)<a href="exercises-2.html#question-4-dirichlet" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>(4a) set up a noninformative prior on <span class="math inline">\((p_0,p_1)\)</span> and obtain posterior simulations. Assume outcomes are independent and binomially distributed. The posterior for probability of death is Diri(39+1, 22+1, 675,681)</li>
+<li>the dirichlet is the event of rolling a 4 sided die, whereas this problem is rolling independent 2 sided die, however the dirichlet does approximate independnet binomial processes well.</li>
+</ul>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="exercises-2.html#cb220-1" aria-hidden="true" tabindex="-1"></a> nc<span class="ot">=</span> <span class="dv">674</span></span>
+<span id="cb220-2"><a href="exercises-2.html#cb220-2" aria-hidden="true" tabindex="-1"></a> dc<span class="ot">=</span> <span class="dv">39</span></span>
+<span id="cb220-3"><a href="exercises-2.html#cb220-3" aria-hidden="true" tabindex="-1"></a> nt <span class="ot">=</span> <span class="dv">680</span></span>
+<span id="cb220-4"><a href="exercises-2.html#cb220-4" aria-hidden="true" tabindex="-1"></a> dt <span class="ot">=</span> <span class="dv">22</span></span>
+<span id="cb220-5"><a href="exercises-2.html#cb220-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb220-6"><a href="exercises-2.html#cb220-6" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb220-7"><a href="exercises-2.html#cb220-7" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb220-8"><a href="exercises-2.html#cb220-8" aria-hidden="true" tabindex="-1"></a> <span class="do">## we have two categories Control ~Bin(p0) and Treat~Bin(p1) we use multinomial</span></span>
+<span id="cb220-9"><a href="exercises-2.html#cb220-9" aria-hidden="true" tabindex="-1"></a> <span class="do">## non-informative prior Diri(a1=1, a2=1)</span></span>
+<span id="cb220-10"><a href="exercises-2.html#cb220-10" aria-hidden="true" tabindex="-1"></a> <span class="fu">library</span>(gtools)</span>
+<span id="cb220-11"><a href="exercises-2.html#cb220-11" aria-hidden="true" tabindex="-1"></a>  <span class="do">## p( p0, p1) = Diri( 1,1) noninfom prior</span></span>
+<span id="cb220-12"><a href="exercises-2.html#cb220-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># p( p0,p1 | y) = Diri(  39+1, 22+1) ##  posterior</span></span>
+<span id="cb220-13"><a href="exercises-2.html#cb220-13" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb220-14"><a href="exercises-2.html#cb220-14" aria-hidden="true" tabindex="-1"></a> treat.post<span class="ot">&lt;-</span><span class="fu">rdirichlet</span>(<span class="dv">1000</span>, <span class="fu">c</span>(<span class="dv">39</span><span class="sc">+</span><span class="dv">1</span>,<span class="dv">22</span><span class="sc">+</span><span class="dv">1</span>, <span class="dv">674</span><span class="sc">+</span><span class="dv">1</span>,<span class="dv">680</span><span class="sc">+</span><span class="dv">1</span>))</span>
+<span id="cb220-15"><a href="exercises-2.html#cb220-15" aria-hidden="true" tabindex="-1"></a> <span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb220-16"><a href="exercises-2.html#cb220-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hist</span>(treat.post[,<span class="dv">1</span>],<span class="at">main=</span><span class="st">&quot;post control&quot;</span>)</span>
+<span id="cb220-17"><a href="exercises-2.html#cb220-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hist</span>(treat.post[,<span class="dv">2</span>],<span class="at">main=</span><span class="st">&#39;post treat&#39;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-36-1.png" width="672" /></p>
+<ul>
+<li>(4b) The posterior odds has a mean of 0.58 using non-informative prior. Using the empirical odds ratio we see the odds of death is 0.546 comparing treatment to controls.</li>
+</ul>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="exercises-2.html#cb221-1" aria-hidden="true" tabindex="-1"></a> <span class="do">## data table</span></span>
+<span id="cb221-2"><a href="exercises-2.html#cb221-2" aria-hidden="true" tabindex="-1"></a> dd<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">none=</span><span class="fu">c</span>(<span class="dv">674-39</span>,<span class="dv">680-22</span>),<span class="at">outcome=</span><span class="fu">c</span>(<span class="dv">39</span>,<span class="dv">22</span>),<span class="at">row.names=</span><span class="fu">c</span>(<span class="st">&#39;unexp&#39;</span>,<span class="st">&#39;exp&#39;</span>))</span>
+<span id="cb221-3"><a href="exercises-2.html#cb221-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">library</span>(epitools)</span>
+<span id="cb221-4"><a href="exercises-2.html#cb221-4" aria-hidden="true" tabindex="-1"></a> <span class="fu">oddsratio</span>(<span class="fu">as.matrix</span>(dd))<span class="sc">$</span>measure</span></code></pre></div>
 <pre><code>##                         NA
 ## odds ratio with 95% C.I.  estimate     lower     upper
 ##                    unexp 1.0000000        NA        NA
 ##                    exp   0.5463245 0.3147296 0.9249902</code></pre>
-<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="exercises-2.html#cb214-1" aria-hidden="true" tabindex="-1"></a>  <span class="do">## b</span></span>
-<span id="cb214-2"><a href="exercises-2.html#cb214-2" aria-hidden="true" tabindex="-1"></a>  or<span class="ot">&lt;-</span>(treat.post[,<span class="dv">2</span>]<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>treat.post[,<span class="dv">2</span>]))<span class="sc">/</span>(treat.post[,<span class="dv">1</span>]<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>treat.post[,<span class="dv">1</span>]))</span>
-<span id="cb214-3"><a href="exercises-2.html#cb214-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(or)</span></code></pre></div>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="exercises-2.html#cb223-1" aria-hidden="true" tabindex="-1"></a>  <span class="do">## b</span></span>
+<span id="cb223-2"><a href="exercises-2.html#cb223-2" aria-hidden="true" tabindex="-1"></a>  or<span class="ot">&lt;-</span>(treat.post[,<span class="dv">2</span>]<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>treat.post[,<span class="dv">2</span>]))<span class="sc">/</span>(treat.post[,<span class="dv">1</span>]<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>treat.post[,<span class="dv">1</span>]))</span>
+<span id="cb223-3"><a href="exercises-2.html#cb223-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(or)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-## 0.04781 0.22205 0.31654 0.36534 0.46309 1.26431</code></pre>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="exercises-2.html#cb216-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hist</span>(or,<span class="at">main=</span><span class="st">&#39;treatment odds&#39;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
+##  0.2496  0.4664  0.5637  0.5869  0.6845  1.4147</code></pre>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="exercises-2.html#cb225-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hist</span>(or,<span class="at">main=</span><span class="st">&#39;treatment odds&#39;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
 <ul>
-<li>(4c) showing the improper prior (a=0), the posterior odds is 0.363 which is very robust and similar to the noninformative. Using the emprical prior that sets the prior hyperparameters to the cohort expected number of deaths <span class="math inline">\((39/674)*Total = 79\)</span>, and <span class="math inline">\((22/658)*Total = 45\)</span>, yields a similar posterior mean of approximately 0.35 for the odds ratio. Hence the posterior is robust to the choice of prior but does not match well with the empirical non-parametric odds.</li>
+<li>(4c) showing the improper prior (a=0), the posterior odds is 0.5793 which is very robust and similar to the noninformative. Using the emprical prior that sets the prior hyperparameters to the cohort expected number of deaths <span class="math inline">\((39/674)*Total = 79\)</span>, and <span class="math inline">\((22/658)*Total = 45\)</span> and a prior cohort size of 677 =(674+680)/2, yields a similar posterior mean of approximately 0.57 for the odds ratio. Hence the posterior is robust to the choice of prior but does not match well with the empirical non-parametric odds.</li>
 </ul>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="exercises-2.html#cb217-1" aria-hidden="true" tabindex="-1"></a> treat.post<span class="ot">&lt;-</span><span class="fu">rdirichlet</span>(<span class="dv">1000</span>, <span class="fu">c</span>(<span class="dv">39</span>,<span class="dv">22</span>))</span>
-<span id="cb217-2"><a href="exercises-2.html#cb217-2" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb217-3"><a href="exercises-2.html#cb217-3" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb217-4"><a href="exercises-2.html#cb217-4" aria-hidden="true" tabindex="-1"></a>  <span class="do">## b</span></span>
-<span id="cb217-5"><a href="exercises-2.html#cb217-5" aria-hidden="true" tabindex="-1"></a>  or<span class="ot">&lt;-</span>(treat.post[,<span class="dv">2</span>]<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>treat.post[,<span class="dv">2</span>]))<span class="sc">/</span>(treat.post[,<span class="dv">1</span>]<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>treat.post[,<span class="dv">1</span>]))</span>
-<span id="cb217-6"><a href="exercises-2.html#cb217-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hist</span>(or,<span class="at">main=</span><span class="st">&#39;treatment odds &#39;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="exercises-2.html#cb218-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>(or)</span></code></pre></div>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="exercises-2.html#cb226-1" aria-hidden="true" tabindex="-1"></a> treat.post<span class="ot">&lt;-</span><span class="fu">rdirichlet</span>(<span class="dv">1000</span>, <span class="fu">c</span>(<span class="dv">39</span>,<span class="dv">22</span>,<span class="dv">674</span>,<span class="dv">680</span>))</span>
+<span id="cb226-2"><a href="exercises-2.html#cb226-2" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb226-3"><a href="exercises-2.html#cb226-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb226-4"><a href="exercises-2.html#cb226-4" aria-hidden="true" tabindex="-1"></a>  <span class="do">## b</span></span>
+<span id="cb226-5"><a href="exercises-2.html#cb226-5" aria-hidden="true" tabindex="-1"></a>  or<span class="ot">&lt;-</span>(treat.post[,<span class="dv">2</span>]<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>treat.post[,<span class="dv">2</span>]))<span class="sc">/</span>(treat.post[,<span class="dv">1</span>]<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>treat.post[,<span class="dv">1</span>]))</span>
+<span id="cb226-6"><a href="exercises-2.html#cb226-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hist</span>(or,<span class="at">main=</span><span class="st">&#39;treatment odds &#39;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-38-1.png" width="672" /></p>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="exercises-2.html#cb227-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>(or)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-## 0.04143 0.22042 0.31303 0.35486 0.44142 1.94417</code></pre>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="exercises-2.html#cb220-1" aria-hidden="true" tabindex="-1"></a>  <span class="do">## empirical</span></span>
-<span id="cb220-2"><a href="exercises-2.html#cb220-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># control = (39/674)*1354 = 78.34718</span></span>
-<span id="cb220-3"><a href="exercises-2.html#cb220-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># treat = (22/658)*1354 = 45.27052</span></span>
-<span id="cb220-4"><a href="exercises-2.html#cb220-4" aria-hidden="true" tabindex="-1"></a>  treat.post<span class="ot">&lt;-</span><span class="fu">rdirichlet</span>(<span class="dv">1000</span>, <span class="fu">c</span>(<span class="dv">39</span><span class="sc">+</span><span class="dv">79</span>,<span class="dv">22</span><span class="sc">+</span><span class="dv">46</span>))</span>
-<span id="cb220-5"><a href="exercises-2.html#cb220-5" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb220-6"><a href="exercises-2.html#cb220-6" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb220-7"><a href="exercises-2.html#cb220-7" aria-hidden="true" tabindex="-1"></a>  <span class="do">## b</span></span>
-<span id="cb220-8"><a href="exercises-2.html#cb220-8" aria-hidden="true" tabindex="-1"></a>  or<span class="ot">&lt;-</span>(treat.post[,<span class="dv">2</span>]<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>treat.post[,<span class="dv">2</span>]))<span class="sc">/</span>(treat.post[,<span class="dv">1</span>]<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>treat.post[,<span class="dv">1</span>]))</span>
-<span id="cb220-9"><a href="exercises-2.html#cb220-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hist</span>(or,<span class="at">main=</span><span class="st">&#39;treatment odds empriical posterior&#39;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-35-2.png" width="672" /></p>
-<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="exercises-2.html#cb221-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>(or)</span></code></pre></div>
+##  0.2151  0.4574  0.5441  0.5685  0.6660  1.3754</code></pre>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="exercises-2.html#cb229-1" aria-hidden="true" tabindex="-1"></a>  <span class="do">## empirical</span></span>
+<span id="cb229-2"><a href="exercises-2.html#cb229-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># control = (39/674)*1354 = 78.34718</span></span>
+<span id="cb229-3"><a href="exercises-2.html#cb229-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># treat = (22/658)*1354 = 45.27052</span></span>
+<span id="cb229-4"><a href="exercises-2.html#cb229-4" aria-hidden="true" tabindex="-1"></a>  treat.post<span class="ot">&lt;-</span><span class="fu">rdirichlet</span>(<span class="dv">1000</span>, <span class="fu">c</span>(<span class="dv">39</span><span class="sc">+</span><span class="dv">79</span>,<span class="dv">22</span><span class="sc">+</span><span class="dv">46</span>,<span class="dv">674</span><span class="sc">+</span><span class="dv">677</span>,<span class="dv">680</span><span class="sc">+</span><span class="dv">677</span>))</span>
+<span id="cb229-5"><a href="exercises-2.html#cb229-5" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb229-6"><a href="exercises-2.html#cb229-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb229-7"><a href="exercises-2.html#cb229-7" aria-hidden="true" tabindex="-1"></a>  <span class="do">## b</span></span>
+<span id="cb229-8"><a href="exercises-2.html#cb229-8" aria-hidden="true" tabindex="-1"></a>  or<span class="ot">&lt;-</span>(treat.post[,<span class="dv">2</span>]<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>treat.post[,<span class="dv">2</span>]))<span class="sc">/</span>(treat.post[,<span class="dv">1</span>]<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>treat.post[,<span class="dv">1</span>]))</span>
+<span id="cb229-9"><a href="exercises-2.html#cb229-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hist</span>(or,<span class="at">main=</span><span class="st">&#39;treatment odds empriical posterior&#39;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-38-2.png" width="672" /></p>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="exercises-2.html#cb230-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>(or)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.1402  0.2737  0.3302  0.3482  0.4095  0.8782</code></pre>
+##  0.3671  0.5096  0.5667  0.5747  0.6300  0.9238</code></pre>
+</div>
 </div>
 <div id="question-5" class="section level2 unnumbered hasAnchor">
 <h2>Question 5<a href="exercises-2.html#question-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -500,89 +562,89 @@ p(\alpha | y) = p(y|\alpha)p(\alpha)\\
 <li>Give the posterior distribution of <span class="math inline">\(\mu, \sigma^2\)</span> obtained by pretending the observations are exact, unrounded, measurements. we choose a prior for <span class="math inline">\(\theta \sim Gamma(0.1,0.01)\)</span> which has a mean and variance of 10.4 and 1000. Using a Poisson likelihood, the mean is 10.4 and variance 2.2 from the posterior.</li>
 </ol></li>
 </ul>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="exercises-2.html#cb223-1" aria-hidden="true" tabindex="-1"></a> obs<span class="ot">=</span><span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">12</span>,<span class="dv">11</span>,<span class="dv">9</span>)</span>
-<span id="cb223-2"><a href="exercises-2.html#cb223-2" aria-hidden="true" tabindex="-1"></a> <span class="do">### under the exact model, we can not use a binomial because we do not have a proportion (p0) that we can estimate. we do not have a r.v. for &#39;successes&#39;.</span></span>
-<span id="cb223-3"><a href="exercises-2.html#cb223-3" aria-hidden="true" tabindex="-1"></a> <span class="co"># we can use the Poisson distribution </span></span>
-<span id="cb223-4"><a href="exercises-2.html#cb223-4" aria-hidden="true" tabindex="-1"></a> <span class="do">## not sure how to use jeffreys prior</span></span>
-<span id="cb223-5"><a href="exercises-2.html#cb223-5" aria-hidden="true" tabindex="-1"></a>  a<span class="ot">=</span><span class="fl">0.1</span></span>
-<span id="cb223-6"><a href="exercises-2.html#cb223-6" aria-hidden="true" tabindex="-1"></a>  b<span class="ot">=</span><span class="fl">0.01</span></span>
-<span id="cb223-7"><a href="exercises-2.html#cb223-7" aria-hidden="true" tabindex="-1"></a>  pois.post<span class="ot">&lt;-</span><span class="fu">rgamma</span>(<span class="dv">1000</span>,a<span class="sc">+</span><span class="dv">5</span><span class="sc">*</span><span class="fu">mean</span>(obs),b<span class="sc">+</span><span class="dv">5</span>)</span>
-<span id="cb223-8"><a href="exercises-2.html#cb223-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hist</span>(pois.post,<span class="at">main=</span><span class="st">&#39;count posterior&#39;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-36-1.png" width="672" /></p>
-<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="exercises-2.html#cb224-1" aria-hidden="true" tabindex="-1"></a>  <span class="co"># post summary  mean : 8.8,  var= 1.47</span></span>
-<span id="cb224-2"><a href="exercises-2.html#cb224-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>(pois.post)</span></code></pre></div>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="exercises-2.html#cb232-1" aria-hidden="true" tabindex="-1"></a> obs<span class="ot">=</span><span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">12</span>,<span class="dv">11</span>,<span class="dv">9</span>)</span>
+<span id="cb232-2"><a href="exercises-2.html#cb232-2" aria-hidden="true" tabindex="-1"></a> <span class="do">### under the exact model, we can not use a binomial because we do not have a proportion (p0) that we can estimate. we do not have a r.v. for &#39;successes&#39;.</span></span>
+<span id="cb232-3"><a href="exercises-2.html#cb232-3" aria-hidden="true" tabindex="-1"></a> <span class="co"># we can use the Poisson distribution </span></span>
+<span id="cb232-4"><a href="exercises-2.html#cb232-4" aria-hidden="true" tabindex="-1"></a> <span class="do">## not sure how to use jeffreys prior</span></span>
+<span id="cb232-5"><a href="exercises-2.html#cb232-5" aria-hidden="true" tabindex="-1"></a>  a<span class="ot">=</span><span class="fl">0.1</span></span>
+<span id="cb232-6"><a href="exercises-2.html#cb232-6" aria-hidden="true" tabindex="-1"></a>  b<span class="ot">=</span><span class="fl">0.01</span></span>
+<span id="cb232-7"><a href="exercises-2.html#cb232-7" aria-hidden="true" tabindex="-1"></a>  pois.post<span class="ot">&lt;-</span><span class="fu">rgamma</span>(<span class="dv">1000</span>,a<span class="sc">+</span><span class="dv">5</span><span class="sc">*</span><span class="fu">mean</span>(obs),b<span class="sc">+</span><span class="dv">5</span>)</span>
+<span id="cb232-8"><a href="exercises-2.html#cb232-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hist</span>(pois.post,<span class="at">main=</span><span class="st">&#39;count posterior&#39;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="exercises-2.html#cb233-1" aria-hidden="true" tabindex="-1"></a>  <span class="co"># post summary  mean : 8.8,  var= 1.47</span></span>
+<span id="cb233-2"><a href="exercises-2.html#cb233-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>(pois.post)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   6.543   9.267  10.293  10.352  11.276  15.534</code></pre>
-<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="exercises-2.html#cb226-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(pois.post)</span></code></pre></div>
-<pre><code>## [1] 10.35185</code></pre>
-<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="exercises-2.html#cb228-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">var</span>(pois.post)</span></code></pre></div>
-<pre><code>## [1] 2.079322</code></pre>
-<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="exercises-2.html#cb230-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="fu">density</span>(pois.post),<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.4</span>),<span class="at">main=</span><span class="st">&#39;pois posterior&#39;</span>)</span>
-<span id="cb230-2"><a href="exercises-2.html#cb230-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lines</span>(<span class="fu">density</span>(obs),<span class="at">col=</span><span class="st">&#39;red&#39;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-36-2.png" width="672" /></p>
+##   6.048   9.442  10.299  10.375  11.267  15.497</code></pre>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="exercises-2.html#cb235-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(pois.post)</span></code></pre></div>
+<pre><code>## [1] 10.37484</code></pre>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="exercises-2.html#cb237-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">var</span>(pois.post)</span></code></pre></div>
+<pre><code>## [1] 2.02609</code></pre>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="exercises-2.html#cb239-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="fu">density</span>(pois.post),<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.4</span>),<span class="at">main=</span><span class="st">&#39;pois posterior&#39;</span>)</span>
+<span id="cb239-2"><a href="exercises-2.html#cb239-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lines</span>(<span class="fu">density</span>(obs),<span class="at">col=</span><span class="st">&#39;red&#39;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-39-2.png" width="672" /></p>
 <ul>
 <li><ol start="2" style="list-style-type: lower-alpha">
 <li>Give the correct posterior distribution treating the measurements as rounded
 Using non informative prior for both unknowns, the posterior mean is 10.4 and posterior variance is 0.433</li>
 </ol></li>
 </ul>
-<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="exercises-2.html#cb231-1" aria-hidden="true" tabindex="-1"></a> <span class="do">## normal with 2 unknowns.</span></span>
-<span id="cb231-2"><a href="exercises-2.html#cb231-2" aria-hidden="true" tabindex="-1"></a> <span class="do">## joint poisterior</span></span>
-<span id="cb231-3"><a href="exercises-2.html#cb231-3" aria-hidden="true" tabindex="-1"></a> <span class="do">## need the  sigma2 | y ~ inv-x2(n-1,s2)</span></span>
-<span id="cb231-4"><a href="exercises-2.html#cb231-4" aria-hidden="true" tabindex="-1"></a>  nu <span class="ot">=</span> <span class="fu">length</span>(obs)<span class="sc">-</span><span class="dv">1</span></span>
-<span id="cb231-5"><a href="exercises-2.html#cb231-5" aria-hidden="true" tabindex="-1"></a>  s2 <span class="ot">=</span> <span class="fu">var</span>(obs)</span>
-<span id="cb231-6"><a href="exercises-2.html#cb231-6" aria-hidden="true" tabindex="-1"></a>  chi2<span class="ot">=</span> <span class="fu">rchisq</span>(<span class="dv">1000</span>, nu)</span>
-<span id="cb231-7"><a href="exercises-2.html#cb231-7" aria-hidden="true" tabindex="-1"></a>   <span class="do">## inv-chi2  v*s^2/X  (Appendix A)</span></span>
-<span id="cb231-8"><a href="exercises-2.html#cb231-8" aria-hidden="true" tabindex="-1"></a>  sigma2 <span class="ot">=</span> nu<span class="sc">*</span>s2<span class="sc">/</span>chi2</span>
-<span id="cb231-9"><a href="exercises-2.html#cb231-9" aria-hidden="true" tabindex="-1"></a>  <span class="do">## posterior prob   =  p(m | sigma2, y)p(sigma2|y)</span></span>
-<span id="cb231-10"><a href="exercises-2.html#cb231-10" aria-hidden="true" tabindex="-1"></a>   <span class="do">## for each variance term  draw   N( ybar,  sd= sqrt(sigma2/n))</span></span>
-<span id="cb231-11"><a href="exercises-2.html#cb231-11" aria-hidden="true" tabindex="-1"></a>  y<span class="ot">&lt;-</span><span class="fu">sapply</span>(sigma2,<span class="cf">function</span>(x) <span class="fu">rnorm</span>(<span class="dv">1</span>, <span class="at">mean=</span><span class="fu">mean</span>(obs), <span class="at">sd=</span><span class="fu">sqrt</span>(x)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">5</span>)))</span>
-<span id="cb231-12"><a href="exercises-2.html#cb231-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hist</span>(y,<span class="at">main=</span><span class="st">&#39;posterior normal&#39;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
-<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="exercises-2.html#cb232-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="fu">density</span>(y),<span class="at">main=</span><span class="st">&#39;posterior normal density&#39;</span>)</span>
-<span id="cb232-2"><a href="exercises-2.html#cb232-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lines</span>(<span class="fu">density</span>(obs),<span class="at">col=</span><span class="st">&#39;red&#39;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-37-2.png" width="672" />
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="exercises-2.html#cb240-1" aria-hidden="true" tabindex="-1"></a> <span class="do">## normal with 2 unknowns.</span></span>
+<span id="cb240-2"><a href="exercises-2.html#cb240-2" aria-hidden="true" tabindex="-1"></a> <span class="do">## joint poisterior</span></span>
+<span id="cb240-3"><a href="exercises-2.html#cb240-3" aria-hidden="true" tabindex="-1"></a> <span class="do">## need the  sigma2 | y ~ inv-x2(n-1,s2)</span></span>
+<span id="cb240-4"><a href="exercises-2.html#cb240-4" aria-hidden="true" tabindex="-1"></a>  nu <span class="ot">=</span> <span class="fu">length</span>(obs)<span class="sc">-</span><span class="dv">1</span></span>
+<span id="cb240-5"><a href="exercises-2.html#cb240-5" aria-hidden="true" tabindex="-1"></a>  s2 <span class="ot">=</span> <span class="fu">var</span>(obs)</span>
+<span id="cb240-6"><a href="exercises-2.html#cb240-6" aria-hidden="true" tabindex="-1"></a>  chi2<span class="ot">=</span> <span class="fu">rchisq</span>(<span class="dv">1000</span>, nu)</span>
+<span id="cb240-7"><a href="exercises-2.html#cb240-7" aria-hidden="true" tabindex="-1"></a>   <span class="do">## inv-chi2  v*s^2/X  (Appendix A)</span></span>
+<span id="cb240-8"><a href="exercises-2.html#cb240-8" aria-hidden="true" tabindex="-1"></a>  sigma2 <span class="ot">=</span> nu<span class="sc">*</span>s2<span class="sc">/</span>chi2</span>
+<span id="cb240-9"><a href="exercises-2.html#cb240-9" aria-hidden="true" tabindex="-1"></a>  <span class="do">## posterior prob   =  p(m | sigma2, y)p(sigma2|y)</span></span>
+<span id="cb240-10"><a href="exercises-2.html#cb240-10" aria-hidden="true" tabindex="-1"></a>   <span class="do">## for each variance term  draw   N( ybar,  sd= sqrt(sigma2/n))</span></span>
+<span id="cb240-11"><a href="exercises-2.html#cb240-11" aria-hidden="true" tabindex="-1"></a>  y<span class="ot">&lt;-</span><span class="fu">sapply</span>(sigma2,<span class="cf">function</span>(x) <span class="fu">rnorm</span>(<span class="dv">1</span>, <span class="at">mean=</span><span class="fu">mean</span>(obs), <span class="at">sd=</span><span class="fu">sqrt</span>(x)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">5</span>)))</span>
+<span id="cb240-12"><a href="exercises-2.html#cb240-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hist</span>(y,<span class="at">main=</span><span class="st">&#39;posterior normal&#39;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-40-1.png" width="672" /></p>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="exercises-2.html#cb241-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="fu">density</span>(y),<span class="at">main=</span><span class="st">&#39;posterior normal density&#39;</span>)</span>
+<span id="cb241-2"><a href="exercises-2.html#cb241-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lines</span>(<span class="fu">density</span>(obs),<span class="at">col=</span><span class="st">&#39;red&#39;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-40-2.png" width="672" />
 - (c) how do the correct/incorrect differ, compare means/variances</p>
 <p>The difference in means is approximately 0, with a variance (residual) of 2.7.</p>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="exercises-2.html#cb233-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">mean</span>( y <span class="sc">-</span> pois.post) <span class="co"># 0.002926538</span></span></code></pre></div>
-<pre><code>## [1] 0.06265995</code></pre>
-<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="exercises-2.html#cb235-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">var</span>( y <span class="sc">-</span> pois.post) <span class="co"># 2.7</span></span></code></pre></div>
-<pre><code>## [1] 2.628479</code></pre>
-<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="exercises-2.html#cb237-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">hist</span>(y<span class="sc">-</span>pois.post)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-38-1.png" width="672" /></p>
-<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="exercises-2.html#cb238-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">plot</span>(y,pois.post,<span class="at">main=</span><span class="st">&quot;normal vs. pois likelihoods&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-38-2.png" width="672" /></p>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="exercises-2.html#cb242-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">mean</span>( y <span class="sc">-</span> pois.post) <span class="co"># 0.002926538</span></span></code></pre></div>
+<pre><code>## [1] -0.02176653</code></pre>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="exercises-2.html#cb244-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">var</span>( y <span class="sc">-</span> pois.post) <span class="co"># 2.7</span></span></code></pre></div>
+<pre><code>## [1] 2.589242</code></pre>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="exercises-2.html#cb246-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">hist</span>(y<span class="sc">-</span>pois.post)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-41-1.png" width="672" /></p>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="exercises-2.html#cb247-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">plot</span>(y,pois.post,<span class="at">main=</span><span class="st">&quot;normal vs. pois likelihoods&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-41-2.png" width="672" /></p>
 <ul>
 <li><ol start="4" style="list-style-type: lower-alpha">
 <li>Let z=(z1,z2,z3,z4,z5) be the original unrounded measurements corresponding to the five observations above. draw simulations of z and compare the posterior <span class="math inline">\((z1-z2)^2\)</span>.</li>
 </ol></li>
 </ul>
 <p>For this we sample from the normal posterior distribution, conditioned on the rounded values to match the observed. For each sample of the posterior, the rounded values are conditioned to match the observed data. The mean difference of (<span class="math inline">\(z_1-z_2)^2\)</span> is 0.14, with variance of 0.03.</p>
-<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="exercises-2.html#cb239-1" aria-hidden="true" tabindex="-1"></a> generateObs<span class="ot">&lt;-</span><span class="cf">function</span>(obs){</span>
-<span id="cb239-2"><a href="exercises-2.html#cb239-2" aria-hidden="true" tabindex="-1"></a>   z<span class="ot">&lt;-</span><span class="cn">NULL</span></span>
-<span id="cb239-3"><a href="exercises-2.html#cb239-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>){</span>
-<span id="cb239-4"><a href="exercises-2.html#cb239-4" aria-hidden="true" tabindex="-1"></a> zi<span class="ot">=</span> <span class="fu">sample</span>(y,<span class="dv">1</span>)</span>
-<span id="cb239-5"><a href="exercises-2.html#cb239-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span>( <span class="fu">round</span>(zi)<span class="sc">!=</span>obs[i]){</span>
-<span id="cb239-6"><a href="exercises-2.html#cb239-6" aria-hidden="true" tabindex="-1"></a>    zi<span class="ot">=</span><span class="fu">sample</span>(y,<span class="dv">1</span>)</span>
-<span id="cb239-7"><a href="exercises-2.html#cb239-7" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb239-8"><a href="exercises-2.html#cb239-8" aria-hidden="true" tabindex="-1"></a>  z<span class="ot">&lt;-</span><span class="fu">c</span>(z,zi)</span>
-<span id="cb239-9"><a href="exercises-2.html#cb239-9" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb239-10"><a href="exercises-2.html#cb239-10" aria-hidden="true" tabindex="-1"></a>   <span class="fu">stopifnot</span>(<span class="fu">all</span>(<span class="fu">round</span>(z)<span class="sc">==</span>obs))</span>
-<span id="cb239-11"><a href="exercises-2.html#cb239-11" aria-hidden="true" tabindex="-1"></a>   <span class="fu">return</span>(z)</span>
-<span id="cb239-12"><a href="exercises-2.html#cb239-12" aria-hidden="true" tabindex="-1"></a> }</span>
-<span id="cb239-13"><a href="exercises-2.html#cb239-13" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb239-14"><a href="exercises-2.html#cb239-14" aria-hidden="true" tabindex="-1"></a> ERR<span class="ot">&lt;-</span><span class="cn">NULL</span></span>
-<span id="cb239-15"><a href="exercises-2.html#cb239-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb239-16"><a href="exercises-2.html#cb239-16" aria-hidden="true" tabindex="-1"></a> <span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>){</span>
-<span id="cb239-17"><a href="exercises-2.html#cb239-17" aria-hidden="true" tabindex="-1"></a>   <span class="do">## generate z samples such that round(z) == obs</span></span>
-<span id="cb239-18"><a href="exercises-2.html#cb239-18" aria-hidden="true" tabindex="-1"></a>  z<span class="ot">&lt;-</span><span class="fu">generateObs</span>(obs)</span>
-<span id="cb239-19"><a href="exercises-2.html#cb239-19" aria-hidden="true" tabindex="-1"></a>  err<span class="ot">&lt;-</span> (z[<span class="dv">1</span>]<span class="sc">-</span>z[<span class="dv">2</span>])<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb239-20"><a href="exercises-2.html#cb239-20" aria-hidden="true" tabindex="-1"></a> ERR<span class="ot">&lt;-</span><span class="fu">c</span>(ERR,err)</span>
-<span id="cb239-21"><a href="exercises-2.html#cb239-21" aria-hidden="true" tabindex="-1"></a> }</span>
-<span id="cb239-22"><a href="exercises-2.html#cb239-22" aria-hidden="true" tabindex="-1"></a> <span class="fu">message</span>(<span class="st">&quot;mean error:&quot;</span>,<span class="fu">mean</span>(ERR))</span></code></pre></div>
-<pre><code>## mean error:0.15375975429064</code></pre>
-<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="exercises-2.html#cb241-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">hist</span>(ERR)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-39-1.png" width="672" />
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="exercises-2.html#cb248-1" aria-hidden="true" tabindex="-1"></a> generateObs<span class="ot">&lt;-</span><span class="cf">function</span>(obs){</span>
+<span id="cb248-2"><a href="exercises-2.html#cb248-2" aria-hidden="true" tabindex="-1"></a>   z<span class="ot">&lt;-</span><span class="cn">NULL</span></span>
+<span id="cb248-3"><a href="exercises-2.html#cb248-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>){</span>
+<span id="cb248-4"><a href="exercises-2.html#cb248-4" aria-hidden="true" tabindex="-1"></a> zi<span class="ot">=</span> <span class="fu">sample</span>(y,<span class="dv">1</span>)</span>
+<span id="cb248-5"><a href="exercises-2.html#cb248-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span>( <span class="fu">round</span>(zi)<span class="sc">!=</span>obs[i]){</span>
+<span id="cb248-6"><a href="exercises-2.html#cb248-6" aria-hidden="true" tabindex="-1"></a>    zi<span class="ot">=</span><span class="fu">sample</span>(y,<span class="dv">1</span>)</span>
+<span id="cb248-7"><a href="exercises-2.html#cb248-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb248-8"><a href="exercises-2.html#cb248-8" aria-hidden="true" tabindex="-1"></a>  z<span class="ot">&lt;-</span><span class="fu">c</span>(z,zi)</span>
+<span id="cb248-9"><a href="exercises-2.html#cb248-9" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb248-10"><a href="exercises-2.html#cb248-10" aria-hidden="true" tabindex="-1"></a>   <span class="fu">stopifnot</span>(<span class="fu">all</span>(<span class="fu">round</span>(z)<span class="sc">==</span>obs))</span>
+<span id="cb248-11"><a href="exercises-2.html#cb248-11" aria-hidden="true" tabindex="-1"></a>   <span class="fu">return</span>(z)</span>
+<span id="cb248-12"><a href="exercises-2.html#cb248-12" aria-hidden="true" tabindex="-1"></a> }</span>
+<span id="cb248-13"><a href="exercises-2.html#cb248-13" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb248-14"><a href="exercises-2.html#cb248-14" aria-hidden="true" tabindex="-1"></a> ERR<span class="ot">&lt;-</span><span class="cn">NULL</span></span>
+<span id="cb248-15"><a href="exercises-2.html#cb248-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb248-16"><a href="exercises-2.html#cb248-16" aria-hidden="true" tabindex="-1"></a> <span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>){</span>
+<span id="cb248-17"><a href="exercises-2.html#cb248-17" aria-hidden="true" tabindex="-1"></a>   <span class="do">## generate z samples such that round(z) == obs</span></span>
+<span id="cb248-18"><a href="exercises-2.html#cb248-18" aria-hidden="true" tabindex="-1"></a>  z<span class="ot">&lt;-</span><span class="fu">generateObs</span>(obs)</span>
+<span id="cb248-19"><a href="exercises-2.html#cb248-19" aria-hidden="true" tabindex="-1"></a>  err<span class="ot">&lt;-</span> (z[<span class="dv">1</span>]<span class="sc">-</span>z[<span class="dv">2</span>])<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb248-20"><a href="exercises-2.html#cb248-20" aria-hidden="true" tabindex="-1"></a> ERR<span class="ot">&lt;-</span><span class="fu">c</span>(ERR,err)</span>
+<span id="cb248-21"><a href="exercises-2.html#cb248-21" aria-hidden="true" tabindex="-1"></a> }</span>
+<span id="cb248-22"><a href="exercises-2.html#cb248-22" aria-hidden="true" tabindex="-1"></a> <span class="fu">message</span>(<span class="st">&quot;mean error:&quot;</span>,<span class="fu">mean</span>(ERR))</span></code></pre></div>
+<pre><code>## mean error:0.144987049577371</code></pre>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="exercises-2.html#cb250-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">hist</span>(ERR)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-42-1.png" width="672" />
 ## Question 6{-}
 Consider data y1,…,yn modeled as independent Bin(N,<span class="math inline">\(\theta\)</span>) with both N and <span class="math inline">\(\theta\)</span> unknown.</p>
 <p>First we examine that <span class="math inline">\(p(\lambda,\theta)\propto 1/\lambda\)</span> described by Raftery (1988). We take the product of a vague prior for <span class="math inline">\(\lambda\)</span> and the uniform prior for <span class="math inline">\(\theta\)</span>. let <span class="math inline">\(\theta \sim U[0,1]\)</span> be uniform and use the uniform prior for <span class="math inline">\(\lambda\)</span> as a vague prior. The motivation here is to use a uniform vague prior on the hyperparameter. Alternatively we can use Jeffreys’ Prior for Pois(<span class="math inline">\(\lambda) = 1/\sqrt{\lambda}\)</span> where the <span class="math inline">\(-E(\partial l^2 / \partial \lambda^2) = 1/\lambda\)</span> is known for the Poisson.
@@ -592,37 +654,78 @@ p(\lambda,\theta) &amp;\propto (1)1/\lambda\\
 &amp;\propto \lambda^{-1}
 \end{aligned}
 \]</span>
-- (a) to write the prior N<span class="math inline">\(\sim P(\lambda)\)</span> as a sampling distribution, but we can let N follow a Poisson, with a Gamma(0,0) vague prior initially. where <span class="math inline">\(\theta \sim U(0,1)\)</span> as a uniform probability. Alternatively we can let <span class="math inline">\(N\sim U(0, N)\)</span> for N as a large value and this follows similarly to the previous derivation. Note this is an improprer prior.<br />
+- (a) to write the prior N<span class="math inline">\(\sim P(\lambda)\)</span> as a sampling distribution, but we can let N follow a Gamma, with a Gamma(0,0) vague prior initially and independent of <span class="math inline">\(\theta\)</span>. where <span class="math inline">\(\theta \sim U(0,1)\)</span> as a uniform probability. Then <span class="math inline">\(P(N,\theta) = P(N|\theta)p(\theta)\)</span>. Note this is an improprer prior.<br />
 <span class="math display">\[
 \begin{aligned}
 p(N,\theta) &amp;\propto (1)e^{-\beta*N}N^{\alpha-1}\\
 &amp;\propto N^{-1}, \text{for  } \alpha,\beta =0
 \end{aligned}
-\]</span></p>
-<p>So we can let N follow vague prior from the Gamma(0,0) distribution, or call it a uniform on (0,N) to derive p(N,<span class="math inline">\(\theta)\)</span>.</p>
+\]</span>
+We can solve for <span class="math inline">\(p(N,\theta)\)</span> using the prior <span class="math inline">\(p(\lambda,\theta)\propto \lambda^{-1}\)</span>. and <span class="math inline">\(N\sim Pois(\lambda)\)</span>.
+<span class="math display">\[
+\begin{aligned}
+p(N,\lambda,\theta) &amp;= p(N|\lambda,\theta)p(\lambda,\theta) \to p(N,\theta) = \int p(N,\lambda,\theta)d\lambda \\
+&amp;= \int \frac{(\lambda/N)^Ne^{-\lambda/\theta}}{N!}(\frac{1}{\lambda}) d\lambda\\
+&amp;= \frac{1}{N! \theta^N} \int \lambda^{N-1}e^{-\lambda/\theta}d\lambda\\
+&amp;= \frac{1}{N! \theta^N}\frac{\Gamma{(N)}}{1/\theta^N} = 1/N
+\end{aligned}
+\]</span>
+So we can let N follow vague prior from the Gamma(0,0) distribution, or call N a uniform on (0,N) and independent of <span class="math inline">\(\lambda\)</span> to derive p(N,<span class="math inline">\(\theta)\)</span>.</p>
 <ul>
 <li><ol start="2" style="list-style-type: lower-alpha">
-<li></li>
+<li>we need to find the marginal posterior of N, first we find the joint posterior which follows a Beta distribution</li>
 </ol></li>
 </ul>
-<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="exercises-2.html#cb242-1" aria-hidden="true" tabindex="-1"></a> x<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">53</span>,<span class="dv">57</span>,<span class="dv">66</span>,<span class="dv">67</span>,<span class="dv">72</span>)</span>
-<span id="cb242-2"><a href="exercises-2.html#cb242-2" aria-hidden="true" tabindex="-1"></a> M<span class="ot">=</span><span class="fu">seq</span>(<span class="fu">max</span>(x),<span class="dv">1000</span>)</span>
-<span id="cb242-3"><a href="exercises-2.html#cb242-3" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb242-4"><a href="exercises-2.html#cb242-4" aria-hidden="true" tabindex="-1"></a> marginal.post<span class="ot">&lt;-</span><span class="cf">function</span>(N,x){</span>
-<span id="cb242-5"><a href="exercises-2.html#cb242-5" aria-hidden="true" tabindex="-1"></a>   n<span class="ot">=</span><span class="fu">length</span>(x)</span>
-<span id="cb242-6"><a href="exercises-2.html#cb242-6" aria-hidden="true" tabindex="-1"></a>   S<span class="ot">=</span><span class="fu">sum</span>(x)</span>
-<span id="cb242-7"><a href="exercises-2.html#cb242-7" aria-hidden="true" tabindex="-1"></a>   <span class="co"># choose on the log scale</span></span>
-<span id="cb242-8"><a href="exercises-2.html#cb242-8" aria-hidden="true" tabindex="-1"></a>   a<span class="ot">&lt;-</span><span class="fu">sum</span>( <span class="fu">lchoose</span>(N,x))</span>
-<span id="cb242-9"><a href="exercises-2.html#cb242-9" aria-hidden="true" tabindex="-1"></a>   b<span class="ot">&lt;-</span><span class="fu">lgamma</span>(n<span class="sc">*</span>N<span class="sc">-</span>S<span class="sc">+</span><span class="dv">1</span>)</span>
-<span id="cb242-10"><a href="exercises-2.html#cb242-10" aria-hidden="true" tabindex="-1"></a>   c<span class="ot">&lt;-</span><span class="fu">log</span>(N)</span>
-<span id="cb242-11"><a href="exercises-2.html#cb242-11" aria-hidden="true" tabindex="-1"></a>   d<span class="ot">&lt;-</span><span class="fu">lgamma</span>(n<span class="sc">*</span>N<span class="sc">+</span><span class="dv">2</span>)</span>
-<span id="cb242-12"><a href="exercises-2.html#cb242-12" aria-hidden="true" tabindex="-1"></a>   <span class="co">#rez&lt;-(a*b)/c</span></span>
-<span id="cb242-13"><a href="exercises-2.html#cb242-13" aria-hidden="true" tabindex="-1"></a>   rez<span class="ot">&lt;-</span>a<span class="sc">+</span>b<span class="sc">-</span>c<span class="sc">-</span>d</span>
-<span id="cb242-14"><a href="exercises-2.html#cb242-14" aria-hidden="true" tabindex="-1"></a>   <span class="fu">return</span>((rez))</span>
-<span id="cb242-15"><a href="exercises-2.html#cb242-15" aria-hidden="true" tabindex="-1"></a> } <span class="do">## problems here</span></span>
-<span id="cb242-16"><a href="exercises-2.html#cb242-16" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb242-17"><a href="exercises-2.html#cb242-17" aria-hidden="true" tabindex="-1"></a> <span class="do">## can we condition we can derive the analytic form of the joint posterior.</span></span>
-<span id="cb242-18"><a href="exercises-2.html#cb242-18" aria-hidden="true" tabindex="-1"></a> <span class="do">## </span></span></code></pre></div>
+<p><span class="math display">\[
+\begin{aligned}
+p(\theta,N | y) &amp;=  p(y | N,\theta)p(N,\theta) \\
+&amp;\propto \theta^{\sum y_i} (1-\theta)^{nN-\sum y_i}(1/N)\\
+&amp;\propto (1/N)Beta(\sum y_i+1, nN-\sum y_i +1)
+\end{aligned}
+\]</span>
+Then we integrate with respect to <span class="math inline">\(\theta\)</span> to find the marginal posterior, where the integrand is the kernel for the Beta distribution, and we have the beta coefficient that remains in the marginal equation.</p>
+<p><span class="math display">\[
+\begin{aligned}
+p(N| y) &amp;= \int (1/N) \prod {N \choose y_i} \theta^{S}(1-\theta)^{nN-S}d\theta, S=\sum y_i \\
+&amp; = (1/N) \prod {N \choose y_i} \int \theta^{S}(1-\theta)^{nN-S}d\theta \\
+&amp; = (1/N) \prod {N \choose y_i} Beta(S, nN-S)
+\end{aligned}
+\]</span>
+The maximum probability is 122 trials with the highest marginal, and for P<span class="math inline">\((N&gt;100)\geq 0.99\)</span> so we are very certain that there were greater than 100 trials.</p>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="exercises-2.html#cb251-1" aria-hidden="true" tabindex="-1"></a> x<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">53</span>,<span class="dv">57</span>,<span class="dv">66</span>,<span class="dv">67</span>,<span class="dv">72</span>)</span>
+<span id="cb251-2"><a href="exercises-2.html#cb251-2" aria-hidden="true" tabindex="-1"></a> totalN<span class="ot">=</span><span class="fu">seq</span>(<span class="fu">max</span>(x),<span class="dv">1000</span>)</span>
+<span id="cb251-3"><a href="exercises-2.html#cb251-3" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb251-4"><a href="exercises-2.html#cb251-4" aria-hidden="true" tabindex="-1"></a> marginal.post<span class="ot">&lt;-</span><span class="cf">function</span>(N,x){</span>
+<span id="cb251-5"><a href="exercises-2.html#cb251-5" aria-hidden="true" tabindex="-1"></a>   n<span class="ot">=</span><span class="fu">length</span>(x)</span>
+<span id="cb251-6"><a href="exercises-2.html#cb251-6" aria-hidden="true" tabindex="-1"></a>   S<span class="ot">=</span><span class="fu">sum</span>(x)</span>
+<span id="cb251-7"><a href="exercises-2.html#cb251-7" aria-hidden="true" tabindex="-1"></a>   <span class="co"># choose on the log scale</span></span>
+<span id="cb251-8"><a href="exercises-2.html#cb251-8" aria-hidden="true" tabindex="-1"></a>   a<span class="ot">&lt;-</span><span class="fu">sum</span>( <span class="fu">lchoose</span>(N,x))</span>
+<span id="cb251-9"><a href="exercises-2.html#cb251-9" aria-hidden="true" tabindex="-1"></a>   b <span class="ot">=</span> (<span class="sc">-</span><span class="dv">1</span>)<span class="sc">*</span><span class="fu">log</span>(N)</span>
+<span id="cb251-10"><a href="exercises-2.html#cb251-10" aria-hidden="true" tabindex="-1"></a>   c <span class="ot">=</span> <span class="fu">lbeta</span>( S<span class="sc">+</span><span class="dv">1</span>, n<span class="sc">*</span>N<span class="sc">-</span> S <span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb251-11"><a href="exercises-2.html#cb251-11" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb251-12"><a href="exercises-2.html#cb251-12" aria-hidden="true" tabindex="-1"></a>   <span class="co">#rez&lt;-(a*b)/c</span></span>
+<span id="cb251-13"><a href="exercises-2.html#cb251-13" aria-hidden="true" tabindex="-1"></a>   rez<span class="ot">&lt;-</span>a<span class="sc">+</span>b<span class="sc">+</span>c</span>
+<span id="cb251-14"><a href="exercises-2.html#cb251-14" aria-hidden="true" tabindex="-1"></a>   <span class="fu">return</span>(<span class="fu">exp</span>(rez))</span>
+<span id="cb251-15"><a href="exercises-2.html#cb251-15" aria-hidden="true" tabindex="-1"></a> } <span class="do">## problems here</span></span>
+<span id="cb251-16"><a href="exercises-2.html#cb251-16" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb251-17"><a href="exercises-2.html#cb251-17" aria-hidden="true" tabindex="-1"></a> <span class="do">## can we condition we can derive the analytic form of the joint posterior.</span></span>
+<span id="cb251-18"><a href="exercises-2.html#cb251-18" aria-hidden="true" tabindex="-1"></a> <span class="do">## </span></span>
+<span id="cb251-19"><a href="exercises-2.html#cb251-19" aria-hidden="true" tabindex="-1"></a>  marg.n<span class="ot">&lt;-</span><span class="fu">sapply</span>(totalN,<span class="cf">function</span>(y) <span class="fu">marginal.post</span>(y,x))</span>
+<span id="cb251-20"><a href="exercises-2.html#cb251-20" aria-hidden="true" tabindex="-1"></a> <span class="do">## we use a grid approach to theta</span></span>
+<span id="cb251-21"><a href="exercises-2.html#cb251-21" aria-hidden="true" tabindex="-1"></a>totalN[<span class="fu">which.max</span>(<span class="fu">exp</span>(marg.n))]</span></code></pre></div>
+<pre><code>## [1] 122</code></pre>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="exercises-2.html#cb253-1" aria-hidden="true" tabindex="-1"></a>  <span class="do">##</span></span>
+<span id="cb253-2"><a href="exercises-2.html#cb253-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(totalN,marg.n)</span>
+<span id="cb253-3"><a href="exercises-2.html#cb253-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span>totalN[<span class="fu">which.max</span>(<span class="fu">exp</span>(marg.n))])</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-43-1.png" width="672" /></p>
+<ul>
+<li><ol start="3" style="list-style-type: lower-alpha">
+<li>the poisson distribution using <span class="math inline">\(\mu\)</span> for N only gives the probability for N as a fixed realization, however we want to study the uncertainity over all possible N values.</li>
+</ol></li>
+</ul>
+</div>
+<div id="question-7-1" class="section level2 unnumbered hasAnchor">
+<h2>Question 7<a href="exercises-2.html#question-7-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 
 </div>
 </div>

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.6.23)  20 JUL 2022 18:52
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.6.23)  21 JUL 2022 13:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1367,99 +1367,122 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [75] [76]
 File: _main_files/figure-latex/unnamed-chunk-33-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-33-1.pdf>
-[77]
 File: _main_files/figure-latex/unnamed-chunk-34-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-34-1.pdf>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[77]
 File: _main_files/figure-latex/unnamed-chunk-35-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-35-1.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[78]
-File: _main_files/figure-latex/unnamed-chunk-35-2.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-35-2.pdf>
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[79]
+[78] [79]
 File: _main_files/figure-latex/unnamed-chunk-36-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-36-1.pdf>
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 1231) has occurred while \output is active []
 
 [80]
-File: _main_files/figure-latex/unnamed-chunk-36-2.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-36-2.pdf>
+File: _main_files/figure-latex/unnamed-chunk-37-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-37-1.pdf>
+File: _main_files/figure-latex/unnamed-chunk-38-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-38-1.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [81]
-File: _main_files/figure-latex/unnamed-chunk-37-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-37-1.pdf>
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[82]
-File: _main_files/figure-latex/unnamed-chunk-37-2.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-37-2.pdf>
-
-Underfull \hbox (badness 10000) in paragraph at lines 3337--3339
-[][]
- []
-
-[83]
-File: _main_files/figure-latex/unnamed-chunk-38-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-38-1.pdf>
 File: _main_files/figure-latex/unnamed-chunk-38-2.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-38-2.pdf>
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[84] [85]
+[82]
 File: _main_files/figure-latex/unnamed-chunk-39-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-39-1.pdf>
 
-Underfull \hbox (badness 10000) in paragraph at lines 3428--3431
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[83]
+File: _main_files/figure-latex/unnamed-chunk-39-2.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-39-2.pdf>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[84]
+File: _main_files/figure-latex/unnamed-chunk-40-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-40-1.pdf>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[85]
+File: _main_files/figure-latex/unnamed-chunk-40-2.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-40-2.pdf>
+
+Underfull \hbox (badness 10000) in paragraph at lines 3453--3455
+[][]
+ []
+
+[86]
+File: _main_files/figure-latex/unnamed-chunk-41-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-41-1.pdf>
+File: _main_files/figure-latex/unnamed-chunk-41-2.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-41-2.pdf>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[87] [88]
+File: _main_files/figure-latex/unnamed-chunk-42-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-42-1.pdf>
+
+Underfull \hbox (badness 10000) in paragraph at lines 3544--3547
 [][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3438--3440
+Underfull \hbox (badness 10000) in paragraph at lines 3554--3556
 
  []
 
-[86] [87] [88
+[89] [90]
+File: _main_files/figure-latex/unnamed-chunk-43-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-43-1.pdf>
 
-]
+Underfull \vbox (badness 5331) has occurred while \output is active []
+
+[91] [92]
 Chapter 4.
-[89] [90
+[93
+
+] [94
 
 ]
 Chapter 5.
-[91] [92
+[95] [96
 
 ]
 Chapter 6.
-[93] [94]
+[97] [98]
 Chapter 7.
 
-Underfull \hbox (badness 1924) in paragraph at lines 3574--3575
+Underfull \hbox (badness 1924) in paragraph at lines 3749--3750
 []\TU/lmr/m/n/10 Add an unnumbered part: \TU/lmtt/m/n/10 # (PART\*) Act one {-}
  \TU/lmr/m/n/10 (followed by \TU/lmtt/m/n/10 # A
  []
 
-(./_main.bbl [95
+(./_main.bbl [99
 
-] [96
+] [100
 
-]) [97] (./_main.aux) ) 
+]) [101] (./_main.aux) ) 
 Here is how much of TeX's memory you used:
- 19931 strings out of 475882
- 376802 string characters out of 5806027
- 865908 words of memory out of 5000000
- 40631 multiletter control sequences out of 15000+600000
+ 19966 strings out of 475882
+ 378471 string characters out of 5806027
+ 866021 words of memory out of 5000000
+ 40662 multiletter control sequences out of 15000+600000
  475782 words of font info for 90 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  86i,15n,121p,1002b,493s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on _main.pdf (97 pages).
+Output written on _main.pdf (101 pages).

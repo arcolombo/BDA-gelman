@@ -117,7 +117,7 @@
 
 \title{Bayesian Data Analysis}
 \author{Anthony R. Colombo, Dr.~Paul Marjoram}
-\date{2022-07-20}
+\date{2022-07-21}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -715,7 +715,7 @@ Then the probability that at least 1 election is tied, from 435 total elections 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 7.370096
+## [1] -1.663076
 \end{verbatim}
 
 \begin{Shaded}
@@ -1188,7 +1188,7 @@ We find the probability distribution of a given success and the prior probabilit
 
 \begin{verbatim}
 ##       5%      25%      50%      75%      95% 
-## 139.0141 155.6610 167.5259 178.4778 193.9107
+## 139.4638 155.5763 167.0008 177.2288 194.6336
 \end{verbatim}
 
 \begin{Shaded}
@@ -1548,7 +1548,7 @@ Suppose there are N cable cars numbered sequentially 1 to N. You see a car at ra
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 278.618
+## [1] 277.7605
 \end{verbatim}
 
 \begin{Shaded}
@@ -1558,7 +1558,7 @@ Suppose there are N cable cars numbered sequentially 1 to N. You see a car at ra
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 80.84943
+## [1] 79.03685
 \end{verbatim}
 
 \begin{itemize}
@@ -1671,7 +1671,7 @@ for the likelihood \(L(\theta | y) = \prod_{i=1}^n f(y_i|\theta)\) requires the 
 
 \begin{verbatim}
 ##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
-## -333.8989   -0.5011    0.5886    1.1854    1.6318  349.4043
+## -161.2108   -0.5990    0.4959    0.8502    1.4840  375.7766
 \end{verbatim}
 
 \begin{Shaded}
@@ -1694,7 +1694,7 @@ for the likelihood \(L(\theta | y) = \prod_{i=1}^n f(y_i|\theta)\) requires the 
 \end{Shaded}
 
 \begin{verbatim}
-## max pred. prob 0.523
+## max pred. prob 0.521
 \end{verbatim}
 
 \hypertarget{question-12}{%
@@ -1894,7 +1894,7 @@ The true observed value for 1986 is 22 fatal accidents.
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##    7.00   20.00   24.00   23.85   27.00   48.00
+##    8.00   20.00   24.00   23.83   27.00   48.00
 \end{verbatim}
 
 \begin{Shaded}
@@ -1919,7 +1919,7 @@ The true observed value for 1986 is 22 fatal accidents.
 
 \begin{verbatim}
 ##  2.5% 97.5% 
-##    15    34
+##    14    34
 \end{verbatim}
 
 From the gamma posterior \(E(\theta | y) = 238.5/10.02=24.25\) and the variance \(V(\theta|y)= 238.5/10.02^2=2.87\). From the Poisson likelihood \(E(x|\theta)=\theta\) and \(V(x|\theta)=\theta\). \(V(x|y)= E(V(x|\theta,y) | y) + V(E(x|\theta,y)|y)= E(\theta| y)+ V(\theta|y) = 23.382+2.87= 26.252\)
@@ -1956,7 +1956,7 @@ The average predictive value from 1986 is 24.3 which is close to the true value 
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   3.665  20.779  24.230  24.242  27.707  46.296
+##   3.164  20.806  24.262  24.254  27.732  49.729
 \end{verbatim}
 
 \begin{Shaded}
@@ -1981,7 +1981,7 @@ The average predictive value from 1986 is 24.3 which is close to the true value 
 
 \begin{verbatim}
 ##     2.5%    97.5% 
-## 14.20204 34.24541
+## 14.18695 34.24748
 \end{verbatim}
 
 \begin{Shaded}
@@ -1991,7 +1991,7 @@ The average predictive value from 1986 is 24.3 which is close to the true value 
 \end{Shaded}
 
 \begin{verbatim}
-## average predictive value from posterior:23.8503
+## average predictive value from posterior:23.8257
 \end{verbatim}
 
 \begin{itemize}
@@ -2154,7 +2154,7 @@ We can also use the normal approximation, but the equations for the mean and var
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 22 47
+## [1] 21 47
 \end{verbatim}
 
 \begin{Shaded}
@@ -2295,8 +2295,8 @@ which is not the expected prediction of 546 passenger deaths. This is likely bec
 \end{Shaded}
 
 \begin{verbatim}
-##    2.5%   97.5% 
-## 639.975 748.000
+##  2.5% 97.5% 
+##   639   749
 \end{verbatim}
 
 \begin{Shaded}
@@ -2314,7 +2314,7 @@ which is not the expected prediction of 546 passenger deaths. This is likely bec
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   596.0   671.0   690.0   689.7   708.0   778.0
+##   594.0   670.8   690.0   689.9   708.0   792.0
 \end{verbatim}
 
 \begin{Shaded}
@@ -2340,8 +2340,8 @@ which is not the expected prediction of 546 passenger deaths. This is likely bec
 \end{Shaded}
 
 \begin{verbatim}
-##    2.5%   97.5% 
-## 633.975 745.000
+##  2.5% 97.5% 
+##   636   746
 \end{verbatim}
 
 \begin{itemize}
@@ -2430,7 +2430,7 @@ Note we used Jeffreys' prior here, but an empirical prior is okay
 \end{Shaded}
 
 \begin{verbatim}
-## [1]  903 1038
+## [1]  902 1040
 \end{verbatim}
 
 \hypertarget{question-21}{%
@@ -2922,7 +2922,7 @@ There was a 0.355 probability of a shift toward Bush after both debates.
 \begin{verbatim}
 ## 
 ## FALSE  TRUE 
-##   641   359
+##   638   362
 \end{verbatim}
 
 \begin{Shaded}
@@ -3010,7 +3010,7 @@ we are given two independent normal random variables with unknown variances and 
 
 \begin{verbatim}
 ##      2.5%     97.5% 
-## 0.9298683 1.1008553
+## 0.9305344 1.1004105
 \end{verbatim}
 
 \begin{Shaded}
@@ -3021,7 +3021,7 @@ we are given two independent normal random variables with unknown variances and 
 
 \begin{verbatim}
 ##     2.5%    97.5% 
-## 1.096152 1.254909
+## 1.093642 1.252233
 \end{verbatim}
 
 \begin{itemize}
@@ -3053,7 +3053,7 @@ The posterior interval (central) of the differences between 2 independent t-dist
 
 \begin{verbatim}
 ##       2.5%      97.5% 
-## 0.03856726 0.27902417
+## 0.04153418 0.27631640
 \end{verbatim}
 
 \begin{Shaded}
@@ -3074,7 +3074,7 @@ The posterior interval (central) of the differences between 2 independent t-dist
 
 \begin{verbatim}
 ##       2.5%      97.5% 
-## 0.04345583 0.26959547
+## 0.05150114 0.26847361
 \end{verbatim}
 
 \begin{Shaded}
@@ -3092,14 +3092,130 @@ The posterior interval (central) of the differences between 2 independent t-dist
 ## [1] 0.04381525 0.27618475
 \end{verbatim}
 
-\hypertarget{question-4-1}{%
-\section*{Question 4}\label{question-4-1}}
-\addcontentsline{toc}{section}{Question 4}
+\hypertarget{question-4-independent-binomial}{%
+\section*{Question 4 (independent binomial)}\label{question-4-independent-binomial}}
+\addcontentsline{toc}{section}{Question 4 (independent binomial)}
+
+so using the multinomial is not correct because we do not have k outcomes, instead we have 2 independent binomial processes (as the question states!) so we modeled the independent likelihoods, which is a product of independent beta distributions.
+
+\(p(p_0,p_1) \propto p(x| p_0,p_1)p(p_0,p_1) = p_0^{38.5}(1-p_0)^{634.5}p_1^{21.5}(1-p_1)^{657.5}\)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p0}\OtherTok{=} \FunctionTok{seq}\NormalTok{(}\FloatTok{0.01}\NormalTok{,}\FloatTok{0.99}\NormalTok{,}\AttributeTok{by=}\FloatTok{0.01}\NormalTok{)}
+\NormalTok{p1}\OtherTok{=} \FunctionTok{seq}\NormalTok{(}\FloatTok{0.01}\NormalTok{,}\FloatTok{0.99}\NormalTok{,}\AttributeTok{by=}\FloatTok{0.01}\NormalTok{)}
+
+\NormalTok{post.bin}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(p0,p1)\{}
+\NormalTok{  pos}\OtherTok{\textless{}{-}}\NormalTok{ p0}\SpecialCharTok{\^{}}\NormalTok{(}\FloatTok{38.5}\NormalTok{)}\SpecialCharTok{*}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{p0)}\SpecialCharTok{\^{}}\NormalTok{(}\FloatTok{634.5}\NormalTok{)}\SpecialCharTok{*}\NormalTok{p1}\SpecialCharTok{\^{}}\NormalTok{(}\FloatTok{21.5}\NormalTok{)}\SpecialCharTok{*}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{p1)}\SpecialCharTok{\^{}}\NormalTok{(}\FloatTok{657.5}\NormalTok{)}
+  \FunctionTok{return}\NormalTok{(pos)}
+\NormalTok{\}}
+\NormalTok{ posts}\OtherTok{\textless{}{-}}\ConstantTok{NULL}
+ 
+\NormalTok{p0p1}\OtherTok{\textless{}{-}} \FunctionTok{expand.grid}\NormalTok{(p0, p1)}
+
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{nrow}\NormalTok{(p0p1))\{}
+\NormalTok{  posts[i]}\OtherTok{\textless{}{-}}\FunctionTok{post.bin}\NormalTok{(p0p1[i,}\StringTok{"Var1"}\NormalTok{],p0p1[i,}\StringTok{"Var2"}\NormalTok{]) }
+\NormalTok{\}}
+
+ \FunctionTok{ggplot}\NormalTok{(p0p1)}\SpecialCharTok{+}
+ \FunctionTok{geom\_contour}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Var1, }\AttributeTok{y =}\NormalTok{ Var2, }\AttributeTok{z =}\NormalTok{ posts), }\AttributeTok{bins =} \DecValTok{20}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-33-1.pdf}
+
+\begin{itemize}
+\item
+  \begin{enumerate}
+  \def\labelenumi{(\alph{enumi})}
+  \setcounter{enumi}{1}
+  \tightlist
+  \item
+    summarize the odds ratio
+    Note that using a 2x2 table the OR is 0.54 and the independent binomials do approximate well.
+  \end{enumerate}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{b1}\OtherTok{\textless{}{-}}\FunctionTok{sapply}\NormalTok{(p0,}\ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{pbeta}\NormalTok{(x,}\FloatTok{38.5}\NormalTok{,}\FloatTok{634.5}\NormalTok{))}
+\NormalTok{ post.control}\OtherTok{\textless{}{-}}\FunctionTok{rbeta}\NormalTok{(}\DecValTok{1000}\NormalTok{, }\FloatTok{38.5}\NormalTok{,}\FloatTok{634.5}\NormalTok{)}
+\NormalTok{  post.treat}\OtherTok{\textless{}{-}}\FunctionTok{rbeta}\NormalTok{(}\DecValTok{1000}\NormalTok{, }\FloatTok{21.5}\NormalTok{,}\FloatTok{657.5}\NormalTok{)}
+
+\NormalTok{  or}\OtherTok{\textless{}{-}}\NormalTok{(post.treat}\SpecialCharTok{/}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{post.treat))}\SpecialCharTok{/}\NormalTok{(post.control}\SpecialCharTok{/}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{post.control))}
+  \FunctionTok{hist}\NormalTok{(or,}\AttributeTok{main=}\StringTok{\textquotesingle{}treatment odds empriical posterior\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-34-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \FunctionTok{summary}\NormalTok{(or)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##  0.1892  0.4294  0.5269  0.5453  0.6433  1.3319
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \FunctionTok{message}\NormalTok{(}\StringTok{"the empricial OR: "}\NormalTok{, }\FunctionTok{round}\NormalTok{((}\DecValTok{22}\SpecialCharTok{*}\DecValTok{635}\NormalTok{)}\SpecialCharTok{/}\NormalTok{(}\DecValTok{39}\SpecialCharTok{*}\DecValTok{658}\NormalTok{),}\DecValTok{2}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## the empricial OR: 0.54
+\end{verbatim}
+
+\begin{itemize}
+\item
+  \begin{enumerate}
+  \def\labelenumi{(\alph{enumi})}
+  \setcounter{enumi}{2}
+  \tightlist
+  \item
+    the sensitivity of the noninformative prior density
+    If we use the prior Beta(1,1) as the uniform prior we do see marginal changes to the posterior mean 0.5639.
+  \end{enumerate}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{b1}\OtherTok{\textless{}{-}}\FunctionTok{sapply}\NormalTok{(p0,}\ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{pbeta}\NormalTok{(x,}\FloatTok{39.5}\NormalTok{,}\FloatTok{635.5}\NormalTok{))}
+\NormalTok{ post.control}\OtherTok{\textless{}{-}}\FunctionTok{rbeta}\NormalTok{(}\DecValTok{1000}\NormalTok{, }\FloatTok{39.5}\NormalTok{,}\FloatTok{635.5}\NormalTok{)}
+\NormalTok{  post.treat}\OtherTok{\textless{}{-}}\FunctionTok{rbeta}\NormalTok{(}\DecValTok{1000}\NormalTok{, }\FloatTok{22.5}\NormalTok{,}\FloatTok{658.5}\NormalTok{)}
+
+\NormalTok{  or}\OtherTok{\textless{}{-}}\NormalTok{(post.treat}\SpecialCharTok{/}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{post.treat))}\SpecialCharTok{/}\NormalTok{(post.control}\SpecialCharTok{/}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{post.control))}
+  \FunctionTok{hist}\NormalTok{(or,}\AttributeTok{main=}\StringTok{\textquotesingle{}treatment odds empriical posterior\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-35-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \FunctionTok{summary}\NormalTok{(or)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##  0.2562  0.4451  0.5479  0.5558  0.6440  1.0533
+\end{verbatim}
+
+\hypertarget{question-4-dirichlet}{%
+\subsection*{Question 4 (dirichlet)}\label{question-4-dirichlet}}
+\addcontentsline{toc}{subsection}{Question 4 (dirichlet)}
 
 \begin{itemize}
 \tightlist
 \item
-  (4a) set up a noninformative prior on \((p_0,p_1)\) and obtain posterior simulations. Assume outcomes are independent and binomially distributed. The posterior for probability of death is Diri(39+1, 22+1).
+  (4a) set up a noninformative prior on \((p_0,p_1)\) and obtain posterior simulations. Assume outcomes are independent and binomially distributed. The posterior for probability of death is Diri(39+1, 22+1, 675,681)
+\item
+  the dirichlet is the event of rolling a 4 sided die, whereas this problem is rolling independent 2 sided die, however the dirichlet does approximate independnet binomial processes well.
 \end{itemize}
 
 \begin{Shaded}
@@ -3117,19 +3233,19 @@ The posterior interval (central) of the differences between 2 independent t-dist
   \DocumentationTok{\#\# p( p0, p1) = Diri( 1,1) noninfom prior}
   \CommentTok{\# p( p0,p1 | y) = Diri(  39+1, 22+1) \#\#  posterior}
  
-\NormalTok{ treat.post}\OtherTok{\textless{}{-}}\FunctionTok{rdirichlet}\NormalTok{(}\DecValTok{1000}\NormalTok{, }\FunctionTok{c}\NormalTok{(}\DecValTok{39}\SpecialCharTok{+}\DecValTok{1}\NormalTok{,}\DecValTok{22}\SpecialCharTok{+}\DecValTok{1}\NormalTok{))}
+\NormalTok{ treat.post}\OtherTok{\textless{}{-}}\FunctionTok{rdirichlet}\NormalTok{(}\DecValTok{1000}\NormalTok{, }\FunctionTok{c}\NormalTok{(}\DecValTok{39}\SpecialCharTok{+}\DecValTok{1}\NormalTok{,}\DecValTok{22}\SpecialCharTok{+}\DecValTok{1}\NormalTok{, }\DecValTok{674}\SpecialCharTok{+}\DecValTok{1}\NormalTok{,}\DecValTok{680}\SpecialCharTok{+}\DecValTok{1}\NormalTok{))}
  \FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow=}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{))}
   \FunctionTok{hist}\NormalTok{(treat.post[,}\DecValTok{1}\NormalTok{],}\AttributeTok{main=}\StringTok{"post control"}\NormalTok{)}
   \FunctionTok{hist}\NormalTok{(treat.post[,}\DecValTok{2}\NormalTok{],}\AttributeTok{main=}\StringTok{\textquotesingle{}post treat\textquotesingle{}}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-33-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-36-1.pdf}
 
 \begin{itemize}
 \tightlist
 \item
-  (4b) The posterior odds has a mean of 0.3657 using non-informative prior. Using the empirical odds ratio we see the odds of death is 0.546 comparing treatment to controls.
+  (4b) The posterior odds has a mean of 0.58 using non-informative prior. Using the empirical odds ratio we see the odds of death is 0.546 comparing treatment to controls.
 \end{itemize}
 
 \begin{Shaded}
@@ -3158,7 +3274,7 @@ The posterior interval (central) of the differences between 2 independent t-dist
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-## 0.07654 0.22202 0.31821 0.37240 0.46942 1.63528
+##  0.2156  0.4591  0.5554  0.5761  0.6698  1.2152
 \end{verbatim}
 
 \begin{Shaded}
@@ -3167,17 +3283,17 @@ The posterior interval (central) of the differences between 2 independent t-dist
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-34-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-37-1.pdf}
 
 \begin{itemize}
 \tightlist
 \item
-  (4c) showing the improper prior (a=0), the posterior odds is 0.363 which is very robust and similar to the noninformative. Using the emprical prior that sets the prior hyperparameters to the cohort expected number of deaths \((39/674)*Total = 79\), and \((22/658)*Total = 45\), yields a similar posterior mean of approximately 0.35 for the odds ratio. Hence the posterior is robust to the choice of prior but does not match well with the empirical non-parametric odds.
+  (4c) showing the improper prior (a=0), the posterior odds is 0.5793 which is very robust and similar to the noninformative. Using the emprical prior that sets the prior hyperparameters to the cohort expected number of deaths \((39/674)*Total = 79\), and \((22/658)*Total = 45\) and a prior cohort size of 677 =(674+680)/2, yields a similar posterior mean of approximately 0.57 for the odds ratio. Hence the posterior is robust to the choice of prior but does not match well with the empirical non-parametric odds.
 \end{itemize}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{ treat.post}\OtherTok{\textless{}{-}}\FunctionTok{rdirichlet}\NormalTok{(}\DecValTok{1000}\NormalTok{, }\FunctionTok{c}\NormalTok{(}\DecValTok{39}\NormalTok{,}\DecValTok{22}\NormalTok{))}
+\NormalTok{ treat.post}\OtherTok{\textless{}{-}}\FunctionTok{rdirichlet}\NormalTok{(}\DecValTok{1000}\NormalTok{, }\FunctionTok{c}\NormalTok{(}\DecValTok{39}\NormalTok{,}\DecValTok{22}\NormalTok{,}\DecValTok{674}\NormalTok{,}\DecValTok{680}\NormalTok{))}
  
   
   \DocumentationTok{\#\# b}
@@ -3186,7 +3302,7 @@ The posterior interval (central) of the differences between 2 independent t-dist
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-35-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-38-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3196,7 +3312,7 @@ The posterior interval (central) of the differences between 2 independent t-dist
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-## 0.06051 0.22376 0.31342 0.36871 0.44334 2.41417
+##  0.2338  0.4581  0.5500  0.5726  0.6758  1.3141
 \end{verbatim}
 
 \begin{Shaded}
@@ -3204,7 +3320,7 @@ The posterior interval (central) of the differences between 2 independent t-dist
   \DocumentationTok{\#\# empirical}
   \CommentTok{\# control = (39/674)*1354 = 78.34718}
   \CommentTok{\# treat = (22/658)*1354 = 45.27052}
-\NormalTok{  treat.post}\OtherTok{\textless{}{-}}\FunctionTok{rdirichlet}\NormalTok{(}\DecValTok{1000}\NormalTok{, }\FunctionTok{c}\NormalTok{(}\DecValTok{39}\SpecialCharTok{+}\DecValTok{79}\NormalTok{,}\DecValTok{22}\SpecialCharTok{+}\DecValTok{46}\NormalTok{))}
+\NormalTok{  treat.post}\OtherTok{\textless{}{-}}\FunctionTok{rdirichlet}\NormalTok{(}\DecValTok{1000}\NormalTok{, }\FunctionTok{c}\NormalTok{(}\DecValTok{39}\SpecialCharTok{+}\DecValTok{79}\NormalTok{,}\DecValTok{22}\SpecialCharTok{+}\DecValTok{46}\NormalTok{,}\DecValTok{674}\SpecialCharTok{+}\DecValTok{677}\NormalTok{,}\DecValTok{680}\SpecialCharTok{+}\DecValTok{677}\NormalTok{))}
  
   
   \DocumentationTok{\#\# b}
@@ -3213,7 +3329,7 @@ The posterior interval (central) of the differences between 2 independent t-dist
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-35-2.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-38-2.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3223,7 +3339,7 @@ The posterior interval (central) of the differences between 2 independent t-dist
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.1040  0.2648  0.3259  0.3419  0.4031  0.7714
+##  0.3254  0.5044  0.5604  0.5661  0.6207  0.9436
 \end{verbatim}
 
 \hypertarget{question-5}{%
@@ -3253,7 +3369,7 @@ The posterior interval (central) of the differences between 2 independent t-dist
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-36-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-39-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3264,7 +3380,7 @@ The posterior interval (central) of the differences between 2 independent t-dist
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   6.523   9.386  10.308  10.388  11.290  15.088
+##   6.522   9.469  10.443  10.456  11.403  15.579
 \end{verbatim}
 
 \begin{Shaded}
@@ -3274,7 +3390,7 @@ The posterior interval (central) of the differences between 2 independent t-dist
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 10.38848
+## [1] 10.45614
 \end{verbatim}
 
 \begin{Shaded}
@@ -3284,7 +3400,7 @@ The posterior interval (central) of the differences between 2 independent t-dist
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 2.029937
+## [1] 1.984342
 \end{verbatim}
 
 \begin{Shaded}
@@ -3294,7 +3410,7 @@ The posterior interval (central) of the differences between 2 independent t-dist
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-36-2.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-39-2.pdf}
 
 \begin{itemize}
 \item
@@ -3325,7 +3441,7 @@ The posterior interval (central) of the differences between 2 independent t-dist
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-37-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-40-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3334,7 +3450,7 @@ The posterior interval (central) of the differences between 2 independent t-dist
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-37-2.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-40-2.pdf}
 - (c) how do the correct/incorrect differ, compare means/variances
 
 The difference in means is approximately 0, with a variance (residual) of 2.7.
@@ -3346,7 +3462,7 @@ The difference in means is approximately 0, with a variance (residual) of 2.7.
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.03759791
+## [1] -0.06988912
 \end{verbatim}
 
 \begin{Shaded}
@@ -3356,7 +3472,7 @@ The difference in means is approximately 0, with a variance (residual) of 2.7.
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 2.503916
+## [1] 2.666964
 \end{verbatim}
 
 \begin{Shaded}
@@ -3365,7 +3481,7 @@ The difference in means is approximately 0, with a variance (residual) of 2.7.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-38-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-41-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3373,7 +3489,7 @@ The difference in means is approximately 0, with a variance (residual) of 2.7.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-38-2.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-41-2.pdf}
 
 \begin{itemize}
 \item
@@ -3416,7 +3532,7 @@ For this we sample from the normal posterior distribution, conditioned on the ro
 \end{Shaded}
 
 \begin{verbatim}
-## mean error:0.122005298480391
+## mean error:0.13969763627416
 \end{verbatim}
 
 \begin{Shaded}
@@ -3425,7 +3541,7 @@ For this we sample from the normal posterior distribution, conditioned on the ro
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{_main_files/figure-latex/unnamed-chunk-39-1.pdf}
+\includegraphics{_main_files/figure-latex/unnamed-chunk-42-1.pdf}
 \#\# Question 6\{-\}
 Consider data y1,\ldots,yn modeled as independent Bin(N,\(\theta\)) with both N and \(\theta\) unknown.
 
@@ -3436,15 +3552,23 @@ First we examine that \(p(\lambda,\theta)\propto 1/\lambda\) described by Rafter
  &\propto \lambda^{-1}
 \end{aligned}
 \]
-- (a) to write the prior N\(\sim P(\lambda)\) as a sampling distribution, but we can let N follow a Poisson, with a Gamma(0,0) vague prior initially. where \(\theta \sim U(0,1)\) as a uniform probability. Alternatively we can let \(N\sim U(0, N)\) for N as a large value and this follows similarly to the previous derivation. Note this is an improprer prior.\\
+- (a) to write the prior N\(\sim P(\lambda)\) as a sampling distribution, but we can let N follow a Gamma, with a Gamma(0,0) vague prior initially and independent of \(\theta\). where \(\theta \sim U(0,1)\) as a uniform probability. Then \(P(N,\theta) = P(N|\theta)p(\theta)\). Note this is an improprer prior.\\
 \[
 \begin{aligned}
  p(N,\theta) &\propto (1)e^{-\beta*N}N^{\alpha-1}\\
  &\propto N^{-1}, \text{for  } \alpha,\beta =0
 \end{aligned}
 \]
-
-So we can let N follow vague prior from the Gamma(0,0) distribution, or call it a uniform on (0,N) to derive p(N,\(\theta)\).
+We can solve for \(p(N,\theta)\) using the prior \(p(\lambda,\theta)\propto \lambda^{-1}\). and \(N\sim Pois(\lambda)\).
+\[ 
+\begin{aligned}
+p(N,\lambda,\theta) &= p(N|\lambda,\theta)p(\lambda,\theta) \to p(N,\theta) = \int p(N,\lambda,\theta)d\lambda \\
+&= \int \frac{(\lambda/N)^Ne^{-\lambda/\theta}}{N!}(\frac{1}{\lambda}) d\lambda\\
+&= \frac{1}{N! \theta^N} \int \lambda^{N-1}e^{-\lambda/\theta}d\lambda\\
+&= \frac{1}{N! \theta^N}\frac{\Gamma{(N)}}{1/\theta^N} = 1/N
+\end{aligned}
+\]
+So we can let N follow vague prior from the Gamma(0,0) distribution, or call N a uniform on (0,N) and independent of \(\lambda\) to derive p(N,\(\theta)\).
 
 \begin{itemize}
 \item
@@ -3453,31 +3577,82 @@ So we can let N follow vague prior from the Gamma(0,0) distribution, or call it 
   \setcounter{enumi}{1}
   \tightlist
   \item
+    we need to find the marginal posterior of N, first we find the joint posterior which follows a Beta distribution
   \end{enumerate}
 \end{itemize}
+
+\[
+\begin{aligned}
+p(\theta,N | y) &=  p(y | N,\theta)p(N,\theta) \\
+&\propto \theta^{\sum y_i} (1-\theta)^{nN-\sum y_i}(1/N)\\
+&\propto (1/N)Beta(\sum y_i+1, nN-\sum y_i +1)
+\end{aligned}
+\]
+Then we integrate with respect to \(\theta\) to find the marginal posterior, where the integrand is the kernel for the Beta distribution, and we have the beta coefficient that remains in the marginal equation.
+
+\[
+\begin{aligned}
+ p(N| y) &= \int (1/N) \prod {N \choose y_i} \theta^{S}(1-\theta)^{nN-S}d\theta, S=\sum y_i \\
+ & = (1/N) \prod {N \choose y_i} \int \theta^{S}(1-\theta)^{nN-S}d\theta \\
+ & = (1/N) \prod {N \choose y_i} Beta(S, nN-S)
+\end{aligned}
+\]
+The maximum probability is 122 trials with the highest marginal, and for P\((N>100)\geq 0.99\) so we are very certain that there were greater than 100 trials.
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{ x}\OtherTok{\textless{}{-}}\FunctionTok{c}\NormalTok{(}\DecValTok{53}\NormalTok{,}\DecValTok{57}\NormalTok{,}\DecValTok{66}\NormalTok{,}\DecValTok{67}\NormalTok{,}\DecValTok{72}\NormalTok{)}
-\NormalTok{ M}\OtherTok{=}\FunctionTok{seq}\NormalTok{(}\FunctionTok{max}\NormalTok{(x),}\DecValTok{1000}\NormalTok{)}
+\NormalTok{ totalN}\OtherTok{=}\FunctionTok{seq}\NormalTok{(}\FunctionTok{max}\NormalTok{(x),}\DecValTok{1000}\NormalTok{)}
  
 \NormalTok{ marginal.post}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(N,x)\{}
 \NormalTok{   n}\OtherTok{=}\FunctionTok{length}\NormalTok{(x)}
 \NormalTok{   S}\OtherTok{=}\FunctionTok{sum}\NormalTok{(x)}
    \CommentTok{\# choose on the log scale}
 \NormalTok{   a}\OtherTok{\textless{}{-}}\FunctionTok{sum}\NormalTok{( }\FunctionTok{lchoose}\NormalTok{(N,x))}
-\NormalTok{   b}\OtherTok{\textless{}{-}}\FunctionTok{lgamma}\NormalTok{(n}\SpecialCharTok{*}\NormalTok{N}\SpecialCharTok{{-}}\NormalTok{S}\SpecialCharTok{+}\DecValTok{1}\NormalTok{)}
-\NormalTok{   c}\OtherTok{\textless{}{-}}\FunctionTok{log}\NormalTok{(N)}
-\NormalTok{   d}\OtherTok{\textless{}{-}}\FunctionTok{lgamma}\NormalTok{(n}\SpecialCharTok{*}\NormalTok{N}\SpecialCharTok{+}\DecValTok{2}\NormalTok{)}
+\NormalTok{   b }\OtherTok{=}\NormalTok{ (}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{)}\SpecialCharTok{*}\FunctionTok{log}\NormalTok{(N)}
+\NormalTok{   c }\OtherTok{=} \FunctionTok{lbeta}\NormalTok{( S}\SpecialCharTok{+}\DecValTok{1}\NormalTok{, n}\SpecialCharTok{*}\NormalTok{N}\SpecialCharTok{{-}}\NormalTok{ S }\SpecialCharTok{+}\DecValTok{1}\NormalTok{)}
+   
    \CommentTok{\#rez\textless{}{-}(a*b)/c}
-\NormalTok{   rez}\OtherTok{\textless{}{-}}\NormalTok{a}\SpecialCharTok{+}\NormalTok{b}\SpecialCharTok{{-}}\NormalTok{c}\SpecialCharTok{{-}}\NormalTok{d}
-   \FunctionTok{return}\NormalTok{((rez))}
+\NormalTok{   rez}\OtherTok{\textless{}{-}}\NormalTok{a}\SpecialCharTok{+}\NormalTok{b}\SpecialCharTok{+}\NormalTok{c}
+   \FunctionTok{return}\NormalTok{(}\FunctionTok{exp}\NormalTok{(rez))}
 \NormalTok{ \} }\DocumentationTok{\#\# problems here}
  
  \DocumentationTok{\#\# can we condition we can derive the analytic form of the joint posterior.}
  \DocumentationTok{\#\# }
+\NormalTok{  marg.n}\OtherTok{\textless{}{-}}\FunctionTok{sapply}\NormalTok{(totalN,}\ControlFlowTok{function}\NormalTok{(y) }\FunctionTok{marginal.post}\NormalTok{(y,x))}
+ \DocumentationTok{\#\# we use a grid approach to theta}
+\NormalTok{totalN[}\FunctionTok{which.max}\NormalTok{(}\FunctionTok{exp}\NormalTok{(marg.n))]}
 \end{Highlighting}
 \end{Shaded}
+
+\begin{verbatim}
+## [1] 122
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \DocumentationTok{\#\#}
+\FunctionTok{plot}\NormalTok{(totalN,marg.n)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{v=}\NormalTok{totalN[}\FunctionTok{which.max}\NormalTok{(}\FunctionTok{exp}\NormalTok{(marg.n))])}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-43-1.pdf}
+
+\begin{itemize}
+\item
+  \begin{enumerate}
+  \def\labelenumi{(\alph{enumi})}
+  \setcounter{enumi}{2}
+  \tightlist
+  \item
+    the poisson distribution using \(\mu\) for N only gives the probability for N as a fixed realization, however we want to study the uncertainity over all possible N values.
+  \end{enumerate}
+\end{itemize}
+
+\hypertarget{question-7-1}{%
+\section*{Question 7}\label{question-7-1}}
+\addcontentsline{toc}{section}{Question 7}
 
 \hypertarget{footnotes-and-citations}{%
 \chapter{Footnotes and citations}\label{footnotes-and-citations}}
