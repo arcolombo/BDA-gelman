@@ -23,7 +23,7 @@
 <meta name="author" content="Anthony R. Colombo, Dr. Paul Marjoram" />
 
 
-<meta name="date" content="2022-07-21" />
+<meta name="date" content="2022-07-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -231,6 +231,9 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#question-5"><i class="fa fa-check"></i>Question 5</a></li>
 <li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#question-7-1"><i class="fa fa-check"></i>Question 7</a></li>
+<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#question-8"><i class="fa fa-check"></i>question 8</a></li>
+<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#question-9"><i class="fa fa-check"></i>question 9</a></li>
+<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#question-11-1"><i class="fa fa-check"></i>Question 11</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html"><i class="fa fa-check"></i><b>4</b> Footnotes and citations</a>
 <ul>
@@ -293,7 +296,7 @@ The posterior follows a Dirichlet distribution, but we are interested only in th
 <span class="math display">\[
 \begin{aligned}
 (\theta_1, \theta_2, 1-\theta_1-\theta_2| y ) &amp;\sim Diri(y_1+a_1,y_2+a_2, a_0+y_0-y_1-y_2-a_1-a_2)\\
-&amp;p(\theta_1,\theta_2,1-\theta_1-\theta_2) \propto \theta_1^{y_1+a_1-1}\theta_2^{y_2+a_2-1}(1-\theta_1-\theta_2)^{a_0+y_0-y_1-y_2-a_1-a_2-1}
+&amp;p(\theta_1,\theta_2,1-\theta_1-\theta_2) \propto \theta_1^{y_1+a_1-1}\theta_2^{y_2+a_2-1}(1-\theta_1-\theta_2)^{a_0+y_0-y_1-y_2-a_1-a_2-1}\\
 \end{aligned}
 \]</span>
 In order to find the distribution of <span class="math inline">\(\theta_1/(\theta_1+\theta_2)\)</span> we need the jacobian, let (<span class="math inline">\(\alpha,\beta) = (\theta_1/(\theta_1+\theta_2) , \theta_1+\theta_2)\)</span>.
@@ -304,7 +307,7 @@ Rearranging the terms we have <span class="math inline">\(\theta_1 = \alpha*\bet
 \beta &amp; \alpha \\
 -\beta &amp; (1-\alpha)\\
 \end{bmatrix} \\
-&amp;=|\beta|
+&amp;=|\beta|\\
 \end{aligned}
 \]</span>
 where <span class="math inline">\(a&#39;_0 = \sum a_i -a_1 -a_2\)</span>, and <span class="math inline">\(y&#39;_0 =\sum y_i-y_1-y_2\)</span>
@@ -312,7 +315,7 @@ where <span class="math inline">\(a&#39;_0 = \sum a_i -a_1 -a_2\)</span>, and <s
 \begin{aligned}
 p(\alpha,\beta) &amp;= (\alpha*\beta)^{y_1+a_1-1}(\beta(1-\alpha))^{y_2+a_2-1}(1-\alpha*\beta-\beta(1-\alpha))^{a&#39;_0+y&#39;_0-1}|\beta|\\
 &amp;=\alpha^{y_1+a_1-1}(1-\alpha)^{y_2+a_2-1}\beta^{y_1+a_1+y_2+a_2-1}(1-\beta)^{a&#39;_0+y&#39;_0-1}\\
-&amp;= Beta(y_1+a_1,y_2+a_2)Beta(y_1+a_1+y_2+a_2, a&#39;_0+y&#39;_0)
+&amp;= Beta(y_1+a_1,y_2+a_2)Beta(y_1+a_1+y_2+a_2, a&#39;_0+y&#39;_0)\\
 \end{aligned}
 \]</span>
 By factorization we integrate out with respect <span class="math inline">\(\beta\)</span> which yields the marginal posterior for <span class="math inline">\(\alpha \sim Beta(y_1+a_1,y_2+a_2)\)</span></p>
@@ -320,9 +323,11 @@ By factorization we integrate out with respect <span class="math inline">\(\beta
 <li><ol start="2" style="list-style-type: lower-alpha">
 <li>To show the relation with binomial let the likelihood <span class="math inline">\(p(y|\alpha) \propto \alpha^y_1 (1-\alpha)^y_2\)</span> and a p(<span class="math inline">\(\alpha)=Beta(a_1,a_2)\)</span> then the posterior is
 <span class="math display">\[
-p(\alpha | y) = p(y|\alpha)p(\alpha)\\
-= \alpha^{y_1+a_1-1}(1-\alpha)^{y_2+a_2-1}\\
-= Beta(y_1+a_1,y_2+a_2)
+\begin{aligned}
+p(\alpha | y) &amp;= p(y|\alpha)p(\alpha)\\
+&amp;= \alpha^{y_1+a_1-1}(1-\alpha)^{y_2+a_2-1}\\
+&amp;= Beta(y_1+a_1,y_2+a_2)
+\end{aligned}
 \]</span></li>
 </ol></li>
 </ul>
@@ -331,16 +336,19 @@ p(\alpha | y) = p(y|\alpha)p(\alpha)\\
 <h2>Question 2<a href="exercises-2.html#question-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>639 were polled before the debate and 639 different persons were polled afterward. we let j=1,2 let <span class="math inline">\(\alpha_j\)</span> be proprtion of voters who preferred Bush out of those who had a preference for bush or Dukakis at the time of the survey j. we need to model two different multinomial distributions, and find the posterior probability in <span class="math inline">\(\alpha_2-\alpha_1\)</span>. what was the posterior probability for support of Bush?</p>
 <p>There was a 0.355 probability of a shift toward Bush after both debates.</p>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="exercises-2.html#cb185-1" aria-hidden="true" tabindex="-1"></a>debate<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">survey=</span><span class="fu">c</span>(<span class="st">&quot;pre&quot;</span>,<span class="st">&quot;post&quot;</span>), <span class="at">bush=</span><span class="fu">c</span>(<span class="dv">294</span>,<span class="dv">288</span>), <span class="at">dukakis=</span><span class="fu">c</span>(<span class="dv">307</span>,<span class="dv">332</span>),<span class="at">none=</span><span class="fu">c</span>(<span class="dv">38</span>,<span class="dv">19</span>),<span class="at">total=</span><span class="fu">c</span>(<span class="dv">639</span>,<span class="dv">639</span>))</span>
-<span id="cb185-2"><a href="exercises-2.html#cb185-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb185-3"><a href="exercises-2.html#cb185-3" aria-hidden="true" tabindex="-1"></a><span class="co"># we have 3 outcomes bush,duk, none</span></span>
-<span id="cb185-4"><a href="exercises-2.html#cb185-4" aria-hidden="true" tabindex="-1"></a><span class="do">## we examine the proportion.</span></span>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="exercises-2.html#cb185-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">library</span>(ggplot2)</span>
+<span id="cb185-2"><a href="exercises-2.html#cb185-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">library</span>(magrittr)</span>
+<span id="cb185-3"><a href="exercises-2.html#cb185-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb185-4"><a href="exercises-2.html#cb185-4" aria-hidden="true" tabindex="-1"></a>debate<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">survey=</span><span class="fu">c</span>(<span class="st">&quot;pre&quot;</span>,<span class="st">&quot;post&quot;</span>), <span class="at">bush=</span><span class="fu">c</span>(<span class="dv">294</span>,<span class="dv">288</span>), <span class="at">dukakis=</span><span class="fu">c</span>(<span class="dv">307</span>,<span class="dv">332</span>),<span class="at">none=</span><span class="fu">c</span>(<span class="dv">38</span>,<span class="dv">19</span>),<span class="at">total=</span><span class="fu">c</span>(<span class="dv">639</span>,<span class="dv">639</span>))</span>
 <span id="cb185-5"><a href="exercises-2.html#cb185-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb185-6"><a href="exercises-2.html#cb185-6" aria-hidden="true" tabindex="-1"></a><span class="co"># need to set a theta parameter with sum theta =1</span></span>
-<span id="cb185-7"><a href="exercises-2.html#cb185-7" aria-hidden="true" tabindex="-1"></a> theta1<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="fl">0.45</span>,<span class="dv">1</span>,<span class="at">by=</span><span class="fl">0.01</span>)<span class="sc">/</span><span class="dv">2</span></span>
-<span id="cb185-8"><a href="exercises-2.html#cb185-8" aria-hidden="true" tabindex="-1"></a> theta2<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="fl">0.45</span>,<span class="dv">1</span>,<span class="at">by=</span><span class="fl">0.01</span>)<span class="sc">/</span><span class="dv">2</span></span>
-<span id="cb185-9"><a href="exercises-2.html#cb185-9" aria-hidden="true" tabindex="-1"></a> theta3<span class="ot">&lt;-</span><span class="dv">1</span><span class="sc">-</span>(theta1<span class="sc">+</span>theta2)</span>
-<span id="cb185-10"><a href="exercises-2.html#cb185-10" aria-hidden="true" tabindex="-1"></a> <span class="fu">all</span>(theta1<span class="sc">+</span>theta2<span class="sc">+</span>theta3 <span class="sc">==</span><span class="dv">1</span>) <span class="do">## sums to  1 for each j</span></span></code></pre></div>
+<span id="cb185-6"><a href="exercises-2.html#cb185-6" aria-hidden="true" tabindex="-1"></a><span class="co"># we have 3 outcomes bush,duk, none</span></span>
+<span id="cb185-7"><a href="exercises-2.html#cb185-7" aria-hidden="true" tabindex="-1"></a><span class="do">## we examine the proportion.</span></span>
+<span id="cb185-8"><a href="exercises-2.html#cb185-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb185-9"><a href="exercises-2.html#cb185-9" aria-hidden="true" tabindex="-1"></a><span class="co"># need to set a theta parameter with sum theta =1</span></span>
+<span id="cb185-10"><a href="exercises-2.html#cb185-10" aria-hidden="true" tabindex="-1"></a> theta1<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="fl">0.45</span>,<span class="dv">1</span>,<span class="at">by=</span><span class="fl">0.01</span>)<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb185-11"><a href="exercises-2.html#cb185-11" aria-hidden="true" tabindex="-1"></a> theta2<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="fl">0.45</span>,<span class="dv">1</span>,<span class="at">by=</span><span class="fl">0.01</span>)<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb185-12"><a href="exercises-2.html#cb185-12" aria-hidden="true" tabindex="-1"></a> theta3<span class="ot">&lt;-</span><span class="dv">1</span><span class="sc">-</span>(theta1<span class="sc">+</span>theta2)</span>
+<span id="cb185-13"><a href="exercises-2.html#cb185-13" aria-hidden="true" tabindex="-1"></a> <span class="fu">all</span>(theta1<span class="sc">+</span>theta2<span class="sc">+</span>theta3 <span class="sc">==</span><span class="dv">1</span>) <span class="do">## sums to  1 for each j</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="exercises-2.html#cb187-1" aria-hidden="true" tabindex="-1"></a> theta<span class="ot">&lt;-</span><span class="fu">data.frame</span>(theta1,theta2,theta3)</span>
 <span id="cb187-2"><a href="exercises-2.html#cb187-2" aria-hidden="true" tabindex="-1"></a> <span class="do">## need the pre posterior</span></span>
@@ -355,7 +363,7 @@ p(\alpha | y) = p(y|\alpha)p(\alpha)\\
 <div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="exercises-2.html#cb190-1" aria-hidden="true" tabindex="-1"></a>   <span class="fu">table</span>((p.post[,<span class="dv">1</span>]<span class="sc">-</span>pre.post[,<span class="dv">1</span>])<span class="sc">&gt;</span><span class="dv">0</span>) <span class="do">## 0.355% supported bush post debate.</span></span></code></pre></div>
 <pre><code>## 
 ## FALSE  TRUE 
-##   631   369</code></pre>
+##   622   378</code></pre>
 <div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="exercises-2.html#cb192-1" aria-hidden="true" tabindex="-1"></a> pre.post2<span class="ot">&lt;-</span><span class="fu">apply</span>(theta,<span class="dv">1</span>, <span class="cf">function</span>(x) <span class="fu">ddirichlet</span>(x,<span class="fu">as.numeric</span>(debate[<span class="dv">1</span>,<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>])))</span>
 <span id="cb192-2"><a href="exercises-2.html#cb192-2" aria-hidden="true" tabindex="-1"></a> post.post2<span class="ot">&lt;-</span><span class="fu">apply</span>(theta,<span class="dv">1</span>, <span class="cf">function</span>(x) <span class="fu">ddirichlet</span>(x,<span class="fu">as.numeric</span>(debate[<span class="dv">2</span>,<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>])))</span>
 <span id="cb192-3"><a href="exercises-2.html#cb192-3" aria-hidden="true" tabindex="-1"></a> </span>
@@ -398,11 +406,11 @@ p(\alpha | y) = p(y|\alpha)p(\alpha)\\
 <div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="exercises-2.html#cb197-1" aria-hidden="true" tabindex="-1"></a>        <span class="fu">message</span>(<span class="st">&quot;95% posterior margin control:&quot;</span>, <span class="fu">round</span>(mt_range[<span class="dv">1</span>],<span class="dv">2</span>),<span class="st">&quot; &quot;</span>,<span class="fu">round</span>(mt_range[<span class="dv">2</span>],<span class="dv">2</span>)) </span></code></pre></div>
 <pre><code>## 95% posterior margin control:1.09 1.25</code></pre>
 <div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="exercises-2.html#cb199-1" aria-hidden="true" tabindex="-1"></a>        <span class="fu">quantile</span>(post_mc,<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>))</span></code></pre></div>
-<pre><code>##     2.5%    97.5% 
-## 0.919881 1.104625</code></pre>
+<pre><code>##      2.5%     97.5% 
+## 0.9304333 1.0969480</code></pre>
 <div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="exercises-2.html#cb201-1" aria-hidden="true" tabindex="-1"></a>        <span class="fu">quantile</span>(post_mt,<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>))</span></code></pre></div>
 <pre><code>##     2.5%    97.5% 
-## 1.091814 1.252757</code></pre>
+## 1.090694 1.249562</code></pre>
 <ul>
 <li><ol start="2" style="list-style-type: lower-alpha">
 <li>what is <span class="math inline">\(\mu_t - \mu_c\)</span></li>
@@ -413,14 +421,14 @@ p(\alpha | y) = p(y|\alpha)p(\alpha)\\
 <p><img src="_main_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
 <div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="exercises-2.html#cb204-1" aria-hidden="true" tabindex="-1"></a>         <span class="fu">quantile</span>(post_mt<span class="sc">-</span>post_mc,<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>))</span></code></pre></div>
 <pre><code>##       2.5%      97.5% 
-## 0.04359341 0.28209086</code></pre>
+## 0.04462435 0.27222833</code></pre>
 <div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="exercises-2.html#cb206-1" aria-hidden="true" tabindex="-1"></a>  <span class="do">## diff</span></span>
 <span id="cb206-2"><a href="exercises-2.html#cb206-2" aria-hidden="true" tabindex="-1"></a>         post_diff<span class="ot">&lt;-</span><span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>,<span class="cf">function</span>(x) <span class="fu">posterior_sample</span>(<span class="at">mc=</span>mt<span class="sc">-</span>mc,<span class="at">sdc=</span>sdt<span class="sc">+</span>sdc,<span class="at">nc=</span>nt<span class="sc">+</span>nc))</span>
 <span id="cb206-3"><a href="exercises-2.html#cb206-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">hist</span>(post_diff, <span class="at">main=</span><span class="st">&#39;simulated difference&#39;</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-32-2.png" width="672" /></p>
 <div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="exercises-2.html#cb207-1" aria-hidden="true" tabindex="-1"></a>             <span class="fu">quantile</span>(post_diff,<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>))</span></code></pre></div>
 <pre><code>##       2.5%      97.5% 
-## 0.04558905 0.27533038</code></pre>
+## 0.04472113 0.28301861</code></pre>
 <div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="exercises-2.html#cb209-1" aria-hidden="true" tabindex="-1"></a>  <span class="do">## theoretical (two independent t distributions)</span></span>
 <span id="cb209-2"><a href="exercises-2.html#cb209-2" aria-hidden="true" tabindex="-1"></a>  md <span class="ot">=</span> mt<span class="sc">-</span>mc</span>
 <span id="cb209-3"><a href="exercises-2.html#cb209-3" aria-hidden="true" tabindex="-1"></a>  sdd <span class="ot">=</span> sdt<span class="sc">+</span>sdc</span>
@@ -466,7 +474,7 @@ Note that using a 2x2 table the OR is 0.54 and the independent binomials do appr
 <p><img src="_main_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
 <div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="exercises-2.html#cb213-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>(or)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.1830  0.4397  0.5347  0.5545  0.6423  1.2431</code></pre>
+##  0.2085  0.4511  0.5400  0.5611  0.6460  1.1739</code></pre>
 <div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="exercises-2.html#cb215-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(<span class="st">&quot;the empricial OR: &quot;</span>, <span class="fu">round</span>((<span class="dv">22</span><span class="sc">*</span><span class="dv">635</span>)<span class="sc">/</span>(<span class="dv">39</span><span class="sc">*</span><span class="dv">658</span>),<span class="dv">2</span>))</span></code></pre></div>
 <pre><code>## the empricial OR: 0.54</code></pre>
 <ul>
@@ -484,7 +492,7 @@ If we use the prior Beta(1,1) as the uniform prior we do see marginal changes to
 <p><img src="_main_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
 <div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="exercises-2.html#cb218-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>(or)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.2309  0.4577  0.5457  0.5699  0.6589  1.1497</code></pre>
+##  0.2199  0.4695  0.5595  0.5716  0.6542  1.1600</code></pre>
 <div id="question-4-dirichlet" class="section level3 unnumbered hasAnchor">
 <h3>Question 4 (dirichlet)<a href="exercises-2.html#question-4-dirichlet" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
@@ -524,7 +532,7 @@ If we use the prior Beta(1,1) as the uniform prior we do see marginal changes to
 <span id="cb223-2"><a href="exercises-2.html#cb223-2" aria-hidden="true" tabindex="-1"></a>  or<span class="ot">&lt;-</span>(treat.post[,<span class="dv">2</span>]<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>treat.post[,<span class="dv">2</span>]))<span class="sc">/</span>(treat.post[,<span class="dv">1</span>]<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>treat.post[,<span class="dv">1</span>]))</span>
 <span id="cb223-3"><a href="exercises-2.html#cb223-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(or)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.2496  0.4664  0.5637  0.5869  0.6845  1.4147</code></pre>
+##  0.1949  0.4625  0.5692  0.5837  0.6814  1.3066</code></pre>
 <div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="exercises-2.html#cb225-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hist</span>(or,<span class="at">main=</span><span class="st">&#39;treatment odds&#39;</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
 <ul>
@@ -539,7 +547,7 @@ If we use the prior Beta(1,1) as the uniform prior we do see marginal changes to
 <p><img src="_main_files/figure-html/unnamed-chunk-38-1.png" width="672" /></p>
 <div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="exercises-2.html#cb227-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>(or)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.2151  0.4574  0.5441  0.5685  0.6660  1.3754</code></pre>
+##  0.1996  0.4577  0.5537  0.5710  0.6594  1.8464</code></pre>
 <div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="exercises-2.html#cb229-1" aria-hidden="true" tabindex="-1"></a>  <span class="do">## empirical</span></span>
 <span id="cb229-2"><a href="exercises-2.html#cb229-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># control = (39/674)*1354 = 78.34718</span></span>
 <span id="cb229-3"><a href="exercises-2.html#cb229-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># treat = (22/658)*1354 = 45.27052</span></span>
@@ -552,7 +560,7 @@ If we use the prior Beta(1,1) as the uniform prior we do see marginal changes to
 <p><img src="_main_files/figure-html/unnamed-chunk-38-2.png" width="672" /></p>
 <div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="exercises-2.html#cb230-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>(or)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.3671  0.5096  0.5667  0.5747  0.6300  0.9238</code></pre>
+##  0.3618  0.5095  0.5673  0.5731  0.6296  1.1388</code></pre>
 </div>
 </div>
 <div id="question-5" class="section level2 unnumbered hasAnchor">
@@ -574,11 +582,11 @@ If we use the prior Beta(1,1) as the uniform prior we do see marginal changes to
 <div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="exercises-2.html#cb233-1" aria-hidden="true" tabindex="-1"></a>  <span class="co"># post summary  mean : 8.8,  var= 1.47</span></span>
 <span id="cb233-2"><a href="exercises-2.html#cb233-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>(pois.post)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   6.048   9.442  10.299  10.375  11.267  15.497</code></pre>
+##   6.611   9.433  10.272  10.377  11.257  14.894</code></pre>
 <div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="exercises-2.html#cb235-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(pois.post)</span></code></pre></div>
-<pre><code>## [1] 10.37484</code></pre>
+<pre><code>## [1] 10.37746</code></pre>
 <div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="exercises-2.html#cb237-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">var</span>(pois.post)</span></code></pre></div>
-<pre><code>## [1] 2.02609</code></pre>
+<pre><code>## [1] 1.990109</code></pre>
 <div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="exercises-2.html#cb239-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="fu">density</span>(pois.post),<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.4</span>),<span class="at">main=</span><span class="st">&#39;pois posterior&#39;</span>)</span>
 <span id="cb239-2"><a href="exercises-2.html#cb239-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lines</span>(<span class="fu">density</span>(obs),<span class="at">col=</span><span class="st">&#39;red&#39;</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-39-2.png" width="672" /></p>
@@ -607,9 +615,9 @@ Using non informative prior for both unknowns, the posterior mean is 10.4 and po
 - (c) how do the correct/incorrect differ, compare means/variances</p>
 <p>The difference in means is approximately 0, with a variance (residual) of 2.7.</p>
 <div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="exercises-2.html#cb242-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">mean</span>( y <span class="sc">-</span> pois.post) <span class="co"># 0.002926538</span></span></code></pre></div>
-<pre><code>## [1] -0.02176653</code></pre>
+<pre><code>## [1] -0.004296727</code></pre>
 <div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="exercises-2.html#cb244-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">var</span>( y <span class="sc">-</span> pois.post) <span class="co"># 2.7</span></span></code></pre></div>
-<pre><code>## [1] 2.589242</code></pre>
+<pre><code>## [1] 2.517711</code></pre>
 <div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="exercises-2.html#cb246-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">hist</span>(y<span class="sc">-</span>pois.post)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-41-1.png" width="672" /></p>
 <div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="exercises-2.html#cb247-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">plot</span>(y,pois.post,<span class="at">main=</span><span class="st">&quot;normal vs. pois likelihoods&quot;</span>)</span></code></pre></div>
@@ -642,7 +650,7 @@ Using non informative prior for both unknowns, the posterior mean is 10.4 and po
 <span id="cb248-20"><a href="exercises-2.html#cb248-20" aria-hidden="true" tabindex="-1"></a> ERR<span class="ot">&lt;-</span><span class="fu">c</span>(ERR,err)</span>
 <span id="cb248-21"><a href="exercises-2.html#cb248-21" aria-hidden="true" tabindex="-1"></a> }</span>
 <span id="cb248-22"><a href="exercises-2.html#cb248-22" aria-hidden="true" tabindex="-1"></a> <span class="fu">message</span>(<span class="st">&quot;mean error:&quot;</span>,<span class="fu">mean</span>(ERR))</span></code></pre></div>
-<pre><code>## mean error:0.144987049577371</code></pre>
+<pre><code>## mean error:0.148735787036986</code></pre>
 <div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="exercises-2.html#cb250-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">hist</span>(ERR)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-42-1.png" width="672" />
 ## Question 6{-}
@@ -651,14 +659,14 @@ Consider data y1,…,yn modeled as independent Bin(N,<span class="math inline">\
 <span class="math display">\[
 \begin{aligned}
 p(\lambda,\theta) &amp;\propto (1)1/\lambda\\
-&amp;\propto \lambda^{-1}
+&amp;\propto \lambda^{-1}\\
 \end{aligned}
 \]</span>
 - (a) to write the prior N<span class="math inline">\(\sim P(\lambda)\)</span> as a sampling distribution, but we can let N follow a Gamma, with a Gamma(0,0) vague prior initially and independent of <span class="math inline">\(\theta\)</span>. where <span class="math inline">\(\theta \sim U(0,1)\)</span> as a uniform probability. Then <span class="math inline">\(P(N,\theta) = P(N|\theta)p(\theta)\)</span>. Note this is an improprer prior.<br />
 <span class="math display">\[
 \begin{aligned}
 p(N,\theta) &amp;\propto (1)e^{-\beta*N}N^{\alpha-1}\\
-&amp;\propto N^{-1}, \text{for  } \alpha,\beta =0
+&amp;\propto N^{-1}, \text{for  } \alpha,\beta =0\\
 \end{aligned}
 \]</span>
 We can solve for <span class="math inline">\(p(N,\theta)\)</span> using the prior <span class="math inline">\(p(\lambda,\theta)\propto \lambda^{-1}\)</span>. and <span class="math inline">\(N\sim Pois(\lambda)\)</span>.
@@ -667,7 +675,7 @@ We can solve for <span class="math inline">\(p(N,\theta)\)</span> using the prio
 p(N,\lambda,\theta) &amp;= p(N|\lambda,\theta)p(\lambda,\theta) \to p(N,\theta) = \int p(N,\lambda,\theta)d\lambda \\
 &amp;= \int \frac{(\lambda/N)^Ne^{-\lambda/\theta}}{N!}(\frac{1}{\lambda}) d\lambda\\
 &amp;= \frac{1}{N! \theta^N} \int \lambda^{N-1}e^{-\lambda/\theta}d\lambda\\
-&amp;= \frac{1}{N! \theta^N}\frac{\Gamma{(N)}}{1/\theta^N} = 1/N
+&amp;= \frac{1}{N! \theta^N}\frac{\Gamma{(N)}}{1/\theta^N} = 1/N\\
 \end{aligned}
 \]</span>
 So we can let N follow vague prior from the Gamma(0,0) distribution, or call N a uniform on (0,N) and independent of <span class="math inline">\(\lambda\)</span> to derive p(N,<span class="math inline">\(\theta)\)</span>.</p>
@@ -680,7 +688,7 @@ So we can let N follow vague prior from the Gamma(0,0) distribution, or call N a
 \begin{aligned}
 p(\theta,N | y) &amp;=  p(y | N,\theta)p(N,\theta) \\
 &amp;\propto \theta^{\sum y_i} (1-\theta)^{nN-\sum y_i}(1/N)\\
-&amp;\propto (1/N)Beta(\sum y_i+1, nN-\sum y_i +1)
+&amp;\propto (1/N)Beta(\sum y_i+1, nN-\sum y_i +1)\\
 \end{aligned}
 \]</span>
 Then we integrate with respect to <span class="math inline">\(\theta\)</span> to find the marginal posterior, where the integrand is the kernel for the Beta distribution, and we have the beta coefficient that remains in the marginal equation.</p>
@@ -688,10 +696,10 @@ Then we integrate with respect to <span class="math inline">\(\theta\)</span> to
 \begin{aligned}
 p(N| y) &amp;= \int (1/N) \prod {N \choose y_i} \theta^{S}(1-\theta)^{nN-S}d\theta, S=\sum y_i \\
 &amp; = (1/N) \prod {N \choose y_i} \int \theta^{S}(1-\theta)^{nN-S}d\theta \\
-&amp; = (1/N) \prod {N \choose y_i} Beta(S, nN-S)
+&amp; = (1/N) \prod {N \choose y_i} Beta(S+1, nN-S+1)\\
 \end{aligned}
 \]</span>
-The maximum probability is 122 trials with the highest marginal, and for P<span class="math inline">\((N&gt;100)\geq 0.99\)</span> so we are very certain that there were greater than 100 trials.</p>
+The maximum probability is 122 trials with the highest marginal,</p>
 <div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="exercises-2.html#cb251-1" aria-hidden="true" tabindex="-1"></a> x<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">53</span>,<span class="dv">57</span>,<span class="dv">66</span>,<span class="dv">67</span>,<span class="dv">72</span>)</span>
 <span id="cb251-2"><a href="exercises-2.html#cb251-2" aria-hidden="true" tabindex="-1"></a> totalN<span class="ot">=</span><span class="fu">seq</span>(<span class="fu">max</span>(x),<span class="dv">1000</span>)</span>
 <span id="cb251-3"><a href="exercises-2.html#cb251-3" aria-hidden="true" tabindex="-1"></a> </span>
@@ -700,32 +708,275 @@ The maximum probability is 122 trials with the highest marginal, and for P<span 
 <span id="cb251-6"><a href="exercises-2.html#cb251-6" aria-hidden="true" tabindex="-1"></a>   S<span class="ot">=</span><span class="fu">sum</span>(x)</span>
 <span id="cb251-7"><a href="exercises-2.html#cb251-7" aria-hidden="true" tabindex="-1"></a>   <span class="co"># choose on the log scale</span></span>
 <span id="cb251-8"><a href="exercises-2.html#cb251-8" aria-hidden="true" tabindex="-1"></a>   a<span class="ot">&lt;-</span><span class="fu">sum</span>( <span class="fu">lchoose</span>(N,x))</span>
-<span id="cb251-9"><a href="exercises-2.html#cb251-9" aria-hidden="true" tabindex="-1"></a>   b <span class="ot">=</span> (<span class="sc">-</span><span class="dv">1</span>)<span class="sc">*</span><span class="fu">log</span>(N)</span>
-<span id="cb251-10"><a href="exercises-2.html#cb251-10" aria-hidden="true" tabindex="-1"></a>   c <span class="ot">=</span> <span class="fu">lbeta</span>( S<span class="sc">+</span><span class="dv">1</span>, n<span class="sc">*</span>N<span class="sc">-</span> S <span class="sc">+</span><span class="dv">1</span>)</span>
-<span id="cb251-11"><a href="exercises-2.html#cb251-11" aria-hidden="true" tabindex="-1"></a>   </span>
-<span id="cb251-12"><a href="exercises-2.html#cb251-12" aria-hidden="true" tabindex="-1"></a>   <span class="co">#rez&lt;-(a*b)/c</span></span>
-<span id="cb251-13"><a href="exercises-2.html#cb251-13" aria-hidden="true" tabindex="-1"></a>   rez<span class="ot">&lt;-</span>a<span class="sc">+</span>b<span class="sc">+</span>c</span>
-<span id="cb251-14"><a href="exercises-2.html#cb251-14" aria-hidden="true" tabindex="-1"></a>   <span class="fu">return</span>(<span class="fu">exp</span>(rez))</span>
-<span id="cb251-15"><a href="exercises-2.html#cb251-15" aria-hidden="true" tabindex="-1"></a> } <span class="do">## problems here</span></span>
-<span id="cb251-16"><a href="exercises-2.html#cb251-16" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb251-17"><a href="exercises-2.html#cb251-17" aria-hidden="true" tabindex="-1"></a> <span class="do">## can we condition we can derive the analytic form of the joint posterior.</span></span>
-<span id="cb251-18"><a href="exercises-2.html#cb251-18" aria-hidden="true" tabindex="-1"></a> <span class="do">## </span></span>
-<span id="cb251-19"><a href="exercises-2.html#cb251-19" aria-hidden="true" tabindex="-1"></a>  marg.n<span class="ot">&lt;-</span><span class="fu">sapply</span>(totalN,<span class="cf">function</span>(y) <span class="fu">marginal.post</span>(y,x))</span>
-<span id="cb251-20"><a href="exercises-2.html#cb251-20" aria-hidden="true" tabindex="-1"></a> <span class="do">## we use a grid approach to theta</span></span>
-<span id="cb251-21"><a href="exercises-2.html#cb251-21" aria-hidden="true" tabindex="-1"></a>totalN[<span class="fu">which.max</span>(<span class="fu">exp</span>(marg.n))]</span></code></pre></div>
+<span id="cb251-9"><a href="exercises-2.html#cb251-9" aria-hidden="true" tabindex="-1"></a>    b <span class="ot">=</span> (<span class="sc">-</span><span class="dv">1</span>)<span class="sc">*</span><span class="fu">log</span>(N)</span>
+<span id="cb251-10"><a href="exercises-2.html#cb251-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># b=0</span></span>
+<span id="cb251-11"><a href="exercises-2.html#cb251-11" aria-hidden="true" tabindex="-1"></a>   c <span class="ot">=</span> <span class="fu">lbeta</span>( S<span class="sc">+</span><span class="dv">1</span>, n<span class="sc">*</span>N<span class="sc">-</span> S <span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb251-12"><a href="exercises-2.html#cb251-12" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb251-13"><a href="exercises-2.html#cb251-13" aria-hidden="true" tabindex="-1"></a>   <span class="co">#rez&lt;-(a*b)/c</span></span>
+<span id="cb251-14"><a href="exercises-2.html#cb251-14" aria-hidden="true" tabindex="-1"></a>   rez<span class="ot">&lt;-</span>a<span class="sc">+</span>b<span class="sc">+</span>c</span>
+<span id="cb251-15"><a href="exercises-2.html#cb251-15" aria-hidden="true" tabindex="-1"></a>   <span class="fu">return</span>(<span class="fu">exp</span>(rez))</span>
+<span id="cb251-16"><a href="exercises-2.html#cb251-16" aria-hidden="true" tabindex="-1"></a> } <span class="do">## problems here</span></span>
+<span id="cb251-17"><a href="exercises-2.html#cb251-17" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb251-18"><a href="exercises-2.html#cb251-18" aria-hidden="true" tabindex="-1"></a> <span class="do">## can we condition we can derive the analytic form of the joint posterior.</span></span>
+<span id="cb251-19"><a href="exercises-2.html#cb251-19" aria-hidden="true" tabindex="-1"></a> <span class="do">## </span></span>
+<span id="cb251-20"><a href="exercises-2.html#cb251-20" aria-hidden="true" tabindex="-1"></a>  marg.n<span class="ot">&lt;-</span><span class="fu">sapply</span>(totalN,<span class="cf">function</span>(y) <span class="fu">marginal.post</span>(y,x))</span>
+<span id="cb251-21"><a href="exercises-2.html#cb251-21" aria-hidden="true" tabindex="-1"></a> <span class="do">## we use a grid approach to theta</span></span>
+<span id="cb251-22"><a href="exercises-2.html#cb251-22" aria-hidden="true" tabindex="-1"></a>totalN[<span class="fu">which.max</span>(<span class="fu">exp</span>(marg.n))]</span></code></pre></div>
 <pre><code>## [1] 122</code></pre>
 <div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="exercises-2.html#cb253-1" aria-hidden="true" tabindex="-1"></a>  <span class="do">##</span></span>
-<span id="cb253-2"><a href="exercises-2.html#cb253-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(totalN,marg.n)</span>
-<span id="cb253-3"><a href="exercises-2.html#cb253-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span>totalN[<span class="fu">which.max</span>(<span class="fu">exp</span>(marg.n))])</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-43-1.png" width="672" /></p>
+<span id="cb253-2"><a href="exercises-2.html#cb253-2" aria-hidden="true" tabindex="-1"></a>norm.n<span class="ot">&lt;-</span>marg.n<span class="sc">/</span><span class="fu">sum</span>(marg.n)</span>
+<span id="cb253-3"><a href="exercises-2.html#cb253-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(totalN,norm.n)</span>
+<span id="cb253-4"><a href="exercises-2.html#cb253-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span>totalN[<span class="fu">which.max</span>(<span class="fu">exp</span>(marg.n))])</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-43-1.png" width="672" />
+The joint posterior distribution given the data and N=122 (which was maximal marginal) has the maximum theta = 0.52.</p>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="exercises-2.html#cb254-1" aria-hidden="true" tabindex="-1"></a> theta<span class="ot">=</span><span class="fu">seq</span>(<span class="fl">0.01</span>,<span class="fl">0.99</span>,<span class="at">by=</span><span class="fl">0.01</span>)</span>
+<span id="cb254-2"><a href="exercises-2.html#cb254-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb254-3"><a href="exercises-2.html#cb254-3" aria-hidden="true" tabindex="-1"></a> posterior.joint<span class="ot">&lt;-</span><span class="fu">dbeta</span>(theta, <span class="fu">sum</span>(x)<span class="sc">+</span><span class="dv">1</span>, <span class="dv">5</span><span class="sc">*</span><span class="dv">122</span><span class="sc">-</span><span class="fu">sum</span>(x)<span class="sc">+</span><span class="dv">1</span>)<span class="sc">/</span><span class="dv">122</span></span>
+<span id="cb254-4"><a href="exercises-2.html#cb254-4" aria-hidden="true" tabindex="-1"></a> norm.post<span class="ot">&lt;-</span>posterior.joint<span class="sc">/</span><span class="fu">sum</span>(posterior.joint)</span>
+<span id="cb254-5"><a href="exercises-2.html#cb254-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(theta,norm.post, <span class="at">main=</span><span class="st">&#39;joint posterior N=122&#39;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="exercises-2.html#cb255-1" aria-hidden="true" tabindex="-1"></a>  theta[<span class="fu">which.max</span>(norm.post)]</span></code></pre></div>
+<pre><code>## [1] 0.52</code></pre>
 <ul>
-<li><ol start="3" style="list-style-type: lower-alpha">
+<li>(b ii) and for P<span class="math inline">\((N&gt;100) \approx 0.95\)</span>. We had to use the normalized marginal posterior distribution to correctly compute the probability.</li>
+</ul>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="exercises-2.html#cb257-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">sum</span>(norm.n[totalN<span class="sc">&lt;=</span><span class="dv">100</span>])</span></code></pre></div>
+<pre><code>## [1] 0.9518952</code></pre>
+<ul>
+<li><ol start="4" style="list-style-type: lower-alpha">
 <li>the poisson distribution using <span class="math inline">\(\mu\)</span> for N only gives the probability for N as a fixed realization, however we want to study the uncertainity over all possible N values.</li>
 </ol></li>
 </ul>
 </div>
 <div id="question-7-1" class="section level2 unnumbered hasAnchor">
 <h2>Question 7<a href="exercises-2.html#question-7-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>for 2 independent poisson distributions for x and y with <span class="math inline">\(\lambda_1,\lambda_2\)</span>. And the outcome <span class="math inline">\(X\)</span> has a binomial distribution with N=x+y and unknown p. show that the two models have the same likelihood.</p>
+<p>We need to solve for the conditional probability of X given X+Y using the Poisson likelihoods. Here if you input the Poisson likelihoods, and use X+Y <span class="math inline">\(\sim Poi(\lambda_1+\lambda_2)\)</span> this returns to a Binomial(n, <span class="math inline">\(\lambda_1/(\lambda_1+\lambda_2))\)</span>.
+<span class="math display">\[
+\begin{aligned}
+p(X =k| X+Y=n) &amp;= \frac{P(X+Y=n | X=k)P(X=k)}{P(X+Y=n)} \\
+&amp;=  \frac{P(Y=n-k)P(X=k)}{P(X+Y=n)} \\
+\end{aligned}
+\]</span></p>
+</div>
+<div id="question-8" class="section level2 unnumbered hasAnchor">
+<h2>question 8<a href="exercises-2.html#question-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>notes: dirichlet distribution?
+- (a) For a given block there are only two outcomes, bicycles, and other vehicles. So a binomial distribution is appropriate (2 outcomes only). We model y and binomial <span class="math inline">\((N_y,\theta_y)\)</span> independent of z<span class="math inline">\(\sim Binomial(N_z,\theta_z)\)</span>.</p>
+<p>We assume <span class="math inline">\(\theta_y,\theta_z\)</span> are independent, so the posteriors are independent Beta models.
+<span class="math display">\[
+\begin{aligned}
+p(\theta_y,\theta_z| y,z) &amp;= p(\theta_y | y)p(\theta_z|z) \\
+&amp;= Beta(\theta_y  | 1/2 +\sum y_i, 1/2+N_y-\sum y_i)*Beta(\theta_z  | 1/2 +\sum z_i, 1/2+N_z-\sum z_i)\\
+\end{aligned}
+\]</span>
+- (b) the prior uses Jeffreys’ Beta(1/2,1/2) for each parameter independently.</p>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="exercises-2.html#cb259-1" aria-hidden="true" tabindex="-1"></a>rez.lane.bike<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">16</span>,<span class="dv">9</span>,<span class="dv">10</span>,<span class="dv">13</span>,<span class="dv">19</span>,<span class="dv">20</span>,<span class="dv">18</span>,<span class="dv">17</span>,<span class="dv">35</span>,<span class="dv">55</span>)</span>
+<span id="cb259-2"><a href="exercises-2.html#cb259-2" aria-hidden="true" tabindex="-1"></a>rez.lane.other<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">58</span>,<span class="dv">90</span>,<span class="dv">48</span>,<span class="dv">57</span>,<span class="dv">103</span>,<span class="dv">57</span>,<span class="dv">86</span>,<span class="dv">112</span>,<span class="dv">273</span>,<span class="dv">64</span>)</span>
+<span id="cb259-3"><a href="exercises-2.html#cb259-3" aria-hidden="true" tabindex="-1"></a>NY<span class="ot">&lt;-</span>(rez.lane.bike<span class="sc">+</span>rez.lane.other)</span>
+<span id="cb259-4"><a href="exercises-2.html#cb259-4" aria-hidden="true" tabindex="-1"></a>rez.lane.p<span class="ot">&lt;-</span>rez.lane.bike<span class="sc">/</span>(rez.lane.bike<span class="sc">+</span>rez.lane.other)</span>
+<span id="cb259-5"><a href="exercises-2.html#cb259-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb259-6"><a href="exercises-2.html#cb259-6" aria-hidden="true" tabindex="-1"></a>rez.nolane.bike<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">12</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">9</span>,<span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">8</span>)</span>
+<span id="cb259-7"><a href="exercises-2.html#cb259-7" aria-hidden="true" tabindex="-1"></a>rez.nolane.other<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">113</span>,<span class="dv">18</span>,<span class="dv">14</span>,<span class="dv">44</span>,<span class="dv">208</span>,<span class="dv">67</span>,<span class="dv">29</span>,<span class="dv">154</span>)</span>
+<span id="cb259-8"><a href="exercises-2.html#cb259-8" aria-hidden="true" tabindex="-1"></a>NZ<span class="ot">&lt;-</span>(rez.nolane.bike<span class="sc">+</span>rez.nolane.other)</span>
+<span id="cb259-9"><a href="exercises-2.html#cb259-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb259-10"><a href="exercises-2.html#cb259-10" aria-hidden="true" tabindex="-1"></a>rez.nolane.p<span class="ot">&lt;-</span>rez.nolane.bike<span class="sc">/</span>(rez.nolane.bike<span class="sc">+</span>rez.nolane.other)</span></code></pre></div>
+<ul>
+<li><ol start="3" style="list-style-type: lower-alpha">
+<li>we determine the posterior distribution using the beta distribution by sampline independently. Using a grid a pproach we see the contour map centered around 0.18 and 0.09 which is equivalent to the MLEs.</li>
+</ol></li>
+</ul>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="exercises-2.html#cb260-1" aria-hidden="true" tabindex="-1"></a>bike.post<span class="ot">&lt;-</span><span class="fu">rbeta</span>(<span class="dv">1000</span>, (<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span> <span class="sc">+</span> <span class="fu">sum</span>(rez.lane.bike)), (<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span><span class="sc">+</span><span class="fu">sum</span>(rez.lane.other)))</span>
+<span id="cb260-2"><a href="exercises-2.html#cb260-2" aria-hidden="true" tabindex="-1"></a>bike.post2<span class="ot">&lt;-</span><span class="fu">rbeta</span>(<span class="dv">1000</span>, (<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span> <span class="sc">+</span> <span class="fu">sum</span>(rez.nolane.bike)), (<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span><span class="sc">+</span><span class="fu">sum</span>(rez.nolane.other)))</span>
+<span id="cb260-3"><a href="exercises-2.html#cb260-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb260-4"><a href="exercises-2.html#cb260-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb260-5"><a href="exercises-2.html#cb260-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb260-6"><a href="exercises-2.html#cb260-6" aria-hidden="true" tabindex="-1"></a>p0<span class="ot">=</span> <span class="fu">seq</span>(<span class="fl">0.01</span>,<span class="fl">0.99</span>,<span class="at">by=</span><span class="fl">0.01</span>)</span>
+<span id="cb260-7"><a href="exercises-2.html#cb260-7" aria-hidden="true" tabindex="-1"></a>p1<span class="ot">=</span> <span class="fu">seq</span>(<span class="fl">0.01</span>,<span class="fl">0.99</span>,<span class="at">by=</span><span class="fl">0.01</span>)</span>
+<span id="cb260-8"><a href="exercises-2.html#cb260-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb260-9"><a href="exercises-2.html#cb260-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb260-10"><a href="exercises-2.html#cb260-10" aria-hidden="true" tabindex="-1"></a>post.bike<span class="ot">&lt;-</span><span class="cf">function</span>(p0,p1,y,z,ny,nz){</span>
+<span id="cb260-11"><a href="exercises-2.html#cb260-11" aria-hidden="true" tabindex="-1"></a>  pos<span class="ot">&lt;-</span> p0<span class="sc">^</span>(<span class="fu">sum</span>(y))<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>p0)<span class="sc">^</span>(<span class="fu">sum</span>(ny)<span class="sc">-</span><span class="fu">sum</span>(y))<span class="sc">*</span>p1<span class="sc">^</span>(<span class="fu">sum</span>(z))<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>p1)<span class="sc">^</span>(<span class="fu">sum</span>(nz)<span class="sc">-</span><span class="fu">sum</span>(z))<span class="sc">*</span><span class="fu">dbeta</span>(p0,<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>,<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>)<span class="sc">*</span><span class="fu">dbeta</span>(p1,<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>,<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>)</span>
+<span id="cb260-12"><a href="exercises-2.html#cb260-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(pos)</span>
+<span id="cb260-13"><a href="exercises-2.html#cb260-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb260-14"><a href="exercises-2.html#cb260-14" aria-hidden="true" tabindex="-1"></a> posts<span class="ot">&lt;-</span><span class="cn">NULL</span></span>
+<span id="cb260-15"><a href="exercises-2.html#cb260-15" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb260-16"><a href="exercises-2.html#cb260-16" aria-hidden="true" tabindex="-1"></a>p0p1<span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(p0, p1)</span>
+<span id="cb260-17"><a href="exercises-2.html#cb260-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb260-18"><a href="exercises-2.html#cb260-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(p0p1)){</span>
+<span id="cb260-19"><a href="exercises-2.html#cb260-19" aria-hidden="true" tabindex="-1"></a>  posts[i]<span class="ot">&lt;-</span><span class="fu">post.bike</span>(p0p1[i,<span class="st">&quot;Var1&quot;</span>],p0p1[i,<span class="st">&quot;Var2&quot;</span>], rez.lane.bike,rez.nolane.bike, NY,NZ) </span>
+<span id="cb260-20"><a href="exercises-2.html#cb260-20" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb260-21"><a href="exercises-2.html#cb260-21" aria-hidden="true" tabindex="-1"></a> <span class="fu">library</span>(ggplot2)</span>
+<span id="cb260-22"><a href="exercises-2.html#cb260-22" aria-hidden="true" tabindex="-1"></a> <span class="fu">ggplot</span>(p0p1)<span class="sc">+</span></span>
+<span id="cb260-23"><a href="exercises-2.html#cb260-23" aria-hidden="true" tabindex="-1"></a> <span class="fu">geom_contour</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> Var1, <span class="at">y =</span> Var2, <span class="at">z =</span> posts), <span class="at">bins =</span> <span class="dv">20</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
+<ul>
+<li><ol start="4" style="list-style-type: lower-alpha">
+<li>expected difference and the posterior distribution
+we find the difference in the posterior distribution which is approximately 0.11 higher proportions in bike routes.</li>
+</ol></li>
+</ul>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="exercises-2.html#cb261-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">hist</span>(bike.post<span class="sc">-</span>bike.post2)</span>
+<span id="cb261-2"><a href="exercises-2.html#cb261-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">abline</span>(<span class="at">v=</span><span class="fu">mean</span>(bike.post)<span class="sc">-</span><span class="fu">mean</span>(bike.post2))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="exercises-2.html#cb262-1" aria-hidden="true" tabindex="-1"></a> meany <span class="ot">=</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span> <span class="sc">+</span> <span class="fu">sum</span>(rez.lane.bike))<span class="sc">/</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span> <span class="sc">+</span> <span class="fu">sum</span>(rez.lane.bike)<span class="sc">+</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span><span class="sc">+</span><span class="fu">sum</span>(rez.lane.other))) <span class="do">## theoretical mean</span></span>
+<span id="cb262-2"><a href="exercises-2.html#cb262-2" aria-hidden="true" tabindex="-1"></a>  meanz <span class="ot">=</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span> <span class="sc">+</span> <span class="fu">sum</span>(rez.nolane.bike))<span class="sc">/</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span> <span class="sc">+</span> <span class="fu">sum</span>(rez.nolane.bike)<span class="sc">+</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span><span class="sc">+</span><span class="fu">sum</span>(rez.nolane.other))) <span class="do">## theoretical mean</span></span></code></pre></div>
+</div>
+<div id="question-9" class="section level2 unnumbered hasAnchor">
+<h2>question 9<a href="exercises-2.html#question-9" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We need to derive the posterior of <span class="math inline">\(p(\mu^2, \sigma^2 | y)\)</span>. <span class="math inline">\(p(\mu,\sigma^2 | y) = p(y|\mu,\sigma^2)*p(\mu , \sigma^2)\)</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+p(\mu, \sigma^2 |y)&amp;=\sigma^{-1}(\sigma^2)^{-(\nu_0/2 +1)}exp(-1/2\sigma^2 (\nu_0\sigma_0^2 + k_0(\mu-\mu_0)^2)) \times (\sigma^2)^{-n/2}exp(-1/2\sigma^2 ((n-1)s^2 + n(\mu-\bar{y})^2))\\
+&amp;= \sigma^{-1}(\sigma^2)^{-((\nu_0+n)/2 +1)} exp(-1/2\sigma^2( \nu_0\sigma_0^2 +(n-1)s^2 +\mu^2(k_0+n) +\mu(-2\mu_0k_0 -2\bar{y}n) + \mu_0^2k_0 +n\bar{y}^2)\\
+\end{aligned}
+\]</span>
+Where we factor the inside using <span class="math inline">\(\mu_n = k_0\mu_0/(k_0+n) +n\bar{y}/(k_0+n)\)</span>
+<span class="math display">\[
+\begin{aligned}
+&amp;\to \mu^2(k_0+n) +\mu(-2\mu_0k_0 -2\bar{y}n) + \mu_0^2k_0 +n\bar{y}^2 \\
+&amp;= (k_0+n)(\mu^2 - 2\mu( \mu_0k_0/(k_0+n) +\bar{y}n/(k_0+n)) + \mu_0^2k_0/(k_0+n) + n\bar{y}^2/(k_0+n)) \\
+&amp;= (k_0+n)(\mu^2 - 2\mu( k_0\mu_0/(k_0+n) +n\bar{y}/(k_0+n)) + \frac{\mu_0^2k_0(k_0+n)}{(k_0+n)^2} + \frac{n\bar{y}^2(k_0+n)}{(k_0+n)^2} +\frac{2k_0\mu_0n\bar{y}}{(k_0+n)^2} -\frac{2k_0\mu_0n\bar{y}}{(k_0+n)^2})\\
+&amp;= (k_0+n)(\mu^2 - 2\mu( k_0\mu_0/(k_0+n) +n\bar{y}/(k_0+n)) + \frac{\mu_0^2k_0^2}{(k_0+n)^2} +\frac{\mu_0^2k_0*n}{(k_0+n)^2}+ \frac{n^2\bar{y}^2}{(k_0+n)^2} + \frac{n\bar{y}^2k_0}{(k_0+n)^2}+\frac{2k_0\mu_0n\bar{y}}{(k_0+n)^2} -\frac{2k_0\mu_0n\bar{y}}{(k_0+n)^2}) \\
+&amp;= (k_0+n)(\mu^2 + -2\mu\mu_n +\mu_n^2  +\frac{\mu_0^2k_0*n}{(k_0+n)^2}+ \frac{n\bar{y}^2k_0}{(k_0+n)^2} -\frac{2k_0\mu_0n\bar{y}}{(k_0+n)^2})\\
+&amp;= (k_0+n)( (\mu-\mu_n)^2 + (k_0*n)/(k_0+n)^2( \mu_0^2+\bar{y}^2 -2\mu_0\bar{y}) \\
+&amp;=  (k_0+n)( (\mu-\mu_n)^2 + (k_0*n)/(k_0+n)( \mu_0-\bar{y})^2\\
+\end{aligned}
+\]</span></p>
+<p>putting the factorization into the posterior and derived the formula for each updated term.</p>
+<p>here we see that <span class="math inline">\(\sigma^2_n ,\mu_n\)</span> are sufficient statistics for <span class="math inline">\(\mu,\sigma^2\)</span> by the factorization theorem because the posterior depends on parameters only through the summary statistics.</p>
+<p><span class="math display">\[
+\begin{aligned}
+p(\mu, \sigma^2 |y)&amp;=\sigma^{-1}(\sigma^2)^{-((\nu_0+n)/2 +1)} exp(-1/2\sigma^2+ ( \nu_0\sigma_0^2 +(n-1)s^2 +(k_0+n)( (\mu-\mu_n)^2 + (k_0*n)/(k_0+n)( \mu_0-\bar{y})^2)\\
+&amp;= \sigma^{-1}(\sigma^2)^{-((\nu_0+n)/2 +1)} exp(-1/2\sigma^2+ ( \nu_n\sigma_n^2 +(k_n)( (\mu-\mu_n)^2 )\\
+&amp; = \sigma^{-1}(\sigma^2)^{-((\nu_n)/2 +1)} exp(-1/2\sigma^2 ( \nu_n\sigma_n^2 +(k_n)( (\mu-\mu_n)^2 )\\
+\end{aligned}
+\]</span>
+# Question 10{-}
+To show the F-distribution we prove it directly, using a change of variables. Although there is a theorem (definition) that for <span class="math inline">\(X\sim N(a,b)\)</span> and <span class="math inline">\(Y\sim N(c,d)\)</span> then F= <span class="math inline">\(S_X^2/\sigma^2_X / (S_Y^2 / \sigma_Y^2)\)</span> follows an F-distribution.</p>
+<p>For <span class="math inline">\((n-1)S^2/\sigma^2 \sim X_{n-1}^2\)</span> we let <span class="math inline">\(U \sim \chi_p^2, V\sim \chi_q^2\)</span>. We let <span class="math inline">\(Z = (U/p)/(V/q)\)</span> and <span class="math inline">\(W=V/q\)</span>.</p>
+<p><span class="math display">\[
+J=
+\begin{bmatrix}
+\partial u/\partial z &amp; \partial u/\partial w \\
+\partial v/\partial z &amp; \partial v/\partial w  
+\end{bmatrix} =
+\begin{bmatrix}
+q &amp; 0 \\
+  zp&amp; pw  \\
+\end{bmatrix} = qpw
+\]</span></p>
+<p>For V = wq, and U = zpw. Note that after combining terms we have the Gamma kernel with <span class="math inline">\(\alpha = p+q/2 -1\)</span> and <span class="math inline">\(\beta= 1/2(pz+q)\)</span> which is the F-distribution.<br />
+<span class="math display">\[
+\begin{aligned}
+f(z,w)&amp;= f(u)f(v)|J| \\
+&amp;= \frac{1}{\Gamma(p/2)2^{p/2}}(pzw)^{p/2-1}e^{-pzw/2}/frac{1}{\Gamma(q/2)2^{q/2}}(wq)^{q/2-1}e^{-wq/2}|pwq| \\
+&amp;=\frac{z^{p/2-1}}{\Gamma(p/2)2^{p+q/2}\Gamma(q/2)}(p)^{p/2}q^{q/2}w^{(p+q/2 -1)} e^{-w/2(pz+q/2)} \\
+&amp; = \frac{z^{p/2-1}}{\Gamma(p/2)2^{p+q/2}\Gamma(q/2)}(p)^{p/2}q^{q/2}[\frac{\Gamma(p+q/2)}{(1/2(pz+q))^{p+q/2}}]\\
+&amp;= \frac{z^{p/2-1}}{\Gamma(p/2)\Gamma(q/2)}(p)^{p/2}q^{q/2}[\frac{\Gamma(p+q/2)}{(q^{p+q/2(pz/q+1))^{p+q/2}}}]\\
+&amp;=\frac{z^{p/2-1}\Gamma(p+q/2)}{\Gamma(p/2)\Gamma(q/2)}(p/q)^{p/2}\frac{1}{(pz/q+1)^{p+q/2}} \\
+\end{aligned}
+\]</span></p>
+<p>We showed that for U, V as Chi-square variables, their ratio is the F-distribution, In order to show that the posterior distribution F= <span class="math inline">\(S_X^2/\sigma^2_X / (S_Y^2 / \sigma_Y^2)\)</span> is F. The posterior <span class="math inline">\(Y \sim \sigma^2 | y \sim Inv-\chi^2(\nu, \sigma^2)\)</span>. where Y =<span class="math inline">\(\frac{(n-1)S^2}{\chi_{n-1}^2}\)</span>. So The inverse chi-square distribution can be re-arranged to follow a Chi-square. Then the variable Z in terms of Chi-square variables can be expressed using Inv-Chisquare variables.</p>
+</div>
+<div id="question-11-1" class="section level2 unnumbered hasAnchor">
+<h2>Question 11<a href="exercises-2.html#question-11-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>the model is defined as <span class="math inline">\(p(\alpha,\beta,y,n,x) \propto p(\alpha,\beta)\prod_{i=1}^{4}p(y_i | \alpha,\beta,n_i,x_i)\)</span>, where <span class="math inline">\((\alpha,\beta)\)</span> follows a joint normal prior with <span class="math inline">\(\alpha \sim N(0, 2^2)\)</span> and <span class="math inline">\(\beta \sim N(10,10^2)\)</span> and corr(<span class="math inline">\(\alpha,\beta) = 0.5\)</span>.</p>
+<ul>
+<li><ol style="list-style-type: lower-alpha">
+<li>we repeat the computations of this data</li>
+</ol></li>
+<li><ol start="2" style="list-style-type: lower-alpha">
+<li>and overlay the contour with the posterior distribution</li>
+</ol></li>
+</ul>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="exercises-2.html#cb263-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">library</span>(mvtnorm)</span>
+<span id="cb263-2"><a href="exercises-2.html#cb263-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">library</span>(magrittr)</span>
+<span id="cb263-3"><a href="exercises-2.html#cb263-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">library</span>(dplyr)</span>
+<span id="cb263-4"><a href="exercises-2.html#cb263-4" aria-hidden="true" tabindex="-1"></a> <span class="fu">library</span>(ggplot2)</span>
+<span id="cb263-5"><a href="exercises-2.html#cb263-5" aria-hidden="true" tabindex="-1"></a> assay<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">x=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.86</span>,<span class="sc">-</span><span class="fl">0.30</span>,<span class="sc">-</span><span class="fl">0.05</span>,<span class="fl">0.73</span>), <span class="at">n=</span><span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>), <span class="at">y=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>))</span>
+<span id="cb263-6"><a href="exercises-2.html#cb263-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb263-7"><a href="exercises-2.html#cb263-7" aria-hidden="true" tabindex="-1"></a> <span class="do">## the point a,b by MLE is (0.8,7.7) so we grid around these solution.</span></span>
+<span id="cb263-8"><a href="exercises-2.html#cb263-8" aria-hidden="true" tabindex="-1"></a> a0<span class="ot">=</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">5</span>,<span class="dv">10</span>,<span class="at">by=</span><span class="fl">0.1</span>)</span>
+<span id="cb263-9"><a href="exercises-2.html#cb263-9" aria-hidden="true" tabindex="-1"></a> b1<span class="ot">=</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">10</span>,<span class="dv">40</span>,<span class="at">by=</span><span class="fl">0.1</span>)</span>
+<span id="cb263-10"><a href="exercises-2.html#cb263-10" aria-hidden="true" tabindex="-1"></a>  a0b1<span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(a0, b1)</span>
+<span id="cb263-11"><a href="exercises-2.html#cb263-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb263-12"><a href="exercises-2.html#cb263-12" aria-hidden="true" tabindex="-1"></a>logit<span class="ot">&lt;-</span><span class="cf">function</span>(theta){</span>
+<span id="cb263-13"><a href="exercises-2.html#cb263-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>( <span class="fu">log</span>(theta<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>theta)))</span>
+<span id="cb263-14"><a href="exercises-2.html#cb263-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb263-15"><a href="exercises-2.html#cb263-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb263-16"><a href="exercises-2.html#cb263-16" aria-hidden="true" tabindex="-1"></a>inv.logit<span class="ot">&lt;-</span><span class="cf">function</span>(theta){</span>
+<span id="cb263-17"><a href="exercises-2.html#cb263-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>( (<span class="fu">exp</span>(theta)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(theta)))  )</span>
+<span id="cb263-18"><a href="exercises-2.html#cb263-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb263-19"><a href="exercises-2.html#cb263-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb263-20"><a href="exercises-2.html#cb263-20" aria-hidden="true" tabindex="-1"></a><span class="do">## alpha, beta come from multivariate normal.</span></span>
+<span id="cb263-21"><a href="exercises-2.html#cb263-21" aria-hidden="true" tabindex="-1"></a> <span class="do">## \prod_(i=1)^5 p(y|theta) ~ \theta^y (1-theta)^n-y ## kth dose. </span></span>
+<span id="cb263-22"><a href="exercises-2.html#cb263-22" aria-hidden="true" tabindex="-1"></a>  <span class="do">### logit(theta) = alpha+ beta*x</span></span>
+<span id="cb263-23"><a href="exercises-2.html#cb263-23" aria-hidden="true" tabindex="-1"></a>logit.likelihood<span class="ot">&lt;-</span><span class="cf">function</span>(alpha,beta,x,y,n){</span>
+<span id="cb263-24"><a href="exercises-2.html#cb263-24" aria-hidden="true" tabindex="-1"></a>   theta_approx<span class="ot">&lt;-</span> alpha<span class="sc">+</span>beta<span class="sc">*</span>x</span>
+<span id="cb263-25"><a href="exercises-2.html#cb263-25" aria-hidden="true" tabindex="-1"></a>   bin.like<span class="ot">&lt;-</span>(<span class="fu">inv.logit</span>(theta_approx))<span class="sc">^</span>y<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">inv.logit</span>(theta_approx))<span class="sc">^</span>(n<span class="sc">-</span>y)</span>
+<span id="cb263-26"><a href="exercises-2.html#cb263-26" aria-hidden="true" tabindex="-1"></a>   <span class="fu">return</span>(bin.like)</span>
+<span id="cb263-27"><a href="exercises-2.html#cb263-27" aria-hidden="true" tabindex="-1"></a>}  </span>
+<span id="cb263-28"><a href="exercises-2.html#cb263-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb263-29"><a href="exercises-2.html#cb263-29" aria-hidden="true" tabindex="-1"></a> <span class="do">## the alpha,beta stem from the grid, and we return the probability mass from the prior.</span></span>
+<span id="cb263-30"><a href="exercises-2.html#cb263-30" aria-hidden="true" tabindex="-1"></a> joint.prior<span class="ot">&lt;-</span><span class="cf">function</span>(alpha,beta){</span>
+<span id="cb263-31"><a href="exercises-2.html#cb263-31" aria-hidden="true" tabindex="-1"></a>  cormat<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">4</span>,<span class="fl">0.5</span><span class="sc">*</span><span class="dv">2</span><span class="sc">*</span><span class="dv">10</span>,<span class="fl">0.5</span><span class="sc">*</span><span class="dv">2</span><span class="sc">*</span><span class="dv">10</span>,<span class="dv">100</span>),<span class="dv">2</span>)</span>
+<span id="cb263-32"><a href="exercises-2.html#cb263-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">dmvnorm</span>(<span class="fu">c</span>(alpha,beta), <span class="at">mean=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">10</span>),<span class="at">sigma=</span>cormat))</span>
+<span id="cb263-33"><a href="exercises-2.html#cb263-33" aria-hidden="true" tabindex="-1"></a> }</span>
+<span id="cb263-34"><a href="exercises-2.html#cb263-34" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb263-35"><a href="exercises-2.html#cb263-35" aria-hidden="true" tabindex="-1"></a> posterior_density<span class="ot">&lt;-</span><span class="cf">function</span>(alpha,beta,assay){</span>
+<span id="cb263-36"><a href="exercises-2.html#cb263-36" aria-hidden="true" tabindex="-1"></a>   joint_density<span class="ot">&lt;-</span><span class="fu">joint.prior</span>(alpha,beta)</span>
+<span id="cb263-37"><a href="exercises-2.html#cb263-37" aria-hidden="true" tabindex="-1"></a>   probs<span class="ot">&lt;-</span><span class="cn">NULL</span></span>
+<span id="cb263-38"><a href="exercises-2.html#cb263-38" aria-hidden="true" tabindex="-1"></a>   <span class="cf">for</span>(k <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(assay)){</span>
+<span id="cb263-39"><a href="exercises-2.html#cb263-39" aria-hidden="true" tabindex="-1"></a>     p<span class="ot">&lt;-</span><span class="fu">logit.likelihood</span>(alpha,beta,assay<span class="sc">$</span>x[k],assay<span class="sc">$</span>y[k],assay<span class="sc">$</span>n[k])</span>
+<span id="cb263-40"><a href="exercises-2.html#cb263-40" aria-hidden="true" tabindex="-1"></a>     probs<span class="ot">&lt;-</span><span class="fu">c</span>(probs,p)</span>
+<span id="cb263-41"><a href="exercises-2.html#cb263-41" aria-hidden="true" tabindex="-1"></a>   }</span>
+<span id="cb263-42"><a href="exercises-2.html#cb263-42" aria-hidden="true" tabindex="-1"></a>   totalLikelihood<span class="ot">&lt;-</span><span class="fu">prod</span>(probs)</span>
+<span id="cb263-43"><a href="exercises-2.html#cb263-43" aria-hidden="true" tabindex="-1"></a>   <span class="fu">return</span>( joint_density<span class="sc">*</span>totalLikelihood)</span>
+<span id="cb263-44"><a href="exercises-2.html#cb263-44" aria-hidden="true" tabindex="-1"></a> }</span>
+<span id="cb263-45"><a href="exercises-2.html#cb263-45" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb263-46"><a href="exercises-2.html#cb263-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb263-47"><a href="exercises-2.html#cb263-47" aria-hidden="true" tabindex="-1"></a> posts<span class="ot">&lt;-</span><span class="cn">NULL</span></span>
+<span id="cb263-48"><a href="exercises-2.html#cb263-48" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb263-49"><a href="exercises-2.html#cb263-49" aria-hidden="true" tabindex="-1"></a> <span class="do">## unnormalized posterior over grid which covers (a,b)</span></span>
+<span id="cb263-50"><a href="exercises-2.html#cb263-50" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(a0b1)){</span>
+<span id="cb263-51"><a href="exercises-2.html#cb263-51" aria-hidden="true" tabindex="-1"></a>  posts[i]<span class="ot">&lt;-</span><span class="fu">posterior_density</span>(a0b1[i,<span class="st">&quot;Var1&quot;</span>],a0b1[i,<span class="st">&quot;Var2&quot;</span>],assay) </span>
+<span id="cb263-52"><a href="exercises-2.html#cb263-52" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb263-53"><a href="exercises-2.html#cb263-53" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb263-54"><a href="exercises-2.html#cb263-54" aria-hidden="true" tabindex="-1"></a> posts_norm<span class="ot">&lt;-</span>posts<span class="sc">/</span><span class="fu">sum</span>(posts)</span>
+<span id="cb263-55"><a href="exercises-2.html#cb263-55" aria-hidden="true" tabindex="-1"></a> a0b1<span class="sc">$</span>joint.prob<span class="ot">&lt;-</span>posts_norm</span>
+<span id="cb263-56"><a href="exercises-2.html#cb263-56" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb263-57"><a href="exercises-2.html#cb263-57" aria-hidden="true" tabindex="-1"></a> <span class="do">## grid sampling procedure</span></span>
+<span id="cb263-58"><a href="exercises-2.html#cb263-58" aria-hidden="true" tabindex="-1"></a>  marginal.post_a<span class="ot">&lt;-</span> a0b1<span class="sc">%&gt;%</span><span class="fu">group_by</span>(Var1)<span class="sc">%&gt;%</span><span class="fu">summarise</span>(<span class="at">p=</span><span class="fu">sum</span>(joint.prob))<span class="sc">%&gt;%</span>data.frame</span>
+<span id="cb263-59"><a href="exercises-2.html#cb263-59" aria-hidden="true" tabindex="-1"></a>    A<span class="ot">&lt;-</span>B<span class="ot">&lt;-</span><span class="cn">NULL</span></span>
+<span id="cb263-60"><a href="exercises-2.html#cb263-60" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(s <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>){</span>
+<span id="cb263-61"><a href="exercises-2.html#cb263-61" aria-hidden="true" tabindex="-1"></a>    a_s<span class="ot">&lt;-</span><span class="fu">sample</span>(marginal.post_a<span class="sc">$</span>Var1,<span class="dv">1</span>,<span class="at">prob=</span>marginal.post_a<span class="sc">$</span>p)</span>
+<span id="cb263-62"><a href="exercises-2.html#cb263-62" aria-hidden="true" tabindex="-1"></a>    p.a_s<span class="ot">&lt;-</span>marginal.post_a[<span class="fu">which</span>(marginal.post_a<span class="sc">$</span>Var1<span class="sc">==</span>a_s),<span class="st">&#39;p&#39;</span>]</span>
+<span id="cb263-63"><a href="exercises-2.html#cb263-63" aria-hidden="true" tabindex="-1"></a>    marginal.post_b<span class="ot">&lt;-</span>a0b1[<span class="fu">which</span>(a0b1<span class="sc">$</span>Var1<span class="sc">==</span>a_s),]</span>
+<span id="cb263-64"><a href="exercises-2.html#cb263-64" aria-hidden="true" tabindex="-1"></a>    marginal.post_b<span class="sc">$</span>cond.prob<span class="ot">&lt;-</span>marginal.post_b<span class="sc">$</span>joint.prob<span class="sc">/</span>p.a_s</span>
+<span id="cb263-65"><a href="exercises-2.html#cb263-65" aria-hidden="true" tabindex="-1"></a>    b_s<span class="ot">&lt;-</span><span class="fu">sample</span>(marginal.post_b<span class="sc">$</span>Var2,<span class="dv">1</span>,<span class="at">prob=</span>marginal.post_b<span class="sc">$</span>cond.prob)</span>
+<span id="cb263-66"><a href="exercises-2.html#cb263-66" aria-hidden="true" tabindex="-1"></a>    A<span class="ot">&lt;-</span><span class="fu">c</span>(A,a_s)</span>
+<span id="cb263-67"><a href="exercises-2.html#cb263-67" aria-hidden="true" tabindex="-1"></a>    B<span class="ot">&lt;-</span><span class="fu">c</span>(B,b_s)</span>
+<span id="cb263-68"><a href="exercises-2.html#cb263-68" aria-hidden="true" tabindex="-1"></a>     }</span>
+<span id="cb263-69"><a href="exercises-2.html#cb263-69" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb263-70"><a href="exercises-2.html#cb263-70" aria-hidden="true" tabindex="-1"></a>    <span class="do">### need to add a random jitter around each point.</span></span>
+<span id="cb263-71"><a href="exercises-2.html#cb263-71" aria-hidden="true" tabindex="-1"></a>    A<span class="ot">&lt;-</span>A<span class="sc">+</span><span class="fu">runif</span>(<span class="fu">length</span>(A),<span class="at">min=</span><span class="dv">0</span>,<span class="at">max=</span><span class="fl">0.1</span>)</span>
+<span id="cb263-72"><a href="exercises-2.html#cb263-72" aria-hidden="true" tabindex="-1"></a>    B<span class="ot">&lt;-</span>B<span class="sc">+</span><span class="fu">runif</span>(<span class="fu">length</span>(B),<span class="at">min=</span><span class="dv">0</span>,<span class="at">max=</span><span class="fl">0.1</span>)</span>
+<span id="cb263-73"><a href="exercises-2.html#cb263-73" aria-hidden="true" tabindex="-1"></a>   ab.post<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">A=</span>A,<span class="at">B=</span>B)</span>
+<span id="cb263-74"><a href="exercises-2.html#cb263-74" aria-hidden="true" tabindex="-1"></a> <span class="fu">ggplot</span>(a0b1)<span class="sc">+</span></span>
+<span id="cb263-75"><a href="exercises-2.html#cb263-75" aria-hidden="true" tabindex="-1"></a> <span class="fu">geom_contour</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> Var1, <span class="at">y =</span> Var2, <span class="at">z =</span> posts), <span class="at">bins =</span> <span class="dv">20</span>)<span class="sc">+</span></span>
+<span id="cb263-76"><a href="exercises-2.html#cb263-76" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> ab.post, <span class="fu">aes</span>(<span class="at">x =</span> A, <span class="at">y =</span> B), <span class="at">pch =</span> <span class="dv">21</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/q11-1.png" width="672" /></p>
+<ul>
+<li>(bii) the LD50 is summarized ensuring the B&gt;0 for a positive dose-response.</li>
+</ul>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="exercises-2.html#cb264-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="sc">-</span>A<span class="sc">/</span>B, <span class="at">main=</span><span class="st">&#39;LD50&#39;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-49-1.png" width="672" /></p>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="exercises-2.html#cb265-1" aria-hidden="true" tabindex="-1"></a> <span class="do">##  probability of dose-response being responsive to the dose.  negative means dose-response has negative response and is harmful.</span></span>
+<span id="cb265-2"><a href="exercises-2.html#cb265-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(B<span class="sc">&gt;</span><span class="dv">0</span>)</span></code></pre></div>
+<pre><code>## 
+## TRUE 
+## 1000</code></pre>
 
 </div>
 </div>

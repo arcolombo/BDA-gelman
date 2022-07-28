@@ -1,3 +1,8 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 # Chapter 3
 
 # Exercises{-}
@@ -18,7 +23,7 @@ From the Appendix A the joint posterior of the sub vector is
 $$
 \begin{aligned}
 (\theta_1, \theta_2, 1-\theta_1-\theta_2| y ) &\sim Diri(y_1+a_1,y_2+a_2, a_0+y_0-y_1-y_2-a_1-a_2)\\
-&p(\theta_1,\theta_2,1-\theta_1-\theta_2) \propto \theta_1^{y_1+a_1-1}\theta_2^{y_2+a_2-1}(1-\theta_1-\theta_2)^{a_0+y_0-y_1-y_2-a_1-a_2-1}
+&p(\theta_1,\theta_2,1-\theta_1-\theta_2) \propto \theta_1^{y_1+a_1-1}\theta_2^{y_2+a_2-1}(1-\theta_1-\theta_2)^{a_0+y_0-y_1-y_2-a_1-a_2-1}\\
 \end{aligned}
 $$
 In order to find the distribution of $\theta_1/(\theta_1+\theta_2)$ we need the jacobian, let ($\alpha,\beta) = (\theta_1/(\theta_1+\theta_2) , \theta_1+\theta_2)$.
@@ -29,7 +34,7 @@ $$
  \beta & \alpha \\
  -\beta & (1-\alpha)\\
 \end{bmatrix} \\
- &=|\beta|
+ &=|\beta|\\
 \end{aligned}
 $$
 where $a'_0 = \sum a_i -a_1 -a_2$, and $y'_0 =\sum y_i-y_1-y_2$
@@ -37,16 +42,18 @@ $$
 \begin{aligned}
 p(\alpha,\beta) &= (\alpha*\beta)^{y_1+a_1-1}(\beta(1-\alpha))^{y_2+a_2-1}(1-\alpha*\beta-\beta(1-\alpha))^{a'_0+y'_0-1}|\beta|\\
 &=\alpha^{y_1+a_1-1}(1-\alpha)^{y_2+a_2-1}\beta^{y_1+a_1+y_2+a_2-1}(1-\beta)^{a'_0+y'_0-1}\\
-&= Beta(y_1+a_1,y_2+a_2)Beta(y_1+a_1+y_2+a_2, a'_0+y'_0)
+&= Beta(y_1+a_1,y_2+a_2)Beta(y_1+a_1+y_2+a_2, a'_0+y'_0)\\
 \end{aligned}
 $$
 By factorization we integrate out with respect $\beta$ which yields the marginal posterior for $\alpha \sim Beta(y_1+a_1,y_2+a_2)$
 
 - (b)  To show the relation with binomial let the likelihood $p(y|\alpha) \propto \alpha^y_1 (1-\alpha)^y_2$ and a p($\alpha)=Beta(a_1,a_2)$ then the posterior is 
 $$
-p(\alpha | y) = p(y|\alpha)p(\alpha)\\
-= \alpha^{y_1+a_1-1}(1-\alpha)^{y_2+a_2-1}\\
-= Beta(y_1+a_1,y_2+a_2)
+\begin{aligned}
+p(\alpha | y) &= p(y|\alpha)p(\alpha)\\
+&= \alpha^{y_1+a_1-1}(1-\alpha)^{y_2+a_2-1}\\
+&= Beta(y_1+a_1,y_2+a_2)
+\end{aligned}
 $$
 
 ## Question 2{-}
@@ -55,6 +62,9 @@ $$
 
 There was a 0.355 probability of a shift toward Bush after both debates.
 ```{r}
+ library(ggplot2)
+ library(magrittr)
+library(dplyr)
 debate<-data.frame(survey=c("pre","post"), bush=c(294,288), dukakis=c(307,332),none=c(38,19),total=c(639,639))
 
 # we have 3 outcomes bush,duk, none
@@ -328,14 +338,14 @@ First we examine that $p(\lambda,\theta)\propto 1/\lambda$ described by Raftery 
 $$
 \begin{aligned}
  p(\lambda,\theta) &\propto (1)1/\lambda\\
- &\propto \lambda^{-1}
+ &\propto \lambda^{-1}\\
 \end{aligned}
 $$
 - (a) to write the prior N$\sim P(\lambda)$ as a sampling distribution, but we can let N follow a Gamma, with a Gamma(0,0) vague prior initially and independent of $\theta$. where $\theta \sim U(0,1)$ as a uniform probability. Then $P(N,\theta) = P(N|\theta)p(\theta)$.  Note this is an improprer prior.   
 $$
 \begin{aligned}
  p(N,\theta) &\propto (1)e^{-\beta*N}N^{\alpha-1}\\
- &\propto N^{-1}, \text{for  } \alpha,\beta =0
+ &\propto N^{-1}, \text{for  } \alpha,\beta =0\\
 \end{aligned}
 $$
 We can solve for $p(N,\theta)$ using the prior $p(\lambda,\theta)\propto \lambda^{-1}$.  and $N\sim Pois(\lambda)$.
@@ -344,7 +354,7 @@ $$
 p(N,\lambda,\theta) &= p(N|\lambda,\theta)p(\lambda,\theta) \to p(N,\theta) = \int p(N,\lambda,\theta)d\lambda \\
 &= \int \frac{(\lambda/N)^Ne^{-\lambda/\theta}}{N!}(\frac{1}{\lambda}) d\lambda\\
 &= \frac{1}{N! \theta^N} \int \lambda^{N-1}e^{-\lambda/\theta}d\lambda\\
-&= \frac{1}{N! \theta^N}\frac{\Gamma{(N)}}{1/\theta^N} = 1/N
+&= \frac{1}{N! \theta^N}\frac{\Gamma{(N)}}{1/\theta^N} = 1/N\\
 \end{aligned}
 $$
  So we can let N follow  vague prior from the Gamma(0,0) distribution, or call N a uniform on (0,N) and independent of $\lambda$ to derive p(N,$\theta)$.
@@ -355,7 +365,7 @@ $$
 \begin{aligned}
 p(\theta,N | y) &=  p(y | N,\theta)p(N,\theta) \\
 &\propto \theta^{\sum y_i} (1-\theta)^{nN-\sum y_i}(1/N)\\
-&\propto (1/N)Beta(\sum y_i+1, nN-\sum y_i +1)
+&\propto (1/N)Beta(\sum y_i+1, nN-\sum y_i +1)\\
 \end{aligned}
 $$
 Then we integrate with respect to $\theta$ to find the marginal posterior, where the integrand is the kernel for the Beta distribution, and we have the beta coefficient that remains in the marginal equation.
@@ -364,7 +374,7 @@ $$
 \begin{aligned}
  p(N| y) &= \int (1/N) \prod {N \choose y_i} \theta^{S}(1-\theta)^{nN-S}d\theta, S=\sum y_i \\
  & = (1/N) \prod {N \choose y_i} \int \theta^{S}(1-\theta)^{nN-S}d\theta \\
- & = (1/N) \prod {N \choose y_i} Beta(S+1, nN-S+1)
+ & = (1/N) \prod {N \choose y_i} Beta(S+1, nN-S+1)\\
 \end{aligned}
 $$
 The maximum probability is 122 trials with the highest marginal, 
@@ -423,7 +433,6 @@ $$
 \begin{aligned}
 p(X =k| X+Y=n) &= \frac{P(X+Y=n | X=k)P(X=k)}{P(X+Y=n)} \\
  &=  \frac{P(Y=n-k)P(X=k)}{P(X+Y=n)} \\
- 
 \end{aligned}
 $$
 
@@ -435,7 +444,7 @@ We assume $\theta_y,\theta_z$ are independent, so the posteriors are independent
 $$
 \begin{aligned}
 p(\theta_y,\theta_z| y,z) &= p(\theta_y | y)p(\theta_z|z) \\
-&= Beta(\theta_y  | 1/2 +\sum y_i, 1/2+N_y-\sum y_i)*Beta(\theta_z  | 1/2 +\sum z_i, 1/2+N_z-\sum z_i)
+&= Beta(\theta_y  | 1/2 +\sum y_i, 1/2+N_y-\sum y_i)*Beta(\theta_z  | 1/2 +\sum z_i, 1/2+N_z-\sum z_i)\\
 \end{aligned}
 $$
 - (b) the prior uses Jeffreys' Beta(1/2,1/2) for each parameter independently.
@@ -475,16 +484,183 @@ p0p1<- expand.grid(p0, p1)
 for(i in 1:nrow(p0p1)){
   posts[i]<-post.bike(p0p1[i,"Var1"],p0p1[i,"Var2"], rez.lane.bike,rez.nolane.bike, NY,NZ) 
 }
-
+ library(ggplot2)
  ggplot(p0p1)+
  geom_contour(mapping = aes(x = Var1, y = Var2, z = posts), bins = 20)
 ```
 
 - (d) expected difference and the posterior distribution 
+we find the difference in the posterior distribution which is approximately 0.11 higher proportions in bike routes.
 ```{r}
  hist(bike.post-bike.post2)
  abline(v=mean(bike.post)-mean(bike.post2))
  
+ meany =(1/2 + sum(rez.lane.bike))/(1/2 + sum(rez.lane.bike)+(1/2+sum(rez.lane.other))) ## theoretical mean
+  meanz =(1/2 + sum(rez.nolane.bike))/(1/2 + sum(rez.nolane.bike)+(1/2+sum(rez.nolane.other))) ## theoretical mean
+
+```
+
+## question 9{-}
+We need to derive the posterior of $p(\mu^2, \sigma^2 | y)$.  $p(\mu,\sigma^2 | y) = p(y|\mu,\sigma^2)*p(\mu , \sigma^2)$
+
+
+$$
+\begin{aligned}
+p(\mu, \sigma^2 |y)&=\sigma^{-1}(\sigma^2)^{-(\nu_0/2 +1)}exp(-1/2\sigma^2 (\nu_0\sigma_0^2 + k_0(\mu-\mu_0)^2)) \times (\sigma^2)^{-n/2}exp(-1/2\sigma^2 ((n-1)s^2 + n(\mu-\bar{y})^2))\\
+&= \sigma^{-1}(\sigma^2)^{-((\nu_0+n)/2 +1)} exp(-1/2\sigma^2( \nu_0\sigma_0^2 +(n-1)s^2 +\mu^2(k_0+n) +\mu(-2\mu_0k_0 -2\bar{y}n) + \mu_0^2k_0 +n\bar{y}^2)\\
+\end{aligned}
+$$
+Where we factor the inside using  $\mu_n = k_0\mu_0/(k_0+n) +n\bar{y}/(k_0+n)$
+$$
+\begin{aligned}
+&\to \mu^2(k_0+n) +\mu(-2\mu_0k_0 -2\bar{y}n) + \mu_0^2k_0 +n\bar{y}^2 \\
+&= (k_0+n)(\mu^2 - 2\mu( \mu_0k_0/(k_0+n) +\bar{y}n/(k_0+n)) + \mu_0^2k_0/(k_0+n) + n\bar{y}^2/(k_0+n)) \\
+&= (k_0+n)(\mu^2 - 2\mu( k_0\mu_0/(k_0+n) +n\bar{y}/(k_0+n)) + \frac{\mu_0^2k_0(k_0+n)}{(k_0+n)^2} + \frac{n\bar{y}^2(k_0+n)}{(k_0+n)^2} +\frac{2k_0\mu_0n\bar{y}}{(k_0+n)^2} -\frac{2k_0\mu_0n\bar{y}}{(k_0+n)^2})\\
+&= (k_0+n)(\mu^2 - 2\mu( k_0\mu_0/(k_0+n) +n\bar{y}/(k_0+n)) + \frac{\mu_0^2k_0^2}{(k_0+n)^2} +\frac{\mu_0^2k_0*n}{(k_0+n)^2}+ \frac{n^2\bar{y}^2}{(k_0+n)^2} + \frac{n\bar{y}^2k_0}{(k_0+n)^2}+\frac{2k_0\mu_0n\bar{y}}{(k_0+n)^2} -\frac{2k_0\mu_0n\bar{y}}{(k_0+n)^2}) \\
+&= (k_0+n)(\mu^2 + -2\mu\mu_n +\mu_n^2  +\frac{\mu_0^2k_0*n}{(k_0+n)^2}+ \frac{n\bar{y}^2k_0}{(k_0+n)^2} -\frac{2k_0\mu_0n\bar{y}}{(k_0+n)^2})\\
+&= (k_0+n)( (\mu-\mu_n)^2 + (k_0*n)/(k_0+n)^2( \mu_0^2+\bar{y}^2 -2\mu_0\bar{y}) \\
+&=  (k_0+n)( (\mu-\mu_n)^2 + (k_0*n)/(k_0+n)( \mu_0-\bar{y})^2\\
+\end{aligned}
+$$
+
+
+
+putting the factorization into the posterior and derived the formula for each updated term.
+
+here we see that $\sigma^2_n ,\mu_n$ are sufficient statistics for $\mu,\sigma^2$ by the factorization theorem because the posterior depends on parameters only through the summary statistics.
+
+$$
+\begin{aligned}
+p(\mu, \sigma^2 |y)&=\sigma^{-1}(\sigma^2)^{-((\nu_0+n)/2 +1)} exp(-1/2\sigma^2+ ( \nu_0\sigma_0^2 +(n-1)s^2 +(k_0+n)( (\mu-\mu_n)^2 + (k_0*n)/(k_0+n)( \mu_0-\bar{y})^2)\\
+&= \sigma^{-1}(\sigma^2)^{-((\nu_0+n)/2 +1)} exp(-1/2\sigma^2+ ( \nu_n\sigma_n^2 +(k_n)( (\mu-\mu_n)^2 )\\
+& = \sigma^{-1}(\sigma^2)^{-((\nu_n)/2 +1)} exp(-1/2\sigma^2 ( \nu_n\sigma_n^2 +(k_n)( (\mu-\mu_n)^2 )\\
+\end{aligned}
+$$
+# Question 10{-}
+To show the F-distribution we prove it directly, using a change of variables.  Although there is a theorem (definition)  that for $X\sim N(a,b)$ and $Y\sim N(c,d)$ then F= $S_X^2/\sigma^2_X / (S_Y^2 / \sigma_Y^2)$ follows an F-distribution.
+
+For $(n-1)S^2/\sigma^2 \sim X_{n-1}^2$ we let $U \sim \chi_p^2,  V\sim \chi_q^2$.  We let $Z = (U/p)/(V/q)$ and $W=V/q$.
+
+$$
+J= 
+\begin{bmatrix}
+ \partial u/\partial z & \partial u/\partial w \\
+ \partial v/\partial z & \partial v/\partial w  
+\end{bmatrix} = 
+\begin{bmatrix}
+ q & 0 \\
+  zp& pw  \\
+\end{bmatrix} = qpw
+$$
+
+ For V = wq, and U = zpw.   Note that after combining terms we have the Gamma kernel with $\alpha = p+q/2 -1$ and $\beta= 1/2(pz+q)$ which is the F-distribution.  
+$$
+\begin{aligned}
+f(z,w)&= f(u)f(v)|J| \\
+ &= \frac{1}{\Gamma(p/2)2^{p/2}}(pzw)^{p/2-1}e^{-pzw/2}/frac{1}{\Gamma(q/2)2^{q/2}}(wq)^{q/2-1}e^{-wq/2}|pwq| \\
+ &=\frac{z^{p/2-1}}{\Gamma(p/2)2^{p+q/2}\Gamma(q/2)}(p)^{p/2}q^{q/2}w^{(p+q/2 -1)} e^{-w/2(pz+q/2)} \\
+ & = \frac{z^{p/2-1}}{\Gamma(p/2)2^{p+q/2}\Gamma(q/2)}(p)^{p/2}q^{q/2}[\frac{\Gamma(p+q/2)}{(1/2(pz+q))^{p+q/2}}]\\
+ &= \frac{z^{p/2-1}}{\Gamma(p/2)\Gamma(q/2)}(p)^{p/2}q^{q/2}[\frac{\Gamma(p+q/2)}{(q^{p+q/2(pz/q+1))^{p+q/2}}}]\\
+ &=\frac{z^{p/2-1}\Gamma(p+q/2)}{\Gamma(p/2)\Gamma(q/2)}(p/q)^{p/2}\frac{1}{(pz/q+1)^{p+q/2}} \\
+\end{aligned}
+$$
+
+
+We showed that for U, V as Chi-square variables, their ratio is the F-distribution,  In order to show that the posterior distribution F= $S_X^2/\sigma^2_X / (S_Y^2 / \sigma_Y^2)$ is F.  The posterior $Y \sim \sigma^2 | y \sim Inv-\chi^2(\nu, \sigma^2)$.   where Y =$\frac{(n-1)S^2}{\chi_{n-1}^2}$.  So The inverse chi-square distribution can be re-arranged to follow a Chi-square.  Then the variable Z in terms of Chi-square variables can be expressed using Inv-Chisquare variables.
+
+
+
+
+## Question 11{-}
+the model is defined as $p(\alpha,\beta,y,n,x) \propto p(\alpha,\beta)\prod_{i=1}^{4}p(y_i | \alpha,\beta,n_i,x_i)$, where $(\alpha,\beta)$ follows a joint normal prior with $\alpha \sim N(0, 2^2)$ and $\beta \sim N(10,10^2)$ and corr($\alpha,\beta) = 0.5$.
+
+- (a) we repeat the computations of this data
+- (b) and overlay the contour with the posterior distribution
+```{r q11}
+ library(mvtnorm)
+ library(magrittr)
+ library(dplyr)
+ library(ggplot2)
+ assay<-data.frame(x=c(-0.86,-0.30,-0.05,0.73), n=c(5,5,5,5), y=c(0,1,3,5))
+
+ ## the point a,b by MLE is (0.8,7.7) so we grid around these solution.
+ a0= seq(-5,10,by=0.1)
+ b1= seq(-10,40,by=0.1)
+  a0b1<- expand.grid(a0, b1)
+
+logit<-function(theta){
+  return( log(theta/(1-theta)))
+}
+
+inv.logit<-function(theta){
+  return( (exp(theta)/(1+exp(theta)))  )
+}
+
+## alpha, beta come from multivariate normal.
+ ## \prod_(i=1)^5 p(y|theta) ~ \theta^y (1-theta)^n-y ## kth dose. 
+  ### logit(theta) = alpha+ beta*x
+logit.likelihood<-function(alpha,beta,x,y,n){
+   theta_approx<- alpha+beta*x
+   bin.like<-(inv.logit(theta_approx))^y*(1-inv.logit(theta_approx))^(n-y)
+   return(bin.like)
+}  
+
+ ## the alpha,beta stem from the grid, and we return the probability mass from the prior.
+ joint.prior<-function(alpha,beta){
+  cormat<-matrix(c(4,0.5*2*10,0.5*2*10,100),2)
+  return(dmvnorm(c(alpha,beta), mean=c(0,10),sigma=cormat))
+ }
+  
+ posterior_density<-function(alpha,beta,assay){
+   joint_density<-joint.prior(alpha,beta)
+   probs<-NULL
+   for(k in 1:nrow(assay)){
+     p<-logit.likelihood(alpha,beta,assay$x[k],assay$y[k],assay$n[k])
+     probs<-c(probs,p)
+   }
+   totalLikelihood<-prod(probs)
+   return( joint_density*totalLikelihood)
+ }
  
+
+ posts<-NULL
  
+ ## unnormalized posterior over grid which covers (a,b)
+for(i in 1:nrow(a0b1)){
+  posts[i]<-posterior_density(a0b1[i,"Var1"],a0b1[i,"Var2"],assay) 
+}
+ 
+ posts_norm<-posts/sum(posts)
+ a0b1$joint.prob<-posts_norm
+ 
+ ## grid sampling procedure
+  marginal.post_a<- a0b1%>%group_by(Var1)%>%summarise(p=sum(joint.prob))%>%data.frame
+    A<-B<-NULL
+  for(s in 1:1000){
+    a_s<-sample(marginal.post_a$Var1,1,prob=marginal.post_a$p)
+    p.a_s<-marginal.post_a[which(marginal.post_a$Var1==a_s),'p']
+    marginal.post_b<-a0b1[which(a0b1$Var1==a_s),]
+    marginal.post_b$cond.prob<-marginal.post_b$joint.prob/p.a_s
+    b_s<-sample(marginal.post_b$Var2,1,prob=marginal.post_b$cond.prob)
+    A<-c(A,a_s)
+    B<-c(B,b_s)
+     }
+ 
+    ### need to add a random jitter around each point.
+    A<-A+runif(length(A),min=0,max=0.1)
+    B<-B+runif(length(B),min=0,max=0.1)
+   ab.post<-data.frame(A=A,B=B)
+ ggplot(a0b1)+
+ geom_contour(mapping = aes(x = Var1, y = Var2, z = posts), bins = 20)+
+  geom_point(data = ab.post, aes(x = A, y = B), pch = 21)
+ 
+```
+
+- (bii) the LD50 is summarized ensuring the B>0 for a positive dose-response.
+```{r}
+hist(-A/B, main='LD50')
+ ##  probability of dose-response being responsive to the dose.  negative means dose-response has negative response and is harmful.
+table(B>0)
+
+
 ```

@@ -33,14 +33,6 @@
   \KOMAoptions{parskip=half}}
 \makeatother
 \usepackage{xcolor}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
-\hypersetup{
-  pdftitle={Bayesian Data Analysis},
-  pdfauthor={Anthony R. Colombo, Dr.~Paul Marjoram},
-  hidelinks,
-  pdfcreator={LaTeX via pandoc}}
-\urlstyle{same} % disable monospaced font for URLs
 \usepackage{color}
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
@@ -114,10 +106,18 @@
 \fi
 \usepackage[]{natbib}
 \bibliographystyle{plainnat}
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Bayesian Data Analysis},
+  pdfauthor={Anthony R. Colombo, Dr.~Paul Marjoram},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
 
 \title{Bayesian Data Analysis}
 \author{Anthony R. Colombo, Dr.~Paul Marjoram}
-\date{2022-07-21}
+\date{2022-07-28}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -715,7 +715,7 @@ Then the probability that at least 1 election is tied, from 435 total elections 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] -1.663076
+## [1] 8.455703
 \end{verbatim}
 
 \begin{Shaded}
@@ -725,7 +725,7 @@ Then the probability that at least 1 election is tied, from 435 total elections 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 50
+## [1] 40
 \end{verbatim}
 
 \begin{Shaded}
@@ -1188,7 +1188,7 @@ We find the probability distribution of a given success and the prior probabilit
 
 \begin{verbatim}
 ##       5%      25%      50%      75%      95% 
-## 139.4638 155.5763 167.0008 177.2288 194.6336
+## 137.7032 155.4156 166.0182 176.9432 193.5777
 \end{verbatim}
 
 \begin{Shaded}
@@ -1548,7 +1548,7 @@ Suppose there are N cable cars numbered sequentially 1 to N. You see a car at ra
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 277.7605
+## [1] 278.658
 \end{verbatim}
 
 \begin{Shaded}
@@ -1558,7 +1558,7 @@ Suppose there are N cable cars numbered sequentially 1 to N. You see a car at ra
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 79.03685
+## [1] 79.64794
 \end{verbatim}
 
 \begin{itemize}
@@ -1670,8 +1670,8 @@ for the likelihood \(L(\theta | y) = \prod_{i=1}^n f(y_i|\theta)\) requires the 
 \end{Shaded}
 
 \begin{verbatim}
-##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
-## -161.2108   -0.5990    0.4959    0.8502    1.4840  375.7766
+##       Min.    1st Qu.     Median       Mean    3rd Qu.       Max. 
+## -1144.2863    -0.5092     0.5992    -0.6647     1.5431   230.2556
 \end{verbatim}
 
 \begin{Shaded}
@@ -1694,7 +1694,7 @@ for the likelihood \(L(\theta | y) = \prod_{i=1}^n f(y_i|\theta)\) requires the 
 \end{Shaded}
 
 \begin{verbatim}
-## max pred. prob 0.521
+## max pred. prob 0.525
 \end{verbatim}
 
 \hypertarget{question-12}{%
@@ -1894,7 +1894,7 @@ The true observed value for 1986 is 22 fatal accidents.
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##    8.00   20.00   24.00   23.83   27.00   48.00
+##    8.00   20.00   24.00   23.83   27.00   46.00
 \end{verbatim}
 
 \begin{Shaded}
@@ -1919,7 +1919,7 @@ The true observed value for 1986 is 22 fatal accidents.
 
 \begin{verbatim}
 ##  2.5% 97.5% 
-##    14    34
+##    15    34
 \end{verbatim}
 
 From the gamma posterior \(E(\theta | y) = 238.5/10.02=24.25\) and the variance \(V(\theta|y)= 238.5/10.02^2=2.87\). From the Poisson likelihood \(E(x|\theta)=\theta\) and \(V(x|\theta)=\theta\). \(V(x|y)= E(V(x|\theta,y) | y) + V(E(x|\theta,y)|y)= E(\theta| y)+ V(\theta|y) = 23.382+2.87= 26.252\)
@@ -1956,7 +1956,7 @@ The average predictive value from 1986 is 24.3 which is close to the true value 
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   3.164  20.806  24.262  24.254  27.732  49.729
+##  0.7021 20.7841 24.2854 24.2717 27.7413 46.9614
 \end{verbatim}
 
 \begin{Shaded}
@@ -1981,7 +1981,7 @@ The average predictive value from 1986 is 24.3 which is close to the true value 
 
 \begin{verbatim}
 ##     2.5%    97.5% 
-## 14.18695 34.24748
+## 14.26913 34.37753
 \end{verbatim}
 
 \begin{Shaded}
@@ -1991,7 +1991,7 @@ The average predictive value from 1986 is 24.3 which is close to the true value 
 \end{Shaded}
 
 \begin{verbatim}
-## average predictive value from posterior:23.8257
+## average predictive value from posterior:23.8282
 \end{verbatim}
 
 \begin{itemize}
@@ -2154,7 +2154,7 @@ We can also use the normal approximation, but the equations for the mean and var
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 21 47
+## [1] 22 46
 \end{verbatim}
 
 \begin{Shaded}
@@ -2295,8 +2295,8 @@ which is not the expected prediction of 546 passenger deaths. This is likely bec
 \end{Shaded}
 
 \begin{verbatim}
-##  2.5% 97.5% 
-##   639   749
+##    2.5%   97.5% 
+## 635.975 748.025
 \end{verbatim}
 
 \begin{Shaded}
@@ -2314,7 +2314,7 @@ which is not the expected prediction of 546 passenger deaths. This is likely bec
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   594.0   670.8   690.0   689.9   708.0   792.0
+##     592     672     692     691     709     782
 \end{verbatim}
 
 \begin{Shaded}
@@ -2340,8 +2340,8 @@ which is not the expected prediction of 546 passenger deaths. This is likely bec
 \end{Shaded}
 
 \begin{verbatim}
-##  2.5% 97.5% 
-##   636   746
+##    2.5%   97.5% 
+## 638.000 746.025
 \end{verbatim}
 
 \begin{itemize}
@@ -2430,7 +2430,7 @@ Note we used Jeffreys' prior here, but an empirical prior is okay
 \end{Shaded}
 
 \begin{verbatim}
-## [1]  902 1040
+## [1]  910 1038
 \end{verbatim}
 
 \hypertarget{question-21}{%
@@ -2663,6 +2663,7 @@ For those that identify as \emph{liberal} we see a much linear trend.
 ##  9 california       3.32
 ## 10 ohio             3.32
 ## # ... with 39 more rows
+## # i Use `print(n = ...)` to see more rows
 \end{verbatim}
 
 \begin{Shaded}
@@ -2822,7 +2823,7 @@ From the Appendix A the joint posterior of the sub vector is
 \[
 \begin{aligned}
 (\theta_1, \theta_2, 1-\theta_1-\theta_2| y ) &\sim Diri(y_1+a_1,y_2+a_2, a_0+y_0-y_1-y_2-a_1-a_2)\\
-&p(\theta_1,\theta_2,1-\theta_1-\theta_2) \propto \theta_1^{y_1+a_1-1}\theta_2^{y_2+a_2-1}(1-\theta_1-\theta_2)^{a_0+y_0-y_1-y_2-a_1-a_2-1}
+&p(\theta_1,\theta_2,1-\theta_1-\theta_2) \propto \theta_1^{y_1+a_1-1}\theta_2^{y_2+a_2-1}(1-\theta_1-\theta_2)^{a_0+y_0-y_1-y_2-a_1-a_2-1}\\
 \end{aligned}
 \]
 In order to find the distribution of \(\theta_1/(\theta_1+\theta_2)\) we need the jacobian, let (\(\alpha,\beta) = (\theta_1/(\theta_1+\theta_2) , \theta_1+\theta_2)\).
@@ -2833,7 +2834,7 @@ Rearranging the terms we have \(\theta_1 = \alpha*\beta\) , and \(\theta_2= \bet
  \beta & \alpha \\
  -\beta & (1-\alpha)\\
 \end{bmatrix} \\
- &=|\beta|
+ &=|\beta|\\
 \end{aligned}
 \]
 where \(a'_0 = \sum a_i -a_1 -a_2\), and \(y'_0 =\sum y_i-y_1-y_2\)
@@ -2841,7 +2842,7 @@ where \(a'_0 = \sum a_i -a_1 -a_2\), and \(y'_0 =\sum y_i-y_1-y_2\)
 \begin{aligned}
 p(\alpha,\beta) &= (\alpha*\beta)^{y_1+a_1-1}(\beta(1-\alpha))^{y_2+a_2-1}(1-\alpha*\beta-\beta(1-\alpha))^{a'_0+y'_0-1}|\beta|\\
 &=\alpha^{y_1+a_1-1}(1-\alpha)^{y_2+a_2-1}\beta^{y_1+a_1+y_2+a_2-1}(1-\beta)^{a'_0+y'_0-1}\\
-&= Beta(y_1+a_1,y_2+a_2)Beta(y_1+a_1+y_2+a_2, a'_0+y'_0)
+&= Beta(y_1+a_1,y_2+a_2)Beta(y_1+a_1+y_2+a_2, a'_0+y'_0)\\
 \end{aligned}
 \]
 By factorization we integrate out with respect \(\beta\) which yields the marginal posterior for \(\alpha \sim Beta(y_1+a_1,y_2+a_2)\)
@@ -2855,9 +2856,11 @@ By factorization we integrate out with respect \(\beta\) which yields the margin
   \item
     To show the relation with binomial let the likelihood \(p(y|\alpha) \propto \alpha^y_1 (1-\alpha)^y_2\) and a p(\(\alpha)=Beta(a_1,a_2)\) then the posterior is
     \[
-    p(\alpha | y) = p(y|\alpha)p(\alpha)\\
-    = \alpha^{y_1+a_1-1}(1-\alpha)^{y_2+a_2-1}\\
-    = Beta(y_1+a_1,y_2+a_2)
+    \begin{aligned}
+    p(\alpha | y) &= p(y|\alpha)p(\alpha)\\
+    &= \alpha^{y_1+a_1-1}(1-\alpha)^{y_2+a_2-1}\\
+    &= Beta(y_1+a_1,y_2+a_2)
+    \end{aligned}
     \]
   \end{enumerate}
 \end{itemize}
@@ -2872,6 +2875,9 @@ There was a 0.355 probability of a shift toward Bush after both debates.
 
 \begin{Shaded}
 \begin{Highlighting}[]
+ \FunctionTok{library}\NormalTok{(ggplot2)}
+ \FunctionTok{library}\NormalTok{(magrittr)}
+\FunctionTok{library}\NormalTok{(dplyr)}
 \NormalTok{debate}\OtherTok{\textless{}{-}}\FunctionTok{data.frame}\NormalTok{(}\AttributeTok{survey=}\FunctionTok{c}\NormalTok{(}\StringTok{"pre"}\NormalTok{,}\StringTok{"post"}\NormalTok{), }\AttributeTok{bush=}\FunctionTok{c}\NormalTok{(}\DecValTok{294}\NormalTok{,}\DecValTok{288}\NormalTok{), }\AttributeTok{dukakis=}\FunctionTok{c}\NormalTok{(}\DecValTok{307}\NormalTok{,}\DecValTok{332}\NormalTok{),}\AttributeTok{none=}\FunctionTok{c}\NormalTok{(}\DecValTok{38}\NormalTok{,}\DecValTok{19}\NormalTok{),}\AttributeTok{total=}\FunctionTok{c}\NormalTok{(}\DecValTok{639}\NormalTok{,}\DecValTok{639}\NormalTok{))}
 
 \CommentTok{\# we have 3 outcomes bush,duk, none}
@@ -2922,7 +2928,7 @@ There was a 0.355 probability of a shift toward Bush after both debates.
 \begin{verbatim}
 ## 
 ## FALSE  TRUE 
-##   638   362
+##   600   400
 \end{verbatim}
 
 \begin{Shaded}
@@ -3009,8 +3015,8 @@ we are given two independent normal random variables with unknown variances and 
 \end{Shaded}
 
 \begin{verbatim}
-##      2.5%     97.5% 
-## 0.9305344 1.1004105
+##     2.5%    97.5% 
+## 0.924057 1.103411
 \end{verbatim}
 
 \begin{Shaded}
@@ -3021,7 +3027,7 @@ we are given two independent normal random variables with unknown variances and 
 
 \begin{verbatim}
 ##     2.5%    97.5% 
-## 1.093642 1.252233
+## 1.094022 1.246951
 \end{verbatim}
 
 \begin{itemize}
@@ -3053,7 +3059,7 @@ The posterior interval (central) of the differences between 2 independent t-dist
 
 \begin{verbatim}
 ##       2.5%      97.5% 
-## 0.04153418 0.27631640
+## 0.03951631 0.27426186
 \end{verbatim}
 
 \begin{Shaded}
@@ -3074,7 +3080,7 @@ The posterior interval (central) of the differences between 2 independent t-dist
 
 \begin{verbatim}
 ##       2.5%      97.5% 
-## 0.05150114 0.26847361
+## 0.04738272 0.27202218
 \end{verbatim}
 
 \begin{Shaded}
@@ -3157,7 +3163,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.1892  0.4294  0.5269  0.5453  0.6433  1.3319
+##  0.2427  0.4473  0.5505  0.5630  0.6570  1.4225
 \end{verbatim}
 
 \begin{Shaded}
@@ -3203,7 +3209,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.2562  0.4451  0.5479  0.5558  0.6440  1.0533
+##  0.1761  0.4454  0.5449  0.5622  0.6512  1.3936
 \end{verbatim}
 
 \hypertarget{question-4-dirichlet}{%
@@ -3274,7 +3280,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.2156  0.4591  0.5554  0.5761  0.6698  1.2152
+##  0.1803  0.4636  0.5625  0.5829  0.6812  1.3437
 \end{verbatim}
 
 \begin{Shaded}
@@ -3312,7 +3318,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.2338  0.4581  0.5500  0.5726  0.6758  1.3141
+##  0.2473  0.4576  0.5476  0.5674  0.6575  1.1169
 \end{verbatim}
 
 \begin{Shaded}
@@ -3339,7 +3345,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.3254  0.5044  0.5604  0.5661  0.6207  0.9436
+##  0.2844  0.5098  0.5666  0.5736  0.6353  0.9035
 \end{verbatim}
 
 \hypertarget{question-5}{%
@@ -3380,7 +3386,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   6.522   9.469  10.443  10.456  11.403  15.579
+##   6.170   9.418  10.399  10.419  11.367  15.095
 \end{verbatim}
 
 \begin{Shaded}
@@ -3390,7 +3396,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 10.45614
+## [1] 10.41947
 \end{verbatim}
 
 \begin{Shaded}
@@ -3400,7 +3406,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 1.984342
+## [1] 2.119917
 \end{verbatim}
 
 \begin{Shaded}
@@ -3462,7 +3468,7 @@ The difference in means is approximately 0, with a variance (residual) of 2.7.
 \end{Shaded}
 
 \begin{verbatim}
-## [1] -0.06988912
+## [1] 0.0216562
 \end{verbatim}
 
 \begin{Shaded}
@@ -3472,7 +3478,7 @@ The difference in means is approximately 0, with a variance (residual) of 2.7.
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 2.666964
+## [1] 2.77225
 \end{verbatim}
 
 \begin{Shaded}
@@ -3532,7 +3538,7 @@ For this we sample from the normal posterior distribution, conditioned on the ro
 \end{Shaded}
 
 \begin{verbatim}
-## mean error:0.13969763627416
+## mean error:0.13018527506787
 \end{verbatim}
 
 \begin{Shaded}
@@ -3549,14 +3555,14 @@ First we examine that \(p(\lambda,\theta)\propto 1/\lambda\) described by Rafter
 \[
 \begin{aligned}
  p(\lambda,\theta) &\propto (1)1/\lambda\\
- &\propto \lambda^{-1}
+ &\propto \lambda^{-1}\\
 \end{aligned}
 \]
 - (a) to write the prior N\(\sim P(\lambda)\) as a sampling distribution, but we can let N follow a Gamma, with a Gamma(0,0) vague prior initially and independent of \(\theta\). where \(\theta \sim U(0,1)\) as a uniform probability. Then \(P(N,\theta) = P(N|\theta)p(\theta)\). Note this is an improprer prior.\\
 \[
 \begin{aligned}
  p(N,\theta) &\propto (1)e^{-\beta*N}N^{\alpha-1}\\
- &\propto N^{-1}, \text{for  } \alpha,\beta =0
+ &\propto N^{-1}, \text{for  } \alpha,\beta =0\\
 \end{aligned}
 \]
 We can solve for \(p(N,\theta)\) using the prior \(p(\lambda,\theta)\propto \lambda^{-1}\). and \(N\sim Pois(\lambda)\).
@@ -3565,7 +3571,7 @@ We can solve for \(p(N,\theta)\) using the prior \(p(\lambda,\theta)\propto \lam
 p(N,\lambda,\theta) &= p(N|\lambda,\theta)p(\lambda,\theta) \to p(N,\theta) = \int p(N,\lambda,\theta)d\lambda \\
 &= \int \frac{(\lambda/N)^Ne^{-\lambda/\theta}}{N!}(\frac{1}{\lambda}) d\lambda\\
 &= \frac{1}{N! \theta^N} \int \lambda^{N-1}e^{-\lambda/\theta}d\lambda\\
-&= \frac{1}{N! \theta^N}\frac{\Gamma{(N)}}{1/\theta^N} = 1/N
+&= \frac{1}{N! \theta^N}\frac{\Gamma{(N)}}{1/\theta^N} = 1/N\\
 \end{aligned}
 \]
 So we can let N follow vague prior from the Gamma(0,0) distribution, or call N a uniform on (0,N) and independent of \(\lambda\) to derive p(N,\(\theta)\).
@@ -3585,7 +3591,7 @@ So we can let N follow vague prior from the Gamma(0,0) distribution, or call N a
 \begin{aligned}
 p(\theta,N | y) &=  p(y | N,\theta)p(N,\theta) \\
 &\propto \theta^{\sum y_i} (1-\theta)^{nN-\sum y_i}(1/N)\\
-&\propto (1/N)Beta(\sum y_i+1, nN-\sum y_i +1)
+&\propto (1/N)Beta(\sum y_i+1, nN-\sum y_i +1)\\
 \end{aligned}
 \]
 Then we integrate with respect to \(\theta\) to find the marginal posterior, where the integrand is the kernel for the Beta distribution, and we have the beta coefficient that remains in the marginal equation.
@@ -3594,10 +3600,10 @@ Then we integrate with respect to \(\theta\) to find the marginal posterior, whe
 \begin{aligned}
  p(N| y) &= \int (1/N) \prod {N \choose y_i} \theta^{S}(1-\theta)^{nN-S}d\theta, S=\sum y_i \\
  & = (1/N) \prod {N \choose y_i} \int \theta^{S}(1-\theta)^{nN-S}d\theta \\
- & = (1/N) \prod {N \choose y_i} Beta(S, nN-S)
+ & = (1/N) \prod {N \choose y_i} Beta(S+1, nN-S+1)\\
 \end{aligned}
 \]
-The maximum probability is 122 trials with the highest marginal, and for P\((N>100)\geq 0.99\) so we are very certain that there were greater than 100 trials.
+The maximum probability is 122 trials with the highest marginal,
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3609,7 +3615,8 @@ The maximum probability is 122 trials with the highest marginal, and for P\((N>1
 \NormalTok{   S}\OtherTok{=}\FunctionTok{sum}\NormalTok{(x)}
    \CommentTok{\# choose on the log scale}
 \NormalTok{   a}\OtherTok{\textless{}{-}}\FunctionTok{sum}\NormalTok{( }\FunctionTok{lchoose}\NormalTok{(N,x))}
-\NormalTok{   b }\OtherTok{=}\NormalTok{ (}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{)}\SpecialCharTok{*}\FunctionTok{log}\NormalTok{(N)}
+\NormalTok{    b }\OtherTok{=}\NormalTok{ (}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{)}\SpecialCharTok{*}\FunctionTok{log}\NormalTok{(N)}
+  \CommentTok{\# b=0}
 \NormalTok{   c }\OtherTok{=} \FunctionTok{lbeta}\NormalTok{( S}\SpecialCharTok{+}\DecValTok{1}\NormalTok{, n}\SpecialCharTok{*}\NormalTok{N}\SpecialCharTok{{-}}\NormalTok{ S }\SpecialCharTok{+}\DecValTok{1}\NormalTok{)}
    
    \CommentTok{\#rez\textless{}{-}(a*b)/c}
@@ -3632,18 +3639,58 @@ The maximum probability is 122 trials with the highest marginal, and for P\((N>1
 \begin{Shaded}
 \begin{Highlighting}[]
   \DocumentationTok{\#\#}
-\FunctionTok{plot}\NormalTok{(totalN,marg.n)}
+\NormalTok{norm.n}\OtherTok{\textless{}{-}}\NormalTok{marg.n}\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(marg.n)}
+\FunctionTok{plot}\NormalTok{(totalN,norm.n)}
 \FunctionTok{abline}\NormalTok{(}\AttributeTok{v=}\NormalTok{totalN[}\FunctionTok{which.max}\NormalTok{(}\FunctionTok{exp}\NormalTok{(marg.n))])}
 \end{Highlighting}
 \end{Shaded}
 
 \includegraphics{_main_files/figure-latex/unnamed-chunk-43-1.pdf}
+The joint posterior distribution given the data and N=122 (which was maximal marginal) has the maximum theta = 0.52.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ theta}\OtherTok{=}\FunctionTok{seq}\NormalTok{(}\FloatTok{0.01}\NormalTok{,}\FloatTok{0.99}\NormalTok{,}\AttributeTok{by=}\FloatTok{0.01}\NormalTok{)}
+
+\NormalTok{ posterior.joint}\OtherTok{\textless{}{-}}\FunctionTok{dbeta}\NormalTok{(theta, }\FunctionTok{sum}\NormalTok{(x)}\SpecialCharTok{+}\DecValTok{1}\NormalTok{, }\DecValTok{5}\SpecialCharTok{*}\DecValTok{122}\SpecialCharTok{{-}}\FunctionTok{sum}\NormalTok{(x)}\SpecialCharTok{+}\DecValTok{1}\NormalTok{)}\SpecialCharTok{/}\DecValTok{122}
+\NormalTok{ norm.post}\OtherTok{\textless{}{-}}\NormalTok{posterior.joint}\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(posterior.joint)}
+  \FunctionTok{plot}\NormalTok{(theta,norm.post, }\AttributeTok{main=}\StringTok{\textquotesingle{}joint posterior N=122\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-44-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{  theta[}\FunctionTok{which.max}\NormalTok{(norm.post)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.52
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  (b ii) and for P\((N>100) \approx 0.95\). We had to use the normalized marginal posterior distribution to correctly compute the probability.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1}\SpecialCharTok{{-}}\FunctionTok{sum}\NormalTok{(norm.n[totalN}\SpecialCharTok{\textless{}=}\DecValTok{100}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.9518952
+\end{verbatim}
 
 \begin{itemize}
 \item
   \begin{enumerate}
   \def\labelenumi{(\alph{enumi})}
-  \setcounter{enumi}{2}
+  \setcounter{enumi}{3}
   \tightlist
   \item
     the poisson distribution using \(\mu\) for N only gives the probability for N as a fixed realization, however we want to study the uncertainity over all possible N values.
@@ -3653,6 +3700,317 @@ The maximum probability is 122 trials with the highest marginal, and for P\((N>1
 \hypertarget{question-7-1}{%
 \section*{Question 7}\label{question-7-1}}
 \addcontentsline{toc}{section}{Question 7}
+
+for 2 independent poisson distributions for x and y with \(\lambda_1,\lambda_2\). And the outcome \(X\) has a binomial distribution with N=x+y and unknown p.~show that the two models have the same likelihood.
+
+We need to solve for the conditional probability of X given X+Y using the Poisson likelihoods. Here if you input the Poisson likelihoods, and use X+Y \(\sim Poi(\lambda_1+\lambda_2)\) this returns to a Binomial(n, \(\lambda_1/(\lambda_1+\lambda_2))\).
+\[
+\begin{aligned}
+p(X =k| X+Y=n) &= \frac{P(X+Y=n | X=k)P(X=k)}{P(X+Y=n)} \\
+ &=  \frac{P(Y=n-k)P(X=k)}{P(X+Y=n)} \\
+\end{aligned}
+\]
+
+\hypertarget{question-8}{%
+\section*{question 8}\label{question-8}}
+\addcontentsline{toc}{section}{question 8}
+
+notes: dirichlet distribution?
+- (a) For a given block there are only two outcomes, bicycles, and other vehicles. So a binomial distribution is appropriate (2 outcomes only). We model y and binomial \((N_y,\theta_y)\) independent of z\(\sim Binomial(N_z,\theta_z)\).
+
+We assume \(\theta_y,\theta_z\) are independent, so the posteriors are independent Beta models.
+\[
+\begin{aligned}
+p(\theta_y,\theta_z| y,z) &= p(\theta_y | y)p(\theta_z|z) \\
+&= Beta(\theta_y  | 1/2 +\sum y_i, 1/2+N_y-\sum y_i)*Beta(\theta_z  | 1/2 +\sum z_i, 1/2+N_z-\sum z_i)\\
+\end{aligned}
+\]
+- (b) the prior uses Jeffreys' Beta(1/2,1/2) for each parameter independently.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{rez.lane.bike}\OtherTok{\textless{}{-}}\FunctionTok{c}\NormalTok{(}\DecValTok{16}\NormalTok{,}\DecValTok{9}\NormalTok{,}\DecValTok{10}\NormalTok{,}\DecValTok{13}\NormalTok{,}\DecValTok{19}\NormalTok{,}\DecValTok{20}\NormalTok{,}\DecValTok{18}\NormalTok{,}\DecValTok{17}\NormalTok{,}\DecValTok{35}\NormalTok{,}\DecValTok{55}\NormalTok{)}
+\NormalTok{rez.lane.other}\OtherTok{\textless{}{-}}\FunctionTok{c}\NormalTok{(}\DecValTok{58}\NormalTok{,}\DecValTok{90}\NormalTok{,}\DecValTok{48}\NormalTok{,}\DecValTok{57}\NormalTok{,}\DecValTok{103}\NormalTok{,}\DecValTok{57}\NormalTok{,}\DecValTok{86}\NormalTok{,}\DecValTok{112}\NormalTok{,}\DecValTok{273}\NormalTok{,}\DecValTok{64}\NormalTok{)}
+\NormalTok{NY}\OtherTok{\textless{}{-}}\NormalTok{(rez.lane.bike}\SpecialCharTok{+}\NormalTok{rez.lane.other)}
+\NormalTok{rez.lane.p}\OtherTok{\textless{}{-}}\NormalTok{rez.lane.bike}\SpecialCharTok{/}\NormalTok{(rez.lane.bike}\SpecialCharTok{+}\NormalTok{rez.lane.other)}
+
+\NormalTok{rez.nolane.bike}\OtherTok{\textless{}{-}}\FunctionTok{c}\NormalTok{(}\DecValTok{12}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{9}\NormalTok{,}\DecValTok{7}\NormalTok{,}\DecValTok{9}\NormalTok{,}\DecValTok{8}\NormalTok{)}
+\NormalTok{rez.nolane.other}\OtherTok{\textless{}{-}}\FunctionTok{c}\NormalTok{(}\DecValTok{113}\NormalTok{,}\DecValTok{18}\NormalTok{,}\DecValTok{14}\NormalTok{,}\DecValTok{44}\NormalTok{,}\DecValTok{208}\NormalTok{,}\DecValTok{67}\NormalTok{,}\DecValTok{29}\NormalTok{,}\DecValTok{154}\NormalTok{)}
+\NormalTok{NZ}\OtherTok{\textless{}{-}}\NormalTok{(rez.nolane.bike}\SpecialCharTok{+}\NormalTok{rez.nolane.other)}
+
+\NormalTok{rez.nolane.p}\OtherTok{\textless{}{-}}\NormalTok{rez.nolane.bike}\SpecialCharTok{/}\NormalTok{(rez.nolane.bike}\SpecialCharTok{+}\NormalTok{rez.nolane.other)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\item
+  \begin{enumerate}
+  \def\labelenumi{(\alph{enumi})}
+  \setcounter{enumi}{2}
+  \tightlist
+  \item
+    we determine the posterior distribution using the beta distribution by sampline independently. Using a grid a pproach we see the contour map centered around 0.18 and 0.09 which is equivalent to the MLEs.
+  \end{enumerate}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bike.post}\OtherTok{\textless{}{-}}\FunctionTok{rbeta}\NormalTok{(}\DecValTok{1000}\NormalTok{, (}\DecValTok{1}\SpecialCharTok{/}\DecValTok{2} \SpecialCharTok{+} \FunctionTok{sum}\NormalTok{(rez.lane.bike)), (}\DecValTok{1}\SpecialCharTok{/}\DecValTok{2}\SpecialCharTok{+}\FunctionTok{sum}\NormalTok{(rez.lane.other)))}
+\NormalTok{bike.post2}\OtherTok{\textless{}{-}}\FunctionTok{rbeta}\NormalTok{(}\DecValTok{1000}\NormalTok{, (}\DecValTok{1}\SpecialCharTok{/}\DecValTok{2} \SpecialCharTok{+} \FunctionTok{sum}\NormalTok{(rez.nolane.bike)), (}\DecValTok{1}\SpecialCharTok{/}\DecValTok{2}\SpecialCharTok{+}\FunctionTok{sum}\NormalTok{(rez.nolane.other)))}
+
+
+
+\NormalTok{p0}\OtherTok{=} \FunctionTok{seq}\NormalTok{(}\FloatTok{0.01}\NormalTok{,}\FloatTok{0.99}\NormalTok{,}\AttributeTok{by=}\FloatTok{0.01}\NormalTok{)}
+\NormalTok{p1}\OtherTok{=} \FunctionTok{seq}\NormalTok{(}\FloatTok{0.01}\NormalTok{,}\FloatTok{0.99}\NormalTok{,}\AttributeTok{by=}\FloatTok{0.01}\NormalTok{)}
+
+
+\NormalTok{post.bike}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(p0,p1,y,z,ny,nz)\{}
+\NormalTok{  pos}\OtherTok{\textless{}{-}}\NormalTok{ p0}\SpecialCharTok{\^{}}\NormalTok{(}\FunctionTok{sum}\NormalTok{(y))}\SpecialCharTok{*}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{p0)}\SpecialCharTok{\^{}}\NormalTok{(}\FunctionTok{sum}\NormalTok{(ny)}\SpecialCharTok{{-}}\FunctionTok{sum}\NormalTok{(y))}\SpecialCharTok{*}\NormalTok{p1}\SpecialCharTok{\^{}}\NormalTok{(}\FunctionTok{sum}\NormalTok{(z))}\SpecialCharTok{*}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{p1)}\SpecialCharTok{\^{}}\NormalTok{(}\FunctionTok{sum}\NormalTok{(nz)}\SpecialCharTok{{-}}\FunctionTok{sum}\NormalTok{(z))}\SpecialCharTok{*}\FunctionTok{dbeta}\NormalTok{(p0,}\DecValTok{1}\SpecialCharTok{/}\DecValTok{2}\NormalTok{,}\DecValTok{1}\SpecialCharTok{/}\DecValTok{2}\NormalTok{)}\SpecialCharTok{*}\FunctionTok{dbeta}\NormalTok{(p1,}\DecValTok{1}\SpecialCharTok{/}\DecValTok{2}\NormalTok{,}\DecValTok{1}\SpecialCharTok{/}\DecValTok{2}\NormalTok{)}
+  \FunctionTok{return}\NormalTok{(pos)}
+\NormalTok{\}}
+\NormalTok{ posts}\OtherTok{\textless{}{-}}\ConstantTok{NULL}
+ 
+\NormalTok{p0p1}\OtherTok{\textless{}{-}} \FunctionTok{expand.grid}\NormalTok{(p0, p1)}
+
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{nrow}\NormalTok{(p0p1))\{}
+\NormalTok{  posts[i]}\OtherTok{\textless{}{-}}\FunctionTok{post.bike}\NormalTok{(p0p1[i,}\StringTok{"Var1"}\NormalTok{],p0p1[i,}\StringTok{"Var2"}\NormalTok{], rez.lane.bike,rez.nolane.bike, NY,NZ) }
+\NormalTok{\}}
+ \FunctionTok{library}\NormalTok{(ggplot2)}
+ \FunctionTok{ggplot}\NormalTok{(p0p1)}\SpecialCharTok{+}
+ \FunctionTok{geom\_contour}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Var1, }\AttributeTok{y =}\NormalTok{ Var2, }\AttributeTok{z =}\NormalTok{ posts), }\AttributeTok{bins =} \DecValTok{20}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-47-1.pdf}
+
+\begin{itemize}
+\item
+  \begin{enumerate}
+  \def\labelenumi{(\alph{enumi})}
+  \setcounter{enumi}{3}
+  \tightlist
+  \item
+    expected difference and the posterior distribution
+    we find the difference in the posterior distribution which is approximately 0.11 higher proportions in bike routes.
+  \end{enumerate}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+ \FunctionTok{hist}\NormalTok{(bike.post}\SpecialCharTok{{-}}\NormalTok{bike.post2)}
+ \FunctionTok{abline}\NormalTok{(}\AttributeTok{v=}\FunctionTok{mean}\NormalTok{(bike.post)}\SpecialCharTok{{-}}\FunctionTok{mean}\NormalTok{(bike.post2))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-48-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ meany }\OtherTok{=}\NormalTok{(}\DecValTok{1}\SpecialCharTok{/}\DecValTok{2} \SpecialCharTok{+} \FunctionTok{sum}\NormalTok{(rez.lane.bike))}\SpecialCharTok{/}\NormalTok{(}\DecValTok{1}\SpecialCharTok{/}\DecValTok{2} \SpecialCharTok{+} \FunctionTok{sum}\NormalTok{(rez.lane.bike)}\SpecialCharTok{+}\NormalTok{(}\DecValTok{1}\SpecialCharTok{/}\DecValTok{2}\SpecialCharTok{+}\FunctionTok{sum}\NormalTok{(rez.lane.other))) }\DocumentationTok{\#\# theoretical mean}
+\NormalTok{  meanz }\OtherTok{=}\NormalTok{(}\DecValTok{1}\SpecialCharTok{/}\DecValTok{2} \SpecialCharTok{+} \FunctionTok{sum}\NormalTok{(rez.nolane.bike))}\SpecialCharTok{/}\NormalTok{(}\DecValTok{1}\SpecialCharTok{/}\DecValTok{2} \SpecialCharTok{+} \FunctionTok{sum}\NormalTok{(rez.nolane.bike)}\SpecialCharTok{+}\NormalTok{(}\DecValTok{1}\SpecialCharTok{/}\DecValTok{2}\SpecialCharTok{+}\FunctionTok{sum}\NormalTok{(rez.nolane.other))) }\DocumentationTok{\#\# theoretical mean}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{question-9}{%
+\section*{question 9}\label{question-9}}
+\addcontentsline{toc}{section}{question 9}
+
+We need to derive the posterior of \(p(\mu^2, \sigma^2 | y)\). \(p(\mu,\sigma^2 | y) = p(y|\mu,\sigma^2)*p(\mu , \sigma^2)\)
+
+\[
+\begin{aligned}
+p(\mu, \sigma^2 |y)&=\sigma^{-1}(\sigma^2)^{-(\nu_0/2 +1)}exp(-1/2\sigma^2 (\nu_0\sigma_0^2 + k_0(\mu-\mu_0)^2)) \times (\sigma^2)^{-n/2}exp(-1/2\sigma^2 ((n-1)s^2 + n(\mu-\bar{y})^2))\\
+&= \sigma^{-1}(\sigma^2)^{-((\nu_0+n)/2 +1)} exp(-1/2\sigma^2( \nu_0\sigma_0^2 +(n-1)s^2 +\mu^2(k_0+n) +\mu(-2\mu_0k_0 -2\bar{y}n) + \mu_0^2k_0 +n\bar{y}^2)\\
+\end{aligned}
+\]
+Where we factor the inside using \(\mu_n = k_0\mu_0/(k_0+n) +n\bar{y}/(k_0+n)\)
+\[
+\begin{aligned}
+&\to \mu^2(k_0+n) +\mu(-2\mu_0k_0 -2\bar{y}n) + \mu_0^2k_0 +n\bar{y}^2 \\
+&= (k_0+n)(\mu^2 - 2\mu( \mu_0k_0/(k_0+n) +\bar{y}n/(k_0+n)) + \mu_0^2k_0/(k_0+n) + n\bar{y}^2/(k_0+n)) \\
+&= (k_0+n)(\mu^2 - 2\mu( k_0\mu_0/(k_0+n) +n\bar{y}/(k_0+n)) + \frac{\mu_0^2k_0(k_0+n)}{(k_0+n)^2} + \frac{n\bar{y}^2(k_0+n)}{(k_0+n)^2} +\frac{2k_0\mu_0n\bar{y}}{(k_0+n)^2} -\frac{2k_0\mu_0n\bar{y}}{(k_0+n)^2})\\
+&= (k_0+n)(\mu^2 - 2\mu( k_0\mu_0/(k_0+n) +n\bar{y}/(k_0+n)) + \frac{\mu_0^2k_0^2}{(k_0+n)^2} +\frac{\mu_0^2k_0*n}{(k_0+n)^2}+ \frac{n^2\bar{y}^2}{(k_0+n)^2} + \frac{n\bar{y}^2k_0}{(k_0+n)^2}+\frac{2k_0\mu_0n\bar{y}}{(k_0+n)^2} -\frac{2k_0\mu_0n\bar{y}}{(k_0+n)^2}) \\
+&= (k_0+n)(\mu^2 + -2\mu\mu_n +\mu_n^2  +\frac{\mu_0^2k_0*n}{(k_0+n)^2}+ \frac{n\bar{y}^2k_0}{(k_0+n)^2} -\frac{2k_0\mu_0n\bar{y}}{(k_0+n)^2})\\
+&= (k_0+n)( (\mu-\mu_n)^2 + (k_0*n)/(k_0+n)^2( \mu_0^2+\bar{y}^2 -2\mu_0\bar{y}) \\
+&=  (k_0+n)( (\mu-\mu_n)^2 + (k_0*n)/(k_0+n)( \mu_0-\bar{y})^2\\
+\end{aligned}
+\]
+
+putting the factorization into the posterior and derived the formula for each updated term.
+
+here we see that \(\sigma^2_n ,\mu_n\) are sufficient statistics for \(\mu,\sigma^2\) by the factorization theorem because the posterior depends on parameters only through the summary statistics.
+
+\[
+\begin{aligned}
+p(\mu, \sigma^2 |y)&=\sigma^{-1}(\sigma^2)^{-((\nu_0+n)/2 +1)} exp(-1/2\sigma^2+ ( \nu_0\sigma_0^2 +(n-1)s^2 +(k_0+n)( (\mu-\mu_n)^2 + (k_0*n)/(k_0+n)( \mu_0-\bar{y})^2)\\
+&= \sigma^{-1}(\sigma^2)^{-((\nu_0+n)/2 +1)} exp(-1/2\sigma^2+ ( \nu_n\sigma_n^2 +(k_n)( (\mu-\mu_n)^2 )\\
+& = \sigma^{-1}(\sigma^2)^{-((\nu_n)/2 +1)} exp(-1/2\sigma^2 ( \nu_n\sigma_n^2 +(k_n)( (\mu-\mu_n)^2 )\\
+\end{aligned}
+\]
+\# Question 10\{-\}
+To show the F-distribution we prove it directly, using a change of variables. Although there is a theorem (definition) that for \(X\sim N(a,b)\) and \(Y\sim N(c,d)\) then F= \(S_X^2/\sigma^2_X / (S_Y^2 / \sigma_Y^2)\) follows an F-distribution.
+
+For \((n-1)S^2/\sigma^2 \sim X_{n-1}^2\) we let \(U \sim \chi_p^2, V\sim \chi_q^2\). We let \(Z = (U/p)/(V/q)\) and \(W=V/q\).
+
+\[
+J= 
+\begin{bmatrix}
+ \partial u/\partial z & \partial u/\partial w \\
+ \partial v/\partial z & \partial v/\partial w  
+\end{bmatrix} = 
+\begin{bmatrix}
+ q & 0 \\
+  zp& pw  \\
+\end{bmatrix} = qpw
+\]
+
+For V = wq, and U = zpw. Note that after combining terms we have the Gamma kernel with \(\alpha = p+q/2 -1\) and \(\beta= 1/2(pz+q)\) which is the F-distribution.\\
+\[
+\begin{aligned}
+f(z,w)&= f(u)f(v)|J| \\
+ &= \frac{1}{\Gamma(p/2)2^{p/2}}(pzw)^{p/2-1}e^{-pzw/2}/frac{1}{\Gamma(q/2)2^{q/2}}(wq)^{q/2-1}e^{-wq/2}|pwq| \\
+ &=\frac{z^{p/2-1}}{\Gamma(p/2)2^{p+q/2}\Gamma(q/2)}(p)^{p/2}q^{q/2}w^{(p+q/2 -1)} e^{-w/2(pz+q/2)} \\
+ & = \frac{z^{p/2-1}}{\Gamma(p/2)2^{p+q/2}\Gamma(q/2)}(p)^{p/2}q^{q/2}[\frac{\Gamma(p+q/2)}{(1/2(pz+q))^{p+q/2}}]\\
+ &= \frac{z^{p/2-1}}{\Gamma(p/2)\Gamma(q/2)}(p)^{p/2}q^{q/2}[\frac{\Gamma(p+q/2)}{(q^{p+q/2(pz/q+1))^{p+q/2}}}]\\
+ &=\frac{z^{p/2-1}\Gamma(p+q/2)}{\Gamma(p/2)\Gamma(q/2)}(p/q)^{p/2}\frac{1}{(pz/q+1)^{p+q/2}} \\
+\end{aligned}
+\]
+
+We showed that for U, V as Chi-square variables, their ratio is the F-distribution, In order to show that the posterior distribution F= \(S_X^2/\sigma^2_X / (S_Y^2 / \sigma_Y^2)\) is F. The posterior \(Y \sim \sigma^2 | y \sim Inv-\chi^2(\nu, \sigma^2)\). where Y =\(\frac{(n-1)S^2}{\chi_{n-1}^2}\). So The inverse chi-square distribution can be re-arranged to follow a Chi-square. Then the variable Z in terms of Chi-square variables can be expressed using Inv-Chisquare variables.
+
+\hypertarget{question-11-1}{%
+\section*{Question 11}\label{question-11-1}}
+\addcontentsline{toc}{section}{Question 11}
+
+the model is defined as \(p(\alpha,\beta,y,n,x) \propto p(\alpha,\beta)\prod_{i=1}^{4}p(y_i | \alpha,\beta,n_i,x_i)\), where \((\alpha,\beta)\) follows a joint normal prior with \(\alpha \sim N(0, 2^2)\) and \(\beta \sim N(10,10^2)\) and corr(\(\alpha,\beta) = 0.5\).
+
+\begin{itemize}
+\item
+  \begin{enumerate}
+  \def\labelenumi{(\alph{enumi})}
+  \tightlist
+  \item
+    we repeat the computations of this data
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{(\alph{enumi})}
+  \setcounter{enumi}{1}
+  \tightlist
+  \item
+    and overlay the contour with the posterior distribution
+  \end{enumerate}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+ \FunctionTok{library}\NormalTok{(mvtnorm)}
+ \FunctionTok{library}\NormalTok{(magrittr)}
+ \FunctionTok{library}\NormalTok{(dplyr)}
+ \FunctionTok{library}\NormalTok{(ggplot2)}
+\NormalTok{ assay}\OtherTok{\textless{}{-}}\FunctionTok{data.frame}\NormalTok{(}\AttributeTok{x=}\FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\FloatTok{0.86}\NormalTok{,}\SpecialCharTok{{-}}\FloatTok{0.30}\NormalTok{,}\SpecialCharTok{{-}}\FloatTok{0.05}\NormalTok{,}\FloatTok{0.73}\NormalTok{), }\AttributeTok{n=}\FunctionTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{5}\NormalTok{), }\AttributeTok{y=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{5}\NormalTok{))}
+
+ \DocumentationTok{\#\# the point a,b by MLE is (0.8,7.7) so we grid around these solution.}
+\NormalTok{ a0}\OtherTok{=} \FunctionTok{seq}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{5}\NormalTok{,}\DecValTok{10}\NormalTok{,}\AttributeTok{by=}\FloatTok{0.1}\NormalTok{)}
+\NormalTok{ b1}\OtherTok{=} \FunctionTok{seq}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{10}\NormalTok{,}\DecValTok{40}\NormalTok{,}\AttributeTok{by=}\FloatTok{0.1}\NormalTok{)}
+\NormalTok{  a0b1}\OtherTok{\textless{}{-}} \FunctionTok{expand.grid}\NormalTok{(a0, b1)}
+
+\NormalTok{logit}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(theta)\{}
+  \FunctionTok{return}\NormalTok{( }\FunctionTok{log}\NormalTok{(theta}\SpecialCharTok{/}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{theta)))}
+\NormalTok{\}}
+
+\NormalTok{inv.logit}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(theta)\{}
+  \FunctionTok{return}\NormalTok{( (}\FunctionTok{exp}\NormalTok{(theta)}\SpecialCharTok{/}\NormalTok{(}\DecValTok{1}\SpecialCharTok{+}\FunctionTok{exp}\NormalTok{(theta)))  )}
+\NormalTok{\}}
+
+\DocumentationTok{\#\# alpha, beta come from multivariate normal.}
+ \DocumentationTok{\#\# \textbackslash{}prod\_(i=1)\^{}5 p(y|theta) \textasciitilde{} \textbackslash{}theta\^{}y (1{-}theta)\^{}n{-}y \#\# kth dose. }
+  \DocumentationTok{\#\#\# logit(theta) = alpha+ beta*x}
+\NormalTok{logit.likelihood}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(alpha,beta,x,y,n)\{}
+\NormalTok{   theta\_approx}\OtherTok{\textless{}{-}}\NormalTok{ alpha}\SpecialCharTok{+}\NormalTok{beta}\SpecialCharTok{*}\NormalTok{x}
+\NormalTok{   bin.like}\OtherTok{\textless{}{-}}\NormalTok{(}\FunctionTok{inv.logit}\NormalTok{(theta\_approx))}\SpecialCharTok{\^{}}\NormalTok{y}\SpecialCharTok{*}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\FunctionTok{inv.logit}\NormalTok{(theta\_approx))}\SpecialCharTok{\^{}}\NormalTok{(n}\SpecialCharTok{{-}}\NormalTok{y)}
+   \FunctionTok{return}\NormalTok{(bin.like)}
+\NormalTok{\}  }
+
+ \DocumentationTok{\#\# the alpha,beta stem from the grid, and we return the probability mass from the prior.}
+\NormalTok{ joint.prior}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(alpha,beta)\{}
+\NormalTok{  cormat}\OtherTok{\textless{}{-}}\FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{,}\FloatTok{0.5}\SpecialCharTok{*}\DecValTok{2}\SpecialCharTok{*}\DecValTok{10}\NormalTok{,}\FloatTok{0.5}\SpecialCharTok{*}\DecValTok{2}\SpecialCharTok{*}\DecValTok{10}\NormalTok{,}\DecValTok{100}\NormalTok{),}\DecValTok{2}\NormalTok{)}
+  \FunctionTok{return}\NormalTok{(}\FunctionTok{dmvnorm}\NormalTok{(}\FunctionTok{c}\NormalTok{(alpha,beta), }\AttributeTok{mean=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{10}\NormalTok{),}\AttributeTok{sigma=}\NormalTok{cormat))}
+\NormalTok{ \}}
+  
+\NormalTok{ posterior\_density}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(alpha,beta,assay)\{}
+\NormalTok{   joint\_density}\OtherTok{\textless{}{-}}\FunctionTok{joint.prior}\NormalTok{(alpha,beta)}
+\NormalTok{   probs}\OtherTok{\textless{}{-}}\ConstantTok{NULL}
+   \ControlFlowTok{for}\NormalTok{(k }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{nrow}\NormalTok{(assay))\{}
+\NormalTok{     p}\OtherTok{\textless{}{-}}\FunctionTok{logit.likelihood}\NormalTok{(alpha,beta,assay}\SpecialCharTok{$}\NormalTok{x[k],assay}\SpecialCharTok{$}\NormalTok{y[k],assay}\SpecialCharTok{$}\NormalTok{n[k])}
+\NormalTok{     probs}\OtherTok{\textless{}{-}}\FunctionTok{c}\NormalTok{(probs,p)}
+\NormalTok{   \}}
+\NormalTok{   totalLikelihood}\OtherTok{\textless{}{-}}\FunctionTok{prod}\NormalTok{(probs)}
+   \FunctionTok{return}\NormalTok{( joint\_density}\SpecialCharTok{*}\NormalTok{totalLikelihood)}
+\NormalTok{ \}}
+ 
+
+\NormalTok{ posts}\OtherTok{\textless{}{-}}\ConstantTok{NULL}
+ 
+ \DocumentationTok{\#\# unnormalized posterior over grid which covers (a,b)}
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{nrow}\NormalTok{(a0b1))\{}
+\NormalTok{  posts[i]}\OtherTok{\textless{}{-}}\FunctionTok{posterior\_density}\NormalTok{(a0b1[i,}\StringTok{"Var1"}\NormalTok{],a0b1[i,}\StringTok{"Var2"}\NormalTok{],assay) }
+\NormalTok{\}}
+ 
+\NormalTok{ posts\_norm}\OtherTok{\textless{}{-}}\NormalTok{posts}\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(posts)}
+\NormalTok{ a0b1}\SpecialCharTok{$}\NormalTok{joint.prob}\OtherTok{\textless{}{-}}\NormalTok{posts\_norm}
+ 
+ \DocumentationTok{\#\# grid sampling procedure}
+\NormalTok{  marginal.post\_a}\OtherTok{\textless{}{-}}\NormalTok{ a0b1}\SpecialCharTok{\%\textgreater{}\%}\FunctionTok{group\_by}\NormalTok{(Var1)}\SpecialCharTok{\%\textgreater{}\%}\FunctionTok{summarise}\NormalTok{(}\AttributeTok{p=}\FunctionTok{sum}\NormalTok{(joint.prob))}\SpecialCharTok{\%\textgreater{}\%}\NormalTok{data.frame}
+\NormalTok{    A}\OtherTok{\textless{}{-}}\NormalTok{B}\OtherTok{\textless{}{-}}\ConstantTok{NULL}
+  \ControlFlowTok{for}\NormalTok{(s }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{1000}\NormalTok{)\{}
+\NormalTok{    a\_s}\OtherTok{\textless{}{-}}\FunctionTok{sample}\NormalTok{(marginal.post\_a}\SpecialCharTok{$}\NormalTok{Var1,}\DecValTok{1}\NormalTok{,}\AttributeTok{prob=}\NormalTok{marginal.post\_a}\SpecialCharTok{$}\NormalTok{p)}
+\NormalTok{    p.a\_s}\OtherTok{\textless{}{-}}\NormalTok{marginal.post\_a[}\FunctionTok{which}\NormalTok{(marginal.post\_a}\SpecialCharTok{$}\NormalTok{Var1}\SpecialCharTok{==}\NormalTok{a\_s),}\StringTok{\textquotesingle{}p\textquotesingle{}}\NormalTok{]}
+\NormalTok{    marginal.post\_b}\OtherTok{\textless{}{-}}\NormalTok{a0b1[}\FunctionTok{which}\NormalTok{(a0b1}\SpecialCharTok{$}\NormalTok{Var1}\SpecialCharTok{==}\NormalTok{a\_s),]}
+\NormalTok{    marginal.post\_b}\SpecialCharTok{$}\NormalTok{cond.prob}\OtherTok{\textless{}{-}}\NormalTok{marginal.post\_b}\SpecialCharTok{$}\NormalTok{joint.prob}\SpecialCharTok{/}\NormalTok{p.a\_s}
+\NormalTok{    b\_s}\OtherTok{\textless{}{-}}\FunctionTok{sample}\NormalTok{(marginal.post\_b}\SpecialCharTok{$}\NormalTok{Var2,}\DecValTok{1}\NormalTok{,}\AttributeTok{prob=}\NormalTok{marginal.post\_b}\SpecialCharTok{$}\NormalTok{cond.prob)}
+\NormalTok{    A}\OtherTok{\textless{}{-}}\FunctionTok{c}\NormalTok{(A,a\_s)}
+\NormalTok{    B}\OtherTok{\textless{}{-}}\FunctionTok{c}\NormalTok{(B,b\_s)}
+\NormalTok{     \}}
+ 
+    \DocumentationTok{\#\#\# need to add a random jitter around each point.}
+\NormalTok{    A}\OtherTok{\textless{}{-}}\NormalTok{A}\SpecialCharTok{+}\FunctionTok{runif}\NormalTok{(}\FunctionTok{length}\NormalTok{(A),}\AttributeTok{min=}\DecValTok{0}\NormalTok{,}\AttributeTok{max=}\FloatTok{0.1}\NormalTok{)}
+\NormalTok{    B}\OtherTok{\textless{}{-}}\NormalTok{B}\SpecialCharTok{+}\FunctionTok{runif}\NormalTok{(}\FunctionTok{length}\NormalTok{(B),}\AttributeTok{min=}\DecValTok{0}\NormalTok{,}\AttributeTok{max=}\FloatTok{0.1}\NormalTok{)}
+\NormalTok{   ab.post}\OtherTok{\textless{}{-}}\FunctionTok{data.frame}\NormalTok{(}\AttributeTok{A=}\NormalTok{A,}\AttributeTok{B=}\NormalTok{B)}
+ \FunctionTok{ggplot}\NormalTok{(a0b1)}\SpecialCharTok{+}
+ \FunctionTok{geom\_contour}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Var1, }\AttributeTok{y =}\NormalTok{ Var2, }\AttributeTok{z =}\NormalTok{ posts), }\AttributeTok{bins =} \DecValTok{20}\NormalTok{)}\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{data =}\NormalTok{ ab.post, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ A, }\AttributeTok{y =}\NormalTok{ B), }\AttributeTok{pch =} \DecValTok{21}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/q11-1.pdf}
+
+\begin{itemize}
+\tightlist
+\item
+  (bii) the LD50 is summarized ensuring the B\textgreater0 for a positive dose-response.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hist}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{A}\SpecialCharTok{/}\NormalTok{B, }\AttributeTok{main=}\StringTok{\textquotesingle{}LD50\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-49-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+ \DocumentationTok{\#\#  probability of dose{-}response being responsive to the dose.  negative means dose{-}response has negative response and is harmful.}
+\FunctionTok{table}\NormalTok{(B}\SpecialCharTok{\textgreater{}}\DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## TRUE 
+## 1000
+\end{verbatim}
 
 \hypertarget{footnotes-and-citations}{%
 \chapter{Footnotes and citations}\label{footnotes-and-citations}}
