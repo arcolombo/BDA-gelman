@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.7.28)  28 JUL 2022 15:06
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.7.28)  5 AUG 2022 21:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -472,7 +472,7 @@ Package: amsthm 2020/05/29 v2.20.6
 \c@example=\count325
 \c@exercise=\count326
 \c@hypothesis=\count327
-(./_main.aux)
+No file _main.aux.
 \openout1 = `_main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 139.
@@ -777,6 +777,9 @@ File: mt-LatinModernRoman.cfg 2021/02/21 v1.1 microtype config. file: Latin Mod
 ern Roman (RS)
 )
 Package hyperref Info: Link coloring OFF on input line 139.
+
+Package hyperref Warning: Rerun to get /PageLabels entry.
+
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
 (Font)              scaled to size 12.0pt on input line 141.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
@@ -845,7 +848,15 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 
 ]
 Chapter 1.
-[7] [8] [9]
+[7]
+
+LaTeX Warning: Reference `eq:bayes' on page 8 undefined on input line 216.
+
+[8]
+
+LaTeX Warning: Reference `eq:unnorm' on page 9 undefined on input line 248.
+
+[9]
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
 (Font)              Font shape `TU/lmtt/b/n' tried instead on input line 277.
 
@@ -941,6 +952,9 @@ Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on input line 832.
 
+
+LaTeX Warning: Reference `eq:evesLaw' on page 25 undefined on input line 860.
+
 [25] [26]
 Missing character: There is no 𝜃 (U+1D703) in font [lmroman10-regular]:mapping=
 tex-text;!
@@ -993,18 +1007,6 @@ File: _main_files/figure-latex/unnamed-chunk-21-1.pdf Graphic file (type pdf)
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [41]
-Overfull \hbox (12.0pt too wide) in paragraph at lines 1675--1675
-[]\TU/lmtt/m/n/10 ##       Min.    1st Qu.     Median       Mean    3rd Qu.    
-   Max.[] 
- []
-
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 1675--1675
-[]\TU/lmtt/m/n/10 ## -1144.2863    -0.5092     0.5992    -0.6647     1.5431   2
-30.2556[] 
- []
-
-
 Overfull \vbox (2.024pt too high) detected at line 1685
  []
 
@@ -1513,36 +1515,24 @@ File: _main_files/figure-latex/unnamed-chunk-49-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-49-1.pdf>
 [99] [100]
 Chapter 4.
-[101
-
-] [102
-
-]
-Chapter 5.
-[103] [104
-
-]
-Chapter 6.
-[105] [106]
-Chapter 7.
-
-Underfull \hbox (badness 1924) in paragraph at lines 4107--4108
-[]\TU/lmr/m/n/10 Add an unnumbered part: \TU/lmtt/m/n/10 # (PART\*) Act one {-}
- \TU/lmr/m/n/10 (followed by \TU/lmtt/m/n/10 # A
- []
-
-(./_main.bbl [107
-
-] [108
-
-]) [109] (./_main.aux) ) 
+Missing character: There is no 𝜃 (U+1D703) in font [lmroman7-regular]:mapping=t
+ex-text;!
+Missing character: There is no 𝜃 (U+1D703) in font [lmroman10-regular]:mapping=
+tex-text;!
+Missing character: There is no 𝜃 (U+1D703) in font [lmroman7-regular]:mapping=t
+ex-text;!
+! Missing $ inserted.
+<inserted text> 
+                $
+l.4034 ...d\textsuperscript{2/d\theta}2 log p(\hat
+                                                  {\theta}) + \sum\emph{\{i=...
+ 
 Here is how much of TeX's memory you used:
- 20003 strings out of 475865
- 380252 string characters out of 5805584
- 869416 words of memory out of 5000000
- 40710 multiletter control sequences out of 15000+600000
- 475782 words of font info for 90 fonts, out of 8000000 for 9000
+ 19891 strings out of 475865
+ 378044 string characters out of 5805584
+ 865449 words of memory out of 5000000
+ 40611 multiletter control sequences out of 15000+600000
+ 475758 words of font info for 87 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  86i,15n,121p,1002b,493s stack positions out of 10000i,1000n,20000p,200000b,200000s
-
-Output written on _main.pdf (109 pages).
+Output written on _main.pdf (100 pages).
