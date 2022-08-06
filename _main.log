@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.7.28)  5 AUG 2022 21:51
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.7.28)  6 AUG 2022 08:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -472,7 +472,7 @@ Package: amsthm 2020/05/29 v2.20.6
 \c@example=\count325
 \c@exercise=\count326
 \c@hypothesis=\count327
-No file _main.aux.
+(./_main.aux)
 \openout1 = `_main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 139.
@@ -777,9 +777,6 @@ File: mt-LatinModernRoman.cfg 2021/02/21 v1.1 microtype config. file: Latin Mod
 ern Roman (RS)
 )
 Package hyperref Info: Link coloring OFF on input line 139.
-
-Package hyperref Warning: Rerun to get /PageLabels entry.
-
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
 (Font)              scaled to size 12.0pt on input line 141.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
@@ -848,15 +845,7 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 
 ]
 Chapter 1.
-[7]
-
-LaTeX Warning: Reference `eq:bayes' on page 8 undefined on input line 216.
-
-[8]
-
-LaTeX Warning: Reference `eq:unnorm' on page 9 undefined on input line 248.
-
-[9]
+[7] [8] [9]
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
 (Font)              Font shape `TU/lmtt/b/n' tried instead on input line 277.
 
@@ -951,9 +940,6 @@ Chapter 2.
 Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on input line 832.
-
-
-LaTeX Warning: Reference `eq:evesLaw' on page 25 undefined on input line 860.
 
 [25] [26]
 Missing character: There is no 𝜃 (U+1D703) in font [lmroman10-regular]:mapping=
@@ -1515,24 +1501,67 @@ File: _main_files/figure-latex/unnamed-chunk-49-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-49-1.pdf>
 [99] [100]
 Chapter 4.
-Missing character: There is no 𝜃 (U+1D703) in font [lmroman7-regular]:mapping=t
-ex-text;!
+
+Overfull \hbox (53.0601pt too wide) detected at line 4045
+[][]
+ []
+
+[101
+
+]
+Overfull \hbox (84.64453pt too wide) has occurred while \output is active
+\TU/lmr/m/n/10 102 \TU/lmr/m/sl/10 CHAPTER 4.  ASYMPTOTICS AND CONNECTIONS TO N
+ON-BAYESIAN APPROACHES
+ []
+
+[102]
 Missing character: There is no 𝜃 (U+1D703) in font [lmroman10-regular]:mapping=
 tex-text;!
-Missing character: There is no 𝜃 (U+1D703) in font [lmroman7-regular]:mapping=t
-ex-text;!
-! Missing $ inserted.
-<inserted text> 
-                $
-l.4034 ...d\textsuperscript{2/d\theta}2 log p(\hat
-                                                  {\theta}) + \sum\emph{\{i=...
- 
+
+Underfull \hbox (badness 1092) in paragraph at lines 4095--4095
+[]\TU/lmr/bx/n/14.4 Frequency evaluations of Bayesian infer-
+ []
+
+[103]
+Overfull \hbox (84.64453pt too wide) has occurred while \output is active
+\TU/lmr/m/n/10 104 \TU/lmr/m/sl/10 CHAPTER 4.  ASYMPTOTICS AND CONNECTIONS TO N
+ON-BAYESIAN APPROACHES
+ []
+
+[104] [105]
+Overfull \hbox (84.64453pt too wide) has occurred while \output is active
+\TU/lmr/m/n/10 106 \TU/lmr/m/sl/10 CHAPTER 4.  ASYMPTOTICS AND CONNECTIONS TO N
+ON-BAYESIAN APPROACHES
+ []
+
+[106
+
+]
+Chapter 5.
+[107] [108
+
+]
+Chapter 6.
+[109] [110]
+Chapter 7.
+
+Underfull \hbox (badness 1924) in paragraph at lines 4224--4225
+[]\TU/lmr/m/n/10 Add an unnumbered part: \TU/lmtt/m/n/10 # (PART\*) Act one {-}
+ \TU/lmr/m/n/10 (followed by \TU/lmtt/m/n/10 # A
+ []
+
+(./_main.bbl [111
+
+] [112
+
+]) [113] (./_main.aux) ) 
 Here is how much of TeX's memory you used:
- 19891 strings out of 475865
- 378044 string characters out of 5805584
- 865449 words of memory out of 5000000
- 40611 multiletter control sequences out of 15000+600000
- 475758 words of font info for 87 fonts, out of 8000000 for 9000
+ 20009 strings out of 475865
+ 380505 string characters out of 5805584
+ 870279 words of memory out of 5000000
+ 40720 multiletter control sequences out of 15000+600000
+ 475766 words of font info for 88 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  86i,15n,121p,1002b,493s stack positions out of 10000i,1000n,20000p,200000b,200000s
-Output written on _main.pdf (100 pages).
+
+Output written on _main.pdf (113 pages).

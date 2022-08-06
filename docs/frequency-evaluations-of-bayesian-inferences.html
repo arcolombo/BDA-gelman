@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 6 Frequency evaluations of Bayesian inferences | Bayesian Data Analysis</title>
+  <meta name="description" content="Chapter 6 Frequency evaluations of Bayesian inferences | Bayesian Data Analysis review by Andrew Gelman, supervised by Dr. Paul Marjoram" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 6 Frequency evaluations of Bayesian inferences | Bayesian Data Analysis" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Chapter 6 Frequency evaluations of Bayesian inferences | Bayesian Data Analysis review by Andrew Gelman, supervised by Dr. Paul Marjoram" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 6 Frequency evaluations of Bayesian inferences | Bayesian Data Analysis" />
+  
+  <meta name="twitter:description" content="Chapter 6 Frequency evaluations of Bayesian inferences | Bayesian Data Analysis review by Andrew Gelman, supervised by Dr. Paul Marjoram" />
+  
+
+<meta name="author" content="Anthony R. Colombo, Dr. Paul Marjoram" />
+
+
+<meta name="date" content="2022-08-05" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="asymptotics-and-connections-to-non-bayesian-approaches.html"/>
+<link rel="next" href="blocks.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Bayesian Data Analysis</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> cover-image: path to the social sharing image like images/cover.jpg</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#independent-study"><i class="fa fa-check"></i>Independent study</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#supervised-learning"><i class="fa fa-check"></i>Supervised learning</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="fundamentals-of-bayesian-inference.html"><a href="fundamentals-of-bayesian-inference.html"><i class="fa fa-check"></i><b>2</b> Fundamentals of Bayesian Inference</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="fundamentals-of-bayesian-inference.html"><a href="fundamentals-of-bayesian-inference.html#general-notation-for-statistical-inference"><i class="fa fa-check"></i><b>2.1</b> General notation for statistical inference</a>
+<ul>
+<li class="chapter" data-level="" data-path="fundamentals-of-bayesian-inference.html"><a href="fundamentals-of-bayesian-inference.html#exchangeability"><i class="fa fa-check"></i>Exchangeability</a></li>
+<li class="chapter" data-level="" data-path="fundamentals-of-bayesian-inference.html"><a href="fundamentals-of-bayesian-inference.html#explanatory-variables"><i class="fa fa-check"></i>Explanatory variables</a></li>
+<li class="chapter" data-level="" data-path="fundamentals-of-bayesian-inference.html"><a href="fundamentals-of-bayesian-inference.html#hierarchical-modeling"><i class="fa fa-check"></i>Hierarchical modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="fundamentals-of-bayesian-inference.html"><a href="fundamentals-of-bayesian-inference.html#bayesian-inference"><i class="fa fa-check"></i><b>2.2</b> Bayesian inference</a></li>
+<li class="chapter" data-level="" data-path="fundamentals-of-bayesian-inference.html"><a href="fundamentals-of-bayesian-inference.html#prediction"><i class="fa fa-check"></i>Prediction</a></li>
+<li class="chapter" data-level="" data-path="fundamentals-of-bayesian-inference.html"><a href="fundamentals-of-bayesian-inference.html#likelihood"><i class="fa fa-check"></i>Likelihood</a></li>
+<li class="chapter" data-level="" data-path="fundamentals-of-bayesian-inference.html"><a href="fundamentals-of-bayesian-inference.html#subjectivity-and-objectivity"><i class="fa fa-check"></i>Subjectivity and Objectivity</a></li>
+<li class="chapter" data-level="2.3" data-path="fundamentals-of-bayesian-inference.html"><a href="fundamentals-of-bayesian-inference.html#exercises"><i class="fa fa-check"></i><b>2.3</b> Exercises</a></li>
+<li class="chapter" data-level="" data-path="fundamentals-of-bayesian-inference.html"><a href="fundamentals-of-bayesian-inference.html#simulation-100-times"><i class="fa fa-check"></i>Simulation 100 times</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="cross.html"><a href="cross.html"><i class="fa fa-check"></i><b>3</b> Single parameter models</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="cross.html"><a href="cross.html#estimating-a-probability-from-binomial-data"><i class="fa fa-check"></i><b>3.1</b> Estimating a probability from binomial data</a></li>
+<li class="chapter" data-level="3.2" data-path="cross.html"><a href="cross.html#posterior-as-a-compromise-between-data-and-prior-information"><i class="fa fa-check"></i><b>3.2</b> Posterior as a compromise between data and prior information</a></li>
+<li class="chapter" data-level="3.3" data-path="cross.html"><a href="cross.html#summarizing-the-posterior-inference"><i class="fa fa-check"></i><b>3.3</b> Summarizing the posterior inference</a>
+<ul>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#posterior-quantiles-and-intervals"><i class="fa fa-check"></i>Posterior quantiles and intervals</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="cross.html"><a href="cross.html#informative-prior-distributions"><i class="fa fa-check"></i><b>3.4</b> Informative prior distributions</a>
+<ul>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#conjugate-prior-distributions"><i class="fa fa-check"></i>Conjugate prior distributions</a></li>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#conjugate-prior-distributions-exponential-families-and-sufficient-statistics"><i class="fa fa-check"></i>Conjugate prior, distributions, exponential families, and sufficient statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="cross.html"><a href="cross.html#normal-distribution-with-known-variance"><i class="fa fa-check"></i><b>3.5</b> Normal distribution with known variance</a>
+<ul>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#likelihood-of-one-data-point"><i class="fa fa-check"></i>Likelihood of one data point</a></li>
+<li class="chapter" data-level="3.5.1" data-path="cross.html"><a href="cross.html#conjugate-prior-and-posterior-distributions"><i class="fa fa-check"></i><b>3.5.1</b> Conjugate prior and posterior distributions</a></li>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#posterior-predictive-distribution"><i class="fa fa-check"></i>Posterior predictive distribution</a></li>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#normal-model-with-multiple-observations"><i class="fa fa-check"></i>Normal model with multiple observations</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="cross.html"><a href="cross.html#other-standard-single-parameter-models"><i class="fa fa-check"></i><b>3.6</b> Other standard single-parameter models</a>
+<ul>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#normal-distribution-with-known-mean-but-unknown-variance"><i class="fa fa-check"></i>Normal distribution with known mean but unknown variance</a></li>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#poisson-model"><i class="fa fa-check"></i>Poisson model</a></li>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#negative-binomial-distribution"><i class="fa fa-check"></i>Negative Binomial distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="cross.html"><a href="cross.html#exercises-1"><i class="fa fa-check"></i><b>3.7</b> Exercises</a>
+<ul>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#question-1"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#normal-approximation-example"><i class="fa fa-check"></i>Normal approximation example</a></li>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#question-3"><i class="fa fa-check"></i>Question 3</a></li>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#question-4"><i class="fa fa-check"></i>Question 4</a></li>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#question-7"><i class="fa fa-check"></i>Question 7</a></li>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#question-8-normal-distribution-with-unknown-mean"><i class="fa fa-check"></i>Question 8 (Normal distribution with unknown mean)</a></li>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#question-10"><i class="fa fa-check"></i>Question 10</a></li>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#question-11"><i class="fa fa-check"></i>Question 11</a></li>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#question-12"><i class="fa fa-check"></i>Question 12</a></li>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#question-13"><i class="fa fa-check"></i>Question 13</a></li>
+<li class="chapter" data-level="3.7.1" data-path="cross.html"><a href="cross.html#question-21"><i class="fa fa-check"></i><b>3.7.1</b> Question 21</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="chapter-3.html"><a href="chapter-3.html"><i class="fa fa-check"></i><b>4</b> Chapter 3</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="chapter-3.html"><a href="chapter-3.html#question-1-1"><i class="fa fa-check"></i><b>4.1</b> Question 1</a></li>
+<li class="chapter" data-level="" data-path="chapter-3.html"><a href="chapter-3.html#question-2"><i class="fa fa-check"></i>Question 2</a></li>
+<li class="chapter" data-level="" data-path="chapter-3.html"><a href="chapter-3.html#question-3-1"><i class="fa fa-check"></i>Question 3</a></li>
+<li class="chapter" data-level="" data-path="chapter-3.html"><a href="chapter-3.html#question-4-independent-binomial"><i class="fa fa-check"></i>Question 4 (independent binomial)</a>
+<ul>
+<li class="chapter" data-level="" data-path="chapter-3.html"><a href="chapter-3.html#question-4-dirichlet"><i class="fa fa-check"></i>Question 4 (dirichlet)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="chapter-3.html"><a href="chapter-3.html#question-5"><i class="fa fa-check"></i>Question 5</a></li>
+<li class="chapter" data-level="" data-path="chapter-3.html"><a href="chapter-3.html#question-6"><i class="fa fa-check"></i>Question 6</a></li>
+<li class="chapter" data-level="" data-path="chapter-3.html"><a href="chapter-3.html#question-7-1"><i class="fa fa-check"></i>Question 7</a></li>
+<li class="chapter" data-level="" data-path="chapter-3.html"><a href="chapter-3.html#question-8"><i class="fa fa-check"></i>question 8</a></li>
+<li class="chapter" data-level="" data-path="chapter-3.html"><a href="chapter-3.html#question-9"><i class="fa fa-check"></i>question 9</a></li>
+<li class="chapter" data-level="" data-path="chapter-3.html"><a href="chapter-3.html#question-11-1"><i class="fa fa-check"></i>Question 11</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="asymptotics-and-connections-to-non-bayesian-approaches.html"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html"><i class="fa fa-check"></i><b>5</b> Asymptotics and connections to non-Bayesian approaches</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="asymptotics-and-connections-to-non-bayesian-approaches.html"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#normal-approximations-to-the-posterior-distribution"><i class="fa fa-check"></i><b>5.1</b> Normal approximations to the posterior distribution</a>
+<ul>
+<li class="chapter" data-level="" data-path="asymptotics-and-connections-to-non-bayesian-approaches.html"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#summarizing-posterior-distributions-by-point-estimates-and-standard-errors"><i class="fa fa-check"></i>Summarizing posterior distributions by point estimates and standard errors</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="asymptotics-and-connections-to-non-bayesian-approaches.html"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#large-sample-theory"><i class="fa fa-check"></i><b>5.2</b> Large-sample theory</a>
+<ul>
+<li class="chapter" data-level="" data-path="asymptotics-and-connections-to-non-bayesian-approaches.html"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#asymptotic-normality-and-consistency"><i class="fa fa-check"></i>Asymptotic normality and consistency</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="frequency-evaluations-of-bayesian-inferences.html"><a href="frequency-evaluations-of-bayesian-inferences.html"><i class="fa fa-check"></i><b>6</b> Frequency evaluations of Bayesian inferences</a>
+<ul>
+<li class="chapter" data-level="" data-path="frequency-evaluations-of-bayesian-inferences.html"><a href="frequency-evaluations-of-bayesian-inferences.html#large-sample-correspondence"><i class="fa fa-check"></i>Large sample correspondence</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="blocks.html"><a href="blocks.html"><i class="fa fa-check"></i><b>7</b> Blocks</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="blocks.html"><a href="blocks.html#equations"><i class="fa fa-check"></i><b>7.1</b> Equations</a></li>
+<li class="chapter" data-level="7.2" data-path="blocks.html"><a href="blocks.html#theorems-and-proofs"><i class="fa fa-check"></i><b>7.2</b> Theorems and proofs</a></li>
+<li class="chapter" data-level="7.3" data-path="blocks.html"><a href="blocks.html#callout-blocks"><i class="fa fa-check"></i><b>7.3</b> Callout blocks</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="sharing-your-book.html"><a href="sharing-your-book.html"><i class="fa fa-check"></i><b>8</b> Sharing your book</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="sharing-your-book.html"><a href="sharing-your-book.html#publishing"><i class="fa fa-check"></i><b>8.1</b> Publishing</a></li>
+<li class="chapter" data-level="8.2" data-path="sharing-your-book.html"><a href="sharing-your-book.html#pages"><i class="fa fa-check"></i><b>8.2</b> 404 pages</a></li>
+<li class="chapter" data-level="8.3" data-path="sharing-your-book.html"><a href="sharing-your-book.html#metadata-for-sharing"><i class="fa fa-check"></i><b>8.3</b> Metadata for sharing</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="9" data-path="parts.html"><a href="parts.html"><i class="fa fa-check"></i><b>9</b> Parts</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Bayesian Data Analysis</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="frequency-evaluations-of-bayesian-inferences" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Chapter 6</span> Frequency evaluations of Bayesian inferences<a href="frequency-evaluations-of-bayesian-inferences.html#frequency-evaluations-of-bayesian-inferences" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>The notion of <em>stable estimation</em> which says that for a fixed model, the posterior approaches a point as more data arrive, leading , in the limit, to inferential certainty, is based on the concepts of repeated sampling. It is certainly appealing that if the hypothesized family of probability models contain the true distribution, then as more information about <span class="math inline">\(\theta\)</span> arrives, the posterior distribution converges to the true value of <span class="math inline">\(\theta\)</span>.</p>
+<div id="large-sample-correspondence" class="section level2 unnumbered hasAnchor">
+<h2>Large sample correspondence<a href="frequency-evaluations-of-bayesian-inferences.html#large-sample-correspondence" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Suppose that the normal approximation holds <a href="asymptotics-and-connections-to-non-bayesian-approaches.html#eq:normalapprox">(5.2)</a> for the posterior distribution for <span class="math inline">\(\theta\)</span>, then we can transform to the <em>standard</em> normal multivariate normal</p>
+<p><span class="math display" id="eq:standardmultivariateapprox">\[\begin{equation}
+[I(\hat{\theta})]^{1/2}(\theta-\hat{\theta}) |y \sim N(0,I)
+\tag{6.1}
+\end{equation}\]</span></p>
+<p>Where <span class="math inline">\(\hat{\theta}\)</span> is the posterior mode and <span class="math inline">\([I(\hat{\theta})]^{1/2}\)</span> is any matrix square root of the observed fisher information. In addition to <span class="math inline">\(\hat{\theta}\to \theta_0\)</span> we can write the approximation using I(<span class="math inline">\(\theta_0\)</span>). If the true data distribution is included in the class of models, so that <span class="math inline">\(f(y)= p(y|\theta)\)</span>, then under <em>repeated sampling</em> with fixed <span class="math inline">\(\theta\)</span>, as <span class="math inline">\(n \to \infty\)</span> then</p>
+<p><span class="math display" id="eq:classical">\[\begin{equation}
+[I(\hat{\theta})]^{1/2}(\theta-\hat{\theta}) |\theta \sim N(0,I)
+\tag{6.2}
+\end{equation}\]</span></p>
+<p>This is generally proven for the MLE, but can be extended for the posterior mode <span class="math inline">\(\hat{\theta}\)</span>. This results suggest that for any function (<span class="math inline">\(\theta-\hat{\theta})\)</span> the posterior distribution derived from @(eq:standardmultivariateapprox) is asymptotically the same as the repeated sampling distribution from @(eq:classical). Thus for a <span class="math inline">\(95\%\)</span> central posterior interval for <span class="math inline">\(\theta\)</span> will cover the true value 95<span class="math inline">\(\%\)</span> of the time under repeated sampling with any fixed true <span class="math inline">\(\theta.\)</span></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="asymptotics-and-connections-to-non-bayesian-approaches.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="blocks.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/04-Asymptotics-and-connections-to-nonBayesian-approaches.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

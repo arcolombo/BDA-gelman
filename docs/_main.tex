@@ -117,7 +117,7 @@
 
 \title{Bayesian Data Analysis}
 \author{Anthony R. Colombo, Dr.~Paul Marjoram}
-\date{2022-07-28}
+\date{2022-08-06}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -715,7 +715,7 @@ Then the probability that at least 1 election is tied, from 435 total elections 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 8.455703
+## [1] 7.361662
 \end{verbatim}
 
 \begin{Shaded}
@@ -725,7 +725,7 @@ Then the probability that at least 1 election is tied, from 435 total elections 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 40
+## [1] 33
 \end{verbatim}
 
 \begin{Shaded}
@@ -1188,7 +1188,7 @@ We find the probability distribution of a given success and the prior probabilit
 
 \begin{verbatim}
 ##       5%      25%      50%      75%      95% 
-## 137.7032 155.4156 166.0182 176.9432 193.5777
+## 142.6087 156.2120 166.4177 177.7924 194.6735
 \end{verbatim}
 
 \begin{Shaded}
@@ -1548,7 +1548,7 @@ Suppose there are N cable cars numbered sequentially 1 to N. You see a car at ra
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 278.658
+## [1] 278.5315
 \end{verbatim}
 
 \begin{Shaded}
@@ -1558,7 +1558,7 @@ Suppose there are N cable cars numbered sequentially 1 to N. You see a car at ra
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 79.64794
+## [1] 79.4986
 \end{verbatim}
 
 \begin{itemize}
@@ -1670,8 +1670,8 @@ for the likelihood \(L(\theta | y) = \prod_{i=1}^n f(y_i|\theta)\) requires the 
 \end{Shaded}
 
 \begin{verbatim}
-##       Min.    1st Qu.     Median       Mean    3rd Qu.       Max. 
-## -1144.2863    -0.5092     0.5992    -0.6647     1.5431   230.2556
+##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+##  -104.209    -0.475     0.517    18.466     1.526 17275.538
 \end{verbatim}
 
 \begin{Shaded}
@@ -1694,7 +1694,7 @@ for the likelihood \(L(\theta | y) = \prod_{i=1}^n f(y_i|\theta)\) requires the 
 \end{Shaded}
 
 \begin{verbatim}
-## max pred. prob 0.525
+## max pred. prob 0.52
 \end{verbatim}
 
 \hypertarget{question-12}{%
@@ -1894,7 +1894,7 @@ The true observed value for 1986 is 22 fatal accidents.
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##    8.00   20.00   24.00   23.83   27.00   46.00
+##    7.00   20.00   24.00   23.82   27.00   47.00
 \end{verbatim}
 
 \begin{Shaded}
@@ -1919,7 +1919,7 @@ The true observed value for 1986 is 22 fatal accidents.
 
 \begin{verbatim}
 ##  2.5% 97.5% 
-##    15    34
+##    14    35
 \end{verbatim}
 
 From the gamma posterior \(E(\theta | y) = 238.5/10.02=24.25\) and the variance \(V(\theta|y)= 238.5/10.02^2=2.87\). From the Poisson likelihood \(E(x|\theta)=\theta\) and \(V(x|\theta)=\theta\). \(V(x|y)= E(V(x|\theta,y) | y) + V(E(x|\theta,y)|y)= E(\theta| y)+ V(\theta|y) = 23.382+2.87= 26.252\)
@@ -1956,7 +1956,7 @@ The average predictive value from 1986 is 24.3 which is close to the true value 
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.7021 20.7841 24.2854 24.2717 27.7413 46.9614
+##   1.201  20.816  24.257  24.259  27.712  44.912
 \end{verbatim}
 
 \begin{Shaded}
@@ -1981,7 +1981,7 @@ The average predictive value from 1986 is 24.3 which is close to the true value 
 
 \begin{verbatim}
 ##     2.5%    97.5% 
-## 14.26913 34.37753
+## 14.24733 34.24536
 \end{verbatim}
 
 \begin{Shaded}
@@ -1991,7 +1991,7 @@ The average predictive value from 1986 is 24.3 which is close to the true value 
 \end{Shaded}
 
 \begin{verbatim}
-## average predictive value from posterior:23.8282
+## average predictive value from posterior:23.8201
 \end{verbatim}
 
 \begin{itemize}
@@ -2154,7 +2154,7 @@ We can also use the normal approximation, but the equations for the mean and var
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 22 46
+## [1] 21 46
 \end{verbatim}
 
 \begin{Shaded}
@@ -2296,7 +2296,7 @@ which is not the expected prediction of 546 passenger deaths. This is likely bec
 
 \begin{verbatim}
 ##    2.5%   97.5% 
-## 635.975 748.025
+## 636.000 745.025
 \end{verbatim}
 
 \begin{Shaded}
@@ -2314,7 +2314,7 @@ which is not the expected prediction of 546 passenger deaths. This is likely bec
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##     592     672     692     691     709     782
+##   603.0   673.0   691.0   690.2   708.0   776.0
 \end{verbatim}
 
 \begin{Shaded}
@@ -2341,7 +2341,7 @@ which is not the expected prediction of 546 passenger deaths. This is likely bec
 
 \begin{verbatim}
 ##    2.5%   97.5% 
-## 638.000 746.025
+## 635.975 740.050
 \end{verbatim}
 
 \begin{itemize}
@@ -2430,7 +2430,7 @@ Note we used Jeffreys' prior here, but an empirical prior is okay
 \end{Shaded}
 
 \begin{verbatim}
-## [1]  910 1038
+## [1]  905 1033
 \end{verbatim}
 
 \hypertarget{question-21}{%
@@ -2928,7 +2928,7 @@ There was a 0.355 probability of a shift toward Bush after both debates.
 \begin{verbatim}
 ## 
 ## FALSE  TRUE 
-##   600   400
+##   625   375
 \end{verbatim}
 
 \begin{Shaded}
@@ -3015,8 +3015,8 @@ we are given two independent normal random variables with unknown variances and 
 \end{Shaded}
 
 \begin{verbatim}
-##     2.5%    97.5% 
-## 0.924057 1.103411
+##      2.5%     97.5% 
+## 0.9324778 1.0964109
 \end{verbatim}
 
 \begin{Shaded}
@@ -3027,7 +3027,7 @@ we are given two independent normal random variables with unknown variances and 
 
 \begin{verbatim}
 ##     2.5%    97.5% 
-## 1.094022 1.246951
+## 1.089871 1.258103
 \end{verbatim}
 
 \begin{itemize}
@@ -3059,7 +3059,7 @@ The posterior interval (central) of the differences between 2 independent t-dist
 
 \begin{verbatim}
 ##       2.5%      97.5% 
-## 0.03951631 0.27426186
+## 0.04396584 0.27840148
 \end{verbatim}
 
 \begin{Shaded}
@@ -3080,7 +3080,7 @@ The posterior interval (central) of the differences between 2 independent t-dist
 
 \begin{verbatim}
 ##       2.5%      97.5% 
-## 0.04738272 0.27202218
+## 0.04872843 0.26896590
 \end{verbatim}
 
 \begin{Shaded}
@@ -3163,7 +3163,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.2427  0.4473  0.5505  0.5630  0.6570  1.4225
+##  0.2218  0.4430  0.5299  0.5502  0.6286  1.2669
 \end{verbatim}
 
 \begin{Shaded}
@@ -3209,7 +3209,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.1761  0.4454  0.5449  0.5622  0.6512  1.3936
+##  0.2198  0.4589  0.5521  0.5728  0.6590  1.3095
 \end{verbatim}
 
 \hypertarget{question-4-dirichlet}{%
@@ -3280,7 +3280,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.1803  0.4636  0.5625  0.5829  0.6812  1.3437
+##  0.1950  0.4753  0.5670  0.5858  0.6765  1.3280
 \end{verbatim}
 
 \begin{Shaded}
@@ -3318,7 +3318,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.2473  0.4576  0.5476  0.5674  0.6575  1.1169
+##  0.2002  0.4685  0.5606  0.5800  0.6684  1.2065
 \end{verbatim}
 
 \begin{Shaded}
@@ -3345,7 +3345,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.2844  0.5098  0.5666  0.5736  0.6353  0.9035
+##  0.3470  0.5090  0.5670  0.5736  0.6301  0.9388
 \end{verbatim}
 
 \hypertarget{question-5}{%
@@ -3386,7 +3386,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   6.170   9.418  10.399  10.419  11.367  15.095
+##   6.401   9.477  10.312  10.377  11.254  15.935
 \end{verbatim}
 
 \begin{Shaded}
@@ -3396,7 +3396,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 10.41947
+## [1] 10.37697
 \end{verbatim}
 
 \begin{Shaded}
@@ -3406,7 +3406,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 2.119917
+## [1] 1.916476
 \end{verbatim}
 
 \begin{Shaded}
@@ -3468,7 +3468,7 @@ The difference in means is approximately 0, with a variance (residual) of 2.7.
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.0216562
+## [1] 0.03637838
 \end{verbatim}
 
 \begin{Shaded}
@@ -3478,7 +3478,7 @@ The difference in means is approximately 0, with a variance (residual) of 2.7.
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 2.77225
+## [1] 2.401808
 \end{verbatim}
 
 \begin{Shaded}
@@ -3538,7 +3538,7 @@ For this we sample from the normal posterior distribution, conditioned on the ro
 \end{Shaded}
 
 \begin{verbatim}
-## mean error:0.13018527506787
+## mean error:0.137738333009513
 \end{verbatim}
 
 \begin{Shaded}
@@ -4012,23 +4012,140 @@ the model is defined as \(p(\alpha,\beta,y,n,x) \propto p(\alpha,\beta)\prod_{i=
 ## 1000
 \end{verbatim}
 
-\hypertarget{footnotes-and-citations}{%
-\chapter{Footnotes and citations}\label{footnotes-and-citations}}
+\hypertarget{asymptotics-and-connections-to-non-bayesian-approaches}{%
+\chapter{Asymptotics and connections to non-Bayesian approaches}\label{asymptotics-and-connections-to-non-bayesian-approaches}}
 
-\hypertarget{footnotes}{%
-\section{Footnotes}\label{footnotes}}
+\hypertarget{normal-approximations-to-the-posterior-distribution}{%
+\section{Normal approximations to the posterior distribution}\label{normal-approximations-to-the-posterior-distribution}}
 
-Footnotes are put inside the square brackets after a caret \texttt{\^{}{[}{]}}. Like this one \footnote{This is a footnote.}.
+If the posterior distribution is unimodal and roughly symmetric, it can be approximated by a normal distribution, such that the logarithm of the posterior density is approximated by a quadratic function via the Taylor series expansion of \(\theta\).
 
-\hypertarget{citations}{%
-\section{Citations}\label{citations}}
+Consider a quadratic approximation to the log-posterior centered on the posterior mode. where the linear term goes to 0.
 
-Reference items in your bibliography file(s) using \texttt{@key}.
+\begin{equation}
+log p(\theta|y) = log p(\hat{\theta|y}) + (1/2)(\theta-\hat{\theta)})^T[ d^2/d\theta^2 log p(\theta|y)]_{\theta=\hat{\theta}}+...
+\label{eq:logdensityquadratic}
+\end{equation}
 
-For example, we are using the \textbf{bookdown} package \citep{R-bookdown} (check out the last code chunk in index.Rmd to see how this citation key was added) in this sample book, which was built on top of R Markdown and \textbf{knitr} \citep{xie2015} (this citation was added manually in an external file book.bib).
-Note that the \texttt{.bib} files need to be listed in the index.Rmd with the YAML \texttt{bibliography} key.
+The first term is a constant and the second term is proportional to the normal density yielding the approximation and we can expand the posterior density second derivative in terms of the prior and likelihood.
 
-The RStudio Visual Markdown Editor can also make it easier to insert citations: \url{https://rstudio.github.io/visual-markdown-editing/\#/citations}
+\begin{equation}
+[d^2/d\theta^2 log p(\theta|y)]_{\theta=\hat{\theta}} =[d^2/d\theta^2log p(\theta)]_{\theta=\hat{\theta}}+\sum_{i=1}^n[d^2/d\theta^2log p(y_i|\theta)]_{\theta=\hat{\theta}}
+\end{equation}
+
+Now to show the normal approximation
+
+\[
+ \begin{aligned}
+log p(\theta|y) &= log p(\hat{\theta|y}) + (1/2)(\theta-\hat{\theta)})^T[ d^2/d\theta^2 log p(\theta|y)]_{\theta=\hat{\theta}}+... \\
+ &= log p(\hat{\theta|y}) + (1/2)(\theta-\hat{\theta)})^T ( d^2/d\theta^2 log p(\hat{\theta}) + \sum_{i=1}^n d^2/d\theta^2 log p(y_i | \theta)_{\theta=\hat{\theta}} ) \\
+ log p(\theta|y)  - log p(\hat{\theta|y}) &= + (1/2)(\theta-\hat{\theta)})^T (c  -n* J(\theta_0)) \\
+  p(\theta|y ) - p(\hat{\theta}|y) &\propto exp( -\frac{1}{2(nJ(\theta_0))^{-1}}(\theta-\hat{\theta})^T)
+ \end{aligned}
+\]
+Which taking the limit as \(|\theta -\hat{\theta}| \to 0\), then the posterior converges to 0 written as \(p(\theta|y )- p(\hat{\theta}|y) \to 0\) as \(n \to \infty\), and we have normality.
+
+In discussing large-sample periorties, the concept of Fisher Information , \(J(\theta)\), in the context of Jeffreys' prior is used.
+
+\begin{equation}
+p(\theta|y) \approx N(\hat{\theta}, [I(\hat{\theta})]^{-1})
+\label{eq:normalapprox}
+\end{equation}
+
+Where I(\(\theta)\) is the \emph{observed information}
+\begin{equation}
+I(\theta)= -d^2/d\theta^2 log p(\theta|y) 
+\end{equation}
+
+Where is the mode \(\hat{\theta}\) is in the interior of the parameter space, then the information is positive definite.
+
+\hypertarget{summarizing-posterior-distributions-by-point-estimates-and-standard-errors}{%
+\subsection*{Summarizing posterior distributions by point estimates and standard errors}\label{summarizing-posterior-distributions-by-point-estimates-and-standard-errors}}
+\addcontentsline{toc}{subsection}{Summarizing posterior distributions by point estimates and standard errors}
+
+From the asymptotic theory, if n is large enough, a posterior distribution is approximated by the normal distribution. A standard inferential summary is the 95\(\%\) interval obtained by computing a point estimate \(\hat{\theta}\) such as the MLE (which is the posterior under a uniform prior density), plus or minus two standard errors, with the standard error estimated from the information at the estimate \(I(\hat{\theta})\).
+
+\hypertarget{large-sample-theory}{%
+\section{Large-sample theory}\label{large-sample-theory}}
+
+The basic tool of Bayesian inference is asymptotic normality of the posterior distribution, as more data arrive from the same underlying process, the posterior distribution of the parameter vector approaches multivariate normality. Suppose the data are modeled by a parametric family, \(p(y|\theta)\), and a prior p\((\theta)\), and suppose that the true distribution is included in the parametric family (i.e.~if \(f(y) = p(y|\theta_0))\) then the property of asymptotic normality and \emph{consistency} holds.
+
+Consistency is defined as the posterior distribution converges to a point mass at the true parameter, \(\theta_0\) as n\(\to \infty\).
+
+Note, that if the true distribution is not included in the parametric family, then there is no longer a true parameter to converge to. One must use the \emph{Kullback-Leibler divergence} to determine the value \(\theta_0\) that makes the model distribution closest to the true distribution.
+
+\hypertarget{asymptotic-normality-and-consistency}{%
+\subsection*{Asymptotic normality and consistency}\label{asymptotic-normality-and-consistency}}
+\addcontentsline{toc}{subsection}{Asymptotic normality and consistency}
+
+Under regularity conditions ( the likelihood is a continuous function of \(\theta\), and that \(\theta_0\) is not a boundary point), as \(n\to \infty\), the posterior distribution of \(\theta\) approaches normality with mean \(\theta_0\) and variance (\(nJ(\theta_0))^{-1}. Where J(\)\theta)\$ is the \emph{FIsher information} in context fo Jeffreys' Prior.
+
+The posterior mode is consistent for \(\theta_0\), as \(n\to \infty\), so the mass of the posterior \(p(\theta|y)\) becomes concentrated in small neighborhoods of \(\theta_0\) and the distance of \(|\theta-\theta_0|\to 0\).
+
+Further, we can write the coefficient of the quadratic term in \eqref{eq:logdensityquadratic}.
+\begin{equation}
+[d^2/d\theta^2 log p(\theta|y)]_{\theta=\hat{\theta}} =[d^2/d\theta^2log p(\theta)]_{\theta=\hat{\theta}}+\sum_{i=1}^n[d^2/d\theta^2log p(y_i|\theta)]_{\theta=\hat{\theta}}
+\end{equation}
+
+This is considered a function of \(\theta\), as a constant term plus the sum of n terms whose expected value under the true sampling distribution \(p(y_i|\theta_0\))., is approximately \(-J(\theta_0)\), assuming \(\hat{\theta}\) is close to \(\theta\).
+
+In summary, as the limit of n, in the context of a family of models posterior mode, \(\hat{\theta}\), approaches the truth \(\theta_0\), and the curvature approaches \(nJ(\hat{\theta})\) or nJ(\(\theta_0\)). Interesting, as \(n\to\infty\) the prior term is a constant, and the likelihood dominates the posterior because the likelihood alone is used to obtain the mode and curvature for the normal approximation.
+
+\hypertarget{frequency-evaluations-of-bayesian-inferences}{%
+\section{Frequency evaluations of Bayesian inferences}\label{frequency-evaluations-of-bayesian-inferences}}
+
+The notion of \emph{stable estimation} which says that for a fixed model, the posterior approaches a point as more data arrive, leading , in the limit, to inferential certainty, is based on the concepts of repeated sampling. It is certainly appealing that if the hypothesized family of probability models contain the true distribution, then as more information about \(\theta\) arrives, the posterior distribution converges to the true value of \(\theta\).
+
+\hypertarget{large-sample-correspondence}{%
+\subsection*{Large sample correspondence}\label{large-sample-correspondence}}
+\addcontentsline{toc}{subsection}{Large sample correspondence}
+
+Suppose that the normal approximation holds \eqref{eq:normalapprox} for the posterior distribution for \(\theta\), then we can transform to the \emph{standard} normal multivariate normal
+
+\begin{equation}
+[I(\hat{\theta})]^{1/2}(\theta-\hat{\theta}) |y \sim N(0,I)
+\label{eq:standardmultivariateapprox}
+\end{equation}
+
+Where \(\hat{\theta}\) is the posterior mode and \([I(\hat{\theta})]^{1/2}\) is any matrix square root of the observed fisher information. In addition to \(\hat{\theta}\to \theta_0\) we can write the approximation using I(\(\theta_0\)). If the true data distribution is included in the class of models, so that \(f(y)= p(y|\theta)\), then under \emph{repeated sampling} with fixed \(\theta\), as \(n \to \infty\) then
+
+\begin{equation}
+[I(\hat{\theta})]^{1/2}(\theta-\hat{\theta}) |\theta \sim N(0,I)
+\label{eq:classical}
+\end{equation}
+
+This is generally proven for the MLE, but can be extended for the posterior mode \(\hat{\theta}\). This results suggest that for any function (\(\theta-\hat{\theta})\) the posterior distribution derived from \eqref{eq:standardmultivariateapprox} is asymptotically the same as the repeated sampling distribution from \eqref{eq:classical}. Thus for a \(95\%\) central posterior interval for \(\theta\) will cover the true value 95\(\%\) of the time under repeated sampling with any fixed true \(\theta.\)
+
+\hypertarget{point-estimation-consistency-and-efficiency}{%
+\subsection*{Point estimation, consistency, and efficiency}\label{point-estimation-consistency-and-efficiency}}
+\addcontentsline{toc}{subsection}{Point estimation, consistency, and efficiency}
+
+For large samples, obtaining an estimate- makes most sense when the posterior mode \(\hat{\theta}\) is the obvious center and the \(nI(\theta_0\)) is small and practically unimportant. However in smaller samples, one can define optimal point estimates, but it is better to show the full representation of the full posterior distribution. In most problems, the point estimate and the standard error are adequate to summarize the posterior inference. We interpret the estimate as an inferential summary, not as a decision solution / classification.
+
+A point estimate is said to be \emph{consistent} as the samples get larger, it converges to the true value parameter. Thus if \(f(y)=p(y|\theta_0)\), then a point estimate \(\hat{\theta}\) of \(\theta\) is consistent if its sampling distribution converges to a point mass at \(\theta_0\) for \(n\to \infty\).
+
+\emph{Asymptotic unbiasedness} is defined as \((E(\hat{\theta}|\theta_0 - \theta_0))/sd(\hat{\theta}|\theta_0)\) converges to 0 as sample size increases.
+
+\emph{Efficiency} for a point estimate is if there is no other function of y that estimates \(\theta\) with lower mean squared error, that is if the expression E((\(\hat{\theta}-\theta_0)^2|\theta_0)\) is at its optiomal lowest value. An estimate is asymptotically efficient if its efficiency approaches 1 as the sample size n, increases to infinity.
+
+\hypertarget{confidence-coverage}{%
+\subsection*{Confidence coverage}\label{confidence-coverage}}
+\addcontentsline{toc}{subsection}{Confidence coverage}
+
+If a region C(y) includes \(\theta_0\) at least 100(\(1-\alpha)\%\) of the time, then C(y) is called the 100(\(1-\alpha)\%\) \emph{confidence region} for parameter \(\theta\). We saw previously that asymptotically a 100(\(1-\alpha)\%\) central posterior interval for \(\theta\) has the property that , in repeated samples of y, 100(\(1-\alpha)\%\) of the intervals include \(\theta_0\).
+
+\hypertarget{exercises-3}{%
+\section{Exercises}\label{exercises-3}}
+
+\hypertarget{question-1-2}{%
+\subsection*{Question 1}\label{question-1-2}}
+\addcontentsline{toc}{subsection}{Question 1}
+
+\begin{itemize}
+\tightlist
+\item
+  a using simple calculus we found l' = \(\frac{\sum_{i=1}^5(y_i-\theta)}{1+(y_i-\theta)^2}\) and l'\,' = \(\frac{-2}{(1+(y_i-\theta)^2)^2}\)
+\end{itemize}
 
 \hypertarget{blocks}{%
 \chapter{Blocks}\label{blocks}}
