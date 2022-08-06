@@ -37,5 +37,8 @@ $$
 Where is the mode $\hat{\theta}$ is in the interior of the parameter space, then the information is positive definite.
 
 
-## Summarizing posterior distributions by point estimates and standard errors{-}
+### Summarizing posterior distributions by point estimates and standard errors{-}
 From the asymptotic theory, if n is large enough, a posterior distribution is approximated by the normal distribution.   In frequentist approaches, the 95$\%$ interval is computed using the MLE, which is the posterior mode under the uniform prior, with $\pm$ 2 standard errors estimated from the information $I(\hat{\theta})$.
+
+
+## Large-sample theory
