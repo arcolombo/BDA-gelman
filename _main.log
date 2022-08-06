@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.7.28)  6 AUG 2022 08:38
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.7.28)  6 AUG 2022 14:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1528,40 +1528,70 @@ Overfull \hbox (84.64453pt too wide) has occurred while \output is active
 ON-BAYESIAN APPROACHES
  []
 
-[104] [105]
+[104]
+Underfull \hbox (badness 3536) in paragraph at lines 4147--4148
+[]\TU/lmr/m/n/10 a using simple calculus we found l’ = $[]$ and l’’ =
+ []
+
+[105]
+Overfull \hbox (90.28807pt too wide) detected at line 4221
+[][]
+ []
+
+File: _main_files/figure-latex/unnamed-chunk-52-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-52-1.pdf>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 Overfull \hbox (84.64453pt too wide) has occurred while \output is active
 \TU/lmr/m/n/10 106 \TU/lmr/m/sl/10 CHAPTER 4.  ASYMPTOTICS AND CONNECTIONS TO N
 ON-BAYESIAN APPROACHES
  []
 
-[106
+[106]
+File: _main_files/figure-latex/unnamed-chunk-53-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-53-1.pdf>
 
-]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[107]
+File: _main_files/figure-latex/unnamed-chunk-53-2.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-53-2.pdf>
+
+Overfull \hbox (84.64453pt too wide) has occurred while \output is active
+\TU/lmr/m/n/10 108 \TU/lmr/m/sl/10 CHAPTER 4.  ASYMPTOTICS AND CONNECTIONS TO N
+ON-BAYESIAN APPROACHES
+ []
+
+[108]
 Chapter 5.
-[107] [108
+[109
+
+] [110
 
 ]
 Chapter 6.
-[109] [110]
+[111] [112]
 Chapter 7.
 
-Underfull \hbox (badness 1924) in paragraph at lines 4224--4225
+Underfull \hbox (badness 1924) in paragraph at lines 4349--4350
 []\TU/lmr/m/n/10 Add an unnumbered part: \TU/lmtt/m/n/10 # (PART\*) Act one {-}
  \TU/lmr/m/n/10 (followed by \TU/lmtt/m/n/10 # A
  []
 
-(./_main.bbl [111
+(./_main.bbl [113
 
-] [112
+] [114
 
-]) [113] (./_main.aux) ) 
+]) [115] (./_main.aux) ) 
 Here is how much of TeX's memory you used:
- 20009 strings out of 475865
- 380505 string characters out of 5805584
- 870279 words of memory out of 5000000
- 40720 multiletter control sequences out of 15000+600000
+ 20033 strings out of 475865
+ 381711 string characters out of 5805584
+ 869279 words of memory out of 5000000
+ 40741 multiletter control sequences out of 15000+600000
  475766 words of font info for 88 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  86i,15n,121p,1002b,493s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on _main.pdf (113 pages).
+Output written on _main.pdf (115 pages).

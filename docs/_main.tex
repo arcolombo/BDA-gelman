@@ -715,7 +715,7 @@ Then the probability that at least 1 election is tied, from 435 total elections 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 7.361662
+## [1] 7.45515
 \end{verbatim}
 
 \begin{Shaded}
@@ -725,7 +725,7 @@ Then the probability that at least 1 election is tied, from 435 total elections 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 33
+## [1] 38
 \end{verbatim}
 
 \begin{Shaded}
@@ -1188,7 +1188,7 @@ We find the probability distribution of a given success and the prior probabilit
 
 \begin{verbatim}
 ##       5%      25%      50%      75%      95% 
-## 142.6087 156.2120 166.4177 177.7924 194.6735
+## 137.7478 154.7458 165.9915 177.9288 192.1539
 \end{verbatim}
 
 \begin{Shaded}
@@ -1548,7 +1548,7 @@ Suppose there are N cable cars numbered sequentially 1 to N. You see a car at ra
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 278.5315
+## [1] 280.4593
 \end{verbatim}
 
 \begin{Shaded}
@@ -1558,7 +1558,7 @@ Suppose there are N cable cars numbered sequentially 1 to N. You see a car at ra
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 79.4986
+## [1] 80.23629
 \end{verbatim}
 
 \begin{itemize}
@@ -1671,7 +1671,7 @@ for the likelihood \(L(\theta | y) = \prod_{i=1}^n f(y_i|\theta)\) requires the 
 
 \begin{verbatim}
 ##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
-##  -104.209    -0.475     0.517    18.466     1.526 17275.538
+## -644.1814   -0.3986    0.5625    0.3833    1.5679  327.1905
 \end{verbatim}
 
 \begin{Shaded}
@@ -1694,7 +1694,7 @@ for the likelihood \(L(\theta | y) = \prod_{i=1}^n f(y_i|\theta)\) requires the 
 \end{Shaded}
 
 \begin{verbatim}
-## max pred. prob 0.52
+## max pred. prob 0.522
 \end{verbatim}
 
 \hypertarget{question-12}{%
@@ -1894,7 +1894,7 @@ The true observed value for 1986 is 22 fatal accidents.
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##    7.00   20.00   24.00   23.82   27.00   47.00
+##    8.00   20.00   24.00   23.84   27.00   44.00
 \end{verbatim}
 
 \begin{Shaded}
@@ -1919,7 +1919,7 @@ The true observed value for 1986 is 22 fatal accidents.
 
 \begin{verbatim}
 ##  2.5% 97.5% 
-##    14    35
+##    14    34
 \end{verbatim}
 
 From the gamma posterior \(E(\theta | y) = 238.5/10.02=24.25\) and the variance \(V(\theta|y)= 238.5/10.02^2=2.87\). From the Poisson likelihood \(E(x|\theta)=\theta\) and \(V(x|\theta)=\theta\). \(V(x|y)= E(V(x|\theta,y) | y) + V(E(x|\theta,y)|y)= E(\theta| y)+ V(\theta|y) = 23.382+2.87= 26.252\)
@@ -1956,7 +1956,7 @@ The average predictive value from 1986 is 24.3 which is close to the true value 
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   1.201  20.816  24.257  24.259  27.712  44.912
+##   3.911  20.786  24.263  24.250  27.687  46.522
 \end{verbatim}
 
 \begin{Shaded}
@@ -1981,7 +1981,7 @@ The average predictive value from 1986 is 24.3 which is close to the true value 
 
 \begin{verbatim}
 ##     2.5%    97.5% 
-## 14.24733 34.24536
+## 14.27819 34.28750
 \end{verbatim}
 
 \begin{Shaded}
@@ -1991,7 +1991,7 @@ The average predictive value from 1986 is 24.3 which is close to the true value 
 \end{Shaded}
 
 \begin{verbatim}
-## average predictive value from posterior:23.8201
+## average predictive value from posterior:23.8393
 \end{verbatim}
 
 \begin{itemize}
@@ -2154,7 +2154,7 @@ We can also use the normal approximation, but the equations for the mean and var
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 21 46
+## [1] 22 46
 \end{verbatim}
 
 \begin{Shaded}
@@ -2296,7 +2296,7 @@ which is not the expected prediction of 546 passenger deaths. This is likely bec
 
 \begin{verbatim}
 ##    2.5%   97.5% 
-## 636.000 745.025
+## 635.950 745.025
 \end{verbatim}
 
 \begin{Shaded}
@@ -2314,7 +2314,7 @@ which is not the expected prediction of 546 passenger deaths. This is likely bec
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   603.0   673.0   691.0   690.2   708.0   776.0
+##   589.0   673.0   692.0   691.3   710.0   775.0
 \end{verbatim}
 
 \begin{Shaded}
@@ -2341,7 +2341,7 @@ which is not the expected prediction of 546 passenger deaths. This is likely bec
 
 \begin{verbatim}
 ##    2.5%   97.5% 
-## 635.975 740.050
+## 634.975 746.000
 \end{verbatim}
 
 \begin{itemize}
@@ -2430,7 +2430,7 @@ Note we used Jeffreys' prior here, but an empirical prior is okay
 \end{Shaded}
 
 \begin{verbatim}
-## [1]  905 1033
+## [1]  903 1038
 \end{verbatim}
 
 \hypertarget{question-21}{%
@@ -2928,7 +2928,7 @@ There was a 0.355 probability of a shift toward Bush after both debates.
 \begin{verbatim}
 ## 
 ## FALSE  TRUE 
-##   625   375
+##   626   374
 \end{verbatim}
 
 \begin{Shaded}
@@ -3016,7 +3016,7 @@ we are given two independent normal random variables with unknown variances and 
 
 \begin{verbatim}
 ##      2.5%     97.5% 
-## 0.9324778 1.0964109
+## 0.9256516 1.1014201
 \end{verbatim}
 
 \begin{Shaded}
@@ -3027,7 +3027,7 @@ we are given two independent normal random variables with unknown variances and 
 
 \begin{verbatim}
 ##     2.5%    97.5% 
-## 1.089871 1.258103
+## 1.096732 1.254106
 \end{verbatim}
 
 \begin{itemize}
@@ -3059,7 +3059,7 @@ The posterior interval (central) of the differences between 2 independent t-dist
 
 \begin{verbatim}
 ##       2.5%      97.5% 
-## 0.04396584 0.27840148
+## 0.04451754 0.27764959
 \end{verbatim}
 
 \begin{Shaded}
@@ -3080,7 +3080,7 @@ The posterior interval (central) of the differences between 2 independent t-dist
 
 \begin{verbatim}
 ##       2.5%      97.5% 
-## 0.04872843 0.26896590
+## 0.04545757 0.26985927
 \end{verbatim}
 
 \begin{Shaded}
@@ -3163,7 +3163,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.2218  0.4430  0.5299  0.5502  0.6286  1.2669
+##  0.2165  0.4484  0.5337  0.5572  0.6498  1.3678
 \end{verbatim}
 
 \begin{Shaded}
@@ -3209,7 +3209,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.2198  0.4589  0.5521  0.5728  0.6590  1.3095
+##  0.1862  0.4466  0.5447  0.5632  0.6524  1.1846
 \end{verbatim}
 
 \hypertarget{question-4-dirichlet}{%
@@ -3280,7 +3280,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.1950  0.4753  0.5670  0.5858  0.6765  1.3280
+##  0.1829  0.4694  0.5664  0.5862  0.6875  1.4797
 \end{verbatim}
 
 \begin{Shaded}
@@ -3318,7 +3318,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.2002  0.4685  0.5606  0.5800  0.6684  1.2065
+##  0.2503  0.4589  0.5470  0.5712  0.6647  1.2446
 \end{verbatim}
 
 \begin{Shaded}
@@ -3345,7 +3345,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.3470  0.5090  0.5670  0.5736  0.6301  0.9388
+##  0.2987  0.5065  0.5610  0.5696  0.6262  0.9612
 \end{verbatim}
 
 \hypertarget{question-5}{%
@@ -3386,7 +3386,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   6.401   9.477  10.312  10.377  11.254  15.935
+##   6.151   9.426  10.440  10.448  11.342  16.062
 \end{verbatim}
 
 \begin{Shaded}
@@ -3396,7 +3396,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 10.37697
+## [1] 10.44835
 \end{verbatim}
 
 \begin{Shaded}
@@ -3406,7 +3406,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 1.916476
+## [1] 2.149088
 \end{verbatim}
 
 \begin{Shaded}
@@ -3468,7 +3468,7 @@ The difference in means is approximately 0, with a variance (residual) of 2.7.
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.03637838
+## [1] -0.03739709
 \end{verbatim}
 
 \begin{Shaded}
@@ -3478,7 +3478,7 @@ The difference in means is approximately 0, with a variance (residual) of 2.7.
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 2.401808
+## [1] 2.599443
 \end{verbatim}
 
 \begin{Shaded}
@@ -3538,7 +3538,7 @@ For this we sample from the normal posterior distribution, conditioned on the ro
 \end{Shaded}
 
 \begin{verbatim}
-## mean error:0.137738333009513
+## mean error:0.125228397262416
 \end{verbatim}
 
 \begin{Shaded}
@@ -4144,8 +4144,133 @@ If a region C(y) includes \(\theta_0\) at least 100(\(1-\alpha)\%\) of the time,
 \begin{itemize}
 \tightlist
 \item
-  a using simple calculus we found l' = \(\frac{\sum_{i=1}^5(y_i-\theta)}{1+(y_i-\theta)^2}\) and l'\,' = \(\frac{-2}{(1+(y_i-\theta)^2)^2}\)
+  a using simple calculus we found l' = \(\frac{2*\sum_{i=1}^5(y_i-\theta)}{1+(y_i-\theta)^2}\) and l'\,' = \(\frac{-2\sum_{i=1}^5((y_i-\theta)^2-1)}{(1+(y_i-\theta)^2)^2}\)
 \end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mleCauchy}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(x,}\AttributeTok{tolerance=}\FloatTok{0.001}\NormalTok{)\{}
+\NormalTok{  startvalue}\OtherTok{\textless{}{-}}\FunctionTok{median}\NormalTok{(x)}
+\NormalTok{  n}\OtherTok{=}\FunctionTok{length}\NormalTok{(x)}
+\NormalTok{  theta\_current}\OtherTok{\textless{}{-}}\NormalTok{startvalue}
+\NormalTok{  first\_deriv}\OtherTok{\textless{}{-}} \DecValTok{2}\SpecialCharTok{*}\FunctionTok{sum}\NormalTok{((x}\SpecialCharTok{{-}}\NormalTok{theta\_current)}\SpecialCharTok{/}\NormalTok{(}\DecValTok{1}\SpecialCharTok{+}\NormalTok{(x}\SpecialCharTok{{-}}\NormalTok{theta\_current)}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{))}
+  
+  \ControlFlowTok{while}\NormalTok{( }\FunctionTok{abs}\NormalTok{(first\_deriv)}\SpecialCharTok{\textgreater{}}\NormalTok{tolerance)\{}
+\NormalTok{  second\_deriv}\OtherTok{\textless{}{-}} \DecValTok{2}\SpecialCharTok{*}\FunctionTok{sum}\NormalTok{(((x}\SpecialCharTok{{-}}\NormalTok{theta\_current)}\SpecialCharTok{\^{}}\DecValTok{2{-}1}\NormalTok{)}\SpecialCharTok{/}\NormalTok{(}\DecValTok{1}\SpecialCharTok{+}\NormalTok{(x}\SpecialCharTok{{-}}\NormalTok{theta\_current)}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}
+  
+\NormalTok{  theta\_new}\OtherTok{\textless{}{-}}\NormalTok{  theta\_current }\SpecialCharTok{{-}}\NormalTok{ first\_deriv}\SpecialCharTok{/}\NormalTok{second\_deriv}
+\NormalTok{  theta\_current}\OtherTok{\textless{}{-}}\NormalTok{theta\_new}
+\NormalTok{  first\_deriv}\OtherTok{\textless{}{-}} \DecValTok{2}\SpecialCharTok{*}\FunctionTok{sum}\NormalTok{((x}\SpecialCharTok{{-}}\NormalTok{theta\_current)}\SpecialCharTok{/}\NormalTok{(}\DecValTok{1}\SpecialCharTok{+}\NormalTok{(x}\SpecialCharTok{{-}}\NormalTok{theta\_current)}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{))}
+\NormalTok{  \}}
+  \FunctionTok{return}\NormalTok{(theta\_current)}
+\NormalTok{\}}
+\NormalTok{x}\OtherTok{\textless{}{-}}\FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\FloatTok{1.94}\NormalTok{,}\FloatTok{0.59}\NormalTok{,}\SpecialCharTok{{-}}\FloatTok{5.98}\NormalTok{,}\SpecialCharTok{{-}}\FloatTok{0.08}\NormalTok{,}\SpecialCharTok{{-}}\FloatTok{0.77}\NormalTok{)}
+\FunctionTok{mleCauchy}\NormalTok{(x,}\FloatTok{0.0001}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -0.5343968
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  b the MLE for theta is -0.138. Using newton-raphson method for \(\theta^{1} = \theta^0 - l'(\theta^0)/l''(\theta^0)\)
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x}\OtherTok{\textless{}{-}}\FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{2}\NormalTok{,}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\FloatTok{1.5}\NormalTok{,}\FloatTok{2.5}\NormalTok{)}
+\NormalTok{ posterior\_mode}\OtherTok{\textless{}{-}}\FunctionTok{mleCauchy}\NormalTok{(x,}\FloatTok{0.0001}\NormalTok{)}
+ \FunctionTok{print}\NormalTok{(posterior\_mode)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -0.1376488
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+ \DocumentationTok{\#\# optimize function}
+ \FunctionTok{optimize}\NormalTok{(}\ControlFlowTok{function}\NormalTok{(theta) }\SpecialCharTok{{-}}\FunctionTok{sum}\NormalTok{(}\FunctionTok{dcauchy}\NormalTok{(x, }\AttributeTok{location=}\NormalTok{theta, }\AttributeTok{log=}\ConstantTok{TRUE}\NormalTok{)),  }\FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{100}\NormalTok{,}\DecValTok{100}\NormalTok{)) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $minimum
+## [1] -0.1376593
+## 
+## $objective
+## [1] 11.17292
+\end{verbatim}
+
+-c for the normal approximation we use \(p(\hat{\theta}|y)\approx N(\hat{\theta}, nI(\theta_0)^-1)\)
+\[
+\begin{aligned}
+I(\theta) &= E(d/d\theta log p(\theta|y))^2 \\
+ E[ (\frac{2(y-\theta)}{1+(y-\theta)^2})^2] &= \int_{-\infty}^{\infty}(\frac{2(y-\theta)}{1+(y-\theta)^2})^2 \frac{1}{1+(y-\theta)^2}d\theta\\
+ &= 8 \int_{0}^{\infty} \frac{u^2}{(1+u^2)^2}du,  u= y-\theta,  du = -d\theta\\
+& \text{2nd substitution  } x=\frac{1}{1+u^2} \implies u^2=\frac{1}{x}-1 , du=(1/2)(1/x-1)^{-1/2}(-1/x^2)dx\\
+ & = -4 \int (1-x)x^2 [1/2 (\frac{1}{x}-1)^{-1/2}(-1/x^2) dx] \\
+ &2 \int_0^\infty (1-x) (1/x -1)^{-1/2} dx \\
+ & 2 \int_0^\infty x^{1/2}(1-x)^{1/2} \sim Beta(\alpha=3/2, \beta = 3/2)\\
+ I(\theta)& = \frac{ 4 \Gamma(3/2)\Gamma(3/2)}{\Gamma(3)} \approx 1.5708
+\end{aligned}
+\]
+\(p(\theta| y) \approx N(\hat{\theta}, \sigma^2 = 1/(n*I(\theta)))\)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# need to derived the Fisher information for Cauchy}
+\NormalTok{   fishers.n}\OtherTok{\textless{}{-}}\NormalTok{(}\DecValTok{4}\SpecialCharTok{*}\FunctionTok{gamma}\NormalTok{(}\DecValTok{3}\SpecialCharTok{/}\DecValTok{2}\NormalTok{)}\SpecialCharTok{*}\FunctionTok{gamma}\NormalTok{(}\DecValTok{3}\SpecialCharTok{/}\DecValTok{2}\NormalTok{)}\SpecialCharTok{/}\NormalTok{(}\FunctionTok{gamma}\NormalTok{(}\DecValTok{3}\NormalTok{)))}
+\NormalTok{   var.approx}\OtherTok{\textless{}{-}} \DecValTok{1}\SpecialCharTok{/}\NormalTok{(}\FunctionTok{length}\NormalTok{(x)}\SpecialCharTok{*}\NormalTok{fishers.n)}
+\NormalTok{ norm.approx}\OtherTok{\textless{}{-}}\NormalTok{(}\FunctionTok{rnorm}\NormalTok{(}\DecValTok{1000}\NormalTok{,}\AttributeTok{mean=}\NormalTok{posterior\_mode,}\AttributeTok{sd=}\FunctionTok{sqrt}\NormalTok{(var.approx)))}
+ \FunctionTok{hist}\NormalTok{(norm.approx)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-52-1.pdf}
+
+compare with 2.11 grid approach using the Cauchy distribution, we see that normal approximation has much wider tails compared to the exact distribution, this is because of the small sample size.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{  y}\OtherTok{\textless{}{-}}\NormalTok{x}\OtherTok{\textless{}{-}}\FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{2}\NormalTok{,}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\FloatTok{1.5}\NormalTok{,}\FloatTok{2.5}\NormalTok{)}
+
+\NormalTok{  step}\OtherTok{=}\FloatTok{0.01}
+\CommentTok{\#theta\textless{}{-}seq(from=0,to=100000)/m}
+\NormalTok{ theta}\OtherTok{\textless{}{-}}\FunctionTok{seq}\NormalTok{(step}\SpecialCharTok{/}\DecValTok{2}\NormalTok{, }\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{step}\SpecialCharTok{/}\DecValTok{2}\NormalTok{,step)}
+ \DocumentationTok{\#\# p(theta | y) \textasciitilde{} p(y|theta)*p(theta)}
+\NormalTok{ dens}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(y,th)\{}
+\NormalTok{   dens0}\OtherTok{\textless{}{-}}\ConstantTok{NULL}
+   \ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{length}\NormalTok{(th))\{}
+\NormalTok{     dens0}\OtherTok{\textless{}{-}}\FunctionTok{c}\NormalTok{(dens0, }\FunctionTok{prod}\NormalTok{ (}\FunctionTok{dcauchy}\NormalTok{(y, th[i],}\DecValTok{1}\NormalTok{)))}
+\NormalTok{   \}}
+\NormalTok{   dens0}
+\NormalTok{ \}}
+ \CommentTok{\#dens(y,theta)}
+  \CommentTok{\# L(theta | y) = prod\_\{i=1\}\^{}n  f(y| theta)  we need the product term here.}
+\NormalTok{ unnorm.post}\OtherTok{\textless{}{-}}\FunctionTok{sapply}\NormalTok{(theta, }\ControlFlowTok{function}\NormalTok{(x)  }\FunctionTok{prod}\NormalTok{(}\FunctionTok{dcauchy}\NormalTok{(y,}\AttributeTok{location=}\NormalTok{x,}\AttributeTok{scale=}\DecValTok{1}\NormalTok{) )) }\DocumentationTok{\#\# un norm post}
+   \DocumentationTok{\#\# p(theta| y ) = p(y| theta)p(theta)  where p(theta) is U(0,100)}
+\NormalTok{ post}\OtherTok{\textless{}{-}}\NormalTok{unnorm.post}\SpecialCharTok{/}\NormalTok{(step}\SpecialCharTok{*}\FunctionTok{sum}\NormalTok{(unnorm.post))}
+ \FunctionTok{plot}\NormalTok{(theta,post,}\AttributeTok{type=}\StringTok{\textquotesingle{}l\textquotesingle{}}\NormalTok{,}\AttributeTok{main=}\StringTok{\textquotesingle{}Normalized posterior\textquotesingle{}}\NormalTok{, }\AttributeTok{ylim=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\FloatTok{1.1}\SpecialCharTok{*}\FunctionTok{max}\NormalTok{(post)))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-53-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ samps}\OtherTok{\textless{}{-}}\NormalTok{(}\FunctionTok{sample}\NormalTok{(theta,}\DecValTok{1000}\NormalTok{,}\AttributeTok{prob=}\NormalTok{post}\SpecialCharTok{*}\NormalTok{step,}\AttributeTok{replace=}\NormalTok{T))}
+  
+\NormalTok{ytilde}\OtherTok{\textless{}{-}}\FunctionTok{rcauchy}\NormalTok{(}\DecValTok{1000}\NormalTok{,}\AttributeTok{location=}\NormalTok{samps,}\AttributeTok{scale=}\DecValTok{1}\NormalTok{) }
+ \FunctionTok{hist}\NormalTok{(ytilde)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-53-2.pdf}
 
 \hypertarget{blocks}{%
 \chapter{Blocks}\label{blocks}}

@@ -169,8 +169,35 @@ $$
 # need to derived the Fisher information for Cauchy
    fishers.n<-(4*gamma(3/2)*gamma(3/2)/(gamma(3)))
    var.approx<- 1/(length(x)*fishers.n)
-hist(rnorm(1000,mean=posterior_mode,sd=sqrt(var.approx)))
-
+ norm.approx<-(rnorm(1000,mean=posterior_mode,sd=sqrt(var.approx)))
+ hist(norm.approx)
 ```
 
-compare with 2.11
+compare with 2.11 grid approach using the Cauchy distribution, we see that normal approximation has much wider tails compared to the exact distribution, this is because of the small sample size.
+
+```{r}
+  y<-x<-c(-2,-1,0,1.5,2.5)
+
+  step=0.01
+#theta<-seq(from=0,to=100000)/m
+ theta<-seq(step/2, 1-step/2,step)
+ ## p(theta | y) ~ p(y|theta)*p(theta)
+ dens<-function(y,th){
+   dens0<-NULL
+   for(i in 1:length(th)){
+     dens0<-c(dens0, prod (dcauchy(y, th[i],1)))
+   }
+   dens0
+ }
+ #dens(y,theta)
+  # L(theta | y) = prod_{i=1}^n  f(y| theta)  we need the product term here.
+ unnorm.post<-sapply(theta, function(x)  prod(dcauchy(y,location=x,scale=1) )) ## un norm post
+   ## p(theta| y ) = p(y| theta)p(theta)  where p(theta) is U(0,100)
+ post<-unnorm.post/(step*sum(unnorm.post))
+ plot(theta,post,type='l',main='Normalized posterior', ylim=c(0, 1.1*max(post)))
+ 
+ samps<-(sample(theta,1000,prob=post*step,replace=T))
+  
+ytilde<-rcauchy(1000,location=samps,scale=1) 
+ hist(ytilde)
+```
