@@ -1,15 +1,41 @@
-# Footnotes and citations 
-
-## Footnotes
-
-Footnotes are put inside the square brackets after a caret `^[]`. Like this one ^[This is a footnote.]. 
-
-## Citations
-
-Reference items in your bibliography file(s) using `@key`.
-
-For example, we are using the **bookdown** package [@R-bookdown] (check out the last code chunk in index.Rmd to see how this citation key was added) in this sample book, which was built on top of R Markdown and **knitr** [@xie2015] (this citation was added manually in an external file book.bib). 
-Note that the `.bib` files need to be listed in the index.Rmd with the YAML `bibliography` key.
+# Asymptotics and connections to non-Bayesian approaches
 
 
-The RStudio Visual Markdown Editor can also make it easier to insert citations: <https://rstudio.github.io/visual-markdown-editing/#/citations>
+## Normal approximations to the posterior distribution
+If the posterior distribution is unimodal and roughly symmetric, it can be approximated by a normal distribution, such that the logarithm of the posterior density is approximated by a quadratic function via the Taylor series expansion of $\theta$.
+
+Consider a quadratic approximation to the log-posterior centered on the posterior mode.  where the linear term goes to 0.
+
+$$
+ \begin{aligned}
+log p(\theta|y) = log p(\hat{\theta|y}) + (1/2)(\theta-\hat{\theta)})^T[ d^2/d\theta^2 log p(\theta|y)]_{\theta=\hat{\theta}}+... \\
+\end{aligned}
+$$
+
+The first term is a constant and the second term is proportional to the normal density yielding the approximation and we can expand the posterior density second derivative in terms of the prior and likelihood.
+
+$$
+ d^2/d\theta^2 log p(\theta|y) = d^2/d\theta^2 log p(\hat{\theta}) + \sum_{i=1}^n d^2/d\theta^2 log p(y_i | \theta)_{\theta=\hat{\theta}}
+
+$$
+$$
+ \begin{aligned}
+log p(\theta|y) &= log p(\hat{\theta|y}) + (1/2)(\theta-\hat{\theta)})^T[ d^2/d\theta^2 log p(\theta|y)]_{\theta=\hat{\theta}}+... \\
+ &= log p(\hat{\theta|y}) + (1/2)(\theta-\hat{\theta)})^T ( d^2/d\theta^2 log p(\hat{\theta}) + \sum_{i=1}^n d^2/d\theta^2 log p(y_i | \theta)_{\theta=\hat{\theta}} ) \\
+ log p(\theta|y)  - log p(\hat{\theta|y}) &= + (1/2)(\theta-\hat{\theta)})^T (c  -n* I(\hat{\theta})) \\
+  p(\theta|y ) - p(\hat{\theta}|y) &= exp( -\frac{1}{2(nI(\theta_0))^{-1}}(\theta-\hat{\theta})^T)
+ \end{aligned}
+$$
+Which taking the limit as $|\theta -\hat{\theta}| \to 0$, then the posterior converges to 0 written as $p(\theta|y )- p(\hat{\theta}|y) \to 0$ as $n \to \infty$, and we have normality. Note that that we use the fisher information assuming that the true parameter is in the space.
+
+
+$$
+p(\theta|y) \approx N(\hat{\theta}, [I(\hat{\theta})]^{-1})  \\
+I(\theta)= -d^2/d\theta^2 log p(\theta|y) 
+$$
+
+Where is the mode $\hat{\theta}$ is in the interior of the parameter space, then the information is positive definite.
+
+
+## Summarizing posterior distributions by point estimates and standard errors{-}
+From the asymptotic theory, if n is large enough, a posterior distribution is approximated by the normal distribution.   In frequentist approaches, the 95$\%$ interval is computed using the MLE, which is the posterior mode under the uniform prior, with $\pm$ 2 standard errors estimated from the information $I(\hat{\theta})$.
