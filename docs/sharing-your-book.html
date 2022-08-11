@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 6 Sharing your book | Bayesian Data Analysis</title>
   <meta name="description" content="Chapter 6 Sharing your book | Bayesian Data Analysis review by Andrew Gelman, supervised by Dr. Paul Marjoram" />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 6 Sharing your book | Bayesian Data Analysis" />
   <meta property="og:type" content="book" />
@@ -181,8 +181,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#normal-distribution-with-known-mean-but-unknown-variance"><i class="fa fa-check"></i>Normal distribution with known mean but unknown variance</a></li>
 <li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#poisson-model"><i class="fa fa-check"></i>Poisson model</a></li>
 <li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#negative-binomial-distribution"><i class="fa fa-check"></i>Negative Binomial distribution</a></li>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#exponential-distribution"><i class="fa fa-check"></i>Exponential distribution</a></li>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#constructing-a-prior-distribution"><i class="fa fa-check"></i>Constructing a prior distribution</a></li>
 </ul></li>
-<li class="chapter" data-level="2.7" data-path="cross.html"><a href="cross.html#exercises-1"><i class="fa fa-check"></i><b>2.7</b> Exercises</a>
+<li class="chapter" data-level="2.7" data-path="cross.html"><a href="cross.html#noninformative-prior-distributions"><i class="fa fa-check"></i><b>2.7</b> Noninformative prior distributions</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="cross.html"><a href="cross.html#jeffreys-invariance-principle"><i class="fa fa-check"></i><b>2.7.1</b> Jeffreys’ invariance principle</a></li>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#difficulties-with-noninformative-prior-distributions"><i class="fa fa-check"></i>Difficulties with noninformative prior distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="cross.html"><a href="cross.html#exercises-1"><i class="fa fa-check"></i><b>2.8</b> Exercises</a>
 <ul>
 <li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#question-1"><i class="fa fa-check"></i>Question 1</a></li>
 <li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#normal-approximation-example"><i class="fa fa-check"></i>Normal approximation example</a></li>
@@ -194,7 +201,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#question-11"><i class="fa fa-check"></i>Question 11</a></li>
 <li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#question-12"><i class="fa fa-check"></i>Question 12</a></li>
 <li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#question-13"><i class="fa fa-check"></i>Question 13</a></li>
-<li class="chapter" data-level="2.7.1" data-path="cross.html"><a href="cross.html#question-21"><i class="fa fa-check"></i><b>2.7.1</b> Question 21</a></li>
+<li class="chapter" data-level="2.8.1" data-path="cross.html"><a href="cross.html#question-21"><i class="fa fa-check"></i><b>2.8.1</b> Question 21</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="chapter-3.html"><a href="chapter-3.html"><i class="fa fa-check"></i><b>3</b> Chapter 3</a></li>
@@ -286,7 +293,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Read more about the features of this output format here:</p>
 <p><a href="https://pkgs.rstudio.com/bookdown/reference/gitbook.html" class="uri">https://pkgs.rstudio.com/bookdown/reference/gitbook.html</a></p>
 <p>Or use:</p>
-<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="sharing-your-book.html#cb276-1" aria-hidden="true" tabindex="-1"></a>?bookdown<span class="sc">::</span>gitbook</span></code></pre></div>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="sharing-your-book.html#cb273-1" aria-hidden="true" tabindex="-1"></a>?bookdown<span class="sc">::</span>gitbook</span></code></pre></div>
 
 </div>
 </div>
@@ -356,7 +363,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

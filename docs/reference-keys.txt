@@ -22,6 +22,8 @@ informative-prior-distributions
 normal-distribution-with-known-variance
 conjugate-prior-and-posterior-distributions
 other-standard-single-parameter-models
+noninformative-prior-distributions
+jeffreys-invariance-principle
 exercises-1
 question-21
 chapter-3

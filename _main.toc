@@ -7,10 +7,10 @@
 \contentsline {subsection}{Explanatory variables}{8}{section*.6}%
 \contentsline {subsection}{Hierarchical modeling}{8}{section*.7}%
 \contentsline {section}{\numberline {1.2}Bayesian inference}{8}{section.1.2}%
-\contentsline {section}{Prediction}{8}{section*.8}%
+\contentsline {section}{Prediction}{9}{section*.8}%
 \contentsline {section}{Likelihood}{9}{section*.9}%
 \contentsline {section}{Subjectivity and Objectivity}{9}{section*.10}%
-\contentsline {section}{\numberline {1.3}Exercises}{9}{section.1.3}%
+\contentsline {section}{\numberline {1.3}Exercises}{10}{section.1.3}%
 \contentsline {section}{Simulation 100 times}{20}{section*.11}%
 \contentsline {chapter}{\numberline {2}Single parameter models}{25}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Estimating a probability from binomial data}{25}{section.2.1}%
@@ -19,57 +19,62 @@
 \contentsline {subsection}{Posterior quantiles and intervals}{26}{section*.12}%
 \contentsline {section}{\numberline {2.4}Informative prior distributions}{26}{section.2.4}%
 \contentsline {subsection}{Conjugate prior distributions}{26}{section*.13}%
-\contentsline {subsection}{Conjugate prior, distributions, exponential families, and sufficient statistics}{26}{section*.14}%
+\contentsline {subsection}{Conjugate prior, distributions, exponential families, and sufficient statistics}{27}{section*.14}%
 \contentsline {section}{\numberline {2.5}Normal distribution with known variance}{27}{section.2.5}%
 \contentsline {subsection}{Likelihood of one data point}{27}{section*.15}%
-\contentsline {subsection}{\numberline {2.5.1}Conjugate prior and posterior distributions}{27}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.5.1}Conjugate prior and posterior distributions}{28}{subsection.2.5.1}%
 \contentsline {subsection}{Posterior predictive distribution}{28}{section*.16}%
 \contentsline {subsection}{Normal model with multiple observations}{28}{section*.17}%
 \contentsline {section}{\numberline {2.6}Other standard single-parameter models}{29}{section.2.6}%
 \contentsline {subsection}{Normal distribution with known mean but unknown variance}{29}{section*.18}%
-\contentsline {subsection}{Poisson model}{29}{section*.19}%
+\contentsline {subsection}{Poisson model}{30}{section*.19}%
 \contentsline {subsection}{Negative Binomial distribution}{30}{section*.20}%
-\contentsline {section}{\numberline {2.7}Exercises}{30}{section.2.7}%
-\contentsline {subsection}{Question 1}{30}{section*.21}%
-\contentsline {subsection}{Normal approximation example}{32}{section*.22}%
-\contentsline {subsection}{Question 3}{33}{section*.23}%
-\contentsline {subsection}{Question 4}{34}{section*.24}%
-\contentsline {subsection}{Question 7}{36}{section*.25}%
-\contentsline {subsection}{Question 8 (Normal distribution with unknown mean)}{37}{section*.26}%
-\contentsline {subsection}{Question 10}{38}{section*.27}%
-\contentsline {subsection}{Question 11}{40}{section*.28}%
-\contentsline {subsection}{Question 12}{43}{section*.29}%
-\contentsline {subsection}{Question 13}{43}{section*.30}%
-\contentsline {subsection}{\numberline {2.7.1}Question 21}{57}{subsection.2.7.1}%
-\contentsline {chapter}{\numberline {3}Chapter 3}{67}{chapter.3}%
-\contentsline {chapter}{Exercises}{69}{chapter*.31}%
-\contentsline {section}{\numberline {3.1}Question 1}{69}{section.3.1}%
-\contentsline {section}{Question 2}{70}{section*.32}%
-\contentsline {section}{Question 3}{72}{section*.33}%
-\contentsline {section}{Question 4 (independent binomial)}{76}{section*.34}%
-\contentsline {subsection}{Question 4 (dirichlet)}{79}{section*.35}%
-\contentsline {section}{Question 5}{83}{section*.36}%
-\contentsline {section}{Question 7}{92}{section*.37}%
-\contentsline {section}{question 8}{93}{section*.38}%
-\contentsline {section}{question 9}{95}{section*.39}%
-\contentsline {section}{Question 11}{97}{section*.40}%
-\contentsline {chapter}{\numberline {4}Asymptotics and connections to non-Bayesian approaches}{101}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Normal approximations to the posterior distribution}{101}{section.4.1}%
-\contentsline {subsection}{Summarizing posterior distributions by point estimates and standard errors}{102}{section*.41}%
-\contentsline {section}{\numberline {4.2}Large-sample theory}{102}{section.4.2}%
-\contentsline {subsection}{Asymptotic normality and consistency}{103}{section*.42}%
-\contentsline {section}{\numberline {4.3}Frequency evaluations of Bayesian inferences}{103}{section.4.3}%
-\contentsline {subsection}{Large sample correspondence}{104}{section*.43}%
-\contentsline {subsection}{Point estimation, consistency, and efficiency}{104}{section*.44}%
-\contentsline {subsection}{Confidence coverage}{105}{section*.45}%
-\contentsline {section}{\numberline {4.4}Exercises}{105}{section.4.4}%
-\contentsline {subsection}{Question 1}{105}{section*.46}%
-\contentsline {chapter}{\numberline {5}Blocks}{109}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Equations}{109}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Theorems and proofs}{109}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Callout blocks}{109}{section.5.3}%
-\contentsline {chapter}{\numberline {6}Sharing your book}{111}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Publishing}{111}{section.6.1}%
-\contentsline {section}{\numberline {6.2}404 pages}{111}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Metadata for sharing}{111}{section.6.3}%
-\contentsline {chapter}{\numberline {7}Parts}{113}{chapter.7}%
+\contentsline {subsection}{Exponential distribution}{31}{section*.21}%
+\contentsline {subsection}{Constructing a prior distribution}{31}{section*.22}%
+\contentsline {section}{\numberline {2.7}Noninformative prior distributions}{31}{section.2.7}%
+\contentsline {subsection}{\numberline {2.7.1}Jeffreys' invariance principle}{32}{subsection.2.7.1}%
+\contentsline {subsection}{Difficulties with noninformative prior distributions}{32}{section*.23}%
+\contentsline {section}{\numberline {2.8}Exercises}{32}{section.2.8}%
+\contentsline {subsection}{Question 1}{32}{section*.24}%
+\contentsline {subsection}{Normal approximation example}{34}{section*.25}%
+\contentsline {subsection}{Question 3}{35}{section*.26}%
+\contentsline {subsection}{Question 4}{37}{section*.27}%
+\contentsline {subsection}{Question 7}{38}{section*.28}%
+\contentsline {subsection}{Question 8 (Normal distribution with unknown mean)}{39}{section*.29}%
+\contentsline {subsection}{Question 10}{41}{section*.30}%
+\contentsline {subsection}{Question 11}{43}{section*.31}%
+\contentsline {subsection}{Question 12}{46}{section*.32}%
+\contentsline {subsection}{Question 13}{47}{section*.33}%
+\contentsline {subsection}{\numberline {2.8.1}Question 21}{62}{subsection.2.8.1}%
+\contentsline {chapter}{\numberline {3}Chapter 3}{71}{chapter.3}%
+\contentsline {chapter}{Exercises}{73}{chapter*.34}%
+\contentsline {section}{\numberline {3.1}Question 1}{73}{section.3.1}%
+\contentsline {section}{Question 2}{74}{section*.35}%
+\contentsline {section}{Question 3}{76}{section*.36}%
+\contentsline {section}{Question 4 (independent binomial)}{80}{section*.37}%
+\contentsline {subsection}{Question 4 (dirichlet)}{83}{section*.38}%
+\contentsline {section}{Question 5}{87}{section*.39}%
+\contentsline {section}{Question 7}{97}{section*.40}%
+\contentsline {section}{question 8}{98}{section*.41}%
+\contentsline {section}{question 9}{100}{section*.42}%
+\contentsline {section}{Question 11}{102}{section*.43}%
+\contentsline {chapter}{\numberline {4}Asymptotics and connections to non-Bayesian approaches}{107}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Normal approximations to the posterior distribution}{107}{section.4.1}%
+\contentsline {subsection}{Summarizing posterior distributions by point estimates and standard errors}{108}{section*.44}%
+\contentsline {section}{\numberline {4.2}Large-sample theory}{108}{section.4.2}%
+\contentsline {subsection}{Asymptotic normality and consistency}{109}{section*.45}%
+\contentsline {section}{\numberline {4.3}Frequency evaluations of Bayesian inferences}{109}{section.4.3}%
+\contentsline {subsection}{Large sample correspondence}{110}{section*.46}%
+\contentsline {subsection}{Point estimation, consistency, and efficiency}{110}{section*.47}%
+\contentsline {subsection}{Confidence coverage}{111}{section*.48}%
+\contentsline {section}{\numberline {4.4}Exercises}{111}{section.4.4}%
+\contentsline {subsection}{Question 1}{111}{section*.49}%
+\contentsline {chapter}{\numberline {5}Blocks}{115}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Equations}{115}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Theorems and proofs}{115}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Callout blocks}{115}{section.5.3}%
+\contentsline {chapter}{\numberline {6}Sharing your book}{117}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Publishing}{117}{section.6.1}%
+\contentsline {section}{\numberline {6.2}404 pages}{117}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Metadata for sharing}{117}{section.6.3}%
+\contentsline {chapter}{\numberline {7}Parts}{119}{chapter.7}%

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 2 Single parameter models | Bayesian Data Analysis</title>
   <meta name="description" content="Chapter 2 Single parameter models | Bayesian Data Analysis review by Andrew Gelman, supervised by Dr. Paul Marjoram" />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 Single parameter models | Bayesian Data Analysis" />
   <meta property="og:type" content="book" />
@@ -181,8 +181,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#normal-distribution-with-known-mean-but-unknown-variance"><i class="fa fa-check"></i>Normal distribution with known mean but unknown variance</a></li>
 <li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#poisson-model"><i class="fa fa-check"></i>Poisson model</a></li>
 <li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#negative-binomial-distribution"><i class="fa fa-check"></i>Negative Binomial distribution</a></li>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#exponential-distribution"><i class="fa fa-check"></i>Exponential distribution</a></li>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#constructing-a-prior-distribution"><i class="fa fa-check"></i>Constructing a prior distribution</a></li>
 </ul></li>
-<li class="chapter" data-level="2.7" data-path="cross.html"><a href="cross.html#exercises-1"><i class="fa fa-check"></i><b>2.7</b> Exercises</a>
+<li class="chapter" data-level="2.7" data-path="cross.html"><a href="cross.html#noninformative-prior-distributions"><i class="fa fa-check"></i><b>2.7</b> Noninformative prior distributions</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="cross.html"><a href="cross.html#jeffreys-invariance-principle"><i class="fa fa-check"></i><b>2.7.1</b> Jeffreys’ invariance principle</a></li>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#difficulties-with-noninformative-prior-distributions"><i class="fa fa-check"></i>Difficulties with noninformative prior distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="cross.html"><a href="cross.html#exercises-1"><i class="fa fa-check"></i><b>2.8</b> Exercises</a>
 <ul>
 <li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#question-1"><i class="fa fa-check"></i>Question 1</a></li>
 <li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#normal-approximation-example"><i class="fa fa-check"></i>Normal approximation example</a></li>
@@ -194,7 +201,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#question-11"><i class="fa fa-check"></i>Question 11</a></li>
 <li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#question-12"><i class="fa fa-check"></i>Question 12</a></li>
 <li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#question-13"><i class="fa fa-check"></i>Question 13</a></li>
-<li class="chapter" data-level="2.7.1" data-path="cross.html"><a href="cross.html#question-21"><i class="fa fa-check"></i><b>2.7.1</b> Question 21</a></li>
+<li class="chapter" data-level="2.8.1" data-path="cross.html"><a href="cross.html#question-21"><i class="fa fa-check"></i><b>2.8.1</b> Question 21</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="chapter-3.html"><a href="chapter-3.html"><i class="fa fa-check"></i><b>3</b> Chapter 3</a></li>
@@ -461,10 +468,66 @@ and this follows a Gamma(<span class="math inline">\(\alpha,\beta)\)</span> equi
 </div>
 <div id="negative-binomial-distribution" class="section level3 unnumbered hasAnchor">
 <h3>Negative Binomial distribution<a href="cross.html#negative-binomial-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>With conjugate families, with the known form of the prior and posterior densities can be used to find the marginal</p>
+<p><span class="math display">\[\begin{equation}
+p(y) =\frac{p(y|\theta)p(\theta)}{p(\theta|y)}
+\end{equation}\]</span></p>
+<p>For a single Poisson model with 1 observation, y, this has a prior predictive distribution</p>
+<p><span class="math display">\[\begin{equation}
+p(y) = \frac{Poisson(y|\theta)Gamma(\theta|\alpha,\beta)}{Gamma(\theta,\alpha+y,\beta+1)}
+= \frac{\Gamma(\alpha+y)\beta^\alpha}{(\Gamma(\alpha)y!(1+\beta)^{\alpha+y})}
+= \binom{\alpha+y-1}{y}(\frac{\beta}{\beta+1})^\alpha(\frac{1}{\beta+1})^y
+y \sim NB(\alpha,\beta)
+\end{equation}\]</span></p>
+<p>This shows the negative binomial distribution is a mixture of Poisson distribution with rates, <span class="math inline">\(\theta\)</span> that follow the Gamma distribution</p>
+<p><span class="math display">\[\begin{equation}
+Neg-bin(y|\alpha,\beta) = \int Pois(y|\theta)Gamma(\theta | \alpha,\beta)d\theta
+\end{equation}\]</span></p>
+</div>
+<div id="exponential-distribution" class="section level3 unnumbered hasAnchor">
+<h3>Exponential distribution<a href="cross.html#exponential-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The exponential distribution is used to model waiting times and other continuous positive real-valued random variables, often on a time scale. The sampling distribution of an outcome y, given parameter <span class="math inline">\(\theta\)</span> is
+<span class="math display">\[\begin{equation}
+p(y|\theta) = \theta exp(-y\theta), y&gt;0
+\end{equation}\]</span></p>
+<p>and <span class="math inline">\(\theta =1/E(y)\)</span> is called the <em>rate</em>. The conjugate prior for the Exponential distribution is the Gamma(<span class="math inline">\(\theta| \alpha,\beta\)</span>), with corresponding posterior Gamma(<span class="math inline">\(\theta,\alpha+1, \beta+y)\)</span>. The Gamma prior Gamma(<span class="math inline">\(\alpha,\beta)\)</span> for <span class="math inline">\(\theta\)</span> can be viewed as <span class="math inline">\(\alpha-1\)</span> exponential observations with total wating time <span class="math inline">\(\beta\)</span>.</p>
+</div>
+<div id="constructing-a-prior-distribution" class="section level3 unnumbered hasAnchor">
+<h3>Constructing a prior distribution<a href="cross.html#constructing-a-prior-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In the text example, the prior distribution values were set using a Gamma distribution with <span class="math inline">\(\alpha,\beta\)</span> estimated from the data to match the distribution of the observed cancer death rates <span class="math inline">\(y_j/10n_j\)</span>. It may seem inappropriate to use the data to set the prior distribution, but it is used in hierarchical modeling and is an approximation.</p>
+<p>Under the model the observed count <span class="math inline">\(y_j\)</span> for any couny, j, comes from the <em>predictive distribution</em> p(<span class="math inline">\(y_j) = \int p(y_j|\theta_j)p(\theta_j)d\theta_j\)</span>, which is the Negative binomial NB(<span class="math inline">\(\alpha,\beta/10n_j)\)</span>.</p>
+<p>We then use a method of moments estimator to solve for <span class="math inline">\(\alpha,\beta\)</span>.</p>
+<p><span class="math display">\[\begin{equation}
+E(y_j) = 10n_j \frac{\alpha}{\beta}
+V(y_j) = 10n_j\frac{\alpha}{\beta}+ (10n_j)^2\frac{\alpha}{\beta^2}
+\end{equation}\]</span></p>
+<p>Here we match the <em>observed</em> mean and variance to their expectations and solve for both parameters, yields the parameters of the prior.</p>
 </div>
 </div>
-<div id="exercises-1" class="section level2 hasAnchor" number="2.7">
-<h2><span class="header-section-number">2.7</span> Exercises<a href="cross.html#exercises-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="noninformative-prior-distributions" class="section level2 hasAnchor" number="2.7">
+<h2><span class="header-section-number">2.7</span> Noninformative prior distributions<a href="cross.html#noninformative-prior-distributions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Reference prior distributions are described as vague, flat, diffuse or <em>noninformative</em>. this gives more weight to the data as opposed to prior beliefs. A related idea is <em>weakly informative</em> prior distribution, which contains some information enough to keep it within reasonable bounds.</p>
+<div id="jeffreys-invariance-principle" class="section level3 hasAnchor" number="2.7.1">
+<h3><span class="header-section-number">2.7.1</span> Jeffreys’ invariance principle<a href="cross.html#jeffreys-invariance-principle" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Noninformative prior distributions based on considering one-to-one transformations of the parameter: <span class="math inline">\(\phi = h(\theta)\)</span>. By transofmraiton of variables, the prior density p(<span class="math inline">\(\theta)\)</span> is equivalent to the prior density on <span class="math inline">\(p(\phi)\)</span>.</p>
+<p><span class="math display">\[\begin{equation}
+p(\phi) = p(\theta)|\frac{d\theta}{d\phi}| = p(\theta)|h&#39;(\theta)|^{-1}
+\end{equation}\]</span></p>
+<p>Jeffreys’ general principle iss that any rule for determining the prior density <span class="math inline">\(p(\theta)\)</span> yields equivalent result by transforming to <span class="math inline">\(p(\phi)\)</span>.</p>
+<p>This principle leads to defining the noninformative prior density as <span class="math inline">\(p(\theta)\propto |J(\theta)|^{1/2}\)</span>, where <span class="math inline">\(J(\theta)\)</span> is the <em>Fisher information</em> for <span class="math inline">\(\theta\)</span>.</p>
+<p><span class="math display">\[\begin{equation}
+J(\theta)  = E((\frac{d log p(y|\theta)}{d\theta})^2| \theta) = -E(\frac{d^2 log p(y|\theta)}{d\theta^2} | \theta)
+\end{equation}\]</span></p>
+</div>
+<div id="difficulties-with-noninformative-prior-distributions" class="section level3 unnumbered hasAnchor">
+<h3>Difficulties with noninformative prior distributions<a href="cross.html#difficulties-with-noninformative-prior-distributions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>1.if the likelihood is truly dominant, then the prior densities can not matter, but using this as automatic assumption of the likelihood is mis-guided.
+2. uniform or flat prior density is uniform for one parameterization, and will not be uniform in another parameterization. The scale of a given problem may change, and uniform prior may not be reasonable assumption in another parameterization.
+3. averaging over a set of competing models that have improper prior distributions will lead to problems.</p>
+</div>
+</div>
+<div id="exercises-1" class="section level2 hasAnchor" number="2.8">
+<h2><span class="header-section-number">2.8</span> Exercises<a href="cross.html#exercises-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="question-1" class="section level3 unnumbered hasAnchor">
 <h3>Question 1<a href="cross.html#question-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>prior Beta(4,4), where a coin is tossed 10 times and heads appears fewer than 3 times. the exact posterior is Beta(4+y, 4+10-y) for y=0,1,2. Since we don’t know the observed heads, but that <span class="math inline">\(y&lt;3\)</span> we plot the posterior distributions for each possibility. For 2 heads it is closer to the prior, with posterior mean of 0.33, which is closest to the prior mean of 1/2.</p>
@@ -536,7 +599,7 @@ and this follows a Gamma(<span class="math inline">\(\alpha,\beta)\)</span> equi
 <span id="cb38-6"><a href="cross.html#cb38-6" aria-hidden="true" tabindex="-1"></a>     <span class="do">## prior prediction interval</span></span>
 <span id="cb38-7"><a href="cross.html#cb38-7" aria-hidden="true" tabindex="-1"></a>     <span class="fu">quantile</span>(priorpred,<span class="fu">c</span>(<span class="fl">0.05</span>,<span class="fl">0.25</span>,<span class="fl">0.5</span>,<span class="fl">0.75</span>,<span class="fl">0.95</span>))</span></code></pre></div>
 <pre><code>##       5%      25%      50%      75%      95% 
-## 139.1755 154.3303 167.3098 177.6538 193.9874</code></pre>
+## 139.3256 155.3376 166.0654 178.2724 194.2553</code></pre>
 <div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="cross.html#cb40-1" aria-hidden="true" tabindex="-1"></a>     <span class="fu">qnorm</span>(<span class="fu">c</span>(<span class="fl">0.05</span>,<span class="fl">0.25</span>,<span class="fl">0.5</span>,<span class="fl">0.75</span>,<span class="fl">0.95</span>),<span class="dv">167</span>,<span class="fu">sqrt</span>(<span class="fl">138.89</span>))</span></code></pre></div>
 <pre><code>## [1] 147.6151 159.0510 167.0000 174.9490 186.3849</code></pre>
 </div>
@@ -748,9 +811,9 @@ p(N|X) \propto \frac{(1/N)(99/100)^{N-1}}{p(X)}
 <span id="cb62-2"><a href="cross.html#cb62-2" aria-hidden="true" tabindex="-1"></a> Nsim<span class="ot">&lt;-</span><span class="dv">10000</span></span>
 <span id="cb62-3"><a href="cross.html#cb62-3" aria-hidden="true" tabindex="-1"></a> unnorm.post<span class="ot">&lt;-</span>(<span class="dv">1</span><span class="sc">/</span>N)<span class="sc">*</span>(<span class="dv">99</span><span class="sc">/</span><span class="dv">100</span>)<span class="sc">^</span>(N<span class="dv">-10</span>)</span>
 <span id="cb62-4"><a href="cross.html#cb62-4" aria-hidden="true" tabindex="-1"></a> <span class="fu">mean</span>(<span class="fu">sample</span>(N,<span class="at">size=</span>Nsim,<span class="at">prob=</span>unnorm.post,<span class="at">replace=</span>T))</span></code></pre></div>
-<pre><code>## [1] 279.2557</code></pre>
+<pre><code>## [1] 278.5561</code></pre>
 <div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="cross.html#cb64-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">sd</span>(<span class="fu">sample</span>(N,<span class="at">size=</span>Nsim,<span class="at">prob=</span>unnorm.post,<span class="at">replace=</span>T))</span></code></pre></div>
-<pre><code>## [1] 82.77872</code></pre>
+<pre><code>## [1] 80.61931</code></pre>
 <ul>
 <li><ol start="3" style="list-style-type: lower-alpha">
 <li>we can use a uniform prior <span class="math inline">\(p(N) = 1/N\)</span> with a geometric likelihood p(<span class="math inline">\(X|N)=(1/100)(99/100)^(N-1)\)</span> which will not change the result. We can also change the parameter p to be distributed under a binomial model.</li>
@@ -812,7 +875,7 @@ we use the sampled thetas from the posterior to sample from the Cauchy distribut
 <span id="cb69-7"><a href="cross.html#cb69-7" aria-hidden="true" tabindex="-1"></a> <span class="co">#prob_samp&lt;-post[match(samps,theta)]</span></span>
 <span id="cb69-8"><a href="cross.html#cb69-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>(ytilde) <span class="do">## we have a wide distribution of predictive values.</span></span></code></pre></div>
 <pre><code>##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
-## -267.7772   -0.4189    0.5119    1.3164    1.5046  964.1348</code></pre>
+## -334.4210   -0.5435    0.5119    0.1112    1.5613  523.8152</code></pre>
 <div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="cross.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="do">## for all predictive values,  find the total probability  </span></span>
 <span id="cb71-2"><a href="cross.html#cb71-2" aria-hidden="true" tabindex="-1"></a>   <span class="do">## int p(x|theta)*p(theta|y) d\theta  note that p(x|theta) is a function of theta, so we input hte theta grid.</span></span>
 <span id="cb71-3"><a href="cross.html#cb71-3" aria-hidden="true" tabindex="-1"></a> pred.prob<span class="ot">&lt;-</span><span class="fu">sapply</span>(ytilde,<span class="cf">function</span>(x) <span class="fu">sum</span>(<span class="fu">dcauchy</span>(x,<span class="at">location=</span>theta,<span class="at">scale=</span><span class="dv">1</span>)<span class="sc">*</span>post<span class="sc">*</span>step))  </span>
@@ -821,7 +884,7 @@ we use the sampled thetas from the posterior to sample from the Cauchy distribut
 <p><img src="_main_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
 <div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="cross.html#cb72-1" aria-hidden="true" tabindex="-1"></a>  <span class="do">## maximum predictive probability</span></span>
 <span id="cb72-2"><a href="cross.html#cb72-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(<span class="st">&#39;max pred. prob &#39;</span>, <span class="fu">round</span>(ytilde[<span class="fu">which</span>(pred.prob<span class="sc">==</span><span class="fu">max</span>(pred.prob))],<span class="dv">3</span>))</span></code></pre></div>
-<pre><code>## max pred. prob 0.521</code></pre>
+<pre><code>## max pred. prob 0.523</code></pre>
 </div>
 <div id="question-12" class="section level3 unnumbered hasAnchor">
 <h3>Question 12<a href="cross.html#question-12" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -937,7 +1000,7 @@ The true observed value for 1986 is 22 fatal accidents.</p>
 <span id="cb89-6"><a href="cross.html#cb89-6" aria-hidden="true" tabindex="-1"></a> <span class="co">#prob_samp&lt;-post[match(samps,theta)]</span></span>
 <span id="cb89-7"><a href="cross.html#cb89-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>(ytilde) <span class="do">## we have a wide distribution of predictive values.</span></span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##    5.00   20.00   23.00   23.77   27.00   45.00</code></pre>
+##    8.00   20.00   24.00   23.75   27.00   44.00</code></pre>
 <div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="cross.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="do">## for all predictive values,  find the total probability  </span></span>
 <span id="cb91-2"><a href="cross.html#cb91-2" aria-hidden="true" tabindex="-1"></a>   <span class="do">## int p(x|theta)*p(theta|y) d\theta  note that p(x|theta) is a function of theta, so we input hte theta grid.</span></span>
 <span id="cb91-3"><a href="cross.html#cb91-3" aria-hidden="true" tabindex="-1"></a> pred.prob<span class="ot">&lt;-</span><span class="fu">sapply</span>(ytilde,<span class="cf">function</span>(x) <span class="fu">sum</span>(<span class="fu">dpois</span>(x,<span class="at">lambda =</span> theta)<span class="sc">*</span>post_pois<span class="sc">/</span><span class="fu">sum</span>(post_pois)))  </span>
@@ -966,7 +1029,7 @@ The true observed value for 1986 is 22 fatal accidents.</p>
 <span id="cb96-5"><a href="cross.html#cb96-5" aria-hidden="true" tabindex="-1"></a> <span class="co">#prob_samp&lt;-post[match(samps,theta)]</span></span>
 <span id="cb96-6"><a href="cross.html#cb96-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>(ytilde_norm) <span class="do">## we have a wide distribution of predictive values.</span></span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   3.017  20.801  24.246  24.254  27.701  45.854</code></pre>
+##   1.887  20.753  24.226  24.226  27.675  46.330</code></pre>
 <div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="cross.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="do">## for all predictive values,  find the total probability  </span></span>
 <span id="cb98-2"><a href="cross.html#cb98-2" aria-hidden="true" tabindex="-1"></a>   <span class="do">## int p(x|theta)*p(theta|y) d\theta  note that p(x|theta) is a function of theta, so we input hte theta grid.</span></span>
 <span id="cb98-3"><a href="cross.html#cb98-3" aria-hidden="true" tabindex="-1"></a> pred.prob_norm<span class="ot">&lt;-</span><span class="fu">sapply</span>(ytilde_norm,<span class="cf">function</span>(x) <span class="fu">sum</span>(<span class="fu">dnorm</span>(x,<span class="fl">24.25</span>,<span class="fu">sqrt</span>(<span class="fl">26.252</span>))<span class="sc">*</span>post_pred_norm))  </span>
@@ -977,9 +1040,9 @@ The true observed value for 1986 is 22 fatal accidents.</p>
 <p><img src="_main_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
 <div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="cross.html#cb99-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">quantile</span>(ytilde_norm,<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>))</span></code></pre></div>
 <pre><code>##     2.5%    97.5% 
-## 14.24694 34.30957</code></pre>
+## 14.16255 34.24634</code></pre>
 <div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="cross.html#cb101-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">message</span>(<span class="st">&quot;average predictive value from posterior:&quot;</span>, <span class="fu">mean</span>(ytilde))</span></code></pre></div>
-<pre><code>## average predictive value from posterior:23.7701</code></pre>
+<pre><code>## average predictive value from posterior:23.7495</code></pre>
 <ul>
 <li><ol start="2" style="list-style-type: lower-alpha">
 <li>Assume fatal accidents follow a Poisson distribution with a constant rate and an exposure in each year proportional to the number of passanger miles flown. Set a prior and determine a posterior and predictive distribution. estimate the number of passanger miles flown in each year by dividing</li>
@@ -1059,7 +1122,7 @@ The true observed value for 1986 is 22 fatal accidents.</p>
 <div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="cross.html#cb116-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">message</span>(<span class="st">&quot; 8,000 per 100 million miles flown has fatality rate: Gamma posterior&quot;</span>)</span></code></pre></div>
 <pre><code>##  8,000 per 100 million miles flown has fatality rate: Gamma posterior</code></pre>
 <div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="cross.html#cb118-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">print</span>(<span class="fu">sort</span>(y1986)[<span class="fu">c</span>(<span class="dv">25</span>,<span class="dv">976</span>)])</span></code></pre></div>
-<pre><code>## [1] 23 46</code></pre>
+<pre><code>## [1] 22 46</code></pre>
 <div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="cross.html#cb120-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">message</span>(<span class="st">&quot; 8,000 per 100 million miles flown has fatality rate: normal approx&quot;</span>)</span></code></pre></div>
 <pre><code>##  8,000 per 100 million miles flown has fatality rate: normal approx</code></pre>
 <div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="cross.html#cb122-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">print</span>(<span class="fu">c</span>(lower,upper))</span></code></pre></div>
@@ -1120,8 +1183,8 @@ If we use Jeffreys’ prior the prediction interval is (638,741.05).</p>
 <span id="cb133-6"><a href="cross.html#cb133-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(<span class="st">&quot;using the empirical prior, predictive posterior interval&quot;</span>)</span></code></pre></div>
 <pre><code>## using the empirical prior, predictive posterior interval</code></pre>
 <div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="cross.html#cb135-1" aria-hidden="true" tabindex="-1"></a>   <span class="fu">quantile</span>(ytilde_empiricalPrior,<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>))</span></code></pre></div>
-<pre><code>##    2.5%   97.5% 
-## 640.975 744.000</code></pre>
+<pre><code>##  2.5% 97.5% 
+##   632   747</code></pre>
 <div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="cross.html#cb137-1" aria-hidden="true" tabindex="-1"></a> <span class="do">## direct sampling from posterior.</span></span>
 <span id="cb137-2"><a href="cross.html#cb137-2" aria-hidden="true" tabindex="-1"></a> theta_post<span class="ot">&lt;-</span><span class="fu">rgamma</span>(<span class="dv">1000</span>,Jalpha<span class="sc">+</span>n<span class="sc">*</span><span class="fu">mean</span>(death),<span class="at">rate=</span>Jbeta<span class="sc">+</span>n)</span>
 <span id="cb137-3"><a href="cross.html#cb137-3" aria-hidden="true" tabindex="-1"></a> </span>
@@ -1131,7 +1194,7 @@ If we use Jeffreys’ prior the prediction interval is (638,741.05).</p>
 <span id="cb137-7"><a href="cross.html#cb137-7" aria-hidden="true" tabindex="-1"></a> <span class="co">#prob_samp&lt;-post[match(samps,theta)]</span></span>
 <span id="cb137-8"><a href="cross.html#cb137-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>(ytilde) <span class="do">## we have a wide distribution of predictive values.</span></span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   612.0   671.0   691.0   690.7   709.0   766.0</code></pre>
+##   580.0   674.0   692.0   692.8   711.0   821.0</code></pre>
 <div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="cross.html#cb139-1" aria-hidden="true" tabindex="-1"></a>   post_pois<span class="ot">&lt;-</span><span class="fu">dgamma</span>(theta_post,Jalpha<span class="sc">+</span>n<span class="sc">*</span><span class="fu">mean</span>(death),<span class="at">rate=</span>Jbeta<span class="sc">+</span>n)</span>
 <span id="cb139-2"><a href="cross.html#cb139-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb139-3"><a href="cross.html#cb139-3" aria-hidden="true" tabindex="-1"></a><span class="do">## for all predictive values,  find the total probability  </span></span>
@@ -1144,7 +1207,7 @@ If we use Jeffreys’ prior the prediction interval is (638,741.05).</p>
 <div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="cross.html#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lines(theta,post_pois)</span></span>
 <span id="cb140-2"><a href="cross.html#cb140-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">quantile</span>(ytilde,<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>))</span></code></pre></div>
 <pre><code>##    2.5%   97.5% 
-## 638.000 745.025</code></pre>
+## 643.000 748.025</code></pre>
 <ul>
 <li><ol start="4" style="list-style-type: lower-alpha">
 <li>Using the rate the posterior rate mean is 0.12 estimated from sampling the posterior distribution. For 8 x 10<span class="math inline">\(^11\)</span> miles flown the deaths are approximately 970 (902, 1039) this is higher than the 1986 observed value.</li>
@@ -1182,10 +1245,10 @@ If we use Jeffreys’ prior the prediction interval is (638,741.05).</p>
 <span id="cb148-6"><a href="cross.html#cb148-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(<span class="st">&quot; 8,000 per 100 million miles flown has passanger death : Gamma posterior &amp; Jeffreys&#39; prior&quot;</span>)</span></code></pre></div>
 <pre><code>##  8,000 per 100 million miles flown has passanger death : Gamma posterior &amp; Jeffreys&#39; prior</code></pre>
 <div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="cross.html#cb150-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">print</span>(<span class="fu">sort</span>(y1986)[<span class="fu">c</span>(<span class="dv">25</span>,<span class="dv">976</span>)])</span></code></pre></div>
-<pre><code>## [1]  904 1040</code></pre>
+<pre><code>## [1]  903 1037</code></pre>
 </div>
-<div id="question-21" class="section level3 hasAnchor" number="2.7.1">
-<h3><span class="header-section-number">2.7.1</span> Question 21<a href="cross.html#question-21" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="question-21" class="section level3 hasAnchor" number="2.8.1">
+<h3><span class="header-section-number">2.8.1</span> Question 21<a href="cross.html#question-21" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>estimate percentage of adult population in each state (excluding alaska and hawaii) who label themselves as very liberal. plot estimate vs. obama’s vote share in 2008.</p>
 <p>For each state we measure <span class="math inline">\(y_j\sim Pois(n_j\theta_j)\)</span> from section 2.7 where y is the number of adult population who identify themselves as <em>very liberal</em> in ideology for a given state.</p>
 <p>we do not have population of each state, but we do have the number of respondents of each state, and denote <span class="math inline">\(n_j\)</span> as the integer representing the total respondents.</p>
@@ -1199,7 +1262,6 @@ If we use Jeffreys’ prior the prediction interval is (638,741.05).</p>
 <p>For those that identify as <em>liberal</em> we see a much linear trend.</p>
 <div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="cross.html#cb152-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">library</span>(foreign)</span>
 <span id="cb152-2"><a href="cross.html#cb152-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">library</span>(dplyr)</span></code></pre></div>
-<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 4.2.1</code></pre>
 <pre><code>## 
 ## Attaching package: &#39;dplyr&#39;</code></pre>
 <pre><code>## The following objects are masked from &#39;package:stats&#39;:
@@ -1208,19 +1270,19 @@ If we use Jeffreys’ prior the prediction interval is (638,741.05).</p>
 <pre><code>## The following objects are masked from &#39;package:base&#39;:
 ## 
 ##     intersect, setdiff, setequal, union</code></pre>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="cross.html#cb157-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">library</span>(magrittr)</span>
-<span id="cb157-2"><a href="cross.html#cb157-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">library</span>(ggplot2)</span>
-<span id="cb157-3"><a href="cross.html#cb157-3" aria-hidden="true" tabindex="-1"></a><span class="co">#polls&lt;-read.dta(&quot;C:/Users/UOSC/Documents/Keck-graduate-school/PM590-Bayesian/bookdown-files/pew_research_center_june_elect_wknd_data.dta&quot;)</span></span>
-<span id="cb157-4"><a href="cross.html#cb157-4" aria-hidden="true" tabindex="-1"></a>polls<span class="ot">&lt;-</span><span class="fu">read.dta</span>(<span class="st">&quot;C:/Users/antho/Documents/Keck-graduate-school/PM590-Bayesian/bookdown-files/pew_research_center_june_elect_wknd_data.dta&quot;</span>)</span>
-<span id="cb157-5"><a href="cross.html#cb157-5" aria-hidden="true" tabindex="-1"></a> <span class="co">#proportion of very liberal</span></span>
-<span id="cb157-6"><a href="cross.html#cb157-6" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(polls<span class="sc">$</span>ideo)</span></code></pre></div>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="cross.html#cb156-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">library</span>(magrittr)</span>
+<span id="cb156-2"><a href="cross.html#cb156-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">library</span>(ggplot2)</span>
+<span id="cb156-3"><a href="cross.html#cb156-3" aria-hidden="true" tabindex="-1"></a><span class="co">#polls&lt;-read.dta(&quot;C:/Users/UOSC/Documents/Keck-graduate-school/PM590-Bayesian/bookdown-files/pew_research_center_june_elect_wknd_data.dta&quot;)</span></span>
+<span id="cb156-4"><a href="cross.html#cb156-4" aria-hidden="true" tabindex="-1"></a>polls<span class="ot">&lt;-</span><span class="fu">read.dta</span>(<span class="st">&quot;C:/Users/antho/Documents/Keck-graduate-school/PM590-Bayesian/bookdown-files/pew_research_center_june_elect_wknd_data.dta&quot;</span>)</span>
+<span id="cb156-5"><a href="cross.html#cb156-5" aria-hidden="true" tabindex="-1"></a> <span class="co">#proportion of very liberal</span></span>
+<span id="cb156-6"><a href="cross.html#cb156-6" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(polls<span class="sc">$</span>ideo)</span></code></pre></div>
 <pre><code>## 
 ## missing/not asked very conservative      conservative          moderate 
 ##                 0              2417              9795             11197 
 ##           liberal      very liberal        dk/refused 
 ##              4535              1470              1380</code></pre>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="cross.html#cb159-1" aria-hidden="true" tabindex="-1"></a> <span class="do">## adult pop</span></span>
-<span id="cb159-2"><a href="cross.html#cb159-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(polls<span class="sc">$</span>age)</span></code></pre></div>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="cross.html#cb158-1" aria-hidden="true" tabindex="-1"></a> <span class="do">## adult pop</span></span>
+<span id="cb158-2"><a href="cross.html#cb158-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(polls<span class="sc">$</span>age)</span></code></pre></div>
 <pre><code>## 
 ##  18  19  20  21  22  23  24  25  26  27  28  29  30  31  32  33  34  35  36  37 
 ## 628 431 363 341 316 374 355 343 406 337 391 398 446 366 375 378 334 398 417 482 
@@ -1232,12 +1294,12 @@ If we use Jeffreys’ prior the prediction interval is (638,741.05).</p>
 ## 233 220 337 195 179 143 126 132 106  97  81  73  62  25  21  13   9   7   2  18 
 ##  99 
 ## 517</code></pre>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="cross.html#cb161-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(polls<span class="sc">$</span>age2)</span></code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="cross.html#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(polls<span class="sc">$</span>age2)</span></code></pre></div>
 <pre><code>## 
 ##       18-29       30-49       50-64         65+ dk\\refused 
 ##        4683        9768        9449        6784         517</code></pre>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="cross.html#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="do">## each state</span></span>
-<span id="cb163-2"><a href="cross.html#cb163-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">table</span>(polls<span class="sc">$</span>state)</span></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="cross.html#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="do">## each state</span></span>
+<span id="cb162-2"><a href="cross.html#cb162-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">table</span>(polls<span class="sc">$</span>state)</span></code></pre></div>
 <pre><code>## 
 ##        alabama         alaska        arizona       arkansas     california 
 ##            624              0            542            307           2854 
@@ -1261,21 +1323,21 @@ If we use Jeffreys’ prior the prediction interval is (638,741.05).</p>
 ##            115            896            668            270            742 
 ##        wyoming 
 ##             29</code></pre>
-<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="cross.html#cb165-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># drop AL and HA</span></span>
-<span id="cb165-2"><a href="cross.html#cb165-2" aria-hidden="true" tabindex="-1"></a>polls<span class="ot">&lt;-</span>polls[<span class="fu">which</span>(polls<span class="sc">$</span>state<span class="sc">!=</span><span class="st">&quot;alaska&quot;</span> <span class="sc">&amp;</span> polls<span class="sc">$</span>state<span class="sc">!=</span><span class="st">&quot;hawaii&quot;</span>),] </span>
-<span id="cb165-3"><a href="cross.html#cb165-3" aria-hidden="true" tabindex="-1"></a><span class="co"># average the points that are missing.</span></span>
-<span id="cb165-4"><a href="cross.html#cb165-4" aria-hidden="true" tabindex="-1"></a>polls<span class="sc">$</span>density[<span class="fu">which</span>(<span class="fu">is.na</span>(polls<span class="sc">$</span>density))]<span class="ot">&lt;-</span><span class="fu">mean</span>(polls<span class="sc">$</span>density[<span class="fu">which</span>(<span class="sc">!</span><span class="fu">is.na</span>(polls<span class="sc">$</span>density))])</span>
-<span id="cb165-5"><a href="cross.html#cb165-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb165-6"><a href="cross.html#cb165-6" aria-hidden="true" tabindex="-1"></a><span class="co">#ele&lt;-read.csv(&quot;C:/Users/UOSC/Documents/Keck-graduate-school/PM590-Bayesian/bookdown-files/2008ElectionResult.csv&quot;)</span></span>
-<span id="cb165-7"><a href="cross.html#cb165-7" aria-hidden="true" tabindex="-1"></a>ele<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;C:/Users/antho/Documents/Keck-graduate-school/PM590-Bayesian/bookdown-files/2008ElectionResult.csv&quot;</span>)</span>
-<span id="cb165-8"><a href="cross.html#cb165-8" aria-hidden="true" tabindex="-1"></a>ele<span class="ot">&lt;-</span>ele[<span class="fu">which</span>(ele<span class="sc">$</span>state<span class="sc">!=</span><span class="st">&quot;Alaska&quot;</span><span class="sc">&amp;</span> ele<span class="sc">$</span>state<span class="sc">!=</span><span class="st">&quot;Hawaii&quot;</span>),]</span>
-<span id="cb165-9"><a href="cross.html#cb165-9" aria-hidden="true" tabindex="-1"></a>ele<span class="sc">$</span>state<span class="ot">&lt;-</span><span class="fu">tolower</span>(ele<span class="sc">$</span>state)</span>
-<span id="cb165-10"><a href="cross.html#cb165-10" aria-hidden="true" tabindex="-1"></a><span class="do">## graph poprotion liberal in each state vs obama vote share scatter.</span></span>
-<span id="cb165-11"><a href="cross.html#cb165-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb165-12"><a href="cross.html#cb165-12" aria-hidden="true" tabindex="-1"></a>yj<span class="ot">&lt;-</span><span class="fu">as.data.frame.matrix</span>(<span class="fu">table</span>(polls<span class="sc">$</span>state,polls<span class="sc">$</span>ideo))</span>
-<span id="cb165-13"><a href="cross.html#cb165-13" aria-hidden="true" tabindex="-1"></a>nj<span class="ot">&lt;-</span><span class="fu">as.data.frame.matrix</span>(<span class="fu">table</span>(polls<span class="sc">$</span>state,polls<span class="sc">$</span>density))</span>
-<span id="cb165-14"><a href="cross.html#cb165-14" aria-hidden="true" tabindex="-1"></a><span class="do">## ideology</span></span>
-<span id="cb165-15"><a href="cross.html#cb165-15" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(yj)</span></code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="cross.html#cb164-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># drop AL and HA</span></span>
+<span id="cb164-2"><a href="cross.html#cb164-2" aria-hidden="true" tabindex="-1"></a>polls<span class="ot">&lt;-</span>polls[<span class="fu">which</span>(polls<span class="sc">$</span>state<span class="sc">!=</span><span class="st">&quot;alaska&quot;</span> <span class="sc">&amp;</span> polls<span class="sc">$</span>state<span class="sc">!=</span><span class="st">&quot;hawaii&quot;</span>),] </span>
+<span id="cb164-3"><a href="cross.html#cb164-3" aria-hidden="true" tabindex="-1"></a><span class="co"># average the points that are missing.</span></span>
+<span id="cb164-4"><a href="cross.html#cb164-4" aria-hidden="true" tabindex="-1"></a>polls<span class="sc">$</span>density[<span class="fu">which</span>(<span class="fu">is.na</span>(polls<span class="sc">$</span>density))]<span class="ot">&lt;-</span><span class="fu">mean</span>(polls<span class="sc">$</span>density[<span class="fu">which</span>(<span class="sc">!</span><span class="fu">is.na</span>(polls<span class="sc">$</span>density))])</span>
+<span id="cb164-5"><a href="cross.html#cb164-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb164-6"><a href="cross.html#cb164-6" aria-hidden="true" tabindex="-1"></a><span class="co">#ele&lt;-read.csv(&quot;C:/Users/UOSC/Documents/Keck-graduate-school/PM590-Bayesian/bookdown-files/2008ElectionResult.csv&quot;)</span></span>
+<span id="cb164-7"><a href="cross.html#cb164-7" aria-hidden="true" tabindex="-1"></a>ele<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;C:/Users/antho/Documents/Keck-graduate-school/PM590-Bayesian/bookdown-files/2008ElectionResult.csv&quot;</span>)</span>
+<span id="cb164-8"><a href="cross.html#cb164-8" aria-hidden="true" tabindex="-1"></a>ele<span class="ot">&lt;-</span>ele[<span class="fu">which</span>(ele<span class="sc">$</span>state<span class="sc">!=</span><span class="st">&quot;Alaska&quot;</span><span class="sc">&amp;</span> ele<span class="sc">$</span>state<span class="sc">!=</span><span class="st">&quot;Hawaii&quot;</span>),]</span>
+<span id="cb164-9"><a href="cross.html#cb164-9" aria-hidden="true" tabindex="-1"></a>ele<span class="sc">$</span>state<span class="ot">&lt;-</span><span class="fu">tolower</span>(ele<span class="sc">$</span>state)</span>
+<span id="cb164-10"><a href="cross.html#cb164-10" aria-hidden="true" tabindex="-1"></a><span class="do">## graph poprotion liberal in each state vs obama vote share scatter.</span></span>
+<span id="cb164-11"><a href="cross.html#cb164-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb164-12"><a href="cross.html#cb164-12" aria-hidden="true" tabindex="-1"></a>yj<span class="ot">&lt;-</span><span class="fu">as.data.frame.matrix</span>(<span class="fu">table</span>(polls<span class="sc">$</span>state,polls<span class="sc">$</span>ideo))</span>
+<span id="cb164-13"><a href="cross.html#cb164-13" aria-hidden="true" tabindex="-1"></a>nj<span class="ot">&lt;-</span><span class="fu">as.data.frame.matrix</span>(<span class="fu">table</span>(polls<span class="sc">$</span>state,polls<span class="sc">$</span>density))</span>
+<span id="cb164-14"><a href="cross.html#cb164-14" aria-hidden="true" tabindex="-1"></a><span class="do">## ideology</span></span>
+<span id="cb164-15"><a href="cross.html#cb164-15" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(yj)</span></code></pre></div>
 <pre><code>##            missing/not asked very conservative conservative moderate liberal
 ## alabama                    0                82          254      165      48
 ## alaska                     0                 0            0        0       0
@@ -1290,8 +1352,8 @@ If we use Jeffreys’ prior the prediction interval is (638,741.05).</p>
 ## arkansas              7         22
 ## california          179        121
 ## colorado             27         12</code></pre>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="cross.html#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="do">## density</span></span>
-<span id="cb167-2"><a href="cross.html#cb167-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(nj)</span></code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="cross.html#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="do">## density</span></span>
+<span id="cb166-2"><a href="cross.html#cb166-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(nj)</span></code></pre></div>
 <pre><code>##              1   2 2.8302567571921   3   4   5
 ## alabama    247 196               9 170   2   0
 ## alaska       0   0               0   0   0   0
@@ -1299,16 +1361,16 @@ If we use Jeffreys’ prior the prediction interval is (638,741.05).</p>
 ## arkansas   148 120               4  35   0   0
 ## california 455 496              19 438 566 880
 ## colorado   123 157               7 101   1  79</code></pre>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="cross.html#cb169-1" aria-hidden="true" tabindex="-1"></a> tally<span class="ot">&lt;-</span>polls<span class="sc">%&gt;%</span><span class="fu">group_by</span>(state,ideo)<span class="sc">%&gt;%</span><span class="fu">summarize</span>(<span class="at">n=</span><span class="fu">n</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="cross.html#cb168-1" aria-hidden="true" tabindex="-1"></a> tally<span class="ot">&lt;-</span>polls<span class="sc">%&gt;%</span><span class="fu">group_by</span>(state,ideo)<span class="sc">%&gt;%</span><span class="fu">summarize</span>(<span class="at">n=</span><span class="fu">n</span>())</span></code></pre></div>
 <pre><code>## `summarise()` has grouped output by &#39;state&#39;. You can override using the
 ## `.groups` argument.</code></pre>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="cross.html#cb171-1" aria-hidden="true" tabindex="-1"></a> statetotal<span class="ot">&lt;-</span>tally<span class="sc">%&gt;%</span><span class="fu">group_by</span>(state)<span class="sc">%&gt;%</span><span class="fu">summarise</span>(<span class="at">statetotal=</span><span class="fu">sum</span>(n))</span>
-<span id="cb171-2"><a href="cross.html#cb171-2" aria-hidden="true" tabindex="-1"></a> tally<span class="ot">&lt;-</span><span class="fu">left_join</span>(tally,statetotal,<span class="at">by=</span><span class="st">&#39;state&#39;</span>)</span>
-<span id="cb171-3"><a href="cross.html#cb171-3" aria-hidden="true" tabindex="-1"></a> <span class="do">## average the density of the polling regions by state taking the density of each zip code (category 1-5)</span></span>
-<span id="cb171-4"><a href="cross.html#cb171-4" aria-hidden="true" tabindex="-1"></a> densit<span class="ot">&lt;-</span>polls<span class="sc">%&gt;%</span><span class="fu">group_by</span>(state)<span class="sc">%&gt;%</span><span class="fu">summarize</span>(<span class="at">density=</span><span class="fu">mean</span>(density))</span>
-<span id="cb171-5"><a href="cross.html#cb171-5" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb171-6"><a href="cross.html#cb171-6" aria-hidden="true" tabindex="-1"></a> <span class="co"># highest states with highest density</span></span>
-<span id="cb171-7"><a href="cross.html#cb171-7" aria-hidden="true" tabindex="-1"></a> densit[<span class="fu">order</span>(densit<span class="sc">$</span>density,<span class="at">decreasing =</span> T),]</span></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="cross.html#cb170-1" aria-hidden="true" tabindex="-1"></a> statetotal<span class="ot">&lt;-</span>tally<span class="sc">%&gt;%</span><span class="fu">group_by</span>(state)<span class="sc">%&gt;%</span><span class="fu">summarise</span>(<span class="at">statetotal=</span><span class="fu">sum</span>(n))</span>
+<span id="cb170-2"><a href="cross.html#cb170-2" aria-hidden="true" tabindex="-1"></a> tally<span class="ot">&lt;-</span><span class="fu">left_join</span>(tally,statetotal,<span class="at">by=</span><span class="st">&#39;state&#39;</span>)</span>
+<span id="cb170-3"><a href="cross.html#cb170-3" aria-hidden="true" tabindex="-1"></a> <span class="do">## average the density of the polling regions by state taking the density of each zip code (category 1-5)</span></span>
+<span id="cb170-4"><a href="cross.html#cb170-4" aria-hidden="true" tabindex="-1"></a> densit<span class="ot">&lt;-</span>polls<span class="sc">%&gt;%</span><span class="fu">group_by</span>(state)<span class="sc">%&gt;%</span><span class="fu">summarize</span>(<span class="at">density=</span><span class="fu">mean</span>(density))</span>
+<span id="cb170-5"><a href="cross.html#cb170-5" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb170-6"><a href="cross.html#cb170-6" aria-hidden="true" tabindex="-1"></a> <span class="co"># highest states with highest density</span></span>
+<span id="cb170-7"><a href="cross.html#cb170-7" aria-hidden="true" tabindex="-1"></a> densit[<span class="fu">order</span>(densit<span class="sc">$</span>density,<span class="at">decreasing =</span> T),]</span></code></pre></div>
 <pre><code>## # A tibble: 49 × 2
 ##    state         density
 ##    &lt;fct&gt;           &lt;dbl&gt;
@@ -1324,18 +1386,18 @@ If we use Jeffreys’ prior the prediction interval is (638,741.05).</p>
 ## 10 ohio             3.32
 ## # … with 39 more rows
 ## # ℹ Use `print(n = ...)` to see more rows</code></pre>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="cross.html#cb173-1" aria-hidden="true" tabindex="-1"></a> tally<span class="ot">&lt;-</span><span class="fu">left_join</span>(tally,densit,<span class="at">by=</span><span class="st">&#39;state&#39;</span>)</span>
-<span id="cb173-2"><a href="cross.html#cb173-2" aria-hidden="true" tabindex="-1"></a>  tally<span class="sc">$</span>popdensity<span class="ot">&lt;-</span>tally<span class="sc">$</span>n<span class="sc">/</span>tally<span class="sc">$</span>density</span>
-<span id="cb173-3"><a href="cross.html#cb173-3" aria-hidden="true" tabindex="-1"></a>    tally<span class="sc">$</span>stateperc<span class="ot">&lt;-</span><span class="dv">100</span><span class="sc">*</span>tally<span class="sc">$</span>n<span class="sc">/</span>tally<span class="sc">$</span>statetotal</span>
-<span id="cb173-4"><a href="cross.html#cb173-4" aria-hidden="true" tabindex="-1"></a>    tally<span class="sc">$</span>stateperc_density<span class="ot">&lt;-</span><span class="dv">100</span><span class="sc">*</span>tally<span class="sc">$</span>n<span class="sc">/</span>(tally<span class="sc">$</span>statetotal<span class="sc">*</span>tally<span class="sc">$</span>density)</span>
-<span id="cb173-5"><a href="cross.html#cb173-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb173-6"><a href="cross.html#cb173-6" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb173-7"><a href="cross.html#cb173-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb173-8"><a href="cross.html#cb173-8" aria-hidden="true" tabindex="-1"></a>tt<span class="ot">&lt;-</span><span class="fu">left_join</span>(ele,tally,<span class="at">by=</span><span class="st">&quot;state&quot;</span>)</span>
-<span id="cb173-9"><a href="cross.html#cb173-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb173-10"><a href="cross.html#cb173-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tt[<span class="fu">which</span>(tt<span class="sc">$</span>ideo<span class="sc">==</span><span class="st">&#39;very liberal&#39;</span>),],<span class="fu">aes</span>(<span class="at">x=</span>stateperc,<span class="at">y=</span>vote_Obama_pct,<span class="at">label=</span>state))<span class="sc">+</span><span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">3</span>)<span class="sc">+</span><span class="fu">geom_text</span>(<span class="at">hjust=</span><span class="dv">0</span>,<span class="at">vjust=</span><span class="dv">0</span>)<span class="sc">+</span><span class="fu">ggtitle</span>(<span class="st">&quot;very liberal proportion vs. obama vote (%)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="cross.html#cb172-1" aria-hidden="true" tabindex="-1"></a> tally<span class="ot">&lt;-</span><span class="fu">left_join</span>(tally,densit,<span class="at">by=</span><span class="st">&#39;state&#39;</span>)</span>
+<span id="cb172-2"><a href="cross.html#cb172-2" aria-hidden="true" tabindex="-1"></a>  tally<span class="sc">$</span>popdensity<span class="ot">&lt;-</span>tally<span class="sc">$</span>n<span class="sc">/</span>tally<span class="sc">$</span>density</span>
+<span id="cb172-3"><a href="cross.html#cb172-3" aria-hidden="true" tabindex="-1"></a>    tally<span class="sc">$</span>stateperc<span class="ot">&lt;-</span><span class="dv">100</span><span class="sc">*</span>tally<span class="sc">$</span>n<span class="sc">/</span>tally<span class="sc">$</span>statetotal</span>
+<span id="cb172-4"><a href="cross.html#cb172-4" aria-hidden="true" tabindex="-1"></a>    tally<span class="sc">$</span>stateperc_density<span class="ot">&lt;-</span><span class="dv">100</span><span class="sc">*</span>tally<span class="sc">$</span>n<span class="sc">/</span>(tally<span class="sc">$</span>statetotal<span class="sc">*</span>tally<span class="sc">$</span>density)</span>
+<span id="cb172-5"><a href="cross.html#cb172-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb172-6"><a href="cross.html#cb172-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb172-7"><a href="cross.html#cb172-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb172-8"><a href="cross.html#cb172-8" aria-hidden="true" tabindex="-1"></a>tt<span class="ot">&lt;-</span><span class="fu">left_join</span>(ele,tally,<span class="at">by=</span><span class="st">&quot;state&quot;</span>)</span>
+<span id="cb172-9"><a href="cross.html#cb172-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb172-10"><a href="cross.html#cb172-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tt[<span class="fu">which</span>(tt<span class="sc">$</span>ideo<span class="sc">==</span><span class="st">&#39;very liberal&#39;</span>),],<span class="fu">aes</span>(<span class="at">x=</span>stateperc,<span class="at">y=</span>vote_Obama_pct,<span class="at">label=</span>state))<span class="sc">+</span><span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">3</span>)<span class="sc">+</span><span class="fu">geom_text</span>(<span class="at">hjust=</span><span class="dv">0</span>,<span class="at">vjust=</span><span class="dv">0</span>)<span class="sc">+</span><span class="fu">ggtitle</span>(<span class="st">&quot;very liberal proportion vs. obama vote (%)&quot;</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="cross.html#cb174-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tt[<span class="fu">which</span>(tt<span class="sc">$</span>ideo<span class="sc">==</span><span class="st">&#39;liberal&#39;</span>),],<span class="fu">aes</span>(<span class="at">x=</span>stateperc,<span class="at">y=</span>vote_Obama_pct,<span class="at">label=</span>state))<span class="sc">+</span><span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">3</span>)<span class="sc">+</span><span class="fu">geom_text</span>(<span class="at">hjust=</span><span class="dv">0</span>,<span class="at">vjust=</span><span class="dv">0</span>)<span class="sc">+</span><span class="fu">ggtitle</span>(<span class="st">&quot;liberal proportion vs. obama vote (%)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="cross.html#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tt[<span class="fu">which</span>(tt<span class="sc">$</span>ideo<span class="sc">==</span><span class="st">&#39;liberal&#39;</span>),],<span class="fu">aes</span>(<span class="at">x=</span>stateperc,<span class="at">y=</span>vote_Obama_pct,<span class="at">label=</span>state))<span class="sc">+</span><span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">3</span>)<span class="sc">+</span><span class="fu">geom_text</span>(<span class="at">hjust=</span><span class="dv">0</span>,<span class="at">vjust=</span><span class="dv">0</span>)<span class="sc">+</span><span class="fu">ggtitle</span>(<span class="st">&quot;liberal proportion vs. obama vote (%)&quot;</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-28-2.png" width="672" /></p>
 <ul>
 <li><ol start="2" style="list-style-type: lower-alpha">
@@ -1343,47 +1405,47 @@ If we use Jeffreys’ prior the prediction interval is (638,741.05).</p>
 In order to construct the prior we use equations (2.17, 2.18) where we match the moments from the prior predictive distribution to the observed data for each state. <span class="math inline">\(p(\tilde{y})\sim Neg-Bin(\alpha, \beta)\)</span> follows a negative binomial distribution.</li>
 </ol></li>
 </ul>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="cross.html#cb175-1" aria-hidden="true" tabindex="-1"></a> <span class="do">## we need to understand the underlying rates in a prior for gamma given multiple states.</span></span>
-<span id="cb175-2"><a href="cross.html#cb175-2" aria-hidden="true" tabindex="-1"></a> vl<span class="ot">&lt;-</span><span class="fu">subset</span>(tally,tally<span class="sc">$</span>ideo<span class="sc">==</span><span class="st">&#39;very liberal&#39;</span>)</span>
-<span id="cb175-3"><a href="cross.html#cb175-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hist</span>(vl<span class="sc">$</span>stateperc, <span class="at">xlab=</span><span class="st">&quot;very lib. (%)&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;frequency&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="cross.html#cb174-1" aria-hidden="true" tabindex="-1"></a> <span class="do">## we need to understand the underlying rates in a prior for gamma given multiple states.</span></span>
+<span id="cb174-2"><a href="cross.html#cb174-2" aria-hidden="true" tabindex="-1"></a> vl<span class="ot">&lt;-</span><span class="fu">subset</span>(tally,tally<span class="sc">$</span>ideo<span class="sc">==</span><span class="st">&#39;very liberal&#39;</span>)</span>
+<span id="cb174-3"><a href="cross.html#cb174-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hist</span>(vl<span class="sc">$</span>stateperc, <span class="at">xlab=</span><span class="st">&quot;very lib. (%)&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;frequency&quot;</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="cross.html#cb176-1" aria-hidden="true" tabindex="-1"></a>  <span class="do">## for each state we must identify the estimate</span></span>
-<span id="cb176-2"><a href="cross.html#cb176-2" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb176-3"><a href="cross.html#cb176-3" aria-hidden="true" tabindex="-1"></a>  <span class="do">## empircal bayesian prior for percentage of respondents</span></span>
-<span id="cb176-4"><a href="cross.html#cb176-4" aria-hidden="true" tabindex="-1"></a> emp.mean<span class="ot">&lt;-</span><span class="fu">mean</span>(vl<span class="sc">$</span>stateperc)</span>
-<span id="cb176-5"><a href="cross.html#cb176-5" aria-hidden="true" tabindex="-1"></a> emp.var<span class="ot">&lt;-</span><span class="fu">var</span>(vl<span class="sc">$</span>stateperc)</span>
-<span id="cb176-6"><a href="cross.html#cb176-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb176-7"><a href="cross.html#cb176-7" aria-hidden="true" tabindex="-1"></a>  beta<span class="ot">=</span>beta<span class="ot">&lt;-</span><span class="dv">1</span><span class="sc">/</span>((<span class="fu">var</span>(vl<span class="sc">$</span>stateperc)<span class="sc">-</span>(<span class="fu">mean</span>(<span class="dv">1</span><span class="sc">/</span>vl<span class="sc">$</span>density))<span class="sc">*</span>emp.mean)<span class="sc">/</span>(emp.mean))</span>
-<span id="cb176-8"><a href="cross.html#cb176-8" aria-hidden="true" tabindex="-1"></a>  alpha <span class="ot">=</span> beta<span class="sc">*</span>emp.mean</span>
-<span id="cb176-9"><a href="cross.html#cb176-9" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb176-10"><a href="cross.html#cb176-10" aria-hidden="true" tabindex="-1"></a>alpha_unif<span class="ot">=</span> <span class="fl">0.01</span></span>
-<span id="cb176-11"><a href="cross.html#cb176-11" aria-hidden="true" tabindex="-1"></a>beta_unif <span class="ot">=</span> <span class="fl">0.01</span></span>
-<span id="cb176-12"><a href="cross.html#cb176-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb176-13"><a href="cross.html#cb176-13" aria-hidden="true" tabindex="-1"></a><span class="fu">qgamma</span>(<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>),alpha,beta)</span></code></pre></div>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="cross.html#cb175-1" aria-hidden="true" tabindex="-1"></a>  <span class="do">## for each state we must identify the estimate</span></span>
+<span id="cb175-2"><a href="cross.html#cb175-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb175-3"><a href="cross.html#cb175-3" aria-hidden="true" tabindex="-1"></a>  <span class="do">## empircal bayesian prior for percentage of respondents</span></span>
+<span id="cb175-4"><a href="cross.html#cb175-4" aria-hidden="true" tabindex="-1"></a> emp.mean<span class="ot">&lt;-</span><span class="fu">mean</span>(vl<span class="sc">$</span>stateperc)</span>
+<span id="cb175-5"><a href="cross.html#cb175-5" aria-hidden="true" tabindex="-1"></a> emp.var<span class="ot">&lt;-</span><span class="fu">var</span>(vl<span class="sc">$</span>stateperc)</span>
+<span id="cb175-6"><a href="cross.html#cb175-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb175-7"><a href="cross.html#cb175-7" aria-hidden="true" tabindex="-1"></a>  beta<span class="ot">=</span>beta<span class="ot">&lt;-</span><span class="dv">1</span><span class="sc">/</span>((<span class="fu">var</span>(vl<span class="sc">$</span>stateperc)<span class="sc">-</span>(<span class="fu">mean</span>(<span class="dv">1</span><span class="sc">/</span>vl<span class="sc">$</span>density))<span class="sc">*</span>emp.mean)<span class="sc">/</span>(emp.mean))</span>
+<span id="cb175-8"><a href="cross.html#cb175-8" aria-hidden="true" tabindex="-1"></a>  alpha <span class="ot">=</span> beta<span class="sc">*</span>emp.mean</span>
+<span id="cb175-9"><a href="cross.html#cb175-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb175-10"><a href="cross.html#cb175-10" aria-hidden="true" tabindex="-1"></a>alpha_unif<span class="ot">=</span> <span class="fl">0.01</span></span>
+<span id="cb175-11"><a href="cross.html#cb175-11" aria-hidden="true" tabindex="-1"></a>beta_unif <span class="ot">=</span> <span class="fl">0.01</span></span>
+<span id="cb175-12"><a href="cross.html#cb175-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb175-13"><a href="cross.html#cb175-13" aria-hidden="true" tabindex="-1"></a><span class="fu">qgamma</span>(<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>),alpha,beta)</span></code></pre></div>
 <pre><code>## [1] 2.422521 7.788166</code></pre>
-<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="cross.html#cb178-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(tally<span class="sc">$</span>prop,<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>))  </span></code></pre></div>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="cross.html#cb177-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(tally<span class="sc">$</span>prop,<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>))  </span></code></pre></div>
 <pre><code>## Warning: Unknown or uninitialised column: `prop`.</code></pre>
 <pre><code>##  2.5% 97.5% 
 ##    NA    NA</code></pre>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="cross.html#cb181-1" aria-hidden="true" tabindex="-1"></a>  theta<span class="ot">=</span><span class="fu">seq</span>(<span class="at">from=</span><span class="dv">0</span>,<span class="at">to=</span><span class="fl">0.1</span>,<span class="at">by=</span>.<span class="dv">001</span>)</span>
-<span id="cb181-2"><a href="cross.html#cb181-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">plot</span>(theta,<span class="fu">dgamma</span>(theta,alpha,<span class="at">rate=</span>beta),<span class="at">lty=</span><span class="dv">2</span>, <span class="at">xlab=</span><span class="st">&#39;very liberal voters by state&#39;</span>)</span>
-<span id="cb181-3"><a href="cross.html#cb181-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(theta,<span class="fu">dgamma</span>(theta,alpha_unif,<span class="at">rate=</span>beta_unif),<span class="at">col=</span><span class="st">&#39;red&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="cross.html#cb180-1" aria-hidden="true" tabindex="-1"></a>  theta<span class="ot">=</span><span class="fu">seq</span>(<span class="at">from=</span><span class="dv">0</span>,<span class="at">to=</span><span class="fl">0.1</span>,<span class="at">by=</span>.<span class="dv">001</span>)</span>
+<span id="cb180-2"><a href="cross.html#cb180-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">plot</span>(theta,<span class="fu">dgamma</span>(theta,alpha,<span class="at">rate=</span>beta),<span class="at">lty=</span><span class="dv">2</span>, <span class="at">xlab=</span><span class="st">&#39;very liberal voters by state&#39;</span>)</span>
+<span id="cb180-3"><a href="cross.html#cb180-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(theta,<span class="fu">dgamma</span>(theta,alpha_unif,<span class="at">rate=</span>beta_unif),<span class="at">col=</span><span class="st">&#39;red&#39;</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-29-2.png" width="672" /></p>
-<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="cross.html#cb182-1" aria-hidden="true" tabindex="-1"></a>dat<span class="ot">&lt;-</span>tt[<span class="fu">which</span>(tt<span class="sc">$</span>ideo<span class="sc">==</span><span class="st">&#39;very liberal&#39;</span>),]</span>
-<span id="cb182-2"><a href="cross.html#cb182-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb182-3"><a href="cross.html#cb182-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb182-4"><a href="cross.html#cb182-4" aria-hidden="true" tabindex="-1"></a>post<span class="ot">&lt;-</span><span class="cf">function</span>(theta,yj,nj){</span>
-<span id="cb182-5"><a href="cross.html#cb182-5" aria-hidden="true" tabindex="-1"></a> dd<span class="ot">&lt;-</span><span class="fu">dgamma</span>(theta,alpha<span class="sc">+</span>yj,<span class="at">rate=</span>beta<span class="sc">+</span>nj)</span>
-<span id="cb182-6"><a href="cross.html#cb182-6" aria-hidden="true" tabindex="-1"></a> <span class="fu">return</span>(dd)</span>
-<span id="cb182-7"><a href="cross.html#cb182-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb182-8"><a href="cross.html#cb182-8" aria-hidden="true" tabindex="-1"></a>postMean<span class="ot">&lt;-</span><span class="cf">function</span>(alpha,yj,beta,nj){</span>
-<span id="cb182-9"><a href="cross.html#cb182-9" aria-hidden="true" tabindex="-1"></a>  (alpha<span class="sc">+</span>yj)<span class="sc">/</span>(beta<span class="sc">+</span>nj)</span>
-<span id="cb182-10"><a href="cross.html#cb182-10" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb182-11"><a href="cross.html#cb182-11" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb182-12"><a href="cross.html#cb182-12" aria-hidden="true" tabindex="-1"></a>post_thetaj<span class="ot">&lt;-</span> <span class="fu">postMean</span>(alpha_unif,dat<span class="sc">$</span>n,beta_unif,dat<span class="sc">$</span>density)</span>
-<span id="cb182-13"><a href="cross.html#cb182-13" aria-hidden="true" tabindex="-1"></a>pp<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">state=</span>dat<span class="sc">$</span>state,<span class="at">post=</span><span class="fu">postMean</span>(alpha_unif,dat<span class="sc">$</span>n,beta_unif,dat<span class="sc">$</span>density))</span>
-<span id="cb182-14"><a href="cross.html#cb182-14" aria-hidden="true" tabindex="-1"></a>tt2<span class="ot">&lt;-</span><span class="fu">left_join</span>(ele,pp,<span class="at">by=</span><span class="st">&quot;state&quot;</span>)</span>
-<span id="cb182-15"><a href="cross.html#cb182-15" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tt2,<span class="fu">aes</span>(<span class="at">x=</span>post,<span class="at">y=</span>vote_Obama_pct,<span class="at">label=</span>state))<span class="sc">+</span><span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">3</span>)<span class="sc">+</span><span class="fu">geom_text</span>(<span class="at">hjust=</span><span class="dv">0</span>,<span class="at">vjust=</span><span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="cross.html#cb181-1" aria-hidden="true" tabindex="-1"></a>dat<span class="ot">&lt;-</span>tt[<span class="fu">which</span>(tt<span class="sc">$</span>ideo<span class="sc">==</span><span class="st">&#39;very liberal&#39;</span>),]</span>
+<span id="cb181-2"><a href="cross.html#cb181-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb181-3"><a href="cross.html#cb181-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb181-4"><a href="cross.html#cb181-4" aria-hidden="true" tabindex="-1"></a>post<span class="ot">&lt;-</span><span class="cf">function</span>(theta,yj,nj){</span>
+<span id="cb181-5"><a href="cross.html#cb181-5" aria-hidden="true" tabindex="-1"></a> dd<span class="ot">&lt;-</span><span class="fu">dgamma</span>(theta,alpha<span class="sc">+</span>yj,<span class="at">rate=</span>beta<span class="sc">+</span>nj)</span>
+<span id="cb181-6"><a href="cross.html#cb181-6" aria-hidden="true" tabindex="-1"></a> <span class="fu">return</span>(dd)</span>
+<span id="cb181-7"><a href="cross.html#cb181-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb181-8"><a href="cross.html#cb181-8" aria-hidden="true" tabindex="-1"></a>postMean<span class="ot">&lt;-</span><span class="cf">function</span>(alpha,yj,beta,nj){</span>
+<span id="cb181-9"><a href="cross.html#cb181-9" aria-hidden="true" tabindex="-1"></a>  (alpha<span class="sc">+</span>yj)<span class="sc">/</span>(beta<span class="sc">+</span>nj)</span>
+<span id="cb181-10"><a href="cross.html#cb181-10" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb181-11"><a href="cross.html#cb181-11" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb181-12"><a href="cross.html#cb181-12" aria-hidden="true" tabindex="-1"></a>post_thetaj<span class="ot">&lt;-</span> <span class="fu">postMean</span>(alpha_unif,dat<span class="sc">$</span>n,beta_unif,dat<span class="sc">$</span>density)</span>
+<span id="cb181-13"><a href="cross.html#cb181-13" aria-hidden="true" tabindex="-1"></a>pp<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">state=</span>dat<span class="sc">$</span>state,<span class="at">post=</span><span class="fu">postMean</span>(alpha_unif,dat<span class="sc">$</span>n,beta_unif,dat<span class="sc">$</span>density))</span>
+<span id="cb181-14"><a href="cross.html#cb181-14" aria-hidden="true" tabindex="-1"></a>tt2<span class="ot">&lt;-</span><span class="fu">left_join</span>(ele,pp,<span class="at">by=</span><span class="st">&quot;state&quot;</span>)</span>
+<span id="cb181-15"><a href="cross.html#cb181-15" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tt2,<span class="fu">aes</span>(<span class="at">x=</span>post,<span class="at">y=</span>vote_Obama_pct,<span class="at">label=</span>state))<span class="sc">+</span><span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">3</span>)<span class="sc">+</span><span class="fu">geom_text</span>(<span class="at">hjust=</span><span class="dv">0</span>,<span class="at">vjust=</span><span class="dv">0</span>)</span></code></pre></div>
 <pre><code>## Warning: Removed 1 rows containing missing values (geom_point).</code></pre>
 <pre><code>## Warning: Removed 1 rows containing missing values (geom_text).</code></pre>
 <p><img src="_main_files/figure-html/unnamed-chunk-29-3.png" width="672" /></p>
@@ -1457,7 +1519,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

@@ -180,7 +180,7 @@ compare with 2.11 grid approach using the Cauchy distribution, we see that norma
 
   step=0.01
 #theta<-seq(from=0,to=100000)/m
- theta<-seq(step/2, 1-step/2,step)
+ theta<-seq(-10, 10,by=step)
  ## p(theta | y) ~ p(y|theta)*p(theta)
  dens<-function(y,th){
    dens0<-NULL

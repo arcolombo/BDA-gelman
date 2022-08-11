@@ -715,7 +715,7 @@ Then the probability that at least 1 election is tied, from 435 total elections 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 16.18089
+## [1] -4.370898
 \end{verbatim}
 
 \begin{Shaded}
@@ -725,7 +725,7 @@ Then the probability that at least 1 election is tied, from 435 total elections 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 40
+## [1] 42
 \end{verbatim}
 
 \begin{Shaded}
@@ -1070,6 +1070,85 @@ and this follows a Gamma(\(\alpha,\beta)\) equivalent to prior total count of \(
 \subsection*{Negative Binomial distribution}\label{negative-binomial-distribution}}
 \addcontentsline{toc}{subsection}{Negative Binomial distribution}
 
+With conjugate families, with the known form of the prior and posterior densities can be used to find the marginal
+
+\begin{equation}
+p(y) =\frac{p(y|\theta)p(\theta)}{p(\theta|y)}
+\end{equation}
+
+For a single Poisson model with 1 observation, y, this has a prior predictive distribution
+
+\begin{equation}
+ p(y) = \frac{Poisson(y|\theta)Gamma(\theta|\alpha,\beta)}{Gamma(\theta,\alpha+y,\beta+1)} 
+ = \frac{\Gamma(\alpha+y)\beta^\alpha}{(\Gamma(\alpha)y!(1+\beta)^{\alpha+y})}
+ = \binom{\alpha+y-1}{y}(\frac{\beta}{\beta+1})^\alpha(\frac{1}{\beta+1})^y
+ y \sim NB(\alpha,\beta)
+\end{equation}
+
+This shows the negative binomial distribution is a mixture of Poisson distribution with rates, \(\theta\) that follow the Gamma distribution
+
+\begin{equation}
+Neg-bin(y|\alpha,\beta) = \int Pois(y|\theta)Gamma(\theta | \alpha,\beta)d\theta
+\end{equation}
+
+\hypertarget{exponential-distribution}{%
+\subsection*{Exponential distribution}\label{exponential-distribution}}
+\addcontentsline{toc}{subsection}{Exponential distribution}
+
+The exponential distribution is used to model waiting times and other continuous positive real-valued random variables, often on a time scale. The sampling distribution of an outcome y, given parameter \(\theta\) is
+\begin{equation}
+p(y|\theta) = \theta exp(-y\theta), y>0
+\end{equation}
+
+and \(\theta =1/E(y)\) is called the \emph{rate}. The conjugate prior for the Exponential distribution is the Gamma(\(\theta| \alpha,\beta\)), with corresponding posterior Gamma(\(\theta,\alpha+1, \beta+y)\). The Gamma prior Gamma(\(\alpha,\beta)\) for \(\theta\) can be viewed as \(\alpha-1\) exponential observations with total wating time \(\beta\).
+
+\hypertarget{constructing-a-prior-distribution}{%
+\subsection*{Constructing a prior distribution}\label{constructing-a-prior-distribution}}
+\addcontentsline{toc}{subsection}{Constructing a prior distribution}
+
+In the text example, the prior distribution values were set using a Gamma distribution with \(\alpha,\beta\) estimated from the data to match the distribution of the observed cancer death rates \(y_j/10n_j\). It may seem inappropriate to use the data to set the prior distribution, but it is used in hierarchical modeling and is an approximation.
+
+Under the model the observed count \(y_j\) for any couny, j, comes from the \emph{predictive distribution} p(\(y_j) = \int p(y_j|\theta_j)p(\theta_j)d\theta_j\), which is the Negative binomial NB(\(\alpha,\beta/10n_j)\).
+
+We then use a method of moments estimator to solve for \(\alpha,\beta\).
+
+\begin{equation}
+ E(y_j) = 10n_j \frac{\alpha}{\beta}
+ V(y_j) = 10n_j\frac{\alpha}{\beta}+ (10n_j)^2\frac{\alpha}{\beta^2}
+ \end{equation}
+
+Here we match the \emph{observed} mean and variance to their expectations and solve for both parameters, yields the parameters of the prior.
+
+\hypertarget{noninformative-prior-distributions}{%
+\section{Noninformative prior distributions}\label{noninformative-prior-distributions}}
+
+Reference prior distributions are described as vague, flat, diffuse or \emph{noninformative}. this gives more weight to the data as opposed to prior beliefs. A related idea is \emph{weakly informative} prior distribution, which contains some information enough to keep it within reasonable bounds.
+
+\hypertarget{jeffreys-invariance-principle}{%
+\subsection{Jeffreys' invariance principle}\label{jeffreys-invariance-principle}}
+
+Noninformative prior distributions based on considering one-to-one transformations of the parameter: \(\phi = h(\theta)\). By transofmraiton of variables, the prior density p(\(\theta)\) is equivalent to the prior density on \(p(\phi)\).
+
+\begin{equation}
+p(\phi) = p(\theta)|\frac{d\theta}{d\phi}| = p(\theta)|h'(\theta)|^{-1}
+\end{equation}
+
+Jeffreys' general principle iss that any rule for determining the prior density \(p(\theta)\) yields equivalent result by transforming to \(p(\phi)\).
+
+This principle leads to defining the noninformative prior density as \(p(\theta)\propto |J(\theta)|^{1/2}\), where \(J(\theta)\) is the \emph{Fisher information} for \(\theta\).
+
+\begin{equation}
+J(\theta)  = E((\frac{d log p(y|\theta)}{d\theta})^2| \theta) = -E(\frac{d^2 log p(y|\theta)}{d\theta^2} | \theta)
+\end{equation}
+
+\hypertarget{difficulties-with-noninformative-prior-distributions}{%
+\subsection*{Difficulties with noninformative prior distributions}\label{difficulties-with-noninformative-prior-distributions}}
+\addcontentsline{toc}{subsection}{Difficulties with noninformative prior distributions}
+
+1.if the likelihood is truly dominant, then the prior densities can not matter, but using this as automatic assumption of the likelihood is mis-guided.
+2. uniform or flat prior density is uniform for one parameterization, and will not be uniform in another parameterization. The scale of a given problem may change, and uniform prior may not be reasonable assumption in another parameterization.
+3. averaging over a set of competing models that have improper prior distributions will lead to problems.
+
 \hypertarget{exercises-1}{%
 \section{Exercises}\label{exercises-1}}
 
@@ -1188,7 +1267,7 @@ We find the probability distribution of a given success and the prior probabilit
 
 \begin{verbatim}
 ##       5%      25%      50%      75%      95% 
-## 136.7614 154.6273 167.5061 178.8781 196.7024
+## 141.6362 155.5543 167.2259 178.0557 195.0389
 \end{verbatim}
 
 \begin{Shaded}
@@ -1548,7 +1627,7 @@ Suppose there are N cable cars numbered sequentially 1 to N. You see a car at ra
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 279.7088
+## [1] 280.3206
 \end{verbatim}
 
 \begin{Shaded}
@@ -1558,7 +1637,7 @@ Suppose there are N cable cars numbered sequentially 1 to N. You see a car at ra
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 81.98855
+## [1] 80.18079
 \end{verbatim}
 
 \begin{itemize}
@@ -1671,7 +1750,7 @@ for the likelihood \(L(\theta | y) = \prod_{i=1}^n f(y_i|\theta)\) requires the 
 
 \begin{verbatim}
 ##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
-## -3695.022    -0.420     0.642    -3.933     1.702   577.448
+## -120.9488   -0.5259    0.5074    0.9698    1.5091  147.1229
 \end{verbatim}
 
 \begin{Shaded}
@@ -1894,7 +1973,7 @@ The true observed value for 1986 is 22 fatal accidents.
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##    7.00   20.00   24.00   23.75   27.00   49.00
+##    8.00   20.00   24.00   23.79   27.00   45.00
 \end{verbatim}
 
 \begin{Shaded}
@@ -1956,7 +2035,7 @@ The average predictive value from 1986 is 24.3 which is close to the true value 
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   4.055  20.760  24.246  24.237  27.713  47.637
+## -0.4808 20.7783 24.2597 24.2506 27.6996 44.3823
 \end{verbatim}
 
 \begin{Shaded}
@@ -1981,7 +2060,7 @@ The average predictive value from 1986 is 24.3 which is close to the true value 
 
 \begin{verbatim}
 ##     2.5%    97.5% 
-## 14.18710 34.29447
+## 14.19498 34.26337
 \end{verbatim}
 
 \begin{Shaded}
@@ -1991,7 +2070,7 @@ The average predictive value from 1986 is 24.3 which is close to the true value 
 \end{Shaded}
 
 \begin{verbatim}
-## average predictive value from posterior:23.7548
+## average predictive value from posterior:23.7858
 \end{verbatim}
 
 \begin{itemize}
@@ -2154,7 +2233,7 @@ We can also use the normal approximation, but the equations for the mean and var
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 22 47
+## [1] 21 46
 \end{verbatim}
 
 \begin{Shaded}
@@ -2314,7 +2393,7 @@ which is not the expected prediction of 546 passenger deaths. This is likely bec
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   606.0   673.0   692.0   691.6   711.0   777.0
+##   619.0   671.0   690.0   690.6   708.0   804.0
 \end{verbatim}
 
 \begin{Shaded}
@@ -2340,8 +2419,8 @@ which is not the expected prediction of 546 passenger deaths. This is likely bec
 \end{Shaded}
 
 \begin{verbatim}
-##  2.5% 97.5% 
-##   640   745
+##    2.5%   97.5% 
+## 639.975 745.025
 \end{verbatim}
 
 \begin{itemize}
@@ -2430,7 +2509,7 @@ Note we used Jeffreys' prior here, but an empirical prior is okay
 \end{Shaded}
 
 \begin{verbatim}
-## [1]  905 1028
+## [1]  908 1038
 \end{verbatim}
 
 \hypertarget{question-21}{%
@@ -2464,10 +2543,6 @@ For those that identify as \emph{liberal} we see a much linear trend.
  \FunctionTok{library}\NormalTok{(dplyr)}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{verbatim}
-## Warning: package 'dplyr' was built under R version 4.2.1
-\end{verbatim}
 
 \begin{verbatim}
 ## 
@@ -2901,15 +2976,6 @@ There was a 0.355 probability of a shift toward Bush after both debates.
  \DocumentationTok{\#\# need the pre posterior}
  \DocumentationTok{\#\# the prior alpha1, alpha2 =0 for improper prior}
  \FunctionTok{library}\NormalTok{(gtools)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Warning: package 'gtools' was built under R version 4.2.1
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \NormalTok{  pre.post}\OtherTok{\textless{}{-}}\FunctionTok{rdirichlet}\NormalTok{(}\DecValTok{1000}\NormalTok{, }\FunctionTok{c}\NormalTok{(}\FunctionTok{as.numeric}\NormalTok{(debate[}\DecValTok{1}\NormalTok{,}\DecValTok{2}\SpecialCharTok{:}\DecValTok{4}\NormalTok{])))}
 \NormalTok{   p.post}\OtherTok{\textless{}{-}}\FunctionTok{rdirichlet}\NormalTok{(}\DecValTok{1000}\NormalTok{, }\FunctionTok{c}\NormalTok{(}\FunctionTok{as.numeric}\NormalTok{(debate[}\DecValTok{2}\NormalTok{,}\DecValTok{2}\SpecialCharTok{:}\DecValTok{4}\NormalTok{])))}
   \DocumentationTok{\#\# differences between bush post .vs pre}
@@ -2928,7 +2994,7 @@ There was a 0.355 probability of a shift toward Bush after both debates.
 \begin{verbatim}
 ## 
 ## FALSE  TRUE 
-##   662   338
+##   638   362
 \end{verbatim}
 
 \begin{Shaded}
@@ -3016,7 +3082,7 @@ we are given two independent normal random variables with unknown variances and 
 
 \begin{verbatim}
 ##      2.5%     97.5% 
-## 0.9197737 1.0988129
+## 0.9259494 1.1042008
 \end{verbatim}
 
 \begin{Shaded}
@@ -3027,7 +3093,7 @@ we are given two independent normal random variables with unknown variances and 
 
 \begin{verbatim}
 ##     2.5%    97.5% 
-## 1.091020 1.255681
+## 1.090623 1.255044
 \end{verbatim}
 
 \begin{itemize}
@@ -3059,7 +3125,7 @@ The posterior interval (central) of the differences between 2 independent t-dist
 
 \begin{verbatim}
 ##       2.5%      97.5% 
-## 0.04457778 0.28001190
+## 0.03648754 0.27771995
 \end{verbatim}
 
 \begin{Shaded}
@@ -3080,7 +3146,7 @@ The posterior interval (central) of the differences between 2 independent t-dist
 
 \begin{verbatim}
 ##       2.5%      97.5% 
-## 0.04191836 0.27459333
+## 0.03531293 0.27131692
 \end{verbatim}
 
 \begin{Shaded}
@@ -3163,7 +3229,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.1969  0.4370  0.5330  0.5496  0.6392  1.2495
+##  0.1861  0.4362  0.5323  0.5514  0.6503  1.3336
 \end{verbatim}
 
 \begin{Shaded}
@@ -3209,7 +3275,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.2267  0.4599  0.5524  0.5710  0.6525  1.3099
+##  0.2564  0.4556  0.5468  0.5654  0.6480  1.3812
 \end{verbatim}
 
 \hypertarget{question-4-dirichlet}{%
@@ -3280,7 +3346,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.2021  0.4662  0.5623  0.5822  0.6618  1.3783
+##  0.2448  0.4614  0.5643  0.5856  0.6845  1.2522
 \end{verbatim}
 
 \begin{Shaded}
@@ -3318,7 +3384,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.1999  0.4501  0.5404  0.5680  0.6553  1.4487
+##  0.1643  0.4595  0.5532  0.5752  0.6759  1.4929
 \end{verbatim}
 
 \begin{Shaded}
@@ -3345,7 +3411,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.3090  0.5058  0.5677  0.5722  0.6280  0.9540
+##  0.3176  0.5037  0.5570  0.5681  0.6301  0.8848
 \end{verbatim}
 
 \hypertarget{question-5}{%
@@ -3386,7 +3452,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   5.816   9.395  10.353  10.433  11.370  16.080
+##   6.310   9.251  10.248  10.330  11.279  15.249
 \end{verbatim}
 
 \begin{Shaded}
@@ -3396,7 +3462,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 10.43307
+## [1] 10.33018
 \end{verbatim}
 
 \begin{Shaded}
@@ -3406,7 +3472,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 2.270851
+## [1] 2.18227
 \end{verbatim}
 
 \begin{Shaded}
@@ -3468,7 +3534,7 @@ The difference in means is approximately 0, with a variance (residual) of 2.7.
 \end{Shaded}
 
 \begin{verbatim}
-## [1] -0.04486551
+## [1] 0.06352079
 \end{verbatim}
 
 \begin{Shaded}
@@ -3478,7 +3544,7 @@ The difference in means is approximately 0, with a variance (residual) of 2.7.
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 2.813802
+## [1] 2.63661
 \end{verbatim}
 
 \begin{Shaded}
@@ -3538,7 +3604,7 @@ For this we sample from the normal posterior distribution, conditioned on the ro
 \end{Shaded}
 
 \begin{verbatim}
-## mean error:0.133971444782821
+## mean error:0.141103017760277
 \end{verbatim}
 
 \begin{Shaded}
@@ -4241,7 +4307,7 @@ compare with 2.11 grid approach using the Cauchy distribution, we see that norma
 
 \NormalTok{  step}\OtherTok{=}\FloatTok{0.01}
 \CommentTok{\#theta\textless{}{-}seq(from=0,to=100000)/m}
-\NormalTok{ theta}\OtherTok{\textless{}{-}}\FunctionTok{seq}\NormalTok{(step}\SpecialCharTok{/}\DecValTok{2}\NormalTok{, }\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{step}\SpecialCharTok{/}\DecValTok{2}\NormalTok{,step)}
+\NormalTok{ theta}\OtherTok{\textless{}{-}}\FunctionTok{seq}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{10}\NormalTok{, }\DecValTok{10}\NormalTok{,}\AttributeTok{by=}\NormalTok{step)}
  \DocumentationTok{\#\# p(theta | y) \textasciitilde{} p(y|theta)*p(theta)}
 \NormalTok{ dens}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(y,th)\{}
 \NormalTok{   dens0}\OtherTok{\textless{}{-}}\ConstantTok{NULL}
