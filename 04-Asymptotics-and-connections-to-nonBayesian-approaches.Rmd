@@ -201,3 +201,240 @@ compare with 2.11 grid approach using the Cauchy distribution, we see that norma
 ytilde<-rcauchy(1000,location=samps,scale=1) 
  hist(ytilde)
 ```
+
+### Exercise 2{-}
+To show the analytic information matrix of the bioassay example.
+
+The logistic function has a derivative in the form
+\begin{equation}
+\partial/\partial\alpha logit^{-1}(\alpha+\beta*x_i) = \frac{exp(\alpha+\beta*x_i)}{(1+exp(\alpha+\beta*x_i))^2}=\frac{logit^{-1}(\alpha+\beta*x_i)}{1+exp(\alpha+\beta*x_i)}
+\end{equation}
+
+\begin{equation}
+\partial/\partial\beta logit^{-1}(\alpha+\beta*x_i) = \frac{exp(\alpha+\beta*x_i)x_i}{(1+exp(\alpha+\beta*x_i))^2}=\frac{logit^{-1}(\alpha+\beta*x_i)x_i}{1+exp(\alpha+\beta*x_i)}
+\end{equation}
+
+Normal approximation using the infomation
+```{r}
+inv.logit<-function(theta){
+  return( (exp(theta)/(1+exp(theta)))  )
+}
+library(matlib)
+
+### normal approximation
+ alpha_hat<-1.353
+ beta_hat<-11.634
+
+ 
+I_hat_theta<-matrix(c(sum(inv.logit(alpha_hat+beta_hat*assay$x)*(1-inv.logit(alpha_hat+beta_hat*assay$x))*assay$n),
+                      sum(inv.logit(alpha_hat+beta_hat*assay$x)*(1-inv.logit(alpha_hat+beta_hat*assay$x))*assay$n*assay$x),
+                      sum(inv.logit(alpha_hat+beta_hat*assay$x)*(1-inv.logit(alpha_hat+beta_hat*assay$x))*assay$n*assay$x),
+                      sum(inv.logit(alpha_hat+beta_hat*assay$x)*(1-inv.logit(alpha_hat+beta_hat*assay$x))*assay$n*assay$x*assay$x)),nrow=2,ncol=2)
+
+## asymptotic variance (a,b)
+invI<-matlib::inv(I_hat_theta)
+
+norm.approx<-rmvnorm(1000,mean=c(alpha_hat,beta_hat),sigma=invI)
+ colnames(norm.approx)<-c("A","B")
+plot(norm.approx,xlim=c(-5,10),ylim=c(-10,40)) # figure 4.1(b) 
+
+```
+### Exercise 3{-}
+
+A reasonable estimate for the posterior mode and standard deviation as proxy to the asymptotic values will utilize a GLM, where $\theta= -\alpha/\beta = -0.109 (-0.15,0.37) as the limit values.
+```{r}
+ dr<-data.frame(xi=c(rep(-0.86,5),
+                     rep(-0.30,5),
+                     rep(-0.05,5),
+                     rep(0.73,5)),
+                yi=c(rep(0,5),
+                     1,rep(0,4),
+                     1,1,1,rep(0,2),
+                     rep(1,5)))
+
+bioassay<-glm(yi~xi,family='binomial',dr)
+#summary(bioassay)
+ ab<-coef(bioassay)
+ ab<-cbind(ab,confint(bioassay))
+ ld50<--ab[1,]/ab[2,]
+ print(ld50)
+```
+
+Using a uniform prior, we compute the Bayesian posterior for $\theta=-\alpha/\beta$ using posterior distribution for $p(\alpha,\beta|y)$ and then compute $\theta$ with interval -0.1049 (-0.27, 0.09) and the standard deviation is 0.0988. This reproduces figure 3.3 from section 3.7
+```{r}
+ 
+ ## compare with the Bayesian approximation using 3.16 from section 3.7
+ library(mvtnorm)
+ library(magrittr)
+ library(dplyr)
+ library(ggplot2)
+ assay<-data.frame(x=c(-0.86,-0.30,-0.05,0.73), n=c(5,5,5,5), y=c(0,1,3,5))
+
+ ## the point a,b by MLE is (0.8,7.7) so we grid around these solution.
+ a0= seq(-5,10,by=0.1)
+ b1= seq(-10,40,by=0.1)
+  a0b1<- expand.grid(a0, b1)
+
+logit<-function(theta){
+  return( log(theta/(1-theta)))
+}
+
+inv.logit<-function(theta){
+  return( (exp(theta)/(1+exp(theta)))  )
+}
+
+ ## equation 3.16 using the uniform
+## alpha, beta come from uniform distribution
+ ## \prod_(i=1)^5 p(y|theta) ~ \theta^y (1-theta)^n-y ## kth dose. 
+  ### logit(theta) = alpha+ beta*x
+logit.likelihood<-function(alpha,beta,x,y,n){
+   theta_approx<- alpha+beta*x
+   bin.like<-(inv.logit(theta_approx))^y*(1-inv.logit(theta_approx))^(n-y)
+   return(bin.like)
+}  
+
+ ## the alpha,beta stem from the grid, and we return the probability mass from the prior.
+## uniform prior p(a,b) ~ 1
+ joint.prior<-function(alpha,beta){
+  prob.ab<-1
+  return(prob.ab)
+ }
+  
+ posterior_density<-function(alpha,beta,assay){
+   joint_density<-joint.prior(alpha,beta)
+   probs<-NULL
+   for(k in 1:nrow(assay)){
+     p<-logit.likelihood(alpha,beta,assay$x[k],assay$y[k],assay$n[k])
+     probs<-c(probs,p)
+   }
+   totalLikelihood<-prod(probs)
+   return( joint_density*totalLikelihood)
+ }
+ 
+  posts<-NULL
+ 
+ ## unnormalized posterior over grid which covers (a,b)
+for(i in 1:nrow(a0b1)){
+  posts[i]<-posterior_density(a0b1[i,"Var1"],a0b1[i,"Var2"],assay) 
+}
+  
+  
+ posts_norm<-posts/sum(posts)
+ a0b1$joint.prob<-posts_norm
+ 
+ ## grid sampling procedure
+  marginal.post_a<- a0b1%>%group_by(Var1)%>%summarise(p=sum(joint.prob))%>%data.frame
+    A<-B<-NULL
+  for(s in 1:5000){
+    a_s<-sample(marginal.post_a$Var1,1,prob=marginal.post_a$p)
+    p.a_s<-marginal.post_a[which(marginal.post_a$Var1==a_s),'p']
+    marginal.post_b<-a0b1[which(a0b1$Var1==a_s),]
+    marginal.post_b$cond.prob<-marginal.post_b$joint.prob/p.a_s
+    b_s<-sample(marginal.post_b$Var2,1,prob=marginal.post_b$cond.prob)
+    A<-c(A,a_s)
+    B<-c(B,b_s)
+     }
+ 
+    ### need to add a random jitter around each point.
+    Ajit<-A+runif(length(A),min=0,max=0.1)
+    Bjit<-B+runif(length(B),min=0,max=0.1)
+   ab.post<-data.frame(A=Ajit,B=Bjit)
+ ggplot(a0b1)+
+ geom_contour(mapping = aes(x = Var1, y = Var2, z = posts), bins = 20)+
+  geom_point(data = ab.post, aes(x = A, y = B), pch = 21)
+ 
+ ## posterior means (1.35,11.6)
+ message('posterior mean for A :',round(mean(A),3),' B ',round(mean(B),3))
+ 
+ quantile(-A/B,c(0.025,0.975))
+ message('posterio std.dev -a/b: ',round(sd(-A/B),3))
+  
+```
+
+Using the *delta-method* and the correlation matrix computed from Q2.
+
+\begin{equation}
+\end{equation}
+```{r}
+ theor.var<-sum((assay$n/beta_hat^2)*inv.logit(alpha_hat+beta_hat*assay$x)*(1-inv.logit(alpha_hat+beta_hat*assay$x))*((alpha_hat/beta_hat)*assay$x-1)^2)
+  message('the theoretical std dev:', round(sqrt(theor.var),3))
+  emp.var<-var(-A/B)
+ ld50_normApprox<- rnorm(1000,mean(-A/B),sd=sqrt(theor.var))
+  ld50_normApprox%>%hist(xlim=c(-0.6,0.6))
+ 
+ ld50_hat<-mean(ld50_normApprox)  ## poster mean (should use the mode but close enough)
+ 
+ message('normal approx posterior mean ', round(mean(ld50_normApprox),3),' std. dev ',round(sd(ld50_normApprox),3))
+
+```
+
+Taylor series expansion to approximate $d^2log p(\hat{\theta}|y)/d\theta^2 \approx \frac{f(\hat{\theta}+h)+f(\hat{\theta}-h)-2f(\hat{\theta})}{h^2}$
+
+$$
+\begin{aligned}
+ f(a+h) &\approx f(a) +h'f(a) +1/2 h^2f''(a) \\
+  f(a-h) &\approx f(a) -h'f(a) +1/2 h^2f''(a) \\
+\to f''(a) \approx \frac{f(a+h)+f(a-h)-2f(a)}{h^2}
+\end{aligned}
+$$
+```{r}
+
+
+```
+
+
+```{r}
+ 
+ ## change of variable equation 
+ logit.likelihood.variableChange<-function(alpha,beta,x,y,n){
+   theta_approx<- -alpha*beta+beta*x
+   bin.like<-(inv.logit(theta_approx))^y*(1-inv.logit(theta_approx))^(n-y)
+   return(bin.like)
+}  
+ 
+### re-doing based on sampling
+ posterior_density_Jacobian<-function(alpha,beta,assay,jacobian){
+   joint_density<-joint.prior(alpha,beta)
+   probs<-NULL
+   for(k in 1:nrow(assay)){
+     p<-logit.likelihood.variableChange(alpha,beta,assay$x[k],assay$y[k],assay$n[k])
+     probs<-c(probs,p)
+   }
+   totalLikelihood<-prod(probs)*abs(jacobian)
+   return( joint_density*totalLikelihood)
+ }
+ 
+theta_seq= seq(-0.3,0.5,by=0.01) ## alpha
+### numerical integration
+ nu_seq<- seq(-10,70,by=0.05) ## beta
+
+  thetaNu<- expand.grid(theta_seq, nu_seq)
+  posts<-NULL
+for(i in 1:nrow(thetaNu)){
+  posts[i]<-posterior_density_Jacobian(thetaNu[i,"Var1"],thetaNu[i,"Var2"],assay,jacobian = thetaNu[i,"Var2"]) 
+}
+  
+  posts_norm<-posts/sum(posts)
+ thetaNu$joint.prob<-posts_norm
+ 
+ ## grid sampling procedure
+ ## marginal post of alpha by summing over nu terms
+  marginal.post_theta<- thetaNu%>%group_by(Var1)%>%summarise(p=sum(joint.prob))%>%data.frame
+    thetas.post<-nu.post<-NULL
+ for(s in 1:5000){
+    a_s<-sample(marginal.post_theta$Var1,1,prob=marginal.post_theta$p)
+    p.a_s<-marginal.post_theta[which(marginal.post_theta$Var1==a_s),'p']
+    # 
+    marginal.post_b<-thetaNu[which(thetaNu$Var1==a_s),]
+    marginal.post_b$cond.prob<-marginal.post_b$joint.prob/p.a_s
+    b_s<-sample(marginal.post_b$Var2,1,prob=marginal.post_b$cond.prob)
+    thetas.post<-c(thetas.post,a_s)
+    nu.post<-c(nu.post,b_s)
+ }
+  hist(thetas.post,xlim=c(-0.5,0.5),main='posterior sample theta= -a/b')
+ message('sample posterior mean: ', mean(thetas.post))
+ message('sample posterior variance: ', round(var(thetas.post),3))
+ message('sample posterior std.dev: ', round(sd(thetas.post),3))
+
+```
+

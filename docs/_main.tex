@@ -715,7 +715,7 @@ Then the probability that at least 1 election is tied, from 435 total elections 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] -4.370898
+## [1] 19.44127
 \end{verbatim}
 
 \begin{Shaded}
@@ -725,7 +725,7 @@ Then the probability that at least 1 election is tied, from 435 total elections 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 42
+## [1] 40
 \end{verbatim}
 
 \begin{Shaded}
@@ -1267,7 +1267,7 @@ We find the probability distribution of a given success and the prior probabilit
 
 \begin{verbatim}
 ##       5%      25%      50%      75%      95% 
-## 141.6362 155.5543 167.2259 178.0557 195.0389
+## 140.8234 156.2210 166.8327 177.0334 195.1900
 \end{verbatim}
 
 \begin{Shaded}
@@ -1627,7 +1627,7 @@ Suppose there are N cable cars numbered sequentially 1 to N. You see a car at ra
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 280.3206
+## [1] 279.933
 \end{verbatim}
 
 \begin{Shaded}
@@ -1637,7 +1637,7 @@ Suppose there are N cable cars numbered sequentially 1 to N. You see a car at ra
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 80.18079
+## [1] 79.14769
 \end{verbatim}
 
 \begin{itemize}
@@ -1749,8 +1749,8 @@ for the likelihood \(L(\theta | y) = \prod_{i=1}^n f(y_i|\theta)\) requires the 
 \end{Shaded}
 
 \begin{verbatim}
-##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
-## -120.9488   -0.5259    0.5074    0.9698    1.5091  147.1229
+##       Min.    1st Qu.     Median       Mean    3rd Qu.       Max. 
+## -1045.9825    -0.6158     0.5382     0.1355     1.5991   395.7947
 \end{verbatim}
 
 \begin{Shaded}
@@ -1773,7 +1773,7 @@ for the likelihood \(L(\theta | y) = \prod_{i=1}^n f(y_i|\theta)\) requires the 
 \end{Shaded}
 
 \begin{verbatim}
-## max pred. prob 0.521
+## max pred. prob 0.522
 \end{verbatim}
 
 \hypertarget{question-12}{%
@@ -1973,7 +1973,7 @@ The true observed value for 1986 is 22 fatal accidents.
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##    8.00   20.00   24.00   23.79   27.00   45.00
+##    8.00   20.00   24.00   23.77   27.00   46.00
 \end{verbatim}
 
 \begin{Shaded}
@@ -1998,7 +1998,7 @@ The true observed value for 1986 is 22 fatal accidents.
 
 \begin{verbatim}
 ##  2.5% 97.5% 
-##    14    34
+##    14    35
 \end{verbatim}
 
 From the gamma posterior \(E(\theta | y) = 238.5/10.02=24.25\) and the variance \(V(\theta|y)= 238.5/10.02^2=2.87\). From the Poisson likelihood \(E(x|\theta)=\theta\) and \(V(x|\theta)=\theta\). \(V(x|y)= E(V(x|\theta,y) | y) + V(E(x|\theta,y)|y)= E(\theta| y)+ V(\theta|y) = 23.382+2.87= 26.252\)
@@ -2035,7 +2035,7 @@ The average predictive value from 1986 is 24.3 which is close to the true value 
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-## -0.4808 20.7783 24.2597 24.2506 27.6996 44.3823
+##   3.725  20.792  24.248  24.246  27.683  45.982
 \end{verbatim}
 
 \begin{Shaded}
@@ -2060,7 +2060,7 @@ The average predictive value from 1986 is 24.3 which is close to the true value 
 
 \begin{verbatim}
 ##     2.5%    97.5% 
-## 14.19498 34.26337
+## 14.18275 34.31296
 \end{verbatim}
 
 \begin{Shaded}
@@ -2070,7 +2070,7 @@ The average predictive value from 1986 is 24.3 which is close to the true value 
 \end{Shaded}
 
 \begin{verbatim}
-## average predictive value from posterior:23.7858
+## average predictive value from posterior:23.7738
 \end{verbatim}
 
 \begin{itemize}
@@ -2233,7 +2233,7 @@ We can also use the normal approximation, but the equations for the mean and var
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 21 46
+## [1] 23 47
 \end{verbatim}
 
 \begin{Shaded}
@@ -2374,8 +2374,8 @@ which is not the expected prediction of 546 passenger deaths. This is likely bec
 \end{Shaded}
 
 \begin{verbatim}
-##  2.5% 97.5% 
-##   636   746
+##    2.5%   97.5% 
+## 638.975 744.000
 \end{verbatim}
 
 \begin{Shaded}
@@ -2393,7 +2393,7 @@ which is not the expected prediction of 546 passenger deaths. This is likely bec
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   619.0   671.0   690.0   690.6   708.0   804.0
+##   614.0   671.0   690.0   690.7   709.0   783.0
 \end{verbatim}
 
 \begin{Shaded}
@@ -2420,7 +2420,7 @@ which is not the expected prediction of 546 passenger deaths. This is likely bec
 
 \begin{verbatim}
 ##    2.5%   97.5% 
-## 639.975 745.025
+## 638.975 747.000
 \end{verbatim}
 
 \begin{itemize}
@@ -2509,7 +2509,7 @@ Note we used Jeffreys' prior here, but an empirical prior is okay
 \end{Shaded}
 
 \begin{verbatim}
-## [1]  908 1038
+## [1]  905 1033
 \end{verbatim}
 
 \hypertarget{question-21}{%
@@ -2994,7 +2994,7 @@ There was a 0.355 probability of a shift toward Bush after both debates.
 \begin{verbatim}
 ## 
 ## FALSE  TRUE 
-##   638   362
+##   625   375
 \end{verbatim}
 
 \begin{Shaded}
@@ -3082,7 +3082,7 @@ we are given two independent normal random variables with unknown variances and 
 
 \begin{verbatim}
 ##      2.5%     97.5% 
-## 0.9259494 1.1042008
+## 0.9298994 1.1056721
 \end{verbatim}
 
 \begin{Shaded}
@@ -3093,7 +3093,7 @@ we are given two independent normal random variables with unknown variances and 
 
 \begin{verbatim}
 ##     2.5%    97.5% 
-## 1.090623 1.255044
+## 1.092072 1.256383
 \end{verbatim}
 
 \begin{itemize}
@@ -3125,7 +3125,7 @@ The posterior interval (central) of the differences between 2 independent t-dist
 
 \begin{verbatim}
 ##       2.5%      97.5% 
-## 0.03648754 0.27771995
+## 0.03632099 0.28123487
 \end{verbatim}
 
 \begin{Shaded}
@@ -3146,7 +3146,7 @@ The posterior interval (central) of the differences between 2 independent t-dist
 
 \begin{verbatim}
 ##       2.5%      97.5% 
-## 0.03531293 0.27131692
+## 0.04229226 0.27156899
 \end{verbatim}
 
 \begin{Shaded}
@@ -3229,7 +3229,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.1861  0.4362  0.5323  0.5514  0.6503  1.3336
+##  0.2214  0.4444  0.5441  0.5611  0.6562  1.3238
 \end{verbatim}
 
 \begin{Shaded}
@@ -3275,7 +3275,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.2564  0.4556  0.5468  0.5654  0.6480  1.3812
+##  0.2168  0.4607  0.5501  0.5681  0.6510  1.3186
 \end{verbatim}
 
 \hypertarget{question-4-dirichlet}{%
@@ -3346,7 +3346,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.2448  0.4614  0.5643  0.5856  0.6845  1.2522
+##  0.2244  0.4769  0.5615  0.5810  0.6678  1.3802
 \end{verbatim}
 
 \begin{Shaded}
@@ -3384,7 +3384,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.1643  0.4595  0.5532  0.5752  0.6759  1.4929
+##  0.1968  0.4579  0.5518  0.5697  0.6581  1.1721
 \end{verbatim}
 
 \begin{Shaded}
@@ -3411,7 +3411,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.3176  0.5037  0.5570  0.5681  0.6301  0.8848
+##  0.3266  0.5125  0.5699  0.5737  0.6290  0.9632
 \end{verbatim}
 
 \hypertarget{question-5}{%
@@ -3452,7 +3452,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   6.310   9.251  10.248  10.330  11.279  15.249
+##   6.907   9.486  10.329  10.391  11.341  15.173
 \end{verbatim}
 
 \begin{Shaded}
@@ -3462,7 +3462,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 10.33018
+## [1] 10.39118
 \end{verbatim}
 
 \begin{Shaded}
@@ -3472,7 +3472,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 2.18227
+## [1] 1.920347
 \end{verbatim}
 
 \begin{Shaded}
@@ -3534,7 +3534,7 @@ The difference in means is approximately 0, with a variance (residual) of 2.7.
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.06352079
+## [1] -0.01355588
 \end{verbatim}
 
 \begin{Shaded}
@@ -3544,7 +3544,7 @@ The difference in means is approximately 0, with a variance (residual) of 2.7.
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 2.63661
+## [1] 2.49682
 \end{verbatim}
 
 \begin{Shaded}
@@ -3604,7 +3604,7 @@ For this we sample from the normal posterior distribution, conditioned on the ro
 \end{Shaded}
 
 \begin{verbatim}
-## mean error:0.141103017760277
+## mean error:0.147148649147802
 \end{verbatim}
 
 \begin{Shaded}

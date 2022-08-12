@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.8.11)  11 AUG 2022 16:09
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.8.11)  11 AUG 2022 16:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -874,7 +874,17 @@ File: _main_files/figure-latex/unnamed-chunk-21-1.pdf Graphic file (type pdf)
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[44] [45]
+[44]
+Overfull \hbox (12.0pt too wide) in paragraph at lines 1754--1754
+[]\TU/lmtt/m/n/10 ##       Min.    1st Qu.     Median       Mean    3rd Qu.       Max.[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 1754--1754
+[]\TU/lmtt/m/n/10 ## -1045.9825    -0.6158     0.5382     0.1355     1.5991   395.7947[] 
+ []
+
+[45]
 File: _main_files/figure-latex/unnamed-chunk-22-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-22-1.pdf>
 [46] [47]
