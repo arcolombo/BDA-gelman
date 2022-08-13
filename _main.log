@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.8.11)  12 AUG 2022 18:57
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.8.11)  12 AUG 2022 19:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1414,11 +1414,7 @@ Overfull \hbox (84.64453pt too wide) has occurred while \output is active
 \TU/lmr/m/n/10 116 \TU/lmr/m/sl/10 CHAPTER 4.  ASYMPTOTICS AND CONNECTIONS TO NON-BAYESIAN APPROACHES
  []
 
-[116]
-Missing character: There is no 𝜃 (U+1D703) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 𝛼 (U+1D6FC) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 𝛽 (U+1D6FD) in font [lmroman10-regular]:mapping=tex-text;!
-[117]
+[116] [117]
 Overfull \hbox (84.64453pt too wide) has occurred while \output is active
 \TU/lmr/m/n/10 118 \TU/lmr/m/sl/10 CHAPTER 4.  ASYMPTOTICS AND CONNECTIONS TO NON-BAYESIAN APPROACHES
  []
@@ -1478,7 +1474,7 @@ Overfull \hbox (84.64453pt too wide) has occurred while \output is active
 
 [124]
 Overfull \hbox (38.25pt too wide) in paragraph at lines 4820--4820
-[]\TU/lmtt/m/n/10 ## taylor approximation of std.dev using posterior sample variance: 0.092[] 
+[]\TU/lmtt/m/n/10 ## taylor approximation of std.dev using posterior sample variance: 0.086[] 
  []
 
 [125]
@@ -1486,18 +1482,18 @@ Overfull \hbox (84.64453pt too wide) has occurred while \output is active
 \TU/lmr/m/n/10 126 \TU/lmr/m/sl/10 CHAPTER 4.  ASYMPTOTICS AND CONNECTIONS TO NON-BAYESIAN APPROACHES
  []
 
-[126
-
-]
+[126]
 Chapter 5.
-[127] [128
+[127
+
+] [128
 
 ]
 Chapter 6.
 [129] [130]
 Chapter 7.
 
-Underfull \hbox (badness 1859) in paragraph at lines 4896--4897
+Underfull \hbox (badness 1859) in paragraph at lines 4904--4905
 []\TU/lmr/m/n/10 Add an unnumbered part: \TU/lmtt/m/n/10 # (PART\*) Act one {-} \TU/lmr/m/n/10 (followed by \TU/lmtt/m/n/10 # A
  []
 
@@ -1510,10 +1506,10 @@ Package rerunfilecheck Info: File `_main.out' has not changed.
 (rerunfilecheck)             Checksum: D6D2547F0012BF4C51AB25CA3DD1208A;7336.
  ) 
 Here is how much of TeX's memory you used:
- 18169 strings out of 477855
- 350500 string characters out of 5844646
- 818273 words of memory out of 5000000
- 38794 multiletter control sequences out of 15000+600000
+ 18170 strings out of 477855
+ 350514 string characters out of 5844646
+ 818314 words of memory out of 5000000
+ 38795 multiletter control sequences out of 15000+600000
  475766 words of font info for 88 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  86i,15n,121p,984b,481s stack positions out of 10000i,1000n,20000p,200000b,200000s

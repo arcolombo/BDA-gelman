@@ -74,6 +74,7 @@
 \contentsline {subsubsection}{Q3 Delta method approximation}{120}{section*.52}%
 \contentsline {subsection}{\numberline {4.4.1}Question 4.2 using the posterior sampling via grid approach}{122}{subsection.4.4.1}%
 \contentsline {subsection}{\numberline {4.4.2}Taylor series approximation of the information matrix}{124}{subsection.4.4.2}%
+\contentsline {subsection}{Question 4}{125}{section*.53}%
 \contentsline {chapter}{\numberline {5}Blocks}{127}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Equations}{127}{section.5.1}%
 \contentsline {section}{\numberline {5.2}Theorems and proofs}{127}{section.5.2}%
