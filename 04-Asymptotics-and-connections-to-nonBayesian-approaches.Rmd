@@ -214,8 +214,78 @@ The logistic function has a derivative in the form
 \partial/\partial\beta logit^{-1}(\alpha+\beta*x_i) = \frac{exp(\alpha+\beta*x_i)x_i}{(1+exp(\alpha+\beta*x_i))^2}=\frac{logit^{-1}(\alpha+\beta*x_i)x_i}{1+exp(\alpha+\beta*x_i)}
 \end{equation}
 
-Normal approximation using the infomation
+
+Also by algebra 
+
+\begin{equation}
+\frac{1}{1-logit^{-1}(\alpha+\beta*x_i)} = 1+exp(\alpha+\beta*x_i)
+\end{equation}
+
+Normal approximation using the information
+$$
+\begin{aligned}
+p(\alpha,\beta | y_i,n_i, x_i) &\propto p(\alpha,\beta)p(y_i | \alpha,\beta,n_i,x_i)\\
+&\propto [logit^{-1}(\alpha+\beta*x_i)]^{y_i}[1-logit^{-1}(\alpha+\beta*x_i)]^{n_i-y_y}\\
+lp(\alpha,\beta | y_i,n_i, x_i) &\propto y_i log([logit^{-1}(\alpha+\beta*x_i)])+(n_i-y_i)log([1-logit^{-1}(\alpha+\beta*x_i)])\\
+\end{aligned}
+$$
+$$
+\begin{aligned}
+\frac{\partial lp}{\partial\alpha} &\propto y_i\frac{1}{logit^{-1}(\alpha+\beta*x_i)}\frac{logit^{-1}(\alpha+\beta*x_i)}{1+exp(\alpha+\beta*x_i)}-\frac{n_i-y_i}{1-logit^{-1}(\alpha+\beta*x_i)}\frac{logit^{-1}(\alpha+\beta*x_i)x_i}{1+exp(\alpha+\beta*x_i)}\\
+&=\frac{y_i}{1+exp(\alpha+\beta*x_i)} - (n_i -y_i)logit^{-1}(\alpha+\beta*x_i) \\
+& = y_i(1-logit^{-1}(\alpha+\beta*x_i) - (n_i -y_i)logit^{-1}(\alpha+\beta*x_i) \\ 
+&= y_i - n_i*logit^{-1}(\alpha+\beta*x_i)
+\end{aligned}
+$$
+note that 
+\begin{equation}
+\frac{1}{1+exp(\alpha+\beta*x_i)} =1-logit^{-1}(\alpha+\beta*x_i)
+\end{equation}
+$$
+\begin{aligned}
+\frac{\partial^2 lp}{\partial\alpha^2} &\propto \frac{-n_i logit^{-1}(\alpha+\beta*x_i)}{1+exp(\alpha+\beta*x_i)}\\
+&= logit^{-1}(\alpha+\beta*x_i)(1-logit^{-1}(\alpha+\beta*x_i))n_i
+\end{aligned}
+$$
+$$
+\begin{aligned}
+\frac{\partial^2 lp}{\partial\alpha \partial \beta} &\propto \frac{-x_in_i*logit^{-1}(\alpha+\beta*x_i)}{1+exp(\alpha+\beta*x_i)}\\
+&= -x_i*n_i*logit^{-1}(\alpha+\beta*x_i)(1-logit^{-1}(\alpha+\beta*x_i))
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+\frac{\partial lp}{\partial \beta} &\propto \frac{y_i}{1+exp(\alpha+\beta*x_i)}\frac{logit^{-1}(\alpha+\beta*x_i)}{1+exp(\alpha+\beta*x_i)} + \frac{n_i-y_i}{1-logit^{-1}(\alpha+\beta*x_i)}\frac{-x_i*logit^{-1}(\alpha+\beta*x_i)}{1+exp(\alpha+\beta*x_i)}\\
+&\propto y_i*x_i(1-logit^{-1}(\alpha+\beta*x_i))-x_i(n_i-y_i)logit^{-1}(\alpha+\beta*x_i)
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+\frac{\partial^2 lp}{\partial \beta^2} &\propto x_iy_i (\frac{-x_ilogit^{-1}(\alpha+\beta*x_i)}{1+exp(\alpha+\beta*x_i)})-x_i(n_i-y_i)\frac{logit^{-1}(\alpha+\beta*x_i)}{1+exp(\alpha+\beta*x_i)}\\
+&= logit^{-1}(\alpha+\beta*x_i)x_i^2 -y_i(1-logit^{-1}(\alpha+\beta*x_i))-(n_i-y_i)(1-logit^{-1}(\alpha+\beta*x_i))\\
+&= logit^{-1}(\alpha+\beta*x_i)(1-logit^{-1}(\alpha+\beta*x_i))(-n_ix_i^2)
+\end{aligned}
+$$
+Now the information matrix is evaluated at the posterior mode $\hat{\alpha}$
+
+$$
+I(\alpha,\beta) = \begin{bmatrix} \sum_i logit^{-1}(\alpha+\beta*x_i)(1-logit^{-1}(\alpha+\beta*x_i))n_i & \sum_i logit^{-1}(\alpha+\beta*x_i)(1-logit^{-1}(\alpha+\beta*x_i))x_in_i\\
+\sum_i logit^{-1}(\alpha+\beta*x_i)(1-logit^{-1}(\alpha+\beta*x_i))x_in_i & \sum_i logit^{-1}(\alpha+\beta*x_i)(1-logit^{-1}(\alpha+\beta*x_i))x_i^2n_i\\
+\end{bmatrix}_{\alpha,\beta = \hat{\alpha},\hat{\beta}}
+$$
+\begin{equation}
+p(\theta|y) \approx N(\hat{\alpha},\hat{\beta}, I(\alpha,\beta)^{-1})
+\end{equation}
+
 ```{r}
+library(mvtnorm)
+ library(magrittr)
+ library(dplyr)
+ library(ggplot2)
+ assay<-data.frame(x=c(-0.86,-0.30,-0.05,0.73), n=c(5,5,5,5), y=c(0,1,3,5))
+
 inv.logit<-function(theta){
   return( (exp(theta)/(1+exp(theta)))  )
 }
@@ -239,9 +309,11 @@ norm.approx<-rmvnorm(1000,mean=c(alpha_hat,beta_hat),sigma=invI)
 plot(norm.approx,xlim=c(-5,10),ylim=c(-10,40)) # figure 4.1(b) 
 
 ```
+
+
 ### Exercise 3{-}
 
-A reasonable estimate for the posterior mode and standard deviation as proxy to the asymptotic values will utilize a GLM, where $\theta= -\alpha/\beta = -0.109 (-0.15,0.37) as the limit values.
+A reasonable estimate for the posterior mode and standard deviation as proxy to the asymptotic values will utilize a GLM, where $\theta= \frac{-\alpha}{\beta}$= -0.109 (-0.15,0.37) as the limit values.
 ```{r}
  dr<-data.frame(xi=c(rep(-0.86,5),
                      rep(-0.30,5),
@@ -351,10 +423,29 @@ for(i in 1:nrow(a0b1)){
   
 ```
 
-Using the *delta-method* and the correlation matrix computed from Q2.
+#### Q3 Delta method approximation{-}
+
+
+Using the *delta-method* and the correlation matrix computed from Q2.  The delta method can be used to derive a normal approximation.
 
 \begin{equation}
+\sqrt{n}(\hat{\alpha}/\hat{\beta}-\alpha/\beta) \to N(0, \nabla \frac{\alpha}{\beta}^T \Sigma \nabla \frac{\alpha}{\beta})
 \end{equation}
+
+$$
+\begin{aligned}
+V(\alpha/\beta)&=(\frac{1}{\beta},\frac{-\alpha}{\beta^2})\begin{bmatrix} \sum_i logit^{-1}(\alpha+\beta*x_i)(1-logit^{-1}(\alpha+\beta*x_i))n_i & \sum_i logit^{-1}(\alpha+\beta*x_i)(1-logit^{-1}(\alpha+\beta*x_i))x_in_i\\
+\sum_i logit^{-1}(\alpha+\beta*x_i)(1-logit^{-1}(\alpha+\beta*x_i))x_in_i & \sum_i logit^{-1}(\alpha+\beta*x_i)(1-logit^{-1}(\alpha+\beta*x_i))x_i^2n_i\\
+\end{bmatrix}\begin{pmatrix} 1/\beta \\ -\alpha/\beta^2 \end{pmatrix}\\
+&=\begin{pmatrix} \sum_i \frac{1}{\beta} logit^{-1}(\alpha+\beta*x_i)(1-logit^{-1}(\alpha+\beta*x_i))n_i -\frac{-\alpha}{\beta^2}\sum_i logit^{-1}(\alpha+\beta*x_i)(1-logit^{-1}(\alpha+\beta*x_i))x_in_i \\
+\sum_i \frac{1}{\beta} logit^{-1}(\alpha+\beta*x_i)(1-logit^{-1}(\alpha+\beta*x_i))x_in_i -\frac{-\alpha}{\beta^2} \sum_i logit^{-1}(\alpha+\beta*x_i)(1-logit^{-1}(\alpha+\beta*x_i))x_i^2n_i \end{pmatrix}\begin{pmatrix} 1/\beta \\ -\alpha/\beta^2 \end{pmatrix}\\
+&= \sum_i \frac{1}{\beta^2} logit^{-1}(\alpha+\beta*x_i)(1-logit^{-1}(\alpha+\beta*x_i))n_i -\frac{-2\alpha}{\beta^3}\sum_i logit^{-1}(\alpha+\beta*x_i)(1-logit^{-1}(\alpha+\beta*x_i))x_in_i+\frac{\alpha^2}{\beta^4}\sum_i logit^{-1}(\alpha+\beta*x_i)(1-logit^{-1}(\alpha+\beta*x_i))x_i^2n_i\\
+&=\sum_i \frac{n_i*logit^{-1}(\alpha+\beta*x_i)(1-logit^{-1}(\alpha+\beta*x_i))}{\beta^2}(\frac{\alpha^2 x_i^2}{\beta^2}-\frac{2\alpha}{\beta}x_i+1)\\
+&=\sum_i \frac{n_i*logit^{-1}(\alpha+\beta*x_i)(1-logit^{-1}(\alpha+\beta*x_i))}{\beta^2}(\frac{\alpha x_i}{\beta}-1)^2_{\alpha,\beta = \hat{\alpha},\hat{\beta}}
+\end{aligned}
+$$
+
+Using the derivation of the delta method shown above, we input the posterior means into the equation and derive the variance to the normal approximation.  the posterior mean is approximately 0.109 with $\sigma = 0.107$.  The solution from the author derived the $\sigma = 0.096$ so we are very close.
 ```{r}
  theor.var<-sum((assay$n/beta_hat^2)*inv.logit(alpha_hat+beta_hat*assay$x)*(1-inv.logit(alpha_hat+beta_hat*assay$x))*((alpha_hat/beta_hat)*assay$x-1)^2)
   message('the theoretical std dev:', round(sqrt(theor.var),3))
@@ -368,24 +459,20 @@ Using the *delta-method* and the correlation matrix computed from Q2.
 
 ```
 
-Taylor series expansion to approximate $d^2log p(\hat{\theta}|y)/d\theta^2 \approx \frac{f(\hat{\theta}+h)+f(\hat{\theta}-h)-2f(\hat{\theta})}{h^2}$
+### Question 4.2 using the posterior sampling via grid approach
+We derive the posterior marginal using a grid approach and the fact that the jacobian = $|\nu|$ and we let $\theta= -\alpha/\beta$ and $\nu=\beta$ to solve for the change of variables.
 
 $$
-\begin{aligned}
- f(a+h) &\approx f(a) +h'f(a) +1/2 h^2f''(a) \\
-  f(a-h) &\approx f(a) -h'f(a) +1/2 h^2f''(a) \\
-\to f''(a) \approx \frac{f(a+h)+f(a-h)-2f(a)}{h^2}
-\end{aligned}
+p(\theta|y) = \int p(\theta,\nu|y)d\nu = \int p(\alpha,\beta|y)|\nu|d\nu 
+=\int \prod_i logit^{-1}(-\theta*\nu+\nu*x_i)(1-logit^{-1}(-\theta*\nu+\nu*x_i))|\nu|d\nu
 $$
-```{r}
 
+We use the grid approach described in section 3.7 to sample from the posterior of $p(\theta,\nu)$ where $\theta$ =LD50 term.
 
-```
-
-
+The posterior mean is -0.1055, with marginal posterior standard deviation of 0.092.
 ```{r}
  
- ## change of variable equation 
+ ## using change of variable equation -\theta*nu +nu*xi in the likelihood
  logit.likelihood.variableChange<-function(alpha,beta,x,y,n){
    theta_approx<- -alpha*beta+beta*x
    bin.like<-(inv.logit(theta_approx))^y*(1-inv.logit(theta_approx))^(n-y)
@@ -404,7 +491,7 @@ $$
    return( joint_density*totalLikelihood)
  }
  
-theta_seq= seq(-0.3,0.5,by=0.01) ## alpha
+theta_seq= seq(-0.4,0.4,by=0.001) ## alpha
 ### numerical integration
  nu_seq<- seq(-10,70,by=0.05) ## beta
 
@@ -421,7 +508,7 @@ for(i in 1:nrow(thetaNu)){
  ## marginal post of alpha by summing over nu terms
   marginal.post_theta<- thetaNu%>%group_by(Var1)%>%summarise(p=sum(joint.prob))%>%data.frame
     thetas.post<-nu.post<-NULL
- for(s in 1:5000){
+ for(s in 1:2000){
     a_s<-sample(marginal.post_theta$Var1,1,prob=marginal.post_theta$p)
     p.a_s<-marginal.post_theta[which(marginal.post_theta$Var1==a_s),'p']
     # 
@@ -438,3 +525,48 @@ for(i in 1:nrow(thetaNu)){
 
 ```
 
+### Taylor series approximation of the information matrix
+
+Taylor series expansion to approximate $d^2log p(\hat{\theta}|y)/d\theta^2 \approx \frac{f(\hat{\theta}+h)+f(\hat{\theta}-h)-2f(\hat{\theta})}{h^2}$  centered on the posterior mean $\hat{\theta}$ within a neighborhood h=0.002.
+
+$$
+\begin{aligned}
+ f(a+h) &\approx f(a) +h'f(a) +1/2 h^2f''(a) \\
+  f(a-h) &\approx f(a) -h'f(a) +1/2 h^2f''(a) \\
+\to f''(a) \approx \frac{f(a+h)+f(a-h)-2f(a)}{h^2}
+\end{aligned}
+$$
+
+Using a numerical approximation of $p(\theta|y)$ from the grid approach had $\sigma = 0.064$ which is lower than we would expect from the theoretical delta method.
+```{r}
+ library(DescTools)
+ theta_approx<- mean(thetas.post)
+ h=0.002
+ a<-marginal.post_theta[which(abs(marginal.post_theta$Var1-theta_approx)==min(abs(marginal.post_theta$Var1-theta_approx))),]
+ ah<-marginal.post_theta[which(abs(marginal.post_theta$Var1-theta_approx-h)==min(abs(marginal.post_theta$Var1-theta_approx-h))),]
+ adh<-marginal.post_theta[which(abs(marginal.post_theta$Var1-theta_approx+h)==min(abs(marginal.post_theta$Var1-theta_approx+h))),]
+ 
+tapprox<-(log(ah$p)+log(adh$p)-2*log(a$p))/h^2
+
+std.approx<-(-tapprox)^(-0.5)
+
+ message('taylor approximation of std.dev: ',round(std.approx,3))
+ 
+```
+
+
+If we would not able to solve for the theoretical value from the *delta-method* in closed form we can use the standard deviation from marginal posterior sampled from the grid approach.
+```{r}
+theoretical.approx<-(dnorm(theta_approx+h,mean=theta_approx,sd=sd(thetas.post),log=TRUE)+  dnorm(theta_approx-h,mean=theta_approx,sd=sd(thetas.post),log=TRUE)-2*  dnorm(theta_approx,mean=theta_approx,sd=sd(thetas.post),log=TRUE))/h^2
+
+std.approx2<-(-theoretical.approx)^(-0.5)
+
+ message('taylor approximation of std.dev using posterior sample variance: ',round(std.approx2,3))
+
+
+```
+
+### Question 4{-}
+For $n\to \infty p(\theta|y)$ approaches normality, and any 1-1 transformation approaches normality $\phi=f(\theta), p(\phi|y)$ is also asymptotically normal.  A nonlinear transformation we can use the delta method such that $g'(\theta)\neq 0$ and given that $p(\theta|y)$ is normal.   Then for any function, the Taylor series in the neighborhood of the true parameter can converge to a normal approximation.
+
+This is given by Slutsky's theorem to show that a sequence of random variables converges in distribution, and also if $lim_{n\to \infty} V(S_n^2)\to 0$ where the sample variance goes to 0 in the limit.  Hence the normal approximation in the limit has 0 variance, and converges almost certaintly to the true distribution.

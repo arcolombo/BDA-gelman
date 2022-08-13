@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.8.11)  11 AUG 2022 16:16
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.8.11)  12 AUG 2022 18:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -874,17 +874,7 @@ File: _main_files/figure-latex/unnamed-chunk-21-1.pdf Graphic file (type pdf)
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[44]
-Overfull \hbox (12.0pt too wide) in paragraph at lines 1754--1754
-[]\TU/lmtt/m/n/10 ##       Min.    1st Qu.     Median       Mean    3rd Qu.       Max.[] 
- []
-
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 1754--1754
-[]\TU/lmtt/m/n/10 ## -1045.9825    -0.6158     0.5382     0.1355     1.5991   395.7947[] 
- []
-
-[45]
+[44] [45]
 File: _main_files/figure-latex/unnamed-chunk-22-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-22-1.pdf>
 [46] [47]
@@ -1393,35 +1383,139 @@ Overfull \hbox (84.64453pt too wide) has occurred while \output is active
  []
 
 [114]
-Chapter 5.
-[115
+Overfull \hbox (29.15219pt too wide) detected at line 4369
+[][]
+ []
 
-] [116
+
+Overfull \hbox (67.49405pt too wide) detected at line 4377
+[][]
+ []
+
+
+Overfull \hbox (79.3167pt too wide) detected at line 4400
+[][]
+ []
+
+
+Overfull \hbox (62.40007pt too wide) detected at line 4408
+[][]
+ []
+
+[115]
+Overfull \hbox (191.65973pt too wide) detected at line 4415
+[][][][] [][] [] [][]
+ []
+
+File: _main_files/figure-latex/unnamed-chunk-54-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-54-1.pdf>
+
+Overfull \hbox (84.64453pt too wide) has occurred while \output is active
+\TU/lmr/m/n/10 116 \TU/lmr/m/sl/10 CHAPTER 4.  ASYMPTOTICS AND CONNECTIONS TO NON-BAYESIAN APPROACHES
+ []
+
+[116]
+Missing character: There is no 𝜃 (U+1D703) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 𝛼 (U+1D6FC) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 𝛽 (U+1D6FD) in font [lmroman10-regular]:mapping=tex-text;!
+[117]
+Overfull \hbox (84.64453pt too wide) has occurred while \output is active
+\TU/lmr/m/n/10 118 \TU/lmr/m/sl/10 CHAPTER 4.  ASYMPTOTICS AND CONNECTIONS TO NON-BAYESIAN APPROACHES
+ []
+
+[118]
+Underfull \vbox (badness 10000) detected at line 4578
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 4578
+ []
+
+[119]
+File: _main_files/figure-latex/unnamed-chunk-56-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-56-1.pdf>
+
+Overfull \hbox (432.88507pt too wide) detected at line 4635
+[][]
+ []
+
+
+Overfull \hbox (84.64453pt too wide) has occurred while \output is active
+\TU/lmr/m/n/10 120 \TU/lmr/m/sl/10 CHAPTER 4.  ASYMPTOTICS AND CONNECTIONS TO NON-BAYESIAN APPROACHES
+ []
+
+[120]
+File: _main_files/figure-latex/unnamed-chunk-57-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-57-1.pdf>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[121]
+Overfull \hbox (95.71295pt too wide) detected at line 4680
+[][][][][][] [] [] [][][][] [][][][][][] [] [] [][][][] [][][][][][][][][] [] [] [] [][][][][][][][][] [] [] [] [] [] [][][][][] [] [][][][][][][][][] [] [] [] [] [] [][][][][][][][][]
+ []
+
+
+Overfull \hbox (84.64453pt too wide) has occurred while \output is active
+\TU/lmr/m/n/10 122 \TU/lmr/m/sl/10 CHAPTER 4.  ASYMPTOTICS AND CONNECTIONS TO NON-BAYESIAN APPROACHES
+ []
+
+[122]
+Underfull \vbox (badness 10000) detected at line 4736
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 4736
+ []
+
+[123]
+File: _main_files/figure-latex/unnamed-chunk-58-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-58-1.pdf>
+
+Overfull \hbox (84.64453pt too wide) has occurred while \output is active
+\TU/lmr/m/n/10 124 \TU/lmr/m/sl/10 CHAPTER 4.  ASYMPTOTICS AND CONNECTIONS TO NON-BAYESIAN APPROACHES
+ []
+
+[124]
+Overfull \hbox (38.25pt too wide) in paragraph at lines 4820--4820
+[]\TU/lmtt/m/n/10 ## taylor approximation of std.dev using posterior sample variance: 0.092[] 
+ []
+
+[125]
+Overfull \hbox (84.64453pt too wide) has occurred while \output is active
+\TU/lmr/m/n/10 126 \TU/lmr/m/sl/10 CHAPTER 4.  ASYMPTOTICS AND CONNECTIONS TO NON-BAYESIAN APPROACHES
+ []
+
+[126
+
+]
+Chapter 5.
+[127] [128
 
 ]
 Chapter 6.
-[117] [118]
+[129] [130]
 Chapter 7.
 
-Underfull \hbox (badness 1859) in paragraph at lines 4415--4416
+Underfull \hbox (badness 1859) in paragraph at lines 4896--4897
 []\TU/lmr/m/n/10 Add an unnumbered part: \TU/lmtt/m/n/10 # (PART\*) Act one {-} \TU/lmr/m/n/10 (followed by \TU/lmtt/m/n/10 # A
  []
 
-(./_main.bbl [119
+(./_main.bbl [131
 
-] [120
+] [132
 
-]) [121] (./_main.aux)
+]) [133] (./_main.aux)
 Package rerunfilecheck Info: File `_main.out' has not changed.
 (rerunfilecheck)             Checksum: D6D2547F0012BF4C51AB25CA3DD1208A;7336.
  ) 
 Here is how much of TeX's memory you used:
- 18132 strings out of 477855
- 348721 string characters out of 5844646
- 814953 words of memory out of 5000000
- 38761 multiletter control sequences out of 15000+600000
+ 18169 strings out of 477855
+ 350500 string characters out of 5844646
+ 818273 words of memory out of 5000000
+ 38794 multiletter control sequences out of 15000+600000
  475766 words of font info for 88 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  86i,15n,121p,984b,481s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on _main.pdf (121 pages).
+Output written on _main.pdf (133 pages).

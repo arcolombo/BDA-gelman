@@ -33,6 +33,8 @@ normal-approximations-to-the-posterior-distribution
 large-sample-theory
 frequency-evaluations-of-bayesian-inferences
 exercises-3
+question-4.2-using-the-posterior-sampling-via-grid-approach
+taylor-series-approximation-of-the-information-matrix
 blocks
 equations
 theorems-and-proofs
@@ -42,5 +44,3 @@ publishing
 pages
 metadata-for-sharing
 parts
-cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
-exercises-2

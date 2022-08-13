@@ -117,7 +117,7 @@
 
 \title{Bayesian Data Analysis}
 \author{Anthony R. Colombo, Dr.~Paul Marjoram}
-\date{2022-08-11}
+\date{2022-08-12}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -715,7 +715,7 @@ Then the probability that at least 1 election is tied, from 435 total elections 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 19.44127
+## [1] 5.129427
 \end{verbatim}
 
 \begin{Shaded}
@@ -725,7 +725,7 @@ Then the probability that at least 1 election is tied, from 435 total elections 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 40
+## [1] 38
 \end{verbatim}
 
 \begin{Shaded}
@@ -1267,7 +1267,7 @@ We find the probability distribution of a given success and the prior probabilit
 
 \begin{verbatim}
 ##       5%      25%      50%      75%      95% 
-## 140.8234 156.2210 166.8327 177.0334 195.1900
+## 139.6388 156.0005 167.5896 179.5002 197.7604
 \end{verbatim}
 
 \begin{Shaded}
@@ -1627,7 +1627,7 @@ Suppose there are N cable cars numbered sequentially 1 to N. You see a car at ra
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 279.933
+## [1] 277.3866
 \end{verbatim}
 
 \begin{Shaded}
@@ -1637,7 +1637,7 @@ Suppose there are N cable cars numbered sequentially 1 to N. You see a car at ra
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 79.14769
+## [1] 80.63763
 \end{verbatim}
 
 \begin{itemize}
@@ -1749,8 +1749,8 @@ for the likelihood \(L(\theta | y) = \prod_{i=1}^n f(y_i|\theta)\) requires the 
 \end{Shaded}
 
 \begin{verbatim}
-##       Min.    1st Qu.     Median       Mean    3rd Qu.       Max. 
-## -1045.9825    -0.6158     0.5382     0.1355     1.5991   395.7947
+##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+## -4233.639    -0.419     0.503     2.788     1.611  7422.366
 \end{verbatim}
 
 \begin{Shaded}
@@ -1973,7 +1973,7 @@ The true observed value for 1986 is 22 fatal accidents.
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##    8.00   20.00   24.00   23.77   27.00   46.00
+##    6.00   20.00   24.00   23.79   27.00   47.00
 \end{verbatim}
 
 \begin{Shaded}
@@ -1998,7 +1998,7 @@ The true observed value for 1986 is 22 fatal accidents.
 
 \begin{verbatim}
 ##  2.5% 97.5% 
-##    14    35
+##    14    34
 \end{verbatim}
 
 From the gamma posterior \(E(\theta | y) = 238.5/10.02=24.25\) and the variance \(V(\theta|y)= 238.5/10.02^2=2.87\). From the Poisson likelihood \(E(x|\theta)=\theta\) and \(V(x|\theta)=\theta\). \(V(x|y)= E(V(x|\theta,y) | y) + V(E(x|\theta,y)|y)= E(\theta| y)+ V(\theta|y) = 23.382+2.87= 26.252\)
@@ -2035,7 +2035,7 @@ The average predictive value from 1986 is 24.3 which is close to the true value 
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   3.725  20.792  24.248  24.246  27.683  45.982
+##   3.924  20.793  24.260  24.261  27.716  44.834
 \end{verbatim}
 
 \begin{Shaded}
@@ -2060,7 +2060,7 @@ The average predictive value from 1986 is 24.3 which is close to the true value 
 
 \begin{verbatim}
 ##     2.5%    97.5% 
-## 14.18275 34.31296
+## 14.21231 34.35792
 \end{verbatim}
 
 \begin{Shaded}
@@ -2070,7 +2070,7 @@ The average predictive value from 1986 is 24.3 which is close to the true value 
 \end{Shaded}
 
 \begin{verbatim}
-## average predictive value from posterior:23.7738
+## average predictive value from posterior:23.7855
 \end{verbatim}
 
 \begin{itemize}
@@ -2233,7 +2233,7 @@ We can also use the normal approximation, but the equations for the mean and var
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 23 47
+## [1] 22 46
 \end{verbatim}
 
 \begin{Shaded}
@@ -2375,7 +2375,7 @@ which is not the expected prediction of 546 passenger deaths. This is likely bec
 
 \begin{verbatim}
 ##    2.5%   97.5% 
-## 638.975 744.000
+## 638.000 747.025
 \end{verbatim}
 
 \begin{Shaded}
@@ -2393,7 +2393,7 @@ which is not the expected prediction of 546 passenger deaths. This is likely bec
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   614.0   671.0   690.0   690.7   709.0   783.0
+##   611.0   671.0   690.0   689.8   708.0   775.0
 \end{verbatim}
 
 \begin{Shaded}
@@ -2420,7 +2420,7 @@ which is not the expected prediction of 546 passenger deaths. This is likely bec
 
 \begin{verbatim}
 ##    2.5%   97.5% 
-## 638.975 747.000
+## 640.000 745.025
 \end{verbatim}
 
 \begin{itemize}
@@ -2509,7 +2509,7 @@ Note we used Jeffreys' prior here, but an empirical prior is okay
 \end{Shaded}
 
 \begin{verbatim}
-## [1]  905 1033
+## [1]  905 1034
 \end{verbatim}
 
 \hypertarget{question-21}{%
@@ -2994,7 +2994,7 @@ There was a 0.355 probability of a shift toward Bush after both debates.
 \begin{verbatim}
 ## 
 ## FALSE  TRUE 
-##   625   375
+##   642   358
 \end{verbatim}
 
 \begin{Shaded}
@@ -3082,7 +3082,7 @@ we are given two independent normal random variables with unknown variances and 
 
 \begin{verbatim}
 ##      2.5%     97.5% 
-## 0.9298994 1.1056721
+## 0.9249581 1.1037747
 \end{verbatim}
 
 \begin{Shaded}
@@ -3093,7 +3093,7 @@ we are given two independent normal random variables with unknown variances and 
 
 \begin{verbatim}
 ##     2.5%    97.5% 
-## 1.092072 1.256383
+## 1.091306 1.254837
 \end{verbatim}
 
 \begin{itemize}
@@ -3124,8 +3124,8 @@ The posterior interval (central) of the differences between 2 independent t-dist
 \end{Shaded}
 
 \begin{verbatim}
-##       2.5%      97.5% 
-## 0.03632099 0.28123487
+##      2.5%     97.5% 
+## 0.0367600 0.2837503
 \end{verbatim}
 
 \begin{Shaded}
@@ -3146,7 +3146,7 @@ The posterior interval (central) of the differences between 2 independent t-dist
 
 \begin{verbatim}
 ##       2.5%      97.5% 
-## 0.04229226 0.27156899
+## 0.04421544 0.28120769
 \end{verbatim}
 
 \begin{Shaded}
@@ -3229,7 +3229,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.2214  0.4444  0.5441  0.5611  0.6562  1.3238
+##  0.1472  0.4435  0.5369  0.5600  0.6583  1.3864
 \end{verbatim}
 
 \begin{Shaded}
@@ -3275,7 +3275,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.2168  0.4607  0.5501  0.5681  0.6510  1.3186
+##  0.1936  0.4414  0.5326  0.5588  0.6514  1.2785
 \end{verbatim}
 
 \hypertarget{question-4-dirichlet}{%
@@ -3346,7 +3346,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.2244  0.4769  0.5615  0.5810  0.6678  1.3802
+##  0.2350  0.4615  0.5633  0.5844  0.6852  1.2634
 \end{verbatim}
 
 \begin{Shaded}
@@ -3384,7 +3384,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.1968  0.4579  0.5518  0.5697  0.6581  1.1721
+##  0.2041  0.4634  0.5545  0.5693  0.6586  1.4735
 \end{verbatim}
 
 \begin{Shaded}
@@ -3411,7 +3411,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.3266  0.5125  0.5699  0.5737  0.6290  0.9632
+##  0.3417  0.5091  0.5696  0.5760  0.6362  0.9737
 \end{verbatim}
 
 \hypertarget{question-5}{%
@@ -3452,7 +3452,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   6.907   9.486  10.329  10.391  11.341  15.173
+##   6.646   9.310  10.356  10.401  11.349  14.648
 \end{verbatim}
 
 \begin{Shaded}
@@ -3462,7 +3462,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 10.39118
+## [1] 10.4009
 \end{verbatim}
 
 \begin{Shaded}
@@ -3472,7 +3472,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 1.920347
+## [1] 2.213697
 \end{verbatim}
 
 \begin{Shaded}
@@ -3534,7 +3534,7 @@ The difference in means is approximately 0, with a variance (residual) of 2.7.
 \end{Shaded}
 
 \begin{verbatim}
-## [1] -0.01355588
+## [1] 0.02002865
 \end{verbatim}
 
 \begin{Shaded}
@@ -3544,7 +3544,7 @@ The difference in means is approximately 0, with a variance (residual) of 2.7.
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 2.49682
+## [1] 2.688638
 \end{verbatim}
 
 \begin{Shaded}
@@ -3604,7 +3604,7 @@ For this we sample from the normal posterior distribution, conditioned on the ro
 \end{Shaded}
 
 \begin{verbatim}
-## mean error:0.147148649147802
+## mean error:0.134689451592421
 \end{verbatim}
 
 \begin{Shaded}
@@ -4337,6 +4337,487 @@ compare with 2.11 grid approach using the Cauchy distribution, we see that norma
 \end{Shaded}
 
 \includegraphics{_main_files/figure-latex/unnamed-chunk-53-2.pdf}
+
+\hypertarget{exercise-2}{%
+\subsection*{Exercise 2}\label{exercise-2}}
+\addcontentsline{toc}{subsection}{Exercise 2}
+
+To show the analytic information matrix of the bioassay example.
+
+The logistic function has a derivative in the form
+\begin{equation}
+\partial/\partial\alpha logit^{-1}(\alpha+\beta*x_i) = \frac{exp(\alpha+\beta*x_i)}{(1+exp(\alpha+\beta*x_i))^2}=\frac{logit^{-1}(\alpha+\beta*x_i)}{1+exp(\alpha+\beta*x_i)}
+\end{equation}
+
+\begin{equation}
+\partial/\partial\beta logit^{-1}(\alpha+\beta*x_i) = \frac{exp(\alpha+\beta*x_i)x_i}{(1+exp(\alpha+\beta*x_i))^2}=\frac{logit^{-1}(\alpha+\beta*x_i)x_i}{1+exp(\alpha+\beta*x_i)}
+\end{equation}
+
+Also by algebra
+
+\begin{equation}
+\frac{1}{1-logit^{-1}(\alpha+\beta*x_i)} = 1+exp(\alpha+\beta*x_i)
+\end{equation}
+
+Normal approximation using the information
+\[
+\begin{aligned}
+p(\alpha,\beta | y_i,n_i, x_i) &\propto p(\alpha,\beta)p(y_i | \alpha,\beta,n_i,x_i)\\
+&\propto [logit^{-1}(\alpha+\beta*x_i)]^{y_i}[1-logit^{-1}(\alpha+\beta*x_i)]^{n_i-y_y}\\
+lp(\alpha,\beta | y_i,n_i, x_i) &\propto y_i log([logit^{-1}(\alpha+\beta*x_i)])+(n_i-y_i)log([1-logit^{-1}(\alpha+\beta*x_i)])\\
+\end{aligned}
+\]
+\[
+\begin{aligned}
+\frac{\partial lp}{\partial\alpha} &\propto y_i\frac{1}{logit^{-1}(\alpha+\beta*x_i)}\frac{logit^{-1}(\alpha+\beta*x_i)}{1+exp(\alpha+\beta*x_i)}-\frac{n_i-y_i}{1-logit^{-1}(\alpha+\beta*x_i)}\frac{logit^{-1}(\alpha+\beta*x_i)x_i}{1+exp(\alpha+\beta*x_i)}\\
+&=\frac{y_i}{1+exp(\alpha+\beta*x_i)} - (n_i -y_i)logit^{-1}(\alpha+\beta*x_i) \\
+& = y_i(1-logit^{-1}(\alpha+\beta*x_i) - (n_i -y_i)logit^{-1}(\alpha+\beta*x_i) \\ 
+&= y_i - n_i*logit^{-1}(\alpha+\beta*x_i)
+\end{aligned}
+\]
+note that
+\begin{equation}
+\frac{1}{1+exp(\alpha+\beta*x_i)} =1-logit^{-1}(\alpha+\beta*x_i)
+\end{equation}
+\[
+\begin{aligned}
+\frac{\partial^2 lp}{\partial\alpha^2} &\propto \frac{-n_i logit^{-1}(\alpha+\beta*x_i)}{1+exp(\alpha+\beta*x_i)}\\
+&= logit^{-1}(\alpha+\beta*x_i)(1-logit^{-1}(\alpha+\beta*x_i))n_i
+\end{aligned}
+\]
+\[
+\begin{aligned}
+\frac{\partial^2 lp}{\partial\alpha \partial \beta} &\propto \frac{-x_in_i*logit^{-1}(\alpha+\beta*x_i)}{1+exp(\alpha+\beta*x_i)}\\
+&= -x_i*n_i*logit^{-1}(\alpha+\beta*x_i)(1-logit^{-1}(\alpha+\beta*x_i))
+\end{aligned}
+\]
+
+\[
+\begin{aligned}
+\frac{\partial lp}{\partial \beta} &\propto \frac{y_i}{1+exp(\alpha+\beta*x_i)}\frac{logit^{-1}(\alpha+\beta*x_i)}{1+exp(\alpha+\beta*x_i)} + \frac{n_i-y_i}{1-logit^{-1}(\alpha+\beta*x_i)}\frac{-x_i*logit^{-1}(\alpha+\beta*x_i)}{1+exp(\alpha+\beta*x_i)}\\
+&\propto y_i*x_i(1-logit^{-1}(\alpha+\beta*x_i))-x_i(n_i-y_i)logit^{-1}(\alpha+\beta*x_i)
+\end{aligned}
+\]
+
+\[
+\begin{aligned}
+\frac{\partial^2 lp}{\partial \beta^2} &\propto x_iy_i (\frac{-x_ilogit^{-1}(\alpha+\beta*x_i)}{1+exp(\alpha+\beta*x_i)})-x_i(n_i-y_i)\frac{logit^{-1}(\alpha+\beta*x_i)}{1+exp(\alpha+\beta*x_i)}\\
+&= logit^{-1}(\alpha+\beta*x_i)x_i^2 -y_i(1-logit^{-1}(\alpha+\beta*x_i))-(n_i-y_i)(1-logit^{-1}(\alpha+\beta*x_i))\\
+&= logit^{-1}(\alpha+\beta*x_i)(1-logit^{-1}(\alpha+\beta*x_i))(-n_ix_i^2)
+\end{aligned}
+\]
+Now the information matrix is evaluated at the posterior mode \(\hat{\alpha}\)
+
+\[
+I(\alpha,\beta) = \begin{bmatrix} \sum_i logit^{-1}(\alpha+\beta*x_i)(1-logit^{-1}(\alpha+\beta*x_i))n_i & \sum_i logit^{-1}(\alpha+\beta*x_i)(1-logit^{-1}(\alpha+\beta*x_i))x_in_i\\
+\sum_i logit^{-1}(\alpha+\beta*x_i)(1-logit^{-1}(\alpha+\beta*x_i))x_in_i & \sum_i logit^{-1}(\alpha+\beta*x_i)(1-logit^{-1}(\alpha+\beta*x_i))x_i^2n_i\\
+\end{bmatrix}_{\alpha,\beta = \hat{\alpha},\hat{\beta}}
+\]
+\begin{equation}
+p(\theta|y) \approx N(\hat{\alpha},\hat{\beta}, I(\alpha,\beta)^{-1})
+\end{equation}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(mvtnorm)}
+ \FunctionTok{library}\NormalTok{(magrittr)}
+ \FunctionTok{library}\NormalTok{(dplyr)}
+ \FunctionTok{library}\NormalTok{(ggplot2)}
+\NormalTok{ assay}\OtherTok{\textless{}{-}}\FunctionTok{data.frame}\NormalTok{(}\AttributeTok{x=}\FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\FloatTok{0.86}\NormalTok{,}\SpecialCharTok{{-}}\FloatTok{0.30}\NormalTok{,}\SpecialCharTok{{-}}\FloatTok{0.05}\NormalTok{,}\FloatTok{0.73}\NormalTok{), }\AttributeTok{n=}\FunctionTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{5}\NormalTok{), }\AttributeTok{y=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{5}\NormalTok{))}
+
+\NormalTok{inv.logit}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(theta)\{}
+  \FunctionTok{return}\NormalTok{( (}\FunctionTok{exp}\NormalTok{(theta)}\SpecialCharTok{/}\NormalTok{(}\DecValTok{1}\SpecialCharTok{+}\FunctionTok{exp}\NormalTok{(theta)))  )}
+\NormalTok{\}}
+\FunctionTok{library}\NormalTok{(matlib)}
+
+\DocumentationTok{\#\#\# normal approximation}
+\NormalTok{ alpha\_hat}\OtherTok{\textless{}{-}}\FloatTok{1.353}
+\NormalTok{ beta\_hat}\OtherTok{\textless{}{-}}\FloatTok{11.634}
+
+ 
+\NormalTok{I\_hat\_theta}\OtherTok{\textless{}{-}}\FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\FunctionTok{sum}\NormalTok{(}\FunctionTok{inv.logit}\NormalTok{(alpha\_hat}\SpecialCharTok{+}\NormalTok{beta\_hat}\SpecialCharTok{*}\NormalTok{assay}\SpecialCharTok{$}\NormalTok{x)}\SpecialCharTok{*}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\FunctionTok{inv.logit}\NormalTok{(alpha\_hat}\SpecialCharTok{+}\NormalTok{beta\_hat}\SpecialCharTok{*}\NormalTok{assay}\SpecialCharTok{$}\NormalTok{x))}\SpecialCharTok{*}\NormalTok{assay}\SpecialCharTok{$}\NormalTok{n),}
+                      \FunctionTok{sum}\NormalTok{(}\FunctionTok{inv.logit}\NormalTok{(alpha\_hat}\SpecialCharTok{+}\NormalTok{beta\_hat}\SpecialCharTok{*}\NormalTok{assay}\SpecialCharTok{$}\NormalTok{x)}\SpecialCharTok{*}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\FunctionTok{inv.logit}\NormalTok{(alpha\_hat}\SpecialCharTok{+}\NormalTok{beta\_hat}\SpecialCharTok{*}\NormalTok{assay}\SpecialCharTok{$}\NormalTok{x))}\SpecialCharTok{*}\NormalTok{assay}\SpecialCharTok{$}\NormalTok{n}\SpecialCharTok{*}\NormalTok{assay}\SpecialCharTok{$}\NormalTok{x),}
+                      \FunctionTok{sum}\NormalTok{(}\FunctionTok{inv.logit}\NormalTok{(alpha\_hat}\SpecialCharTok{+}\NormalTok{beta\_hat}\SpecialCharTok{*}\NormalTok{assay}\SpecialCharTok{$}\NormalTok{x)}\SpecialCharTok{*}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\FunctionTok{inv.logit}\NormalTok{(alpha\_hat}\SpecialCharTok{+}\NormalTok{beta\_hat}\SpecialCharTok{*}\NormalTok{assay}\SpecialCharTok{$}\NormalTok{x))}\SpecialCharTok{*}\NormalTok{assay}\SpecialCharTok{$}\NormalTok{n}\SpecialCharTok{*}\NormalTok{assay}\SpecialCharTok{$}\NormalTok{x),}
+                      \FunctionTok{sum}\NormalTok{(}\FunctionTok{inv.logit}\NormalTok{(alpha\_hat}\SpecialCharTok{+}\NormalTok{beta\_hat}\SpecialCharTok{*}\NormalTok{assay}\SpecialCharTok{$}\NormalTok{x)}\SpecialCharTok{*}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\FunctionTok{inv.logit}\NormalTok{(alpha\_hat}\SpecialCharTok{+}\NormalTok{beta\_hat}\SpecialCharTok{*}\NormalTok{assay}\SpecialCharTok{$}\NormalTok{x))}\SpecialCharTok{*}\NormalTok{assay}\SpecialCharTok{$}\NormalTok{n}\SpecialCharTok{*}\NormalTok{assay}\SpecialCharTok{$}\NormalTok{x}\SpecialCharTok{*}\NormalTok{assay}\SpecialCharTok{$}\NormalTok{x)),}\AttributeTok{nrow=}\DecValTok{2}\NormalTok{,}\AttributeTok{ncol=}\DecValTok{2}\NormalTok{)}
+
+\DocumentationTok{\#\# asymptotic variance (a,b)}
+\NormalTok{invI}\OtherTok{\textless{}{-}}\NormalTok{matlib}\SpecialCharTok{::}\FunctionTok{inv}\NormalTok{(I\_hat\_theta)}
+
+\NormalTok{norm.approx}\OtherTok{\textless{}{-}}\FunctionTok{rmvnorm}\NormalTok{(}\DecValTok{1000}\NormalTok{,}\AttributeTok{mean=}\FunctionTok{c}\NormalTok{(alpha\_hat,beta\_hat),}\AttributeTok{sigma=}\NormalTok{invI)}
+ \FunctionTok{colnames}\NormalTok{(norm.approx)}\OtherTok{\textless{}{-}}\FunctionTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{,}\StringTok{"B"}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(norm.approx,}\AttributeTok{xlim=}\FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{5}\NormalTok{,}\DecValTok{10}\NormalTok{),}\AttributeTok{ylim=}\FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{10}\NormalTok{,}\DecValTok{40}\NormalTok{)) }\CommentTok{\# figure 4.1(b) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-54-1.pdf}
+
+\hypertarget{exercise-3}{%
+\subsection*{Exercise 3}\label{exercise-3}}
+\addcontentsline{toc}{subsection}{Exercise 3}
+
+A reasonable estimate for the posterior mode and standard deviation as proxy to the asymptotic values will utilize a GLM, where \$\theta= -\alpha/\beta \$= -0.109 (-0.15,0.37) as the limit values.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ dr}\OtherTok{\textless{}{-}}\FunctionTok{data.frame}\NormalTok{(}\AttributeTok{xi=}\FunctionTok{c}\NormalTok{(}\FunctionTok{rep}\NormalTok{(}\SpecialCharTok{{-}}\FloatTok{0.86}\NormalTok{,}\DecValTok{5}\NormalTok{),}
+                     \FunctionTok{rep}\NormalTok{(}\SpecialCharTok{{-}}\FloatTok{0.30}\NormalTok{,}\DecValTok{5}\NormalTok{),}
+                     \FunctionTok{rep}\NormalTok{(}\SpecialCharTok{{-}}\FloatTok{0.05}\NormalTok{,}\DecValTok{5}\NormalTok{),}
+                     \FunctionTok{rep}\NormalTok{(}\FloatTok{0.73}\NormalTok{,}\DecValTok{5}\NormalTok{)),}
+                \AttributeTok{yi=}\FunctionTok{c}\NormalTok{(}\FunctionTok{rep}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{5}\NormalTok{),}
+                     \DecValTok{1}\NormalTok{,}\FunctionTok{rep}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{4}\NormalTok{),}
+                     \DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\FunctionTok{rep}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{2}\NormalTok{),}
+                     \FunctionTok{rep}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{5}\NormalTok{)))}
+
+\NormalTok{bioassay}\OtherTok{\textless{}{-}}\FunctionTok{glm}\NormalTok{(yi}\SpecialCharTok{\textasciitilde{}}\NormalTok{xi,}\AttributeTok{family=}\StringTok{\textquotesingle{}binomial\textquotesingle{}}\NormalTok{,dr)}
+\CommentTok{\#summary(bioassay)}
+\NormalTok{ ab}\OtherTok{\textless{}{-}}\FunctionTok{coef}\NormalTok{(bioassay)}
+\NormalTok{ ab}\OtherTok{\textless{}{-}}\FunctionTok{cbind}\NormalTok{(ab,}\FunctionTok{confint}\NormalTok{(bioassay))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Waiting for profiling to be done...
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ ld50}\OtherTok{\textless{}{-}}\SpecialCharTok{{-}}\NormalTok{ab[}\DecValTok{1}\NormalTok{,]}\SpecialCharTok{/}\NormalTok{ab[}\DecValTok{2}\NormalTok{,]}
+ \FunctionTok{print}\NormalTok{(ld50)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##         ab      2.5 %     97.5 % 
+## -0.1092528  0.3663445 -0.1560259
+\end{verbatim}
+
+Using a uniform prior, we compute the Bayesian posterior for \(\theta=-\alpha/\beta\) using posterior distribution for \(p(\alpha,\beta|y)\) and then compute \(\theta\) with interval -0.1049 (-0.27, 0.09) and the standard deviation is 0.0988. This reproduces figure 3.3 from section 3.7
+
+\begin{Shaded}
+\begin{Highlighting}[]
+ \DocumentationTok{\#\# compare with the Bayesian approximation using 3.16 from section 3.7}
+ \FunctionTok{library}\NormalTok{(mvtnorm)}
+ \FunctionTok{library}\NormalTok{(magrittr)}
+ \FunctionTok{library}\NormalTok{(dplyr)}
+ \FunctionTok{library}\NormalTok{(ggplot2)}
+\NormalTok{ assay}\OtherTok{\textless{}{-}}\FunctionTok{data.frame}\NormalTok{(}\AttributeTok{x=}\FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\FloatTok{0.86}\NormalTok{,}\SpecialCharTok{{-}}\FloatTok{0.30}\NormalTok{,}\SpecialCharTok{{-}}\FloatTok{0.05}\NormalTok{,}\FloatTok{0.73}\NormalTok{), }\AttributeTok{n=}\FunctionTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{5}\NormalTok{), }\AttributeTok{y=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{5}\NormalTok{))}
+
+ \DocumentationTok{\#\# the point a,b by MLE is (0.8,7.7) so we grid around these solution.}
+\NormalTok{ a0}\OtherTok{=} \FunctionTok{seq}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{5}\NormalTok{,}\DecValTok{10}\NormalTok{,}\AttributeTok{by=}\FloatTok{0.1}\NormalTok{)}
+\NormalTok{ b1}\OtherTok{=} \FunctionTok{seq}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{10}\NormalTok{,}\DecValTok{40}\NormalTok{,}\AttributeTok{by=}\FloatTok{0.1}\NormalTok{)}
+\NormalTok{  a0b1}\OtherTok{\textless{}{-}} \FunctionTok{expand.grid}\NormalTok{(a0, b1)}
+
+\NormalTok{logit}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(theta)\{}
+  \FunctionTok{return}\NormalTok{( }\FunctionTok{log}\NormalTok{(theta}\SpecialCharTok{/}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{theta)))}
+\NormalTok{\}}
+
+\NormalTok{inv.logit}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(theta)\{}
+  \FunctionTok{return}\NormalTok{( (}\FunctionTok{exp}\NormalTok{(theta)}\SpecialCharTok{/}\NormalTok{(}\DecValTok{1}\SpecialCharTok{+}\FunctionTok{exp}\NormalTok{(theta)))  )}
+\NormalTok{\}}
+
+ \DocumentationTok{\#\# equation 3.16 using the uniform}
+\DocumentationTok{\#\# alpha, beta come from uniform distribution}
+ \DocumentationTok{\#\# \textbackslash{}prod\_(i=1)\^{}5 p(y|theta) \textasciitilde{} \textbackslash{}theta\^{}y (1{-}theta)\^{}n{-}y \#\# kth dose. }
+  \DocumentationTok{\#\#\# logit(theta) = alpha+ beta*x}
+\NormalTok{logit.likelihood}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(alpha,beta,x,y,n)\{}
+\NormalTok{   theta\_approx}\OtherTok{\textless{}{-}}\NormalTok{ alpha}\SpecialCharTok{+}\NormalTok{beta}\SpecialCharTok{*}\NormalTok{x}
+\NormalTok{   bin.like}\OtherTok{\textless{}{-}}\NormalTok{(}\FunctionTok{inv.logit}\NormalTok{(theta\_approx))}\SpecialCharTok{\^{}}\NormalTok{y}\SpecialCharTok{*}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\FunctionTok{inv.logit}\NormalTok{(theta\_approx))}\SpecialCharTok{\^{}}\NormalTok{(n}\SpecialCharTok{{-}}\NormalTok{y)}
+   \FunctionTok{return}\NormalTok{(bin.like)}
+\NormalTok{\}  }
+
+ \DocumentationTok{\#\# the alpha,beta stem from the grid, and we return the probability mass from the prior.}
+\DocumentationTok{\#\# uniform prior p(a,b) \textasciitilde{} 1}
+\NormalTok{ joint.prior}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(alpha,beta)\{}
+\NormalTok{  prob.ab}\OtherTok{\textless{}{-}}\DecValTok{1}
+  \FunctionTok{return}\NormalTok{(prob.ab)}
+\NormalTok{ \}}
+  
+\NormalTok{ posterior\_density}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(alpha,beta,assay)\{}
+\NormalTok{   joint\_density}\OtherTok{\textless{}{-}}\FunctionTok{joint.prior}\NormalTok{(alpha,beta)}
+\NormalTok{   probs}\OtherTok{\textless{}{-}}\ConstantTok{NULL}
+   \ControlFlowTok{for}\NormalTok{(k }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{nrow}\NormalTok{(assay))\{}
+\NormalTok{     p}\OtherTok{\textless{}{-}}\FunctionTok{logit.likelihood}\NormalTok{(alpha,beta,assay}\SpecialCharTok{$}\NormalTok{x[k],assay}\SpecialCharTok{$}\NormalTok{y[k],assay}\SpecialCharTok{$}\NormalTok{n[k])}
+\NormalTok{     probs}\OtherTok{\textless{}{-}}\FunctionTok{c}\NormalTok{(probs,p)}
+\NormalTok{   \}}
+\NormalTok{   totalLikelihood}\OtherTok{\textless{}{-}}\FunctionTok{prod}\NormalTok{(probs)}
+   \FunctionTok{return}\NormalTok{( joint\_density}\SpecialCharTok{*}\NormalTok{totalLikelihood)}
+\NormalTok{ \}}
+ 
+\NormalTok{  posts}\OtherTok{\textless{}{-}}\ConstantTok{NULL}
+ 
+ \DocumentationTok{\#\# unnormalized posterior over grid which covers (a,b)}
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{nrow}\NormalTok{(a0b1))\{}
+\NormalTok{  posts[i]}\OtherTok{\textless{}{-}}\FunctionTok{posterior\_density}\NormalTok{(a0b1[i,}\StringTok{"Var1"}\NormalTok{],a0b1[i,}\StringTok{"Var2"}\NormalTok{],assay) }
+\NormalTok{\}}
+  
+  
+\NormalTok{ posts\_norm}\OtherTok{\textless{}{-}}\NormalTok{posts}\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(posts)}
+\NormalTok{ a0b1}\SpecialCharTok{$}\NormalTok{joint.prob}\OtherTok{\textless{}{-}}\NormalTok{posts\_norm}
+ 
+ \DocumentationTok{\#\# grid sampling procedure}
+\NormalTok{  marginal.post\_a}\OtherTok{\textless{}{-}}\NormalTok{ a0b1}\SpecialCharTok{\%\textgreater{}\%}\FunctionTok{group\_by}\NormalTok{(Var1)}\SpecialCharTok{\%\textgreater{}\%}\FunctionTok{summarise}\NormalTok{(}\AttributeTok{p=}\FunctionTok{sum}\NormalTok{(joint.prob))}\SpecialCharTok{\%\textgreater{}\%}\NormalTok{data.frame}
+\NormalTok{    A}\OtherTok{\textless{}{-}}\NormalTok{B}\OtherTok{\textless{}{-}}\ConstantTok{NULL}
+  \ControlFlowTok{for}\NormalTok{(s }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{5000}\NormalTok{)\{}
+\NormalTok{    a\_s}\OtherTok{\textless{}{-}}\FunctionTok{sample}\NormalTok{(marginal.post\_a}\SpecialCharTok{$}\NormalTok{Var1,}\DecValTok{1}\NormalTok{,}\AttributeTok{prob=}\NormalTok{marginal.post\_a}\SpecialCharTok{$}\NormalTok{p)}
+\NormalTok{    p.a\_s}\OtherTok{\textless{}{-}}\NormalTok{marginal.post\_a[}\FunctionTok{which}\NormalTok{(marginal.post\_a}\SpecialCharTok{$}\NormalTok{Var1}\SpecialCharTok{==}\NormalTok{a\_s),}\StringTok{\textquotesingle{}p\textquotesingle{}}\NormalTok{]}
+\NormalTok{    marginal.post\_b}\OtherTok{\textless{}{-}}\NormalTok{a0b1[}\FunctionTok{which}\NormalTok{(a0b1}\SpecialCharTok{$}\NormalTok{Var1}\SpecialCharTok{==}\NormalTok{a\_s),]}
+\NormalTok{    marginal.post\_b}\SpecialCharTok{$}\NormalTok{cond.prob}\OtherTok{\textless{}{-}}\NormalTok{marginal.post\_b}\SpecialCharTok{$}\NormalTok{joint.prob}\SpecialCharTok{/}\NormalTok{p.a\_s}
+\NormalTok{    b\_s}\OtherTok{\textless{}{-}}\FunctionTok{sample}\NormalTok{(marginal.post\_b}\SpecialCharTok{$}\NormalTok{Var2,}\DecValTok{1}\NormalTok{,}\AttributeTok{prob=}\NormalTok{marginal.post\_b}\SpecialCharTok{$}\NormalTok{cond.prob)}
+\NormalTok{    A}\OtherTok{\textless{}{-}}\FunctionTok{c}\NormalTok{(A,a\_s)}
+\NormalTok{    B}\OtherTok{\textless{}{-}}\FunctionTok{c}\NormalTok{(B,b\_s)}
+\NormalTok{     \}}
+ 
+    \DocumentationTok{\#\#\# need to add a random jitter around each point.}
+\NormalTok{    Ajit}\OtherTok{\textless{}{-}}\NormalTok{A}\SpecialCharTok{+}\FunctionTok{runif}\NormalTok{(}\FunctionTok{length}\NormalTok{(A),}\AttributeTok{min=}\DecValTok{0}\NormalTok{,}\AttributeTok{max=}\FloatTok{0.1}\NormalTok{)}
+\NormalTok{    Bjit}\OtherTok{\textless{}{-}}\NormalTok{B}\SpecialCharTok{+}\FunctionTok{runif}\NormalTok{(}\FunctionTok{length}\NormalTok{(B),}\AttributeTok{min=}\DecValTok{0}\NormalTok{,}\AttributeTok{max=}\FloatTok{0.1}\NormalTok{)}
+\NormalTok{   ab.post}\OtherTok{\textless{}{-}}\FunctionTok{data.frame}\NormalTok{(}\AttributeTok{A=}\NormalTok{Ajit,}\AttributeTok{B=}\NormalTok{Bjit)}
+ \FunctionTok{ggplot}\NormalTok{(a0b1)}\SpecialCharTok{+}
+ \FunctionTok{geom\_contour}\NormalTok{(}\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Var1, }\AttributeTok{y =}\NormalTok{ Var2, }\AttributeTok{z =}\NormalTok{ posts), }\AttributeTok{bins =} \DecValTok{20}\NormalTok{)}\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{data =}\NormalTok{ ab.post, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ A, }\AttributeTok{y =}\NormalTok{ B), }\AttributeTok{pch =} \DecValTok{21}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-56-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+ \DocumentationTok{\#\# posterior means (1.35,11.6)}
+ \FunctionTok{message}\NormalTok{(}\StringTok{\textquotesingle{}posterior mean for A :\textquotesingle{}}\NormalTok{,}\FunctionTok{round}\NormalTok{(}\FunctionTok{mean}\NormalTok{(A),}\DecValTok{3}\NormalTok{),}\StringTok{\textquotesingle{} B \textquotesingle{}}\NormalTok{,}\FunctionTok{round}\NormalTok{(}\FunctionTok{mean}\NormalTok{(B),}\DecValTok{3}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## posterior mean for A :1.335 B 11.625
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+ \FunctionTok{quantile}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{A}\SpecialCharTok{/}\NormalTok{B,}\FunctionTok{c}\NormalTok{(}\FloatTok{0.025}\NormalTok{,}\FloatTok{0.975}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##        2.5%       97.5% 
+## -0.28443644  0.09260336
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+ \FunctionTok{message}\NormalTok{(}\StringTok{\textquotesingle{}posterio std.dev {-}a/b: \textquotesingle{}}\NormalTok{,}\FunctionTok{round}\NormalTok{(}\FunctionTok{sd}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{A}\SpecialCharTok{/}\NormalTok{B),}\DecValTok{3}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## posterio std.dev -a/b: 0.094
+\end{verbatim}
+
+\hypertarget{q3-delta-method-approximation}{%
+\subsubsection*{Q3 Delta method approximation}\label{q3-delta-method-approximation}}
+\addcontentsline{toc}{subsubsection}{Q3 Delta method approximation}
+
+Using the \emph{delta-method} and the correlation matrix computed from Q2. The delta method can be used to derive a normal approximation.
+
+\begin{equation}
+\sqrt{n}(\hat{\alpha}/\hat{\beta}-\alpha/\beta) \to N(0, \nabla \frac{\alpha}{\beta}^T \Sigma \nabla \frac{\alpha}{\beta})
+\end{equation}
+
+\[
+\begin{aligned}
+V(\alpha/\beta)&=(\frac{1}{\beta},\frac{-\alpha}{\beta^2})\begin{bmatrix} \sum_i logit^{-1}(\alpha+\beta*x_i)(1-logit^{-1}(\alpha+\beta*x_i))n_i & \sum_i logit^{-1}(\alpha+\beta*x_i)(1-logit^{-1}(\alpha+\beta*x_i))x_in_i\\
+\sum_i logit^{-1}(\alpha+\beta*x_i)(1-logit^{-1}(\alpha+\beta*x_i))x_in_i & \sum_i logit^{-1}(\alpha+\beta*x_i)(1-logit^{-1}(\alpha+\beta*x_i))x_i^2n_i\\
+\end{bmatrix}\begin{pmatrix} 1/\beta \\ -\alpha/\beta^2 \end{pmatrix}\\
+&=\begin{pmatrix} \sum_i \frac{1}{\beta} logit^{-1}(\alpha+\beta*x_i)(1-logit^{-1}(\alpha+\beta*x_i))n_i -\frac{-\alpha}{\beta^2}\sum_i logit^{-1}(\alpha+\beta*x_i)(1-logit^{-1}(\alpha+\beta*x_i))x_in_i \\
+\sum_i \frac{1}{\beta} logit^{-1}(\alpha+\beta*x_i)(1-logit^{-1}(\alpha+\beta*x_i))x_in_i -\frac{-\alpha}{\beta^2} \sum_i logit^{-1}(\alpha+\beta*x_i)(1-logit^{-1}(\alpha+\beta*x_i))x_i^2n_i \end{pmatrix}\begin{pmatrix} 1/\beta \\ -\alpha/\beta^2 \end{pmatrix}\\
+&= \sum_i \frac{1}{\beta^2} logit^{-1}(\alpha+\beta*x_i)(1-logit^{-1}(\alpha+\beta*x_i))n_i -\frac{-2\alpha}{\beta^3}\sum_i logit^{-1}(\alpha+\beta*x_i)(1-logit^{-1}(\alpha+\beta*x_i))x_in_i+\frac{\alpha^2}{\beta^4}\sum_i logit^{-1}(\alpha+\beta*x_i)(1-logit^{-1}(\alpha+\beta*x_i))x_i^2n_i\\
+&=\sum_i \frac{n_i*logit^{-1}(\alpha+\beta*x_i)(1-logit^{-1}(\alpha+\beta*x_i))}{\beta^2}(\frac{\alpha^2 x_i^2}{\beta^2}-\frac{2\alpha}{\beta}x_i+1)\\
+&=\sum_i \frac{n_i*logit^{-1}(\alpha+\beta*x_i)(1-logit^{-1}(\alpha+\beta*x_i))}{\beta^2}(\frac{\alpha x_i}{\beta}-1)^2_{\alpha,\beta = \hat{\alpha},\hat{\beta}}
+\end{aligned}
+\]
+
+Using the derivation of the delta method shown above, we input the posterior means into the equation and derive the variance to the normal approximation. the posterior mean is approximately 0.109 with \(\sigma = 0.107\). The solution from the author derived the \(\sigma = 0.096\) so we are very close.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ theor.var}\OtherTok{\textless{}{-}}\FunctionTok{sum}\NormalTok{((assay}\SpecialCharTok{$}\NormalTok{n}\SpecialCharTok{/}\NormalTok{beta\_hat}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}\SpecialCharTok{*}\FunctionTok{inv.logit}\NormalTok{(alpha\_hat}\SpecialCharTok{+}\NormalTok{beta\_hat}\SpecialCharTok{*}\NormalTok{assay}\SpecialCharTok{$}\NormalTok{x)}\SpecialCharTok{*}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\FunctionTok{inv.logit}\NormalTok{(alpha\_hat}\SpecialCharTok{+}\NormalTok{beta\_hat}\SpecialCharTok{*}\NormalTok{assay}\SpecialCharTok{$}\NormalTok{x))}\SpecialCharTok{*}\NormalTok{((alpha\_hat}\SpecialCharTok{/}\NormalTok{beta\_hat)}\SpecialCharTok{*}\NormalTok{assay}\SpecialCharTok{$}\NormalTok{x}\DecValTok{{-}1}\NormalTok{)}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}
+  \FunctionTok{message}\NormalTok{(}\StringTok{\textquotesingle{}the theoretical std dev:\textquotesingle{}}\NormalTok{, }\FunctionTok{round}\NormalTok{(}\FunctionTok{sqrt}\NormalTok{(theor.var),}\DecValTok{3}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## the theoretical std dev:0.109
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{  emp.var}\OtherTok{\textless{}{-}}\FunctionTok{var}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{A}\SpecialCharTok{/}\NormalTok{B)}
+\NormalTok{ ld50\_normApprox}\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(}\DecValTok{1000}\NormalTok{,}\FunctionTok{mean}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{A}\SpecialCharTok{/}\NormalTok{B),}\AttributeTok{sd=}\FunctionTok{sqrt}\NormalTok{(theor.var))}
+\NormalTok{  ld50\_normApprox}\SpecialCharTok{\%\textgreater{}\%}\FunctionTok{hist}\NormalTok{(}\AttributeTok{xlim=}\FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\FloatTok{0.6}\NormalTok{,}\FloatTok{0.6}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-57-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ ld50\_hat}\OtherTok{\textless{}{-}}\FunctionTok{mean}\NormalTok{(ld50\_normApprox)  }\DocumentationTok{\#\# poster mean (should use the mode but close enough)}
+ 
+ \FunctionTok{message}\NormalTok{(}\StringTok{\textquotesingle{}normal approx posterior mean \textquotesingle{}}\NormalTok{, }\FunctionTok{round}\NormalTok{(}\FunctionTok{mean}\NormalTok{(ld50\_normApprox),}\DecValTok{3}\NormalTok{),}\StringTok{\textquotesingle{} std. dev \textquotesingle{}}\NormalTok{,}\FunctionTok{round}\NormalTok{(}\FunctionTok{sd}\NormalTok{(ld50\_normApprox),}\DecValTok{3}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## normal approx posterior mean -0.113 std. dev 0.11
+\end{verbatim}
+
+\hypertarget{question-4.2-using-the-posterior-sampling-via-grid-approach}{%
+\subsection{Question 4.2 using the posterior sampling via grid approach}\label{question-4.2-using-the-posterior-sampling-via-grid-approach}}
+
+We derive the posterior marginal using a grid approach and the fact that the jacobian = \(|\nu|\) and we let \(\theta= -\alpha/\beta\) and \(\nu=\beta\) to solve for the change of variables.
+
+\[
+p(\theta|y) = \int p(\theta,\nu|y)d\nu = \int p(\alpha,\beta|y)|\nu|d\nu 
+=\int \prod_i logit^{-1}(-\theta*\nu+\nu*x_i)(1-logit^{-1}(-\theta*\nu+\nu*x_i))|\nu|d\nu
+\]
+
+We use the grid approach described in section 3.7 to sample from the posterior of \(p(\theta,\nu)\) where \(\theta\) =LD50 term.
+
+The posterior mean is -0.1055, with marginal posterior standard deviation of 0.092.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+ \DocumentationTok{\#\# using change of variable equation {-}\textbackslash{}theta*nu +nu*xi in the likelihood}
+\NormalTok{ logit.likelihood.variableChange}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(alpha,beta,x,y,n)\{}
+\NormalTok{   theta\_approx}\OtherTok{\textless{}{-}} \SpecialCharTok{{-}}\NormalTok{alpha}\SpecialCharTok{*}\NormalTok{beta}\SpecialCharTok{+}\NormalTok{beta}\SpecialCharTok{*}\NormalTok{x}
+\NormalTok{   bin.like}\OtherTok{\textless{}{-}}\NormalTok{(}\FunctionTok{inv.logit}\NormalTok{(theta\_approx))}\SpecialCharTok{\^{}}\NormalTok{y}\SpecialCharTok{*}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\FunctionTok{inv.logit}\NormalTok{(theta\_approx))}\SpecialCharTok{\^{}}\NormalTok{(n}\SpecialCharTok{{-}}\NormalTok{y)}
+   \FunctionTok{return}\NormalTok{(bin.like)}
+\NormalTok{\}  }
+ 
+\DocumentationTok{\#\#\# re{-}doing based on sampling}
+\NormalTok{ posterior\_density\_Jacobian}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(alpha,beta,assay,jacobian)\{}
+\NormalTok{   joint\_density}\OtherTok{\textless{}{-}}\FunctionTok{joint.prior}\NormalTok{(alpha,beta)}
+\NormalTok{   probs}\OtherTok{\textless{}{-}}\ConstantTok{NULL}
+   \ControlFlowTok{for}\NormalTok{(k }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{nrow}\NormalTok{(assay))\{}
+\NormalTok{     p}\OtherTok{\textless{}{-}}\FunctionTok{logit.likelihood.variableChange}\NormalTok{(alpha,beta,assay}\SpecialCharTok{$}\NormalTok{x[k],assay}\SpecialCharTok{$}\NormalTok{y[k],assay}\SpecialCharTok{$}\NormalTok{n[k])}
+\NormalTok{     probs}\OtherTok{\textless{}{-}}\FunctionTok{c}\NormalTok{(probs,p)}
+\NormalTok{   \}}
+\NormalTok{   totalLikelihood}\OtherTok{\textless{}{-}}\FunctionTok{prod}\NormalTok{(probs)}\SpecialCharTok{*}\FunctionTok{abs}\NormalTok{(jacobian)}
+   \FunctionTok{return}\NormalTok{( joint\_density}\SpecialCharTok{*}\NormalTok{totalLikelihood)}
+\NormalTok{ \}}
+ 
+\NormalTok{theta\_seq}\OtherTok{=} \FunctionTok{seq}\NormalTok{(}\SpecialCharTok{{-}}\FloatTok{0.4}\NormalTok{,}\FloatTok{0.4}\NormalTok{,}\AttributeTok{by=}\FloatTok{0.001}\NormalTok{) }\DocumentationTok{\#\# alpha}
+\DocumentationTok{\#\#\# numerical integration}
+\NormalTok{ nu\_seq}\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{10}\NormalTok{,}\DecValTok{70}\NormalTok{,}\AttributeTok{by=}\FloatTok{0.05}\NormalTok{) }\DocumentationTok{\#\# beta}
+
+\NormalTok{  thetaNu}\OtherTok{\textless{}{-}} \FunctionTok{expand.grid}\NormalTok{(theta\_seq, nu\_seq)}
+\NormalTok{  posts}\OtherTok{\textless{}{-}}\ConstantTok{NULL}
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{nrow}\NormalTok{(thetaNu))\{}
+\NormalTok{  posts[i]}\OtherTok{\textless{}{-}}\FunctionTok{posterior\_density\_Jacobian}\NormalTok{(thetaNu[i,}\StringTok{"Var1"}\NormalTok{],thetaNu[i,}\StringTok{"Var2"}\NormalTok{],assay,}\AttributeTok{jacobian =}\NormalTok{ thetaNu[i,}\StringTok{"Var2"}\NormalTok{]) }
+\NormalTok{\}}
+  
+\NormalTok{  posts\_norm}\OtherTok{\textless{}{-}}\NormalTok{posts}\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(posts)}
+\NormalTok{ thetaNu}\SpecialCharTok{$}\NormalTok{joint.prob}\OtherTok{\textless{}{-}}\NormalTok{posts\_norm}
+ 
+ \DocumentationTok{\#\# grid sampling procedure}
+ \DocumentationTok{\#\# marginal post of alpha by summing over nu terms}
+\NormalTok{  marginal.post\_theta}\OtherTok{\textless{}{-}}\NormalTok{ thetaNu}\SpecialCharTok{\%\textgreater{}\%}\FunctionTok{group\_by}\NormalTok{(Var1)}\SpecialCharTok{\%\textgreater{}\%}\FunctionTok{summarise}\NormalTok{(}\AttributeTok{p=}\FunctionTok{sum}\NormalTok{(joint.prob))}\SpecialCharTok{\%\textgreater{}\%}\NormalTok{data.frame}
+\NormalTok{    thetas.post}\OtherTok{\textless{}{-}}\NormalTok{nu.post}\OtherTok{\textless{}{-}}\ConstantTok{NULL}
+ \ControlFlowTok{for}\NormalTok{(s }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{2000}\NormalTok{)\{}
+\NormalTok{    a\_s}\OtherTok{\textless{}{-}}\FunctionTok{sample}\NormalTok{(marginal.post\_theta}\SpecialCharTok{$}\NormalTok{Var1,}\DecValTok{1}\NormalTok{,}\AttributeTok{prob=}\NormalTok{marginal.post\_theta}\SpecialCharTok{$}\NormalTok{p)}
+\NormalTok{    p.a\_s}\OtherTok{\textless{}{-}}\NormalTok{marginal.post\_theta[}\FunctionTok{which}\NormalTok{(marginal.post\_theta}\SpecialCharTok{$}\NormalTok{Var1}\SpecialCharTok{==}\NormalTok{a\_s),}\StringTok{\textquotesingle{}p\textquotesingle{}}\NormalTok{]}
+    \CommentTok{\# }
+\NormalTok{    marginal.post\_b}\OtherTok{\textless{}{-}}\NormalTok{thetaNu[}\FunctionTok{which}\NormalTok{(thetaNu}\SpecialCharTok{$}\NormalTok{Var1}\SpecialCharTok{==}\NormalTok{a\_s),]}
+\NormalTok{    marginal.post\_b}\SpecialCharTok{$}\NormalTok{cond.prob}\OtherTok{\textless{}{-}}\NormalTok{marginal.post\_b}\SpecialCharTok{$}\NormalTok{joint.prob}\SpecialCharTok{/}\NormalTok{p.a\_s}
+\NormalTok{    b\_s}\OtherTok{\textless{}{-}}\FunctionTok{sample}\NormalTok{(marginal.post\_b}\SpecialCharTok{$}\NormalTok{Var2,}\DecValTok{1}\NormalTok{,}\AttributeTok{prob=}\NormalTok{marginal.post\_b}\SpecialCharTok{$}\NormalTok{cond.prob)}
+\NormalTok{    thetas.post}\OtherTok{\textless{}{-}}\FunctionTok{c}\NormalTok{(thetas.post,a\_s)}
+\NormalTok{    nu.post}\OtherTok{\textless{}{-}}\FunctionTok{c}\NormalTok{(nu.post,b\_s)}
+\NormalTok{ \}}
+  \FunctionTok{hist}\NormalTok{(thetas.post,}\AttributeTok{xlim=}\FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\FloatTok{0.5}\NormalTok{,}\FloatTok{0.5}\NormalTok{),}\AttributeTok{main=}\StringTok{\textquotesingle{}posterior sample theta= {-}a/b\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-58-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+ \FunctionTok{message}\NormalTok{(}\StringTok{\textquotesingle{}sample posterior mean: \textquotesingle{}}\NormalTok{, }\FunctionTok{mean}\NormalTok{(thetas.post))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## sample posterior mean: -0.104438
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+ \FunctionTok{message}\NormalTok{(}\StringTok{\textquotesingle{}sample posterior variance: \textquotesingle{}}\NormalTok{, }\FunctionTok{round}\NormalTok{(}\FunctionTok{var}\NormalTok{(thetas.post),}\DecValTok{3}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## sample posterior variance: 0.008
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+ \FunctionTok{message}\NormalTok{(}\StringTok{\textquotesingle{}sample posterior std.dev: \textquotesingle{}}\NormalTok{, }\FunctionTok{round}\NormalTok{(}\FunctionTok{sd}\NormalTok{(thetas.post),}\DecValTok{3}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## sample posterior std.dev: 0.092
+\end{verbatim}
+
+\hypertarget{taylor-series-approximation-of-the-information-matrix}{%
+\subsection{Taylor series approximation of the information matrix}\label{taylor-series-approximation-of-the-information-matrix}}
+
+Taylor series expansion to approximate \(d^2log p(\hat{\theta}|y)/d\theta^2 \approx \frac{f(\hat{\theta}+h)+f(\hat{\theta}-h)-2f(\hat{\theta})}{h^2}\) centered on the posterior mean \(\hat{\theta}\) within a neighborhood h=0.002.
+
+\[
+\begin{aligned}
+ f(a+h) &\approx f(a) +h'f(a) +1/2 h^2f''(a) \\
+  f(a-h) &\approx f(a) -h'f(a) +1/2 h^2f''(a) \\
+\to f''(a) \approx \frac{f(a+h)+f(a-h)-2f(a)}{h^2}
+\end{aligned}
+\]
+
+Using a numerical approximation of \(p(\theta|y)\) from the grid approach had \(\sigma = 0.064\) which is lower than we would expect from the theoretical delta method.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+ \FunctionTok{library}\NormalTok{(DescTools)}
+\NormalTok{ theta\_approx}\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(thetas.post)}
+\NormalTok{ h}\OtherTok{=}\FloatTok{0.002}
+\NormalTok{ a}\OtherTok{\textless{}{-}}\NormalTok{marginal.post\_theta[}\FunctionTok{which}\NormalTok{(}\FunctionTok{abs}\NormalTok{(marginal.post\_theta}\SpecialCharTok{$}\NormalTok{Var1}\SpecialCharTok{{-}}\NormalTok{theta\_approx)}\SpecialCharTok{==}\FunctionTok{min}\NormalTok{(}\FunctionTok{abs}\NormalTok{(marginal.post\_theta}\SpecialCharTok{$}\NormalTok{Var1}\SpecialCharTok{{-}}\NormalTok{theta\_approx))),]}
+\NormalTok{ ah}\OtherTok{\textless{}{-}}\NormalTok{marginal.post\_theta[}\FunctionTok{which}\NormalTok{(}\FunctionTok{abs}\NormalTok{(marginal.post\_theta}\SpecialCharTok{$}\NormalTok{Var1}\SpecialCharTok{{-}}\NormalTok{theta\_approx}\SpecialCharTok{{-}}\NormalTok{h)}\SpecialCharTok{==}\FunctionTok{min}\NormalTok{(}\FunctionTok{abs}\NormalTok{(marginal.post\_theta}\SpecialCharTok{$}\NormalTok{Var1}\SpecialCharTok{{-}}\NormalTok{theta\_approx}\SpecialCharTok{{-}}\NormalTok{h))),]}
+\NormalTok{ adh}\OtherTok{\textless{}{-}}\NormalTok{marginal.post\_theta[}\FunctionTok{which}\NormalTok{(}\FunctionTok{abs}\NormalTok{(marginal.post\_theta}\SpecialCharTok{$}\NormalTok{Var1}\SpecialCharTok{{-}}\NormalTok{theta\_approx}\SpecialCharTok{+}\NormalTok{h)}\SpecialCharTok{==}\FunctionTok{min}\NormalTok{(}\FunctionTok{abs}\NormalTok{(marginal.post\_theta}\SpecialCharTok{$}\NormalTok{Var1}\SpecialCharTok{{-}}\NormalTok{theta\_approx}\SpecialCharTok{+}\NormalTok{h))),]}
+ 
+\NormalTok{tapprox}\OtherTok{\textless{}{-}}\NormalTok{(}\FunctionTok{log}\NormalTok{(ah}\SpecialCharTok{$}\NormalTok{p)}\SpecialCharTok{+}\FunctionTok{log}\NormalTok{(adh}\SpecialCharTok{$}\NormalTok{p)}\SpecialCharTok{{-}}\DecValTok{2}\SpecialCharTok{*}\FunctionTok{log}\NormalTok{(a}\SpecialCharTok{$}\NormalTok{p))}\SpecialCharTok{/}\NormalTok{h}\SpecialCharTok{\^{}}\DecValTok{2}
+
+\NormalTok{std.approx}\OtherTok{\textless{}{-}}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{tapprox)}\SpecialCharTok{\^{}}\NormalTok{(}\SpecialCharTok{{-}}\FloatTok{0.5}\NormalTok{)}
+
+ \FunctionTok{message}\NormalTok{(}\StringTok{\textquotesingle{}taylor approximation of std.dev: \textquotesingle{}}\NormalTok{,}\FunctionTok{round}\NormalTok{(std.approx,}\DecValTok{3}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## taylor approximation of std.dev: 0.063
+\end{verbatim}
+
+If we would not able to solve for the theoretical value from the \emph{delta-method} in closed form we can use the standard deviation from marginal posterior sampled from the grid approach.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{theoretical.approx}\OtherTok{\textless{}{-}}\NormalTok{(}\FunctionTok{dnorm}\NormalTok{(theta\_approx}\SpecialCharTok{+}\NormalTok{h,}\AttributeTok{mean=}\NormalTok{theta\_approx,}\AttributeTok{sd=}\FunctionTok{sd}\NormalTok{(thetas.post),}\AttributeTok{log=}\ConstantTok{TRUE}\NormalTok{)}\SpecialCharTok{+}  \FunctionTok{dnorm}\NormalTok{(theta\_approx}\SpecialCharTok{{-}}\NormalTok{h,}\AttributeTok{mean=}\NormalTok{theta\_approx,}\AttributeTok{sd=}\FunctionTok{sd}\NormalTok{(thetas.post),}\AttributeTok{log=}\ConstantTok{TRUE}\NormalTok{)}\SpecialCharTok{{-}}\DecValTok{2}\SpecialCharTok{*}  \FunctionTok{dnorm}\NormalTok{(theta\_approx,}\AttributeTok{mean=}\NormalTok{theta\_approx,}\AttributeTok{sd=}\FunctionTok{sd}\NormalTok{(thetas.post),}\AttributeTok{log=}\ConstantTok{TRUE}\NormalTok{))}\SpecialCharTok{/}\NormalTok{h}\SpecialCharTok{\^{}}\DecValTok{2}
+
+\NormalTok{std.approx2}\OtherTok{\textless{}{-}}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{theoretical.approx)}\SpecialCharTok{\^{}}\NormalTok{(}\SpecialCharTok{{-}}\FloatTok{0.5}\NormalTok{)}
+
+ \FunctionTok{message}\NormalTok{(}\StringTok{\textquotesingle{}taylor approximation of std.dev using posterior sample variance: \textquotesingle{}}\NormalTok{,}\FunctionTok{round}\NormalTok{(std.approx2,}\DecValTok{3}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## taylor approximation of std.dev using posterior sample variance: 0.092
+\end{verbatim}
 
 \hypertarget{blocks}{%
 \chapter{Blocks}\label{blocks}}

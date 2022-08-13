@@ -23,7 +23,7 @@
 <meta name="author" content="Anthony R. Colombo, Dr. Paul Marjoram" />
 
 
-<meta name="date" content="2022-08-11" />
+<meta name="date" content="2022-08-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -239,6 +239,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.4" data-path="asymptotics-and-connections-to-non-bayesian-approaches.html"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#exercises-3"><i class="fa fa-check"></i><b>4.4</b> Exercises</a>
 <ul>
 <li class="chapter" data-level="" data-path="asymptotics-and-connections-to-non-bayesian-approaches.html"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#question-1-2"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="asymptotics-and-connections-to-non-bayesian-approaches.html"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#exercise-2"><i class="fa fa-check"></i>Exercise 2</a></li>
+<li class="chapter" data-level="" data-path="asymptotics-and-connections-to-non-bayesian-approaches.html"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#exercise-3"><i class="fa fa-check"></i>Exercise 3</a></li>
+<li class="chapter" data-level="4.4.1" data-path="asymptotics-and-connections-to-non-bayesian-approaches.html"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#question-4.2-using-the-posterior-sampling-via-grid-approach"><i class="fa fa-check"></i><b>4.4.1</b> Question 4.2 using the posterior sampling via grid approach</a></li>
+<li class="chapter" data-level="4.4.2" data-path="asymptotics-and-connections-to-non-bayesian-approaches.html"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#taylor-series-approximation-of-the-information-matrix"><i class="fa fa-check"></i><b>4.4.2</b> Taylor series approximation of the information matrix</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="blocks.html"><a href="blocks.html"><i class="fa fa-check"></i><b>5</b> Blocks</a>
@@ -599,7 +603,7 @@ J(\theta)  = E((\frac{d log p(y|\theta)}{d\theta})^2| \theta) = -E(\frac{d^2 log
 <span id="cb38-6"><a href="cross.html#cb38-6" aria-hidden="true" tabindex="-1"></a>     <span class="do">## prior prediction interval</span></span>
 <span id="cb38-7"><a href="cross.html#cb38-7" aria-hidden="true" tabindex="-1"></a>     <span class="fu">quantile</span>(priorpred,<span class="fu">c</span>(<span class="fl">0.05</span>,<span class="fl">0.25</span>,<span class="fl">0.5</span>,<span class="fl">0.75</span>,<span class="fl">0.95</span>))</span></code></pre></div>
 <pre><code>##       5%      25%      50%      75%      95% 
-## 139.8257 156.7670 167.6098 178.2433 197.2766</code></pre>
+## 140.8328 155.4041 166.5138 177.4250 192.8969</code></pre>
 <div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="cross.html#cb40-1" aria-hidden="true" tabindex="-1"></a>     <span class="fu">qnorm</span>(<span class="fu">c</span>(<span class="fl">0.05</span>,<span class="fl">0.25</span>,<span class="fl">0.5</span>,<span class="fl">0.75</span>,<span class="fl">0.95</span>),<span class="dv">167</span>,<span class="fu">sqrt</span>(<span class="fl">138.89</span>))</span></code></pre></div>
 <pre><code>## [1] 147.6151 159.0510 167.0000 174.9490 186.3849</code></pre>
 </div>
@@ -811,9 +815,9 @@ p(N|X) \propto \frac{(1/N)(99/100)^{N-1}}{p(X)}
 <span id="cb62-2"><a href="cross.html#cb62-2" aria-hidden="true" tabindex="-1"></a> Nsim<span class="ot">&lt;-</span><span class="dv">10000</span></span>
 <span id="cb62-3"><a href="cross.html#cb62-3" aria-hidden="true" tabindex="-1"></a> unnorm.post<span class="ot">&lt;-</span>(<span class="dv">1</span><span class="sc">/</span>N)<span class="sc">*</span>(<span class="dv">99</span><span class="sc">/</span><span class="dv">100</span>)<span class="sc">^</span>(N<span class="dv">-10</span>)</span>
 <span id="cb62-4"><a href="cross.html#cb62-4" aria-hidden="true" tabindex="-1"></a> <span class="fu">mean</span>(<span class="fu">sample</span>(N,<span class="at">size=</span>Nsim,<span class="at">prob=</span>unnorm.post,<span class="at">replace=</span>T))</span></code></pre></div>
-<pre><code>## [1] 279.5602</code></pre>
+<pre><code>## [1] 278.2835</code></pre>
 <div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="cross.html#cb64-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">sd</span>(<span class="fu">sample</span>(N,<span class="at">size=</span>Nsim,<span class="at">prob=</span>unnorm.post,<span class="at">replace=</span>T))</span></code></pre></div>
-<pre><code>## [1] 78.655</code></pre>
+<pre><code>## [1] 79.52721</code></pre>
 <ul>
 <li><ol start="3" style="list-style-type: lower-alpha">
 <li>we can use a uniform prior <span class="math inline">\(p(N) = 1/N\)</span> with a geometric likelihood p(<span class="math inline">\(X|N)=(1/100)(99/100)^(N-1)\)</span> which will not change the result. We can also change the parameter p to be distributed under a binomial model.</li>
@@ -875,7 +879,7 @@ we use the sampled thetas from the posterior to sample from the Cauchy distribut
 <span id="cb69-7"><a href="cross.html#cb69-7" aria-hidden="true" tabindex="-1"></a> <span class="co">#prob_samp&lt;-post[match(samps,theta)]</span></span>
 <span id="cb69-8"><a href="cross.html#cb69-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>(ytilde) <span class="do">## we have a wide distribution of predictive values.</span></span></code></pre></div>
 <pre><code>##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
-## -255.2828   -0.5161    0.5653    0.3711    1.5722  105.9420</code></pre>
+## -7182.309    -0.523     0.496    -7.579     1.550   334.037</code></pre>
 <div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="cross.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="do">## for all predictive values,  find the total probability  </span></span>
 <span id="cb71-2"><a href="cross.html#cb71-2" aria-hidden="true" tabindex="-1"></a>   <span class="do">## int p(x|theta)*p(theta|y) d\theta  note that p(x|theta) is a function of theta, so we input hte theta grid.</span></span>
 <span id="cb71-3"><a href="cross.html#cb71-3" aria-hidden="true" tabindex="-1"></a> pred.prob<span class="ot">&lt;-</span><span class="fu">sapply</span>(ytilde,<span class="cf">function</span>(x) <span class="fu">sum</span>(<span class="fu">dcauchy</span>(x,<span class="at">location=</span>theta,<span class="at">scale=</span><span class="dv">1</span>)<span class="sc">*</span>post<span class="sc">*</span>step))  </span>
@@ -884,7 +888,7 @@ we use the sampled thetas from the posterior to sample from the Cauchy distribut
 <p><img src="_main_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
 <div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="cross.html#cb72-1" aria-hidden="true" tabindex="-1"></a>  <span class="do">## maximum predictive probability</span></span>
 <span id="cb72-2"><a href="cross.html#cb72-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(<span class="st">&#39;max pred. prob &#39;</span>, <span class="fu">round</span>(ytilde[<span class="fu">which</span>(pred.prob<span class="sc">==</span><span class="fu">max</span>(pred.prob))],<span class="dv">3</span>))</span></code></pre></div>
-<pre><code>## max pred. prob 0.524</code></pre>
+<pre><code>## max pred. prob 0.523</code></pre>
 </div>
 <div id="question-12" class="section level3 unnumbered hasAnchor">
 <h3>Question 12<a href="cross.html#question-12" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1000,7 +1004,7 @@ The true observed value for 1986 is 22 fatal accidents.</p>
 <span id="cb89-6"><a href="cross.html#cb89-6" aria-hidden="true" tabindex="-1"></a> <span class="co">#prob_samp&lt;-post[match(samps,theta)]</span></span>
 <span id="cb89-7"><a href="cross.html#cb89-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>(ytilde) <span class="do">## we have a wide distribution of predictive values.</span></span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##    6.00   20.00   23.00   23.72   27.00   45.00</code></pre>
+##    6.00   20.00   23.00   23.67   27.00   46.00</code></pre>
 <div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="cross.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="do">## for all predictive values,  find the total probability  </span></span>
 <span id="cb91-2"><a href="cross.html#cb91-2" aria-hidden="true" tabindex="-1"></a>   <span class="do">## int p(x|theta)*p(theta|y) d\theta  note that p(x|theta) is a function of theta, so we input hte theta grid.</span></span>
 <span id="cb91-3"><a href="cross.html#cb91-3" aria-hidden="true" tabindex="-1"></a> pred.prob<span class="ot">&lt;-</span><span class="fu">sapply</span>(ytilde,<span class="cf">function</span>(x) <span class="fu">sum</span>(<span class="fu">dpois</span>(x,<span class="at">lambda =</span> theta)<span class="sc">*</span>post_pois<span class="sc">/</span><span class="fu">sum</span>(post_pois)))  </span>
@@ -1011,7 +1015,7 @@ The true observed value for 1986 is 22 fatal accidents.</p>
 <div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="cross.html#cb92-1" aria-hidden="true" tabindex="-1"></a> <span class="co">#lines(theta,post_pois)</span></span>
 <span id="cb92-2"><a href="cross.html#cb92-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">quantile</span>(ytilde,<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>))</span></code></pre></div>
 <pre><code>##  2.5% 97.5% 
-##    15    34</code></pre>
+##    14    34</code></pre>
 <p>From the gamma posterior <span class="math inline">\(E(\theta | y) = 238.5/10.02=24.25\)</span> and the variance <span class="math inline">\(V(\theta|y)= 238.5/10.02^2=2.87\)</span>. From the Poisson likelihood <span class="math inline">\(E(x|\theta)=\theta\)</span> and <span class="math inline">\(V(x|\theta)=\theta\)</span>. <span class="math inline">\(V(x|y)= E(V(x|\theta,y) | y) + V(E(x|\theta,y)|y)= E(\theta| y)+ V(\theta|y) = 23.382+2.87= 26.252\)</span></p>
 <p>Using the normal approximation on the posterior values, the variance of the predictive value and is a larger interval (14.21, 34.3).</p>
 <p>The average predictive value from 1986 is 24.3 which is close to the true value 22 fatal accidents.</p>
@@ -1029,7 +1033,7 @@ The true observed value for 1986 is 22 fatal accidents.</p>
 <span id="cb96-5"><a href="cross.html#cb96-5" aria-hidden="true" tabindex="-1"></a> <span class="co">#prob_samp&lt;-post[match(samps,theta)]</span></span>
 <span id="cb96-6"><a href="cross.html#cb96-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>(ytilde_norm) <span class="do">## we have a wide distribution of predictive values.</span></span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   3.642  20.808  24.258  24.256  27.723  47.015</code></pre>
+##    1.17   20.78   24.27   24.26   27.72   46.25</code></pre>
 <div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="cross.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="do">## for all predictive values,  find the total probability  </span></span>
 <span id="cb98-2"><a href="cross.html#cb98-2" aria-hidden="true" tabindex="-1"></a>   <span class="do">## int p(x|theta)*p(theta|y) d\theta  note that p(x|theta) is a function of theta, so we input hte theta grid.</span></span>
 <span id="cb98-3"><a href="cross.html#cb98-3" aria-hidden="true" tabindex="-1"></a> pred.prob_norm<span class="ot">&lt;-</span><span class="fu">sapply</span>(ytilde_norm,<span class="cf">function</span>(x) <span class="fu">sum</span>(<span class="fu">dnorm</span>(x,<span class="fl">24.25</span>,<span class="fu">sqrt</span>(<span class="fl">26.252</span>))<span class="sc">*</span>post_pred_norm))  </span>
@@ -1040,9 +1044,9 @@ The true observed value for 1986 is 22 fatal accidents.</p>
 <p><img src="_main_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
 <div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="cross.html#cb99-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">quantile</span>(ytilde_norm,<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>))</span></code></pre></div>
 <pre><code>##     2.5%    97.5% 
-## 14.21476 34.23652</code></pre>
+## 14.18791 34.30724</code></pre>
 <div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="cross.html#cb101-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">message</span>(<span class="st">&quot;average predictive value from posterior:&quot;</span>, <span class="fu">mean</span>(ytilde))</span></code></pre></div>
-<pre><code>## average predictive value from posterior:23.7154</code></pre>
+<pre><code>## average predictive value from posterior:23.6662</code></pre>
 <ul>
 <li><ol start="2" style="list-style-type: lower-alpha">
 <li>Assume fatal accidents follow a Poisson distribution with a constant rate and an exposure in each year proportional to the number of passanger miles flown. Set a prior and determine a posterior and predictive distribution. estimate the number of passanger miles flown in each year by dividing</li>
@@ -1122,7 +1126,7 @@ The true observed value for 1986 is 22 fatal accidents.</p>
 <div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="cross.html#cb116-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">message</span>(<span class="st">&quot; 8,000 per 100 million miles flown has fatality rate: Gamma posterior&quot;</span>)</span></code></pre></div>
 <pre><code>##  8,000 per 100 million miles flown has fatality rate: Gamma posterior</code></pre>
 <div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="cross.html#cb118-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">print</span>(<span class="fu">sort</span>(y1986)[<span class="fu">c</span>(<span class="dv">25</span>,<span class="dv">976</span>)])</span></code></pre></div>
-<pre><code>## [1] 22 46</code></pre>
+<pre><code>## [1] 22 45</code></pre>
 <div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="cross.html#cb120-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">message</span>(<span class="st">&quot; 8,000 per 100 million miles flown has fatality rate: normal approx&quot;</span>)</span></code></pre></div>
 <pre><code>##  8,000 per 100 million miles flown has fatality rate: normal approx</code></pre>
 <div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="cross.html#cb122-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">print</span>(<span class="fu">c</span>(lower,upper))</span></code></pre></div>
@@ -1183,8 +1187,8 @@ If we use Jeffreys’ prior the prediction interval is (638,741.05).</p>
 <span id="cb133-6"><a href="cross.html#cb133-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(<span class="st">&quot;using the empirical prior, predictive posterior interval&quot;</span>)</span></code></pre></div>
 <pre><code>## using the empirical prior, predictive posterior interval</code></pre>
 <div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="cross.html#cb135-1" aria-hidden="true" tabindex="-1"></a>   <span class="fu">quantile</span>(ytilde_empiricalPrior,<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>))</span></code></pre></div>
-<pre><code>##  2.5% 97.5% 
-##   638   745</code></pre>
+<pre><code>##    2.5%   97.5% 
+## 638.975 743.025</code></pre>
 <div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="cross.html#cb137-1" aria-hidden="true" tabindex="-1"></a> <span class="do">## direct sampling from posterior.</span></span>
 <span id="cb137-2"><a href="cross.html#cb137-2" aria-hidden="true" tabindex="-1"></a> theta_post<span class="ot">&lt;-</span><span class="fu">rgamma</span>(<span class="dv">1000</span>,Jalpha<span class="sc">+</span>n<span class="sc">*</span><span class="fu">mean</span>(death),<span class="at">rate=</span>Jbeta<span class="sc">+</span>n)</span>
 <span id="cb137-3"><a href="cross.html#cb137-3" aria-hidden="true" tabindex="-1"></a> </span>
@@ -1194,7 +1198,7 @@ If we use Jeffreys’ prior the prediction interval is (638,741.05).</p>
 <span id="cb137-7"><a href="cross.html#cb137-7" aria-hidden="true" tabindex="-1"></a> <span class="co">#prob_samp&lt;-post[match(samps,theta)]</span></span>
 <span id="cb137-8"><a href="cross.html#cb137-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>(ytilde) <span class="do">## we have a wide distribution of predictive values.</span></span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   586.0   672.0   691.5   691.7   710.0   790.0</code></pre>
+##     606     671     690     690     709     784</code></pre>
 <div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="cross.html#cb139-1" aria-hidden="true" tabindex="-1"></a>   post_pois<span class="ot">&lt;-</span><span class="fu">dgamma</span>(theta_post,Jalpha<span class="sc">+</span>n<span class="sc">*</span><span class="fu">mean</span>(death),<span class="at">rate=</span>Jbeta<span class="sc">+</span>n)</span>
 <span id="cb139-2"><a href="cross.html#cb139-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb139-3"><a href="cross.html#cb139-3" aria-hidden="true" tabindex="-1"></a><span class="do">## for all predictive values,  find the total probability  </span></span>
@@ -1206,8 +1210,8 @@ If we use Jeffreys’ prior the prediction interval is (638,741.05).</p>
 <p><img src="_main_files/figure-html/unnamed-chunk-26-2.png" width="672" /></p>
 <div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="cross.html#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lines(theta,post_pois)</span></span>
 <span id="cb140-2"><a href="cross.html#cb140-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">quantile</span>(ytilde,<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>))</span></code></pre></div>
-<pre><code>##    2.5%   97.5% 
-## 639.000 747.025</code></pre>
+<pre><code>##  2.5% 97.5% 
+##   638   744</code></pre>
 <ul>
 <li><ol start="4" style="list-style-type: lower-alpha">
 <li>Using the rate the posterior rate mean is 0.12 estimated from sampling the posterior distribution. For 8 x 10<span class="math inline">\(^11\)</span> miles flown the deaths are approximately 970 (902, 1039) this is higher than the 1986 observed value.</li>
@@ -1245,7 +1249,7 @@ If we use Jeffreys’ prior the prediction interval is (638,741.05).</p>
 <span id="cb148-6"><a href="cross.html#cb148-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(<span class="st">&quot; 8,000 per 100 million miles flown has passanger death : Gamma posterior &amp; Jeffreys&#39; prior&quot;</span>)</span></code></pre></div>
 <pre><code>##  8,000 per 100 million miles flown has passanger death : Gamma posterior &amp; Jeffreys&#39; prior</code></pre>
 <div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="cross.html#cb150-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">print</span>(<span class="fu">sort</span>(y1986)[<span class="fu">c</span>(<span class="dv">25</span>,<span class="dv">976</span>)])</span></code></pre></div>
-<pre><code>## [1]  905 1037</code></pre>
+<pre><code>## [1]  907 1038</code></pre>
 </div>
 <div id="question-21" class="section level3 hasAnchor" number="2.8.1">
 <h3><span class="header-section-number">2.8.1</span> Question 21<a href="cross.html#question-21" class="anchor-section" aria-label="Anchor link to header"></a></h3>
