@@ -117,7 +117,7 @@
 
 \title{Bayesian Data Analysis}
 \author{Anthony R. Colombo, Dr.~Paul Marjoram}
-\date{2022-08-12}
+\date{2022-08-18}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -715,7 +715,7 @@ Then the probability that at least 1 election is tied, from 435 total elections 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.9065208
+## [1] 4.271218
 \end{verbatim}
 
 \begin{Shaded}
@@ -725,7 +725,7 @@ Then the probability that at least 1 election is tied, from 435 total elections 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 33
+## [1] 34
 \end{verbatim}
 
 \begin{Shaded}
@@ -1267,7 +1267,7 @@ We find the probability distribution of a given success and the prior probabilit
 
 \begin{verbatim}
 ##       5%      25%      50%      75%      95% 
-## 142.2442 157.1713 167.6872 179.0203 195.1921
+## 138.7898 156.0673 166.8126 178.4918 192.5139
 \end{verbatim}
 
 \begin{Shaded}
@@ -1627,7 +1627,7 @@ Suppose there are N cable cars numbered sequentially 1 to N. You see a car at ra
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 279.4973
+## [1] 279.104
 \end{verbatim}
 
 \begin{Shaded}
@@ -1637,7 +1637,7 @@ Suppose there are N cable cars numbered sequentially 1 to N. You see a car at ra
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 79.04133
+## [1] 81.27964
 \end{verbatim}
 
 \begin{itemize}
@@ -1749,8 +1749,8 @@ for the likelihood \(L(\theta | y) = \prod_{i=1}^n f(y_i|\theta)\) requires the 
 \end{Shaded}
 
 \begin{verbatim}
-##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
-## -331.813   -0.637    0.450    8.095    1.493 6807.657
+##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+## -283.6159   -0.5427    0.4729    0.9248    1.5253  527.5653
 \end{verbatim}
 
 \begin{Shaded}
@@ -1773,7 +1773,7 @@ for the likelihood \(L(\theta | y) = \prod_{i=1}^n f(y_i|\theta)\) requires the 
 \end{Shaded}
 
 \begin{verbatim}
-## max pred. prob 0.517
+## max pred. prob 0.521
 \end{verbatim}
 
 \hypertarget{question-12}{%
@@ -1973,7 +1973,7 @@ The true observed value for 1986 is 22 fatal accidents.
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##    7.00   20.00   24.00   23.88   27.00   44.00
+##    4.00   20.00   23.50   23.76   27.00   45.00
 \end{verbatim}
 
 \begin{Shaded}
@@ -1998,7 +1998,7 @@ The true observed value for 1986 is 22 fatal accidents.
 
 \begin{verbatim}
 ##  2.5% 97.5% 
-##    15    34
+##    14    34
 \end{verbatim}
 
 From the gamma posterior \(E(\theta | y) = 238.5/10.02=24.25\) and the variance \(V(\theta|y)= 238.5/10.02^2=2.87\). From the Poisson likelihood \(E(x|\theta)=\theta\) and \(V(x|\theta)=\theta\). \(V(x|y)= E(V(x|\theta,y) | y) + V(E(x|\theta,y)|y)= E(\theta| y)+ V(\theta|y) = 23.382+2.87= 26.252\)
@@ -2035,7 +2035,7 @@ The average predictive value from 1986 is 24.3 which is close to the true value 
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   3.939  20.834  24.263  24.272  27.733  47.374
+##   4.581  20.792  24.273  24.267  27.705  50.993
 \end{verbatim}
 
 \begin{Shaded}
@@ -2060,7 +2060,7 @@ The average predictive value from 1986 is 24.3 which is close to the true value 
 
 \begin{verbatim}
 ##     2.5%    97.5% 
-## 14.21272 34.34184
+## 14.22551 34.30925
 \end{verbatim}
 
 \begin{Shaded}
@@ -2070,7 +2070,7 @@ The average predictive value from 1986 is 24.3 which is close to the true value 
 \end{Shaded}
 
 \begin{verbatim}
-## average predictive value from posterior:23.8841
+## average predictive value from posterior:23.759
 \end{verbatim}
 
 \begin{itemize}
@@ -2375,7 +2375,7 @@ which is not the expected prediction of 546 passenger deaths. This is likely bec
 
 \begin{verbatim}
 ##  2.5% 97.5% 
-##   641   749
+##   641   744
 \end{verbatim}
 
 \begin{Shaded}
@@ -2393,7 +2393,7 @@ which is not the expected prediction of 546 passenger deaths. This is likely bec
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   608.0   671.0   690.0   690.6   710.0   771.0
+##   607.0   670.0   690.0   690.2   709.0   785.0
 \end{verbatim}
 
 \begin{Shaded}
@@ -2420,7 +2420,7 @@ which is not the expected prediction of 546 passenger deaths. This is likely bec
 
 \begin{verbatim}
 ##    2.5%   97.5% 
-## 635.975 744.000
+## 637.000 746.025
 \end{verbatim}
 
 \begin{itemize}
@@ -2509,7 +2509,7 @@ Note we used Jeffreys' prior here, but an empirical prior is okay
 \end{Shaded}
 
 \begin{verbatim}
-## [1]  901 1033
+## [1]  909 1035
 \end{verbatim}
 
 \hypertarget{question-21}{%
@@ -2994,7 +2994,7 @@ There was a 0.355 probability of a shift toward Bush after both debates.
 \begin{verbatim}
 ## 
 ## FALSE  TRUE 
-##   635   365
+##   630   370
 \end{verbatim}
 
 \begin{Shaded}
@@ -3082,7 +3082,7 @@ we are given two independent normal random variables with unknown variances and 
 
 \begin{verbatim}
 ##      2.5%     97.5% 
-## 0.9227056 1.0956818
+## 0.9266772 1.0926127
 \end{verbatim}
 
 \begin{Shaded}
@@ -3093,7 +3093,7 @@ we are given two independent normal random variables with unknown variances and 
 
 \begin{verbatim}
 ##     2.5%    97.5% 
-## 1.084500 1.258008
+## 1.092165 1.250021
 \end{verbatim}
 
 \begin{itemize}
@@ -3124,8 +3124,8 @@ The posterior interval (central) of the differences between 2 independent t-dist
 \end{Shaded}
 
 \begin{verbatim}
-##       2.5%      97.5% 
-## 0.04832364 0.28076418
+##      2.5%     97.5% 
+## 0.0412310 0.2772378
 \end{verbatim}
 
 \begin{Shaded}
@@ -3146,7 +3146,7 @@ The posterior interval (central) of the differences between 2 independent t-dist
 
 \begin{verbatim}
 ##       2.5%      97.5% 
-## 0.04859192 0.27364100
+## 0.04022955 0.26242812
 \end{verbatim}
 
 \begin{Shaded}
@@ -3229,7 +3229,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.2076  0.4481  0.5427  0.5612  0.6581  1.2954
+##  0.2125  0.4412  0.5304  0.5472  0.6424  1.1843
 \end{verbatim}
 
 \begin{Shaded}
@@ -3275,7 +3275,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.2349  0.4502  0.5477  0.5637  0.6531  1.2648
+##  0.2271  0.4506  0.5509  0.5674  0.6657  1.1602
 \end{verbatim}
 
 \hypertarget{question-4-dirichlet}{%
@@ -3346,7 +3346,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.2280  0.4696  0.5646  0.5791  0.6706  1.3426
+##  0.2480  0.4614  0.5535  0.5775  0.6632  1.1821
 \end{verbatim}
 
 \begin{Shaded}
@@ -3384,7 +3384,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.2080  0.4546  0.5520  0.5686  0.6649  1.2970
+##  0.1590  0.4614  0.5572  0.5699  0.6525  1.4702
 \end{verbatim}
 
 \begin{Shaded}
@@ -3411,7 +3411,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.3258  0.5064  0.5615  0.5688  0.6254  0.9455
+##  0.3644  0.5112  0.5652  0.5745  0.6316  0.9265
 \end{verbatim}
 
 \hypertarget{question-5}{%
@@ -3452,7 +3452,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   5.629   9.482  10.335  10.377  11.232  16.465
+##   6.791   9.446  10.345  10.404  11.273  16.366
 \end{verbatim}
 
 \begin{Shaded}
@@ -3462,7 +3462,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 10.3771
+## [1] 10.40362
 \end{verbatim}
 
 \begin{Shaded}
@@ -3472,7 +3472,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 1.931915
+## [1] 1.874445
 \end{verbatim}
 
 \begin{Shaded}
@@ -3534,7 +3534,7 @@ The difference in means is approximately 0, with a variance (residual) of 2.7.
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.0417499
+## [1] -0.03633724
 \end{verbatim}
 
 \begin{Shaded}
@@ -3544,7 +3544,7 @@ The difference in means is approximately 0, with a variance (residual) of 2.7.
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 2.46099
+## [1] 2.440588
 \end{verbatim}
 
 \begin{Shaded}
@@ -3604,7 +3604,7 @@ For this we sample from the normal posterior distribution, conditioned on the ro
 \end{Shaded}
 
 \begin{verbatim}
-## mean error:0.153599722653195
+## mean error:0.148476977795389
 \end{verbatim}
 
 \begin{Shaded}
@@ -4587,7 +4587,7 @@ Using a uniform prior, we compute the Bayesian posterior for \(\theta=-\alpha/\b
 \end{Shaded}
 
 \begin{verbatim}
-## posterior mean for A :1.31 B 11.622
+## posterior mean for A :1.313 B 11.639
 \end{verbatim}
 
 \begin{Shaded}
@@ -4598,7 +4598,7 @@ Using a uniform prior, we compute the Bayesian posterior for \(\theta=-\alpha/\b
 
 \begin{verbatim}
 ##       2.5%      97.5% 
-## -0.2826189  0.0952381
+## -0.2714286  0.1132075
 \end{verbatim}
 
 \begin{Shaded}
@@ -4608,7 +4608,7 @@ Using a uniform prior, we compute the Bayesian posterior for \(\theta=-\alpha/\b
 \end{Shaded}
 
 \begin{verbatim}
-## posterio std.dev -a/b: 0.092
+## posterio std.dev -a/b: 0.094
 \end{verbatim}
 
 \hypertarget{q3-delta-method-approximation}{%
@@ -4666,7 +4666,7 @@ Using the derivation of the delta method shown above, we input the posterior mea
 \end{Shaded}
 
 \begin{verbatim}
-## normal approx posterior mean -0.106 std. dev 0.11
+## normal approx posterior mean -0.102 std. dev 0.108
 \end{verbatim}
 
 \hypertarget{question-4.2-using-the-posterior-sampling-via-grid-approach}{%
@@ -4744,7 +4744,7 @@ The posterior mean is -0.1055, with marginal posterior standard deviation of 0.0
 \end{Shaded}
 
 \begin{verbatim}
-## sample posterior mean: -0.109228
+## sample posterior mean: -0.104859
 \end{verbatim}
 
 \begin{Shaded}
@@ -4754,7 +4754,7 @@ The posterior mean is -0.1055, with marginal posterior standard deviation of 0.0
 \end{Shaded}
 
 \begin{verbatim}
-## sample posterior variance: 0.007
+## sample posterior variance: 0.008
 \end{verbatim}
 
 \begin{Shaded}
@@ -4764,7 +4764,7 @@ The posterior mean is -0.1055, with marginal posterior standard deviation of 0.0
 \end{Shaded}
 
 \begin{verbatim}
-## sample posterior std.dev: 0.086
+## sample posterior std.dev: 0.089
 \end{verbatim}
 
 \hypertarget{taylor-series-approximation-of-the-information-matrix}{%
@@ -4816,7 +4816,7 @@ If we would not able to solve for the theoretical value from the \emph{delta-met
 \end{Shaded}
 
 \begin{verbatim}
-## taylor approximation of std.dev using posterior sample variance: 0.086
+## taylor approximation of std.dev using posterior sample variance: 0.089
 \end{verbatim}
 
 \hypertarget{question-4-1}{%
@@ -4826,6 +4826,212 @@ If we would not able to solve for the theoretical value from the \emph{delta-met
 For \(n\to \infty p(\theta|y)\) approaches normality, and any 1-1 transformation approaches normality \(\phi=f(\theta), p(\phi|y)\) is also asymptotically normal. A nonlinear transformation we can use the delta method such that \(g'(\theta)\neq 0\) and given that \(p(\theta|y)\) is normal. Then for any function, the Taylor series in the neighborhood of the true parameter can converge to a normal approximation.
 
 This is given by Slutsky's theorem to show that a sequence of random variables converges in distribution, and also if \(lim_{n\to \infty} V(S_n^2)\to 0\) where the sample variance goes to 0 in the limit. Hence the normal approximation in the limit has 0 variance, and converges almost certaintly to the true distribution.
+
+\hypertarget{question-5-1}{%
+\subsection*{Question 5}\label{question-5-1}}
+\addcontentsline{toc}{subsection}{Question 5}
+
+Using a simulation, we simply take the ratio of 2 random normal variables from their samples
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ x}\OtherTok{=} \FunctionTok{rnorm}\NormalTok{(}\DecValTok{1000}\NormalTok{,}\AttributeTok{mean=}\DecValTok{4}\NormalTok{,}\AttributeTok{sd=}\DecValTok{1}\NormalTok{)}
+\NormalTok{ y}\OtherTok{=} \FunctionTok{rnorm}\NormalTok{(}\DecValTok{1000}\NormalTok{,}\AttributeTok{mean=}\DecValTok{3}\NormalTok{,}\AttributeTok{sd=}\DecValTok{2}\NormalTok{)}
+\NormalTok{ sim.xy}\OtherTok{\textless{}{-}}\NormalTok{y}\SpecialCharTok{/}\NormalTok{x}
+ 
+ \FunctionTok{hist}\NormalTok{(sim.xy,}\AttributeTok{main=}\StringTok{\textquotesingle{}y/x simulation\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-61-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+ \FunctionTok{message}\NormalTok{(}\StringTok{\textquotesingle{}simulated mean/std.dev: \textquotesingle{}}\NormalTok{, }\FunctionTok{round}\NormalTok{(}\FunctionTok{mean}\NormalTok{(sim.xy),}\DecValTok{3}\NormalTok{),}\StringTok{\textquotesingle{} \textquotesingle{}}\NormalTok{,}\FunctionTok{round}\NormalTok{(}\FunctionTok{sd}\NormalTok{(sim.xy),}\DecValTok{3}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## simulated mean/std.dev: 0.795 0.642
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+ \FunctionTok{print}\NormalTok{(}\FunctionTok{var}\NormalTok{(sim.xy))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.411724
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+ \DocumentationTok{\#\# theoretical mean  E(Y/X)=E(Y)E(1/X) = 3/4}
+ 
+ \DocumentationTok{\#\# taylor series for Var(Y/X) = }
+\end{Highlighting}
+\end{Shaded}
+
+-(b) without using a simulation we use the delta method
+
+\[
+\begin{aligned}
+V(Y/X)&=(\frac{-Y}{X^2},\frac{1}{X})\begin{bmatrix} 1 & 0\\
+0 & 4\\
+\end{bmatrix}\begin{pmatrix} -Y/X^2 \\ 1/X \end{pmatrix}\\
+&=\begin{pmatrix} -Y/X^2 & 4/X \end{pmatrix}\begin{pmatrix} -Y/X^2 \\ 1/X \end{pmatrix}\\
+&= Y^2/X^4 +4/X^2 |_{X,Y=\hat{X},\hat{Y}} \\
+&= \frac{\mu_x^2\sigma_y^2 +\sigma_x^2\mu_y^2}{\mu_y^4}\\
+&= \frac{3^2+4^3}{4^4} = 0.28516
+\end{aligned}
+\]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{  xy}\OtherTok{\textless{}{-}}\FunctionTok{rnorm}\NormalTok{(}\DecValTok{1000}\NormalTok{,}\AttributeTok{mean=}\DecValTok{3}\SpecialCharTok{/}\DecValTok{4}\NormalTok{,}\AttributeTok{sd=}\FunctionTok{sqrt}\NormalTok{( (}\DecValTok{9}\SpecialCharTok{+}\DecValTok{4}\SpecialCharTok{\^{}}\DecValTok{3}\NormalTok{)}\SpecialCharTok{/}\DecValTok{4}\SpecialCharTok{\^{}}\DecValTok{4}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+-(c) we must assume that \(x\neq 0\), for the posterior. note that for the ratio of 2 standard normal distributions
+
+\hypertarget{question-9-1}{%
+\subsection*{Question 9}\label{question-9-1}}
+\addcontentsline{toc}{subsection}{Question 9}
+
+\begin{itemize}
+\tightlist
+\item
+  we set the known variance to 3 and select 5 observed values of y \(\sim N(\mu,\sigma)\) where \(\sigma=3\) is known and \(\mu=0.720925\) is the population parameter that we make inferences for.
+\item
+  the MLE is the sample mean of 1.56, with MSE of 0.71 with observed sample size of 5. Note that if the sample size is larger, n=1000, then the MLE is more powerful.
+\item
+  the posterior mean is used to compute the MSE which is 0.001.
+\item
+  note that if \(\sigma=0.01\) the MLE is far more powerful.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \FunctionTok{set.seed}\NormalTok{(}\DecValTok{8182022}\NormalTok{)}
+\NormalTok{ true\_mu}\OtherTok{\textless{}{-}}\FloatTok{0.720925}
+\NormalTok{ true\_var}\OtherTok{\textless{}{-}}\DecValTok{3}
+   
+ \CommentTok{\#observed\_y\textless{}{-}sapply(true\_var,function(x) rnorm(1,true\_mu,sd=sqrt(x)))}
+ \CommentTok{\#Y\textless{}{-}data.frame(Y=y,var=true\_var)}
+ 
+ \DocumentationTok{\#\#observed point}
+\NormalTok{ observed\_y}\OtherTok{\textless{}{-}}\FunctionTok{rnorm}\NormalTok{(}\DecValTok{5}\NormalTok{,}\AttributeTok{mean=}\NormalTok{true\_mu,}\AttributeTok{sd=}\FunctionTok{sqrt}\NormalTok{(true\_var)) }
+\NormalTok{ MLE }\OtherTok{=} \FunctionTok{mean}\NormalTok{(observed\_y) }\DocumentationTok{\#\# point estimate for n=1}
+ \CommentTok{\# MSE for 1 data point is just itself}
+\NormalTok{  mse1}\OtherTok{=}\NormalTok{(MLE}\SpecialCharTok{{-}}\NormalTok{true\_mu)}\SpecialCharTok{\^{}}\DecValTok{2}
+  
+  
+  \DocumentationTok{\#\# posterior mean }
+  \DocumentationTok{\#\# known variance, uniform prior for theta}
+   \CommentTok{\# theta| y \textasciitilde{} p(theta)*l(y|theta)}
+\NormalTok{  theta}\OtherTok{\textless{}{-}}\FunctionTok{seq}\NormalTok{(}\FloatTok{0.01}\NormalTok{,}\FloatTok{0.99}\NormalTok{,}\AttributeTok{by=}\FloatTok{0.001}\NormalTok{)}
+\NormalTok{  post.norm}\OtherTok{\textless{}{-}}\ConstantTok{NULL}
+  \ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in}\NormalTok{ theta)\{}
+\NormalTok{  post\_theta}\OtherTok{\textless{}{-}}\FunctionTok{dunif}\NormalTok{(i)}\SpecialCharTok{*}\FunctionTok{prod}\NormalTok{(}\FunctionTok{dnorm}\NormalTok{(observed\_y,}\AttributeTok{mean=}\NormalTok{i,}\AttributeTok{sd=}\FunctionTok{sqrt}\NormalTok{(true\_var)))}
+\NormalTok{  post.norm}\OtherTok{\textless{}{-}}\FunctionTok{c}\NormalTok{(post.norm,post\_theta)}
+\NormalTok{  \}}
+\NormalTok{   post.norm}\OtherTok{\textless{}{-}}\NormalTok{post.norm}\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(post.norm)}
+  \DocumentationTok{\#\# need to sample from the posterior}
+ 
+ \FunctionTok{plot}\NormalTok{(theta,post.norm,}\AttributeTok{type=}\StringTok{\textquotesingle{}l\textquotesingle{}}\NormalTok{,}\AttributeTok{main=}\StringTok{\textquotesingle{}Normalized posterior\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-63-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ samps}\OtherTok{\textless{}{-}}\NormalTok{(}\FunctionTok{sample}\NormalTok{(theta,}\DecValTok{1000}\NormalTok{,}\AttributeTok{prob=}\NormalTok{post.norm,}\AttributeTok{replace=}\NormalTok{T))}
+  
+\NormalTok{ytilde}\OtherTok{\textless{}{-}}\FunctionTok{rnorm}\NormalTok{(}\DecValTok{1000}\NormalTok{,}\AttributeTok{mean=}\NormalTok{samps,}\AttributeTok{sd=}\FunctionTok{sqrt}\NormalTok{(true\_var)) }
+ \FunctionTok{hist}\NormalTok{(ytilde)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-63-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ mse2}\OtherTok{\textless{}{-}}\NormalTok{(}\FunctionTok{mean}\NormalTok{(ytilde)}\SpecialCharTok{{-}}\NormalTok{true\_mu)}\SpecialCharTok{\^{}}\DecValTok{2}
+ 
+ 
+ \FunctionTok{message}\NormalTok{(}\StringTok{\textquotesingle{}MSE by MLE: \textquotesingle{}}\NormalTok{,}\FunctionTok{round}\NormalTok{(mse1,}\DecValTok{4}\NormalTok{),}\StringTok{\textquotesingle{} MSE by Bayesian:\textquotesingle{}}\NormalTok{,}\FunctionTok{round}\NormalTok{(mse2,}\DecValTok{4}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## MSE by MLE: 0.7051 MSE by Bayesian:0.0013
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  note that if we increase the sample size to n=100, and keep the variance low, \(\sigma=3\), then the MLE has smaller MSE. if we increase the sample size to 100, but increase the \(\sigma=100\), then the Bayesian estimate has smaller MSE.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \FunctionTok{set.seed}\NormalTok{(}\DecValTok{8182022}\NormalTok{)}
+\NormalTok{ true\_mu}\OtherTok{\textless{}{-}}\FloatTok{0.720925}
+\NormalTok{ true\_var}\OtherTok{\textless{}{-}}\DecValTok{100}
+   
+ \CommentTok{\#observed\_y\textless{}{-}sapply(true\_var,function(x) rnorm(1,true\_mu,sd=sqrt(x)))}
+ \CommentTok{\#Y\textless{}{-}data.frame(Y=y,var=true\_var)}
+ 
+ \DocumentationTok{\#\#observed point}
+\NormalTok{ observed\_y}\OtherTok{\textless{}{-}}\FunctionTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{,}\AttributeTok{mean=}\NormalTok{true\_mu,}\AttributeTok{sd=}\FunctionTok{sqrt}\NormalTok{(true\_var)) }
+\NormalTok{ MLE }\OtherTok{=} \FunctionTok{mean}\NormalTok{(observed\_y) }\DocumentationTok{\#\# point estimate for n=1}
+ \CommentTok{\# MSE for 1 data point is just itself}
+\NormalTok{  mse1}\OtherTok{=}\NormalTok{(MLE}\SpecialCharTok{{-}}\NormalTok{true\_mu)}\SpecialCharTok{\^{}}\DecValTok{2}
+  
+  
+  \DocumentationTok{\#\# posterior mean }
+  \DocumentationTok{\#\# known variance, uniform prior for theta}
+   \CommentTok{\# theta| y \textasciitilde{} p(theta)*l(y|theta)}
+\NormalTok{  theta}\OtherTok{\textless{}{-}}\FunctionTok{seq}\NormalTok{(}\FloatTok{0.01}\NormalTok{,}\FloatTok{0.99}\NormalTok{,}\AttributeTok{by=}\FloatTok{0.001}\NormalTok{)}
+\NormalTok{  post.norm}\OtherTok{\textless{}{-}}\ConstantTok{NULL}
+  \ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in}\NormalTok{ theta)\{}
+\NormalTok{  post\_theta}\OtherTok{\textless{}{-}}\FunctionTok{dunif}\NormalTok{(i)}\SpecialCharTok{*}\FunctionTok{prod}\NormalTok{(}\FunctionTok{dnorm}\NormalTok{(observed\_y,}\AttributeTok{mean=}\NormalTok{i,}\AttributeTok{sd=}\FunctionTok{sqrt}\NormalTok{(true\_var)))}
+\NormalTok{  post.norm}\OtherTok{\textless{}{-}}\FunctionTok{c}\NormalTok{(post.norm,post\_theta)}
+\NormalTok{  \}}
+\NormalTok{   post.norm}\OtherTok{\textless{}{-}}\NormalTok{post.norm}\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(post.norm)}
+  \DocumentationTok{\#\# need to sample from the posterior}
+ 
+ \FunctionTok{plot}\NormalTok{(theta,post.norm,}\AttributeTok{type=}\StringTok{\textquotesingle{}l\textquotesingle{}}\NormalTok{,}\AttributeTok{main=}\StringTok{\textquotesingle{}Normalized posterior\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-64-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ samps}\OtherTok{\textless{}{-}}\NormalTok{(}\FunctionTok{sample}\NormalTok{(theta,}\DecValTok{1000}\NormalTok{,}\AttributeTok{prob=}\NormalTok{post.norm,}\AttributeTok{replace=}\NormalTok{T))}
+  
+\NormalTok{ytilde}\OtherTok{\textless{}{-}}\FunctionTok{rnorm}\NormalTok{(}\DecValTok{1000}\NormalTok{,}\AttributeTok{mean=}\NormalTok{samps,}\AttributeTok{sd=}\FunctionTok{sqrt}\NormalTok{(true\_var)) }
+ \FunctionTok{hist}\NormalTok{(ytilde)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-64-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ mse2}\OtherTok{\textless{}{-}}\NormalTok{(}\FunctionTok{mean}\NormalTok{(ytilde)}\SpecialCharTok{{-}}\NormalTok{true\_mu)}\SpecialCharTok{\^{}}\DecValTok{2}
+ 
+ 
+ \FunctionTok{message}\NormalTok{(}\StringTok{\textquotesingle{}MSE by MLE: \textquotesingle{}}\NormalTok{,}\FunctionTok{round}\NormalTok{(mse1,}\DecValTok{4}\NormalTok{),}\StringTok{\textquotesingle{} MSE by Bayesian:\textquotesingle{}}\NormalTok{,}\FunctionTok{round}\NormalTok{(mse2,}\DecValTok{4}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## MSE by MLE: 0.6861 MSE by Bayesian:0.0136
+\end{verbatim}
 
 \hypertarget{blocks}{%
 \chapter{Blocks}\label{blocks}}

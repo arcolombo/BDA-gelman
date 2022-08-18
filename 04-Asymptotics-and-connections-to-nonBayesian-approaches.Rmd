@@ -570,3 +570,129 @@ std.approx2<-(-theoretical.approx)^(-0.5)
 For $n\to \infty p(\theta|y)$ approaches normality, and any 1-1 transformation approaches normality $\phi=f(\theta), p(\phi|y)$ is also asymptotically normal.  A nonlinear transformation we can use the delta method such that $g'(\theta)\neq 0$ and given that $p(\theta|y)$ is normal.   Then for any function, the Taylor series in the neighborhood of the true parameter can converge to a normal approximation.
 
 This is given by Slutsky's theorem to show that a sequence of random variables converges in distribution, and also if $lim_{n\to \infty} V(S_n^2)\to 0$ where the sample variance goes to 0 in the limit.  Hence the normal approximation in the limit has 0 variance, and converges almost certaintly to the true distribution.
+
+
+### Question 5{-}
+
+Using a simulation, we simply take the ratio of 2 random normal variables from their samples
+```{r}
+ x= rnorm(1000,mean=4,sd=1)
+ y= rnorm(1000,mean=3,sd=2)
+ sim.xy<-y/x
+ 
+ hist(sim.xy,main='y/x simulation')
+ message('simulated mean/std.dev: ', round(mean(sim.xy),3),' ',round(sd(sim.xy),3))
+ print(var(sim.xy))
+ 
+ ## theoretical mean  E(Y/X)=E(Y)E(1/X) = 3/4
+ 
+ ## taylor series for Var(Y/X) = 
+```
+-(b) without using a simulation we use the delta method
+
+$$
+\begin{aligned}
+V(Y/X)&=(\frac{-Y}{X^2},\frac{1}{X})\begin{bmatrix} 1 & 0\\
+0 & 4\\
+\end{bmatrix}\begin{pmatrix} -Y/X^2 \\ 1/X \end{pmatrix}\\
+&=\begin{pmatrix} -Y/X^2 & 4/X \end{pmatrix}\begin{pmatrix} -Y/X^2 \\ 1/X \end{pmatrix}\\
+&= Y^2/X^4 +4/X^2 |_{X,Y=\hat{X},\hat{Y}} \\
+&= \frac{\mu_x^2\sigma_y^2 +\sigma_x^2\mu_y^2}{\mu_y^4}\\
+&= \frac{3^2+4^3}{4^4} = 0.28516
+\end{aligned}
+$$
+```{r}
+  xy<-rnorm(1000,mean=3/4,sd=sqrt( (9+4^3)/4^4))
+
+```
+
+-(c) we must assume that  $x\neq 0$, for the posterior.  note that for the ratio of 2 standard normal distributions
+
+
+### Question 9{-}
+- we set the known variance to 3 and select 5 observed values of y $\sim N(\mu,\sigma)$ where $\sigma=3$ is known and $\mu=0.720925$ is the population parameter that we make inferences for.
+- the MLE is the sample mean of 1.56,  with MSE of 0.71 with observed sample size of 5.  Note that if the sample size is larger, n=1000, then the MLE is more powerful.
+- the posterior mean is used to compute the MSE which is 0.001.
+- note that if $\sigma=0.01$ the MLE is far more powerful.
+```{r}
+  set.seed(8182022)
+ true_mu<-0.720925
+ true_var<-3
+   
+ #observed_y<-sapply(true_var,function(x) rnorm(1,true_mu,sd=sqrt(x)))
+ #Y<-data.frame(Y=y,var=true_var)
+ 
+ ##observed point
+ observed_y<-rnorm(5,mean=true_mu,sd=sqrt(true_var)) 
+ MLE = mean(observed_y) ## point estimate for n=1
+ # MSE for 1 data point is just itself
+  mse1=(MLE-true_mu)^2
+  
+  
+  ## posterior mean 
+  ## known variance, uniform prior for theta
+   # theta| y ~ p(theta)*l(y|theta)
+  theta<-seq(0.01,0.99,by=0.001)
+  post.norm<-NULL
+  for(i in theta){
+  post_theta<-dunif(i)*prod(dnorm(observed_y,mean=i,sd=sqrt(true_var)))
+  post.norm<-c(post.norm,post_theta)
+  }
+   post.norm<-post.norm/sum(post.norm)
+  ## need to sample from the posterior
+ 
+ plot(theta,post.norm,type='l',main='Normalized posterior')
+ 
+ samps<-(sample(theta,1000,prob=post.norm,replace=T))
+  
+ytilde<-rnorm(1000,mean=samps,sd=sqrt(true_var)) 
+ hist(ytilde)
+ 
+ mse2<-(mean(ytilde)-true_mu)^2
+ 
+ 
+ message('MSE by MLE: ',round(mse1,4),' MSE by Bayesian:',round(mse2,4))
+```
+- note that if we increase the sample size to n=100, and keep the variance low, $\sigma=3$, then the MLE has smaller MSE.  if we increase the sample size to 100, but increase the $\sigma=100$, then the Bayesian estimate has smaller MSE.
+```{r,warning=FALSE}
+  set.seed(8182022)
+ true_mu<-0.720925
+ true_var<-100
+   
+ #observed_y<-sapply(true_var,function(x) rnorm(1,true_mu,sd=sqrt(x)))
+ #Y<-data.frame(Y=y,var=true_var)
+ 
+ ##observed point
+ observed_y<-rnorm(100,mean=true_mu,sd=sqrt(true_var)) 
+ MLE = mean(observed_y) ## point estimate for n=1
+ # MSE for 1 data point is just itself
+  mse1=(MLE-true_mu)^2
+  
+  
+  ## posterior mean 
+  ## known variance, uniform prior for theta
+   # theta| y ~ p(theta)*l(y|theta)
+  theta<-seq(0.01,0.99,by=0.001)
+  post.norm<-NULL
+  for(i in theta){
+  post_theta<-dunif(i)*prod(dnorm(observed_y,mean=i,sd=sqrt(true_var)))
+  post.norm<-c(post.norm,post_theta)
+  }
+   post.norm<-post.norm/sum(post.norm)
+  ## need to sample from the posterior
+ 
+ plot(theta,post.norm,type='l',main='Normalized posterior')
+ 
+ samps<-(sample(theta,1000,prob=post.norm,replace=T))
+  
+ytilde<-rnorm(1000,mean=samps,sd=sqrt(true_var)) 
+ hist(ytilde)
+ 
+ mse2<-(mean(ytilde)-true_mu)^2
+ 
+ 
+ message('MSE by MLE: ',round(mse1,4),' MSE by Bayesian:',round(mse2,4))
+
+
+
+```

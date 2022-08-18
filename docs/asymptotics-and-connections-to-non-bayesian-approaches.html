@@ -23,7 +23,7 @@
 <meta name="author" content="Anthony R. Colombo, Dr. Paul Marjoram" />
 
 
-<meta name="date" content="2022-08-12" />
+<meta name="date" content="2022-08-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -244,6 +244,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.4.1" data-path="asymptotics-and-connections-to-non-bayesian-approaches.html"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#question-4.2-using-the-posterior-sampling-via-grid-approach"><i class="fa fa-check"></i><b>4.4.1</b> Question 4.2 using the posterior sampling via grid approach</a></li>
 <li class="chapter" data-level="4.4.2" data-path="asymptotics-and-connections-to-non-bayesian-approaches.html"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#taylor-series-approximation-of-the-information-matrix"><i class="fa fa-check"></i><b>4.4.2</b> Taylor series approximation of the information matrix</a></li>
 <li class="chapter" data-level="" data-path="asymptotics-and-connections-to-non-bayesian-approaches.html"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#question-4-1"><i class="fa fa-check"></i>Question 4</a></li>
+<li class="chapter" data-level="" data-path="asymptotics-and-connections-to-non-bayesian-approaches.html"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#question-5-1"><i class="fa fa-check"></i>Question 5</a></li>
+<li class="chapter" data-level="" data-path="asymptotics-and-connections-to-non-bayesian-approaches.html"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#question-9-1"><i class="fa fa-check"></i>Question 9</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="blocks.html"><a href="blocks.html"><i class="fa fa-check"></i><b>5</b> Blocks</a>
@@ -652,12 +654,12 @@ p(\theta|y) \approx N(\hat{\alpha},\hat{\beta}, I(\alpha,\beta)^{-1})
 <p><img src="_main_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
 <div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb279-1" aria-hidden="true" tabindex="-1"></a> <span class="do">## posterior means (1.35,11.6)</span></span>
 <span id="cb279-2"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb279-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">message</span>(<span class="st">&#39;posterior mean for A :&#39;</span>,<span class="fu">round</span>(<span class="fu">mean</span>(A),<span class="dv">3</span>),<span class="st">&#39; B &#39;</span>,<span class="fu">round</span>(<span class="fu">mean</span>(B),<span class="dv">3</span>))</span></code></pre></div>
-<pre><code>## posterior mean for A :1.299 B 11.592</code></pre>
+<pre><code>## posterior mean for A :1.31 B 11.686</code></pre>
 <div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb281-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">quantile</span>(<span class="sc">-</span>A<span class="sc">/</span>B,<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>))</span></code></pre></div>
 <pre><code>##       2.5%      97.5% 
-## -0.2790930  0.1041941</code></pre>
+## -0.2777954  0.1063830</code></pre>
 <div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb283-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">message</span>(<span class="st">&#39;posterio std.dev -a/b: &#39;</span>,<span class="fu">round</span>(<span class="fu">sd</span>(<span class="sc">-</span>A<span class="sc">/</span>B),<span class="dv">3</span>))</span></code></pre></div>
-<pre><code>## posterio std.dev -a/b: 0.094</code></pre>
+<pre><code>## posterio std.dev -a/b: 0.096</code></pre>
 <div id="q3-delta-method-approximation" class="section level4 unnumbered hasAnchor">
 <h4>Q3 Delta method approximation<a href="asymptotics-and-connections-to-non-bayesian-approaches.html#q3-delta-method-approximation" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Using the <em>delta-method</em> and the correlation matrix computed from Q2. The delta method can be used to derive a normal approximation.</p>
@@ -687,7 +689,7 @@ V(\alpha/\beta)&amp;=(\frac{1}{\beta},\frac{-\alpha}{\beta^2})\begin{bmatrix} \s
 <div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb288-1" aria-hidden="true" tabindex="-1"></a> ld50_hat<span class="ot">&lt;-</span><span class="fu">mean</span>(ld50_normApprox)  <span class="do">## poster mean (should use the mode but close enough)</span></span>
 <span id="cb288-2"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb288-2" aria-hidden="true" tabindex="-1"></a> </span>
 <span id="cb288-3"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb288-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">message</span>(<span class="st">&#39;normal approx posterior mean &#39;</span>, <span class="fu">round</span>(<span class="fu">mean</span>(ld50_normApprox),<span class="dv">3</span>),<span class="st">&#39; std. dev &#39;</span>,<span class="fu">round</span>(<span class="fu">sd</span>(ld50_normApprox),<span class="dv">3</span>))</span></code></pre></div>
-<pre><code>## normal approx posterior mean -0.104 std. dev 0.107</code></pre>
+<pre><code>## normal approx posterior mean -0.107 std. dev 0.107</code></pre>
 </div>
 </div>
 <div id="question-4.2-using-the-posterior-sampling-via-grid-approach" class="section level3 hasAnchor" number="4.4.1">
@@ -748,11 +750,11 @@ p(\theta|y) = \int p(\theta,\nu|y)d\nu = \int p(\alpha,\beta|y)|\nu|d\nu
 <span id="cb290-47"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb290-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hist</span>(thetas.post,<span class="at">xlim=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.5</span>,<span class="fl">0.5</span>),<span class="at">main=</span><span class="st">&#39;posterior sample theta= -a/b&#39;</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-58-1.png" width="672" /></p>
 <div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb291-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">message</span>(<span class="st">&#39;sample posterior mean: &#39;</span>, <span class="fu">mean</span>(thetas.post))</span></code></pre></div>
-<pre><code>## sample posterior mean: -0.106496</code></pre>
+<pre><code>## sample posterior mean: -0.1069205</code></pre>
 <div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb293-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">message</span>(<span class="st">&#39;sample posterior variance: &#39;</span>, <span class="fu">round</span>(<span class="fu">var</span>(thetas.post),<span class="dv">3</span>))</span></code></pre></div>
-<pre><code>## sample posterior variance: 0.008</code></pre>
+<pre><code>## sample posterior variance: 0.009</code></pre>
 <div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb295-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">message</span>(<span class="st">&#39;sample posterior std.dev: &#39;</span>, <span class="fu">round</span>(<span class="fu">sd</span>(thetas.post),<span class="dv">3</span>))</span></code></pre></div>
-<pre><code>## sample posterior std.dev: 0.089</code></pre>
+<pre><code>## sample posterior std.dev: 0.092</code></pre>
 </div>
 <div id="taylor-series-approximation-of-the-information-matrix" class="section level3 hasAnchor" number="4.4.2">
 <h3><span class="header-section-number">4.4.2</span> Taylor series approximation of the information matrix<a href="asymptotics-and-connections-to-non-bayesian-approaches.html#taylor-series-approximation-of-the-information-matrix" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -784,12 +786,131 @@ f(a+h) &amp;\approx f(a) +h&#39;f(a) +1/2 h^2f&#39;&#39;(a) \\
 <span id="cb299-3"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb299-3" aria-hidden="true" tabindex="-1"></a>std.approx2<span class="ot">&lt;-</span>(<span class="sc">-</span>theoretical.approx)<span class="sc">^</span>(<span class="sc">-</span><span class="fl">0.5</span>)</span>
 <span id="cb299-4"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb299-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb299-5"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb299-5" aria-hidden="true" tabindex="-1"></a> <span class="fu">message</span>(<span class="st">&#39;taylor approximation of std.dev using posterior sample variance: &#39;</span>,<span class="fu">round</span>(std.approx2,<span class="dv">3</span>))</span></code></pre></div>
-<pre><code>## taylor approximation of std.dev using posterior sample variance: 0.089</code></pre>
+<pre><code>## taylor approximation of std.dev using posterior sample variance: 0.092</code></pre>
 </div>
 <div id="question-4-1" class="section level3 unnumbered hasAnchor">
 <h3>Question 4<a href="asymptotics-and-connections-to-non-bayesian-approaches.html#question-4-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>For <span class="math inline">\(n\to \infty p(\theta|y)\)</span> approaches normality, and any 1-1 transformation approaches normality <span class="math inline">\(\phi=f(\theta), p(\phi|y)\)</span> is also asymptotically normal. A nonlinear transformation we can use the delta method such that <span class="math inline">\(g&#39;(\theta)\neq 0\)</span> and given that <span class="math inline">\(p(\theta|y)\)</span> is normal. Then for any function, the Taylor series in the neighborhood of the true parameter can converge to a normal approximation.</p>
 <p>This is given by Slutsky’s theorem to show that a sequence of random variables converges in distribution, and also if <span class="math inline">\(lim_{n\to \infty} V(S_n^2)\to 0\)</span> where the sample variance goes to 0 in the limit. Hence the normal approximation in the limit has 0 variance, and converges almost certaintly to the true distribution.</p>
+</div>
+<div id="question-5-1" class="section level3 unnumbered hasAnchor">
+<h3>Question 5<a href="asymptotics-and-connections-to-non-bayesian-approaches.html#question-5-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Using a simulation, we simply take the ratio of 2 random normal variables from their samples</p>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb301-1" aria-hidden="true" tabindex="-1"></a> x<span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>,<span class="at">mean=</span><span class="dv">4</span>,<span class="at">sd=</span><span class="dv">1</span>)</span>
+<span id="cb301-2"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb301-2" aria-hidden="true" tabindex="-1"></a> y<span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>,<span class="at">mean=</span><span class="dv">3</span>,<span class="at">sd=</span><span class="dv">2</span>)</span>
+<span id="cb301-3"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb301-3" aria-hidden="true" tabindex="-1"></a> sim.xy<span class="ot">&lt;-</span>y<span class="sc">/</span>x</span>
+<span id="cb301-4"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb301-4" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb301-5"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb301-5" aria-hidden="true" tabindex="-1"></a> <span class="fu">hist</span>(sim.xy,<span class="at">main=</span><span class="st">&#39;y/x simulation&#39;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-61-1.png" width="672" /></p>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb302-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">message</span>(<span class="st">&#39;simulated mean/std.dev: &#39;</span>, <span class="fu">round</span>(<span class="fu">mean</span>(sim.xy),<span class="dv">3</span>),<span class="st">&#39; &#39;</span>,<span class="fu">round</span>(<span class="fu">sd</span>(sim.xy),<span class="dv">3</span>))</span></code></pre></div>
+<pre><code>## simulated mean/std.dev: 0.787 0.617</code></pre>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb304-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">print</span>(<span class="fu">var</span>(sim.xy))</span></code></pre></div>
+<pre><code>## [1] 0.3806254</code></pre>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb306-1" aria-hidden="true" tabindex="-1"></a> <span class="do">## theoretical mean  E(Y/X)=E(Y)E(1/X) = 3/4</span></span>
+<span id="cb306-2"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb306-2" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb306-3"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb306-3" aria-hidden="true" tabindex="-1"></a> <span class="do">## taylor series for Var(Y/X) = </span></span></code></pre></div>
+<p>-(b) without using a simulation we use the delta method</p>
+<p><span class="math display">\[
+\begin{aligned}
+V(Y/X)&amp;=(\frac{-Y}{X^2},\frac{1}{X})\begin{bmatrix} 1 &amp; 0\\
+0 &amp; 4\\
+\end{bmatrix}\begin{pmatrix} -Y/X^2 \\ 1/X \end{pmatrix}\\
+&amp;=\begin{pmatrix} -Y/X^2 &amp; 4/X \end{pmatrix}\begin{pmatrix} -Y/X^2 \\ 1/X \end{pmatrix}\\
+&amp;= Y^2/X^4 +4/X^2 |_{X,Y=\hat{X},\hat{Y}} \\
+&amp;= \frac{\mu_x^2\sigma_y^2 +\sigma_x^2\mu_y^2}{\mu_y^4}\\
+&amp;= \frac{3^2+4^3}{4^4} = 0.28516
+\end{aligned}
+\]</span></p>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb307-1" aria-hidden="true" tabindex="-1"></a>  xy<span class="ot">&lt;-</span><span class="fu">rnorm</span>(<span class="dv">1000</span>,<span class="at">mean=</span><span class="dv">3</span><span class="sc">/</span><span class="dv">4</span>,<span class="at">sd=</span><span class="fu">sqrt</span>( (<span class="dv">9</span><span class="sc">+</span><span class="dv">4</span><span class="sc">^</span><span class="dv">3</span>)<span class="sc">/</span><span class="dv">4</span><span class="sc">^</span><span class="dv">4</span>))</span></code></pre></div>
+<p>-(c) we must assume that <span class="math inline">\(x\neq 0\)</span>, for the posterior. note that for the ratio of 2 standard normal distributions</p>
+</div>
+<div id="question-9-1" class="section level3 unnumbered hasAnchor">
+<h3>Question 9<a href="asymptotics-and-connections-to-non-bayesian-approaches.html#question-9-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>we set the known variance to 3 and select 5 observed values of y <span class="math inline">\(\sim N(\mu,\sigma)\)</span> where <span class="math inline">\(\sigma=3\)</span> is known and <span class="math inline">\(\mu=0.720925\)</span> is the population parameter that we make inferences for.</li>
+<li>the MLE is the sample mean of 1.56, with MSE of 0.71 with observed sample size of 5. Note that if the sample size is larger, n=1000, then the MLE is more powerful.</li>
+<li>the posterior mean is used to compute the MSE which is 0.001.</li>
+<li>note that if <span class="math inline">\(\sigma=0.01\)</span> the MLE is far more powerful.</li>
+</ul>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb308-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set.seed</span>(<span class="dv">8182022</span>)</span>
+<span id="cb308-2"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb308-2" aria-hidden="true" tabindex="-1"></a> true_mu<span class="ot">&lt;-</span><span class="fl">0.720925</span></span>
+<span id="cb308-3"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb308-3" aria-hidden="true" tabindex="-1"></a> true_var<span class="ot">&lt;-</span><span class="dv">3</span></span>
+<span id="cb308-4"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb308-4" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb308-5"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb308-5" aria-hidden="true" tabindex="-1"></a> <span class="co">#observed_y&lt;-sapply(true_var,function(x) rnorm(1,true_mu,sd=sqrt(x)))</span></span>
+<span id="cb308-6"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb308-6" aria-hidden="true" tabindex="-1"></a> <span class="co">#Y&lt;-data.frame(Y=y,var=true_var)</span></span>
+<span id="cb308-7"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb308-7" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb308-8"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb308-8" aria-hidden="true" tabindex="-1"></a> <span class="do">##observed point</span></span>
+<span id="cb308-9"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb308-9" aria-hidden="true" tabindex="-1"></a> observed_y<span class="ot">&lt;-</span><span class="fu">rnorm</span>(<span class="dv">5</span>,<span class="at">mean=</span>true_mu,<span class="at">sd=</span><span class="fu">sqrt</span>(true_var)) </span>
+<span id="cb308-10"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb308-10" aria-hidden="true" tabindex="-1"></a> MLE <span class="ot">=</span> <span class="fu">mean</span>(observed_y) <span class="do">## point estimate for n=1</span></span>
+<span id="cb308-11"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb308-11" aria-hidden="true" tabindex="-1"></a> <span class="co"># MSE for 1 data point is just itself</span></span>
+<span id="cb308-12"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb308-12" aria-hidden="true" tabindex="-1"></a>  mse1<span class="ot">=</span>(MLE<span class="sc">-</span>true_mu)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb308-13"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb308-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb308-14"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb308-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb308-15"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb308-15" aria-hidden="true" tabindex="-1"></a>  <span class="do">## posterior mean </span></span>
+<span id="cb308-16"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb308-16" aria-hidden="true" tabindex="-1"></a>  <span class="do">## known variance, uniform prior for theta</span></span>
+<span id="cb308-17"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb308-17" aria-hidden="true" tabindex="-1"></a>   <span class="co"># theta| y ~ p(theta)*l(y|theta)</span></span>
+<span id="cb308-18"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb308-18" aria-hidden="true" tabindex="-1"></a>  theta<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="fl">0.01</span>,<span class="fl">0.99</span>,<span class="at">by=</span><span class="fl">0.001</span>)</span>
+<span id="cb308-19"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb308-19" aria-hidden="true" tabindex="-1"></a>  post.norm<span class="ot">&lt;-</span><span class="cn">NULL</span></span>
+<span id="cb308-20"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb308-20" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> theta){</span>
+<span id="cb308-21"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb308-21" aria-hidden="true" tabindex="-1"></a>  post_theta<span class="ot">&lt;-</span><span class="fu">dunif</span>(i)<span class="sc">*</span><span class="fu">prod</span>(<span class="fu">dnorm</span>(observed_y,<span class="at">mean=</span>i,<span class="at">sd=</span><span class="fu">sqrt</span>(true_var)))</span>
+<span id="cb308-22"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb308-22" aria-hidden="true" tabindex="-1"></a>  post.norm<span class="ot">&lt;-</span><span class="fu">c</span>(post.norm,post_theta)</span>
+<span id="cb308-23"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb308-23" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb308-24"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb308-24" aria-hidden="true" tabindex="-1"></a>   post.norm<span class="ot">&lt;-</span>post.norm<span class="sc">/</span><span class="fu">sum</span>(post.norm)</span>
+<span id="cb308-25"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb308-25" aria-hidden="true" tabindex="-1"></a>  <span class="do">## need to sample from the posterior</span></span>
+<span id="cb308-26"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb308-26" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb308-27"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb308-27" aria-hidden="true" tabindex="-1"></a> <span class="fu">plot</span>(theta,post.norm,<span class="at">type=</span><span class="st">&#39;l&#39;</span>,<span class="at">main=</span><span class="st">&#39;Normalized posterior&#39;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-63-1.png" width="672" /></p>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb309-1" aria-hidden="true" tabindex="-1"></a> samps<span class="ot">&lt;-</span>(<span class="fu">sample</span>(theta,<span class="dv">1000</span>,<span class="at">prob=</span>post.norm,<span class="at">replace=</span>T))</span>
+<span id="cb309-2"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb309-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb309-3"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb309-3" aria-hidden="true" tabindex="-1"></a>ytilde<span class="ot">&lt;-</span><span class="fu">rnorm</span>(<span class="dv">1000</span>,<span class="at">mean=</span>samps,<span class="at">sd=</span><span class="fu">sqrt</span>(true_var)) </span>
+<span id="cb309-4"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb309-4" aria-hidden="true" tabindex="-1"></a> <span class="fu">hist</span>(ytilde)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-63-2.png" width="672" /></p>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb310-1" aria-hidden="true" tabindex="-1"></a> mse2<span class="ot">&lt;-</span>(<span class="fu">mean</span>(ytilde)<span class="sc">-</span>true_mu)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb310-2"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb310-2" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb310-3"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb310-3" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb310-4"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb310-4" aria-hidden="true" tabindex="-1"></a> <span class="fu">message</span>(<span class="st">&#39;MSE by MLE: &#39;</span>,<span class="fu">round</span>(mse1,<span class="dv">4</span>),<span class="st">&#39; MSE by Bayesian:&#39;</span>,<span class="fu">round</span>(mse2,<span class="dv">4</span>))</span></code></pre></div>
+<pre><code>## MSE by MLE: 0.7051 MSE by Bayesian:0.0013</code></pre>
+<ul>
+<li>note that if we increase the sample size to n=100, and keep the variance low, <span class="math inline">\(\sigma=3\)</span>, then the MLE has smaller MSE. if we increase the sample size to 100, but increase the <span class="math inline">\(\sigma=100\)</span>, then the Bayesian estimate has smaller MSE.</li>
+</ul>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb312-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set.seed</span>(<span class="dv">8182022</span>)</span>
+<span id="cb312-2"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb312-2" aria-hidden="true" tabindex="-1"></a> true_mu<span class="ot">&lt;-</span><span class="fl">0.720925</span></span>
+<span id="cb312-3"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb312-3" aria-hidden="true" tabindex="-1"></a> true_var<span class="ot">&lt;-</span><span class="dv">100</span></span>
+<span id="cb312-4"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb312-4" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb312-5"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb312-5" aria-hidden="true" tabindex="-1"></a> <span class="co">#observed_y&lt;-sapply(true_var,function(x) rnorm(1,true_mu,sd=sqrt(x)))</span></span>
+<span id="cb312-6"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb312-6" aria-hidden="true" tabindex="-1"></a> <span class="co">#Y&lt;-data.frame(Y=y,var=true_var)</span></span>
+<span id="cb312-7"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb312-7" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb312-8"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb312-8" aria-hidden="true" tabindex="-1"></a> <span class="do">##observed point</span></span>
+<span id="cb312-9"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb312-9" aria-hidden="true" tabindex="-1"></a> observed_y<span class="ot">&lt;-</span><span class="fu">rnorm</span>(<span class="dv">100</span>,<span class="at">mean=</span>true_mu,<span class="at">sd=</span><span class="fu">sqrt</span>(true_var)) </span>
+<span id="cb312-10"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb312-10" aria-hidden="true" tabindex="-1"></a> MLE <span class="ot">=</span> <span class="fu">mean</span>(observed_y) <span class="do">## point estimate for n=1</span></span>
+<span id="cb312-11"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb312-11" aria-hidden="true" tabindex="-1"></a> <span class="co"># MSE for 1 data point is just itself</span></span>
+<span id="cb312-12"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb312-12" aria-hidden="true" tabindex="-1"></a>  mse1<span class="ot">=</span>(MLE<span class="sc">-</span>true_mu)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb312-13"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb312-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb312-14"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb312-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb312-15"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb312-15" aria-hidden="true" tabindex="-1"></a>  <span class="do">## posterior mean </span></span>
+<span id="cb312-16"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb312-16" aria-hidden="true" tabindex="-1"></a>  <span class="do">## known variance, uniform prior for theta</span></span>
+<span id="cb312-17"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb312-17" aria-hidden="true" tabindex="-1"></a>   <span class="co"># theta| y ~ p(theta)*l(y|theta)</span></span>
+<span id="cb312-18"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb312-18" aria-hidden="true" tabindex="-1"></a>  theta<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="fl">0.01</span>,<span class="fl">0.99</span>,<span class="at">by=</span><span class="fl">0.001</span>)</span>
+<span id="cb312-19"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb312-19" aria-hidden="true" tabindex="-1"></a>  post.norm<span class="ot">&lt;-</span><span class="cn">NULL</span></span>
+<span id="cb312-20"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb312-20" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> theta){</span>
+<span id="cb312-21"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb312-21" aria-hidden="true" tabindex="-1"></a>  post_theta<span class="ot">&lt;-</span><span class="fu">dunif</span>(i)<span class="sc">*</span><span class="fu">prod</span>(<span class="fu">dnorm</span>(observed_y,<span class="at">mean=</span>i,<span class="at">sd=</span><span class="fu">sqrt</span>(true_var)))</span>
+<span id="cb312-22"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb312-22" aria-hidden="true" tabindex="-1"></a>  post.norm<span class="ot">&lt;-</span><span class="fu">c</span>(post.norm,post_theta)</span>
+<span id="cb312-23"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb312-23" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb312-24"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb312-24" aria-hidden="true" tabindex="-1"></a>   post.norm<span class="ot">&lt;-</span>post.norm<span class="sc">/</span><span class="fu">sum</span>(post.norm)</span>
+<span id="cb312-25"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb312-25" aria-hidden="true" tabindex="-1"></a>  <span class="do">## need to sample from the posterior</span></span>
+<span id="cb312-26"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb312-26" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb312-27"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb312-27" aria-hidden="true" tabindex="-1"></a> <span class="fu">plot</span>(theta,post.norm,<span class="at">type=</span><span class="st">&#39;l&#39;</span>,<span class="at">main=</span><span class="st">&#39;Normalized posterior&#39;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-64-1.png" width="672" /></p>
+<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb313-1" aria-hidden="true" tabindex="-1"></a> samps<span class="ot">&lt;-</span>(<span class="fu">sample</span>(theta,<span class="dv">1000</span>,<span class="at">prob=</span>post.norm,<span class="at">replace=</span>T))</span>
+<span id="cb313-2"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb313-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb313-3"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb313-3" aria-hidden="true" tabindex="-1"></a>ytilde<span class="ot">&lt;-</span><span class="fu">rnorm</span>(<span class="dv">1000</span>,<span class="at">mean=</span>samps,<span class="at">sd=</span><span class="fu">sqrt</span>(true_var)) </span>
+<span id="cb313-4"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb313-4" aria-hidden="true" tabindex="-1"></a> <span class="fu">hist</span>(ytilde)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-64-2.png" width="672" /></p>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb314-1" aria-hidden="true" tabindex="-1"></a> mse2<span class="ot">&lt;-</span>(<span class="fu">mean</span>(ytilde)<span class="sc">-</span>true_mu)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb314-2"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb314-2" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb314-3"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb314-3" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb314-4"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#cb314-4" aria-hidden="true" tabindex="-1"></a> <span class="fu">message</span>(<span class="st">&#39;MSE by MLE: &#39;</span>,<span class="fu">round</span>(mse1,<span class="dv">4</span>),<span class="st">&#39; MSE by Bayesian:&#39;</span>,<span class="fu">round</span>(mse2,<span class="dv">4</span>))</span></code></pre></div>
+<pre><code>## MSE by MLE: 0.6861 MSE by Bayesian:0.0136</code></pre>
 
 </div>
 </div>

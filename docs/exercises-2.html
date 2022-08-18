@@ -23,7 +23,7 @@
 <meta name="author" content="Anthony R. Colombo, Dr. Paul Marjoram" />
 
 
-<meta name="date" content="2022-08-12" />
+<meta name="date" content="2022-08-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -244,6 +244,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.4.1" data-path="asymptotics-and-connections-to-non-bayesian-approaches.html"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#question-4.2-using-the-posterior-sampling-via-grid-approach"><i class="fa fa-check"></i><b>4.4.1</b> Question 4.2 using the posterior sampling via grid approach</a></li>
 <li class="chapter" data-level="4.4.2" data-path="asymptotics-and-connections-to-non-bayesian-approaches.html"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#taylor-series-approximation-of-the-information-matrix"><i class="fa fa-check"></i><b>4.4.2</b> Taylor series approximation of the information matrix</a></li>
 <li class="chapter" data-level="" data-path="asymptotics-and-connections-to-non-bayesian-approaches.html"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#question-4-1"><i class="fa fa-check"></i>Question 4</a></li>
+<li class="chapter" data-level="" data-path="asymptotics-and-connections-to-non-bayesian-approaches.html"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#question-5-1"><i class="fa fa-check"></i>Question 5</a></li>
+<li class="chapter" data-level="" data-path="asymptotics-and-connections-to-non-bayesian-approaches.html"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#question-9-1"><i class="fa fa-check"></i>Question 9</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="blocks.html"><a href="blocks.html"><i class="fa fa-check"></i><b>5</b> Blocks</a>
@@ -368,7 +370,7 @@ p(\alpha | y) &amp;= p(y|\alpha)p(\alpha)\\
 <div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="exercises-2.html#cb187-1" aria-hidden="true" tabindex="-1"></a>   <span class="fu">table</span>((p.post[,<span class="dv">1</span>]<span class="sc">-</span>pre.post[,<span class="dv">1</span>])<span class="sc">&gt;</span><span class="dv">0</span>) <span class="do">## 0.355% supported bush post debate.</span></span></code></pre></div>
 <pre><code>## 
 ## FALSE  TRUE 
-##   623   377</code></pre>
+##   618   382</code></pre>
 <div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="exercises-2.html#cb189-1" aria-hidden="true" tabindex="-1"></a> pre.post2<span class="ot">&lt;-</span><span class="fu">apply</span>(theta,<span class="dv">1</span>, <span class="cf">function</span>(x) <span class="fu">ddirichlet</span>(x,<span class="fu">as.numeric</span>(debate[<span class="dv">1</span>,<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>])))</span>
 <span id="cb189-2"><a href="exercises-2.html#cb189-2" aria-hidden="true" tabindex="-1"></a> post.post2<span class="ot">&lt;-</span><span class="fu">apply</span>(theta,<span class="dv">1</span>, <span class="cf">function</span>(x) <span class="fu">ddirichlet</span>(x,<span class="fu">as.numeric</span>(debate[<span class="dv">2</span>,<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>])))</span>
 <span id="cb189-3"><a href="exercises-2.html#cb189-3" aria-hidden="true" tabindex="-1"></a> </span>
@@ -412,10 +414,10 @@ p(\alpha | y) &amp;= p(y|\alpha)p(\alpha)\\
 <pre><code>## 95% posterior margin control:1.09 1.25</code></pre>
 <div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="exercises-2.html#cb196-1" aria-hidden="true" tabindex="-1"></a>        <span class="fu">quantile</span>(post_mc,<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>))</span></code></pre></div>
 <pre><code>##      2.5%     97.5% 
-## 0.9289259 1.1003646</code></pre>
+## 0.9265284 1.0982560</code></pre>
 <div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="exercises-2.html#cb198-1" aria-hidden="true" tabindex="-1"></a>        <span class="fu">quantile</span>(post_mt,<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>))</span></code></pre></div>
 <pre><code>##     2.5%    97.5% 
-## 1.089285 1.252860</code></pre>
+## 1.088303 1.260344</code></pre>
 <ul>
 <li><ol start="2" style="list-style-type: lower-alpha">
 <li>what is <span class="math inline">\(\mu_t - \mu_c\)</span></li>
@@ -426,14 +428,14 @@ p(\alpha | y) &amp;= p(y|\alpha)p(\alpha)\\
 <p><img src="_main_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
 <div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="exercises-2.html#cb201-1" aria-hidden="true" tabindex="-1"></a>         <span class="fu">quantile</span>(post_mt<span class="sc">-</span>post_mc,<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>))</span></code></pre></div>
 <pre><code>##       2.5%      97.5% 
-## 0.04272829 0.27060943</code></pre>
+## 0.04099491 0.28052900</code></pre>
 <div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="exercises-2.html#cb203-1" aria-hidden="true" tabindex="-1"></a>  <span class="do">## diff</span></span>
 <span id="cb203-2"><a href="exercises-2.html#cb203-2" aria-hidden="true" tabindex="-1"></a>         post_diff<span class="ot">&lt;-</span><span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>,<span class="cf">function</span>(x) <span class="fu">posterior_sample</span>(<span class="at">mc=</span>mt<span class="sc">-</span>mc,<span class="at">sdc=</span>sdt<span class="sc">+</span>sdc,<span class="at">nc=</span>nt<span class="sc">+</span>nc))</span>
 <span id="cb203-3"><a href="exercises-2.html#cb203-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">hist</span>(post_diff, <span class="at">main=</span><span class="st">&#39;simulated difference&#39;</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-32-2.png" width="672" /></p>
 <div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="exercises-2.html#cb204-1" aria-hidden="true" tabindex="-1"></a>             <span class="fu">quantile</span>(post_diff,<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>))</span></code></pre></div>
-<pre><code>##       2.5%      97.5% 
-## 0.03802761 0.27289044</code></pre>
+<pre><code>##      2.5%     97.5% 
+## 0.0408528 0.2768099</code></pre>
 <div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="exercises-2.html#cb206-1" aria-hidden="true" tabindex="-1"></a>  <span class="do">## theoretical (two independent t distributions)</span></span>
 <span id="cb206-2"><a href="exercises-2.html#cb206-2" aria-hidden="true" tabindex="-1"></a>  md <span class="ot">=</span> mt<span class="sc">-</span>mc</span>
 <span id="cb206-3"><a href="exercises-2.html#cb206-3" aria-hidden="true" tabindex="-1"></a>  sdd <span class="ot">=</span> sdt<span class="sc">+</span>sdc</span>
@@ -479,7 +481,7 @@ Note that using a 2x2 table the OR is 0.54 and the independent binomials do appr
 <p><img src="_main_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
 <div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="exercises-2.html#cb210-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>(or)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.2077  0.4439  0.5374  0.5612  0.6582  1.3765</code></pre>
+##  0.2114  0.4372  0.5439  0.5556  0.6508  1.2456</code></pre>
 <div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="exercises-2.html#cb212-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(<span class="st">&quot;the empricial OR: &quot;</span>, <span class="fu">round</span>((<span class="dv">22</span><span class="sc">*</span><span class="dv">635</span>)<span class="sc">/</span>(<span class="dv">39</span><span class="sc">*</span><span class="dv">658</span>),<span class="dv">2</span>))</span></code></pre></div>
 <pre><code>## the empricial OR: 0.54</code></pre>
 <ul>
@@ -497,7 +499,7 @@ If we use the prior Beta(1,1) as the uniform prior we do see marginal changes to
 <p><img src="_main_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
 <div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="exercises-2.html#cb215-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>(or)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.2105  0.4548  0.5445  0.5640  0.6546  1.2273</code></pre>
+##  0.1970  0.4540  0.5497  0.5679  0.6638  1.1869</code></pre>
 <div id="question-4-dirichlet" class="section level3 unnumbered hasAnchor">
 <h3>Question 4 (dirichlet)<a href="exercises-2.html#question-4-dirichlet" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
@@ -537,7 +539,7 @@ If we use the prior Beta(1,1) as the uniform prior we do see marginal changes to
 <span id="cb220-2"><a href="exercises-2.html#cb220-2" aria-hidden="true" tabindex="-1"></a>  or<span class="ot">&lt;-</span>(treat.post[,<span class="dv">2</span>]<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>treat.post[,<span class="dv">2</span>]))<span class="sc">/</span>(treat.post[,<span class="dv">1</span>]<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>treat.post[,<span class="dv">1</span>]))</span>
 <span id="cb220-3"><a href="exercises-2.html#cb220-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(or)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.2030  0.4674  0.5592  0.5808  0.6711  1.2856</code></pre>
+##  0.2412  0.4648  0.5542  0.5748  0.6595  1.3231</code></pre>
 <div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="exercises-2.html#cb222-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hist</span>(or,<span class="at">main=</span><span class="st">&#39;treatment odds&#39;</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
 <ul>
@@ -552,7 +554,7 @@ If we use the prior Beta(1,1) as the uniform prior we do see marginal changes to
 <p><img src="_main_files/figure-html/unnamed-chunk-38-1.png" width="672" /></p>
 <div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="exercises-2.html#cb224-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>(or)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.2172  0.4620  0.5548  0.5725  0.6663  1.2539</code></pre>
+##  0.1884  0.4523  0.5521  0.5628  0.6553  1.3583</code></pre>
 <div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="exercises-2.html#cb226-1" aria-hidden="true" tabindex="-1"></a>  <span class="do">## empirical</span></span>
 <span id="cb226-2"><a href="exercises-2.html#cb226-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># control = (39/674)*1354 = 78.34718</span></span>
 <span id="cb226-3"><a href="exercises-2.html#cb226-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># treat = (22/658)*1354 = 45.27052</span></span>
@@ -565,7 +567,7 @@ If we use the prior Beta(1,1) as the uniform prior we do see marginal changes to
 <p><img src="_main_files/figure-html/unnamed-chunk-38-2.png" width="672" /></p>
 <div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="exercises-2.html#cb227-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>(or)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.3307  0.5078  0.5602  0.5693  0.6246  0.9831</code></pre>
+##  0.3366  0.5063  0.5635  0.5698  0.6233  0.9107</code></pre>
 </div>
 </div>
 <div id="question-5" class="section level2 unnumbered hasAnchor">
@@ -587,11 +589,11 @@ If we use the prior Beta(1,1) as the uniform prior we do see marginal changes to
 <div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="exercises-2.html#cb230-1" aria-hidden="true" tabindex="-1"></a>  <span class="co"># post summary  mean : 8.8,  var= 1.47</span></span>
 <span id="cb230-2"><a href="exercises-2.html#cb230-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>(pois.post)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   5.516   9.361  10.290  10.356  11.274  16.963</code></pre>
+##   6.594   9.501  10.380  10.443  11.333  15.951</code></pre>
 <div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="exercises-2.html#cb232-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(pois.post)</span></code></pre></div>
-<pre><code>## [1] 10.35623</code></pre>
+<pre><code>## [1] 10.44281</code></pre>
 <div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="exercises-2.html#cb234-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">var</span>(pois.post)</span></code></pre></div>
-<pre><code>## [1] 2.064425</code></pre>
+<pre><code>## [1] 1.941619</code></pre>
 <div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="exercises-2.html#cb236-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="fu">density</span>(pois.post),<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.4</span>),<span class="at">main=</span><span class="st">&#39;pois posterior&#39;</span>)</span>
 <span id="cb236-2"><a href="exercises-2.html#cb236-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lines</span>(<span class="fu">density</span>(obs),<span class="at">col=</span><span class="st">&#39;red&#39;</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-39-2.png" width="672" /></p>
@@ -620,9 +622,9 @@ Using non informative prior for both unknowns, the posterior mean is 10.4 and po
 - (c) how do the correct/incorrect differ, compare means/variances</p>
 <p>The difference in means is approximately 0, with a variance (residual) of 2.7.</p>
 <div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="exercises-2.html#cb239-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">mean</span>( y <span class="sc">-</span> pois.post) <span class="co"># 0.002926538</span></span></code></pre></div>
-<pre><code>## [1] 0.06914787</code></pre>
+<pre><code>## [1] -0.07841396</code></pre>
 <div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="exercises-2.html#cb241-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">var</span>( y <span class="sc">-</span> pois.post) <span class="co"># 2.7</span></span></code></pre></div>
-<pre><code>## [1] 2.462133</code></pre>
+<pre><code>## [1] 2.378305</code></pre>
 <div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="exercises-2.html#cb243-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">hist</span>(y<span class="sc">-</span>pois.post)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-41-1.png" width="672" /></p>
 <div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="exercises-2.html#cb244-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">plot</span>(y,pois.post,<span class="at">main=</span><span class="st">&quot;normal vs. pois likelihoods&quot;</span>)</span></code></pre></div>
@@ -655,7 +657,7 @@ Using non informative prior for both unknowns, the posterior mean is 10.4 and po
 <span id="cb245-20"><a href="exercises-2.html#cb245-20" aria-hidden="true" tabindex="-1"></a> ERR<span class="ot">&lt;-</span><span class="fu">c</span>(ERR,err)</span>
 <span id="cb245-21"><a href="exercises-2.html#cb245-21" aria-hidden="true" tabindex="-1"></a> }</span>
 <span id="cb245-22"><a href="exercises-2.html#cb245-22" aria-hidden="true" tabindex="-1"></a> <span class="fu">message</span>(<span class="st">&quot;mean error:&quot;</span>,<span class="fu">mean</span>(ERR))</span></code></pre></div>
-<pre><code>## mean error:0.147969012944691</code></pre>
+<pre><code>## mean error:0.128991240328471</code></pre>
 <div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="exercises-2.html#cb247-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">hist</span>(ERR)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-42-1.png" width="672" />
 ## Question 6{-}

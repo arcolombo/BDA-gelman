@@ -75,12 +75,14 @@
 \contentsline {subsection}{\numberline {4.4.1}Question 4.2 using the posterior sampling via grid approach}{122}{subsection.4.4.1}%
 \contentsline {subsection}{\numberline {4.4.2}Taylor series approximation of the information matrix}{124}{subsection.4.4.2}%
 \contentsline {subsection}{Question 4}{125}{section*.53}%
-\contentsline {chapter}{\numberline {5}Blocks}{127}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Equations}{127}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Theorems and proofs}{127}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Callout blocks}{127}{section.5.3}%
-\contentsline {chapter}{\numberline {6}Sharing your book}{129}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Publishing}{129}{section.6.1}%
-\contentsline {section}{\numberline {6.2}404 pages}{129}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Metadata for sharing}{129}{section.6.3}%
-\contentsline {chapter}{\numberline {7}Parts}{131}{chapter.7}%
+\contentsline {subsection}{Question 5}{126}{section*.54}%
+\contentsline {subsection}{Question 9}{127}{section*.55}%
+\contentsline {chapter}{\numberline {5}Blocks}{133}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Equations}{133}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Theorems and proofs}{133}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Callout blocks}{133}{section.5.3}%
+\contentsline {chapter}{\numberline {6}Sharing your book}{135}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Publishing}{135}{section.6.1}%
+\contentsline {section}{\numberline {6.2}404 pages}{135}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Metadata for sharing}{135}{section.6.3}%
+\contentsline {chapter}{\numberline {7}Parts}{137}{chapter.7}%
