@@ -23,7 +23,7 @@
 <meta name="author" content="Anthony R. Colombo, Dr. Paul Marjoram" />
 
 
-<meta name="date" content="2022-08-18" />
+<meta name="date" content="2022-09-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -248,11 +248,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="asymptotics-and-connections-to-non-bayesian-approaches.html"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#question-9-1"><i class="fa fa-check"></i>Question 9</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="blocks.html"><a href="blocks.html"><i class="fa fa-check"></i><b>5</b> Blocks</a>
+<li class="chapter" data-level="5" data-path="hierarchical-models.html"><a href="hierarchical-models.html"><i class="fa fa-check"></i><b>5</b> Hierarchical Models</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="blocks.html"><a href="blocks.html#equations"><i class="fa fa-check"></i><b>5.1</b> Equations</a></li>
-<li class="chapter" data-level="5.2" data-path="blocks.html"><a href="blocks.html#theorems-and-proofs"><i class="fa fa-check"></i><b>5.2</b> Theorems and proofs</a></li>
-<li class="chapter" data-level="5.3" data-path="blocks.html"><a href="blocks.html#callout-blocks"><i class="fa fa-check"></i><b>5.3</b> Callout blocks</a></li>
+<li class="chapter" data-level="5.1" data-path="hierarchical-models.html"><a href="hierarchical-models.html#constructing-a-parameterized-prior-distribution"><i class="fa fa-check"></i><b>5.1</b> Constructing a parameterized prior distribution</a>
+<ul>
+<li class="chapter" data-level="" data-path="hierarchical-models.html"><a href="hierarchical-models.html#logic-of-combining-information"><i class="fa fa-check"></i>Logic of combining information</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="hierarchical-models.html"><a href="hierarchical-models.html#exchangeability-and-hierarchical-models"><i class="fa fa-check"></i><b>5.2</b> Exchangeability and hierarchical models</a>
+<ul>
+<li class="chapter" data-level="" data-path="hierarchical-models.html"><a href="hierarchical-models.html#exchangeability-1"><i class="fa fa-check"></i>Exchangeability</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="hierarchical-models.html"><a href="hierarchical-models.html#exercises-4"><i class="fa fa-check"></i>Exercises</a>
+<ul>
+<li class="chapter" data-level="" data-path="hierarchical-models.html"><a href="hierarchical-models.html#q1"><i class="fa fa-check"></i>Q1</a></li>
+<li class="chapter" data-level="" data-path="hierarchical-models.html"><a href="hierarchical-models.html#q2"><i class="fa fa-check"></i>Q2</a></li>
+<li class="chapter" data-level="" data-path="hierarchical-models.html"><a href="hierarchical-models.html#q3"><i class="fa fa-check"></i>Q3</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="sharing-your-book.html"><a href="sharing-your-book.html"><i class="fa fa-check"></i><b>6</b> Sharing your book</a>
 <ul>
@@ -262,6 +273,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="chapter" data-level="7" data-path="parts.html"><a href="parts.html"><i class="fa fa-check"></i><b>7</b> Parts</a></li>
+<li class="chapter" data-level="8" data-path="blocks.html"><a href="blocks.html"><i class="fa fa-check"></i><b>8</b> Blocks</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="blocks.html"><a href="blocks.html#equations"><i class="fa fa-check"></i><b>8.1</b> Equations</a></li>
+<li class="chapter" data-level="8.2" data-path="blocks.html"><a href="blocks.html#theorems-and-proofs"><i class="fa fa-check"></i><b>8.2</b> Theorems and proofs</a></li>
+<li class="chapter" data-level="8.3" data-path="blocks.html"><a href="blocks.html#callout-blocks"><i class="fa fa-check"></i><b>8.3</b> Callout blocks</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -639,9 +656,9 @@ The question asks to compute at least one election tie, from a total of 435 elec
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="fundamentals-of-bayesian-inference.html#cb24-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hist</span>(pl<span class="sc">$</span>doctorWaitTime[<span class="fu">which</span>(pl<span class="sc">$</span>doctorWaitTime<span class="sc">!=</span><span class="dv">0</span>)]) <span class="do">## about 2.41</span></span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-9-3.png" width="672" /></p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="fundamentals-of-bayesian-inference.html#cb25-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">max</span>(pl<span class="sc">$</span>completionTime)<span class="sc">-</span><span class="dv">420</span>) <span class="do">## closing time</span></span></code></pre></div>
-<pre><code>## [1] 12.87163</code></pre>
+<pre><code>## [1] 12.81608</code></pre>
 <div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="fundamentals-of-bayesian-inference.html#cb27-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">max</span>(pl<span class="sc">$</span>patient)) <span class="do">## total patient  should be 42</span></span></code></pre></div>
-<pre><code>## [1] 45</code></pre>
+<pre><code>## [1] 51</code></pre>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="fundamentals-of-bayesian-inference.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="do">## (20-5)/6 + 10 this is about 12.5 minutes of arrival + visit time. which is approximately close to 10 </span></span>
 <span id="cb29-2"><a href="fundamentals-of-bayesian-inference.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="do">## the arrival time is about 10 minutes.  </span></span>
 <span id="cb29-3"><a href="fundamentals-of-bayesian-inference.html#cb29-3" aria-hidden="true" tabindex="-1"></a></span>

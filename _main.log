@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.8.11)  18 AUG 2022 08:39
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.8.11)  1 SEP 2022 13:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1517,32 +1517,391 @@ Overfull \hbox (84.64453pt too wide) has occurred while \output is active
 
 ]
 Chapter 5.
-[133] [134
+[133] [134] [135]
+File: _main_files/figure-latex/unnamed-chunk-65-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-65-1.pdf>
+[136]
+File: _main_files/figure-latex/unnamed-chunk-65-2.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-65-2.pdf>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[137]
+Underfull \vbox (badness 6978) detected at line 5274
+ []
+
+
+Underfull \vbox (badness 2717) has occurred while \output is active []
+
+[138]
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5292--5292
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5292--5292
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5292--5292
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5292--5292
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5292--5292
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5292--5292
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5292--5292
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5292--5292
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+[139]
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5321--5321
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5321--5321
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5321--5321
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5321--5321
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5321--5321
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5321--5321
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5321--5321
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5321--5321
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5350--5350
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5350--5350
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5350--5350
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5350--5350
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5350--5350
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5350--5350
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5350--5350
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5350--5350
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+[140]
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5380--5380
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5380--5380
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5380--5380
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5380--5380
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5380--5380
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5380--5380
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5380--5380
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5380--5380
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5410--5410
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5410--5410
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5410--5410
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5410--5410
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5410--5410
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5410--5410
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5410--5410
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+[141]
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5410--5410
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5440--5440
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5440--5440
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5440--5440
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5440--5440
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5440--5440
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5440--5440
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5440--5440
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5440--5440
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5478--5478
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+[142]
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5478--5478
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5478--5478
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5478--5478
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5478--5478
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5478--5478
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5478--5478
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+
+Overfull \hbox (12.0pt too wide) in paragraph at lines 5478--5478
+[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+ []
+
+[143] [144]
+Underfull \vbox (badness 10000) detected at line 5622
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 5622
+ []
+
+[145]
+File: _main_files/figure-latex/unnamed-chunk-68-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-68-1.pdf>
+[146]
+Missing character: There is no 𝜃 (U+1D703) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 𝜃 (U+1D703) in font [lmroman10-regular]:mapping=tex-text;!
+[147]
+Overfull \hbox (85.5pt too wide) in paragraph at lines 5738--5738
+[]\TU/lmtt/m/n/10 ##    best          A         B         C         D         E         F          G[] 
+ []
+
+
+Overfull \hbox (85.5pt too wide) in paragraph at lines 5738--5738
+[]\TU/lmtt/m/n/10 ## A 0.554 0.50000000 0.8663713 0.9212424 0.8705441 0.9513231 0.9266837 0.71045013[] 
+ []
+
+
+Overfull \hbox (85.5pt too wide) in paragraph at lines 5738--5738
+[]\TU/lmtt/m/n/10 ## B 0.034 0.13362875 0.5000000 0.7200530 0.5268155 0.7482410 0.6811336 0.23975006[] 
+ []
+
+
+Overfull \hbox (85.5pt too wide) in paragraph at lines 5738--5738
+[]\TU/lmtt/m/n/10 ## C 0.023 0.07875756 0.2799470 0.5000000 0.3032674 0.4566223 0.4183914 0.13285469[] 
+ []
+
+
+Overfull \hbox (85.5pt too wide) in paragraph at lines 5738--5738
+[]\TU/lmtt/m/n/10 ## D 0.029 0.12945588 0.4731845 0.6967326 0.5000000 0.7132410 0.6501386 0.22966818[] 
+ []
+
+
+Overfull \hbox (85.5pt too wide) in paragraph at lines 5738--5738
+[]\TU/lmtt/m/n/10 ## E 0.004 0.04867694 0.2517590 0.5433777 0.2867590 0.5000000 0.4440458 0.07893687[] 
+ []
+
+
+Overfull \hbox (85.5pt too wide) in paragraph at lines 5738--5738
+[]\TU/lmtt/m/n/10 ## F 0.017 0.07331631 0.3188664 0.5816086 0.3498614 0.5559542 0.5000000 0.12640645[] 
+ []
+
+
+Overfull \hbox (85.5pt too wide) in paragraph at lines 5738--5738
+[]\TU/lmtt/m/n/10 ## G 0.174 0.28954987 0.7602499 0.8671453 0.7703318 0.9210631 0.8735935 0.50000000[] 
+ []
+
+
+Overfull \hbox (85.5pt too wide) in paragraph at lines 5738--5738
+[]\TU/lmtt/m/n/10 ## H 0.165 0.24734659 0.5770127 0.7333055 0.5936804 0.7408523 0.6989733 0.38537815[] 
+ []
+
+[148] [149] [150
 
 ]
 Chapter 6.
-[135] [136]
+[151] [152]
 Chapter 7.
 
-Underfull \hbox (badness 1859) in paragraph at lines 5110--5111
+Underfull \hbox (badness 1859) in paragraph at lines 5839--5840
 []\TU/lmr/m/n/10 Add an unnumbered part: \TU/lmtt/m/n/10 # (PART\*) Act one {-} \TU/lmr/m/n/10 (followed by \TU/lmtt/m/n/10 # A
  []
 
-(./_main.bbl [137
+[153
 
-] [138
+] [154
 
-]) [139] (./_main.aux)
+]
+Chapter 8.
+(./_main.bbl [155] [156
+
+]) [157] (./_main.aux)
 Package rerunfilecheck Info: File `_main.out' has not changed.
-(rerunfilecheck)             Checksum: D6D2547F0012BF4C51AB25CA3DD1208A;7336.
+(rerunfilecheck)             Checksum: 91CD0AE18E18756A57324E55C385ED77;8139.
  ) 
 Here is how much of TeX's memory you used:
- 18212 strings out of 477855
- 352552 string characters out of 5844646
- 818396 words of memory out of 5000000
- 38832 multiletter control sequences out of 15000+600000
+ 18250 strings out of 477855
+ 354004 string characters out of 5844646
+ 819030 words of memory out of 5000000
+ 38867 multiletter control sequences out of 15000+600000
  475766 words of font info for 88 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  86i,15n,121p,984b,481s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on _main.pdf (139 pages).
+Output written on _main.pdf (157 pages).

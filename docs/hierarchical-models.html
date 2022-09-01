@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 5 Hierarchical Models | Bayesian Data Analysis</title>
+  <meta name="description" content="Chapter 5 Hierarchical Models | Bayesian Data Analysis review by Andrew Gelman, supervised by Dr. Paul Marjoram" />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 5 Hierarchical Models | Bayesian Data Analysis" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Chapter 5 Hierarchical Models | Bayesian Data Analysis review by Andrew Gelman, supervised by Dr. Paul Marjoram" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 5 Hierarchical Models | Bayesian Data Analysis" />
+  
+  <meta name="twitter:description" content="Chapter 5 Hierarchical Models | Bayesian Data Analysis review by Andrew Gelman, supervised by Dr. Paul Marjoram" />
+  
+
+<meta name="author" content="Anthony R. Colombo, Dr. Paul Marjoram" />
+
+
+<meta name="date" content="2022-09-01" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="asymptotics-and-connections-to-non-bayesian-approaches.html"/>
+<link rel="next" href="sharing-your-book.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Bayesian Data Analysis</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#independent-study"><i class="fa fa-check"></i>Independent study</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#supervised-learning"><i class="fa fa-check"></i>Supervised learning</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="fundamentals-of-bayesian-inference.html"><a href="fundamentals-of-bayesian-inference.html"><i class="fa fa-check"></i><b>1</b> Fundamentals of Bayesian Inference</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="fundamentals-of-bayesian-inference.html"><a href="fundamentals-of-bayesian-inference.html#general-notation-for-statistical-inference"><i class="fa fa-check"></i><b>1.1</b> General notation for statistical inference</a>
+<ul>
+<li class="chapter" data-level="" data-path="fundamentals-of-bayesian-inference.html"><a href="fundamentals-of-bayesian-inference.html#exchangeability"><i class="fa fa-check"></i>Exchangeability</a></li>
+<li class="chapter" data-level="" data-path="fundamentals-of-bayesian-inference.html"><a href="fundamentals-of-bayesian-inference.html#explanatory-variables"><i class="fa fa-check"></i>Explanatory variables</a></li>
+<li class="chapter" data-level="" data-path="fundamentals-of-bayesian-inference.html"><a href="fundamentals-of-bayesian-inference.html#hierarchical-modeling"><i class="fa fa-check"></i>Hierarchical modeling</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="fundamentals-of-bayesian-inference.html"><a href="fundamentals-of-bayesian-inference.html#bayesian-inference"><i class="fa fa-check"></i><b>1.2</b> Bayesian inference</a></li>
+<li class="chapter" data-level="" data-path="fundamentals-of-bayesian-inference.html"><a href="fundamentals-of-bayesian-inference.html#prediction"><i class="fa fa-check"></i>Prediction</a></li>
+<li class="chapter" data-level="" data-path="fundamentals-of-bayesian-inference.html"><a href="fundamentals-of-bayesian-inference.html#likelihood"><i class="fa fa-check"></i>Likelihood</a></li>
+<li class="chapter" data-level="" data-path="fundamentals-of-bayesian-inference.html"><a href="fundamentals-of-bayesian-inference.html#subjectivity-and-objectivity"><i class="fa fa-check"></i>Subjectivity and Objectivity</a></li>
+<li class="chapter" data-level="1.3" data-path="fundamentals-of-bayesian-inference.html"><a href="fundamentals-of-bayesian-inference.html#exercises"><i class="fa fa-check"></i><b>1.3</b> Exercises</a></li>
+<li class="chapter" data-level="" data-path="fundamentals-of-bayesian-inference.html"><a href="fundamentals-of-bayesian-inference.html#simulation-100-times"><i class="fa fa-check"></i>Simulation 100 times</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="cross.html"><a href="cross.html"><i class="fa fa-check"></i><b>2</b> Single parameter models</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="cross.html"><a href="cross.html#estimating-a-probability-from-binomial-data"><i class="fa fa-check"></i><b>2.1</b> Estimating a probability from binomial data</a></li>
+<li class="chapter" data-level="2.2" data-path="cross.html"><a href="cross.html#posterior-as-a-compromise-between-data-and-prior-information"><i class="fa fa-check"></i><b>2.2</b> Posterior as a compromise between data and prior information</a></li>
+<li class="chapter" data-level="2.3" data-path="cross.html"><a href="cross.html#summarizing-the-posterior-inference"><i class="fa fa-check"></i><b>2.3</b> Summarizing the posterior inference</a>
+<ul>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#posterior-quantiles-and-intervals"><i class="fa fa-check"></i>Posterior quantiles and intervals</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="cross.html"><a href="cross.html#informative-prior-distributions"><i class="fa fa-check"></i><b>2.4</b> Informative prior distributions</a>
+<ul>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#conjugate-prior-distributions"><i class="fa fa-check"></i>Conjugate prior distributions</a></li>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#conjugate-prior-distributions-exponential-families-and-sufficient-statistics"><i class="fa fa-check"></i>Conjugate prior, distributions, exponential families, and sufficient statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="cross.html"><a href="cross.html#normal-distribution-with-known-variance"><i class="fa fa-check"></i><b>2.5</b> Normal distribution with known variance</a>
+<ul>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#likelihood-of-one-data-point"><i class="fa fa-check"></i>Likelihood of one data point</a></li>
+<li class="chapter" data-level="2.5.1" data-path="cross.html"><a href="cross.html#conjugate-prior-and-posterior-distributions"><i class="fa fa-check"></i><b>2.5.1</b> Conjugate prior and posterior distributions</a></li>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#posterior-predictive-distribution"><i class="fa fa-check"></i>Posterior predictive distribution</a></li>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#normal-model-with-multiple-observations"><i class="fa fa-check"></i>Normal model with multiple observations</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="cross.html"><a href="cross.html#other-standard-single-parameter-models"><i class="fa fa-check"></i><b>2.6</b> Other standard single-parameter models</a>
+<ul>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#normal-distribution-with-known-mean-but-unknown-variance"><i class="fa fa-check"></i>Normal distribution with known mean but unknown variance</a></li>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#poisson-model"><i class="fa fa-check"></i>Poisson model</a></li>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#negative-binomial-distribution"><i class="fa fa-check"></i>Negative Binomial distribution</a></li>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#exponential-distribution"><i class="fa fa-check"></i>Exponential distribution</a></li>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#constructing-a-prior-distribution"><i class="fa fa-check"></i>Constructing a prior distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="cross.html"><a href="cross.html#noninformative-prior-distributions"><i class="fa fa-check"></i><b>2.7</b> Noninformative prior distributions</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="cross.html"><a href="cross.html#jeffreys-invariance-principle"><i class="fa fa-check"></i><b>2.7.1</b> Jeffreys’ invariance principle</a></li>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#difficulties-with-noninformative-prior-distributions"><i class="fa fa-check"></i>Difficulties with noninformative prior distributions</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="cross.html"><a href="cross.html#exercises-1"><i class="fa fa-check"></i><b>2.8</b> Exercises</a>
+<ul>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#question-1"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#normal-approximation-example"><i class="fa fa-check"></i>Normal approximation example</a></li>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#question-3"><i class="fa fa-check"></i>Question 3</a></li>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#question-4"><i class="fa fa-check"></i>Question 4</a></li>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#question-7"><i class="fa fa-check"></i>Question 7</a></li>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#question-8-normal-distribution-with-unknown-mean"><i class="fa fa-check"></i>Question 8 (Normal distribution with unknown mean)</a></li>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#question-10"><i class="fa fa-check"></i>Question 10</a></li>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#question-11"><i class="fa fa-check"></i>Question 11</a></li>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#question-12"><i class="fa fa-check"></i>Question 12</a></li>
+<li class="chapter" data-level="" data-path="cross.html"><a href="cross.html#question-13"><i class="fa fa-check"></i>Question 13</a></li>
+<li class="chapter" data-level="2.8.1" data-path="cross.html"><a href="cross.html#question-21"><i class="fa fa-check"></i><b>2.8.1</b> Question 21</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="chapter-3.html"><a href="chapter-3.html"><i class="fa fa-check"></i><b>3</b> Chapter 3</a></li>
+<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html"><i class="fa fa-check"></i>Exercises</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="exercises-2.html"><a href="exercises-2.html#question-1-1"><i class="fa fa-check"></i><b>3.1</b> Question 1</a></li>
+<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#question-2"><i class="fa fa-check"></i>Question 2</a></li>
+<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#question-3-1"><i class="fa fa-check"></i>Question 3</a></li>
+<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#question-4-independent-binomial"><i class="fa fa-check"></i>Question 4 (independent binomial)</a>
+<ul>
+<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#question-4-dirichlet"><i class="fa fa-check"></i>Question 4 (dirichlet)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#question-5"><i class="fa fa-check"></i>Question 5</a></li>
+<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#question-7-1"><i class="fa fa-check"></i>Question 7</a></li>
+<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#question-8"><i class="fa fa-check"></i>question 8</a></li>
+<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#question-9"><i class="fa fa-check"></i>question 9</a></li>
+<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#question-11-1"><i class="fa fa-check"></i>Question 11</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="asymptotics-and-connections-to-non-bayesian-approaches.html"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html"><i class="fa fa-check"></i><b>4</b> Asymptotics and connections to non-Bayesian approaches</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="asymptotics-and-connections-to-non-bayesian-approaches.html"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#normal-approximations-to-the-posterior-distribution"><i class="fa fa-check"></i><b>4.1</b> Normal approximations to the posterior distribution</a>
+<ul>
+<li class="chapter" data-level="" data-path="asymptotics-and-connections-to-non-bayesian-approaches.html"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#summarizing-posterior-distributions-by-point-estimates-and-standard-errors"><i class="fa fa-check"></i>Summarizing posterior distributions by point estimates and standard errors</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="asymptotics-and-connections-to-non-bayesian-approaches.html"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#large-sample-theory"><i class="fa fa-check"></i><b>4.2</b> Large-sample theory</a>
+<ul>
+<li class="chapter" data-level="" data-path="asymptotics-and-connections-to-non-bayesian-approaches.html"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#asymptotic-normality-and-consistency"><i class="fa fa-check"></i>Asymptotic normality and consistency</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="asymptotics-and-connections-to-non-bayesian-approaches.html"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#frequency-evaluations-of-bayesian-inferences"><i class="fa fa-check"></i><b>4.3</b> Frequency evaluations of Bayesian inferences</a>
+<ul>
+<li class="chapter" data-level="" data-path="asymptotics-and-connections-to-non-bayesian-approaches.html"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#large-sample-correspondence"><i class="fa fa-check"></i>Large sample correspondence</a></li>
+<li class="chapter" data-level="" data-path="asymptotics-and-connections-to-non-bayesian-approaches.html"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#point-estimation-consistency-and-efficiency"><i class="fa fa-check"></i>Point estimation, consistency, and efficiency</a></li>
+<li class="chapter" data-level="" data-path="asymptotics-and-connections-to-non-bayesian-approaches.html"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#confidence-coverage"><i class="fa fa-check"></i>Confidence coverage</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="asymptotics-and-connections-to-non-bayesian-approaches.html"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#exercises-3"><i class="fa fa-check"></i><b>4.4</b> Exercises</a>
+<ul>
+<li class="chapter" data-level="" data-path="asymptotics-and-connections-to-non-bayesian-approaches.html"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#question-1-2"><i class="fa fa-check"></i>Question 1</a></li>
+<li class="chapter" data-level="" data-path="asymptotics-and-connections-to-non-bayesian-approaches.html"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#exercise-2"><i class="fa fa-check"></i>Exercise 2</a></li>
+<li class="chapter" data-level="" data-path="asymptotics-and-connections-to-non-bayesian-approaches.html"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#exercise-3"><i class="fa fa-check"></i>Exercise 3</a></li>
+<li class="chapter" data-level="4.4.1" data-path="asymptotics-and-connections-to-non-bayesian-approaches.html"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#question-4.2-using-the-posterior-sampling-via-grid-approach"><i class="fa fa-check"></i><b>4.4.1</b> Question 4.2 using the posterior sampling via grid approach</a></li>
+<li class="chapter" data-level="4.4.2" data-path="asymptotics-and-connections-to-non-bayesian-approaches.html"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#taylor-series-approximation-of-the-information-matrix"><i class="fa fa-check"></i><b>4.4.2</b> Taylor series approximation of the information matrix</a></li>
+<li class="chapter" data-level="" data-path="asymptotics-and-connections-to-non-bayesian-approaches.html"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#question-4-1"><i class="fa fa-check"></i>Question 4</a></li>
+<li class="chapter" data-level="" data-path="asymptotics-and-connections-to-non-bayesian-approaches.html"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#question-5-1"><i class="fa fa-check"></i>Question 5</a></li>
+<li class="chapter" data-level="" data-path="asymptotics-and-connections-to-non-bayesian-approaches.html"><a href="asymptotics-and-connections-to-non-bayesian-approaches.html#question-9-1"><i class="fa fa-check"></i>Question 9</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="hierarchical-models.html"><a href="hierarchical-models.html"><i class="fa fa-check"></i><b>5</b> Hierarchical Models</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="hierarchical-models.html"><a href="hierarchical-models.html#constructing-a-parameterized-prior-distribution"><i class="fa fa-check"></i><b>5.1</b> Constructing a parameterized prior distribution</a>
+<ul>
+<li class="chapter" data-level="" data-path="hierarchical-models.html"><a href="hierarchical-models.html#logic-of-combining-information"><i class="fa fa-check"></i>Logic of combining information</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="hierarchical-models.html"><a href="hierarchical-models.html#exchangeability-and-hierarchical-models"><i class="fa fa-check"></i><b>5.2</b> Exchangeability and hierarchical models</a>
+<ul>
+<li class="chapter" data-level="" data-path="hierarchical-models.html"><a href="hierarchical-models.html#exchangeability-1"><i class="fa fa-check"></i>Exchangeability</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="hierarchical-models.html"><a href="hierarchical-models.html#exercises-4"><i class="fa fa-check"></i>Exercises</a>
+<ul>
+<li class="chapter" data-level="" data-path="hierarchical-models.html"><a href="hierarchical-models.html#q1"><i class="fa fa-check"></i>Q1</a></li>
+<li class="chapter" data-level="" data-path="hierarchical-models.html"><a href="hierarchical-models.html#q2"><i class="fa fa-check"></i>Q2</a></li>
+<li class="chapter" data-level="" data-path="hierarchical-models.html"><a href="hierarchical-models.html#q3"><i class="fa fa-check"></i>Q3</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="sharing-your-book.html"><a href="sharing-your-book.html"><i class="fa fa-check"></i><b>6</b> Sharing your book</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="sharing-your-book.html"><a href="sharing-your-book.html#publishing"><i class="fa fa-check"></i><b>6.1</b> Publishing</a></li>
+<li class="chapter" data-level="6.2" data-path="sharing-your-book.html"><a href="sharing-your-book.html#pages"><i class="fa fa-check"></i><b>6.2</b> 404 pages</a></li>
+<li class="chapter" data-level="6.3" data-path="sharing-your-book.html"><a href="sharing-your-book.html#metadata-for-sharing"><i class="fa fa-check"></i><b>6.3</b> Metadata for sharing</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="7" data-path="parts.html"><a href="parts.html"><i class="fa fa-check"></i><b>7</b> Parts</a></li>
+<li class="chapter" data-level="8" data-path="blocks.html"><a href="blocks.html"><i class="fa fa-check"></i><b>8</b> Blocks</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="blocks.html"><a href="blocks.html#equations"><i class="fa fa-check"></i><b>8.1</b> Equations</a></li>
+<li class="chapter" data-level="8.2" data-path="blocks.html"><a href="blocks.html#theorems-and-proofs"><i class="fa fa-check"></i><b>8.2</b> Theorems and proofs</a></li>
+<li class="chapter" data-level="8.3" data-path="blocks.html"><a href="blocks.html#callout-blocks"><i class="fa fa-check"></i><b>8.3</b> Callout blocks</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Bayesian Data Analysis</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="hierarchical-models" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Chapter 5</span> Hierarchical Models<a href="hierarchical-models.html#hierarchical-models" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Many problems involve multiple parameters that are related somehow by the structure of the problem. Each <span class="math inline">\(\theta_j\)</span> are viewed as a sample from a common <em>population distribution</em>, that is governed by <em>hyperparameters</em>.</p>
+<p>Non-hierarchical models have inferior performance for prediction because they overfit the training data that only fit the current data well, this is because the uncertainty of the prior parameters are not included within the model. Hierarchical models avoid this problem because the model is structured around the dependence within the parameters.</p>
+<div id="constructing-a-parameterized-prior-distribution" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Constructing a parameterized prior distribution<a href="hierarchical-models.html#constructing-a-parameterized-prior-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The example from 70 lab rat can use a fixed prior distribution under the binomial likelihood, and a beta prior. One can choose fixed estimates for the prior parameters <span class="math inline">\(\alpha,\beta\)</span>, or can use the moments to estimate the prior parameters. This is <em>not</em> a Bayesian model, and is considered an empirical Bayesian model. Given 70 historical experiments, the sample mean and sample variance are used to solve for the beta mean/variance <span class="math inline">\(\alpha/\beta\)</span> and <span class="math inline">\(\alpha/\beta^2\)</span>. Note that this is not a fully Bayesian approach.</p>
+<div id="logic-of-combining-information" class="section level3 unnumbered hasAnchor">
+<h3>Logic of combining information<a href="hierarchical-models.html#logic-of-combining-information" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Given 70 historical values, we combine all the parameters <span class="math inline">\(\theta_j\)</span>, for <span class="math inline">\(j=1,...,71\)</span> with the addition of a <em>newly</em> performed experiment. Combining these into a data set makes sense because there are some dependency of the parameters which is reflected into a full joint prior probability model.</p>
+</div>
+</div>
+<div id="exchangeability-and-hierarchical-models" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Exchangeability and hierarchical models<a href="hierarchical-models.html#exchangeability-and-hierarchical-models" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Consider a set of experiments j=1,…,J in which j has the data <span class="math inline">\(y_j\)</span> and parameter <span class="math inline">\(\theta_j\)</span> with likelihood <span class="math inline">\(p(y_j|\theta_j)\)</span>. Let <span class="math inline">\(\theta_j \sim N(\mu_j,\sigma^2)\)</span> come from a superpopulation with common fixed variance.</p>
+<div id="exchangeability-1" class="section level3 unnumbered hasAnchor">
+<h3>Exchangeability<a href="hierarchical-models.html#exchangeability-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>If no information, other than the data <span class="math inline">\(y_j\)</span> is availble to distinguish any of the <span class="math inline">\(\theta_j\)</span> from any others, and no ordering or grouping of parameters can be made, then by symmetry among the parameters called <em>exchangeability</em>.
+The joint distribution <span class="math inline">\(p(\theta_1,...,\theta_J)\)</span> is invariant to permutations of the indices (1,…,J). Generally, the less we know about a problem the more we can rely on the exchangeability assumption.</p>
+<p>The form of exchangeabile distribution each parameter <span class="math inline">\(\theta_j\)</span> as an independent sample from a prior population distribution governed by some unknown <span class="math inline">\(\phi\)</span> is written as</p>
+<p><span class="math display">\[\begin{equation}
+p(\theta|\phi) = \prod_j p(\theta_j| \phi)
+\end{equation}\]</span></p>
+<p>in general <span class="math inline">\(\phi\)</span> is unknown so we average over the uncertainty of <span class="math inline">\(\phi\)</span></p>
+<p><span class="math display">\[\begin{equation}
+p(\theta) = \int \prod_j p(\theta_j| \phi)* p(\phi)d\phi
+\end{equation}\]</span></p>
+<p>This form is the mixture of independent identical distributions.</p>
+<p>A related result <em>de Finetti’s theorem</em> states that as the limit of <span class="math inline">\(J\to \infty\)</span> any suitably exchangeable distribution on (<span class="math inline">\(\theta_1,...,\theta_J)\)</span> can be expressed as a mixture of identical and independent distributions. This theorem connects exchangeability to IID assumptions routinely practiced.</p>
+</div>
+</div>
+<div id="exercises-4" class="section level2 unnumbered hasAnchor">
+<h2>Exercises<a href="hierarchical-models.html#exercises-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="q1" class="section level3 unnumbered hasAnchor">
+<h3>Q1<a href="hierarchical-models.html#q1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A box has 1 black and 1 white ball
+- a i) pick 1 ball, y1, return it, and draw another y2. This is exchangeable, because other than y1, we have no information about what the draw y2 could be.<br />
+- a ii) we have independence by replacement
+- a iii) since the draws are identical, then y1 and y2 are both independent draws and the pair of draws can be independent.</p>
+<p>-b i) drawing without replacement, y1 is not exchangeable because given y1 color, we know what y2 color is.
+-b ii) not independent
+-b iii) as a pair independent (RB) independent of a second pair (BR) with order then the order RB is independent of BR if order matters.</p>
+<p>-c i) if there were a million balls, then due to large numbers this is an exchangeable and independent process.</p>
+</div>
+<div id="q2" class="section level3 unnumbered hasAnchor">
+<h3>Q2<a href="hierarchical-models.html#q2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>For unknown model parameters (a) we have total of n black and white balls, then this is an exchangeable and independent process. (b) due to ignorance we have exchangeability, but we do not have independence since this is without replacement. (c) if we know how many colors balls there are then this is not an exchangeable process and not independent process for finite n. For large n, then we can assume independence and exchangeability.</p>
+</div>
+<div id="q3" class="section level3 unnumbered hasAnchor">
+<h3>Q3<a href="hierarchical-models.html#q3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>all 8 parameters are estimated from sampling from the posterior <span class="math inline">\(p(\tau | y)\)</span>, for ease of data wrangling, we obtain the quantiles for each theta separately. but in each posterior estimation, all points are simulataneously estimated.</p>
+<p>This reproduces Table 5.3 from the text.</p>
+<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="hierarchical-models.html#cb316-1" aria-hidden="true" tabindex="-1"></a>school<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">school=</span>LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>],</span>
+<span id="cb316-2"><a href="hierarchical-models.html#cb316-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">yj =</span><span class="fu">c</span>(<span class="dv">28</span>,<span class="dv">8</span>,<span class="sc">-</span><span class="dv">3</span>,<span class="dv">7</span>,<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">18</span>,<span class="dv">12</span>),</span>
+<span id="cb316-3"><a href="hierarchical-models.html#cb316-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">sigmaj =</span> <span class="fu">c</span>(<span class="dv">15</span>,<span class="dv">10</span>,<span class="dv">16</span>,<span class="dv">11</span>,<span class="dv">9</span>,<span class="dv">11</span>,<span class="dv">10</span>,<span class="dv">18</span>))</span>
+<span id="cb316-4"><a href="hierarchical-models.html#cb316-4" aria-hidden="true" tabindex="-1"></a>school<span class="sc">$</span>sigma2j<span class="ot">&lt;-</span>school<span class="sc">$</span>sigmaj<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb316-5"><a href="hierarchical-models.html#cb316-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb316-6"><a href="hierarchical-models.html#cb316-6" aria-hidden="true" tabindex="-1"></a> <span class="do">## reproducing section 5.5 on pooling</span></span>
+<span id="cb316-7"><a href="hierarchical-models.html#cb316-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb316-8"><a href="hierarchical-models.html#cb316-8" aria-hidden="true" tabindex="-1"></a><span class="do">## pooled</span></span>
+<span id="cb316-9"><a href="hierarchical-models.html#cb316-9" aria-hidden="true" tabindex="-1"></a> ybar_pool<span class="ot">&lt;-</span><span class="fu">sum</span>(school<span class="sc">$</span>yj<span class="sc">/</span>school<span class="sc">$</span>sigmaj<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span><span class="fu">sum</span>(<span class="dv">1</span><span class="sc">/</span>school<span class="sc">$</span>sigmaj<span class="sc">^</span><span class="dv">2</span>) </span>
+<span id="cb316-10"><a href="hierarchical-models.html#cb316-10" aria-hidden="true" tabindex="-1"></a> pool_var<span class="ot">&lt;-</span><span class="dv">1</span><span class="sc">/</span><span class="fu">sum</span>(<span class="dv">1</span><span class="sc">/</span>school<span class="sc">$</span>sigmaj<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb316-11"><a href="hierarchical-models.html#cb316-11" aria-hidden="true" tabindex="-1"></a>  ybar_pool<span class="sc">+</span><span class="dv">2</span><span class="sc">*</span><span class="fu">sqrt</span>(pool_var) <span class="co"># 15.82946</span></span></code></pre></div>
+<pre><code>## [1] 15.82946</code></pre>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="hierarchical-models.html#cb318-1" aria-hidden="true" tabindex="-1"></a>  ybar_pool<span class="dv">-2</span><span class="sc">*</span><span class="fu">sqrt</span>(pool_var) <span class="do">## -0.5</span></span></code></pre></div>
+<pre><code>## [1] -0.4582216</code></pre>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="hierarchical-models.html#cb320-1" aria-hidden="true" tabindex="-1"></a> <span class="do">## classical test</span></span>
+<span id="cb320-2"><a href="hierarchical-models.html#cb320-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">sum</span>( (school<span class="sc">$</span>yj<span class="sc">-</span><span class="fu">mean</span>(school<span class="sc">$</span>yj))<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>school<span class="sc">$</span>sigmaj<span class="sc">^</span><span class="dv">2</span>)  <span class="do">## 4.7 which is less than the X2 d.f (8) so MSB- MSW is negative.  pooling is not appropriate.</span></span></code></pre></div>
+<pre><code>## [1] 4.775407</code></pre>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="hierarchical-models.html#cb322-1" aria-hidden="true" tabindex="-1"></a>   <span class="do">## checking to see if 28 is from the pooled population </span></span>
+<span id="cb322-2"><a href="hierarchical-models.html#cb322-2" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb322-3"><a href="hierarchical-models.html#cb322-3" aria-hidden="true" tabindex="-1"></a>   simschool <span class="ot">&lt;-</span><span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">mean=</span> ybar_pool, <span class="at">sd=</span><span class="fu">sqrt</span>(pool_var))   </span>
+<span id="cb322-4"><a href="hierarchical-models.html#cb322-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">hist</span>(simschool,<span class="at">xlim=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">8</span>,<span class="dv">30</span>))</span>
+<span id="cb322-5"><a href="hierarchical-models.html#cb322-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">abline</span>(<span class="at">v=</span><span class="fu">max</span>(school<span class="sc">$</span>yj ))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-65-1.png" width="672" /></p>
+<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="hierarchical-models.html#cb323-1" aria-hidden="true" tabindex="-1"></a>   <span class="do">### the maximum observation  School A = 28 points  is not with the population, so pooling does not correct</span></span>
+<span id="cb323-2"><a href="hierarchical-models.html#cb323-2" aria-hidden="true" tabindex="-1"></a>   <span class="do">###</span></span>
+<span id="cb323-3"><a href="hierarchical-models.html#cb323-3" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb323-4"><a href="hierarchical-models.html#cb323-4" aria-hidden="true" tabindex="-1"></a>   <span class="do">## posterior simulation under a normal model</span></span>
+<span id="cb323-5"><a href="hierarchical-models.html#cb323-5" aria-hidden="true" tabindex="-1"></a>   <span class="do">## yij | thetaj ~ N(thetaj, sigma^2)</span></span>
+<span id="cb323-6"><a href="hierarchical-models.html#cb323-6" aria-hidden="true" tabindex="-1"></a>   <span class="do">##  likelihood using sufficient statistics  </span></span>
+<span id="cb323-7"><a href="hierarchical-models.html#cb323-7" aria-hidden="true" tabindex="-1"></a>    <span class="do">## ybarj | thetaj ~ N(thetaj, sigmaj^2)</span></span>
+<span id="cb323-8"><a href="hierarchical-models.html#cb323-8" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb323-9"><a href="hierarchical-models.html#cb323-9" aria-hidden="true" tabindex="-1"></a>   <span class="do">### prior on tau can follow a uniform distribution</span></span>
+<span id="cb323-10"><a href="hierarchical-models.html#cb323-10" aria-hidden="true" tabindex="-1"></a>   <span class="do">## using a grid approach for tau</span></span>
+<span id="cb323-11"><a href="hierarchical-models.html#cb323-11" aria-hidden="true" tabindex="-1"></a>      tau0<span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">40</span>,<span class="at">by=</span><span class="fl">0.01</span>)</span>
+<span id="cb323-12"><a href="hierarchical-models.html#cb323-12" aria-hidden="true" tabindex="-1"></a>      stepsize<span class="ot">=</span><span class="fl">0.01</span></span>
+<span id="cb323-13"><a href="hierarchical-models.html#cb323-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 5.20 total precision  </span></span>
+<span id="cb323-14"><a href="hierarchical-models.html#cb323-14" aria-hidden="true" tabindex="-1"></a>  vmu.inverse<span class="ot">&lt;-</span><span class="cf">function</span>(tau2,sigma2j){</span>
+<span id="cb323-15"><a href="hierarchical-models.html#cb323-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span>(<span class="dv">1</span><span class="sc">/</span>(sigma2j<span class="sc">+</span>tau2))</span>
+<span id="cb323-16"><a href="hierarchical-models.html#cb323-16" aria-hidden="true" tabindex="-1"></a>  }      </span>
+<span id="cb323-17"><a href="hierarchical-models.html#cb323-17" aria-hidden="true" tabindex="-1"></a>  vmu<span class="ot">&lt;-</span><span class="fu">sapply</span>(tau0<span class="sc">^</span><span class="dv">2</span>,<span class="cf">function</span>(x) <span class="fu">vmu.inverse</span>(x,school<span class="sc">$</span>sigmaj<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb323-18"><a href="hierarchical-models.html#cb323-18" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb323-19"><a href="hierarchical-models.html#cb323-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># total mean effect</span></span>
+<span id="cb323-20"><a href="hierarchical-models.html#cb323-20" aria-hidden="true" tabindex="-1"></a>  muhat<span class="ot">&lt;-</span><span class="cf">function</span>(ybarj, sigma2j,tau2){</span>
+<span id="cb323-21"><a href="hierarchical-models.html#cb323-21" aria-hidden="true" tabindex="-1"></a>    numer<span class="ot">&lt;-</span> <span class="fu">sum</span>(ybarj<span class="sc">/</span>(sigma2j<span class="sc">+</span>tau2))</span>
+<span id="cb323-22"><a href="hierarchical-models.html#cb323-22" aria-hidden="true" tabindex="-1"></a>    denom<span class="ot">&lt;-</span> <span class="fu">sum</span>( <span class="dv">1</span><span class="sc">/</span>(sigma2j<span class="sc">+</span>tau2))</span>
+<span id="cb323-23"><a href="hierarchical-models.html#cb323-23" aria-hidden="true" tabindex="-1"></a>    hat<span class="ot">&lt;-</span> numer<span class="sc">/</span>denom</span>
+<span id="cb323-24"><a href="hierarchical-models.html#cb323-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(hat)</span>
+<span id="cb323-25"><a href="hierarchical-models.html#cb323-25" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb323-26"><a href="hierarchical-models.html#cb323-26" aria-hidden="true" tabindex="-1"></a>    <span class="do">## marginal posterior distribution p(tau| y)  5.21</span></span>
+<span id="cb323-27"><a href="hierarchical-models.html#cb323-27" aria-hidden="true" tabindex="-1"></a>  marginal.posterior.tau<span class="ot">&lt;-</span><span class="cf">function</span>(tau,sigma2j,ybarj){</span>
+<span id="cb323-28"><a href="hierarchical-models.html#cb323-28" aria-hidden="true" tabindex="-1"></a>    tau2<span class="ot">&lt;-</span>tau<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb323-29"><a href="hierarchical-models.html#cb323-29" aria-hidden="true" tabindex="-1"></a>    prob.tau<span class="ot">&lt;-</span><span class="fu">dunif</span>(tau,<span class="at">min=</span><span class="dv">0</span>,<span class="at">max=</span><span class="dv">40</span>) <span class="do">## assuming unif prior</span></span>
+<span id="cb323-30"><a href="hierarchical-models.html#cb323-30" aria-hidden="true" tabindex="-1"></a>    vmu.inv<span class="ot">&lt;-</span><span class="fu">vmu.inverse</span>(tau2,sigma2j)</span>
+<span id="cb323-31"><a href="hierarchical-models.html#cb323-31" aria-hidden="true" tabindex="-1"></a>    vmu<span class="ot">&lt;-</span><span class="fu">sqrt</span>(<span class="dv">1</span><span class="sc">/</span>vmu.inv)</span>
+<span id="cb323-32"><a href="hierarchical-models.html#cb323-32" aria-hidden="true" tabindex="-1"></a>    total.precision<span class="ot">&lt;-</span><span class="dv">1</span><span class="sc">/</span>(sigma2j<span class="sc">+</span>tau2)</span>
+<span id="cb323-33"><a href="hierarchical-models.html#cb323-33" aria-hidden="true" tabindex="-1"></a>    group.precision.term<span class="ot">&lt;-</span> <span class="fu">sqrt</span>(total.precision)</span>
+<span id="cb323-34"><a href="hierarchical-models.html#cb323-34" aria-hidden="true" tabindex="-1"></a>    group.mu<span class="ot">&lt;-</span><span class="fu">muhat</span>(ybarj,sigma2j,tau2)</span>
+<span id="cb323-35"><a href="hierarchical-models.html#cb323-35" aria-hidden="true" tabindex="-1"></a>    exp.term<span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="sc">-</span><span class="dv">1</span><span class="sc">*</span>(ybarj <span class="sc">-</span>group.mu )<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>(<span class="dv">2</span><span class="sc">*</span>(sigma2j<span class="sc">+</span>tau2)))</span>
+<span id="cb323-36"><a href="hierarchical-models.html#cb323-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb323-37"><a href="hierarchical-models.html#cb323-37" aria-hidden="true" tabindex="-1"></a>    group.prod<span class="ot">&lt;-</span><span class="fu">prod</span>( group.precision.term<span class="sc">*</span>exp.term)</span>
+<span id="cb323-38"><a href="hierarchical-models.html#cb323-38" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb323-39"><a href="hierarchical-models.html#cb323-39" aria-hidden="true" tabindex="-1"></a>    final<span class="ot">&lt;-</span> prob.tau<span class="sc">*</span>vmu<span class="sc">*</span>group.prod</span>
+<span id="cb323-40"><a href="hierarchical-models.html#cb323-40" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(final)</span>
+<span id="cb323-41"><a href="hierarchical-models.html#cb323-41" aria-hidden="true" tabindex="-1"></a>  }  </span>
+<span id="cb323-42"><a href="hierarchical-models.html#cb323-42" aria-hidden="true" tabindex="-1"></a>  tt<span class="ot">&lt;-</span><span class="fu">data.frame</span>(tau0,<span class="at">pt=</span><span class="fu">sapply</span>(tau0,<span class="cf">function</span>(x) <span class="fu">marginal.posterior.tau</span>(x,school<span class="sc">$</span>sigma2j,school<span class="sc">$</span>yj)))</span>
+<span id="cb323-43"><a href="hierarchical-models.html#cb323-43" aria-hidden="true" tabindex="-1"></a>  tt<span class="sc">$</span>scaled.prob<span class="ot">&lt;-</span>tt<span class="sc">$</span>pt<span class="sc">/</span><span class="fu">sum</span>(tt<span class="sc">$</span>pt)</span>
+<span id="cb323-44"><a href="hierarchical-models.html#cb323-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(tt<span class="sc">$</span>tau0,tt<span class="sc">$</span>scaled.prob, <span class="at">main=</span><span class="st">&#39;marginal poster p(tau|y) Figure 5.5&#39;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-65-2.png" width="672" /></p>
+<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="hierarchical-models.html#cb324-1" aria-hidden="true" tabindex="-1"></a>   <span class="do">## prior on tau can follow a scaled inverse-X2(n-1,s^2) distribution</span></span>
+<span id="cb324-2"><a href="hierarchical-models.html#cb324-2" aria-hidden="true" tabindex="-1"></a> <span class="do">## alternatively we can use scaled inverse</span></span>
+<span id="cb324-3"><a href="hierarchical-models.html#cb324-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb324-4"><a href="hierarchical-models.html#cb324-4" aria-hidden="true" tabindex="-1"></a>  <span class="do">## now that we have the distribution of tau,  sample from it</span></span>
+<span id="cb324-5"><a href="hierarchical-models.html#cb324-5" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb324-6"><a href="hierarchical-models.html#cb324-6" aria-hidden="true" tabindex="-1"></a>   <span class="do">## marginal posterior 5.19</span></span>
+<span id="cb324-7"><a href="hierarchical-models.html#cb324-7" aria-hidden="true" tabindex="-1"></a>  muhat_given_tau.y<span class="ot">&lt;-</span><span class="fu">sapply</span>(tau0,<span class="cf">function</span>(x) <span class="fu">muhat</span>(school<span class="sc">$</span>yj,school<span class="sc">$</span>sigma2j,x<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb324-8"><a href="hierarchical-models.html#cb324-8" aria-hidden="true" tabindex="-1"></a>    vmu_given_tau.y<span class="ot">&lt;-</span><span class="dv">1</span><span class="sc">/</span>(<span class="fu">sapply</span>(tau0<span class="sc">^</span><span class="dv">2</span>,<span class="cf">function</span>(x) <span class="fu">vmu.inverse</span>(x,school<span class="sc">$</span>sigmaj<span class="sc">^</span><span class="dv">2</span>)))</span>
+<span id="cb324-9"><a href="hierarchical-models.html#cb324-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb324-10"><a href="hierarchical-models.html#cb324-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb324-11"><a href="hierarchical-models.html#cb324-11" aria-hidden="true" tabindex="-1"></a>     <span class="do">### FIX ME:  sample mu</span></span>
+<span id="cb324-12"><a href="hierarchical-models.html#cb324-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># equation 5.20</span></span>
+<span id="cb324-13"><a href="hierarchical-models.html#cb324-13" aria-hidden="true" tabindex="-1"></a>   marginal.post.mu_given_tau.y<span class="ot">&lt;-</span><span class="cf">function</span>(yj,sigma2j,tau2){</span>
+<span id="cb324-14"><a href="hierarchical-models.html#cb324-14" aria-hidden="true" tabindex="-1"></a>     muhat<span class="ot">&lt;-</span><span class="fu">muhat</span>(yj,sigma2j,tau2)</span>
+<span id="cb324-15"><a href="hierarchical-models.html#cb324-15" aria-hidden="true" tabindex="-1"></a>     <span class="do">## precision term</span></span>
+<span id="cb324-16"><a href="hierarchical-models.html#cb324-16" aria-hidden="true" tabindex="-1"></a>     vmu<span class="ot">&lt;-</span><span class="fu">vmu.inverse</span>(tau2,sigma2j)</span>
+<span id="cb324-17"><a href="hierarchical-models.html#cb324-17" aria-hidden="true" tabindex="-1"></a>    mu<span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>,<span class="at">mean=</span>muhat,<span class="at">sd=</span><span class="fu">sqrt</span>(<span class="dv">1</span><span class="sc">/</span>vmu)) <span class="do">## how many points per posterior tau</span></span>
+<span id="cb324-18"><a href="hierarchical-models.html#cb324-18" aria-hidden="true" tabindex="-1"></a>    <span class="do">## we take the posterior mean given 1 value of tau</span></span>
+<span id="cb324-19"><a href="hierarchical-models.html#cb324-19" aria-hidden="true" tabindex="-1"></a>    prob.mu<span class="ot">&lt;-</span><span class="fu">dnorm</span>(<span class="fu">mean</span>(mu),<span class="at">mean=</span>muhat,<span class="at">sd=</span><span class="fu">sqrt</span>(<span class="dv">1</span><span class="sc">/</span>vmu))</span>
+<span id="cb324-20"><a href="hierarchical-models.html#cb324-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>( <span class="fu">data.frame</span>(<span class="at">mu=</span><span class="fu">mean</span>(mu),<span class="at">prob.mu=</span>prob.mu))</span>
+<span id="cb324-21"><a href="hierarchical-models.html#cb324-21" aria-hidden="true" tabindex="-1"></a>   }</span>
+<span id="cb324-22"><a href="hierarchical-models.html#cb324-22" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb324-23"><a href="hierarchical-models.html#cb324-23" aria-hidden="true" tabindex="-1"></a>   <span class="do">## given mu, sample theta j      </span></span>
+<span id="cb324-24"><a href="hierarchical-models.html#cb324-24" aria-hidden="true" tabindex="-1"></a>   <span class="do">## conditional posterior for each theta j </span></span>
+<span id="cb324-25"><a href="hierarchical-models.html#cb324-25" aria-hidden="true" tabindex="-1"></a>   <span class="do">## eq 5.17</span></span>
+<span id="cb324-26"><a href="hierarchical-models.html#cb324-26" aria-hidden="true" tabindex="-1"></a>  conditional.posterior.thetaj<span class="ot">&lt;-</span><span class="cf">function</span>(yj,sigma2j,tau2,mu){</span>
+<span id="cb324-27"><a href="hierarchical-models.html#cb324-27" aria-hidden="true" tabindex="-1"></a>     thetajhat<span class="ot">&lt;-</span>(yj<span class="sc">/</span>sigma2j <span class="sc">+</span> mu<span class="sc">/</span>tau2)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">/</span>sigma2j<span class="sc">+</span><span class="dv">1</span><span class="sc">/</span>tau2)</span>
+<span id="cb324-28"><a href="hierarchical-models.html#cb324-28" aria-hidden="true" tabindex="-1"></a>     vj<span class="ot">&lt;-</span><span class="dv">1</span><span class="sc">/</span>((<span class="dv">1</span><span class="sc">/</span>sigma2j)<span class="sc">+</span>(<span class="dv">1</span><span class="sc">/</span>tau2))</span>
+<span id="cb324-29"><a href="hierarchical-models.html#cb324-29" aria-hidden="true" tabindex="-1"></a>     nj<span class="ot">&lt;-</span><span class="fu">length</span>(thetajhat)</span>
+<span id="cb324-30"><a href="hierarchical-models.html#cb324-30" aria-hidden="true" tabindex="-1"></a>    thetaj<span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="fu">seq</span>(<span class="dv">1</span>,nj),<span class="cf">function</span>(x) <span class="fu">rnorm</span>(<span class="dv">1</span>, thetajhat[x], <span class="at">sd=</span><span class="fu">sqrt</span>(vj)[x]))</span>
+<span id="cb324-31"><a href="hierarchical-models.html#cb324-31" aria-hidden="true" tabindex="-1"></a>    prob.thetaj<span class="ot">&lt;-</span><span class="fu">numeric</span>(nj)</span>
+<span id="cb324-32"><a href="hierarchical-models.html#cb324-32" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb324-33"><a href="hierarchical-models.html#cb324-33" aria-hidden="true" tabindex="-1"></a>    prob.thetaj<span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="fu">seq</span>(<span class="dv">1</span>,nj),<span class="cf">function</span>(x) <span class="fu">dnorm</span>(thetaj[x], <span class="at">mean=</span>thetajhat[x], <span class="at">sd=</span><span class="fu">sqrt</span>(vj)[x]))</span>
+<span id="cb324-34"><a href="hierarchical-models.html#cb324-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb324-35"><a href="hierarchical-models.html#cb324-35" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb324-36"><a href="hierarchical-models.html#cb324-36" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>( <span class="fu">data.frame</span>(<span class="at">thetaj=</span>(thetaj),<span class="at">prob.thetaj=</span>prob.thetaj))</span>
+<span id="cb324-37"><a href="hierarchical-models.html#cb324-37" aria-hidden="true" tabindex="-1"></a>   }</span>
+<span id="cb324-38"><a href="hierarchical-models.html#cb324-38" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb324-39"><a href="hierarchical-models.html#cb324-39" aria-hidden="true" tabindex="-1"></a>  posterior<span class="ot">&lt;-</span><span class="cf">function</span>(tau,sigma2j,yj){</span>
+<span id="cb324-40"><a href="hierarchical-models.html#cb324-40" aria-hidden="true" tabindex="-1"></a>    tau2<span class="ot">&lt;-</span>tau<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb324-41"><a href="hierarchical-models.html#cb324-41" aria-hidden="true" tabindex="-1"></a>    post.tau<span class="ot">&lt;-</span><span class="fu">marginal.posterior.tau</span>(tau,sigma2j,yj)</span>
+<span id="cb324-42"><a href="hierarchical-models.html#cb324-42" aria-hidden="true" tabindex="-1"></a>    post.mu<span class="ot">&lt;-</span><span class="fu">marginal.post.mu_given_tau.y</span>(yj,sigma2j,tau2)</span>
+<span id="cb324-43"><a href="hierarchical-models.html#cb324-43" aria-hidden="true" tabindex="-1"></a>    post.theta<span class="ot">&lt;-</span><span class="fu">conditional.posterior.thetaj</span>(yj,sigma2j,tau2,post.mu<span class="sc">$</span>mu)</span>
+<span id="cb324-44"><a href="hierarchical-models.html#cb324-44" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb324-45"><a href="hierarchical-models.html#cb324-45" aria-hidden="true" tabindex="-1"></a>      full.post<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">theta=</span>post.theta<span class="sc">$</span>thetaj,<span class="at">pdf=</span>post.tau<span class="sc">*</span>post.mu<span class="sc">$</span>prob.mu<span class="sc">*</span>post.theta<span class="sc">$</span>prob.thetaj)</span>
+<span id="cb324-46"><a href="hierarchical-models.html#cb324-46" aria-hidden="true" tabindex="-1"></a>      <span class="fu">return</span>(full.post)</span>
+<span id="cb324-47"><a href="hierarchical-models.html#cb324-47" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb324-48"><a href="hierarchical-models.html#cb324-48" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb324-49"><a href="hierarchical-models.html#cb324-49" aria-hidden="true" tabindex="-1"></a>  <span class="do">## simulate the effects of thetaj</span></span>
+<span id="cb324-50"><a href="hierarchical-models.html#cb324-50" aria-hidden="true" tabindex="-1"></a>  <span class="do">## closely reproduces table 5.3 in section 5</span></span>
+<span id="cb324-51"><a href="hierarchical-models.html#cb324-51" aria-hidden="true" tabindex="-1"></a>  theta1<span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="fu">sample</span>(tt<span class="sc">$</span>tau0,<span class="dv">1000</span>,<span class="at">prob=</span>tt<span class="sc">$</span>scaled.prob),</span>
+<span id="cb324-52"><a href="hierarchical-models.html#cb324-52" aria-hidden="true" tabindex="-1"></a>                  <span class="cf">function</span>(x) <span class="fu">posterior</span>(x,school<span class="sc">$</span>sigma2j,school<span class="sc">$</span>yj)[<span class="dv">1</span>,<span class="dv">1</span>])</span></code></pre></div>
+<pre><code>## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced</code></pre>
+<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="hierarchical-models.html#cb326-1" aria-hidden="true" tabindex="-1"></a>  theta1[<span class="fu">is.nan</span>(theta1)]<span class="ot">&lt;-</span><span class="fu">mean</span>(theta1[<span class="sc">!</span><span class="fu">is.nan</span>(theta1)])</span>
+<span id="cb326-2"><a href="hierarchical-models.html#cb326-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb326-3"><a href="hierarchical-models.html#cb326-3" aria-hidden="true" tabindex="-1"></a>  t1q<span class="ot">&lt;-</span><span class="fu">quantile</span>(theta1,<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.25</span>,<span class="fl">0.5</span>,<span class="fl">0.75</span>,<span class="fl">0.975</span>),<span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
+<span id="cb326-4"><a href="hierarchical-models.html#cb326-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb326-5"><a href="hierarchical-models.html#cb326-5" aria-hidden="true" tabindex="-1"></a>   theta2<span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="fu">sample</span>(tt<span class="sc">$</span>tau0,<span class="dv">1000</span>,<span class="at">prob=</span>tt<span class="sc">$</span>scaled.prob),</span>
+<span id="cb326-6"><a href="hierarchical-models.html#cb326-6" aria-hidden="true" tabindex="-1"></a>                  <span class="cf">function</span>(x) <span class="fu">posterior</span>(x,school<span class="sc">$</span>sigma2j,school<span class="sc">$</span>yj)[<span class="dv">2</span>,<span class="dv">1</span>])</span></code></pre></div>
+<pre><code>## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced</code></pre>
+<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="hierarchical-models.html#cb328-1" aria-hidden="true" tabindex="-1"></a>  theta2[<span class="fu">is.nan</span>(theta2)]<span class="ot">&lt;-</span><span class="fu">mean</span>(theta2[<span class="sc">!</span><span class="fu">is.nan</span>(theta2)])</span>
+<span id="cb328-2"><a href="hierarchical-models.html#cb328-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb328-3"><a href="hierarchical-models.html#cb328-3" aria-hidden="true" tabindex="-1"></a>  t2q<span class="ot">&lt;-</span><span class="fu">quantile</span>(theta2,<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.25</span>,<span class="fl">0.5</span>,<span class="fl">0.75</span>,<span class="fl">0.975</span>),<span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
+<span id="cb328-4"><a href="hierarchical-models.html#cb328-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb328-5"><a href="hierarchical-models.html#cb328-5" aria-hidden="true" tabindex="-1"></a>   theta3<span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="fu">sample</span>(tt<span class="sc">$</span>tau0,<span class="dv">1000</span>,<span class="at">prob=</span>tt<span class="sc">$</span>scaled.prob),</span>
+<span id="cb328-6"><a href="hierarchical-models.html#cb328-6" aria-hidden="true" tabindex="-1"></a>                  <span class="cf">function</span>(x) <span class="fu">posterior</span>(x,school<span class="sc">$</span>sigma2j,school<span class="sc">$</span>yj)[<span class="dv">3</span>,<span class="dv">1</span>])</span></code></pre></div>
+<pre><code>## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced</code></pre>
+<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="hierarchical-models.html#cb330-1" aria-hidden="true" tabindex="-1"></a>      theta3[<span class="fu">is.nan</span>(theta3)]<span class="ot">&lt;-</span><span class="fu">mean</span>(theta3[<span class="sc">!</span><span class="fu">is.nan</span>(theta3)])</span>
+<span id="cb330-2"><a href="hierarchical-models.html#cb330-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb330-3"><a href="hierarchical-models.html#cb330-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb330-4"><a href="hierarchical-models.html#cb330-4" aria-hidden="true" tabindex="-1"></a>  t3q<span class="ot">&lt;-</span><span class="fu">quantile</span>(theta3,<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.25</span>,<span class="fl">0.5</span>,<span class="fl">0.75</span>,<span class="fl">0.975</span>),<span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
+<span id="cb330-5"><a href="hierarchical-models.html#cb330-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb330-6"><a href="hierarchical-models.html#cb330-6" aria-hidden="true" tabindex="-1"></a>   theta4<span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="fu">sample</span>(tt<span class="sc">$</span>tau0,<span class="dv">1000</span>,<span class="at">prob=</span>tt<span class="sc">$</span>scaled.prob),</span>
+<span id="cb330-7"><a href="hierarchical-models.html#cb330-7" aria-hidden="true" tabindex="-1"></a>                  <span class="cf">function</span>(x) <span class="fu">posterior</span>(x,school<span class="sc">$</span>sigma2j,school<span class="sc">$</span>yj)[<span class="dv">4</span>,<span class="dv">1</span>])</span></code></pre></div>
+<pre><code>## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced</code></pre>
+<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="hierarchical-models.html#cb332-1" aria-hidden="true" tabindex="-1"></a>       theta4[<span class="fu">is.nan</span>(theta4)]<span class="ot">&lt;-</span><span class="fu">mean</span>(theta4[<span class="sc">!</span><span class="fu">is.nan</span>(theta4)])</span>
+<span id="cb332-2"><a href="hierarchical-models.html#cb332-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb332-3"><a href="hierarchical-models.html#cb332-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb332-4"><a href="hierarchical-models.html#cb332-4" aria-hidden="true" tabindex="-1"></a> t4q<span class="ot">&lt;-</span> <span class="fu">quantile</span>(theta4,<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.25</span>,<span class="fl">0.5</span>,<span class="fl">0.75</span>,<span class="fl">0.975</span>),<span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
+<span id="cb332-5"><a href="hierarchical-models.html#cb332-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb332-6"><a href="hierarchical-models.html#cb332-6" aria-hidden="true" tabindex="-1"></a>   theta5<span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="fu">sample</span>(tt<span class="sc">$</span>tau0,<span class="dv">1000</span>,<span class="at">prob=</span>tt<span class="sc">$</span>scaled.prob),</span>
+<span id="cb332-7"><a href="hierarchical-models.html#cb332-7" aria-hidden="true" tabindex="-1"></a>                  <span class="cf">function</span>(x) <span class="fu">posterior</span>(x,school<span class="sc">$</span>sigma2j,school<span class="sc">$</span>yj)[<span class="dv">5</span>,<span class="dv">1</span>])</span></code></pre></div>
+<pre><code>## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced</code></pre>
+<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="hierarchical-models.html#cb334-1" aria-hidden="true" tabindex="-1"></a>    theta5[<span class="fu">is.nan</span>(theta5)]<span class="ot">&lt;-</span><span class="fu">mean</span>(theta5[<span class="sc">!</span><span class="fu">is.nan</span>(theta5)])</span>
+<span id="cb334-2"><a href="hierarchical-models.html#cb334-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb334-3"><a href="hierarchical-models.html#cb334-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb334-4"><a href="hierarchical-models.html#cb334-4" aria-hidden="true" tabindex="-1"></a> t5q<span class="ot">&lt;-</span> <span class="fu">quantile</span>(theta5,<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.25</span>,<span class="fl">0.5</span>,<span class="fl">0.75</span>,<span class="fl">0.975</span>),<span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
+<span id="cb334-5"><a href="hierarchical-models.html#cb334-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb334-6"><a href="hierarchical-models.html#cb334-6" aria-hidden="true" tabindex="-1"></a>   theta6<span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="fu">sample</span>(tt<span class="sc">$</span>tau0,<span class="dv">1000</span>,<span class="at">prob=</span>tt<span class="sc">$</span>scaled.prob),</span>
+<span id="cb334-7"><a href="hierarchical-models.html#cb334-7" aria-hidden="true" tabindex="-1"></a>                  <span class="cf">function</span>(x) <span class="fu">posterior</span>(x,school<span class="sc">$</span>sigma2j,school<span class="sc">$</span>yj)[<span class="dv">6</span>,<span class="dv">1</span>])</span></code></pre></div>
+<pre><code>## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced</code></pre>
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="hierarchical-models.html#cb336-1" aria-hidden="true" tabindex="-1"></a>    theta6[<span class="fu">is.nan</span>(theta6)]<span class="ot">&lt;-</span><span class="fu">mean</span>(theta6[<span class="sc">!</span><span class="fu">is.nan</span>(theta6)])</span>
+<span id="cb336-2"><a href="hierarchical-models.html#cb336-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb336-3"><a href="hierarchical-models.html#cb336-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb336-4"><a href="hierarchical-models.html#cb336-4" aria-hidden="true" tabindex="-1"></a>  t6q<span class="ot">&lt;-</span><span class="fu">quantile</span>(theta6,<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.25</span>,<span class="fl">0.5</span>,<span class="fl">0.75</span>,<span class="fl">0.975</span>),<span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
+<span id="cb336-5"><a href="hierarchical-models.html#cb336-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb336-6"><a href="hierarchical-models.html#cb336-6" aria-hidden="true" tabindex="-1"></a>   theta7<span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="fu">sample</span>(tt<span class="sc">$</span>tau0,<span class="dv">1000</span>,<span class="at">prob=</span>tt<span class="sc">$</span>scaled.prob),</span>
+<span id="cb336-7"><a href="hierarchical-models.html#cb336-7" aria-hidden="true" tabindex="-1"></a>                  <span class="cf">function</span>(x) <span class="fu">posterior</span>(x,school<span class="sc">$</span>sigma2j,school<span class="sc">$</span>yj)[<span class="dv">7</span>,<span class="dv">1</span>])</span>
+<span id="cb336-8"><a href="hierarchical-models.html#cb336-8" aria-hidden="true" tabindex="-1"></a>    theta7[<span class="fu">is.nan</span>(theta7)]<span class="ot">&lt;-</span><span class="fu">mean</span>(theta7[<span class="sc">!</span><span class="fu">is.nan</span>(theta7)])</span>
+<span id="cb336-9"><a href="hierarchical-models.html#cb336-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb336-10"><a href="hierarchical-models.html#cb336-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb336-11"><a href="hierarchical-models.html#cb336-11" aria-hidden="true" tabindex="-1"></a>  t7q<span class="ot">&lt;-</span><span class="fu">quantile</span>(theta7,<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.25</span>,<span class="fl">0.5</span>,<span class="fl">0.75</span>,<span class="fl">0.975</span>),<span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
+<span id="cb336-12"><a href="hierarchical-models.html#cb336-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb336-13"><a href="hierarchical-models.html#cb336-13" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb336-14"><a href="hierarchical-models.html#cb336-14" aria-hidden="true" tabindex="-1"></a>   theta8<span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="fu">sample</span>(tt<span class="sc">$</span>tau0,<span class="dv">1000</span>,<span class="at">prob=</span>tt<span class="sc">$</span>scaled.prob),</span>
+<span id="cb336-15"><a href="hierarchical-models.html#cb336-15" aria-hidden="true" tabindex="-1"></a>                  <span class="cf">function</span>(x) <span class="fu">posterior</span>(x,school<span class="sc">$</span>sigma2j,school<span class="sc">$</span>yj)[<span class="dv">8</span>,<span class="dv">1</span>])</span></code></pre></div>
+<pre><code>## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced</code></pre>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="hierarchical-models.html#cb338-1" aria-hidden="true" tabindex="-1"></a>    theta8[<span class="fu">is.nan</span>(theta8)]<span class="ot">&lt;-</span><span class="fu">mean</span>(theta8[<span class="sc">!</span><span class="fu">is.nan</span>(theta8)])</span>
+<span id="cb338-2"><a href="hierarchical-models.html#cb338-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb338-3"><a href="hierarchical-models.html#cb338-3" aria-hidden="true" tabindex="-1"></a>  t8q<span class="ot">&lt;-</span><span class="fu">quantile</span>(theta8,<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.25</span>,<span class="fl">0.5</span>,<span class="fl">0.75</span>,<span class="fl">0.975</span>),<span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
+<span id="cb338-4"><a href="hierarchical-models.html#cb338-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb338-5"><a href="hierarchical-models.html#cb338-5" aria-hidden="true" tabindex="-1"></a> allq<span class="ot">&lt;-</span><span class="fu">rbind</span>(t1q,t2q,t3q,t4q,t5q,t6q,t7q,t8q)</span>
+<span id="cb338-6"><a href="hierarchical-models.html#cb338-6" aria-hidden="true" tabindex="-1"></a> <span class="fu">print</span>(allq)</span></code></pre></div>
+<pre><code>##            2.5%      25%       50%       75%    97.5%
+## t1q   0.4457383 7.326460 10.017273 16.091238 33.37148
+## t2q  -3.9503168 4.831116  7.726473 10.619370 20.25554
+## t3q -14.8226207 2.859082  6.858540  9.538431 18.57518
+## t4q  -7.3115433 5.009563  7.783060 10.934833 21.04213
+## t5q  -9.4629862 1.658382  6.024443  8.293584 14.69150
+## t6q -10.7831533 2.029477  6.586762  8.797824 17.50866
+## t7q   0.9487190 7.244206  9.623687 14.367122 25.85331
+## t8q  -7.3113309 4.974897  7.888110 11.282060 27.24911</code></pre>
+<ul>
+<li><p>i could not figure out how to take the margin across <span class="math inline">\(\mu\)</span> for 5.6 and 5.7.</p></li>
+<li><p>we found that our posterior effects had 4<span class="math inline">\(\%\)</span> greater than the maximum observed value 28.4 whereas the text found 22/200 which is slightly larger from 200 simulations, we used 1,000.</p></li>
+</ul>
+<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="hierarchical-models.html#cb340-1" aria-hidden="true" tabindex="-1"></a>  abest<span class="ot">&lt;-</span><span class="fu">table</span>(theta1<span class="sc">&gt;</span>(theta2) <span class="sc">&amp;</span> theta1<span class="sc">&gt;</span>theta3 <span class="sc">&amp;</span> theta1<span class="sc">&gt;</span>theta4 <span class="sc">&amp;</span> theta1<span class="sc">&gt;</span>theta5 <span class="sc">&amp;</span> theta1<span class="sc">&gt;</span>theta6 <span class="sc">&amp;</span> theta1<span class="sc">&gt;</span>theta7 <span class="sc">&amp;</span>theta1<span class="sc">&gt;</span>theta8)</span>
+<span id="cb340-2"><a href="hierarchical-models.html#cb340-2" aria-hidden="true" tabindex="-1"></a>  bbest<span class="ot">&lt;-</span><span class="fu">table</span>(theta2<span class="sc">&gt;</span>(theta1) <span class="sc">&amp;</span> theta2<span class="sc">&gt;</span>theta3 <span class="sc">&amp;</span> theta2<span class="sc">&gt;</span>theta4 <span class="sc">&amp;</span> theta2<span class="sc">&gt;</span>theta5 <span class="sc">&amp;</span> theta2<span class="sc">&gt;</span>theta6 <span class="sc">&amp;</span> theta2<span class="sc">&gt;</span>theta7 <span class="sc">&amp;</span>theta2<span class="sc">&gt;</span>theta8)</span>
+<span id="cb340-3"><a href="hierarchical-models.html#cb340-3" aria-hidden="true" tabindex="-1"></a>  cbest<span class="ot">&lt;-</span><span class="fu">table</span>(theta3<span class="sc">&gt;</span>(theta1) <span class="sc">&amp;</span> theta3<span class="sc">&gt;</span>theta2 <span class="sc">&amp;</span> theta3<span class="sc">&gt;</span>theta4 <span class="sc">&amp;</span> theta3<span class="sc">&gt;</span>theta5 <span class="sc">&amp;</span> theta3<span class="sc">&gt;</span>theta6 <span class="sc">&amp;</span> theta3<span class="sc">&gt;</span>theta7 <span class="sc">&amp;</span>theta3<span class="sc">&gt;</span>theta8)</span>
+<span id="cb340-4"><a href="hierarchical-models.html#cb340-4" aria-hidden="true" tabindex="-1"></a>  dbest<span class="ot">&lt;-</span><span class="fu">table</span>(theta4<span class="sc">&gt;</span>(theta1) <span class="sc">&amp;</span> theta4<span class="sc">&gt;</span>theta2 <span class="sc">&amp;</span> theta4<span class="sc">&gt;</span>theta3 <span class="sc">&amp;</span> theta4<span class="sc">&gt;</span>theta5 <span class="sc">&amp;</span> theta4<span class="sc">&gt;</span>theta6 <span class="sc">&amp;</span> theta4<span class="sc">&gt;</span>theta7 <span class="sc">&amp;</span>theta4<span class="sc">&gt;</span>theta8)</span>
+<span id="cb340-5"><a href="hierarchical-models.html#cb340-5" aria-hidden="true" tabindex="-1"></a>  ebest<span class="ot">&lt;-</span><span class="fu">table</span>(theta5<span class="sc">&gt;</span>(theta1) <span class="sc">&amp;</span> theta5<span class="sc">&gt;</span>theta2 <span class="sc">&amp;</span> theta5<span class="sc">&gt;</span>theta3 <span class="sc">&amp;</span> theta5<span class="sc">&gt;</span>theta4 <span class="sc">&amp;</span> theta5<span class="sc">&gt;</span>theta6 <span class="sc">&amp;</span> theta5<span class="sc">&gt;</span>theta7 <span class="sc">&amp;</span>theta5<span class="sc">&gt;</span>theta8)</span>
+<span id="cb340-6"><a href="hierarchical-models.html#cb340-6" aria-hidden="true" tabindex="-1"></a>  fbest<span class="ot">&lt;-</span><span class="fu">table</span>(theta6<span class="sc">&gt;</span>(theta1) <span class="sc">&amp;</span> theta6<span class="sc">&gt;</span>theta2 <span class="sc">&amp;</span> theta6<span class="sc">&gt;</span>theta3 <span class="sc">&amp;</span> theta6<span class="sc">&gt;</span>theta4 <span class="sc">&amp;</span> theta6<span class="sc">&gt;</span>theta5 <span class="sc">&amp;</span> theta6<span class="sc">&gt;</span>theta7 <span class="sc">&amp;</span>theta6<span class="sc">&gt;</span>theta8)</span>
+<span id="cb340-7"><a href="hierarchical-models.html#cb340-7" aria-hidden="true" tabindex="-1"></a>  gbest<span class="ot">&lt;-</span><span class="fu">table</span>(theta7<span class="sc">&gt;</span>(theta1) <span class="sc">&amp;</span> theta7<span class="sc">&gt;</span>theta2 <span class="sc">&amp;</span> theta7<span class="sc">&gt;</span>theta3 <span class="sc">&amp;</span> theta7<span class="sc">&gt;</span>theta4 <span class="sc">&amp;</span> theta7<span class="sc">&gt;</span>theta6 <span class="sc">&amp;</span> theta7<span class="sc">&gt;</span>theta6 <span class="sc">&amp;</span>theta7<span class="sc">&gt;</span>theta8)</span>
+<span id="cb340-8"><a href="hierarchical-models.html#cb340-8" aria-hidden="true" tabindex="-1"></a>  hbest<span class="ot">&lt;-</span><span class="fu">table</span>(theta8<span class="sc">&gt;</span>(theta1) <span class="sc">&amp;</span> theta8<span class="sc">&gt;</span>theta2 <span class="sc">&amp;</span> theta8<span class="sc">&gt;</span>theta3 <span class="sc">&amp;</span> theta8<span class="sc">&gt;</span>theta4 <span class="sc">&amp;</span> theta8<span class="sc">&gt;</span>theta5 <span class="sc">&amp;</span> theta8<span class="sc">&gt;</span>theta6 <span class="sc">&amp;</span>theta8<span class="sc">&gt;</span>theta7)</span>
+<span id="cb340-9"><a href="hierarchical-models.html#cb340-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb340-10"><a href="hierarchical-models.html#cb340-10" aria-hidden="true" tabindex="-1"></a>  a<span class="ot">&lt;-</span>abest[<span class="st">&#39;TRUE&#39;</span>]<span class="sc">/</span><span class="fu">sum</span>(abest)</span>
+<span id="cb340-11"><a href="hierarchical-models.html#cb340-11" aria-hidden="true" tabindex="-1"></a>  b<span class="ot">&lt;-</span>bbest[<span class="st">&#39;TRUE&#39;</span>]<span class="sc">/</span><span class="fu">sum</span>(bbest)</span>
+<span id="cb340-12"><a href="hierarchical-models.html#cb340-12" aria-hidden="true" tabindex="-1"></a>  c<span class="ot">&lt;-</span>cbest[<span class="st">&#39;TRUE&#39;</span>]<span class="sc">/</span><span class="fu">sum</span>(cbest)</span>
+<span id="cb340-13"><a href="hierarchical-models.html#cb340-13" aria-hidden="true" tabindex="-1"></a>  d<span class="ot">&lt;-</span>dbest[<span class="st">&#39;TRUE&#39;</span>]<span class="sc">/</span><span class="fu">sum</span>(dbest)</span>
+<span id="cb340-14"><a href="hierarchical-models.html#cb340-14" aria-hidden="true" tabindex="-1"></a>  e<span class="ot">&lt;-</span>ebest[<span class="st">&#39;TRUE&#39;</span>]<span class="sc">/</span><span class="fu">sum</span>(ebest)</span>
+<span id="cb340-15"><a href="hierarchical-models.html#cb340-15" aria-hidden="true" tabindex="-1"></a>  f<span class="ot">&lt;-</span>fbest[<span class="st">&#39;TRUE&#39;</span>]<span class="sc">/</span><span class="fu">sum</span>(fbest)</span>
+<span id="cb340-16"><a href="hierarchical-models.html#cb340-16" aria-hidden="true" tabindex="-1"></a>  g<span class="ot">&lt;-</span>gbest[<span class="st">&#39;TRUE&#39;</span>]<span class="sc">/</span><span class="fu">sum</span>(gbest)</span>
+<span id="cb340-17"><a href="hierarchical-models.html#cb340-17" aria-hidden="true" tabindex="-1"></a>  h<span class="ot">&lt;-</span>hbest[<span class="st">&#39;TRUE&#39;</span>]<span class="sc">/</span><span class="fu">sum</span>(hbest)</span></code></pre></div>
+<div id="q3-part-a" class="section level4 hasAnchor" number="5.2.0.1">
+<h4><span class="header-section-number">5.2.0.1</span> Q3 part a<a href="hierarchical-models.html#q3-part-a" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>5.3a this is correct and is very close to section 5 results.</li>
+</ul>
+<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="hierarchical-models.html#cb341-1" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="dv">0</span>,<span class="at">nrow=</span><span class="dv">8</span>,<span class="at">ncol=</span><span class="dv">8</span>)</span>
+<span id="cb341-2"><a href="hierarchical-models.html#cb341-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb341-3"><a href="hierarchical-models.html#cb341-3" aria-hidden="true" tabindex="-1"></a>  fillIn<span class="ot">&lt;-</span><span class="cf">function</span>(better,theta1,theta2,<span class="at">i=</span><span class="dv">1</span>,<span class="at">j=</span><span class="dv">2</span>){</span>
+<span id="cb341-4"><a href="hierarchical-models.html#cb341-4" aria-hidden="true" tabindex="-1"></a>   pij<span class="ot">&lt;-</span><span class="fu">table</span>(theta1<span class="sc">&gt;</span>theta2)<span class="sc">/</span><span class="fu">sum</span>(<span class="fu">table</span>(theta1<span class="sc">&gt;</span>theta2))</span>
+<span id="cb341-5"><a href="hierarchical-models.html#cb341-5" aria-hidden="true" tabindex="-1"></a>   better[i,j]<span class="ot">&lt;-</span>pij[<span class="st">&#39;TRUE&#39;</span>]</span>
+<span id="cb341-6"><a href="hierarchical-models.html#cb341-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(better)</span>
+<span id="cb341-7"><a href="hierarchical-models.html#cb341-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb341-8"><a href="hierarchical-models.html#cb341-8" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta1,theta2,<span class="at">i=</span><span class="dv">1</span>,<span class="at">j=</span><span class="dv">2</span>)</span>
+<span id="cb341-9"><a href="hierarchical-models.html#cb341-9" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta1,theta3,<span class="at">i=</span><span class="dv">1</span>,<span class="at">j=</span><span class="dv">3</span>)</span>
+<span id="cb341-10"><a href="hierarchical-models.html#cb341-10" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta1,theta4,<span class="at">i=</span><span class="dv">1</span>,<span class="at">j=</span><span class="dv">4</span>)</span>
+<span id="cb341-11"><a href="hierarchical-models.html#cb341-11" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta1,theta5,<span class="at">i=</span><span class="dv">1</span>,<span class="at">j=</span><span class="dv">5</span>)</span>
+<span id="cb341-12"><a href="hierarchical-models.html#cb341-12" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta1,theta6,<span class="at">i=</span><span class="dv">1</span>,<span class="at">j=</span><span class="dv">6</span>)</span>
+<span id="cb341-13"><a href="hierarchical-models.html#cb341-13" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta1,theta7,<span class="at">i=</span><span class="dv">1</span>,<span class="at">j=</span><span class="dv">7</span>)</span>
+<span id="cb341-14"><a href="hierarchical-models.html#cb341-14" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta1,theta8,<span class="at">i=</span><span class="dv">1</span>,<span class="at">j=</span><span class="dv">8</span>)</span>
+<span id="cb341-15"><a href="hierarchical-models.html#cb341-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb341-16"><a href="hierarchical-models.html#cb341-16" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta2,theta1,<span class="at">i=</span><span class="dv">2</span>,<span class="at">j=</span><span class="dv">1</span>)</span>
+<span id="cb341-17"><a href="hierarchical-models.html#cb341-17" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta2,theta3,<span class="at">i=</span><span class="dv">2</span>,<span class="at">j=</span><span class="dv">3</span>)</span>
+<span id="cb341-18"><a href="hierarchical-models.html#cb341-18" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta2,theta4,<span class="at">i=</span><span class="dv">2</span>,<span class="at">j=</span><span class="dv">4</span>)</span>
+<span id="cb341-19"><a href="hierarchical-models.html#cb341-19" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta2,theta5,<span class="at">i=</span><span class="dv">2</span>,<span class="at">j=</span><span class="dv">5</span>)</span>
+<span id="cb341-20"><a href="hierarchical-models.html#cb341-20" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta2,theta6,<span class="at">i=</span><span class="dv">2</span>,<span class="at">j=</span><span class="dv">6</span>)</span>
+<span id="cb341-21"><a href="hierarchical-models.html#cb341-21" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta2,theta7,<span class="at">i=</span><span class="dv">2</span>,<span class="at">j=</span><span class="dv">7</span>)</span>
+<span id="cb341-22"><a href="hierarchical-models.html#cb341-22" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta2,theta8,<span class="at">i=</span><span class="dv">2</span>,<span class="at">j=</span><span class="dv">8</span>)</span>
+<span id="cb341-23"><a href="hierarchical-models.html#cb341-23" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb341-24"><a href="hierarchical-models.html#cb341-24" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta3,theta1,<span class="at">i=</span><span class="dv">3</span>,<span class="at">j=</span><span class="dv">1</span>)</span>
+<span id="cb341-25"><a href="hierarchical-models.html#cb341-25" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta3,theta2,<span class="at">i=</span><span class="dv">3</span>,<span class="at">j=</span><span class="dv">2</span>)</span>
+<span id="cb341-26"><a href="hierarchical-models.html#cb341-26" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta3,theta4,<span class="at">i=</span><span class="dv">3</span>,<span class="at">j=</span><span class="dv">4</span>)</span>
+<span id="cb341-27"><a href="hierarchical-models.html#cb341-27" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta3,theta5,<span class="at">i=</span><span class="dv">3</span>,<span class="at">j=</span><span class="dv">5</span>)</span>
+<span id="cb341-28"><a href="hierarchical-models.html#cb341-28" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta3,theta6,<span class="at">i=</span><span class="dv">3</span>,<span class="at">j=</span><span class="dv">6</span>)</span>
+<span id="cb341-29"><a href="hierarchical-models.html#cb341-29" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta3,theta7,<span class="at">i=</span><span class="dv">3</span>,<span class="at">j=</span><span class="dv">7</span>)</span>
+<span id="cb341-30"><a href="hierarchical-models.html#cb341-30" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta3,theta8,<span class="at">i=</span><span class="dv">3</span>,<span class="at">j=</span><span class="dv">8</span>)</span>
+<span id="cb341-31"><a href="hierarchical-models.html#cb341-31" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb341-32"><a href="hierarchical-models.html#cb341-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb341-33"><a href="hierarchical-models.html#cb341-33" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta4,theta1,<span class="at">i=</span><span class="dv">4</span>,<span class="at">j=</span><span class="dv">1</span>)</span>
+<span id="cb341-34"><a href="hierarchical-models.html#cb341-34" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta4,theta2,<span class="at">i=</span><span class="dv">4</span>,<span class="at">j=</span><span class="dv">2</span>)</span>
+<span id="cb341-35"><a href="hierarchical-models.html#cb341-35" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta4,theta3,<span class="at">i=</span><span class="dv">4</span>,<span class="at">j=</span><span class="dv">3</span>)</span>
+<span id="cb341-36"><a href="hierarchical-models.html#cb341-36" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta4,theta5,<span class="at">i=</span><span class="dv">4</span>,<span class="at">j=</span><span class="dv">5</span>)</span>
+<span id="cb341-37"><a href="hierarchical-models.html#cb341-37" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta4,theta6,<span class="at">i=</span><span class="dv">4</span>,<span class="at">j=</span><span class="dv">6</span>)</span>
+<span id="cb341-38"><a href="hierarchical-models.html#cb341-38" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta4,theta7,<span class="at">i=</span><span class="dv">4</span>,<span class="at">j=</span><span class="dv">7</span>)</span>
+<span id="cb341-39"><a href="hierarchical-models.html#cb341-39" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta4,theta8,<span class="at">i=</span><span class="dv">4</span>,<span class="at">j=</span><span class="dv">8</span>)</span>
+<span id="cb341-40"><a href="hierarchical-models.html#cb341-40" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb341-41"><a href="hierarchical-models.html#cb341-41" aria-hidden="true" tabindex="-1"></a>   better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta5,theta1,<span class="at">i=</span><span class="dv">5</span>,<span class="at">j=</span><span class="dv">1</span>)</span>
+<span id="cb341-42"><a href="hierarchical-models.html#cb341-42" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta5,theta2,<span class="at">i=</span><span class="dv">5</span>,<span class="at">j=</span><span class="dv">2</span>)</span>
+<span id="cb341-43"><a href="hierarchical-models.html#cb341-43" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta5,theta3,<span class="at">i=</span><span class="dv">5</span>,<span class="at">j=</span><span class="dv">3</span>)</span>
+<span id="cb341-44"><a href="hierarchical-models.html#cb341-44" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta5,theta4,<span class="at">i=</span><span class="dv">5</span>,<span class="at">j=</span><span class="dv">4</span>)</span>
+<span id="cb341-45"><a href="hierarchical-models.html#cb341-45" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta5,theta6,<span class="at">i=</span><span class="dv">5</span>,<span class="at">j=</span><span class="dv">6</span>)</span>
+<span id="cb341-46"><a href="hierarchical-models.html#cb341-46" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta5,theta7,<span class="at">i=</span><span class="dv">5</span>,<span class="at">j=</span><span class="dv">7</span>)</span>
+<span id="cb341-47"><a href="hierarchical-models.html#cb341-47" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta5,theta8,<span class="at">i=</span><span class="dv">5</span>,<span class="at">j=</span><span class="dv">8</span>)</span>
+<span id="cb341-48"><a href="hierarchical-models.html#cb341-48" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb341-49"><a href="hierarchical-models.html#cb341-49" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb341-50"><a href="hierarchical-models.html#cb341-50" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta6,theta1,<span class="at">i=</span><span class="dv">6</span>,<span class="at">j=</span><span class="dv">1</span>)</span>
+<span id="cb341-51"><a href="hierarchical-models.html#cb341-51" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta6,theta2,<span class="at">i=</span><span class="dv">6</span>,<span class="at">j=</span><span class="dv">2</span>)</span>
+<span id="cb341-52"><a href="hierarchical-models.html#cb341-52" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta6,theta3,<span class="at">i=</span><span class="dv">6</span>,<span class="at">j=</span><span class="dv">3</span>)</span>
+<span id="cb341-53"><a href="hierarchical-models.html#cb341-53" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta6,theta4,<span class="at">i=</span><span class="dv">6</span>,<span class="at">j=</span><span class="dv">4</span>)</span>
+<span id="cb341-54"><a href="hierarchical-models.html#cb341-54" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta6,theta5,<span class="at">i=</span><span class="dv">6</span>,<span class="at">j=</span><span class="dv">5</span>)</span>
+<span id="cb341-55"><a href="hierarchical-models.html#cb341-55" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta6,theta7,<span class="at">i=</span><span class="dv">6</span>,<span class="at">j=</span><span class="dv">7</span>)</span>
+<span id="cb341-56"><a href="hierarchical-models.html#cb341-56" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta6,theta8,<span class="at">i=</span><span class="dv">6</span>,<span class="at">j=</span><span class="dv">8</span>)</span>
+<span id="cb341-57"><a href="hierarchical-models.html#cb341-57" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb341-58"><a href="hierarchical-models.html#cb341-58" aria-hidden="true" tabindex="-1"></a>    better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta7,theta1,<span class="at">i=</span><span class="dv">7</span>,<span class="at">j=</span><span class="dv">1</span>)</span>
+<span id="cb341-59"><a href="hierarchical-models.html#cb341-59" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta7,theta2,<span class="at">i=</span><span class="dv">7</span>,<span class="at">j=</span><span class="dv">2</span>)</span>
+<span id="cb341-60"><a href="hierarchical-models.html#cb341-60" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta7,theta3,<span class="at">i=</span><span class="dv">7</span>,<span class="at">j=</span><span class="dv">3</span>)</span>
+<span id="cb341-61"><a href="hierarchical-models.html#cb341-61" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta7,theta4,<span class="at">i=</span><span class="dv">7</span>,<span class="at">j=</span><span class="dv">4</span>)</span>
+<span id="cb341-62"><a href="hierarchical-models.html#cb341-62" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta7,theta5,<span class="at">i=</span><span class="dv">7</span>,<span class="at">j=</span><span class="dv">5</span>)</span>
+<span id="cb341-63"><a href="hierarchical-models.html#cb341-63" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta7,theta6,<span class="at">i=</span><span class="dv">7</span>,<span class="at">j=</span><span class="dv">6</span>)</span>
+<span id="cb341-64"><a href="hierarchical-models.html#cb341-64" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta7,theta8,<span class="at">i=</span><span class="dv">7</span>,<span class="at">j=</span><span class="dv">8</span>)</span>
+<span id="cb341-65"><a href="hierarchical-models.html#cb341-65" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb341-66"><a href="hierarchical-models.html#cb341-66" aria-hidden="true" tabindex="-1"></a>   better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta8,theta1,<span class="at">i=</span><span class="dv">8</span>,<span class="at">j=</span><span class="dv">1</span>)</span>
+<span id="cb341-67"><a href="hierarchical-models.html#cb341-67" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta8,theta2,<span class="at">i=</span><span class="dv">8</span>,<span class="at">j=</span><span class="dv">2</span>)</span>
+<span id="cb341-68"><a href="hierarchical-models.html#cb341-68" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta8,theta3,<span class="at">i=</span><span class="dv">8</span>,<span class="at">j=</span><span class="dv">3</span>)</span>
+<span id="cb341-69"><a href="hierarchical-models.html#cb341-69" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta8,theta4,<span class="at">i=</span><span class="dv">8</span>,<span class="at">j=</span><span class="dv">4</span>)</span>
+<span id="cb341-70"><a href="hierarchical-models.html#cb341-70" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta8,theta5,<span class="at">i=</span><span class="dv">8</span>,<span class="at">j=</span><span class="dv">5</span>)</span>
+<span id="cb341-71"><a href="hierarchical-models.html#cb341-71" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta8,theta6,<span class="at">i=</span><span class="dv">8</span>,<span class="at">j=</span><span class="dv">6</span>)</span>
+<span id="cb341-72"><a href="hierarchical-models.html#cb341-72" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">fillIn</span>(better,theta8,theta7,<span class="at">i=</span><span class="dv">8</span>,<span class="at">j=</span><span class="dv">7</span>)</span>
+<span id="cb341-73"><a href="hierarchical-models.html#cb341-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb341-74"><a href="hierarchical-models.html#cb341-74" aria-hidden="true" tabindex="-1"></a>  better<span class="ot">&lt;-</span><span class="fu">cbind</span>(<span class="fu">c</span>(a,b,c,d,e,f,g,h),better)</span>
+<span id="cb341-75"><a href="hierarchical-models.html#cb341-75" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames</span>(better)<span class="ot">&lt;-</span>LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>]</span>
+<span id="cb341-76"><a href="hierarchical-models.html#cb341-76" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>(better)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;best&quot;</span>,LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>])</span>
+<span id="cb341-77"><a href="hierarchical-models.html#cb341-77" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb341-78"><a href="hierarchical-models.html#cb341-78" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(better)</span></code></pre></div>
+<pre><code>##    best     A     B     C     D     E     F     G     H
+## A 0.290 0.000 0.671 0.714 0.662 0.783 0.752 0.533 0.633
+## B 0.102 0.329 0.000 0.570 0.503 0.634 0.620 0.343 0.487
+## C 0.074 0.286 0.430 0.000 0.425 0.556 0.526 0.306 0.417
+## D 0.100 0.338 0.497 0.575 0.000 0.636 0.601 0.358 0.482
+## E 0.040 0.217 0.366 0.444 0.364 0.000 0.467 0.220 0.346
+## F 0.047 0.248 0.380 0.474 0.399 0.533 0.000 0.249 0.377
+## G 0.229 0.467 0.657 0.694 0.642 0.780 0.751 0.000 0.609
+## H 0.124 0.367 0.513 0.583 0.518 0.654 0.623 0.391 0.000</code></pre>
+<p>Inference on the <span class="math inline">\(P(max(\theta_j)&gt;28.4)\)</span> in our data is 93/1000 which is 0.093. from the text 22/200 which is roughly 0.11</p>
+<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="hierarchical-models.html#cb343-1" aria-hidden="true" tabindex="-1"></a>theta<span class="ot">&lt;-</span><span class="fu">data.frame</span>(theta1,theta2,theta3,theta4,theta5,theta6,theta7,theta8)</span>
+<span id="cb343-2"><a href="hierarchical-models.html#cb343-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">hist</span>(<span class="fu">apply</span>(theta,<span class="dv">1</span>,max),<span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">60</span>),<span class="at">main=</span><span class="st">&#39;Figure 5.8b max(theta j)&#39;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-68-1.png" width="672" /></p>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="hierarchical-models.html#cb344-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">table</span>(<span class="fu">apply</span>(theta,<span class="dv">1</span>,max)<span class="sc">&gt;</span><span class="fl">28.4</span>)[<span class="st">&#39;TRUE&#39;</span>]<span class="sc">/</span><span class="fu">sum</span>(<span class="fu">table</span>(<span class="fu">apply</span>(theta,<span class="dv">1</span>,max)<span class="sc">&gt;</span><span class="fl">28.4</span>))</span></code></pre></div>
+<pre><code>##  TRUE 
+## 0.088</code></pre>
+</div>
+<div id="q-5.3-part-b" class="section level4 hasAnchor" number="5.2.0.2">
+<h4><span class="header-section-number">5.2.0.2</span> Q 5.3 part b<a href="hierarchical-models.html#q-5.3-part-b" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>5.3.b
+taking <span class="math inline">\(\tau \to \infty\)</span> we have <span class="math inline">\(\theta_j \sim N(y_j, \sigma^2_j)\)</span></li>
+</ul>
+<p>For $P(_i &gt; _j) = <span class="math inline">\(P(\theta_i - \theta_j&gt;0\)</span>)</p>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="hierarchical-models.html#cb346-1" aria-hidden="true" tabindex="-1"></a>  x1<span class="ot">&lt;-</span><span class="fu">rnorm</span>(<span class="dv">1000</span>,<span class="at">mean=</span>school<span class="sc">$</span>yj[<span class="dv">1</span>],<span class="at">sd=</span>school<span class="sc">$</span>sigmaj[<span class="dv">1</span>])</span>
+<span id="cb346-2"><a href="hierarchical-models.html#cb346-2" aria-hidden="true" tabindex="-1"></a>  x2<span class="ot">&lt;-</span><span class="fu">rnorm</span>(<span class="dv">1000</span>,<span class="at">mean=</span>school<span class="sc">$</span>yj[<span class="dv">2</span>],<span class="at">sd=</span>school<span class="sc">$</span>sigmaj[<span class="dv">2</span>])</span>
+<span id="cb346-3"><a href="hierarchical-models.html#cb346-3" aria-hidden="true" tabindex="-1"></a>  x3<span class="ot">&lt;-</span><span class="fu">rnorm</span>(<span class="dv">1000</span>,<span class="at">mean=</span>school<span class="sc">$</span>yj[<span class="dv">3</span>],<span class="at">sd=</span>school<span class="sc">$</span>sigmaj[<span class="dv">3</span>])</span>
+<span id="cb346-4"><a href="hierarchical-models.html#cb346-4" aria-hidden="true" tabindex="-1"></a>  x4<span class="ot">&lt;-</span><span class="fu">rnorm</span>(<span class="dv">1000</span>,<span class="at">mean=</span>school<span class="sc">$</span>yj[<span class="dv">4</span>],<span class="at">sd=</span>school<span class="sc">$</span>sigmaj[<span class="dv">4</span>])</span>
+<span id="cb346-5"><a href="hierarchical-models.html#cb346-5" aria-hidden="true" tabindex="-1"></a>  x5<span class="ot">&lt;-</span><span class="fu">rnorm</span>(<span class="dv">1000</span>,<span class="at">mean=</span>school<span class="sc">$</span>yj[<span class="dv">5</span>],<span class="at">sd=</span>school<span class="sc">$</span>sigmaj[<span class="dv">5</span>])</span>
+<span id="cb346-6"><a href="hierarchical-models.html#cb346-6" aria-hidden="true" tabindex="-1"></a>  x6<span class="ot">&lt;-</span><span class="fu">rnorm</span>(<span class="dv">1000</span>,<span class="at">mean=</span>school<span class="sc">$</span>yj[<span class="dv">6</span>],<span class="at">sd=</span>school<span class="sc">$</span>sigmaj[<span class="dv">6</span>])</span>
+<span id="cb346-7"><a href="hierarchical-models.html#cb346-7" aria-hidden="true" tabindex="-1"></a>  x7<span class="ot">&lt;-</span><span class="fu">rnorm</span>(<span class="dv">1000</span>,<span class="at">mean=</span>school<span class="sc">$</span>yj[<span class="dv">7</span>],<span class="at">sd=</span>school<span class="sc">$</span>sigmaj[<span class="dv">7</span>])</span>
+<span id="cb346-8"><a href="hierarchical-models.html#cb346-8" aria-hidden="true" tabindex="-1"></a>  x8<span class="ot">&lt;-</span><span class="fu">rnorm</span>(<span class="dv">1000</span>,<span class="at">mean=</span>school<span class="sc">$</span>yj[<span class="dv">8</span>],<span class="at">sd=</span>school<span class="sc">$</span>sigmaj[<span class="dv">8</span>])</span>
+<span id="cb346-9"><a href="hierarchical-models.html#cb346-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb346-10"><a href="hierarchical-models.html#cb346-10" aria-hidden="true" tabindex="-1"></a>  allQ<span class="ot">&lt;-</span><span class="fu">rbind</span>(  <span class="fu">quantile</span>(x1,<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.25</span>,<span class="fl">0.5</span>,<span class="fl">0.75</span>,<span class="fl">0.975</span>)),</span>
+<span id="cb346-11"><a href="hierarchical-models.html#cb346-11" aria-hidden="true" tabindex="-1"></a>                <span class="fu">quantile</span>(x2,<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.25</span>,<span class="fl">0.5</span>,<span class="fl">0.75</span>,<span class="fl">0.975</span>)),</span>
+<span id="cb346-12"><a href="hierarchical-models.html#cb346-12" aria-hidden="true" tabindex="-1"></a>                <span class="fu">quantile</span>(x3,<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.25</span>,<span class="fl">0.5</span>,<span class="fl">0.75</span>,<span class="fl">0.975</span>)),</span>
+<span id="cb346-13"><a href="hierarchical-models.html#cb346-13" aria-hidden="true" tabindex="-1"></a>                <span class="fu">quantile</span>(x4,<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.25</span>,<span class="fl">0.5</span>,<span class="fl">0.75</span>,<span class="fl">0.975</span>)),</span>
+<span id="cb346-14"><a href="hierarchical-models.html#cb346-14" aria-hidden="true" tabindex="-1"></a>                <span class="fu">quantile</span>(x5,<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.25</span>,<span class="fl">0.5</span>,<span class="fl">0.75</span>,<span class="fl">0.975</span>)),</span>
+<span id="cb346-15"><a href="hierarchical-models.html#cb346-15" aria-hidden="true" tabindex="-1"></a>                <span class="fu">quantile</span>(x6,<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.25</span>,<span class="fl">0.5</span>,<span class="fl">0.75</span>,<span class="fl">0.975</span>)),</span>
+<span id="cb346-16"><a href="hierarchical-models.html#cb346-16" aria-hidden="true" tabindex="-1"></a>                <span class="fu">quantile</span>(x7,<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.25</span>,<span class="fl">0.5</span>,<span class="fl">0.75</span>,<span class="fl">0.975</span>)),</span>
+<span id="cb346-17"><a href="hierarchical-models.html#cb346-17" aria-hidden="true" tabindex="-1"></a>                <span class="fu">quantile</span>(x8,<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.25</span>,<span class="fl">0.5</span>,<span class="fl">0.75</span>,<span class="fl">0.975</span>))</span>
+<span id="cb346-18"><a href="hierarchical-models.html#cb346-18" aria-hidden="true" tabindex="-1"></a>                )</span>
+<span id="cb346-19"><a href="hierarchical-models.html#cb346-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames</span>(allQ)<span class="ot">&lt;-</span>LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>]</span>
+<span id="cb346-20"><a href="hierarchical-models.html#cb346-20" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb346-21"><a href="hierarchical-models.html#cb346-21" aria-hidden="true" tabindex="-1"></a>  <span class="do">## pair wise </span></span>
+<span id="cb346-22"><a href="hierarchical-models.html#cb346-22" aria-hidden="true" tabindex="-1"></a>  better2<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="dv">0</span>,<span class="at">nrow=</span><span class="dv">8</span>,<span class="at">ncol=</span><span class="dv">8</span>)</span>
+<span id="cb346-23"><a href="hierarchical-models.html#cb346-23" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>){</span>
+<span id="cb346-24"><a href="hierarchical-models.html#cb346-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>){</span>
+<span id="cb346-25"><a href="hierarchical-models.html#cb346-25" aria-hidden="true" tabindex="-1"></a>    better2[i,j]<span class="ot">&lt;-</span> <span class="fu">pnorm</span>( (school<span class="sc">$</span>yj[i]<span class="sc">-</span> school<span class="sc">$</span>yj[j])<span class="sc">/</span><span class="fu">sqrt</span>( school<span class="sc">$</span>sigma2j[i]<span class="sc">+</span>school<span class="sc">$</span>sigma2j[j]) ) </span>
+<span id="cb346-26"><a href="hierarchical-models.html#cb346-26" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb346-27"><a href="hierarchical-models.html#cb346-27" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb346-28"><a href="hierarchical-models.html#cb346-28" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb346-29"><a href="hierarchical-models.html#cb346-29" aria-hidden="true" tabindex="-1"></a> allind<span class="ot">&lt;-</span><span class="fu">cbind</span>(x1,x2,x3,x4,x5,x6,x7,x8)</span>
+<span id="cb346-30"><a href="hierarchical-models.html#cb346-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb346-31"><a href="hierarchical-models.html#cb346-31" aria-hidden="true" tabindex="-1"></a>  x1b<span class="ot">&lt;-</span><span class="fu">table</span>(x1<span class="sc">&gt;=</span><span class="fu">apply</span>(allind,<span class="dv">1</span>,max))[<span class="st">&#39;TRUE&#39;</span>]<span class="sc">/</span><span class="dv">1000</span></span>
+<span id="cb346-32"><a href="hierarchical-models.html#cb346-32" aria-hidden="true" tabindex="-1"></a>  x2b<span class="ot">&lt;-</span><span class="fu">table</span>(x2<span class="sc">&gt;=</span><span class="fu">apply</span>(allind,<span class="dv">1</span>,max))[<span class="st">&#39;TRUE&#39;</span>]<span class="sc">/</span><span class="dv">1000</span></span>
+<span id="cb346-33"><a href="hierarchical-models.html#cb346-33" aria-hidden="true" tabindex="-1"></a>  x3b<span class="ot">&lt;-</span><span class="fu">table</span>(x3<span class="sc">&gt;=</span><span class="fu">apply</span>(allind,<span class="dv">1</span>,max))[<span class="st">&#39;TRUE&#39;</span>]<span class="sc">/</span><span class="dv">1000</span></span>
+<span id="cb346-34"><a href="hierarchical-models.html#cb346-34" aria-hidden="true" tabindex="-1"></a>  x4b<span class="ot">&lt;-</span><span class="fu">table</span>(x4<span class="sc">&gt;=</span><span class="fu">apply</span>(allind,<span class="dv">1</span>,max))[<span class="st">&#39;TRUE&#39;</span>]<span class="sc">/</span><span class="dv">1000</span></span>
+<span id="cb346-35"><a href="hierarchical-models.html#cb346-35" aria-hidden="true" tabindex="-1"></a>  x5b<span class="ot">&lt;-</span><span class="fu">table</span>(x5<span class="sc">&gt;=</span><span class="fu">apply</span>(allind,<span class="dv">1</span>,max))[<span class="st">&#39;TRUE&#39;</span>]<span class="sc">/</span><span class="dv">1000</span></span>
+<span id="cb346-36"><a href="hierarchical-models.html#cb346-36" aria-hidden="true" tabindex="-1"></a>  x6b<span class="ot">&lt;-</span><span class="fu">table</span>(x6<span class="sc">&gt;=</span><span class="fu">apply</span>(allind,<span class="dv">1</span>,max))[<span class="st">&#39;TRUE&#39;</span>]<span class="sc">/</span><span class="dv">1000</span></span>
+<span id="cb346-37"><a href="hierarchical-models.html#cb346-37" aria-hidden="true" tabindex="-1"></a>  x7b<span class="ot">&lt;-</span><span class="fu">table</span>(x7<span class="sc">&gt;=</span><span class="fu">apply</span>(allind,<span class="dv">1</span>,max))[<span class="st">&#39;TRUE&#39;</span>]<span class="sc">/</span><span class="dv">1000</span></span>
+<span id="cb346-38"><a href="hierarchical-models.html#cb346-38" aria-hidden="true" tabindex="-1"></a>  x8b<span class="ot">&lt;-</span><span class="fu">table</span>(x8<span class="sc">&gt;=</span><span class="fu">apply</span>(allind,<span class="dv">1</span>,max))[<span class="st">&#39;TRUE&#39;</span>]<span class="sc">/</span><span class="dv">1000</span></span>
+<span id="cb346-39"><a href="hierarchical-models.html#cb346-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb346-40"><a href="hierarchical-models.html#cb346-40" aria-hidden="true" tabindex="-1"></a>  sep.prob<span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="fu">c</span>(x1b,x2b,x3b,x4b,x5b,x6b,x7b,x8b),better2)</span>
+<span id="cb346-41"><a href="hierarchical-models.html#cb346-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames</span>(sep.prob)<span class="ot">&lt;-</span>LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>]</span>
+<span id="cb346-42"><a href="hierarchical-models.html#cb346-42" aria-hidden="true" tabindex="-1"></a>    <span class="fu">colnames</span>(sep.prob)<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;best&quot;</span>,LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>])</span>
+<span id="cb346-43"><a href="hierarchical-models.html#cb346-43" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb346-44"><a href="hierarchical-models.html#cb346-44" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(sep.prob)</span></code></pre></div>
+<pre><code>##    best          A         B         C         D         E         F          G
+## A 0.554 0.50000000 0.8663713 0.9212424 0.8705441 0.9513231 0.9266837 0.71045013
+## B 0.034 0.13362875 0.5000000 0.7200530 0.5268155 0.7482410 0.6811336 0.23975006
+## C 0.023 0.07875756 0.2799470 0.5000000 0.3032674 0.4566223 0.4183914 0.13285469
+## D 0.029 0.12945588 0.4731845 0.6967326 0.5000000 0.7132410 0.6501386 0.22966818
+## E 0.004 0.04867694 0.2517590 0.5433777 0.2867590 0.5000000 0.4440458 0.07893687
+## F 0.017 0.07331631 0.3188664 0.5816086 0.3498614 0.5559542 0.5000000 0.12640645
+## G 0.174 0.28954987 0.7602499 0.8671453 0.7703318 0.9210631 0.8735935 0.50000000
+## H 0.165 0.24734659 0.5770127 0.7333055 0.5936804 0.7408523 0.6989733 0.38537815
+##           H
+## A 0.7526534
+## B 0.4229873
+## C 0.2666945
+## D 0.4063196
+## E 0.2591477
+## F 0.3010267
+## G 0.6146218
+## H 0.5000000</code></pre>
+</div>
+<div id="q-5.3.c" class="section level4 hasAnchor" number="5.2.0.3">
+<h4><span class="header-section-number">5.2.0.3</span> Q 5.3.c<a href="hierarchical-models.html#q-5.3.c" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>5.3.c
+Discussing the differences the intervals are much wider in the separate models for <span class="math inline">\(\theta_j\)</span> compared to the Bayesian model. This is because the Bayesian model borrows strenghts of associaton across other school information.</li>
+</ul>
+<p>Under separate model, the probability that A is best is approxmiately 0.521, whereas in Bayesian model it is 0.283. These inferences are more conservative in the Bayesian model because it incorporates uncertainty in the model. The Bayesian model assumes a uniform prior for <span class="math inline">\(\tau\)</span> which is the deviation/variability of the school coaching effectiveness, whereas in the separate model operates under the assumption that there is large variability of coaching effectiveness <span class="math inline">\(\tau = \infty\)</span>.</p>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="hierarchical-models.html#cb348-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(allQ)</span></code></pre></div>
+<pre><code>##          2.5%         25%        50%       75%    97.5%
+## A  -1.6671674  16.8008160 28.4378866 38.292573 56.64421
+## B -11.7881530   1.4666970  7.8338828 15.011281 25.71342
+## C -32.9503177 -13.1854338 -2.8801841  8.302523 27.71221
+## D -13.2036155   0.6344413  7.8860750 14.677863 28.52870
+## E -18.8775183  -6.4175582 -0.3387703  5.609494 16.85795
+## F -20.2917461  -6.9974197  0.9482539  8.851298 22.31686
+## G  -0.9984314  11.3323360 17.5468144 24.429637 35.98980
+## H -21.8486938  -0.4152265 12.2354066 23.914510 45.65002</code></pre>
+<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="hierarchical-models.html#cb350-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(allq)</span></code></pre></div>
+<pre><code>##            2.5%      25%       50%       75%    97.5%
+## t1q   0.4457383 7.326460 10.017273 16.091238 33.37148
+## t2q  -3.9503168 4.831116  7.726473 10.619370 20.25554
+## t3q -14.8226207 2.859082  6.858540  9.538431 18.57518
+## t4q  -7.3115433 5.009563  7.783060 10.934833 21.04213
+## t5q  -9.4629862 1.658382  6.024443  8.293584 14.69150
+## t6q -10.7831533 2.029477  6.586762  8.797824 17.50866
+## t7q   0.9487190 7.244206  9.623687 14.367122 25.85331
+## t8q  -7.3113309 4.974897  7.888110 11.282060 27.24911</code></pre>
+</div>
+<div id="q-5.3-part-d" class="section level4 hasAnchor" number="5.2.0.4">
+<h4><span class="header-section-number">5.2.0.4</span> Q 5.3 part d<a href="hierarchical-models.html#q-5.3-part-d" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>5.3 d
+setting <span class="math inline">\(\tau =0\)</span> creates <span class="math inline">\(\theta_j | \mu, \tau, y \sim N(\infty, 0)\)</span> because of the equation for <span class="math inline">\(\hat{\theta_j} = \infty/\infty\)</span> and <span class="math inline">\(V_j = 1/\infty =0\)</span>. the inferences for posterior for <span class="math inline">\(\mu | \tau, y\)</span> and <span class="math inline">\(\tau | y\)</span> are not degenerate. but for the parameters for <span class="math inline">\(\theta\)</span> these are degenerate. Setting <span class="math inline">\(\tau =0\)</span> means that the variance parameter goes to 0, which reduces all points to a point mass, and sets them equal (0 variability).</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="asymptotics-and-connections-to-non-bayesian-approaches.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="sharing-your-book.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/05-Hierarchical-models.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

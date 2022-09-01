@@ -117,7 +117,7 @@
 
 \title{Bayesian Data Analysis}
 \author{Anthony R. Colombo, Dr.~Paul Marjoram}
-\date{2022-08-18}
+\date{2022-09-01}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -715,7 +715,7 @@ Then the probability that at least 1 election is tied, from 435 total elections 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 4.271218
+## [1] -2.781885
 \end{verbatim}
 
 \begin{Shaded}
@@ -725,7 +725,7 @@ Then the probability that at least 1 election is tied, from 435 total elections 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 34
+## [1] 45
 \end{verbatim}
 
 \begin{Shaded}
@@ -1267,7 +1267,7 @@ We find the probability distribution of a given success and the prior probabilit
 
 \begin{verbatim}
 ##       5%      25%      50%      75%      95% 
-## 138.7898 156.0673 166.8126 178.4918 192.5139
+## 138.3998 154.2043 166.2336 178.5477 195.1530
 \end{verbatim}
 
 \begin{Shaded}
@@ -1627,7 +1627,7 @@ Suppose there are N cable cars numbered sequentially 1 to N. You see a car at ra
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 279.104
+## [1] 278.1989
 \end{verbatim}
 
 \begin{Shaded}
@@ -1637,7 +1637,7 @@ Suppose there are N cable cars numbered sequentially 1 to N. You see a car at ra
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 81.27964
+## [1] 80.04754
 \end{verbatim}
 
 \begin{itemize}
@@ -1750,7 +1750,7 @@ for the likelihood \(L(\theta | y) = \prod_{i=1}^n f(y_i|\theta)\) requires the 
 
 \begin{verbatim}
 ##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
-## -283.6159   -0.5427    0.4729    0.9248    1.5253  527.5653
+## -670.5782   -0.5415    0.5497    0.9636    1.6473  718.4207
 \end{verbatim}
 
 \begin{Shaded}
@@ -1773,7 +1773,7 @@ for the likelihood \(L(\theta | y) = \prod_{i=1}^n f(y_i|\theta)\) requires the 
 \end{Shaded}
 
 \begin{verbatim}
-## max pred. prob 0.521
+## max pred. prob 0.525
 \end{verbatim}
 
 \hypertarget{question-12}{%
@@ -1973,7 +1973,7 @@ The true observed value for 1986 is 22 fatal accidents.
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##    4.00   20.00   23.50   23.76   27.00   45.00
+##    8.00   20.00   24.00   23.87   27.00   48.00
 \end{verbatim}
 
 \begin{Shaded}
@@ -1998,7 +1998,7 @@ The true observed value for 1986 is 22 fatal accidents.
 
 \begin{verbatim}
 ##  2.5% 97.5% 
-##    14    34
+##    15    35
 \end{verbatim}
 
 From the gamma posterior \(E(\theta | y) = 238.5/10.02=24.25\) and the variance \(V(\theta|y)= 238.5/10.02^2=2.87\). From the Poisson likelihood \(E(x|\theta)=\theta\) and \(V(x|\theta)=\theta\). \(V(x|y)= E(V(x|\theta,y) | y) + V(E(x|\theta,y)|y)= E(\theta| y)+ V(\theta|y) = 23.382+2.87= 26.252\)
@@ -2035,7 +2035,7 @@ The average predictive value from 1986 is 24.3 which is close to the true value 
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   4.581  20.792  24.273  24.267  27.705  50.993
+##   2.484  20.820  24.235  24.241  27.694  46.730
 \end{verbatim}
 
 \begin{Shaded}
@@ -2060,7 +2060,7 @@ The average predictive value from 1986 is 24.3 which is close to the true value 
 
 \begin{verbatim}
 ##     2.5%    97.5% 
-## 14.22551 34.30925
+## 14.18024 34.30159
 \end{verbatim}
 
 \begin{Shaded}
@@ -2070,7 +2070,7 @@ The average predictive value from 1986 is 24.3 which is close to the true value 
 \end{Shaded}
 
 \begin{verbatim}
-## average predictive value from posterior:23.759
+## average predictive value from posterior:23.8698
 \end{verbatim}
 
 \begin{itemize}
@@ -2233,7 +2233,7 @@ We can also use the normal approximation, but the equations for the mean and var
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 22 46
+## [1] 21 46
 \end{verbatim}
 
 \begin{Shaded}
@@ -2374,8 +2374,8 @@ which is not the expected prediction of 546 passenger deaths. This is likely bec
 \end{Shaded}
 
 \begin{verbatim}
-##  2.5% 97.5% 
-##   641   744
+##   2.5%  97.5% 
+## 637.95 745.00
 \end{verbatim}
 
 \begin{Shaded}
@@ -2393,7 +2393,7 @@ which is not the expected prediction of 546 passenger deaths. This is likely bec
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   607.0   670.0   690.0   690.2   709.0   785.0
+##   604.0   671.0   690.0   690.6   709.0   782.0
 \end{verbatim}
 
 \begin{Shaded}
@@ -2420,7 +2420,7 @@ which is not the expected prediction of 546 passenger deaths. This is likely bec
 
 \begin{verbatim}
 ##    2.5%   97.5% 
-## 637.000 746.025
+## 639.000 745.025
 \end{verbatim}
 
 \begin{itemize}
@@ -2509,7 +2509,7 @@ Note we used Jeffreys' prior here, but an empirical prior is okay
 \end{Shaded}
 
 \begin{verbatim}
-## [1]  909 1035
+## [1]  902 1037
 \end{verbatim}
 
 \hypertarget{question-21}{%
@@ -2994,7 +2994,7 @@ There was a 0.355 probability of a shift toward Bush after both debates.
 \begin{verbatim}
 ## 
 ## FALSE  TRUE 
-##   630   370
+##   641   359
 \end{verbatim}
 
 \begin{Shaded}
@@ -3082,7 +3082,7 @@ we are given two independent normal random variables with unknown variances and 
 
 \begin{verbatim}
 ##      2.5%     97.5% 
-## 0.9266772 1.0926127
+## 0.9324065 1.0975105
 \end{verbatim}
 
 \begin{Shaded}
@@ -3093,7 +3093,7 @@ we are given two independent normal random variables with unknown variances and 
 
 \begin{verbatim}
 ##     2.5%    97.5% 
-## 1.092165 1.250021
+## 1.092578 1.250800
 \end{verbatim}
 
 \begin{itemize}
@@ -3124,8 +3124,8 @@ The posterior interval (central) of the differences between 2 independent t-dist
 \end{Shaded}
 
 \begin{verbatim}
-##      2.5%     97.5% 
-## 0.0412310 0.2772378
+##       2.5%      97.5% 
+## 0.04929078 0.28347800
 \end{verbatim}
 
 \begin{Shaded}
@@ -3146,7 +3146,7 @@ The posterior interval (central) of the differences between 2 independent t-dist
 
 \begin{verbatim}
 ##       2.5%      97.5% 
-## 0.04022955 0.26242812
+## 0.03981079 0.27082799
 \end{verbatim}
 
 \begin{Shaded}
@@ -3229,7 +3229,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.2125  0.4412  0.5304  0.5472  0.6424  1.1843
+##  0.2200  0.4435  0.5295  0.5484  0.6429  1.1370
 \end{verbatim}
 
 \begin{Shaded}
@@ -3275,7 +3275,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.2271  0.4506  0.5509  0.5674  0.6657  1.1602
+##  0.2096  0.4648  0.5561  0.5739  0.6627  1.3870
 \end{verbatim}
 
 \hypertarget{question-4-dirichlet}{%
@@ -3346,7 +3346,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.2480  0.4614  0.5535  0.5775  0.6632  1.1821
+##  0.2176  0.4582  0.5586  0.5792  0.6732  1.1931
 \end{verbatim}
 
 \begin{Shaded}
@@ -3384,7 +3384,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.1590  0.4614  0.5572  0.5699  0.6525  1.4702
+##  0.1977  0.4579  0.5499  0.5686  0.6551  1.3035
 \end{verbatim}
 
 \begin{Shaded}
@@ -3411,7 +3411,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.3644  0.5112  0.5652  0.5745  0.6316  0.9265
+##  0.3436  0.5094  0.5673  0.5746  0.6370  0.9976
 \end{verbatim}
 
 \hypertarget{question-5}{%
@@ -3452,7 +3452,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   6.791   9.446  10.345  10.404  11.273  16.366
+##   6.966   9.369  10.288  10.370  11.289  15.032
 \end{verbatim}
 
 \begin{Shaded}
@@ -3462,7 +3462,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 10.40362
+## [1] 10.37015
 \end{verbatim}
 
 \begin{Shaded}
@@ -3472,7 +3472,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 1.874445
+## [1] 1.976001
 \end{verbatim}
 
 \begin{Shaded}
@@ -3534,7 +3534,7 @@ The difference in means is approximately 0, with a variance (residual) of 2.7.
 \end{Shaded}
 
 \begin{verbatim}
-## [1] -0.03633724
+## [1] 0.03183058
 \end{verbatim}
 
 \begin{Shaded}
@@ -3544,7 +3544,7 @@ The difference in means is approximately 0, with a variance (residual) of 2.7.
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 2.440588
+## [1] 2.513469
 \end{verbatim}
 
 \begin{Shaded}
@@ -3604,7 +3604,7 @@ For this we sample from the normal posterior distribution, conditioned on the ro
 \end{Shaded}
 
 \begin{verbatim}
-## mean error:0.148476977795389
+## mean error:0.124189268711817
 \end{verbatim}
 
 \begin{Shaded}
@@ -4587,7 +4587,7 @@ Using a uniform prior, we compute the Bayesian posterior for \(\theta=-\alpha/\b
 \end{Shaded}
 
 \begin{verbatim}
-## posterior mean for A :1.313 B 11.639
+## posterior mean for A :1.287 B 11.497
 \end{verbatim}
 
 \begin{Shaded}
@@ -4598,7 +4598,7 @@ Using a uniform prior, we compute the Bayesian posterior for \(\theta=-\alpha/\b
 
 \begin{verbatim}
 ##       2.5%      97.5% 
-## -0.2714286  0.1132075
+## -0.2758621  0.1020760
 \end{verbatim}
 
 \begin{Shaded}
@@ -4608,7 +4608,7 @@ Using a uniform prior, we compute the Bayesian posterior for \(\theta=-\alpha/\b
 \end{Shaded}
 
 \begin{verbatim}
-## posterio std.dev -a/b: 0.094
+## posterio std.dev -a/b: 0.093
 \end{verbatim}
 
 \hypertarget{q3-delta-method-approximation}{%
@@ -4666,7 +4666,7 @@ Using the derivation of the delta method shown above, we input the posterior mea
 \end{Shaded}
 
 \begin{verbatim}
-## normal approx posterior mean -0.102 std. dev 0.108
+## normal approx posterior mean -0.108 std. dev 0.114
 \end{verbatim}
 
 \hypertarget{question-4.2-using-the-posterior-sampling-via-grid-approach}{%
@@ -4744,7 +4744,7 @@ The posterior mean is -0.1055, with marginal posterior standard deviation of 0.0
 \end{Shaded}
 
 \begin{verbatim}
-## sample posterior mean: -0.104859
+## sample posterior mean: -0.102665
 \end{verbatim}
 
 \begin{Shaded}
@@ -4800,7 +4800,7 @@ Using a numerical approximation of \(p(\theta|y)\) from the grid approach had \(
 \end{Shaded}
 
 \begin{verbatim}
-## taylor approximation of std.dev: 0.064
+## taylor approximation of std.dev: 0.063
 \end{verbatim}
 
 If we would not able to solve for the theoretical value from the \emph{delta-method} in closed form we can use the standard deviation from marginal posterior sampled from the grid approach.
@@ -4852,7 +4852,7 @@ Using a simulation, we simply take the ratio of 2 random normal variables from t
 \end{Shaded}
 
 \begin{verbatim}
-## simulated mean/std.dev: 0.795 0.642
+## simulated mean/std.dev: 0.827 0.718
 \end{verbatim}
 
 \begin{Shaded}
@@ -4862,7 +4862,7 @@ Using a simulation, we simply take the ratio of 2 random normal variables from t
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.411724
+## [1] 0.5150234
 \end{verbatim}
 
 \begin{Shaded}
@@ -5033,38 +5033,767 @@ V(Y/X)&=(\frac{-Y}{X^2},\frac{1}{X})\begin{bmatrix} 1 & 0\\
 ## MSE by MLE: 0.6861 MSE by Bayesian:0.0136
 \end{verbatim}
 
-\hypertarget{blocks}{%
-\chapter{Blocks}\label{blocks}}
+\hypertarget{hierarchical-models}{%
+\chapter{Hierarchical Models}\label{hierarchical-models}}
 
-\hypertarget{equations}{%
-\section{Equations}\label{equations}}
+Many problems involve multiple parameters that are related somehow by the structure of the problem. Each \(\theta_j\) are viewed as a sample from a common \emph{population distribution}, that is governed by \emph{hyperparameters}.
 
-Here is an equation.
+Non-hierarchical models have inferior performance for prediction because they overfit the training data that only fit the current data well, this is because the uncertainty of the prior parameters are not included within the model. Hierarchical models avoid this problem because the model is structured around the dependence within the parameters.
 
-\begin{equation} 
-  f\left(k\right) = \binom{n}{k} p^k\left(1-p\right)^{n-k}
-  \label{eq:binom}
+\hypertarget{constructing-a-parameterized-prior-distribution}{%
+\section{Constructing a parameterized prior distribution}\label{constructing-a-parameterized-prior-distribution}}
+
+The example from 70 lab rat can use a fixed prior distribution under the binomial likelihood, and a beta prior. One can choose fixed estimates for the prior parameters \(\alpha,\beta\), or can use the moments to estimate the prior parameters. This is \emph{not} a Bayesian model, and is considered an empirical Bayesian model. Given 70 historical experiments, the sample mean and sample variance are used to solve for the beta mean/variance \(\alpha/\beta\) and \(\alpha/\beta^2\). Note that this is not a fully Bayesian approach.
+
+\hypertarget{logic-of-combining-information}{%
+\subsection*{Logic of combining information}\label{logic-of-combining-information}}
+\addcontentsline{toc}{subsection}{Logic of combining information}
+
+Given 70 historical values, we combine all the parameters \(\theta_j\), for \(j=1,...,71\) with the addition of a \emph{newly} performed experiment. Combining these into a data set makes sense because there are some dependency of the parameters which is reflected into a full joint prior probability model.
+
+\hypertarget{exchangeability-and-hierarchical-models}{%
+\section{Exchangeability and hierarchical models}\label{exchangeability-and-hierarchical-models}}
+
+Consider a set of experiments j=1,\ldots,J in which j has the data \(y_j\) and parameter \(\theta_j\) with likelihood \(p(y_j|\theta_j)\). Let \(\theta_j \sim N(\mu_j,\sigma^2)\) come from a superpopulation with common fixed variance.
+
+\hypertarget{exchangeability-1}{%
+\subsection*{Exchangeability}\label{exchangeability-1}}
+\addcontentsline{toc}{subsection}{Exchangeability}
+
+If no information, other than the data \(y_j\) is availble to distinguish any of the \(\theta_j\) from any others, and no ordering or grouping of parameters can be made, then by symmetry among the parameters called \emph{exchangeability}.
+The joint distribution \(p(\theta_1,...,\theta_J)\) is invariant to permutations of the indices (1,\ldots,J). Generally, the less we know about a problem the more we can rely on the exchangeability assumption.
+
+The form of exchangeabile distribution each parameter \(\theta_j\) as an independent sample from a prior population distribution governed by some unknown \(\phi\) is written as
+
+\begin{equation}
+p(\theta|\phi) = \prod_j p(\theta_j| \phi)
 \end{equation}
 
-You may refer to using \texttt{\textbackslash{}@ref(eq:binom)}, like see Equation \eqref{eq:binom}.
+in general \(\phi\) is unknown so we average over the uncertainty of \(\phi\)
 
-\hypertarget{theorems-and-proofs}{%
-\section{Theorems and proofs}\label{theorems-and-proofs}}
+\begin{equation}
+p(\theta) = \int \prod_j p(\theta_j| \phi)* p(\phi)d\phi
+\end{equation}
 
-Labeled theorems can be referenced in text using \texttt{\textbackslash{}@ref(thm:tri)}, for example, check out this smart theorem \ref{thm:tri}.
+This form is the mixture of independent identical distributions.
 
-\begin{theorem}
-\protect\hypertarget{thm:tri}{}\label{thm:tri}For a right triangle, if \(c\) denotes the \emph{length} of the hypotenuse
-and \(a\) and \(b\) denote the lengths of the \textbf{other} two sides, we have
-\[a^2 + b^2 = c^2\]
-\end{theorem}
+A related result \emph{de Finetti's theorem} states that as the limit of \(J\to \infty\) any suitably exchangeable distribution on (\(\theta_1,...,\theta_J)\) can be expressed as a mixture of identical and independent distributions. This theorem connects exchangeability to IID assumptions routinely practiced.
 
-Read more here \url{https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html}.
+\hypertarget{exercises-4}{%
+\section*{Exercises}\label{exercises-4}}
+\addcontentsline{toc}{section}{Exercises}
 
-\hypertarget{callout-blocks}{%
-\section{Callout blocks}\label{callout-blocks}}
+\hypertarget{q1}{%
+\subsection*{Q1}\label{q1}}
+\addcontentsline{toc}{subsection}{Q1}
 
-The R Markdown Cookbook provides more help on how to use custom blocks to design your own callouts: \url{https://bookdown.org/yihui/rmarkdown-cookbook/custom-blocks.html}
+A box has 1 black and 1 white ball
+- a i) pick 1 ball, y1, return it, and draw another y2. This is exchangeable, because other than y1, we have no information about what the draw y2 could be.\\
+- a ii) we have independence by replacement
+- a iii) since the draws are identical, then y1 and y2 are both independent draws and the pair of draws can be independent.
+
+-b i) drawing without replacement, y1 is not exchangeable because given y1 color, we know what y2 color is.
+-b ii) not independent
+-b iii) as a pair independent (RB) independent of a second pair (BR) with order then the order RB is independent of BR if order matters.
+
+-c i) if there were a million balls, then due to large numbers this is an exchangeable and independent process.
+
+\hypertarget{q2}{%
+\subsection*{Q2}\label{q2}}
+\addcontentsline{toc}{subsection}{Q2}
+
+For unknown model parameters (a) we have total of n black and white balls, then this is an exchangeable and independent process. (b) due to ignorance we have exchangeability, but we do not have independence since this is without replacement. (c) if we know how many colors balls there are then this is not an exchangeable process and not independent process for finite n.~For large n, then we can assume independence and exchangeability.
+
+\hypertarget{q3}{%
+\subsection*{Q3}\label{q3}}
+\addcontentsline{toc}{subsection}{Q3}
+
+all 8 parameters are estimated from sampling from the posterior \(p(\tau | y)\), for ease of data wrangling, we obtain the quantiles for each theta separately. but in each posterior estimation, all points are simulataneously estimated.
+
+This reproduces Table 5.3 from the text.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{school}\OtherTok{\textless{}{-}}\FunctionTok{data.frame}\NormalTok{(}\AttributeTok{school=}\NormalTok{LETTERS[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{8}\NormalTok{],}
+                   \AttributeTok{yj =}\FunctionTok{c}\NormalTok{(}\DecValTok{28}\NormalTok{,}\DecValTok{8}\NormalTok{,}\SpecialCharTok{{-}}\DecValTok{3}\NormalTok{,}\DecValTok{7}\NormalTok{,}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{18}\NormalTok{,}\DecValTok{12}\NormalTok{),}
+                   \AttributeTok{sigmaj =} \FunctionTok{c}\NormalTok{(}\DecValTok{15}\NormalTok{,}\DecValTok{10}\NormalTok{,}\DecValTok{16}\NormalTok{,}\DecValTok{11}\NormalTok{,}\DecValTok{9}\NormalTok{,}\DecValTok{11}\NormalTok{,}\DecValTok{10}\NormalTok{,}\DecValTok{18}\NormalTok{))}
+\NormalTok{school}\SpecialCharTok{$}\NormalTok{sigma2j}\OtherTok{\textless{}{-}}\NormalTok{school}\SpecialCharTok{$}\NormalTok{sigmaj}\SpecialCharTok{\^{}}\DecValTok{2}
+
+ \DocumentationTok{\#\# reproducing section 5.5 on pooling}
+
+\DocumentationTok{\#\# pooled}
+\NormalTok{ ybar\_pool}\OtherTok{\textless{}{-}}\FunctionTok{sum}\NormalTok{(school}\SpecialCharTok{$}\NormalTok{yj}\SpecialCharTok{/}\NormalTok{school}\SpecialCharTok{$}\NormalTok{sigmaj}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(}\DecValTok{1}\SpecialCharTok{/}\NormalTok{school}\SpecialCharTok{$}\NormalTok{sigmaj}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{) }
+\NormalTok{ pool\_var}\OtherTok{\textless{}{-}}\DecValTok{1}\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(}\DecValTok{1}\SpecialCharTok{/}\NormalTok{school}\SpecialCharTok{$}\NormalTok{sigmaj}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}
+\NormalTok{  ybar\_pool}\SpecialCharTok{+}\DecValTok{2}\SpecialCharTok{*}\FunctionTok{sqrt}\NormalTok{(pool\_var) }\CommentTok{\# 15.82946}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 15.82946
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{  ybar\_pool}\DecValTok{{-}2}\SpecialCharTok{*}\FunctionTok{sqrt}\NormalTok{(pool\_var) }\DocumentationTok{\#\# {-}0.5}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -0.4582216
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+ \DocumentationTok{\#\# classical test}
+   \FunctionTok{sum}\NormalTok{( (school}\SpecialCharTok{$}\NormalTok{yj}\SpecialCharTok{{-}}\FunctionTok{mean}\NormalTok{(school}\SpecialCharTok{$}\NormalTok{yj))}\SpecialCharTok{\^{}}\DecValTok{2}\SpecialCharTok{/}\NormalTok{school}\SpecialCharTok{$}\NormalTok{sigmaj}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)  }\DocumentationTok{\#\# 4.7 which is less than the X2 d.f (8) so MSB{-} MSW is negative.  pooling is not appropriate.}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4.775407
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+   \DocumentationTok{\#\# checking to see if 28 is from the pooled population }
+   
+\NormalTok{   simschool }\OtherTok{\textless{}{-}}\FunctionTok{rnorm}\NormalTok{(}\DecValTok{1000}\NormalTok{, }\AttributeTok{mean=}\NormalTok{ ybar\_pool, }\AttributeTok{sd=}\FunctionTok{sqrt}\NormalTok{(pool\_var))   }
+   \FunctionTok{hist}\NormalTok{(simschool,}\AttributeTok{xlim=}\FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{8}\NormalTok{,}\DecValTok{30}\NormalTok{))}
+   \FunctionTok{abline}\NormalTok{(}\AttributeTok{v=}\FunctionTok{max}\NormalTok{(school}\SpecialCharTok{$}\NormalTok{yj ))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-65-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+   \DocumentationTok{\#\#\# the maximum observation  School A = 28 points  is not with the population, so pooling does not correct}
+   \DocumentationTok{\#\#\#}
+   
+   \DocumentationTok{\#\# posterior simulation under a normal model}
+   \DocumentationTok{\#\# yij | thetaj \textasciitilde{} N(thetaj, sigma\^{}2)}
+   \DocumentationTok{\#\#  likelihood using sufficient statistics  }
+    \DocumentationTok{\#\# ybarj | thetaj \textasciitilde{} N(thetaj, sigmaj\^{}2)}
+   
+   \DocumentationTok{\#\#\# prior on tau can follow a uniform distribution}
+   \DocumentationTok{\#\# using a grid approach for tau}
+\NormalTok{      tau0}\OtherTok{=} \FunctionTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{40}\NormalTok{,}\AttributeTok{by=}\FloatTok{0.01}\NormalTok{)}
+\NormalTok{      stepsize}\OtherTok{=}\FloatTok{0.01}
+  \CommentTok{\# 5.20 total precision  }
+\NormalTok{  vmu.inverse}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(tau2,sigma2j)\{}
+    \FunctionTok{sum}\NormalTok{(}\DecValTok{1}\SpecialCharTok{/}\NormalTok{(sigma2j}\SpecialCharTok{+}\NormalTok{tau2))}
+\NormalTok{  \}      }
+\NormalTok{  vmu}\OtherTok{\textless{}{-}}\FunctionTok{sapply}\NormalTok{(tau0}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{,}\ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{vmu.inverse}\NormalTok{(x,school}\SpecialCharTok{$}\NormalTok{sigmaj}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{))}
+  
+  \CommentTok{\# total mean effect}
+\NormalTok{  muhat}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(ybarj, sigma2j,tau2)\{}
+\NormalTok{    numer}\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(ybarj}\SpecialCharTok{/}\NormalTok{(sigma2j}\SpecialCharTok{+}\NormalTok{tau2))}
+\NormalTok{    denom}\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{( }\DecValTok{1}\SpecialCharTok{/}\NormalTok{(sigma2j}\SpecialCharTok{+}\NormalTok{tau2))}
+\NormalTok{    hat}\OtherTok{\textless{}{-}}\NormalTok{ numer}\SpecialCharTok{/}\NormalTok{denom}
+    \FunctionTok{return}\NormalTok{(hat)}
+\NormalTok{  \}}
+    \DocumentationTok{\#\# marginal posterior distribution p(tau| y)  5.21}
+\NormalTok{  marginal.posterior.tau}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(tau,sigma2j,ybarj)\{}
+\NormalTok{    tau2}\OtherTok{\textless{}{-}}\NormalTok{tau}\SpecialCharTok{\^{}}\DecValTok{2}
+\NormalTok{    prob.tau}\OtherTok{\textless{}{-}}\FunctionTok{dunif}\NormalTok{(tau,}\AttributeTok{min=}\DecValTok{0}\NormalTok{,}\AttributeTok{max=}\DecValTok{40}\NormalTok{) }\DocumentationTok{\#\# assuming unif prior}
+\NormalTok{    vmu.inv}\OtherTok{\textless{}{-}}\FunctionTok{vmu.inverse}\NormalTok{(tau2,sigma2j)}
+\NormalTok{    vmu}\OtherTok{\textless{}{-}}\FunctionTok{sqrt}\NormalTok{(}\DecValTok{1}\SpecialCharTok{/}\NormalTok{vmu.inv)}
+\NormalTok{    total.precision}\OtherTok{\textless{}{-}}\DecValTok{1}\SpecialCharTok{/}\NormalTok{(sigma2j}\SpecialCharTok{+}\NormalTok{tau2)}
+\NormalTok{    group.precision.term}\OtherTok{\textless{}{-}} \FunctionTok{sqrt}\NormalTok{(total.precision)}
+\NormalTok{    group.mu}\OtherTok{\textless{}{-}}\FunctionTok{muhat}\NormalTok{(ybarj,sigma2j,tau2)}
+\NormalTok{    exp.term}\OtherTok{\textless{}{-}} \FunctionTok{exp}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{1}\SpecialCharTok{*}\NormalTok{(ybarj }\SpecialCharTok{{-}}\NormalTok{group.mu )}\SpecialCharTok{\^{}}\DecValTok{2}\SpecialCharTok{/}\NormalTok{(}\DecValTok{2}\SpecialCharTok{*}\NormalTok{(sigma2j}\SpecialCharTok{+}\NormalTok{tau2)))}
+
+\NormalTok{    group.prod}\OtherTok{\textless{}{-}}\FunctionTok{prod}\NormalTok{( group.precision.term}\SpecialCharTok{*}\NormalTok{exp.term)}
+    
+\NormalTok{    final}\OtherTok{\textless{}{-}}\NormalTok{ prob.tau}\SpecialCharTok{*}\NormalTok{vmu}\SpecialCharTok{*}\NormalTok{group.prod}
+    \FunctionTok{return}\NormalTok{(final)}
+\NormalTok{  \}  }
+\NormalTok{  tt}\OtherTok{\textless{}{-}}\FunctionTok{data.frame}\NormalTok{(tau0,}\AttributeTok{pt=}\FunctionTok{sapply}\NormalTok{(tau0,}\ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{marginal.posterior.tau}\NormalTok{(x,school}\SpecialCharTok{$}\NormalTok{sigma2j,school}\SpecialCharTok{$}\NormalTok{yj)))}
+\NormalTok{  tt}\SpecialCharTok{$}\NormalTok{scaled.prob}\OtherTok{\textless{}{-}}\NormalTok{tt}\SpecialCharTok{$}\NormalTok{pt}\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(tt}\SpecialCharTok{$}\NormalTok{pt)}
+  \FunctionTok{plot}\NormalTok{(tt}\SpecialCharTok{$}\NormalTok{tau0,tt}\SpecialCharTok{$}\NormalTok{scaled.prob, }\AttributeTok{main=}\StringTok{\textquotesingle{}marginal poster p(tau|y) Figure 5.5\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-65-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+   \DocumentationTok{\#\# prior on tau can follow a scaled inverse{-}X2(n{-}1,s\^{}2) distribution}
+ \DocumentationTok{\#\# alternatively we can use scaled inverse}
+  
+  \DocumentationTok{\#\# now that we have the distribution of tau,  sample from it}
+   
+   \DocumentationTok{\#\# marginal posterior 5.19}
+\NormalTok{  muhat\_given\_tau.y}\OtherTok{\textless{}{-}}\FunctionTok{sapply}\NormalTok{(tau0,}\ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{muhat}\NormalTok{(school}\SpecialCharTok{$}\NormalTok{yj,school}\SpecialCharTok{$}\NormalTok{sigma2j,x}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{))}
+\NormalTok{    vmu\_given\_tau.y}\OtherTok{\textless{}{-}}\DecValTok{1}\SpecialCharTok{/}\NormalTok{(}\FunctionTok{sapply}\NormalTok{(tau0}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{,}\ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{vmu.inverse}\NormalTok{(x,school}\SpecialCharTok{$}\NormalTok{sigmaj}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)))}
+
+    
+     \DocumentationTok{\#\#\# FIX ME:  sample mu}
+  \CommentTok{\# equation 5.20}
+\NormalTok{   marginal.post.mu\_given\_tau.y}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(yj,sigma2j,tau2)\{}
+\NormalTok{     muhat}\OtherTok{\textless{}{-}}\FunctionTok{muhat}\NormalTok{(yj,sigma2j,tau2)}
+     \DocumentationTok{\#\# precision term}
+\NormalTok{     vmu}\OtherTok{\textless{}{-}}\FunctionTok{vmu.inverse}\NormalTok{(tau2,sigma2j)}
+\NormalTok{    mu}\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{,}\AttributeTok{mean=}\NormalTok{muhat,}\AttributeTok{sd=}\FunctionTok{sqrt}\NormalTok{(}\DecValTok{1}\SpecialCharTok{/}\NormalTok{vmu)) }\DocumentationTok{\#\# how many points per posterior tau}
+    \DocumentationTok{\#\# we take the posterior mean given 1 value of tau}
+\NormalTok{    prob.mu}\OtherTok{\textless{}{-}}\FunctionTok{dnorm}\NormalTok{(}\FunctionTok{mean}\NormalTok{(mu),}\AttributeTok{mean=}\NormalTok{muhat,}\AttributeTok{sd=}\FunctionTok{sqrt}\NormalTok{(}\DecValTok{1}\SpecialCharTok{/}\NormalTok{vmu))}
+    \FunctionTok{return}\NormalTok{( }\FunctionTok{data.frame}\NormalTok{(}\AttributeTok{mu=}\FunctionTok{mean}\NormalTok{(mu),}\AttributeTok{prob.mu=}\NormalTok{prob.mu))}
+\NormalTok{   \}}
+   
+   \DocumentationTok{\#\# given mu, sample theta j      }
+   \DocumentationTok{\#\# conditional posterior for each theta j }
+   \DocumentationTok{\#\# eq 5.17}
+\NormalTok{  conditional.posterior.thetaj}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(yj,sigma2j,tau2,mu)\{}
+\NormalTok{     thetajhat}\OtherTok{\textless{}{-}}\NormalTok{(yj}\SpecialCharTok{/}\NormalTok{sigma2j }\SpecialCharTok{+}\NormalTok{ mu}\SpecialCharTok{/}\NormalTok{tau2)}\SpecialCharTok{/}\NormalTok{(}\DecValTok{1}\SpecialCharTok{/}\NormalTok{sigma2j}\SpecialCharTok{+}\DecValTok{1}\SpecialCharTok{/}\NormalTok{tau2)}
+\NormalTok{     vj}\OtherTok{\textless{}{-}}\DecValTok{1}\SpecialCharTok{/}\NormalTok{((}\DecValTok{1}\SpecialCharTok{/}\NormalTok{sigma2j)}\SpecialCharTok{+}\NormalTok{(}\DecValTok{1}\SpecialCharTok{/}\NormalTok{tau2))}
+\NormalTok{     nj}\OtherTok{\textless{}{-}}\FunctionTok{length}\NormalTok{(thetajhat)}
+\NormalTok{    thetaj}\OtherTok{\textless{}{-}} \FunctionTok{sapply}\NormalTok{(}\FunctionTok{seq}\NormalTok{(}\DecValTok{1}\NormalTok{,nj),}\ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{rnorm}\NormalTok{(}\DecValTok{1}\NormalTok{, thetajhat[x], }\AttributeTok{sd=}\FunctionTok{sqrt}\NormalTok{(vj)[x]))}
+\NormalTok{    prob.thetaj}\OtherTok{\textless{}{-}}\FunctionTok{numeric}\NormalTok{(nj)}
+    
+\NormalTok{    prob.thetaj}\OtherTok{\textless{}{-}} \FunctionTok{sapply}\NormalTok{(}\FunctionTok{seq}\NormalTok{(}\DecValTok{1}\NormalTok{,nj),}\ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{dnorm}\NormalTok{(thetaj[x], }\AttributeTok{mean=}\NormalTok{thetajhat[x], }\AttributeTok{sd=}\FunctionTok{sqrt}\NormalTok{(vj)[x]))}
+
+  
+    \FunctionTok{return}\NormalTok{( }\FunctionTok{data.frame}\NormalTok{(}\AttributeTok{thetaj=}\NormalTok{(thetaj),}\AttributeTok{prob.thetaj=}\NormalTok{prob.thetaj))}
+\NormalTok{   \}}
+    
+\NormalTok{  posterior}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(tau,sigma2j,yj)\{}
+\NormalTok{    tau2}\OtherTok{\textless{}{-}}\NormalTok{tau}\SpecialCharTok{\^{}}\DecValTok{2}
+\NormalTok{    post.tau}\OtherTok{\textless{}{-}}\FunctionTok{marginal.posterior.tau}\NormalTok{(tau,sigma2j,yj)}
+\NormalTok{    post.mu}\OtherTok{\textless{}{-}}\FunctionTok{marginal.post.mu\_given\_tau.y}\NormalTok{(yj,sigma2j,tau2)}
+\NormalTok{    post.theta}\OtherTok{\textless{}{-}}\FunctionTok{conditional.posterior.thetaj}\NormalTok{(yj,sigma2j,tau2,post.mu}\SpecialCharTok{$}\NormalTok{mu)}
+    
+\NormalTok{      full.post}\OtherTok{\textless{}{-}}\FunctionTok{data.frame}\NormalTok{(}\AttributeTok{theta=}\NormalTok{post.theta}\SpecialCharTok{$}\NormalTok{thetaj,}\AttributeTok{pdf=}\NormalTok{post.tau}\SpecialCharTok{*}\NormalTok{post.mu}\SpecialCharTok{$}\NormalTok{prob.mu}\SpecialCharTok{*}\NormalTok{post.theta}\SpecialCharTok{$}\NormalTok{prob.thetaj)}
+      \FunctionTok{return}\NormalTok{(full.post)}
+\NormalTok{  \}}
+  
+  \DocumentationTok{\#\# simulate the effects of thetaj}
+  \DocumentationTok{\#\# closely reproduces table 5.3 in section 5}
+\NormalTok{  theta1}\OtherTok{\textless{}{-}} \FunctionTok{sapply}\NormalTok{(}\FunctionTok{sample}\NormalTok{(tt}\SpecialCharTok{$}\NormalTok{tau0,}\DecValTok{1000}\NormalTok{,}\AttributeTok{prob=}\NormalTok{tt}\SpecialCharTok{$}\NormalTok{scaled.prob),}
+                  \ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{posterior}\NormalTok{(x,school}\SpecialCharTok{$}\NormalTok{sigma2j,school}\SpecialCharTok{$}\NormalTok{yj)[}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{  theta1[}\FunctionTok{is.nan}\NormalTok{(theta1)]}\OtherTok{\textless{}{-}}\FunctionTok{mean}\NormalTok{(theta1[}\SpecialCharTok{!}\FunctionTok{is.nan}\NormalTok{(theta1)])}
+  
+\NormalTok{  t1q}\OtherTok{\textless{}{-}}\FunctionTok{quantile}\NormalTok{(theta1,}\FunctionTok{c}\NormalTok{(}\FloatTok{0.025}\NormalTok{,}\FloatTok{0.25}\NormalTok{,}\FloatTok{0.5}\NormalTok{,}\FloatTok{0.75}\NormalTok{,}\FloatTok{0.975}\NormalTok{),}\AttributeTok{na.rm=}\ConstantTok{TRUE}\NormalTok{)}
+  
+\NormalTok{   theta2}\OtherTok{\textless{}{-}} \FunctionTok{sapply}\NormalTok{(}\FunctionTok{sample}\NormalTok{(tt}\SpecialCharTok{$}\NormalTok{tau0,}\DecValTok{1000}\NormalTok{,}\AttributeTok{prob=}\NormalTok{tt}\SpecialCharTok{$}\NormalTok{scaled.prob),}
+                  \ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{posterior}\NormalTok{(x,school}\SpecialCharTok{$}\NormalTok{sigma2j,school}\SpecialCharTok{$}\NormalTok{yj)[}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{  theta2[}\FunctionTok{is.nan}\NormalTok{(theta2)]}\OtherTok{\textless{}{-}}\FunctionTok{mean}\NormalTok{(theta2[}\SpecialCharTok{!}\FunctionTok{is.nan}\NormalTok{(theta2)])}
+
+\NormalTok{  t2q}\OtherTok{\textless{}{-}}\FunctionTok{quantile}\NormalTok{(theta2,}\FunctionTok{c}\NormalTok{(}\FloatTok{0.025}\NormalTok{,}\FloatTok{0.25}\NormalTok{,}\FloatTok{0.5}\NormalTok{,}\FloatTok{0.75}\NormalTok{,}\FloatTok{0.975}\NormalTok{),}\AttributeTok{na.rm=}\ConstantTok{TRUE}\NormalTok{)}
+  
+\NormalTok{   theta3}\OtherTok{\textless{}{-}} \FunctionTok{sapply}\NormalTok{(}\FunctionTok{sample}\NormalTok{(tt}\SpecialCharTok{$}\NormalTok{tau0,}\DecValTok{1000}\NormalTok{,}\AttributeTok{prob=}\NormalTok{tt}\SpecialCharTok{$}\NormalTok{scaled.prob),}
+                  \ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{posterior}\NormalTok{(x,school}\SpecialCharTok{$}\NormalTok{sigma2j,school}\SpecialCharTok{$}\NormalTok{yj)[}\DecValTok{3}\NormalTok{,}\DecValTok{1}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{      theta3[}\FunctionTok{is.nan}\NormalTok{(theta3)]}\OtherTok{\textless{}{-}}\FunctionTok{mean}\NormalTok{(theta3[}\SpecialCharTok{!}\FunctionTok{is.nan}\NormalTok{(theta3)])}
+
+
+\NormalTok{  t3q}\OtherTok{\textless{}{-}}\FunctionTok{quantile}\NormalTok{(theta3,}\FunctionTok{c}\NormalTok{(}\FloatTok{0.025}\NormalTok{,}\FloatTok{0.25}\NormalTok{,}\FloatTok{0.5}\NormalTok{,}\FloatTok{0.75}\NormalTok{,}\FloatTok{0.975}\NormalTok{),}\AttributeTok{na.rm=}\ConstantTok{TRUE}\NormalTok{)}
+  
+\NormalTok{   theta4}\OtherTok{\textless{}{-}} \FunctionTok{sapply}\NormalTok{(}\FunctionTok{sample}\NormalTok{(tt}\SpecialCharTok{$}\NormalTok{tau0,}\DecValTok{1000}\NormalTok{,}\AttributeTok{prob=}\NormalTok{tt}\SpecialCharTok{$}\NormalTok{scaled.prob),}
+                  \ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{posterior}\NormalTok{(x,school}\SpecialCharTok{$}\NormalTok{sigma2j,school}\SpecialCharTok{$}\NormalTok{yj)[}\DecValTok{4}\NormalTok{,}\DecValTok{1}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{       theta4[}\FunctionTok{is.nan}\NormalTok{(theta4)]}\OtherTok{\textless{}{-}}\FunctionTok{mean}\NormalTok{(theta4[}\SpecialCharTok{!}\FunctionTok{is.nan}\NormalTok{(theta4)])}
+
+
+\NormalTok{ t4q}\OtherTok{\textless{}{-}} \FunctionTok{quantile}\NormalTok{(theta4,}\FunctionTok{c}\NormalTok{(}\FloatTok{0.025}\NormalTok{,}\FloatTok{0.25}\NormalTok{,}\FloatTok{0.5}\NormalTok{,}\FloatTok{0.75}\NormalTok{,}\FloatTok{0.975}\NormalTok{),}\AttributeTok{na.rm=}\ConstantTok{TRUE}\NormalTok{)}
+  
+\NormalTok{   theta5}\OtherTok{\textless{}{-}} \FunctionTok{sapply}\NormalTok{(}\FunctionTok{sample}\NormalTok{(tt}\SpecialCharTok{$}\NormalTok{tau0,}\DecValTok{1000}\NormalTok{,}\AttributeTok{prob=}\NormalTok{tt}\SpecialCharTok{$}\NormalTok{scaled.prob),}
+                  \ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{posterior}\NormalTok{(x,school}\SpecialCharTok{$}\NormalTok{sigma2j,school}\SpecialCharTok{$}\NormalTok{yj)[}\DecValTok{5}\NormalTok{,}\DecValTok{1}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{    theta5[}\FunctionTok{is.nan}\NormalTok{(theta5)]}\OtherTok{\textless{}{-}}\FunctionTok{mean}\NormalTok{(theta5[}\SpecialCharTok{!}\FunctionTok{is.nan}\NormalTok{(theta5)])}
+
+
+\NormalTok{ t5q}\OtherTok{\textless{}{-}} \FunctionTok{quantile}\NormalTok{(theta5,}\FunctionTok{c}\NormalTok{(}\FloatTok{0.025}\NormalTok{,}\FloatTok{0.25}\NormalTok{,}\FloatTok{0.5}\NormalTok{,}\FloatTok{0.75}\NormalTok{,}\FloatTok{0.975}\NormalTok{),}\AttributeTok{na.rm=}\ConstantTok{TRUE}\NormalTok{)}
+  
+\NormalTok{   theta6}\OtherTok{\textless{}{-}} \FunctionTok{sapply}\NormalTok{(}\FunctionTok{sample}\NormalTok{(tt}\SpecialCharTok{$}\NormalTok{tau0,}\DecValTok{1000}\NormalTok{,}\AttributeTok{prob=}\NormalTok{tt}\SpecialCharTok{$}\NormalTok{scaled.prob),}
+                  \ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{posterior}\NormalTok{(x,school}\SpecialCharTok{$}\NormalTok{sigma2j,school}\SpecialCharTok{$}\NormalTok{yj)[}\DecValTok{6}\NormalTok{,}\DecValTok{1}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{    theta6[}\FunctionTok{is.nan}\NormalTok{(theta6)]}\OtherTok{\textless{}{-}}\FunctionTok{mean}\NormalTok{(theta6[}\SpecialCharTok{!}\FunctionTok{is.nan}\NormalTok{(theta6)])}
+
+
+\NormalTok{  t6q}\OtherTok{\textless{}{-}}\FunctionTok{quantile}\NormalTok{(theta6,}\FunctionTok{c}\NormalTok{(}\FloatTok{0.025}\NormalTok{,}\FloatTok{0.25}\NormalTok{,}\FloatTok{0.5}\NormalTok{,}\FloatTok{0.75}\NormalTok{,}\FloatTok{0.975}\NormalTok{),}\AttributeTok{na.rm=}\ConstantTok{TRUE}\NormalTok{)}
+  
+\NormalTok{   theta7}\OtherTok{\textless{}{-}} \FunctionTok{sapply}\NormalTok{(}\FunctionTok{sample}\NormalTok{(tt}\SpecialCharTok{$}\NormalTok{tau0,}\DecValTok{1000}\NormalTok{,}\AttributeTok{prob=}\NormalTok{tt}\SpecialCharTok{$}\NormalTok{scaled.prob),}
+                  \ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{posterior}\NormalTok{(x,school}\SpecialCharTok{$}\NormalTok{sigma2j,school}\SpecialCharTok{$}\NormalTok{yj)[}\DecValTok{7}\NormalTok{,}\DecValTok{1}\NormalTok{])}
+\NormalTok{    theta7[}\FunctionTok{is.nan}\NormalTok{(theta7)]}\OtherTok{\textless{}{-}}\FunctionTok{mean}\NormalTok{(theta7[}\SpecialCharTok{!}\FunctionTok{is.nan}\NormalTok{(theta7)])}
+
+
+\NormalTok{  t7q}\OtherTok{\textless{}{-}}\FunctionTok{quantile}\NormalTok{(theta7,}\FunctionTok{c}\NormalTok{(}\FloatTok{0.025}\NormalTok{,}\FloatTok{0.25}\NormalTok{,}\FloatTok{0.5}\NormalTok{,}\FloatTok{0.75}\NormalTok{,}\FloatTok{0.975}\NormalTok{),}\AttributeTok{na.rm=}\ConstantTok{TRUE}\NormalTok{)}
+  
+ 
+\NormalTok{   theta8}\OtherTok{\textless{}{-}} \FunctionTok{sapply}\NormalTok{(}\FunctionTok{sample}\NormalTok{(tt}\SpecialCharTok{$}\NormalTok{tau0,}\DecValTok{1000}\NormalTok{,}\AttributeTok{prob=}\NormalTok{tt}\SpecialCharTok{$}\NormalTok{scaled.prob),}
+                  \ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{posterior}\NormalTok{(x,school}\SpecialCharTok{$}\NormalTok{sigma2j,school}\SpecialCharTok{$}\NormalTok{yj)[}\DecValTok{8}\NormalTok{,}\DecValTok{1}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+
+## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{    theta8[}\FunctionTok{is.nan}\NormalTok{(theta8)]}\OtherTok{\textless{}{-}}\FunctionTok{mean}\NormalTok{(theta8[}\SpecialCharTok{!}\FunctionTok{is.nan}\NormalTok{(theta8)])}
+
+\NormalTok{  t8q}\OtherTok{\textless{}{-}}\FunctionTok{quantile}\NormalTok{(theta8,}\FunctionTok{c}\NormalTok{(}\FloatTok{0.025}\NormalTok{,}\FloatTok{0.25}\NormalTok{,}\FloatTok{0.5}\NormalTok{,}\FloatTok{0.75}\NormalTok{,}\FloatTok{0.975}\NormalTok{),}\AttributeTok{na.rm=}\ConstantTok{TRUE}\NormalTok{)}
+
+\NormalTok{ allq}\OtherTok{\textless{}{-}}\FunctionTok{rbind}\NormalTok{(t1q,t2q,t3q,t4q,t5q,t6q,t7q,t8q)}
+ \FunctionTok{print}\NormalTok{(allq)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##            2.5%      25%       50%       75%    97.5%
+## t1q   0.4457383 7.326460 10.017273 16.091238 33.37148
+## t2q  -3.9503168 4.831116  7.726473 10.619370 20.25554
+## t3q -14.8226207 2.859082  6.858540  9.538431 18.57518
+## t4q  -7.3115433 5.009563  7.783060 10.934833 21.04213
+## t5q  -9.4629862 1.658382  6.024443  8.293584 14.69150
+## t6q -10.7831533 2.029477  6.586762  8.797824 17.50866
+## t7q   0.9487190 7.244206  9.623687 14.367122 25.85331
+## t8q  -7.3113309 4.974897  7.888110 11.282060 27.24911
+\end{verbatim}
+
+\begin{itemize}
+\item
+  i could not figure out how to take the margin across \(\mu\) for 5.6 and 5.7.
+\item
+  we found that our posterior effects had 4\(\%\) greater than the maximum observed value 28.4 whereas the text found 22/200 which is slightly larger from 200 simulations, we used 1,000.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{  abest}\OtherTok{\textless{}{-}}\FunctionTok{table}\NormalTok{(theta1}\SpecialCharTok{\textgreater{}}\NormalTok{(theta2) }\SpecialCharTok{\&}\NormalTok{ theta1}\SpecialCharTok{\textgreater{}}\NormalTok{theta3 }\SpecialCharTok{\&}\NormalTok{ theta1}\SpecialCharTok{\textgreater{}}\NormalTok{theta4 }\SpecialCharTok{\&}\NormalTok{ theta1}\SpecialCharTok{\textgreater{}}\NormalTok{theta5 }\SpecialCharTok{\&}\NormalTok{ theta1}\SpecialCharTok{\textgreater{}}\NormalTok{theta6 }\SpecialCharTok{\&}\NormalTok{ theta1}\SpecialCharTok{\textgreater{}}\NormalTok{theta7 }\SpecialCharTok{\&}\NormalTok{theta1}\SpecialCharTok{\textgreater{}}\NormalTok{theta8)}
+\NormalTok{  bbest}\OtherTok{\textless{}{-}}\FunctionTok{table}\NormalTok{(theta2}\SpecialCharTok{\textgreater{}}\NormalTok{(theta1) }\SpecialCharTok{\&}\NormalTok{ theta2}\SpecialCharTok{\textgreater{}}\NormalTok{theta3 }\SpecialCharTok{\&}\NormalTok{ theta2}\SpecialCharTok{\textgreater{}}\NormalTok{theta4 }\SpecialCharTok{\&}\NormalTok{ theta2}\SpecialCharTok{\textgreater{}}\NormalTok{theta5 }\SpecialCharTok{\&}\NormalTok{ theta2}\SpecialCharTok{\textgreater{}}\NormalTok{theta6 }\SpecialCharTok{\&}\NormalTok{ theta2}\SpecialCharTok{\textgreater{}}\NormalTok{theta7 }\SpecialCharTok{\&}\NormalTok{theta2}\SpecialCharTok{\textgreater{}}\NormalTok{theta8)}
+\NormalTok{  cbest}\OtherTok{\textless{}{-}}\FunctionTok{table}\NormalTok{(theta3}\SpecialCharTok{\textgreater{}}\NormalTok{(theta1) }\SpecialCharTok{\&}\NormalTok{ theta3}\SpecialCharTok{\textgreater{}}\NormalTok{theta2 }\SpecialCharTok{\&}\NormalTok{ theta3}\SpecialCharTok{\textgreater{}}\NormalTok{theta4 }\SpecialCharTok{\&}\NormalTok{ theta3}\SpecialCharTok{\textgreater{}}\NormalTok{theta5 }\SpecialCharTok{\&}\NormalTok{ theta3}\SpecialCharTok{\textgreater{}}\NormalTok{theta6 }\SpecialCharTok{\&}\NormalTok{ theta3}\SpecialCharTok{\textgreater{}}\NormalTok{theta7 }\SpecialCharTok{\&}\NormalTok{theta3}\SpecialCharTok{\textgreater{}}\NormalTok{theta8)}
+\NormalTok{  dbest}\OtherTok{\textless{}{-}}\FunctionTok{table}\NormalTok{(theta4}\SpecialCharTok{\textgreater{}}\NormalTok{(theta1) }\SpecialCharTok{\&}\NormalTok{ theta4}\SpecialCharTok{\textgreater{}}\NormalTok{theta2 }\SpecialCharTok{\&}\NormalTok{ theta4}\SpecialCharTok{\textgreater{}}\NormalTok{theta3 }\SpecialCharTok{\&}\NormalTok{ theta4}\SpecialCharTok{\textgreater{}}\NormalTok{theta5 }\SpecialCharTok{\&}\NormalTok{ theta4}\SpecialCharTok{\textgreater{}}\NormalTok{theta6 }\SpecialCharTok{\&}\NormalTok{ theta4}\SpecialCharTok{\textgreater{}}\NormalTok{theta7 }\SpecialCharTok{\&}\NormalTok{theta4}\SpecialCharTok{\textgreater{}}\NormalTok{theta8)}
+\NormalTok{  ebest}\OtherTok{\textless{}{-}}\FunctionTok{table}\NormalTok{(theta5}\SpecialCharTok{\textgreater{}}\NormalTok{(theta1) }\SpecialCharTok{\&}\NormalTok{ theta5}\SpecialCharTok{\textgreater{}}\NormalTok{theta2 }\SpecialCharTok{\&}\NormalTok{ theta5}\SpecialCharTok{\textgreater{}}\NormalTok{theta3 }\SpecialCharTok{\&}\NormalTok{ theta5}\SpecialCharTok{\textgreater{}}\NormalTok{theta4 }\SpecialCharTok{\&}\NormalTok{ theta5}\SpecialCharTok{\textgreater{}}\NormalTok{theta6 }\SpecialCharTok{\&}\NormalTok{ theta5}\SpecialCharTok{\textgreater{}}\NormalTok{theta7 }\SpecialCharTok{\&}\NormalTok{theta5}\SpecialCharTok{\textgreater{}}\NormalTok{theta8)}
+\NormalTok{  fbest}\OtherTok{\textless{}{-}}\FunctionTok{table}\NormalTok{(theta6}\SpecialCharTok{\textgreater{}}\NormalTok{(theta1) }\SpecialCharTok{\&}\NormalTok{ theta6}\SpecialCharTok{\textgreater{}}\NormalTok{theta2 }\SpecialCharTok{\&}\NormalTok{ theta6}\SpecialCharTok{\textgreater{}}\NormalTok{theta3 }\SpecialCharTok{\&}\NormalTok{ theta6}\SpecialCharTok{\textgreater{}}\NormalTok{theta4 }\SpecialCharTok{\&}\NormalTok{ theta6}\SpecialCharTok{\textgreater{}}\NormalTok{theta5 }\SpecialCharTok{\&}\NormalTok{ theta6}\SpecialCharTok{\textgreater{}}\NormalTok{theta7 }\SpecialCharTok{\&}\NormalTok{theta6}\SpecialCharTok{\textgreater{}}\NormalTok{theta8)}
+\NormalTok{  gbest}\OtherTok{\textless{}{-}}\FunctionTok{table}\NormalTok{(theta7}\SpecialCharTok{\textgreater{}}\NormalTok{(theta1) }\SpecialCharTok{\&}\NormalTok{ theta7}\SpecialCharTok{\textgreater{}}\NormalTok{theta2 }\SpecialCharTok{\&}\NormalTok{ theta7}\SpecialCharTok{\textgreater{}}\NormalTok{theta3 }\SpecialCharTok{\&}\NormalTok{ theta7}\SpecialCharTok{\textgreater{}}\NormalTok{theta4 }\SpecialCharTok{\&}\NormalTok{ theta7}\SpecialCharTok{\textgreater{}}\NormalTok{theta6 }\SpecialCharTok{\&}\NormalTok{ theta7}\SpecialCharTok{\textgreater{}}\NormalTok{theta6 }\SpecialCharTok{\&}\NormalTok{theta7}\SpecialCharTok{\textgreater{}}\NormalTok{theta8)}
+\NormalTok{  hbest}\OtherTok{\textless{}{-}}\FunctionTok{table}\NormalTok{(theta8}\SpecialCharTok{\textgreater{}}\NormalTok{(theta1) }\SpecialCharTok{\&}\NormalTok{ theta8}\SpecialCharTok{\textgreater{}}\NormalTok{theta2 }\SpecialCharTok{\&}\NormalTok{ theta8}\SpecialCharTok{\textgreater{}}\NormalTok{theta3 }\SpecialCharTok{\&}\NormalTok{ theta8}\SpecialCharTok{\textgreater{}}\NormalTok{theta4 }\SpecialCharTok{\&}\NormalTok{ theta8}\SpecialCharTok{\textgreater{}}\NormalTok{theta5 }\SpecialCharTok{\&}\NormalTok{ theta8}\SpecialCharTok{\textgreater{}}\NormalTok{theta6 }\SpecialCharTok{\&}\NormalTok{theta8}\SpecialCharTok{\textgreater{}}\NormalTok{theta7)}
+  
+\NormalTok{  a}\OtherTok{\textless{}{-}}\NormalTok{abest[}\StringTok{\textquotesingle{}TRUE\textquotesingle{}}\NormalTok{]}\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(abest)}
+\NormalTok{  b}\OtherTok{\textless{}{-}}\NormalTok{bbest[}\StringTok{\textquotesingle{}TRUE\textquotesingle{}}\NormalTok{]}\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(bbest)}
+\NormalTok{  c}\OtherTok{\textless{}{-}}\NormalTok{cbest[}\StringTok{\textquotesingle{}TRUE\textquotesingle{}}\NormalTok{]}\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(cbest)}
+\NormalTok{  d}\OtherTok{\textless{}{-}}\NormalTok{dbest[}\StringTok{\textquotesingle{}TRUE\textquotesingle{}}\NormalTok{]}\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(dbest)}
+\NormalTok{  e}\OtherTok{\textless{}{-}}\NormalTok{ebest[}\StringTok{\textquotesingle{}TRUE\textquotesingle{}}\NormalTok{]}\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(ebest)}
+\NormalTok{  f}\OtherTok{\textless{}{-}}\NormalTok{fbest[}\StringTok{\textquotesingle{}TRUE\textquotesingle{}}\NormalTok{]}\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(fbest)}
+\NormalTok{  g}\OtherTok{\textless{}{-}}\NormalTok{gbest[}\StringTok{\textquotesingle{}TRUE\textquotesingle{}}\NormalTok{]}\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(gbest)}
+\NormalTok{  h}\OtherTok{\textless{}{-}}\NormalTok{hbest[}\StringTok{\textquotesingle{}TRUE\textquotesingle{}}\NormalTok{]}\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(hbest)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{q3-part-a}{%
+\subsubsection{Q3 part a}\label{q3-part-a}}
+
+\begin{itemize}
+\tightlist
+\item
+  5.3a this is correct and is very close to section 5 results.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{,}\AttributeTok{nrow=}\DecValTok{8}\NormalTok{,}\AttributeTok{ncol=}\DecValTok{8}\NormalTok{)}
+  
+\NormalTok{  fillIn}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(better,theta1,theta2,}\AttributeTok{i=}\DecValTok{1}\NormalTok{,}\AttributeTok{j=}\DecValTok{2}\NormalTok{)\{}
+\NormalTok{   pij}\OtherTok{\textless{}{-}}\FunctionTok{table}\NormalTok{(theta1}\SpecialCharTok{\textgreater{}}\NormalTok{theta2)}\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(}\FunctionTok{table}\NormalTok{(theta1}\SpecialCharTok{\textgreater{}}\NormalTok{theta2))}
+\NormalTok{   better[i,j]}\OtherTok{\textless{}{-}}\NormalTok{pij[}\StringTok{\textquotesingle{}TRUE\textquotesingle{}}\NormalTok{]}
+  \FunctionTok{return}\NormalTok{(better)}
+\NormalTok{  \}}
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta1,theta2,}\AttributeTok{i=}\DecValTok{1}\NormalTok{,}\AttributeTok{j=}\DecValTok{2}\NormalTok{)}
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta1,theta3,}\AttributeTok{i=}\DecValTok{1}\NormalTok{,}\AttributeTok{j=}\DecValTok{3}\NormalTok{)}
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta1,theta4,}\AttributeTok{i=}\DecValTok{1}\NormalTok{,}\AttributeTok{j=}\DecValTok{4}\NormalTok{)}
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta1,theta5,}\AttributeTok{i=}\DecValTok{1}\NormalTok{,}\AttributeTok{j=}\DecValTok{5}\NormalTok{)}
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta1,theta6,}\AttributeTok{i=}\DecValTok{1}\NormalTok{,}\AttributeTok{j=}\DecValTok{6}\NormalTok{)}
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta1,theta7,}\AttributeTok{i=}\DecValTok{1}\NormalTok{,}\AttributeTok{j=}\DecValTok{7}\NormalTok{)}
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta1,theta8,}\AttributeTok{i=}\DecValTok{1}\NormalTok{,}\AttributeTok{j=}\DecValTok{8}\NormalTok{)}
+  
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta2,theta1,}\AttributeTok{i=}\DecValTok{2}\NormalTok{,}\AttributeTok{j=}\DecValTok{1}\NormalTok{)}
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta2,theta3,}\AttributeTok{i=}\DecValTok{2}\NormalTok{,}\AttributeTok{j=}\DecValTok{3}\NormalTok{)}
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta2,theta4,}\AttributeTok{i=}\DecValTok{2}\NormalTok{,}\AttributeTok{j=}\DecValTok{4}\NormalTok{)}
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta2,theta5,}\AttributeTok{i=}\DecValTok{2}\NormalTok{,}\AttributeTok{j=}\DecValTok{5}\NormalTok{)}
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta2,theta6,}\AttributeTok{i=}\DecValTok{2}\NormalTok{,}\AttributeTok{j=}\DecValTok{6}\NormalTok{)}
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta2,theta7,}\AttributeTok{i=}\DecValTok{2}\NormalTok{,}\AttributeTok{j=}\DecValTok{7}\NormalTok{)}
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta2,theta8,}\AttributeTok{i=}\DecValTok{2}\NormalTok{,}\AttributeTok{j=}\DecValTok{8}\NormalTok{)}
+  
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta3,theta1,}\AttributeTok{i=}\DecValTok{3}\NormalTok{,}\AttributeTok{j=}\DecValTok{1}\NormalTok{)}
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta3,theta2,}\AttributeTok{i=}\DecValTok{3}\NormalTok{,}\AttributeTok{j=}\DecValTok{2}\NormalTok{)}
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta3,theta4,}\AttributeTok{i=}\DecValTok{3}\NormalTok{,}\AttributeTok{j=}\DecValTok{4}\NormalTok{)}
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta3,theta5,}\AttributeTok{i=}\DecValTok{3}\NormalTok{,}\AttributeTok{j=}\DecValTok{5}\NormalTok{)}
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta3,theta6,}\AttributeTok{i=}\DecValTok{3}\NormalTok{,}\AttributeTok{j=}\DecValTok{6}\NormalTok{)}
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta3,theta7,}\AttributeTok{i=}\DecValTok{3}\NormalTok{,}\AttributeTok{j=}\DecValTok{7}\NormalTok{)}
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta3,theta8,}\AttributeTok{i=}\DecValTok{3}\NormalTok{,}\AttributeTok{j=}\DecValTok{8}\NormalTok{)}
+  
+
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta4,theta1,}\AttributeTok{i=}\DecValTok{4}\NormalTok{,}\AttributeTok{j=}\DecValTok{1}\NormalTok{)}
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta4,theta2,}\AttributeTok{i=}\DecValTok{4}\NormalTok{,}\AttributeTok{j=}\DecValTok{2}\NormalTok{)}
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta4,theta3,}\AttributeTok{i=}\DecValTok{4}\NormalTok{,}\AttributeTok{j=}\DecValTok{3}\NormalTok{)}
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta4,theta5,}\AttributeTok{i=}\DecValTok{4}\NormalTok{,}\AttributeTok{j=}\DecValTok{5}\NormalTok{)}
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta4,theta6,}\AttributeTok{i=}\DecValTok{4}\NormalTok{,}\AttributeTok{j=}\DecValTok{6}\NormalTok{)}
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta4,theta7,}\AttributeTok{i=}\DecValTok{4}\NormalTok{,}\AttributeTok{j=}\DecValTok{7}\NormalTok{)}
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta4,theta8,}\AttributeTok{i=}\DecValTok{4}\NormalTok{,}\AttributeTok{j=}\DecValTok{8}\NormalTok{)}
+  
+\NormalTok{   better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta5,theta1,}\AttributeTok{i=}\DecValTok{5}\NormalTok{,}\AttributeTok{j=}\DecValTok{1}\NormalTok{)}
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta5,theta2,}\AttributeTok{i=}\DecValTok{5}\NormalTok{,}\AttributeTok{j=}\DecValTok{2}\NormalTok{)}
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta5,theta3,}\AttributeTok{i=}\DecValTok{5}\NormalTok{,}\AttributeTok{j=}\DecValTok{3}\NormalTok{)}
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta5,theta4,}\AttributeTok{i=}\DecValTok{5}\NormalTok{,}\AttributeTok{j=}\DecValTok{4}\NormalTok{)}
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta5,theta6,}\AttributeTok{i=}\DecValTok{5}\NormalTok{,}\AttributeTok{j=}\DecValTok{6}\NormalTok{)}
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta5,theta7,}\AttributeTok{i=}\DecValTok{5}\NormalTok{,}\AttributeTok{j=}\DecValTok{7}\NormalTok{)}
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta5,theta8,}\AttributeTok{i=}\DecValTok{5}\NormalTok{,}\AttributeTok{j=}\DecValTok{8}\NormalTok{)}
+  
+  
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta6,theta1,}\AttributeTok{i=}\DecValTok{6}\NormalTok{,}\AttributeTok{j=}\DecValTok{1}\NormalTok{)}
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta6,theta2,}\AttributeTok{i=}\DecValTok{6}\NormalTok{,}\AttributeTok{j=}\DecValTok{2}\NormalTok{)}
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta6,theta3,}\AttributeTok{i=}\DecValTok{6}\NormalTok{,}\AttributeTok{j=}\DecValTok{3}\NormalTok{)}
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta6,theta4,}\AttributeTok{i=}\DecValTok{6}\NormalTok{,}\AttributeTok{j=}\DecValTok{4}\NormalTok{)}
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta6,theta5,}\AttributeTok{i=}\DecValTok{6}\NormalTok{,}\AttributeTok{j=}\DecValTok{5}\NormalTok{)}
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta6,theta7,}\AttributeTok{i=}\DecValTok{6}\NormalTok{,}\AttributeTok{j=}\DecValTok{7}\NormalTok{)}
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta6,theta8,}\AttributeTok{i=}\DecValTok{6}\NormalTok{,}\AttributeTok{j=}\DecValTok{8}\NormalTok{)}
+  
+\NormalTok{    better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta7,theta1,}\AttributeTok{i=}\DecValTok{7}\NormalTok{,}\AttributeTok{j=}\DecValTok{1}\NormalTok{)}
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta7,theta2,}\AttributeTok{i=}\DecValTok{7}\NormalTok{,}\AttributeTok{j=}\DecValTok{2}\NormalTok{)}
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta7,theta3,}\AttributeTok{i=}\DecValTok{7}\NormalTok{,}\AttributeTok{j=}\DecValTok{3}\NormalTok{)}
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta7,theta4,}\AttributeTok{i=}\DecValTok{7}\NormalTok{,}\AttributeTok{j=}\DecValTok{4}\NormalTok{)}
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta7,theta5,}\AttributeTok{i=}\DecValTok{7}\NormalTok{,}\AttributeTok{j=}\DecValTok{5}\NormalTok{)}
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta7,theta6,}\AttributeTok{i=}\DecValTok{7}\NormalTok{,}\AttributeTok{j=}\DecValTok{6}\NormalTok{)}
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta7,theta8,}\AttributeTok{i=}\DecValTok{7}\NormalTok{,}\AttributeTok{j=}\DecValTok{8}\NormalTok{)}
+  
+\NormalTok{   better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta8,theta1,}\AttributeTok{i=}\DecValTok{8}\NormalTok{,}\AttributeTok{j=}\DecValTok{1}\NormalTok{)}
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta8,theta2,}\AttributeTok{i=}\DecValTok{8}\NormalTok{,}\AttributeTok{j=}\DecValTok{2}\NormalTok{)}
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta8,theta3,}\AttributeTok{i=}\DecValTok{8}\NormalTok{,}\AttributeTok{j=}\DecValTok{3}\NormalTok{)}
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta8,theta4,}\AttributeTok{i=}\DecValTok{8}\NormalTok{,}\AttributeTok{j=}\DecValTok{4}\NormalTok{)}
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta8,theta5,}\AttributeTok{i=}\DecValTok{8}\NormalTok{,}\AttributeTok{j=}\DecValTok{5}\NormalTok{)}
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta8,theta6,}\AttributeTok{i=}\DecValTok{8}\NormalTok{,}\AttributeTok{j=}\DecValTok{6}\NormalTok{)}
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{fillIn}\NormalTok{(better,theta8,theta7,}\AttributeTok{i=}\DecValTok{8}\NormalTok{,}\AttributeTok{j=}\DecValTok{7}\NormalTok{)}
+
+\NormalTok{  better}\OtherTok{\textless{}{-}}\FunctionTok{cbind}\NormalTok{(}\FunctionTok{c}\NormalTok{(a,b,c,d,e,f,g,h),better)}
+  \FunctionTok{rownames}\NormalTok{(better)}\OtherTok{\textless{}{-}}\NormalTok{LETTERS[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{8}\NormalTok{]}
+  \FunctionTok{colnames}\NormalTok{(better)}\OtherTok{\textless{}{-}}\FunctionTok{c}\NormalTok{(}\StringTok{"best"}\NormalTok{,LETTERS[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{8}\NormalTok{])}
+  
+  \FunctionTok{print}\NormalTok{(better)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    best     A     B     C     D     E     F     G     H
+## A 0.290 0.000 0.671 0.714 0.662 0.783 0.752 0.533 0.633
+## B 0.102 0.329 0.000 0.570 0.503 0.634 0.620 0.343 0.487
+## C 0.074 0.286 0.430 0.000 0.425 0.556 0.526 0.306 0.417
+## D 0.100 0.338 0.497 0.575 0.000 0.636 0.601 0.358 0.482
+## E 0.040 0.217 0.366 0.444 0.364 0.000 0.467 0.220 0.346
+## F 0.047 0.248 0.380 0.474 0.399 0.533 0.000 0.249 0.377
+## G 0.229 0.467 0.657 0.694 0.642 0.780 0.751 0.000 0.609
+## H 0.124 0.367 0.513 0.583 0.518 0.654 0.623 0.391 0.000
+\end{verbatim}
+
+Inference on the \(P(max(\theta_j)>28.4)\) in our data is 93/1000 which is 0.093. from the text 22/200 which is roughly 0.11
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{theta}\OtherTok{\textless{}{-}}\FunctionTok{data.frame}\NormalTok{(theta1,theta2,theta3,theta4,theta5,theta6,theta7,theta8)}
+ \FunctionTok{hist}\NormalTok{(}\FunctionTok{apply}\NormalTok{(theta,}\DecValTok{1}\NormalTok{,max),}\AttributeTok{xlim=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{60}\NormalTok{),}\AttributeTok{main=}\StringTok{\textquotesingle{}Figure 5.8b max(theta j)\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-68-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+ \FunctionTok{table}\NormalTok{(}\FunctionTok{apply}\NormalTok{(theta,}\DecValTok{1}\NormalTok{,max)}\SpecialCharTok{\textgreater{}}\FloatTok{28.4}\NormalTok{)[}\StringTok{\textquotesingle{}TRUE\textquotesingle{}}\NormalTok{]}\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(}\FunctionTok{table}\NormalTok{(}\FunctionTok{apply}\NormalTok{(theta,}\DecValTok{1}\NormalTok{,max)}\SpecialCharTok{\textgreater{}}\FloatTok{28.4}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  TRUE 
+## 0.088
+\end{verbatim}
+
+\hypertarget{q-5.3-part-b}{%
+\subsubsection{Q 5.3 part b}\label{q-5.3-part-b}}
+
+\begin{itemize}
+\tightlist
+\item
+  5.3.b
+  taking \(\tau \to \infty\) we have \(\theta_j \sim N(y_j, \sigma^2_j)\)
+\end{itemize}
+
+For \$P(\theta\_i \textgreater{} \theta\_j) = \(P(\theta_i - \theta_j>0\))
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{  x1}\OtherTok{\textless{}{-}}\FunctionTok{rnorm}\NormalTok{(}\DecValTok{1000}\NormalTok{,}\AttributeTok{mean=}\NormalTok{school}\SpecialCharTok{$}\NormalTok{yj[}\DecValTok{1}\NormalTok{],}\AttributeTok{sd=}\NormalTok{school}\SpecialCharTok{$}\NormalTok{sigmaj[}\DecValTok{1}\NormalTok{])}
+\NormalTok{  x2}\OtherTok{\textless{}{-}}\FunctionTok{rnorm}\NormalTok{(}\DecValTok{1000}\NormalTok{,}\AttributeTok{mean=}\NormalTok{school}\SpecialCharTok{$}\NormalTok{yj[}\DecValTok{2}\NormalTok{],}\AttributeTok{sd=}\NormalTok{school}\SpecialCharTok{$}\NormalTok{sigmaj[}\DecValTok{2}\NormalTok{])}
+\NormalTok{  x3}\OtherTok{\textless{}{-}}\FunctionTok{rnorm}\NormalTok{(}\DecValTok{1000}\NormalTok{,}\AttributeTok{mean=}\NormalTok{school}\SpecialCharTok{$}\NormalTok{yj[}\DecValTok{3}\NormalTok{],}\AttributeTok{sd=}\NormalTok{school}\SpecialCharTok{$}\NormalTok{sigmaj[}\DecValTok{3}\NormalTok{])}
+\NormalTok{  x4}\OtherTok{\textless{}{-}}\FunctionTok{rnorm}\NormalTok{(}\DecValTok{1000}\NormalTok{,}\AttributeTok{mean=}\NormalTok{school}\SpecialCharTok{$}\NormalTok{yj[}\DecValTok{4}\NormalTok{],}\AttributeTok{sd=}\NormalTok{school}\SpecialCharTok{$}\NormalTok{sigmaj[}\DecValTok{4}\NormalTok{])}
+\NormalTok{  x5}\OtherTok{\textless{}{-}}\FunctionTok{rnorm}\NormalTok{(}\DecValTok{1000}\NormalTok{,}\AttributeTok{mean=}\NormalTok{school}\SpecialCharTok{$}\NormalTok{yj[}\DecValTok{5}\NormalTok{],}\AttributeTok{sd=}\NormalTok{school}\SpecialCharTok{$}\NormalTok{sigmaj[}\DecValTok{5}\NormalTok{])}
+\NormalTok{  x6}\OtherTok{\textless{}{-}}\FunctionTok{rnorm}\NormalTok{(}\DecValTok{1000}\NormalTok{,}\AttributeTok{mean=}\NormalTok{school}\SpecialCharTok{$}\NormalTok{yj[}\DecValTok{6}\NormalTok{],}\AttributeTok{sd=}\NormalTok{school}\SpecialCharTok{$}\NormalTok{sigmaj[}\DecValTok{6}\NormalTok{])}
+\NormalTok{  x7}\OtherTok{\textless{}{-}}\FunctionTok{rnorm}\NormalTok{(}\DecValTok{1000}\NormalTok{,}\AttributeTok{mean=}\NormalTok{school}\SpecialCharTok{$}\NormalTok{yj[}\DecValTok{7}\NormalTok{],}\AttributeTok{sd=}\NormalTok{school}\SpecialCharTok{$}\NormalTok{sigmaj[}\DecValTok{7}\NormalTok{])}
+\NormalTok{  x8}\OtherTok{\textless{}{-}}\FunctionTok{rnorm}\NormalTok{(}\DecValTok{1000}\NormalTok{,}\AttributeTok{mean=}\NormalTok{school}\SpecialCharTok{$}\NormalTok{yj[}\DecValTok{8}\NormalTok{],}\AttributeTok{sd=}\NormalTok{school}\SpecialCharTok{$}\NormalTok{sigmaj[}\DecValTok{8}\NormalTok{])}
+  
+\NormalTok{  allQ}\OtherTok{\textless{}{-}}\FunctionTok{rbind}\NormalTok{(  }\FunctionTok{quantile}\NormalTok{(x1,}\FunctionTok{c}\NormalTok{(}\FloatTok{0.025}\NormalTok{,}\FloatTok{0.25}\NormalTok{,}\FloatTok{0.5}\NormalTok{,}\FloatTok{0.75}\NormalTok{,}\FloatTok{0.975}\NormalTok{)),}
+                \FunctionTok{quantile}\NormalTok{(x2,}\FunctionTok{c}\NormalTok{(}\FloatTok{0.025}\NormalTok{,}\FloatTok{0.25}\NormalTok{,}\FloatTok{0.5}\NormalTok{,}\FloatTok{0.75}\NormalTok{,}\FloatTok{0.975}\NormalTok{)),}
+                \FunctionTok{quantile}\NormalTok{(x3,}\FunctionTok{c}\NormalTok{(}\FloatTok{0.025}\NormalTok{,}\FloatTok{0.25}\NormalTok{,}\FloatTok{0.5}\NormalTok{,}\FloatTok{0.75}\NormalTok{,}\FloatTok{0.975}\NormalTok{)),}
+                \FunctionTok{quantile}\NormalTok{(x4,}\FunctionTok{c}\NormalTok{(}\FloatTok{0.025}\NormalTok{,}\FloatTok{0.25}\NormalTok{,}\FloatTok{0.5}\NormalTok{,}\FloatTok{0.75}\NormalTok{,}\FloatTok{0.975}\NormalTok{)),}
+                \FunctionTok{quantile}\NormalTok{(x5,}\FunctionTok{c}\NormalTok{(}\FloatTok{0.025}\NormalTok{,}\FloatTok{0.25}\NormalTok{,}\FloatTok{0.5}\NormalTok{,}\FloatTok{0.75}\NormalTok{,}\FloatTok{0.975}\NormalTok{)),}
+                \FunctionTok{quantile}\NormalTok{(x6,}\FunctionTok{c}\NormalTok{(}\FloatTok{0.025}\NormalTok{,}\FloatTok{0.25}\NormalTok{,}\FloatTok{0.5}\NormalTok{,}\FloatTok{0.75}\NormalTok{,}\FloatTok{0.975}\NormalTok{)),}
+                \FunctionTok{quantile}\NormalTok{(x7,}\FunctionTok{c}\NormalTok{(}\FloatTok{0.025}\NormalTok{,}\FloatTok{0.25}\NormalTok{,}\FloatTok{0.5}\NormalTok{,}\FloatTok{0.75}\NormalTok{,}\FloatTok{0.975}\NormalTok{)),}
+                \FunctionTok{quantile}\NormalTok{(x8,}\FunctionTok{c}\NormalTok{(}\FloatTok{0.025}\NormalTok{,}\FloatTok{0.25}\NormalTok{,}\FloatTok{0.5}\NormalTok{,}\FloatTok{0.75}\NormalTok{,}\FloatTok{0.975}\NormalTok{))}
+\NormalTok{                )}
+  \FunctionTok{rownames}\NormalTok{(allQ)}\OtherTok{\textless{}{-}}\NormalTok{LETTERS[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{8}\NormalTok{]}
+  
+  \DocumentationTok{\#\# pair wise }
+\NormalTok{  better2}\OtherTok{\textless{}{-}}\FunctionTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{,}\AttributeTok{nrow=}\DecValTok{8}\NormalTok{,}\AttributeTok{ncol=}\DecValTok{8}\NormalTok{)}
+  \ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{8}\NormalTok{)\{}
+    \ControlFlowTok{for}\NormalTok{(j }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{8}\NormalTok{)\{}
+\NormalTok{    better2[i,j]}\OtherTok{\textless{}{-}} \FunctionTok{pnorm}\NormalTok{( (school}\SpecialCharTok{$}\NormalTok{yj[i]}\SpecialCharTok{{-}}\NormalTok{ school}\SpecialCharTok{$}\NormalTok{yj[j])}\SpecialCharTok{/}\FunctionTok{sqrt}\NormalTok{( school}\SpecialCharTok{$}\NormalTok{sigma2j[i]}\SpecialCharTok{+}\NormalTok{school}\SpecialCharTok{$}\NormalTok{sigma2j[j]) ) }
+\NormalTok{    \}}
+\NormalTok{  \}}
+  
+\NormalTok{ allind}\OtherTok{\textless{}{-}}\FunctionTok{cbind}\NormalTok{(x1,x2,x3,x4,x5,x6,x7,x8)}
+
+\NormalTok{  x1b}\OtherTok{\textless{}{-}}\FunctionTok{table}\NormalTok{(x1}\SpecialCharTok{\textgreater{}=}\FunctionTok{apply}\NormalTok{(allind,}\DecValTok{1}\NormalTok{,max))[}\StringTok{\textquotesingle{}TRUE\textquotesingle{}}\NormalTok{]}\SpecialCharTok{/}\DecValTok{1000}
+\NormalTok{  x2b}\OtherTok{\textless{}{-}}\FunctionTok{table}\NormalTok{(x2}\SpecialCharTok{\textgreater{}=}\FunctionTok{apply}\NormalTok{(allind,}\DecValTok{1}\NormalTok{,max))[}\StringTok{\textquotesingle{}TRUE\textquotesingle{}}\NormalTok{]}\SpecialCharTok{/}\DecValTok{1000}
+\NormalTok{  x3b}\OtherTok{\textless{}{-}}\FunctionTok{table}\NormalTok{(x3}\SpecialCharTok{\textgreater{}=}\FunctionTok{apply}\NormalTok{(allind,}\DecValTok{1}\NormalTok{,max))[}\StringTok{\textquotesingle{}TRUE\textquotesingle{}}\NormalTok{]}\SpecialCharTok{/}\DecValTok{1000}
+\NormalTok{  x4b}\OtherTok{\textless{}{-}}\FunctionTok{table}\NormalTok{(x4}\SpecialCharTok{\textgreater{}=}\FunctionTok{apply}\NormalTok{(allind,}\DecValTok{1}\NormalTok{,max))[}\StringTok{\textquotesingle{}TRUE\textquotesingle{}}\NormalTok{]}\SpecialCharTok{/}\DecValTok{1000}
+\NormalTok{  x5b}\OtherTok{\textless{}{-}}\FunctionTok{table}\NormalTok{(x5}\SpecialCharTok{\textgreater{}=}\FunctionTok{apply}\NormalTok{(allind,}\DecValTok{1}\NormalTok{,max))[}\StringTok{\textquotesingle{}TRUE\textquotesingle{}}\NormalTok{]}\SpecialCharTok{/}\DecValTok{1000}
+\NormalTok{  x6b}\OtherTok{\textless{}{-}}\FunctionTok{table}\NormalTok{(x6}\SpecialCharTok{\textgreater{}=}\FunctionTok{apply}\NormalTok{(allind,}\DecValTok{1}\NormalTok{,max))[}\StringTok{\textquotesingle{}TRUE\textquotesingle{}}\NormalTok{]}\SpecialCharTok{/}\DecValTok{1000}
+\NormalTok{  x7b}\OtherTok{\textless{}{-}}\FunctionTok{table}\NormalTok{(x7}\SpecialCharTok{\textgreater{}=}\FunctionTok{apply}\NormalTok{(allind,}\DecValTok{1}\NormalTok{,max))[}\StringTok{\textquotesingle{}TRUE\textquotesingle{}}\NormalTok{]}\SpecialCharTok{/}\DecValTok{1000}
+\NormalTok{  x8b}\OtherTok{\textless{}{-}}\FunctionTok{table}\NormalTok{(x8}\SpecialCharTok{\textgreater{}=}\FunctionTok{apply}\NormalTok{(allind,}\DecValTok{1}\NormalTok{,max))[}\StringTok{\textquotesingle{}TRUE\textquotesingle{}}\NormalTok{]}\SpecialCharTok{/}\DecValTok{1000}
+
+\NormalTok{  sep.prob}\OtherTok{\textless{}{-}} \FunctionTok{cbind}\NormalTok{(}\FunctionTok{c}\NormalTok{(x1b,x2b,x3b,x4b,x5b,x6b,x7b,x8b),better2)}
+  \FunctionTok{rownames}\NormalTok{(sep.prob)}\OtherTok{\textless{}{-}}\NormalTok{LETTERS[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{8}\NormalTok{]}
+    \FunctionTok{colnames}\NormalTok{(sep.prob)}\OtherTok{\textless{}{-}}\FunctionTok{c}\NormalTok{(}\StringTok{"best"}\NormalTok{,LETTERS[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{8}\NormalTok{])}
+    
+    \FunctionTok{print}\NormalTok{(sep.prob)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    best          A         B         C         D         E         F          G
+## A 0.554 0.50000000 0.8663713 0.9212424 0.8705441 0.9513231 0.9266837 0.71045013
+## B 0.034 0.13362875 0.5000000 0.7200530 0.5268155 0.7482410 0.6811336 0.23975006
+## C 0.023 0.07875756 0.2799470 0.5000000 0.3032674 0.4566223 0.4183914 0.13285469
+## D 0.029 0.12945588 0.4731845 0.6967326 0.5000000 0.7132410 0.6501386 0.22966818
+## E 0.004 0.04867694 0.2517590 0.5433777 0.2867590 0.5000000 0.4440458 0.07893687
+## F 0.017 0.07331631 0.3188664 0.5816086 0.3498614 0.5559542 0.5000000 0.12640645
+## G 0.174 0.28954987 0.7602499 0.8671453 0.7703318 0.9210631 0.8735935 0.50000000
+## H 0.165 0.24734659 0.5770127 0.7333055 0.5936804 0.7408523 0.6989733 0.38537815
+##           H
+## A 0.7526534
+## B 0.4229873
+## C 0.2666945
+## D 0.4063196
+## E 0.2591477
+## F 0.3010267
+## G 0.6146218
+## H 0.5000000
+\end{verbatim}
+
+\hypertarget{q-5.3.c}{%
+\subsubsection{Q 5.3.c}\label{q-5.3.c}}
+
+\begin{itemize}
+\tightlist
+\item
+  5.3.c
+  Discussing the differences the intervals are much wider in the separate models for \(\theta_j\) compared to the Bayesian model. This is because the Bayesian model borrows strenghts of associaton across other school information.
+\end{itemize}
+
+Under separate model, the probability that A is best is approxmiately 0.521, whereas in Bayesian model it is 0.283. These inferences are more conservative in the Bayesian model because it incorporates uncertainty in the model. The Bayesian model assumes a uniform prior for \(\tau\) which is the deviation/variability of the school coaching effectiveness, whereas in the separate model operates under the assumption that there is large variability of coaching effectiveness \(\tau = \infty\).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(allQ)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##          2.5%         25%        50%       75%    97.5%
+## A  -1.6671674  16.8008160 28.4378866 38.292573 56.64421
+## B -11.7881530   1.4666970  7.8338828 15.011281 25.71342
+## C -32.9503177 -13.1854338 -2.8801841  8.302523 27.71221
+## D -13.2036155   0.6344413  7.8860750 14.677863 28.52870
+## E -18.8775183  -6.4175582 -0.3387703  5.609494 16.85795
+## F -20.2917461  -6.9974197  0.9482539  8.851298 22.31686
+## G  -0.9984314  11.3323360 17.5468144 24.429637 35.98980
+## H -21.8486938  -0.4152265 12.2354066 23.914510 45.65002
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(allq)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##            2.5%      25%       50%       75%    97.5%
+## t1q   0.4457383 7.326460 10.017273 16.091238 33.37148
+## t2q  -3.9503168 4.831116  7.726473 10.619370 20.25554
+## t3q -14.8226207 2.859082  6.858540  9.538431 18.57518
+## t4q  -7.3115433 5.009563  7.783060 10.934833 21.04213
+## t5q  -9.4629862 1.658382  6.024443  8.293584 14.69150
+## t6q -10.7831533 2.029477  6.586762  8.797824 17.50866
+## t7q   0.9487190 7.244206  9.623687 14.367122 25.85331
+## t8q  -7.3113309 4.974897  7.888110 11.282060 27.24911
+\end{verbatim}
+
+\hypertarget{q-5.3-part-d}{%
+\subsubsection{Q 5.3 part d}\label{q-5.3-part-d}}
+
+\begin{itemize}
+\tightlist
+\item
+  5.3 d
+  setting \(\tau =0\) creates \(\theta_j | \mu, \tau, y \sim N(\infty, 0)\) because of the equation for \(\hat{\theta_j} = \infty/\infty\) and \(V_j = 1/\infty =0\). the inferences for posterior for \(\mu | \tau, y\) and \(\tau | y\) are not degenerate. but for the parameters for \(\theta\) these are degenerate. Setting \(\tau =0\) means that the variance parameter goes to 0, which reduces all points to a point mass, and sets them equal (0 variability).
+\end{itemize}
 
 \hypertarget{sharing-your-book}{%
 \chapter{Sharing your book}\label{sharing-your-book}}
@@ -5110,6 +5839,39 @@ Add a numbered part: \texttt{\#\ (PART)\ Act\ one\ \{-\}} (followed by \texttt{\
 Add an unnumbered part: \texttt{\#\ (PART\textbackslash{}*)\ Act\ one\ \{-\}} (followed by \texttt{\#\ A\ chapter})
 
 Add an appendix as a special kind of un-numbered part: \texttt{\#\ (APPENDIX)\ Other\ stuff\ \{-\}} (followed by \texttt{\#\ A\ chapter}). Chapters in an appendix are prepended with letters instead of numbers.
+
+\hypertarget{blocks}{%
+\chapter{Blocks}\label{blocks}}
+
+\hypertarget{equations}{%
+\section{Equations}\label{equations}}
+
+Here is an equation.
+
+\begin{equation} 
+  f\left(k\right) = \binom{n}{k} p^k\left(1-p\right)^{n-k}
+  \label{eq:binom}
+\end{equation}
+
+You may refer to using \texttt{\textbackslash{}@ref(eq:binom)}, like see Equation \eqref{eq:binom}.
+
+\hypertarget{theorems-and-proofs}{%
+\section{Theorems and proofs}\label{theorems-and-proofs}}
+
+Labeled theorems can be referenced in text using \texttt{\textbackslash{}@ref(thm:tri)}, for example, check out this smart theorem \ref{thm:tri}.
+
+\begin{theorem}
+\protect\hypertarget{thm:tri}{}\label{thm:tri}For a right triangle, if \(c\) denotes the \emph{length} of the hypotenuse
+and \(a\) and \(b\) denote the lengths of the \textbf{other} two sides, we have
+\[a^2 + b^2 = c^2\]
+\end{theorem}
+
+Read more here \url{https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html}.
+
+\hypertarget{callout-blocks}{%
+\section{Callout blocks}\label{callout-blocks}}
+
+The R Markdown Cookbook provides more help on how to use custom blocks to design your own callouts: \url{https://bookdown.org/yihui/rmarkdown-cookbook/custom-blocks.html}
 
   \bibliography{book.bib,packages.bib}
 
