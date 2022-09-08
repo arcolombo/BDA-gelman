@@ -51,3 +51,6 @@ blocks
 equations
 theorems-and-proofs
 callout-blocks
+cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
+exercises-2
+q4-.
