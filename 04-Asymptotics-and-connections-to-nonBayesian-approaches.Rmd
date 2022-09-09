@@ -418,7 +418,7 @@ for(i in 1:nrow(a0b1)){
  ## posterior means (1.35,11.6)
  message('posterior mean for A :',round(mean(A),3),' B ',round(mean(B),3))
  
- quantile(-A/B,c(0.025,0.975))
+ quantile(-A/B,c(0.025,0.975),na.rm=TRUE)
  message('posterio std.dev -a/b: ',round(sd(-A/B),3))
   
 ```

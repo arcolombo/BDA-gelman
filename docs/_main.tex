@@ -117,7 +117,7 @@
 
 \title{Bayesian Data Analysis}
 \author{Anthony R. Colombo, Dr.~Paul Marjoram}
-\date{2022-09-01}
+\date{2022-09-09}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -715,7 +715,7 @@ Then the probability that at least 1 election is tied, from 435 total elections 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] -2.781885
+## [1] -2.347725
 \end{verbatim}
 
 \begin{Shaded}
@@ -725,7 +725,7 @@ Then the probability that at least 1 election is tied, from 435 total elections 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 45
+## [1] 40
 \end{verbatim}
 
 \begin{Shaded}
@@ -1267,7 +1267,7 @@ We find the probability distribution of a given success and the prior probabilit
 
 \begin{verbatim}
 ##       5%      25%      50%      75%      95% 
-## 138.3998 154.2043 166.2336 178.5477 195.1530
+## 136.3467 154.5082 166.4821 177.0799 192.4480
 \end{verbatim}
 
 \begin{Shaded}
@@ -1627,7 +1627,7 @@ Suppose there are N cable cars numbered sequentially 1 to N. You see a car at ra
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 278.1989
+## [1] 279.9715
 \end{verbatim}
 
 \begin{Shaded}
@@ -1637,7 +1637,7 @@ Suppose there are N cable cars numbered sequentially 1 to N. You see a car at ra
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 80.04754
+## [1] 79.87495
 \end{verbatim}
 
 \begin{itemize}
@@ -1750,7 +1750,7 @@ for the likelihood \(L(\theta | y) = \prod_{i=1}^n f(y_i|\theta)\) requires the 
 
 \begin{verbatim}
 ##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
-## -670.5782   -0.5415    0.5497    0.9636    1.6473  718.4207
+## -1156.598    -0.618     0.454    10.159     1.521  5666.614
 \end{verbatim}
 
 \begin{Shaded}
@@ -1773,7 +1773,7 @@ for the likelihood \(L(\theta | y) = \prod_{i=1}^n f(y_i|\theta)\) requires the 
 \end{Shaded}
 
 \begin{verbatim}
-## max pred. prob 0.525
+## max pred. prob 0.523
 \end{verbatim}
 
 \hypertarget{question-12}{%
@@ -1973,7 +1973,7 @@ The true observed value for 1986 is 22 fatal accidents.
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##    8.00   20.00   24.00   23.87   27.00   48.00
+##    6.00   20.00   24.00   23.85   27.00   45.00
 \end{verbatim}
 
 \begin{Shaded}
@@ -1998,7 +1998,7 @@ The true observed value for 1986 is 22 fatal accidents.
 
 \begin{verbatim}
 ##  2.5% 97.5% 
-##    15    35
+##    14    34
 \end{verbatim}
 
 From the gamma posterior \(E(\theta | y) = 238.5/10.02=24.25\) and the variance \(V(\theta|y)= 238.5/10.02^2=2.87\). From the Poisson likelihood \(E(x|\theta)=\theta\) and \(V(x|\theta)=\theta\). \(V(x|y)= E(V(x|\theta,y) | y) + V(E(x|\theta,y)|y)= E(\theta| y)+ V(\theta|y) = 23.382+2.87= 26.252\)
@@ -2035,7 +2035,7 @@ The average predictive value from 1986 is 24.3 which is close to the true value 
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   2.484  20.820  24.235  24.241  27.694  46.730
+##  0.8954 20.7715 24.2653 24.2489 27.7126 50.6847
 \end{verbatim}
 
 \begin{Shaded}
@@ -2060,7 +2060,7 @@ The average predictive value from 1986 is 24.3 which is close to the true value 
 
 \begin{verbatim}
 ##     2.5%    97.5% 
-## 14.18024 34.30159
+## 14.17126 34.29476
 \end{verbatim}
 
 \begin{Shaded}
@@ -2070,7 +2070,7 @@ The average predictive value from 1986 is 24.3 which is close to the true value 
 \end{Shaded}
 
 \begin{verbatim}
-## average predictive value from posterior:23.8698
+## average predictive value from posterior:23.8542
 \end{verbatim}
 
 \begin{itemize}
@@ -2233,7 +2233,7 @@ We can also use the normal approximation, but the equations for the mean and var
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 21 46
+## [1] 23 46
 \end{verbatim}
 
 \begin{Shaded}
@@ -2374,8 +2374,8 @@ which is not the expected prediction of 546 passenger deaths. This is likely bec
 \end{Shaded}
 
 \begin{verbatim}
-##   2.5%  97.5% 
-## 637.95 745.00
+##    2.5%   97.5% 
+## 638.975 744.025
 \end{verbatim}
 
 \begin{Shaded}
@@ -2393,7 +2393,7 @@ which is not the expected prediction of 546 passenger deaths. This is likely bec
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   604.0   671.0   690.0   690.6   709.0   782.0
+##   614.0   672.0   690.0   691.4   710.0   794.0
 \end{verbatim}
 
 \begin{Shaded}
@@ -2420,7 +2420,7 @@ which is not the expected prediction of 546 passenger deaths. This is likely bec
 
 \begin{verbatim}
 ##    2.5%   97.5% 
-## 639.000 745.025
+## 641.975 748.025
 \end{verbatim}
 
 \begin{itemize}
@@ -2509,7 +2509,7 @@ Note we used Jeffreys' prior here, but an empirical prior is okay
 \end{Shaded}
 
 \begin{verbatim}
-## [1]  902 1037
+## [1]  898 1033
 \end{verbatim}
 
 \hypertarget{question-21}{%
@@ -2873,7 +2873,8 @@ For those that identify as \emph{liberal} we see a much linear trend.
 \addcontentsline{toc}{chapter}{Exercises}
 
 \hypertarget{question-1-1}{%
-\section{Question 1}\label{question-1-1}}
+\subsection*{Question 1}\label{question-1-1}}
+\addcontentsline{toc}{subsection}{Question 1}
 
 \begin{itemize}
 \item
@@ -2941,8 +2942,8 @@ By factorization we integrate out with respect \(\beta\) which yields the margin
 \end{itemize}
 
 \hypertarget{question-2}{%
-\section*{Question 2}\label{question-2}}
-\addcontentsline{toc}{section}{Question 2}
+\subsection*{Question 2}\label{question-2}}
+\addcontentsline{toc}{subsection}{Question 2}
 
 639 were polled before the debate and 639 different persons were polled afterward. we let j=1,2 let \(\alpha_j\) be proprtion of voters who preferred Bush out of those who had a preference for bush or Dukakis at the time of the survey j. we need to model two different multinomial distributions, and find the posterior probability in \(\alpha_2-\alpha_1\). what was the posterior probability for support of Bush?
 
@@ -2994,7 +2995,7 @@ There was a 0.355 probability of a shift toward Bush after both debates.
 \begin{verbatim}
 ## 
 ## FALSE  TRUE 
-##   641   359
+##   655   345
 \end{verbatim}
 
 \begin{Shaded}
@@ -3010,8 +3011,8 @@ There was a 0.355 probability of a shift toward Bush after both debates.
 \includegraphics{_main_files/figure-latex/unnamed-chunk-30-2.pdf}
 
 \hypertarget{question-3-1}{%
-\section*{Question 3}\label{question-3-1}}
-\addcontentsline{toc}{section}{Question 3}
+\subsection*{Question 3}\label{question-3-1}}
+\addcontentsline{toc}{subsection}{Question 3}
 
 we are given two independent normal random variables with unknown variances and unknown true means.
 - (a) Assume a uniform prior on \((\mu_c, \mu_t, log(\sigma_c),log(\sigma_t))\) find the posterior of \(\mu_c\) and \(\mu_t\).
@@ -3076,24 +3077,24 @@ we are given two independent normal random variables with unknown variances and 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-        \FunctionTok{quantile}\NormalTok{(post\_mc,}\FunctionTok{c}\NormalTok{(}\FloatTok{0.025}\NormalTok{,}\FloatTok{0.975}\NormalTok{))}
+        \FunctionTok{quantile}\NormalTok{(post\_mc,}\FunctionTok{c}\NormalTok{(}\FloatTok{0.025}\NormalTok{,}\FloatTok{0.975}\NormalTok{),}\AttributeTok{na.rm=}\ConstantTok{TRUE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
 ##      2.5%     97.5% 
-## 0.9324065 1.0975105
+## 0.9271836 1.0972310
 \end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-        \FunctionTok{quantile}\NormalTok{(post\_mt,}\FunctionTok{c}\NormalTok{(}\FloatTok{0.025}\NormalTok{,}\FloatTok{0.975}\NormalTok{))}
+        \FunctionTok{quantile}\NormalTok{(post\_mt,}\FunctionTok{c}\NormalTok{(}\FloatTok{0.025}\NormalTok{,}\FloatTok{0.975}\NormalTok{),}\AttributeTok{na.rm=}\ConstantTok{TRUE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
 ##     2.5%    97.5% 
-## 1.092578 1.250800
+## 1.092792 1.255374
 \end{verbatim}
 
 \begin{itemize}
@@ -3119,13 +3120,13 @@ The posterior interval (central) of the differences between 2 independent t-dist
 
 \begin{Shaded}
 \begin{Highlighting}[]
-         \FunctionTok{quantile}\NormalTok{(post\_mt}\SpecialCharTok{{-}}\NormalTok{post\_mc,}\FunctionTok{c}\NormalTok{(}\FloatTok{0.025}\NormalTok{,}\FloatTok{0.975}\NormalTok{))}
+         \FunctionTok{quantile}\NormalTok{(post\_mt}\SpecialCharTok{{-}}\NormalTok{post\_mc,}\FunctionTok{c}\NormalTok{(}\FloatTok{0.025}\NormalTok{,}\FloatTok{0.975}\NormalTok{),}\AttributeTok{na.rm=}\ConstantTok{TRUE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
 ##       2.5%      97.5% 
-## 0.04929078 0.28347800
+## 0.04644071 0.28055176
 \end{verbatim}
 
 \begin{Shaded}
@@ -3140,13 +3141,13 @@ The posterior interval (central) of the differences between 2 independent t-dist
 
 \begin{Shaded}
 \begin{Highlighting}[]
-             \FunctionTok{quantile}\NormalTok{(post\_diff,}\FunctionTok{c}\NormalTok{(}\FloatTok{0.025}\NormalTok{,}\FloatTok{0.975}\NormalTok{))}
+             \FunctionTok{quantile}\NormalTok{(post\_diff,}\FunctionTok{c}\NormalTok{(}\FloatTok{0.025}\NormalTok{,}\FloatTok{0.975}\NormalTok{),}\AttributeTok{na.rm=}\ConstantTok{TRUE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
 ##       2.5%      97.5% 
-## 0.03981079 0.27082799
+## 0.04213421 0.27561052
 \end{verbatim}
 
 \begin{Shaded}
@@ -3165,8 +3166,8 @@ The posterior interval (central) of the differences between 2 independent t-dist
 \end{verbatim}
 
 \hypertarget{question-4-independent-binomial}{%
-\section*{Question 4 (independent binomial)}\label{question-4-independent-binomial}}
-\addcontentsline{toc}{section}{Question 4 (independent binomial)}
+\subsection*{Question 4 (independent binomial)}\label{question-4-independent-binomial}}
+\addcontentsline{toc}{subsection}{Question 4 (independent binomial)}
 
 so using the multinomial is not correct because we do not have k outcomes, instead we have 2 independent binomial processes (as the question states!) so we modeled the independent likelihoods, which is a product of independent beta distributions.
 
@@ -3229,7 +3230,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.2200  0.4435  0.5295  0.5484  0.6429  1.1370
+##  0.2273  0.4441  0.5289  0.5459  0.6301  1.1453
 \end{verbatim}
 
 \begin{Shaded}
@@ -3275,7 +3276,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.2096  0.4648  0.5561  0.5739  0.6627  1.3870
+##  0.2246  0.4534  0.5462  0.5649  0.6515  1.2808
 \end{verbatim}
 
 \hypertarget{question-4-dirichlet}{%
@@ -3346,7 +3347,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.2176  0.4582  0.5586  0.5792  0.6732  1.1931
+##  0.1970  0.4777  0.5691  0.5921  0.6832  1.3386
 \end{verbatim}
 
 \begin{Shaded}
@@ -3384,7 +3385,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.1977  0.4579  0.5499  0.5686  0.6551  1.3035
+##  0.2346  0.4518  0.5415  0.5651  0.6666  1.1936
 \end{verbatim}
 
 \begin{Shaded}
@@ -3411,12 +3412,12 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.3436  0.5094  0.5673  0.5746  0.6370  0.9976
+##  0.3111  0.5099  0.5685  0.5706  0.6261  0.9418
 \end{verbatim}
 
 \hypertarget{question-5}{%
-\section*{Question 5}\label{question-5}}
-\addcontentsline{toc}{section}{Question 5}
+\subsection*{Question 5}\label{question-5}}
+\addcontentsline{toc}{subsection}{Question 5}
 
 \begin{itemize}
 \item
@@ -3452,7 +3453,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   6.966   9.369  10.288  10.370  11.289  15.032
+##   6.909   9.372  10.320  10.408  11.348  16.841
 \end{verbatim}
 
 \begin{Shaded}
@@ -3462,7 +3463,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 10.37015
+## [1] 10.40775
 \end{verbatim}
 
 \begin{Shaded}
@@ -3472,7 +3473,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 1.976001
+## [1] 2.170172
 \end{verbatim}
 
 \begin{Shaded}
@@ -3534,7 +3535,7 @@ The difference in means is approximately 0, with a variance (residual) of 2.7.
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.03183058
+## [1] -0.003251426
 \end{verbatim}
 
 \begin{Shaded}
@@ -3544,7 +3545,7 @@ The difference in means is approximately 0, with a variance (residual) of 2.7.
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 2.513469
+## [1] 2.61699
 \end{verbatim}
 
 \begin{Shaded}
@@ -3604,7 +3605,7 @@ For this we sample from the normal posterior distribution, conditioned on the ro
 \end{Shaded}
 
 \begin{verbatim}
-## mean error:0.124189268711817
+## mean error:0.137640908693181
 \end{verbatim}
 
 \begin{Shaded}
@@ -3614,7 +3615,11 @@ For this we sample from the normal posterior distribution, conditioned on the ro
 \end{Shaded}
 
 \includegraphics{_main_files/figure-latex/unnamed-chunk-42-1.pdf}
-\#\# Question 6\{-\}
+
+\hypertarget{question-6}{%
+\subsection*{Question 6}\label{question-6}}
+\addcontentsline{toc}{subsection}{Question 6}
+
 Consider data y1,\ldots,yn modeled as independent Bin(N,\(\theta\)) with both N and \(\theta\) unknown.
 
 First we examine that \(p(\lambda,\theta)\propto 1/\lambda\) described by Raftery (1988). We take the product of a vague prior for \(\lambda\) and the uniform prior for \(\theta\). let \(\theta \sim U[0,1]\) be uniform and use the uniform prior for \(\lambda\) as a vague prior. The motivation here is to use a uniform vague prior on the hyperparameter. Alternatively we can use Jeffreys' Prior for Pois(\(\lambda) = 1/\sqrt{\lambda}\) where the \(-E(\partial l^2 / \partial \lambda^2) = 1/\lambda\) is known for the Poisson.
@@ -3764,8 +3769,8 @@ The joint posterior distribution given the data and N=122 (which was maximal mar
 \end{itemize}
 
 \hypertarget{question-7-1}{%
-\section*{Question 7}\label{question-7-1}}
-\addcontentsline{toc}{section}{Question 7}
+\subsection*{Question 7}\label{question-7-1}}
+\addcontentsline{toc}{subsection}{Question 7}
 
 for 2 independent poisson distributions for x and y with \(\lambda_1,\lambda_2\). And the outcome \(X\) has a binomial distribution with N=x+y and unknown p.~show that the two models have the same likelihood.
 
@@ -3778,8 +3783,8 @@ p(X =k| X+Y=n) &= \frac{P(X+Y=n | X=k)P(X=k)}{P(X+Y=n)} \\
 \]
 
 \hypertarget{question-8}{%
-\section*{question 8}\label{question-8}}
-\addcontentsline{toc}{section}{question 8}
+\subsection*{question 8}\label{question-8}}
+\addcontentsline{toc}{subsection}{question 8}
 
 notes: dirichlet distribution?
 - (a) For a given block there are only two outcomes, bicycles, and other vehicles. So a binomial distribution is appropriate (2 outcomes only). We model y and binomial \((N_y,\theta_y)\) independent of z\(\sim Binomial(N_z,\theta_z)\).
@@ -3878,8 +3883,8 @@ p(\theta_y,\theta_z| y,z) &= p(\theta_y | y)p(\theta_z|z) \\
 \end{Shaded}
 
 \hypertarget{question-9}{%
-\section*{question 9}\label{question-9}}
-\addcontentsline{toc}{section}{question 9}
+\subsection*{question 9}\label{question-9}}
+\addcontentsline{toc}{subsection}{question 9}
 
 We need to derive the posterior of \(p(\mu^2, \sigma^2 | y)\). \(p(\mu,\sigma^2 | y) = p(y|\mu,\sigma^2)*p(\mu , \sigma^2)\)
 
@@ -3913,7 +3918,7 @@ p(\mu, \sigma^2 |y)&=\sigma^{-1}(\sigma^2)^{-((\nu_0+n)/2 +1)} exp(-1/2\sigma^2+
 & = \sigma^{-1}(\sigma^2)^{-((\nu_n)/2 +1)} exp(-1/2\sigma^2 ( \nu_n\sigma_n^2 +(k_n)( (\mu-\mu_n)^2 )\\
 \end{aligned}
 \]
-\# Question 10\{-\}
+\#\#\# Question 10\{-\}
 To show the F-distribution we prove it directly, using a change of variables. Although there is a theorem (definition) that for \(X\sim N(a,b)\) and \(Y\sim N(c,d)\) then F= \(S_X^2/\sigma^2_X / (S_Y^2 / \sigma_Y^2)\) follows an F-distribution.
 
 For \((n-1)S^2/\sigma^2 \sim X_{n-1}^2\) we let \(U \sim \chi_p^2, V\sim \chi_q^2\). We let \(Z = (U/p)/(V/q)\) and \(W=V/q\).
@@ -3945,8 +3950,8 @@ f(z,w)&= f(u)f(v)|J| \\
 We showed that for U, V as Chi-square variables, their ratio is the F-distribution, In order to show that the posterior distribution F= \(S_X^2/\sigma^2_X / (S_Y^2 / \sigma_Y^2)\) is F. The posterior \(Y \sim \sigma^2 | y \sim Inv-\chi^2(\nu, \sigma^2)\). where Y =\(\frac{(n-1)S^2}{\chi_{n-1}^2}\). So The inverse chi-square distribution can be re-arranged to follow a Chi-square. Then the variable Z in terms of Chi-square variables can be expressed using Inv-Chisquare variables.
 
 \hypertarget{question-11-1}{%
-\section*{Question 11}\label{question-11-1}}
-\addcontentsline{toc}{section}{Question 11}
+\subsection*{Question 11}\label{question-11-1}}
+\addcontentsline{toc}{subsection}{Question 11}
 
 the model is defined as \(p(\alpha,\beta,y,n,x) \propto p(\alpha,\beta)\prod_{i=1}^{4}p(y_i | \alpha,\beta,n_i,x_i)\), where \((\alpha,\beta)\) follows a joint normal prior with \(\alpha \sim N(0, 2^2)\) and \(\beta \sim N(10,10^2)\) and corr(\(\alpha,\beta) = 0.5\).
 
@@ -4587,18 +4592,18 @@ Using a uniform prior, we compute the Bayesian posterior for \(\theta=-\alpha/\b
 \end{Shaded}
 
 \begin{verbatim}
-## posterior mean for A :1.287 B 11.497
+## posterior mean for A :1.316 B 11.556
 \end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
- \FunctionTok{quantile}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{A}\SpecialCharTok{/}\NormalTok{B,}\FunctionTok{c}\NormalTok{(}\FloatTok{0.025}\NormalTok{,}\FloatTok{0.975}\NormalTok{))}
+ \FunctionTok{quantile}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{A}\SpecialCharTok{/}\NormalTok{B,}\FunctionTok{c}\NormalTok{(}\FloatTok{0.025}\NormalTok{,}\FloatTok{0.975}\NormalTok{),}\AttributeTok{na.rm=}\ConstantTok{TRUE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
 ##       2.5%      97.5% 
-## -0.2758621  0.1020760
+## -0.2857143  0.1176910
 \end{verbatim}
 
 \begin{Shaded}
@@ -4608,7 +4613,7 @@ Using a uniform prior, we compute the Bayesian posterior for \(\theta=-\alpha/\b
 \end{Shaded}
 
 \begin{verbatim}
-## posterio std.dev -a/b: 0.093
+## posterio std.dev -a/b: 0.097
 \end{verbatim}
 
 \hypertarget{q3-delta-method-approximation}{%
@@ -4666,7 +4671,7 @@ Using the derivation of the delta method shown above, we input the posterior mea
 \end{Shaded}
 
 \begin{verbatim}
-## normal approx posterior mean -0.108 std. dev 0.114
+## normal approx posterior mean -0.106 std. dev 0.106
 \end{verbatim}
 
 \hypertarget{question-4.2-using-the-posterior-sampling-via-grid-approach}{%
@@ -4744,7 +4749,7 @@ The posterior mean is -0.1055, with marginal posterior standard deviation of 0.0
 \end{Shaded}
 
 \begin{verbatim}
-## sample posterior mean: -0.102665
+## sample posterior mean: -0.108485
 \end{verbatim}
 
 \begin{Shaded}
@@ -4754,7 +4759,7 @@ The posterior mean is -0.1055, with marginal posterior standard deviation of 0.0
 \end{Shaded}
 
 \begin{verbatim}
-## sample posterior variance: 0.008
+## sample posterior variance: 0.009
 \end{verbatim}
 
 \begin{Shaded}
@@ -4764,7 +4769,7 @@ The posterior mean is -0.1055, with marginal posterior standard deviation of 0.0
 \end{Shaded}
 
 \begin{verbatim}
-## sample posterior std.dev: 0.089
+## sample posterior std.dev: 0.092
 \end{verbatim}
 
 \hypertarget{taylor-series-approximation-of-the-information-matrix}{%
@@ -4800,7 +4805,7 @@ Using a numerical approximation of \(p(\theta|y)\) from the grid approach had \(
 \end{Shaded}
 
 \begin{verbatim}
-## taylor approximation of std.dev: 0.063
+## taylor approximation of std.dev: 0.064
 \end{verbatim}
 
 If we would not able to solve for the theoretical value from the \emph{delta-method} in closed form we can use the standard deviation from marginal posterior sampled from the grid approach.
@@ -4816,7 +4821,7 @@ If we would not able to solve for the theoretical value from the \emph{delta-met
 \end{Shaded}
 
 \begin{verbatim}
-## taylor approximation of std.dev using posterior sample variance: 0.089
+## taylor approximation of std.dev using posterior sample variance: 0.092
 \end{verbatim}
 
 \hypertarget{question-4-1}{%
@@ -4852,7 +4857,7 @@ Using a simulation, we simply take the ratio of 2 random normal variables from t
 \end{Shaded}
 
 \begin{verbatim}
-## simulated mean/std.dev: 0.827 0.718
+## simulated mean/std.dev: 0.793 0.602
 \end{verbatim}
 
 \begin{Shaded}
@@ -4862,7 +4867,7 @@ Using a simulation, we simply take the ratio of 2 random normal variables from t
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.5150234
+## [1] 0.3622727
 \end{verbatim}
 
 \begin{Shaded}
@@ -5270,87 +5275,18 @@ This reproduces Table 5.3 from the text.
   \DocumentationTok{\#\# closely reproduces table 5.3 in section 5}
 \NormalTok{  theta1}\OtherTok{\textless{}{-}} \FunctionTok{sapply}\NormalTok{(}\FunctionTok{sample}\NormalTok{(tt}\SpecialCharTok{$}\NormalTok{tau0,}\DecValTok{1000}\NormalTok{,}\AttributeTok{prob=}\NormalTok{tt}\SpecialCharTok{$}\NormalTok{scaled.prob),}
                   \ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{posterior}\NormalTok{(x,school}\SpecialCharTok{$}\NormalTok{sigma2j,school}\SpecialCharTok{$}\NormalTok{yj)[}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{])}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \NormalTok{  theta1[}\FunctionTok{is.nan}\NormalTok{(theta1)]}\OtherTok{\textless{}{-}}\FunctionTok{mean}\NormalTok{(theta1[}\SpecialCharTok{!}\FunctionTok{is.nan}\NormalTok{(theta1)])}
   
 \NormalTok{  t1q}\OtherTok{\textless{}{-}}\FunctionTok{quantile}\NormalTok{(theta1,}\FunctionTok{c}\NormalTok{(}\FloatTok{0.025}\NormalTok{,}\FloatTok{0.25}\NormalTok{,}\FloatTok{0.5}\NormalTok{,}\FloatTok{0.75}\NormalTok{,}\FloatTok{0.975}\NormalTok{),}\AttributeTok{na.rm=}\ConstantTok{TRUE}\NormalTok{)}
   
 \NormalTok{   theta2}\OtherTok{\textless{}{-}} \FunctionTok{sapply}\NormalTok{(}\FunctionTok{sample}\NormalTok{(tt}\SpecialCharTok{$}\NormalTok{tau0,}\DecValTok{1000}\NormalTok{,}\AttributeTok{prob=}\NormalTok{tt}\SpecialCharTok{$}\NormalTok{scaled.prob),}
                   \ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{posterior}\NormalTok{(x,school}\SpecialCharTok{$}\NormalTok{sigma2j,school}\SpecialCharTok{$}\NormalTok{yj)[}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{])}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \NormalTok{  theta2[}\FunctionTok{is.nan}\NormalTok{(theta2)]}\OtherTok{\textless{}{-}}\FunctionTok{mean}\NormalTok{(theta2[}\SpecialCharTok{!}\FunctionTok{is.nan}\NormalTok{(theta2)])}
 
 \NormalTok{  t2q}\OtherTok{\textless{}{-}}\FunctionTok{quantile}\NormalTok{(theta2,}\FunctionTok{c}\NormalTok{(}\FloatTok{0.025}\NormalTok{,}\FloatTok{0.25}\NormalTok{,}\FloatTok{0.5}\NormalTok{,}\FloatTok{0.75}\NormalTok{,}\FloatTok{0.975}\NormalTok{),}\AttributeTok{na.rm=}\ConstantTok{TRUE}\NormalTok{)}
   
 \NormalTok{   theta3}\OtherTok{\textless{}{-}} \FunctionTok{sapply}\NormalTok{(}\FunctionTok{sample}\NormalTok{(tt}\SpecialCharTok{$}\NormalTok{tau0,}\DecValTok{1000}\NormalTok{,}\AttributeTok{prob=}\NormalTok{tt}\SpecialCharTok{$}\NormalTok{scaled.prob),}
                   \ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{posterior}\NormalTok{(x,school}\SpecialCharTok{$}\NormalTok{sigma2j,school}\SpecialCharTok{$}\NormalTok{yj)[}\DecValTok{3}\NormalTok{,}\DecValTok{1}\NormalTok{])}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \NormalTok{      theta3[}\FunctionTok{is.nan}\NormalTok{(theta3)]}\OtherTok{\textless{}{-}}\FunctionTok{mean}\NormalTok{(theta3[}\SpecialCharTok{!}\FunctionTok{is.nan}\NormalTok{(theta3)])}
 
 
@@ -5358,29 +5294,6 @@ This reproduces Table 5.3 from the text.
   
 \NormalTok{   theta4}\OtherTok{\textless{}{-}} \FunctionTok{sapply}\NormalTok{(}\FunctionTok{sample}\NormalTok{(tt}\SpecialCharTok{$}\NormalTok{tau0,}\DecValTok{1000}\NormalTok{,}\AttributeTok{prob=}\NormalTok{tt}\SpecialCharTok{$}\NormalTok{scaled.prob),}
                   \ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{posterior}\NormalTok{(x,school}\SpecialCharTok{$}\NormalTok{sigma2j,school}\SpecialCharTok{$}\NormalTok{yj)[}\DecValTok{4}\NormalTok{,}\DecValTok{1}\NormalTok{])}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \NormalTok{       theta4[}\FunctionTok{is.nan}\NormalTok{(theta4)]}\OtherTok{\textless{}{-}}\FunctionTok{mean}\NormalTok{(theta4[}\SpecialCharTok{!}\FunctionTok{is.nan}\NormalTok{(theta4)])}
 
 
@@ -5388,29 +5301,6 @@ This reproduces Table 5.3 from the text.
   
 \NormalTok{   theta5}\OtherTok{\textless{}{-}} \FunctionTok{sapply}\NormalTok{(}\FunctionTok{sample}\NormalTok{(tt}\SpecialCharTok{$}\NormalTok{tau0,}\DecValTok{1000}\NormalTok{,}\AttributeTok{prob=}\NormalTok{tt}\SpecialCharTok{$}\NormalTok{scaled.prob),}
                   \ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{posterior}\NormalTok{(x,school}\SpecialCharTok{$}\NormalTok{sigma2j,school}\SpecialCharTok{$}\NormalTok{yj)[}\DecValTok{5}\NormalTok{,}\DecValTok{1}\NormalTok{])}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \NormalTok{    theta5[}\FunctionTok{is.nan}\NormalTok{(theta5)]}\OtherTok{\textless{}{-}}\FunctionTok{mean}\NormalTok{(theta5[}\SpecialCharTok{!}\FunctionTok{is.nan}\NormalTok{(theta5)])}
 
 
@@ -5418,29 +5308,6 @@ This reproduces Table 5.3 from the text.
   
 \NormalTok{   theta6}\OtherTok{\textless{}{-}} \FunctionTok{sapply}\NormalTok{(}\FunctionTok{sample}\NormalTok{(tt}\SpecialCharTok{$}\NormalTok{tau0,}\DecValTok{1000}\NormalTok{,}\AttributeTok{prob=}\NormalTok{tt}\SpecialCharTok{$}\NormalTok{scaled.prob),}
                   \ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{posterior}\NormalTok{(x,school}\SpecialCharTok{$}\NormalTok{sigma2j,school}\SpecialCharTok{$}\NormalTok{yj)[}\DecValTok{6}\NormalTok{,}\DecValTok{1}\NormalTok{])}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \NormalTok{    theta6[}\FunctionTok{is.nan}\NormalTok{(theta6)]}\OtherTok{\textless{}{-}}\FunctionTok{mean}\NormalTok{(theta6[}\SpecialCharTok{!}\FunctionTok{is.nan}\NormalTok{(theta6)])}
 
 
@@ -5456,29 +5323,6 @@ This reproduces Table 5.3 from the text.
  
 \NormalTok{   theta8}\OtherTok{\textless{}{-}} \FunctionTok{sapply}\NormalTok{(}\FunctionTok{sample}\NormalTok{(tt}\SpecialCharTok{$}\NormalTok{tau0,}\DecValTok{1000}\NormalTok{,}\AttributeTok{prob=}\NormalTok{tt}\SpecialCharTok{$}\NormalTok{scaled.prob),}
                   \ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{posterior}\NormalTok{(x,school}\SpecialCharTok{$}\NormalTok{sigma2j,school}\SpecialCharTok{$}\NormalTok{yj)[}\DecValTok{8}\NormalTok{,}\DecValTok{1}\NormalTok{])}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-
-## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \NormalTok{    theta8[}\FunctionTok{is.nan}\NormalTok{(theta8)]}\OtherTok{\textless{}{-}}\FunctionTok{mean}\NormalTok{(theta8[}\SpecialCharTok{!}\FunctionTok{is.nan}\NormalTok{(theta8)])}
 
 \NormalTok{  t8q}\OtherTok{\textless{}{-}}\FunctionTok{quantile}\NormalTok{(theta8,}\FunctionTok{c}\NormalTok{(}\FloatTok{0.025}\NormalTok{,}\FloatTok{0.25}\NormalTok{,}\FloatTok{0.5}\NormalTok{,}\FloatTok{0.75}\NormalTok{,}\FloatTok{0.975}\NormalTok{),}\AttributeTok{na.rm=}\ConstantTok{TRUE}\NormalTok{)}
@@ -5794,6 +5638,88 @@ Under separate model, the probability that A is best is approxmiately 0.521, whe
   5.3 d
   setting \(\tau =0\) creates \(\theta_j | \mu, \tau, y \sim N(\infty, 0)\) because of the equation for \(\hat{\theta_j} = \infty/\infty\) and \(V_j = 1/\infty =0\). the inferences for posterior for \(\mu | \tau, y\) and \(\tau | y\) are not degenerate. but for the parameters for \(\theta\) these are degenerate. Setting \(\tau =0\) means that the variance parameter goes to 0, which reduces all points to a point mass, and sets them equal (0 variability).
 \end{itemize}
+
+\hypertarget{q4}{%
+\subsubsection*{Q4}\label{q4}}
+\addcontentsline{toc}{subsubsection}{Q4}
+
+\begin{itemize}
+\item
+  \begin{enumerate}
+  \def\labelenumi{(\alph{enumi})}
+  \tightlist
+  \item
+    by definition of exchangability, other than the data there can be no information that can distinguish \(\theta_j\), and by having a distinct grouping of parameters in either N(1,1) or N(-1,1) this violates exchangability. However, the problem states that \emph{we have not observed} which parameters come from any distribution. This is similar to the divorce problem, such that over the 8 mid-western states, we know that Utah and Nevada will have lower/higher divorce rates, however after observing 7 values, we do not have information about the 8th state that was not yet observed; this is an exchangeable process. However if we \emph{had information} that the last state was Nevada or Utah, then this is \emph{not} exchangeable. Since we have information that there will be a grouping, but currently did not observe the parameters, this is exchangeable.
+  \end{enumerate}
+\end{itemize}
+
+Using equation 5.2 the prior is \(p(\theta) = \int \prod p(\theta_j | \phi) p(\phi)d\phi\)
+\begin{equation}
+p(\theta_1,...\theta_{2J}) \int \prod N(\theta_j | \mu, \sigma^2)p(\mu, \sigma^2)= \sum_p \prod_{i=1}^J N(\theta_j(p)| 1,1)\prod_{k=J+1}^{2J}N(\theta_{k(p)}| -1,1)\frac{1}{{2J\choose J}}
+\end{equation}
+
+Equation 5.14 we take the sum over the posterior under the prior. the probability \(p(\mu,\sigma^2)\) we have 2J total groups and choose J.
+
+-(b) given two distributions N(1,1) and N(-1,1) the estimates will have a negative covariance so we do not have an identically distributed mixture, we can assume independence, but for large values observed, these are likely to be originated from N(1,1), and for smaller , negative, values these are likely originated from N(-1,1). Thus these are not identically distributed.
+
+-(c) for \(J\to \infty\) the covariance between these two groups reduces to 0 as the number of groups approaches infinity. De-finitti's theorem for infinite groups indicates that the distinction between exactly 2 groups disappears, and also assigning exactly half of the parameters to the correct half also disappears. So for infinite groupings, the distinction between groups is not possible and there is exchangability in the limit. However for finite groups we can not apply De-finitti's theorem.
+
+\hypertarget{q7}{%
+\subsubsection*{Q7}\label{q7}}
+\addcontentsline{toc}{subsubsection}{Q7}
+
+-(a) we use Adam's law to find the mean/variance of the prior y, s.t. \(y|\theta \sim Poi(\theta)\), and a gamma prior
+\[
+\begin{aligned}
+E[y] &= E[E(y|\theta)] = E[\theta] \\
+     &= \alpha/\beta \\
+V[y] &= E[V(y|\theta)] + V[E(y|\theta)] = E[\theta] + V[\theta] = \alpha/\beta + \alpha/\beta^2 = \frac{\alpha(\beta+1)}{\beta^2}     
+\end{aligned}
+\]
+-(b) in the normal model we have marginally t= \(\frac{\sqrt{n}(\mu-\bar{y})}{s}\) that is \(t_{n-1}\). Deriving the first 2 moments, where \(\mu \sim N(\bar{y},\sigma^2/n)\). where \(\sigma^2 | y \sim\) Scaled-Inv-Chi2(n-1,\(s^2\)).
+
+Note we have to condition on y because the formula for \(t_{n-1}\) includes \(\bar{y}\)
+\[
+\begin{aligned}
+E[t_{n-1} | y] &= E[E(\frac{\sqrt{n}(\mu-\bar{y})}{s}) |y] = 0 \\
+V[t_{n-1} | y] &= E[V(t|\sigma^2,y) |y] +V[ E(t|y)] \\
+&= E[\frac{n}{s^2}V((\mu-\bar{y})|\sigma^2,y)|y] +0 \\
+&= E[\frac{n\sigma^2}{n*s^2}] = \frac{s^2(n-1)}{s^2(n-3)}=(n-1)/(n-3) ; n >3
+\end{aligned}
+\]
+
+\hypertarget{q10}{%
+\subsubsection*{Q10}\label{q10}}
+\addcontentsline{toc}{subsubsection}{Q10}
+
+-(a) if the hyperprior \(p(\mu,\tau)\propto \tau^{-1}\) show that the posterior is improper
+the posterior is written as \(p(\theta,\mu,\tau | y) = p(\theta,\mu | \tau, y)p(\tau|y)\). This is proper if both terms are proper, and it is improper if at least 1 term is improper.
+we show that \(p(\tau | y)\) is improper for \(p(\tau)\propto \tau^{-1}\). Using equation 5.21
+\[
+\begin{aligned}
+p(\tau|y) \propto \int p(\tau)V_{\mu}^{-1/2}\prod_{j=1}^J(\sigma_j^2+\tau^2)^{-1/2}exp(\frac{-(\bar{y_{.j}}-\hat{\mu})^2)}{2(\sigma_j^2+\tau^2)})d\tau \\
+\int_{0}^{\infty} \frac{1}{\tau}V_{\mu}^{-1/2}\prod_{j=1}^J(\sigma_j^2+\tau^2)^{-1/2}exp(\frac{-(\bar{y_{.j}-\hat{\mu})^2})}{2(\sigma_j^2+\tau^2)})d\tau \\
+\end{aligned}
+\]
+so this is undefined for \(\tau=0\) and hence the term \(p(\tau|y\)) is undefined and causes the posterior to be undefined.
+
+-(b) for \(p(\mu,\tau)\propto 1\) equation 5.16 has 2 proper distributions that are in the normal family distribution and are well-defined. \(N(\theta_j | \mu,\tau^2)\) and \(N(\bar{y_{.j}} | \theta_j, \sigma_j^2)\) so these are proper distributions.
+
+Another way to see this is to take the limits of equation 5.21 where \(p(\tau)\propto 1\) As the limit goes to 0 the term is well defined.
+\[
+\begin{aligned}
+& \lim_{\tau \to 0} p(\tau)V_{\mu}^{-1/2}\prod_{j=1}^J(\sigma_j^2+\tau^2)^{-1/2}exp(\frac{-(\bar{y_{.j}}-\hat{\mu})^2)}{2(\sigma_j^2+\tau^2)}) = \\
+& \frac{1}{\sum \frac{1}{\sigma_j^2}}^{1/2}\prod (\sigma_j^2)^{-1/2}exp(\frac{-(\bar{y_{.j}}-\hat{\mu})^2)}{2\sigma_j^2}) \\
+\end{aligned}
+\]
+As the limit \(\tau \to \infty\) we the exponential term goes to 0 because \(\tau\) is in the denominator, so the entire term will go to 0. So the posterior is proper because the limits are defined.
+
+-(c) if i had data from J=2 schools only, i would test for between variance and within variance to see is MS justify pooling the estimates for both schools, or require separate models for each. if within each school there were enough students to justify modeling school-specific parameters, I would use equation 5.16 and model the posterior distribution.\\
+Another option is to model each school independently as separate models with known variance and i would use non-informative priors.
+
+\hypertarget{q11}{%
+\subsubsection*{Q11}\label{q11}}
+\addcontentsline{toc}{subsubsection}{Q11}
 
 \hypertarget{sharing-your-book}{%
 \chapter{Sharing your book}\label{sharing-your-book}}

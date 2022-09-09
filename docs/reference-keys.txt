@@ -27,7 +27,6 @@ jeffreys-invariance-principle
 exercises-1
 question-21
 chapter-3
-question-1-1
 asymptotics-and-connections-to-non-bayesian-approaches
 normal-approximations-to-the-posterior-distribution
 large-sample-theory
@@ -51,6 +50,3 @@ blocks
 equations
 theorems-and-proofs
 callout-blocks
-cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
-exercises-2
-q4-.

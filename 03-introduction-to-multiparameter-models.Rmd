@@ -7,7 +7,7 @@ output:
 
 # Exercises{-}
 
-## Question 1
+### Question 1{-}
 - (a) find the marginal posterior of $\alpha = \theta_1/(\theta_1+\theta_2)$ 
 We need to find the joint posterior of $\theta_1, \theta_2$ and then perform a change of variables to ($\alpha,\beta)$.  Let the prior $p(\theta)=Diri(a_1,...,a_J)$ where y follows a multinomial likelihood.
 $$
@@ -56,7 +56,7 @@ p(\alpha | y) &= p(y|\alpha)p(\alpha)\\
 \end{aligned}
 $$
 
-## Question 2{-}
+### Question 2{-}
 
 639 were polled before the debate and 639 different persons were polled afterward.  we let j=1,2 let $\alpha_j$ be proprtion of voters who preferred Bush out of those who had a preference for bush or Dukakis at the time of the survey j.  we need to model two different multinomial distributions, and find the posterior probability in $\alpha_2-\alpha_1$.  what was the posterior probability for support of Bush?
 
@@ -92,7 +92,7 @@ debate<-data.frame(survey=c("pre","post"), bush=c(294,288), dukakis=c(307,332),n
   lines(theta[,1],post.post2,col='red')
 ```
 
-## Question 3{-}
+### Question 3{-}
 we are given two independent normal random variables with unknown variances and unknown true means.
 - (a) Assume a uniform prior on $(\mu_c, \mu_t, log(\sigma_c),log(\sigma_t))$ find the posterior of $\mu_c$ and $\mu_t$.
 ```{r}
@@ -124,8 +124,8 @@ we are given two independent normal random variables with unknown variances and 
     message("95% posterior margin control:", round(mc_range[1],2)," ",round(mc_range[2],2)) 
         message("95% posterior margin control:", round(mt_range[1],2)," ",round(mt_range[2],2)) 
 
-        quantile(post_mc,c(0.025,0.975))
-        quantile(post_mt,c(0.025,0.975))
+        quantile(post_mc,c(0.025,0.975),na.rm=TRUE)
+        quantile(post_mt,c(0.025,0.975),na.rm=TRUE)
 ```
 
 - (b) what is $\mu_t - \mu_c$  
@@ -133,13 +133,13 @@ we are given two independent normal random variables with unknown variances and 
 The posterior interval (central) of the differences between 2 independent t-distributoins is 0.16 (0.04, 0.28), which closely matches the posterior simulation interval (0.0338, 0.281).  Here since both are independent we use $X-Y\sim N(\mu_x-\mu_y, sd_x+sd_y)$ as the sampling distribution.
 ```{r}
  hist(post_mt-post_mc, main = ' Difference between sampled posteriors')
-         quantile(post_mt-post_mc,c(0.025,0.975))
+         quantile(post_mt-post_mc,c(0.025,0.975),na.rm=TRUE)
          
 
   ## diff
          post_diff<-sapply(1:1000,function(x) posterior_sample(mc=mt-mc,sdc=sdt+sdc,nc=nt+nc))
     hist(post_diff, main='simulated difference')
-             quantile(post_diff,c(0.025,0.975))
+             quantile(post_diff,c(0.025,0.975),na.rm=TRUE)
         
   ## theoretical (two independent t distributions)
   md = mt-mc
@@ -149,7 +149,8 @@ The posterior interval (central) of the differences between 2 independent t-dist
   print(d_range)
 
 ```
-## Question 4 (independent binomial){-}
+
+### Question 4 (independent binomial){-}
 so using the multinomial is not correct because we do not have k outcomes, instead we have 2 independent binomial processes (as the question states!) so we modeled the independent likelihoods, which is a product of independent beta distributions.
 
 $p(p_0,p_1) \propto p(x| p_0,p_1)p(p_0,p_1) = p_0^{38.5}(1-p_0)^{634.5}p_1^{21.5}(1-p_1)^{657.5}$
@@ -196,6 +197,7 @@ b1<-sapply(p0,function(x) pbeta(x,39.5,635.5))
   hist(or,main='treatment odds empriical posterior')
   summary(or)
 ```
+
 ### Question 4 (dirichlet){-}
 - (4a) set up a noninformative prior on $(p_0,p_1)$ and obtain posterior simulations.  Assume outcomes are independent and binomially distributed.  The posterior for probability of death is Diri(39+1, 22+1, 675,681)
 - the dirichlet is the event of rolling a 4 sided die, whereas this problem is rolling independent 2 sided die, however the dirichlet does approximate independnet binomial processes well.
@@ -254,7 +256,7 @@ summary(or)
 ```
 
 
-## Question 5{-}
+### Question 5{-}
 - (a) Give the posterior distribution of $\mu, \sigma^2$ obtained by pretending the observations are exact, unrounded, measurements. we choose a prior for $\theta \sim Gamma(0.1,0.01)$ which has a mean and variance of 10.4 and 1000.   Using a Poisson likelihood, the mean is 10.4 and variance 2.2 from the posterior.  
 ```{r}
  obs=c(10,10,12,11,9)
@@ -331,7 +333,8 @@ For this we sample from the normal posterior distribution, conditioned on the ro
  message("mean error:",mean(ERR))
  hist(ERR)
 ```
-## Question 6{-}
+
+### Question 6{-}
 Consider data y1,...,yn modeled as independent Bin(N,$\theta$) with both N and $\theta$ unknown.  
 
 First we examine that $p(\lambda,\theta)\propto 1/\lambda$ described by Raftery (1988).  We take the product of a vague prior for $\lambda$ and the uniform prior for $\theta$.  let $\theta \sim U[0,1]$ be uniform and use the uniform prior for $\lambda$ as a vague prior. The motivation here is to use a uniform vague prior on the hyperparameter.   Alternatively we can use Jeffreys' Prior for Pois($\lambda) = 1/\sqrt{\lambda}$ where the $-E(\partial l^2 / \partial \lambda^2) = 1/\lambda$ is known for the Poisson.
@@ -425,7 +428,7 @@ The joint posterior distribution given the data and N=122 (which was maximal mar
 
 
 
-## Question 7{-}
+### Question 7{-}
 for 2 independent poisson distributions for x and y with $\lambda_1,\lambda_2$.  And the outcome $X$ has a binomial distribution with N=x+y and unknown p.  show that the two models have the same likelihood.
 
 We need to solve for the conditional probability of X given X+Y using the Poisson likelihoods.  Here if you input the Poisson likelihoods, and use X+Y $\sim Poi(\lambda_1+\lambda_2)$ this returns to a Binomial(n, $\lambda_1/(\lambda_1+\lambda_2))$.
@@ -436,7 +439,7 @@ p(X =k| X+Y=n) &= \frac{P(X+Y=n | X=k)P(X=k)}{P(X+Y=n)} \\
 \end{aligned}
 $$
 
-## question 8{-}
+### question 8{-}
  notes:  dirichlet distribution? 
 - (a) For a given block there are only two outcomes,  bicycles, and other vehicles.  So a binomial distribution is appropriate (2 outcomes only).  We model y and binomial $(N_y,\theta_y)$ independent of z$\sim Binomial(N_z,\theta_z)$.
 
@@ -500,7 +503,7 @@ we find the difference in the posterior distribution which is approximately 0.11
 
 ```
 
-## question 9{-}
+### question 9{-}
 We need to derive the posterior of $p(\mu^2, \sigma^2 | y)$.  $p(\mu,\sigma^2 | y) = p(y|\mu,\sigma^2)*p(\mu , \sigma^2)$
 
 
@@ -536,7 +539,7 @@ p(\mu, \sigma^2 |y)&=\sigma^{-1}(\sigma^2)^{-((\nu_0+n)/2 +1)} exp(-1/2\sigma^2+
 & = \sigma^{-1}(\sigma^2)^{-((\nu_n)/2 +1)} exp(-1/2\sigma^2 ( \nu_n\sigma_n^2 +(k_n)( (\mu-\mu_n)^2 )\\
 \end{aligned}
 $$
-# Question 10{-}
+### Question 10{-}
 To show the F-distribution we prove it directly, using a change of variables.  Although there is a theorem (definition)  that for $X\sim N(a,b)$ and $Y\sim N(c,d)$ then F= $S_X^2/\sigma^2_X / (S_Y^2 / \sigma_Y^2)$ follows an F-distribution.
 
 For $(n-1)S^2/\sigma^2 \sim X_{n-1}^2$ we let $U \sim \chi_p^2,  V\sim \chi_q^2$.  We let $Z = (U/p)/(V/q)$ and $W=V/q$.
@@ -571,7 +574,7 @@ We showed that for U, V as Chi-square variables, their ratio is the F-distributi
 
 
 
-## Question 11{-}
+### Question 11{-}
 the model is defined as $p(\alpha,\beta,y,n,x) \propto p(\alpha,\beta)\prod_{i=1}^{4}p(y_i | \alpha,\beta,n_i,x_i)$, where $(\alpha,\beta)$ follows a joint normal prior with $\alpha \sim N(0, 2^2)$ and $\beta \sim N(10,10^2)$ and corr($\alpha,\beta) = 0.5$.
 
 - (a) we repeat the computations of this data

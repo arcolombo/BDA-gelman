@@ -48,48 +48,53 @@
 \contentsline {subsection}{\numberline {2.8.1}Question 21}{62}{subsection.2.8.1}%
 \contentsline {chapter}{\numberline {3}Chapter 3}{71}{chapter.3}%
 \contentsline {chapter}{Exercises}{73}{chapter*.34}%
-\contentsline {section}{\numberline {3.1}Question 1}{73}{section.3.1}%
-\contentsline {section}{Question 2}{74}{section*.35}%
-\contentsline {section}{Question 3}{76}{section*.36}%
-\contentsline {section}{Question 4 (independent binomial)}{80}{section*.37}%
-\contentsline {subsection}{Question 4 (dirichlet)}{83}{section*.38}%
-\contentsline {section}{Question 5}{87}{section*.39}%
-\contentsline {section}{Question 7}{97}{section*.40}%
-\contentsline {section}{question 8}{98}{section*.41}%
-\contentsline {section}{question 9}{100}{section*.42}%
-\contentsline {section}{Question 11}{102}{section*.43}%
+\contentsline {subsection}{Question 1}{73}{section*.35}%
+\contentsline {subsection}{Question 2}{74}{section*.36}%
+\contentsline {subsection}{Question 3}{76}{section*.37}%
+\contentsline {subsection}{Question 4 (independent binomial)}{80}{section*.38}%
+\contentsline {subsection}{Question 4 (dirichlet)}{83}{section*.39}%
+\contentsline {subsection}{Question 5}{87}{section*.40}%
+\contentsline {subsection}{Question 6}{93}{section*.41}%
+\contentsline {subsection}{Question 7}{97}{section*.42}%
+\contentsline {subsection}{question 8}{98}{section*.43}%
+\contentsline {subsection}{question 9}{100}{section*.44}%
+\contentsline {subsection}{Question 11}{102}{section*.45}%
 \contentsline {chapter}{\numberline {4}Asymptotics and connections to non-Bayesian approaches}{107}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Normal approximations to the posterior distribution}{107}{section.4.1}%
-\contentsline {subsection}{Summarizing posterior distributions by point estimates and standard errors}{108}{section*.44}%
+\contentsline {subsection}{Summarizing posterior distributions by point estimates and standard errors}{108}{section*.46}%
 \contentsline {section}{\numberline {4.2}Large-sample theory}{108}{section.4.2}%
-\contentsline {subsection}{Asymptotic normality and consistency}{109}{section*.45}%
+\contentsline {subsection}{Asymptotic normality and consistency}{109}{section*.47}%
 \contentsline {section}{\numberline {4.3}Frequency evaluations of Bayesian inferences}{109}{section.4.3}%
-\contentsline {subsection}{Large sample correspondence}{110}{section*.46}%
-\contentsline {subsection}{Point estimation, consistency, and efficiency}{110}{section*.47}%
-\contentsline {subsection}{Confidence coverage}{111}{section*.48}%
+\contentsline {subsection}{Large sample correspondence}{110}{section*.48}%
+\contentsline {subsection}{Point estimation, consistency, and efficiency}{110}{section*.49}%
+\contentsline {subsection}{Confidence coverage}{111}{section*.50}%
 \contentsline {section}{\numberline {4.4}Exercises}{111}{section.4.4}%
-\contentsline {subsection}{Question 1}{111}{section*.49}%
-\contentsline {subsection}{Exercise 2}{115}{section*.50}%
-\contentsline {subsection}{Exercise 3}{117}{section*.51}%
-\contentsline {subsubsection}{Q3 Delta method approximation}{120}{section*.52}%
+\contentsline {subsection}{Question 1}{111}{section*.51}%
+\contentsline {subsection}{Exercise 2}{115}{section*.52}%
+\contentsline {subsection}{Exercise 3}{117}{section*.53}%
+\contentsline {subsubsection}{Q3 Delta method approximation}{120}{section*.54}%
 \contentsline {subsection}{\numberline {4.4.1}Question 4.2 using the posterior sampling via grid approach}{122}{subsection.4.4.1}%
 \contentsline {subsection}{\numberline {4.4.2}Taylor series approximation of the information matrix}{124}{subsection.4.4.2}%
-\contentsline {subsection}{Question 4}{125}{section*.53}%
-\contentsline {subsection}{Question 5}{126}{section*.54}%
-\contentsline {subsection}{Question 9}{127}{section*.55}%
+\contentsline {subsection}{Question 4}{125}{section*.55}%
+\contentsline {subsection}{Question 5}{126}{section*.56}%
+\contentsline {subsection}{Question 9}{127}{section*.57}%
 \contentsline {chapter}{\numberline {5}Hierarchical Models}{133}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Constructing a parameterized prior distribution}{133}{section.5.1}%
-\contentsline {subsection}{Logic of combining information}{133}{section*.56}%
+\contentsline {subsection}{Logic of combining information}{133}{section*.58}%
 \contentsline {section}{\numberline {5.2}Exchangeability and hierarchical models}{134}{section.5.2}%
-\contentsline {subsection}{Exchangeability}{134}{section*.57}%
-\contentsline {section}{Exercises}{134}{section*.58}%
-\contentsline {subsection}{Q1}{134}{section*.59}%
-\contentsline {subsection}{Q2}{135}{section*.60}%
-\contentsline {subsection}{Q3}{135}{section*.61}%
-\contentsline {subsubsection}{\numberline {5.2.0.1}Q3 part a}{144}{subsubsection.5.2.0.1}%
-\contentsline {subsubsection}{\numberline {5.2.0.2}Q 5.3 part b}{147}{subsubsection.5.2.0.2}%
-\contentsline {subsubsection}{\numberline {5.2.0.3}Q 5.3.c}{148}{subsubsection.5.2.0.3}%
-\contentsline {subsubsection}{\numberline {5.2.0.4}Q 5.3 part d}{149}{subsubsection.5.2.0.4}%
+\contentsline {subsection}{Exchangeability}{134}{section*.59}%
+\contentsline {section}{Exercises}{134}{section*.60}%
+\contentsline {subsection}{Q1}{134}{section*.61}%
+\contentsline {subsection}{Q2}{135}{section*.62}%
+\contentsline {subsection}{Q3}{135}{section*.63}%
+\contentsline {subsubsection}{\numberline {5.2.0.1}Q3 part a}{141}{subsubsection.5.2.0.1}%
+\contentsline {subsubsection}{\numberline {5.2.0.2}Q 5.3 part b}{144}{subsubsection.5.2.0.2}%
+\contentsline {subsubsection}{\numberline {5.2.0.3}Q 5.3.c}{146}{subsubsection.5.2.0.3}%
+\contentsline {subsubsection}{\numberline {5.2.0.4}Q 5.3 part d}{147}{subsubsection.5.2.0.4}%
+\contentsline {subsubsection}{Q4}{147}{section*.64}%
+\contentsline {subsubsection}{Q7}{148}{section*.65}%
+\contentsline {subsubsection}{Q10}{148}{section*.66}%
+\contentsline {subsubsection}{Q11}{149}{section*.67}%
 \contentsline {chapter}{\numberline {6}Sharing your book}{151}{chapter.6}%
 \contentsline {section}{\numberline {6.1}Publishing}{151}{section.6.1}%
 \contentsline {section}{\numberline {6.2}404 pages}{151}{section.6.2}%

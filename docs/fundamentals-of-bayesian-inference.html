@@ -23,7 +23,7 @@
 <meta name="author" content="Anthony R. Colombo, Dr. Paul Marjoram" />
 
 
-<meta name="date" content="2022-09-01" />
+<meta name="date" content="2022-09-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -207,14 +207,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3" data-path="chapter-3.html"><a href="chapter-3.html"><i class="fa fa-check"></i><b>3</b> Chapter 3</a></li>
 <li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html"><i class="fa fa-check"></i>Exercises</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="exercises-2.html"><a href="exercises-2.html#question-1-1"><i class="fa fa-check"></i><b>3.1</b> Question 1</a></li>
+<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#question-1-1"><i class="fa fa-check"></i>Question 1</a></li>
 <li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#question-2"><i class="fa fa-check"></i>Question 2</a></li>
 <li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#question-3-1"><i class="fa fa-check"></i>Question 3</a></li>
-<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#question-4-independent-binomial"><i class="fa fa-check"></i>Question 4 (independent binomial)</a>
-<ul>
+<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#question-4-independent-binomial"><i class="fa fa-check"></i>Question 4 (independent binomial)</a></li>
 <li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#question-4-dirichlet"><i class="fa fa-check"></i>Question 4 (dirichlet)</a></li>
-</ul></li>
 <li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#question-5"><i class="fa fa-check"></i>Question 5</a></li>
+<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#question-6"><i class="fa fa-check"></i>Question 6</a></li>
 <li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#question-7-1"><i class="fa fa-check"></i>Question 7</a></li>
 <li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#question-8"><i class="fa fa-check"></i>question 8</a></li>
 <li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#question-9"><i class="fa fa-check"></i>question 9</a></li>
@@ -656,9 +655,9 @@ The question asks to compute at least one election tie, from a total of 435 elec
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="fundamentals-of-bayesian-inference.html#cb24-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hist</span>(pl<span class="sc">$</span>doctorWaitTime[<span class="fu">which</span>(pl<span class="sc">$</span>doctorWaitTime<span class="sc">!=</span><span class="dv">0</span>)]) <span class="do">## about 2.41</span></span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-9-3.png" width="672" /></p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="fundamentals-of-bayesian-inference.html#cb25-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">max</span>(pl<span class="sc">$</span>completionTime)<span class="sc">-</span><span class="dv">420</span>) <span class="do">## closing time</span></span></code></pre></div>
-<pre><code>## [1] 12.81608</code></pre>
+<pre><code>## [1] 6.984889</code></pre>
 <div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="fundamentals-of-bayesian-inference.html#cb27-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">max</span>(pl<span class="sc">$</span>patient)) <span class="do">## total patient  should be 42</span></span></code></pre></div>
-<pre><code>## [1] 51</code></pre>
+<pre><code>## [1] 42</code></pre>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="fundamentals-of-bayesian-inference.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="do">## (20-5)/6 + 10 this is about 12.5 minutes of arrival + visit time. which is approximately close to 10 </span></span>
 <span id="cb29-2"><a href="fundamentals-of-bayesian-inference.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="do">## the arrival time is about 10 minutes.  </span></span>
 <span id="cb29-3"><a href="fundamentals-of-bayesian-inference.html#cb29-3" aria-hidden="true" tabindex="-1"></a></span>

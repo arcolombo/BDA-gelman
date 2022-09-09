@@ -443,9 +443,11 @@ Equation 5.14 we take the sum over the posterior under the prior.  the probabili
 #### Q7{-}
 -(a) we use Adam's law to find the mean/variance of the prior y, s.t. $y|\theta \sim Poi(\theta)$, and a gamma prior
 $$
-E[y] = E[E(y|\theta)] = E[\theta]\\
-     = \alpha/\beta\\
-V[y] = E[V(y|\theta)] + V[E(y|\theta)] = E[\theta] + V[\theta] = \alpha/\beta + \alpha/\beta^2 = \frac{\alpha(\beta+1)}{\beta^2}     
+\begin{aligned}
+E[y] &= E[E(y|\theta)] = E[\theta] \\
+     &= \alpha/\beta \\
+V[y] &= E[V(y|\theta)] + V[E(y|\theta)] = E[\theta] + V[\theta] = \alpha/\beta + \alpha/\beta^2 = \frac{\alpha(\beta+1)}{\beta^2}     
+\end{aligned}
 $$
 -(b) in the normal model we have marginally t= $\frac{\sqrt{n}(\mu-\bar{y})}{s}$ that is $t_{n-1}$.  Deriving the first 2 moments, where $\mu \sim N(\bar{y},\sigma^2/n)$.  where $\sigma^2 | y \sim$ Scaled-Inv-Chi2(n-1,$s^2$).
 
@@ -466,11 +468,12 @@ $$
 -(a) if the hyperprior $p(\mu,\tau)\propto \tau^{-1}$ show that the posterior is improper
 the posterior is written as $p(\theta,\mu,\tau | y)  = p(\theta,\mu | \tau, y)p(\tau|y)$.  This is proper if both terms are proper, and it is improper if at least 1 term is improper.
 we show that $p(\tau | y)$ is improper for $p(\tau)\propto \tau^{-1}$.  Using equation 5.21
-\begin{equation}
+$$
+\begin{aligned}
 p(\tau|y) \propto \int p(\tau)V_{\mu}^{-1/2}\prod_{j=1}^J(\sigma_j^2+\tau^2)^{-1/2}exp(\frac{-(\bar{y_{.j}}-\hat{\mu})^2)}{2(\sigma_j^2+\tau^2)})d\tau \\
 \int_{0}^{\infty} \frac{1}{\tau}V_{\mu}^{-1/2}\prod_{j=1}^J(\sigma_j^2+\tau^2)^{-1/2}exp(\frac{-(\bar{y_{.j}-\hat{\mu})^2})}{2(\sigma_j^2+\tau^2)})d\tau \\
-\end{equation}
-
+\end{aligned}
+$$
 so this is undefined for $\tau=0$ and hence the term $p(\tau|y$) is undefined and causes the posterior to be undefined.
 
 -(b) for $p(\mu,\tau)\propto 1$ equation 5.16 has 2 proper distributions that are in the normal family distribution and are well-defined.  $N(\theta_j | \mu,\tau^2)$ and $N(\bar{y_{.j}} | \theta_j, \sigma_j^2)$ so these are proper distributions.
@@ -479,10 +482,13 @@ Another way to see this is to take the limits of equation 5.21 where $p(\tau)\pr
 $$
 \begin{aligned}
 & \lim_{\tau \to 0} p(\tau)V_{\mu}^{-1/2}\prod_{j=1}^J(\sigma_j^2+\tau^2)^{-1/2}exp(\frac{-(\bar{y_{.j}}-\hat{\mu})^2)}{2(\sigma_j^2+\tau^2)}) = \\
-& \frac{1}{\sum \frac{1}{\sigma_j^2}}^{1/2}\prod (\sigma_j^2)^{-1/2}exp(\frac{-(\bar{y_{.j}}-\hat{\mu})^2)}{2\sigma_j^2})\\
+& \frac{1}{\sum \frac{1}{\sigma_j^2}}^{1/2}\prod (\sigma_j^2)^{-1/2}exp(\frac{-(\bar{y_{.j}}-\hat{\mu})^2)}{2\sigma_j^2}) \\
 \end{aligned}
 $$
 As the limit $\tau \to \infty$ we the exponential term goes to 0 because $\tau$ is in the denominator, so the entire term will go to 0.  So the posterior is proper because the limits are defined.
 
 -(c) if i had data from J=2 schools only, i would test for between variance and within variance to see is MS justify pooling the estimates for both schools, or require separate models for each.  if within each school there were enough students to justify modeling school-specific parameters, I would use equation 5.16 and model the posterior distribution.   
   Another option is to model each school independently as separate models with known variance and i would use non-informative priors.
+  
+#### Q11{-}
+

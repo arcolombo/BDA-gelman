@@ -23,7 +23,7 @@
 <meta name="author" content="Anthony R. Colombo, Dr. Paul Marjoram" />
 
 
-<meta name="date" content="2022-09-01" />
+<meta name="date" content="2022-09-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -207,14 +207,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3" data-path="chapter-3.html"><a href="chapter-3.html"><i class="fa fa-check"></i><b>3</b> Chapter 3</a></li>
 <li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html"><i class="fa fa-check"></i>Exercises</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="exercises-2.html"><a href="exercises-2.html#question-1-1"><i class="fa fa-check"></i><b>3.1</b> Question 1</a></li>
+<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#question-1-1"><i class="fa fa-check"></i>Question 1</a></li>
 <li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#question-2"><i class="fa fa-check"></i>Question 2</a></li>
 <li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#question-3-1"><i class="fa fa-check"></i>Question 3</a></li>
-<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#question-4-independent-binomial"><i class="fa fa-check"></i>Question 4 (independent binomial)</a>
-<ul>
+<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#question-4-independent-binomial"><i class="fa fa-check"></i>Question 4 (independent binomial)</a></li>
 <li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#question-4-dirichlet"><i class="fa fa-check"></i>Question 4 (dirichlet)</a></li>
-</ul></li>
 <li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#question-5"><i class="fa fa-check"></i>Question 5</a></li>
+<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#question-6"><i class="fa fa-check"></i>Question 6</a></li>
 <li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#question-7-1"><i class="fa fa-check"></i>Question 7</a></li>
 <li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#question-8"><i class="fa fa-check"></i>question 8</a></li>
 <li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html#question-9"><i class="fa fa-check"></i>question 9</a></li>
@@ -301,8 +300,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="exercises-2" class="section level1 unnumbered hasAnchor">
 <h1>Exercises<a href="exercises-2.html#exercises-2" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="question-1-1" class="section level2 hasAnchor" number="3.1">
-<h2><span class="header-section-number">3.1</span> Question 1<a href="exercises-2.html#question-1-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="question-1-1" class="section level3 unnumbered hasAnchor">
+<h3>Question 1<a href="exercises-2.html#question-1-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><ol style="list-style-type: lower-alpha">
 <li>find the marginal posterior of <span class="math inline">\(\alpha = \theta_1/(\theta_1+\theta_2)\)</span>
@@ -357,8 +356,8 @@ p(\alpha | y) &amp;= p(y|\alpha)p(\alpha)\\
 </ol></li>
 </ul>
 </div>
-<div id="question-2" class="section level2 unnumbered hasAnchor">
-<h2>Question 2<a href="exercises-2.html#question-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="question-2" class="section level3 unnumbered hasAnchor">
+<h3>Question 2<a href="exercises-2.html#question-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>639 were polled before the debate and 639 different persons were polled afterward. we let j=1,2 let <span class="math inline">\(\alpha_j\)</span> be proprtion of voters who preferred Bush out of those who had a preference for bush or Dukakis at the time of the survey j. we need to model two different multinomial distributions, and find the posterior probability in <span class="math inline">\(\alpha_2-\alpha_1\)</span>. what was the posterior probability for support of Bush?</p>
 <p>There was a 0.355 probability of a shift toward Bush after both debates.</p>
 <div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="exercises-2.html#cb184-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">library</span>(ggplot2)</span>
@@ -387,7 +386,7 @@ p(\alpha | y) &amp;= p(y|\alpha)p(\alpha)\\
 <div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="exercises-2.html#cb187-1" aria-hidden="true" tabindex="-1"></a>   <span class="fu">table</span>((p.post[,<span class="dv">1</span>]<span class="sc">-</span>pre.post[,<span class="dv">1</span>])<span class="sc">&gt;</span><span class="dv">0</span>) <span class="do">## 0.355% supported bush post debate.</span></span></code></pre></div>
 <pre><code>## 
 ## FALSE  TRUE 
-##   614   386</code></pre>
+##   627   373</code></pre>
 <div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="exercises-2.html#cb189-1" aria-hidden="true" tabindex="-1"></a> pre.post2<span class="ot">&lt;-</span><span class="fu">apply</span>(theta,<span class="dv">1</span>, <span class="cf">function</span>(x) <span class="fu">ddirichlet</span>(x,<span class="fu">as.numeric</span>(debate[<span class="dv">1</span>,<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>])))</span>
 <span id="cb189-2"><a href="exercises-2.html#cb189-2" aria-hidden="true" tabindex="-1"></a> post.post2<span class="ot">&lt;-</span><span class="fu">apply</span>(theta,<span class="dv">1</span>, <span class="cf">function</span>(x) <span class="fu">ddirichlet</span>(x,<span class="fu">as.numeric</span>(debate[<span class="dv">2</span>,<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>])))</span>
 <span id="cb189-3"><a href="exercises-2.html#cb189-3" aria-hidden="true" tabindex="-1"></a> </span>
@@ -395,8 +394,8 @@ p(\alpha | y) &amp;= p(y|\alpha)p(\alpha)\\
 <span id="cb189-5"><a href="exercises-2.html#cb189-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lines</span>(theta[,<span class="dv">1</span>],post.post2,<span class="at">col=</span><span class="st">&#39;red&#39;</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-30-2.png" width="672" /></p>
 </div>
-<div id="question-3-1" class="section level2 unnumbered hasAnchor">
-<h2>Question 3<a href="exercises-2.html#question-3-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="question-3-1" class="section level3 unnumbered hasAnchor">
+<h3>Question 3<a href="exercises-2.html#question-3-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>we are given two independent normal random variables with unknown variances and unknown true means.
 - (a) Assume a uniform prior on <span class="math inline">\((\mu_c, \mu_t, log(\sigma_c),log(\sigma_t))\)</span> find the posterior of <span class="math inline">\(\mu_c\)</span> and <span class="math inline">\(\mu_t\)</span>.</p>
 <div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="exercises-2.html#cb190-1" aria-hidden="true" tabindex="-1"></a> nc <span class="ot">=</span><span class="dv">32</span></span>
@@ -429,12 +428,12 @@ p(\alpha | y) &amp;= p(y|\alpha)p(\alpha)\\
 <pre><code>## 95% posterior margin control:0.93 1.1</code></pre>
 <div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="exercises-2.html#cb194-1" aria-hidden="true" tabindex="-1"></a>        <span class="fu">message</span>(<span class="st">&quot;95% posterior margin control:&quot;</span>, <span class="fu">round</span>(mt_range[<span class="dv">1</span>],<span class="dv">2</span>),<span class="st">&quot; &quot;</span>,<span class="fu">round</span>(mt_range[<span class="dv">2</span>],<span class="dv">2</span>)) </span></code></pre></div>
 <pre><code>## 95% posterior margin control:1.09 1.25</code></pre>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="exercises-2.html#cb196-1" aria-hidden="true" tabindex="-1"></a>        <span class="fu">quantile</span>(post_mc,<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>))</span></code></pre></div>
-<pre><code>##      2.5%     97.5% 
-## 0.9267858 1.0993229</code></pre>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="exercises-2.html#cb198-1" aria-hidden="true" tabindex="-1"></a>        <span class="fu">quantile</span>(post_mt,<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="exercises-2.html#cb196-1" aria-hidden="true" tabindex="-1"></a>        <span class="fu">quantile</span>(post_mc,<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>),<span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>##     2.5%    97.5% 
-## 1.097143 1.253767</code></pre>
+## 0.927336 1.098834</code></pre>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="exercises-2.html#cb198-1" aria-hidden="true" tabindex="-1"></a>        <span class="fu">quantile</span>(post_mt,<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>),<span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>##     2.5%    97.5% 
+## 1.088184 1.256575</code></pre>
 <ul>
 <li><ol start="2" style="list-style-type: lower-alpha">
 <li>what is <span class="math inline">\(\mu_t - \mu_c\)</span></li>
@@ -443,16 +442,16 @@ p(\alpha | y) &amp;= p(y|\alpha)p(\alpha)\\
 <p>The posterior interval (central) of the differences between 2 independent t-distributoins is 0.16 (0.04, 0.28), which closely matches the posterior simulation interval (0.0338, 0.281). Here since both are independent we use <span class="math inline">\(X-Y\sim N(\mu_x-\mu_y, sd_x+sd_y)\)</span> as the sampling distribution.</p>
 <div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="exercises-2.html#cb200-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">hist</span>(post_mt<span class="sc">-</span>post_mc, <span class="at">main =</span> <span class="st">&#39; Difference between sampled posteriors&#39;</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="exercises-2.html#cb201-1" aria-hidden="true" tabindex="-1"></a>         <span class="fu">quantile</span>(post_mt<span class="sc">-</span>post_mc,<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="exercises-2.html#cb201-1" aria-hidden="true" tabindex="-1"></a>         <span class="fu">quantile</span>(post_mt<span class="sc">-</span>post_mc,<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>),<span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>##       2.5%      97.5% 
-## 0.04380904 0.28130827</code></pre>
+## 0.03724658 0.27897839</code></pre>
 <div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="exercises-2.html#cb203-1" aria-hidden="true" tabindex="-1"></a>  <span class="do">## diff</span></span>
 <span id="cb203-2"><a href="exercises-2.html#cb203-2" aria-hidden="true" tabindex="-1"></a>         post_diff<span class="ot">&lt;-</span><span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>,<span class="cf">function</span>(x) <span class="fu">posterior_sample</span>(<span class="at">mc=</span>mt<span class="sc">-</span>mc,<span class="at">sdc=</span>sdt<span class="sc">+</span>sdc,<span class="at">nc=</span>nt<span class="sc">+</span>nc))</span>
 <span id="cb203-3"><a href="exercises-2.html#cb203-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">hist</span>(post_diff, <span class="at">main=</span><span class="st">&#39;simulated difference&#39;</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-32-2.png" width="672" /></p>
-<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="exercises-2.html#cb204-1" aria-hidden="true" tabindex="-1"></a>             <span class="fu">quantile</span>(post_diff,<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="exercises-2.html#cb204-1" aria-hidden="true" tabindex="-1"></a>             <span class="fu">quantile</span>(post_diff,<span class="fu">c</span>(<span class="fl">0.025</span>,<span class="fl">0.975</span>),<span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>##       2.5%      97.5% 
-## 0.04067199 0.27195245</code></pre>
+## 0.04210174 0.27819326</code></pre>
 <div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="exercises-2.html#cb206-1" aria-hidden="true" tabindex="-1"></a>  <span class="do">## theoretical (two independent t distributions)</span></span>
 <span id="cb206-2"><a href="exercises-2.html#cb206-2" aria-hidden="true" tabindex="-1"></a>  md <span class="ot">=</span> mt<span class="sc">-</span>mc</span>
 <span id="cb206-3"><a href="exercises-2.html#cb206-3" aria-hidden="true" tabindex="-1"></a>  sdd <span class="ot">=</span> sdt<span class="sc">+</span>sdc</span>
@@ -461,8 +460,8 @@ p(\alpha | y) &amp;= p(y|\alpha)p(\alpha)\\
 <span id="cb206-6"><a href="exercises-2.html#cb206-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(d_range)</span></code></pre></div>
 <pre><code>## [1] 0.04381525 0.27618475</code></pre>
 </div>
-<div id="question-4-independent-binomial" class="section level2 unnumbered hasAnchor">
-<h2>Question 4 (independent binomial)<a href="exercises-2.html#question-4-independent-binomial" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="question-4-independent-binomial" class="section level3 unnumbered hasAnchor">
+<h3>Question 4 (independent binomial)<a href="exercises-2.html#question-4-independent-binomial" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>so using the multinomial is not correct because we do not have k outcomes, instead we have 2 independent binomial processes (as the question states!) so we modeled the independent likelihoods, which is a product of independent beta distributions.</p>
 <p><span class="math inline">\(p(p_0,p_1) \propto p(x| p_0,p_1)p(p_0,p_1) = p_0^{38.5}(1-p_0)^{634.5}p_1^{21.5}(1-p_1)^{657.5}\)</span></p>
 <div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="exercises-2.html#cb208-1" aria-hidden="true" tabindex="-1"></a>p0<span class="ot">=</span> <span class="fu">seq</span>(<span class="fl">0.01</span>,<span class="fl">0.99</span>,<span class="at">by=</span><span class="fl">0.01</span>)</span>
@@ -498,7 +497,7 @@ Note that using a 2x2 table the OR is 0.54 and the independent binomials do appr
 <p><img src="_main_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
 <div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="exercises-2.html#cb210-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>(or)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.1804  0.4417  0.5381  0.5517  0.6480  1.1835</code></pre>
+##  0.1745  0.4471  0.5336  0.5508  0.6464  1.1856</code></pre>
 <div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="exercises-2.html#cb212-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">message</span>(<span class="st">&quot;the empricial OR: &quot;</span>, <span class="fu">round</span>((<span class="dv">22</span><span class="sc">*</span><span class="dv">635</span>)<span class="sc">/</span>(<span class="dv">39</span><span class="sc">*</span><span class="dv">658</span>),<span class="dv">2</span>))</span></code></pre></div>
 <pre><code>## the empricial OR: 0.54</code></pre>
 <ul>
@@ -516,7 +515,8 @@ If we use the prior Beta(1,1) as the uniform prior we do see marginal changes to
 <p><img src="_main_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
 <div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="exercises-2.html#cb215-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>(or)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.1972  0.4593  0.5482  0.5681  0.6544  1.2247</code></pre>
+##  0.2316  0.4464  0.5492  0.5659  0.6646  1.0942</code></pre>
+</div>
 <div id="question-4-dirichlet" class="section level3 unnumbered hasAnchor">
 <h3>Question 4 (dirichlet)<a href="exercises-2.html#question-4-dirichlet" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
@@ -556,7 +556,7 @@ If we use the prior Beta(1,1) as the uniform prior we do see marginal changes to
 <span id="cb220-2"><a href="exercises-2.html#cb220-2" aria-hidden="true" tabindex="-1"></a>  or<span class="ot">&lt;-</span>(treat.post[,<span class="dv">2</span>]<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>treat.post[,<span class="dv">2</span>]))<span class="sc">/</span>(treat.post[,<span class="dv">1</span>]<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>treat.post[,<span class="dv">1</span>]))</span>
 <span id="cb220-3"><a href="exercises-2.html#cb220-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(or)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.2651  0.4700  0.5574  0.5820  0.6765  1.3797</code></pre>
+##  0.2184  0.4615  0.5607  0.5805  0.6764  1.5207</code></pre>
 <div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="exercises-2.html#cb222-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hist</span>(or,<span class="at">main=</span><span class="st">&#39;treatment odds&#39;</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
 <ul>
@@ -571,7 +571,7 @@ If we use the prior Beta(1,1) as the uniform prior we do see marginal changes to
 <p><img src="_main_files/figure-html/unnamed-chunk-38-1.png" width="672" /></p>
 <div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="exercises-2.html#cb224-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>(or)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.2072  0.4577  0.5656  0.5786  0.6721  1.2652</code></pre>
+##  0.2175  0.4620  0.5620  0.5777  0.6688  1.5995</code></pre>
 <div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="exercises-2.html#cb226-1" aria-hidden="true" tabindex="-1"></a>  <span class="do">## empirical</span></span>
 <span id="cb226-2"><a href="exercises-2.html#cb226-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># control = (39/674)*1354 = 78.34718</span></span>
 <span id="cb226-3"><a href="exercises-2.html#cb226-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># treat = (22/658)*1354 = 45.27052</span></span>
@@ -584,11 +584,10 @@ If we use the prior Beta(1,1) as the uniform prior we do see marginal changes to
 <p><img src="_main_files/figure-html/unnamed-chunk-38-2.png" width="672" /></p>
 <div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="exercises-2.html#cb227-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>(or)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.3499  0.5100  0.5624  0.5706  0.6280  0.9343</code></pre>
+##  0.3368  0.5068  0.5607  0.5708  0.6276  0.8792</code></pre>
 </div>
-</div>
-<div id="question-5" class="section level2 unnumbered hasAnchor">
-<h2>Question 5<a href="exercises-2.html#question-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="question-5" class="section level3 unnumbered hasAnchor">
+<h3>Question 5<a href="exercises-2.html#question-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><ol style="list-style-type: lower-alpha">
 <li>Give the posterior distribution of <span class="math inline">\(\mu, \sigma^2\)</span> obtained by pretending the observations are exact, unrounded, measurements. we choose a prior for <span class="math inline">\(\theta \sim Gamma(0.1,0.01)\)</span> which has a mean and variance of 10.4 and 1000. Using a Poisson likelihood, the mean is 10.4 and variance 2.2 from the posterior.</li>
@@ -606,11 +605,11 @@ If we use the prior Beta(1,1) as the uniform prior we do see marginal changes to
 <div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="exercises-2.html#cb230-1" aria-hidden="true" tabindex="-1"></a>  <span class="co"># post summary  mean : 8.8,  var= 1.47</span></span>
 <span id="cb230-2"><a href="exercises-2.html#cb230-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>(pois.post)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   6.746   9.329  10.300  10.346  11.253  15.741</code></pre>
+##   6.746   9.378  10.383  10.407  11.371  15.596</code></pre>
 <div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="exercises-2.html#cb232-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(pois.post)</span></code></pre></div>
-<pre><code>## [1] 10.34606</code></pre>
+<pre><code>## [1] 10.40652</code></pre>
 <div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="exercises-2.html#cb234-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">var</span>(pois.post)</span></code></pre></div>
-<pre><code>## [1] 2.002523</code></pre>
+<pre><code>## [1] 2.122681</code></pre>
 <div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="exercises-2.html#cb236-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="fu">density</span>(pois.post),<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.4</span>),<span class="at">main=</span><span class="st">&#39;pois posterior&#39;</span>)</span>
 <span id="cb236-2"><a href="exercises-2.html#cb236-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lines</span>(<span class="fu">density</span>(obs),<span class="at">col=</span><span class="st">&#39;red&#39;</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-39-2.png" width="672" /></p>
@@ -639,9 +638,9 @@ Using non informative prior for both unknowns, the posterior mean is 10.4 and po
 - (c) how do the correct/incorrect differ, compare means/variances</p>
 <p>The difference in means is approximately 0, with a variance (residual) of 2.7.</p>
 <div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="exercises-2.html#cb239-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">mean</span>( y <span class="sc">-</span> pois.post) <span class="co"># 0.002926538</span></span></code></pre></div>
-<pre><code>## [1] 0.08669109</code></pre>
+<pre><code>## [1] -0.0137839</code></pre>
 <div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="exercises-2.html#cb241-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">var</span>( y <span class="sc">-</span> pois.post) <span class="co"># 2.7</span></span></code></pre></div>
-<pre><code>## [1] 2.552782</code></pre>
+<pre><code>## [1] 2.545539</code></pre>
 <div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="exercises-2.html#cb243-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">hist</span>(y<span class="sc">-</span>pois.post)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-41-1.png" width="672" /></p>
 <div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="exercises-2.html#cb244-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">plot</span>(y,pois.post,<span class="at">main=</span><span class="st">&quot;normal vs. pois likelihoods&quot;</span>)</span></code></pre></div>
@@ -674,11 +673,13 @@ Using non informative prior for both unknowns, the posterior mean is 10.4 and po
 <span id="cb245-20"><a href="exercises-2.html#cb245-20" aria-hidden="true" tabindex="-1"></a> ERR<span class="ot">&lt;-</span><span class="fu">c</span>(ERR,err)</span>
 <span id="cb245-21"><a href="exercises-2.html#cb245-21" aria-hidden="true" tabindex="-1"></a> }</span>
 <span id="cb245-22"><a href="exercises-2.html#cb245-22" aria-hidden="true" tabindex="-1"></a> <span class="fu">message</span>(<span class="st">&quot;mean error:&quot;</span>,<span class="fu">mean</span>(ERR))</span></code></pre></div>
-<pre><code>## mean error:0.131357780285733</code></pre>
+<pre><code>## mean error:0.138826800658599</code></pre>
 <div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="exercises-2.html#cb247-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">hist</span>(ERR)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-42-1.png" width="672" />
-## Question 6{-}
-Consider data y1,…,yn modeled as independent Bin(N,<span class="math inline">\(\theta\)</span>) with both N and <span class="math inline">\(\theta\)</span> unknown.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-42-1.png" width="672" /></p>
+</div>
+<div id="question-6" class="section level3 unnumbered hasAnchor">
+<h3>Question 6<a href="exercises-2.html#question-6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Consider data y1,…,yn modeled as independent Bin(N,<span class="math inline">\(\theta\)</span>) with both N and <span class="math inline">\(\theta\)</span> unknown.</p>
 <p>First we examine that <span class="math inline">\(p(\lambda,\theta)\propto 1/\lambda\)</span> described by Raftery (1988). We take the product of a vague prior for <span class="math inline">\(\lambda\)</span> and the uniform prior for <span class="math inline">\(\theta\)</span>. let <span class="math inline">\(\theta \sim U[0,1]\)</span> be uniform and use the uniform prior for <span class="math inline">\(\lambda\)</span> as a vague prior. The motivation here is to use a uniform vague prior on the hyperparameter. Alternatively we can use Jeffreys’ Prior for Pois(<span class="math inline">\(\lambda) = 1/\sqrt{\lambda}\)</span> where the <span class="math inline">\(-E(\partial l^2 / \partial \lambda^2) = 1/\lambda\)</span> is known for the Poisson.
 <span class="math display">\[
 \begin{aligned}
@@ -772,8 +773,8 @@ The joint posterior distribution given the data and N=122 (which was maximal mar
 </ol></li>
 </ul>
 </div>
-<div id="question-7-1" class="section level2 unnumbered hasAnchor">
-<h2>Question 7<a href="exercises-2.html#question-7-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="question-7-1" class="section level3 unnumbered hasAnchor">
+<h3>Question 7<a href="exercises-2.html#question-7-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>for 2 independent poisson distributions for x and y with <span class="math inline">\(\lambda_1,\lambda_2\)</span>. And the outcome <span class="math inline">\(X\)</span> has a binomial distribution with N=x+y and unknown p. show that the two models have the same likelihood.</p>
 <p>We need to solve for the conditional probability of X given X+Y using the Poisson likelihoods. Here if you input the Poisson likelihoods, and use X+Y <span class="math inline">\(\sim Poi(\lambda_1+\lambda_2)\)</span> this returns to a Binomial(n, <span class="math inline">\(\lambda_1/(\lambda_1+\lambda_2))\)</span>.
 <span class="math display">\[
@@ -783,8 +784,8 @@ p(X =k| X+Y=n) &amp;= \frac{P(X+Y=n | X=k)P(X=k)}{P(X+Y=n)} \\
 \end{aligned}
 \]</span></p>
 </div>
-<div id="question-8" class="section level2 unnumbered hasAnchor">
-<h2>question 8<a href="exercises-2.html#question-8" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="question-8" class="section level3 unnumbered hasAnchor">
+<h3>question 8<a href="exercises-2.html#question-8" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>notes: dirichlet distribution?
 - (a) For a given block there are only two outcomes, bicycles, and other vehicles. So a binomial distribution is appropriate (2 outcomes only). We model y and binomial <span class="math inline">\((N_y,\theta_y)\)</span> independent of z<span class="math inline">\(\sim Binomial(N_z,\theta_z)\)</span>.</p>
 <p>We assume <span class="math inline">\(\theta_y,\theta_z\)</span> are independent, so the posteriors are independent Beta models.
@@ -846,8 +847,8 @@ we find the difference in the posterior distribution which is approximately 0.11
 <div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="exercises-2.html#cb259-1" aria-hidden="true" tabindex="-1"></a> meany <span class="ot">=</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span> <span class="sc">+</span> <span class="fu">sum</span>(rez.lane.bike))<span class="sc">/</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span> <span class="sc">+</span> <span class="fu">sum</span>(rez.lane.bike)<span class="sc">+</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span><span class="sc">+</span><span class="fu">sum</span>(rez.lane.other))) <span class="do">## theoretical mean</span></span>
 <span id="cb259-2"><a href="exercises-2.html#cb259-2" aria-hidden="true" tabindex="-1"></a>  meanz <span class="ot">=</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span> <span class="sc">+</span> <span class="fu">sum</span>(rez.nolane.bike))<span class="sc">/</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span> <span class="sc">+</span> <span class="fu">sum</span>(rez.nolane.bike)<span class="sc">+</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span><span class="sc">+</span><span class="fu">sum</span>(rez.nolane.other))) <span class="do">## theoretical mean</span></span></code></pre></div>
 </div>
-<div id="question-9" class="section level2 unnumbered hasAnchor">
-<h2>question 9<a href="exercises-2.html#question-9" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="question-9" class="section level3 unnumbered hasAnchor">
+<h3>question 9<a href="exercises-2.html#question-9" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We need to derive the posterior of <span class="math inline">\(p(\mu^2, \sigma^2 | y)\)</span>. <span class="math inline">\(p(\mu,\sigma^2 | y) = p(y|\mu,\sigma^2)*p(\mu , \sigma^2)\)</span></p>
 <p><span class="math display">\[
 \begin{aligned}
@@ -876,7 +877,7 @@ p(\mu, \sigma^2 |y)&amp;=\sigma^{-1}(\sigma^2)^{-((\nu_0+n)/2 +1)} exp(-1/2\sigm
 &amp; = \sigma^{-1}(\sigma^2)^{-((\nu_n)/2 +1)} exp(-1/2\sigma^2 ( \nu_n\sigma_n^2 +(k_n)( (\mu-\mu_n)^2 )\\
 \end{aligned}
 \]</span>
-# Question 10{-}
+### Question 10{-}
 To show the F-distribution we prove it directly, using a change of variables. Although there is a theorem (definition) that for <span class="math inline">\(X\sim N(a,b)\)</span> and <span class="math inline">\(Y\sim N(c,d)\)</span> then F= <span class="math inline">\(S_X^2/\sigma^2_X / (S_Y^2 / \sigma_Y^2)\)</span> follows an F-distribution.</p>
 <p>For <span class="math inline">\((n-1)S^2/\sigma^2 \sim X_{n-1}^2\)</span> we let <span class="math inline">\(U \sim \chi_p^2, V\sim \chi_q^2\)</span>. We let <span class="math inline">\(Z = (U/p)/(V/q)\)</span> and <span class="math inline">\(W=V/q\)</span>.</p>
 <p><span class="math display">\[
@@ -903,8 +904,8 @@ f(z,w)&amp;= f(u)f(v)|J| \\
 \]</span></p>
 <p>We showed that for U, V as Chi-square variables, their ratio is the F-distribution, In order to show that the posterior distribution F= <span class="math inline">\(S_X^2/\sigma^2_X / (S_Y^2 / \sigma_Y^2)\)</span> is F. The posterior <span class="math inline">\(Y \sim \sigma^2 | y \sim Inv-\chi^2(\nu, \sigma^2)\)</span>. where Y =<span class="math inline">\(\frac{(n-1)S^2}{\chi_{n-1}^2}\)</span>. So The inverse chi-square distribution can be re-arranged to follow a Chi-square. Then the variable Z in terms of Chi-square variables can be expressed using Inv-Chisquare variables.</p>
 </div>
-<div id="question-11-1" class="section level2 unnumbered hasAnchor">
-<h2>Question 11<a href="exercises-2.html#question-11-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="question-11-1" class="section level3 unnumbered hasAnchor">
+<h3>Question 11<a href="exercises-2.html#question-11-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>the model is defined as <span class="math inline">\(p(\alpha,\beta,y,n,x) \propto p(\alpha,\beta)\prod_{i=1}^{4}p(y_i | \alpha,\beta,n_i,x_i)\)</span>, where <span class="math inline">\((\alpha,\beta)\)</span> follows a joint normal prior with <span class="math inline">\(\alpha \sim N(0, 2^2)\)</span> and <span class="math inline">\(\beta \sim N(10,10^2)\)</span> and corr(<span class="math inline">\(\alpha,\beta) = 0.5\)</span>.</p>
 <ul>
 <li><ol style="list-style-type: lower-alpha">

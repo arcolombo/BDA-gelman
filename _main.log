@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.8.11)  1 SEP 2022 13:28
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.8.11)  9 SEP 2022 07:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1153,7 +1153,7 @@ Chapter 3.
 ] [72
 
 ]
-Overfull \hbox (61.26616pt too wide) detected at line 2903
+Overfull \hbox (61.26616pt too wide) detected at line 2904
 [][]
  []
 
@@ -1167,7 +1167,7 @@ File: _main_files/figure-latex/unnamed-chunk-30-2.pdf Graphic file (type pdf)
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [75]
-Underfull \hbox (badness 1577) in paragraph at lines 3016--3018
+Underfull \hbox (badness 1577) in paragraph at lines 3017--3019
 \TU/lmr/m/n/10 we are given two independent normal random variables with unknown
  []
 
@@ -1229,7 +1229,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 File: _main_files/figure-latex/unnamed-chunk-40-2.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-40-2.pdf>
 
-Underfull \hbox (badness 10000) in paragraph at lines 3525--3527
+Underfull \hbox (badness 10000) in paragraph at lines 3526--3528
 [][]
  []
 
@@ -1244,21 +1244,16 @@ Underfull \vbox (badness 7326) has occurred while \output is active []
 [91] [92]
 File: _main_files/figure-latex/unnamed-chunk-42-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-42-1.pdf>
-
-Underfull \hbox (badness 10000) in paragraph at lines 3616--3619
-[][]
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 3626--3628
+[93]
+Underfull \hbox (badness 10000) in paragraph at lines 3631--3633
 
  []
 
-[93] [94]
+[94]
 File: _main_files/figure-latex/unnamed-chunk-43-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-43-1.pdf>
 
-Underfull \hbox (badness 10000) in paragraph at lines 3714--3716
+Underfull \hbox (badness 10000) in paragraph at lines 3719--3721
 [][]
  []
 
@@ -1272,7 +1267,7 @@ File: _main_files/figure-latex/unnamed-chunk-44-1.pdf Graphic file (type pdf)
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [96] [97]
-Overfull \hbox (77.24323pt too wide) detected at line 3793
+Overfull \hbox (77.24323pt too wide) detected at line 3798
 [][]
  []
 
@@ -1283,12 +1278,12 @@ File: _main_files/figure-latex/unnamed-chunk-47-1.pdf Graphic file (type pdf)
 File: _main_files/figure-latex/unnamed-chunk-48-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-48-1.pdf>
 
-Overfull \hbox (135.19351pt too wide) detected at line 3891
+Overfull \hbox (135.19351pt too wide) detected at line 3896
 [][]
  []
 
 
-Overfull \hbox (207.20206pt too wide) detected at line 3903
+Overfull \hbox (207.20206pt too wide) detected at line 3908
 [][]
  []
 
@@ -1296,12 +1291,12 @@ Overfull \hbox (207.20206pt too wide) detected at line 3903
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [100]
-Overfull \hbox (161.06216pt too wide) detected at line 3915
+Overfull \hbox (161.06216pt too wide) detected at line 3920
 [][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3933--3934
+Underfull \hbox (badness 10000) in paragraph at lines 3938--3939
 
  []
 
@@ -1309,11 +1304,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 3933--3934
 Underfull \vbox (badness 2012) has occurred while \output is active []
 
 [101] [102]
-Underfull \vbox (badness 10000) detected at line 4050
+Underfull \vbox (badness 10000) detected at line 4055
  []
 
 
-Underfull \vbox (badness 10000) detected at line 4050
+Underfull \vbox (badness 10000) detected at line 4055
  []
 
 [103]
@@ -1327,7 +1322,7 @@ File: _main_files/figure-latex/unnamed-chunk-49-1.pdf Graphic file (type pdf)
 ]
 Chapter 4.
 
-Overfull \hbox (53.0601pt too wide) detected at line 4111
+Overfull \hbox (53.0601pt too wide) detected at line 4116
 [][]
  []
 
@@ -1339,7 +1334,7 @@ Overfull \hbox (84.64453pt too wide) has occurred while \output is active
 [108]
 Missing character: There is no 𝜃 (U+1D703) in font [lmroman10-regular]:mapping=tex-text;!
 
-Underfull \hbox (badness 1092) in paragraph at lines 4161--4161
+Underfull \hbox (badness 1092) in paragraph at lines 4166--4166
 []\TU/lmr/bx/n/14.4 Frequency evaluations of Bayesian infer-
  []
 
@@ -1349,12 +1344,12 @@ Overfull \hbox (84.64453pt too wide) has occurred while \output is active
  []
 
 [110]
-Underfull \hbox (badness 3536) in paragraph at lines 4213--4214
+Underfull \hbox (badness 3536) in paragraph at lines 4218--4219
 []\TU/lmr/m/n/10 a using simple calculus we found l’ = $[]$ and l’’ =
  []
 
 [111]
-Overfull \hbox (90.28807pt too wide) detected at line 4287
+Overfull \hbox (90.28807pt too wide) detected at line 4292
 [][]
  []
 
@@ -1383,27 +1378,27 @@ Overfull \hbox (84.64453pt too wide) has occurred while \output is active
  []
 
 [114]
-Overfull \hbox (29.15219pt too wide) detected at line 4369
+Overfull \hbox (29.15219pt too wide) detected at line 4374
 [][]
  []
 
 
-Overfull \hbox (67.49405pt too wide) detected at line 4377
+Overfull \hbox (67.49405pt too wide) detected at line 4382
 [][]
  []
 
 
-Overfull \hbox (79.3167pt too wide) detected at line 4400
+Overfull \hbox (79.3167pt too wide) detected at line 4405
 [][]
  []
 
 
-Overfull \hbox (62.40007pt too wide) detected at line 4408
+Overfull \hbox (62.40007pt too wide) detected at line 4413
 [][]
  []
 
 [115]
-Overfull \hbox (191.65973pt too wide) detected at line 4415
+Overfull \hbox (191.65973pt too wide) detected at line 4420
 [][][][] [][] [] [][]
  []
 
@@ -1420,18 +1415,18 @@ Overfull \hbox (84.64453pt too wide) has occurred while \output is active
  []
 
 [118]
-Underfull \vbox (badness 10000) detected at line 4578
+Underfull \vbox (badness 10000) detected at line 4583
  []
 
 
-Underfull \vbox (badness 10000) detected at line 4578
+Underfull \vbox (badness 10000) detected at line 4583
  []
 
 [119]
 File: _main_files/figure-latex/unnamed-chunk-56-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-56-1.pdf>
 
-Overfull \hbox (432.88507pt too wide) detected at line 4635
+Overfull \hbox (432.88507pt too wide) detected at line 4640
 [][]
  []
 
@@ -1447,7 +1442,7 @@ File: _main_files/figure-latex/unnamed-chunk-57-1.pdf Graphic file (type pdf)
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [121]
-Overfull \hbox (95.71295pt too wide) detected at line 4680
+Overfull \hbox (95.71295pt too wide) detected at line 4685
 [][][][][][] [] [] [][][][] [][][][][][] [] [] [][][][] [][][][][][][][][] [] [] [] [][][][][][][][][] [] [] [] [] [] [][][][][] [] [][][][][][][][][] [] [] [] [] [] [][][][][][][][][]
  []
 
@@ -1457,11 +1452,11 @@ Overfull \hbox (84.64453pt too wide) has occurred while \output is active
  []
 
 [122]
-Underfull \vbox (badness 10000) detected at line 4736
+Underfull \vbox (badness 10000) detected at line 4741
  []
 
 
-Underfull \vbox (badness 10000) detected at line 4736
+Underfull \vbox (badness 10000) detected at line 4741
  []
 
 [123]
@@ -1473,8 +1468,8 @@ Overfull \hbox (84.64453pt too wide) has occurred while \output is active
  []
 
 [124]
-Overfull \hbox (38.25pt too wide) in paragraph at lines 4820--4820
-[]\TU/lmtt/m/n/10 ## taylor approximation of std.dev using posterior sample variance: 0.089[] 
+Overfull \hbox (38.25pt too wide) in paragraph at lines 4825--4825
+[]\TU/lmtt/m/n/10 ## taylor approximation of std.dev using posterior sample variance: 0.092[] 
  []
 
 [125]
@@ -1527,359 +1522,95 @@ File: _main_files/figure-latex/unnamed-chunk-65-2.pdf Graphic file (type pdf)
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [137]
-Underfull \vbox (badness 6978) detected at line 5274
+Underfull \vbox (badness 6978) detected at line 5333
  []
 
 
 Underfull \vbox (badness 2717) has occurred while \output is active []
 
 [138]
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5292--5292
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+Underfull \vbox (badness 10000) detected at line 5333
  []
 
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5292--5292
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+Underfull \vbox (badness 10000) detected at line 5333
+ []
+
+[139] [140] [141]
+Underfull \vbox (badness 10000) detected at line 5466
  []
 
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5292--5292
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
- []
-
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5292--5292
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
- []
-
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5292--5292
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
- []
-
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5292--5292
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
- []
-
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5292--5292
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
- []
-
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5292--5292
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
- []
-
-[139]
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5321--5321
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
- []
-
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5321--5321
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
- []
-
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5321--5321
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
- []
-
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5321--5321
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
- []
-
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5321--5321
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
- []
-
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5321--5321
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
- []
-
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5321--5321
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
- []
-
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5321--5321
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
- []
-
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5350--5350
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
- []
-
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5350--5350
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
- []
-
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5350--5350
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
- []
-
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5350--5350
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
- []
-
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5350--5350
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
- []
-
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5350--5350
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
- []
-
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5350--5350
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
- []
-
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5350--5350
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
- []
-
-[140]
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5380--5380
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
- []
-
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5380--5380
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
- []
-
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5380--5380
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
- []
-
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5380--5380
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
- []
-
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5380--5380
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
- []
-
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5380--5380
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
- []
-
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5380--5380
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
- []
-
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5380--5380
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
- []
-
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5410--5410
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
- []
-
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5410--5410
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
- []
-
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5410--5410
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
- []
-
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5410--5410
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
- []
-
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5410--5410
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
- []
-
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5410--5410
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
- []
-
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5410--5410
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
- []
-
-[141]
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5410--5410
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
- []
-
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5440--5440
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
- []
-
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5440--5440
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
- []
-
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5440--5440
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
- []
-
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5440--5440
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
- []
-
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5440--5440
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
- []
-
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5440--5440
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
- []
-
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5440--5440
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
- []
-
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5440--5440
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
- []
-
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5478--5478
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
+Underfull \vbox (badness 10000) detected at line 5466
  []
 
 [142]
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5478--5478
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
- []
-
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5478--5478
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
- []
-
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5478--5478
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
- []
-
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5478--5478
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
- []
-
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5478--5478
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
- []
-
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5478--5478
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
- []
-
-
-Overfull \hbox (12.0pt too wide) in paragraph at lines 5478--5478
-[]\TU/lmtt/m/n/10 ## Warning in rnorm(1, thetajhat[x], sd = sqrt(vj)[x]): NAs produced[] 
- []
-
-[143] [144]
-Underfull \vbox (badness 10000) detected at line 5622
- []
-
-
-Underfull \vbox (badness 10000) detected at line 5622
- []
-
-[145]
 File: _main_files/figure-latex/unnamed-chunk-68-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-68-1.pdf>
-[146]
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[143]
 Missing character: There is no 𝜃 (U+1D703) in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no 𝜃 (U+1D703) in font [lmroman10-regular]:mapping=tex-text;!
-[147]
-Overfull \hbox (85.5pt too wide) in paragraph at lines 5738--5738
+[144]
+Overfull \hbox (85.5pt too wide) in paragraph at lines 5582--5582
 []\TU/lmtt/m/n/10 ##    best          A         B         C         D         E         F          G[] 
  []
 
 
-Overfull \hbox (85.5pt too wide) in paragraph at lines 5738--5738
+Overfull \hbox (85.5pt too wide) in paragraph at lines 5582--5582
 []\TU/lmtt/m/n/10 ## A 0.554 0.50000000 0.8663713 0.9212424 0.8705441 0.9513231 0.9266837 0.71045013[] 
  []
 
 
-Overfull \hbox (85.5pt too wide) in paragraph at lines 5738--5738
+Overfull \hbox (85.5pt too wide) in paragraph at lines 5582--5582
 []\TU/lmtt/m/n/10 ## B 0.034 0.13362875 0.5000000 0.7200530 0.5268155 0.7482410 0.6811336 0.23975006[] 
  []
 
 
-Overfull \hbox (85.5pt too wide) in paragraph at lines 5738--5738
+Overfull \hbox (85.5pt too wide) in paragraph at lines 5582--5582
 []\TU/lmtt/m/n/10 ## C 0.023 0.07875756 0.2799470 0.5000000 0.3032674 0.4566223 0.4183914 0.13285469[] 
  []
 
 
-Overfull \hbox (85.5pt too wide) in paragraph at lines 5738--5738
+Overfull \hbox (85.5pt too wide) in paragraph at lines 5582--5582
 []\TU/lmtt/m/n/10 ## D 0.029 0.12945588 0.4731845 0.6967326 0.5000000 0.7132410 0.6501386 0.22966818[] 
  []
 
 
-Overfull \hbox (85.5pt too wide) in paragraph at lines 5738--5738
+Overfull \hbox (85.5pt too wide) in paragraph at lines 5582--5582
 []\TU/lmtt/m/n/10 ## E 0.004 0.04867694 0.2517590 0.5433777 0.2867590 0.5000000 0.4440458 0.07893687[] 
  []
 
 
-Overfull \hbox (85.5pt too wide) in paragraph at lines 5738--5738
+Overfull \hbox (85.5pt too wide) in paragraph at lines 5582--5582
 []\TU/lmtt/m/n/10 ## F 0.017 0.07331631 0.3188664 0.5816086 0.3498614 0.5559542 0.5000000 0.12640645[] 
  []
 
 
-Overfull \hbox (85.5pt too wide) in paragraph at lines 5738--5738
+Overfull \hbox (85.5pt too wide) in paragraph at lines 5582--5582
 []\TU/lmtt/m/n/10 ## G 0.174 0.28954987 0.7602499 0.8671453 0.7703318 0.9210631 0.8735935 0.50000000[] 
  []
 
 
-Overfull \hbox (85.5pt too wide) in paragraph at lines 5738--5738
+Overfull \hbox (85.5pt too wide) in paragraph at lines 5582--5582
 []\TU/lmtt/m/n/10 ## H 0.165 0.24734659 0.5770127 0.7333055 0.5936804 0.7408523 0.6989733 0.38537815[] 
  []
 
-[148] [149] [150
+[145] [146]
+Overfull \hbox (24.48372pt too wide) detected at line 5659
+[][][][][][][] [][][][][][] [] [] [][][][][][][] [][][][][][][] [][][] [] [] [] [][][][][][][][][][] [][] [] [][][][][] [] [][] [][][]
+ []
+
+[147] [148] [149] [150
 
 ]
 Chapter 6.
 [151] [152]
 Chapter 7.
 
-Underfull \hbox (badness 1859) in paragraph at lines 5839--5840
+Underfull \hbox (badness 1859) in paragraph at lines 5765--5766
 []\TU/lmr/m/n/10 Add an unnumbered part: \TU/lmtt/m/n/10 # (PART\*) Act one {-} \TU/lmr/m/n/10 (followed by \TU/lmtt/m/n/10 # A
  []
 
@@ -1893,13 +1624,13 @@ Chapter 8.
 
 ]) [157] (./_main.aux)
 Package rerunfilecheck Info: File `_main.out' has not changed.
-(rerunfilecheck)             Checksum: 91CD0AE18E18756A57324E55C385ED77;8139.
+(rerunfilecheck)             Checksum: DA6BA1AA0671C285FD1B692DEB7810A4;7017.
  ) 
 Here is how much of TeX's memory you used:
- 18250 strings out of 477855
- 354004 string characters out of 5844646
- 819030 words of memory out of 5000000
- 38867 multiletter control sequences out of 15000+600000
+ 18254 strings out of 477855
+ 354021 string characters out of 5844646
+ 821054 words of memory out of 5000000
+ 38871 multiletter control sequences out of 15000+600000
  475766 words of font info for 88 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  86i,15n,121p,984b,481s stack positions out of 10000i,1000n,20000p,200000b,200000s
