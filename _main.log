@@ -1,11 +1,11 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.8.11)  9 SEP 2022 07:32
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.9.11)  11 SEP 2022 21:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **_main.tex
 (./_main.tex
 LaTeX2e <2022-06-01> patch level 5
-L3 programming layer <2022-08-05> (c:/Users/antho/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/book.cls
+L3 programming layer <2022-08-30> (c:/Users/antho/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/book.cls
 Document Class: book 2021/10/04 v1.4n Standard LaTeX document class
 (c:/Users/antho/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/bk10.clo
 File: bk10.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
@@ -131,9 +131,9 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 ) (c:/Users/antho/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/iftex/iftex.sty
 Package: iftex 2022/02/03 v1.0f TeX engine tests
 ) (c:/Users/antho/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/unicode-math/unicode-math.sty (c:/Users/antho/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2022-08-05 L3 programming layer (loader) 
+Package: expl3 2022-08-30 L3 programming layer (loader) 
 (c:/Users/antho/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
-File: l3backend-xetex.def 2022-08-05 L3 backend support: XeTeX
+File: l3backend-xetex.def 2022-08-30 L3 backend support: XeTeX
 \g__graphics_track_int=\count268
 \l__pdf_internal_box=\box53
 \g__pdf_backend_object_int=\count269
@@ -1512,127 +1512,194 @@ Overfull \hbox (84.64453pt too wide) has occurred while \output is active
 
 ]
 Chapter 5.
-[133] [134] [135]
-File: _main_files/figure-latex/unnamed-chunk-65-1.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-65-1.pdf>
-[136]
-File: _main_files/figure-latex/unnamed-chunk-65-2.pdf Graphic file (type pdf)
-<use _main_files/figure-latex/unnamed-chunk-65-2.pdf>
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
+[133] [134]
+Missing character: There is no 𝜃 (U+1D703) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 𝜃 (U+1D703) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ∫ (U+222B) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ∏ (U+220F) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 𝜃 (U+1D703) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 𝜙 (U+1D719) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 𝜙 (U+1D719) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 𝜙 (U+1D719) in font [lmroman10-regular]:mapping=tex-text;!
+[135] [136]
+Overfull \hbox (5.69453pt too wide) has occurred while \output is active
+\TU/lmr/m/sl/10 5.3.  BAYESIAN ANALYSIS OF CONJUGATE HIERARCHICAL MODELS \TU/lmr/m/n/10 137
+ []
 
 [137]
-Underfull \vbox (badness 6978) detected at line 5333
- []
-
-
-Underfull \vbox (badness 2717) has occurred while \output is active []
-
+File: _main_files/figure-latex/unnamed-chunk-65-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-65-1.pdf>
 [138]
-Underfull \vbox (badness 10000) detected at line 5333
+Overfull \vbox (0.70403pt too high) detected at line 5338
  []
 
 
-Underfull \vbox (badness 10000) detected at line 5333
+Overfull \hbox (5.69453pt too wide) has occurred while \output is active
+\TU/lmr/m/sl/10 5.3.  BAYESIAN ANALYSIS OF CONJUGATE HIERARCHICAL MODELS \TU/lmr/m/n/10 139
  []
 
-[139] [140] [141]
-Underfull \vbox (badness 10000) detected at line 5466
+[139]
+File: _main_files/figure-latex/unnamed-chunk-65-2.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-65-2.pdf>
+[140]
+Overfull \vbox (2.21999pt too high) detected at line 5451
  []
 
 
-Underfull \vbox (badness 10000) detected at line 5466
+Overfull \hbox (5.69453pt too wide) has occurred while \output is active
+\TU/lmr/m/sl/10 5.3.  BAYESIAN ANALYSIS OF CONJUGATE HIERARCHICAL MODELS \TU/lmr/m/n/10 141
+ []
+
+[141]
+Underfull \vbox (badness 10000) detected at line 5451
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 5451
  []
 
 [142]
+Overfull \hbox (5.69453pt too wide) has occurred while \output is active
+\TU/lmr/m/sl/10 5.3.  BAYESIAN ANALYSIS OF CONJUGATE HIERARCHICAL MODELS \TU/lmr/m/n/10 143
+ []
+
+[143] [144]
+Overfull \hbox (5.69453pt too wide) has occurred while \output is active
+\TU/lmr/m/sl/10 5.3.  BAYESIAN ANALYSIS OF CONJUGATE HIERARCHICAL MODELS \TU/lmr/m/n/10 145
+ []
+
+[145]
 File: _main_files/figure-latex/unnamed-chunk-68-1.pdf Graphic file (type pdf)
 <use _main_files/figure-latex/unnamed-chunk-68-1.pdf>
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[143]
 Missing character: There is no 𝜃 (U+1D703) in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no 𝜃 (U+1D703) in font [lmroman10-regular]:mapping=tex-text;!
-[144]
-Overfull \hbox (85.5pt too wide) in paragraph at lines 5582--5582
+[146]
+Overfull \hbox (85.5pt too wide) in paragraph at lines 5700--5700
 []\TU/lmtt/m/n/10 ##    best          A         B         C         D         E         F          G[] 
  []
 
 
-Overfull \hbox (85.5pt too wide) in paragraph at lines 5582--5582
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (5.69453pt too wide) has occurred while \output is active
+\TU/lmr/m/sl/10 5.3.  BAYESIAN ANALYSIS OF CONJUGATE HIERARCHICAL MODELS \TU/lmr/m/n/10 147
+ []
+
+[147]
+Overfull \hbox (85.5pt too wide) in paragraph at lines 5700--5700
 []\TU/lmtt/m/n/10 ## A 0.554 0.50000000 0.8663713 0.9212424 0.8705441 0.9513231 0.9266837 0.71045013[] 
  []
 
 
-Overfull \hbox (85.5pt too wide) in paragraph at lines 5582--5582
+Overfull \hbox (85.5pt too wide) in paragraph at lines 5700--5700
 []\TU/lmtt/m/n/10 ## B 0.034 0.13362875 0.5000000 0.7200530 0.5268155 0.7482410 0.6811336 0.23975006[] 
  []
 
 
-Overfull \hbox (85.5pt too wide) in paragraph at lines 5582--5582
+Overfull \hbox (85.5pt too wide) in paragraph at lines 5700--5700
 []\TU/lmtt/m/n/10 ## C 0.023 0.07875756 0.2799470 0.5000000 0.3032674 0.4566223 0.4183914 0.13285469[] 
  []
 
 
-Overfull \hbox (85.5pt too wide) in paragraph at lines 5582--5582
+Overfull \hbox (85.5pt too wide) in paragraph at lines 5700--5700
 []\TU/lmtt/m/n/10 ## D 0.029 0.12945588 0.4731845 0.6967326 0.5000000 0.7132410 0.6501386 0.22966818[] 
  []
 
 
-Overfull \hbox (85.5pt too wide) in paragraph at lines 5582--5582
+Overfull \hbox (85.5pt too wide) in paragraph at lines 5700--5700
 []\TU/lmtt/m/n/10 ## E 0.004 0.04867694 0.2517590 0.5433777 0.2867590 0.5000000 0.4440458 0.07893687[] 
  []
 
 
-Overfull \hbox (85.5pt too wide) in paragraph at lines 5582--5582
+Overfull \hbox (85.5pt too wide) in paragraph at lines 5700--5700
 []\TU/lmtt/m/n/10 ## F 0.017 0.07331631 0.3188664 0.5816086 0.3498614 0.5559542 0.5000000 0.12640645[] 
  []
 
 
-Overfull \hbox (85.5pt too wide) in paragraph at lines 5582--5582
+Overfull \hbox (85.5pt too wide) in paragraph at lines 5700--5700
 []\TU/lmtt/m/n/10 ## G 0.174 0.28954987 0.7602499 0.8671453 0.7703318 0.9210631 0.8735935 0.50000000[] 
  []
 
 
-Overfull \hbox (85.5pt too wide) in paragraph at lines 5582--5582
+Overfull \hbox (85.5pt too wide) in paragraph at lines 5700--5700
 []\TU/lmtt/m/n/10 ## H 0.165 0.24734659 0.5770127 0.7333055 0.5936804 0.7408523 0.6989733 0.38537815[] 
  []
 
-[145] [146]
-Overfull \hbox (24.48372pt too wide) detected at line 5659
+[148]
+Overfull \hbox (24.48372pt too wide) detected at line 5777
 [][][][][][][] [][][][][][] [] [] [][][][][][][] [][][][][][][] [][][] [] [] [] [][][][][][][][][][] [][] [] [][][][][] [] [][] [][][]
  []
 
-[147] [148] [149] [150
+
+Overfull \hbox (5.69453pt too wide) has occurred while \output is active
+\TU/lmr/m/sl/10 5.3.  BAYESIAN ANALYSIS OF CONJUGATE HIERARCHICAL MODELS \TU/lmr/m/n/10 149
+ []
+
+[149] [150]
+Overfull \hbox (111.26308pt too wide) detected at line 5855
+[][]
+ []
+
+
+Overfull \hbox (5.69453pt too wide) has occurred while \output is active
+\TU/lmr/m/sl/10 5.3.  BAYESIAN ANALYSIS OF CONJUGATE HIERARCHICAL MODELS \TU/lmr/m/n/10 151
+ []
+
+[151] [152]
+File: _main_files/figure-latex/unnamed-chunk-71-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-71-1.pdf>
+
+Underfull \hbox (badness 10000) in paragraph at lines 5922--5924
+[][]
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (5.69453pt too wide) has occurred while \output is active
+\TU/lmr/m/sl/10 5.3.  BAYESIAN ANALYSIS OF CONJUGATE HIERARCHICAL MODELS \TU/lmr/m/n/10 153
+ []
+
+[153] [154]
+File: _main_files/figure-latex/unnamed-chunk-72-1.pdf Graphic file (type pdf)
+<use _main_files/figure-latex/unnamed-chunk-72-1.pdf>
+
+Overfull \hbox (5.69453pt too wide) has occurred while \output is active
+\TU/lmr/m/sl/10 5.3.  BAYESIAN ANALYSIS OF CONJUGATE HIERARCHICAL MODELS \TU/lmr/m/n/10 155
+ []
+
+[155] [156
 
 ]
 Chapter 6.
-[151] [152]
+[157] [158]
 Chapter 7.
 
-Underfull \hbox (badness 1859) in paragraph at lines 5765--5766
+Underfull \hbox (badness 1859) in paragraph at lines 6013--6014
 []\TU/lmr/m/n/10 Add an unnumbered part: \TU/lmtt/m/n/10 # (PART\*) Act one {-} \TU/lmr/m/n/10 (followed by \TU/lmtt/m/n/10 # A
  []
 
-[153
+[159
 
-] [154
+] [160
 
 ]
 Chapter 8.
-(./_main.bbl [155] [156
+(./_main.bbl [161] [162
 
-]) [157] (./_main.aux)
+]) [163] (./_main.aux)
 Package rerunfilecheck Info: File `_main.out' has not changed.
-(rerunfilecheck)             Checksum: DA6BA1AA0671C285FD1B692DEB7810A4;7017.
+(rerunfilecheck)             Checksum: CCE3FFB1CA2D3399E844DE21EC537899;7533.
  ) 
 Here is how much of TeX's memory you used:
- 18254 strings out of 477855
- 354021 string characters out of 5844646
- 821054 words of memory out of 5000000
- 38871 multiletter control sequences out of 15000+600000
+ 18280 strings out of 477747
+ 355102 string characters out of 5842523
+ 846118 words of memory out of 5000000
+ 39005 multiletter control sequences out of 15000+600000
  475766 words of font info for 88 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  86i,15n,121p,984b,481s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on _main.pdf (157 pages).
+Output written on _main.pdf (163 pages).

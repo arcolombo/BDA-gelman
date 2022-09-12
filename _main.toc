@@ -83,24 +83,34 @@
 \contentsline {subsection}{Logic of combining information}{133}{section*.58}%
 \contentsline {section}{\numberline {5.2}Exchangeability and hierarchical models}{134}{section.5.2}%
 \contentsline {subsection}{Exchangeability}{134}{section*.59}%
-\contentsline {section}{Exercises}{134}{section*.60}%
-\contentsline {subsection}{Q1}{134}{section*.61}%
-\contentsline {subsection}{Q2}{135}{section*.62}%
-\contentsline {subsection}{Q3}{135}{section*.63}%
-\contentsline {subsubsection}{\numberline {5.2.0.1}Q3 part a}{141}{subsubsection.5.2.0.1}%
-\contentsline {subsubsection}{\numberline {5.2.0.2}Q 5.3 part b}{144}{subsubsection.5.2.0.2}%
-\contentsline {subsubsection}{\numberline {5.2.0.3}Q 5.3.c}{146}{subsubsection.5.2.0.3}%
-\contentsline {subsubsection}{\numberline {5.2.0.4}Q 5.3 part d}{147}{subsubsection.5.2.0.4}%
-\contentsline {subsubsection}{Q4}{147}{section*.64}%
-\contentsline {subsubsection}{Q7}{148}{section*.65}%
-\contentsline {subsubsection}{Q10}{148}{section*.66}%
-\contentsline {subsubsection}{Q11}{149}{section*.67}%
-\contentsline {chapter}{\numberline {6}Sharing your book}{151}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Publishing}{151}{section.6.1}%
-\contentsline {section}{\numberline {6.2}404 pages}{151}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Metadata for sharing}{151}{section.6.3}%
-\contentsline {chapter}{\numberline {7}Parts}{153}{chapter.7}%
-\contentsline {chapter}{\numberline {8}Blocks}{155}{chapter.8}%
-\contentsline {section}{\numberline {8.1}Equations}{155}{section.8.1}%
-\contentsline {section}{\numberline {8.2}Theorems and proofs}{155}{section.8.2}%
-\contentsline {section}{\numberline {8.3}Callout blocks}{155}{section.8.3}%
+\contentsline {subsection}{Exchangeability when additional information is available on the units}{134}{section*.60}%
+\contentsline {subsection}{Objections to exchangeable models}{135}{section*.61}%
+\contentsline {subsection}{The full Bayesian treatment of the hierarchical model}{135}{section*.62}%
+\contentsline {section}{The hyperprior distribution}{135}{section*.63}%
+\contentsline {subsection}{Posterior predictive distribution}{136}{section*.64}%
+\contentsline {section}{\numberline {5.3}Bayesian analysis of conjugate hierarchical models}{136}{section.5.3}%
+\contentsline {subsection}{Analytic derivation of conditional and marginal distributions}{136}{section*.65}%
+\contentsline {subsection}{Drawing simulations from the posterior distribution}{137}{section*.66}%
+\contentsline {subsection}{Application to the model for rat tumors}{137}{section*.67}%
+\contentsline {section}{Exercises}{137}{section*.68}%
+\contentsline {subsection}{Q1}{137}{section*.69}%
+\contentsline {subsection}{Q2}{137}{section*.70}%
+\contentsline {subsection}{Q3}{138}{section*.71}%
+\contentsline {subsubsection}{\numberline {5.3.0.1}Q3 part a}{144}{subsubsection.5.3.0.1}%
+\contentsline {subsubsection}{\numberline {5.3.0.2}Q 5.3 part b}{146}{subsubsection.5.3.0.2}%
+\contentsline {subsubsection}{\numberline {5.3.0.3}Q 5.3.c}{148}{subsubsection.5.3.0.3}%
+\contentsline {subsubsection}{\numberline {5.3.0.4}Q 5.3 part d}{149}{subsubsection.5.3.0.4}%
+\contentsline {subsubsection}{Q4}{149}{section*.72}%
+\contentsline {subsubsection}{Q7}{150}{section*.73}%
+\contentsline {subsubsection}{Q10}{150}{section*.74}%
+\contentsline {subsubsection}{Q11}{151}{section*.75}%
+\contentsline {subsubsection}{Q12}{152}{section*.76}%
+\contentsline {chapter}{\numberline {6}Sharing your book}{157}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Publishing}{157}{section.6.1}%
+\contentsline {section}{\numberline {6.2}404 pages}{157}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Metadata for sharing}{157}{section.6.3}%
+\contentsline {chapter}{\numberline {7}Parts}{159}{chapter.7}%
+\contentsline {chapter}{\numberline {8}Blocks}{161}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Equations}{161}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Theorems and proofs}{161}{section.8.2}%
+\contentsline {section}{\numberline {8.3}Callout blocks}{161}{section.8.3}%

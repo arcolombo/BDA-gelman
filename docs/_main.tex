@@ -117,7 +117,7 @@
 
 \title{Bayesian Data Analysis}
 \author{Anthony R. Colombo, Dr.~Paul Marjoram}
-\date{2022-09-09}
+\date{2022-09-11}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -715,7 +715,7 @@ Then the probability that at least 1 election is tied, from 435 total elections 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] -2.347725
+## [1] -0.1422886
 \end{verbatim}
 
 \begin{Shaded}
@@ -725,7 +725,7 @@ Then the probability that at least 1 election is tied, from 435 total elections 
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 40
+## [1] 43
 \end{verbatim}
 
 \begin{Shaded}
@@ -1267,7 +1267,7 @@ We find the probability distribution of a given success and the prior probabilit
 
 \begin{verbatim}
 ##       5%      25%      50%      75%      95% 
-## 136.3467 154.5082 166.4821 177.0799 192.4480
+## 138.5098 156.0467 168.4335 178.5953 194.0984
 \end{verbatim}
 
 \begin{Shaded}
@@ -1627,7 +1627,7 @@ Suppose there are N cable cars numbered sequentially 1 to N. You see a car at ra
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 279.9715
+## [1] 279.9156
 \end{verbatim}
 
 \begin{Shaded}
@@ -1637,7 +1637,7 @@ Suppose there are N cable cars numbered sequentially 1 to N. You see a car at ra
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 79.87495
+## [1] 80.39583
 \end{verbatim}
 
 \begin{itemize}
@@ -1750,7 +1750,7 @@ for the likelihood \(L(\theta | y) = \prod_{i=1}^n f(y_i|\theta)\) requires the 
 
 \begin{verbatim}
 ##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
-## -1156.598    -0.618     0.454    10.159     1.521  5666.614
+##  -277.613    -0.733     0.454    11.857     1.386 11676.002
 \end{verbatim}
 
 \begin{Shaded}
@@ -1773,7 +1773,7 @@ for the likelihood \(L(\theta | y) = \prod_{i=1}^n f(y_i|\theta)\) requires the 
 \end{Shaded}
 
 \begin{verbatim}
-## max pred. prob 0.523
+## max pred. prob 0.516
 \end{verbatim}
 
 \hypertarget{question-12}{%
@@ -1973,7 +1973,7 @@ The true observed value for 1986 is 22 fatal accidents.
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##    6.00   20.00   24.00   23.85   27.00   45.00
+##    6.00   20.00   24.00   23.85   27.00   46.00
 \end{verbatim}
 
 \begin{Shaded}
@@ -1998,7 +1998,7 @@ The true observed value for 1986 is 22 fatal accidents.
 
 \begin{verbatim}
 ##  2.5% 97.5% 
-##    14    34
+##    14    35
 \end{verbatim}
 
 From the gamma posterior \(E(\theta | y) = 238.5/10.02=24.25\) and the variance \(V(\theta|y)= 238.5/10.02^2=2.87\). From the Poisson likelihood \(E(x|\theta)=\theta\) and \(V(x|\theta)=\theta\). \(V(x|y)= E(V(x|\theta,y) | y) + V(E(x|\theta,y)|y)= E(\theta| y)+ V(\theta|y) = 23.382+2.87= 26.252\)
@@ -2035,7 +2035,7 @@ The average predictive value from 1986 is 24.3 which is close to the true value 
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.8954 20.7715 24.2653 24.2489 27.7126 50.6847
+##  -2.122  20.813  24.255  24.245  27.694  45.292
 \end{verbatim}
 
 \begin{Shaded}
@@ -2060,7 +2060,7 @@ The average predictive value from 1986 is 24.3 which is close to the true value 
 
 \begin{verbatim}
 ##     2.5%    97.5% 
-## 14.17126 34.29476
+## 14.13409 34.29907
 \end{verbatim}
 
 \begin{Shaded}
@@ -2070,7 +2070,7 @@ The average predictive value from 1986 is 24.3 which is close to the true value 
 \end{Shaded}
 
 \begin{verbatim}
-## average predictive value from posterior:23.8542
+## average predictive value from posterior:23.8522
 \end{verbatim}
 
 \begin{itemize}
@@ -2233,7 +2233,7 @@ We can also use the normal approximation, but the equations for the mean and var
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 23 46
+## [1] 22 46
 \end{verbatim}
 
 \begin{Shaded}
@@ -2375,7 +2375,7 @@ which is not the expected prediction of 546 passenger deaths. This is likely bec
 
 \begin{verbatim}
 ##    2.5%   97.5% 
-## 638.975 744.025
+## 638.975 746.025
 \end{verbatim}
 
 \begin{Shaded}
@@ -2393,7 +2393,7 @@ which is not the expected prediction of 546 passenger deaths. This is likely bec
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   614.0   672.0   690.0   691.4   710.0   794.0
+##   595.0   673.0   691.0   690.7   709.0   771.0
 \end{verbatim}
 
 \begin{Shaded}
@@ -2419,8 +2419,8 @@ which is not the expected prediction of 546 passenger deaths. This is likely bec
 \end{Shaded}
 
 \begin{verbatim}
-##    2.5%   97.5% 
-## 641.975 748.025
+##  2.5% 97.5% 
+##   635   744
 \end{verbatim}
 
 \begin{itemize}
@@ -2509,7 +2509,7 @@ Note we used Jeffreys' prior here, but an empirical prior is okay
 \end{Shaded}
 
 \begin{verbatim}
-## [1]  898 1033
+## [1]  905 1031
 \end{verbatim}
 
 \hypertarget{question-21}{%
@@ -2995,7 +2995,7 @@ There was a 0.355 probability of a shift toward Bush after both debates.
 \begin{verbatim}
 ## 
 ## FALSE  TRUE 
-##   655   345
+##   623   377
 \end{verbatim}
 
 \begin{Shaded}
@@ -3083,7 +3083,7 @@ we are given two independent normal random variables with unknown variances and 
 
 \begin{verbatim}
 ##      2.5%     97.5% 
-## 0.9271836 1.0972310
+## 0.9219155 1.1027542
 \end{verbatim}
 
 \begin{Shaded}
@@ -3094,7 +3094,7 @@ we are given two independent normal random variables with unknown variances and 
 
 \begin{verbatim}
 ##     2.5%    97.5% 
-## 1.092792 1.255374
+## 1.089495 1.247000
 \end{verbatim}
 
 \begin{itemize}
@@ -3126,7 +3126,7 @@ The posterior interval (central) of the differences between 2 independent t-dist
 
 \begin{verbatim}
 ##       2.5%      97.5% 
-## 0.04644071 0.28055176
+## 0.03927942 0.27312911
 \end{verbatim}
 
 \begin{Shaded}
@@ -3147,7 +3147,7 @@ The posterior interval (central) of the differences between 2 independent t-dist
 
 \begin{verbatim}
 ##       2.5%      97.5% 
-## 0.04213421 0.27561052
+## 0.04267863 0.27475540
 \end{verbatim}
 
 \begin{Shaded}
@@ -3230,7 +3230,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.2273  0.4441  0.5289  0.5459  0.6301  1.1453
+##  0.1778  0.4421  0.5355  0.5559  0.6485  1.3261
 \end{verbatim}
 
 \begin{Shaded}
@@ -3276,7 +3276,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.2246  0.4534  0.5462  0.5649  0.6515  1.2808
+##  0.2311  0.4509  0.5558  0.5635  0.6445  1.2841
 \end{verbatim}
 
 \hypertarget{question-4-dirichlet}{%
@@ -3347,7 +3347,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.1970  0.4777  0.5691  0.5921  0.6832  1.3386
+##  0.2526  0.4688  0.5581  0.5784  0.6743  1.0987
 \end{verbatim}
 
 \begin{Shaded}
@@ -3385,7 +3385,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.2346  0.4518  0.5415  0.5651  0.6666  1.1936
+##  0.2215  0.4557  0.5439  0.5658  0.6600  1.3556
 \end{verbatim}
 
 \begin{Shaded}
@@ -3412,7 +3412,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##  0.3111  0.5099  0.5685  0.5706  0.6261  0.9418
+##  0.3556  0.5103  0.5629  0.5730  0.6268  0.9278
 \end{verbatim}
 
 \hypertarget{question-5}{%
@@ -3453,7 +3453,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 
 \begin{verbatim}
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   6.909   9.372  10.320  10.408  11.348  16.841
+##   6.625   9.482  10.410  10.439  11.413  15.243
 \end{verbatim}
 
 \begin{Shaded}
@@ -3463,7 +3463,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 10.40775
+## [1] 10.43942
 \end{verbatim}
 
 \begin{Shaded}
@@ -3473,7 +3473,7 @@ so using the multinomial is not correct because we do not have k outcomes, inste
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 2.170172
+## [1] 2.030794
 \end{verbatim}
 
 \begin{Shaded}
@@ -3535,7 +3535,7 @@ The difference in means is approximately 0, with a variance (residual) of 2.7.
 \end{Shaded}
 
 \begin{verbatim}
-## [1] -0.003251426
+## [1] -0.02619315
 \end{verbatim}
 
 \begin{Shaded}
@@ -3545,7 +3545,7 @@ The difference in means is approximately 0, with a variance (residual) of 2.7.
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 2.61699
+## [1] 2.56876
 \end{verbatim}
 
 \begin{Shaded}
@@ -3605,7 +3605,7 @@ For this we sample from the normal posterior distribution, conditioned on the ro
 \end{Shaded}
 
 \begin{verbatim}
-## mean error:0.137640908693181
+## mean error:0.136664438057776
 \end{verbatim}
 
 \begin{Shaded}
@@ -4592,7 +4592,7 @@ Using a uniform prior, we compute the Bayesian posterior for \(\theta=-\alpha/\b
 \end{Shaded}
 
 \begin{verbatim}
-## posterior mean for A :1.316 B 11.556
+## posterior mean for A :1.293 B 11.482
 \end{verbatim}
 
 \begin{Shaded}
@@ -4603,7 +4603,7 @@ Using a uniform prior, we compute the Bayesian posterior for \(\theta=-\alpha/\b
 
 \begin{verbatim}
 ##       2.5%      97.5% 
-## -0.2857143  0.1176910
+## -0.2771114  0.1000510
 \end{verbatim}
 
 \begin{Shaded}
@@ -4613,7 +4613,7 @@ Using a uniform prior, we compute the Bayesian posterior for \(\theta=-\alpha/\b
 \end{Shaded}
 
 \begin{verbatim}
-## posterio std.dev -a/b: 0.097
+## posterio std.dev -a/b: 0.095
 \end{verbatim}
 
 \hypertarget{q3-delta-method-approximation}{%
@@ -4671,7 +4671,7 @@ Using the derivation of the delta method shown above, we input the posterior mea
 \end{Shaded}
 
 \begin{verbatim}
-## normal approx posterior mean -0.106 std. dev 0.106
+## normal approx posterior mean -0.113 std. dev 0.108
 \end{verbatim}
 
 \hypertarget{question-4.2-using-the-posterior-sampling-via-grid-approach}{%
@@ -4749,7 +4749,7 @@ The posterior mean is -0.1055, with marginal posterior standard deviation of 0.0
 \end{Shaded}
 
 \begin{verbatim}
-## sample posterior mean: -0.108485
+## sample posterior mean: -0.1048945
 \end{verbatim}
 
 \begin{Shaded}
@@ -4857,7 +4857,7 @@ Using a simulation, we simply take the ratio of 2 random normal variables from t
 \end{Shaded}
 
 \begin{verbatim}
-## simulated mean/std.dev: 0.793 0.602
+## simulated mean/std.dev: 0.791 0.611
 \end{verbatim}
 
 \begin{Shaded}
@@ -4867,7 +4867,7 @@ Using a simulation, we simply take the ratio of 2 random normal variables from t
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.3622727
+## [1] 0.3727425
 \end{verbatim}
 
 \begin{Shaded}
@@ -5072,6 +5072,7 @@ The form of exchangeabile distribution each parameter \(\theta_j\) as an indepen
 
 \begin{equation}
 p(\theta|\phi) = \prod_j p(\theta_j| \phi)
+\label{eq:fiveOne}
 \end{equation}
 
 in general \(\phi\) is unknown so we average over the uncertainty of \(\phi\)
@@ -5083,6 +5084,123 @@ p(\theta) = \int \prod_j p(\theta_j| \phi)* p(\phi)d\phi
 This form is the mixture of independent identical distributions.
 
 A related result \emph{de Finetti's theorem} states that as the limit of \(J\to \infty\) any suitably exchangeable distribution on (\(\theta_1,...,\theta_J)\) can be expressed as a mixture of identical and independent distributions. This theorem connects exchangeability to IID assumptions routinely practiced.
+
+\hypertarget{exchangeability-when-additional-information-is-available-on-the-units}{%
+\subsection*{Exchangeability when additional information is available on the units}\label{exchangeability-when-additional-information-is-available-on-the-units}}
+\addcontentsline{toc}{subsection}{Exchangeability when additional information is available on the units}
+
+observations often are not exchangeable, but are partially or \emph{conditionally} exchangeable
+- if observations can be grouped, we may make a hierarchical model where each group has its own sub-model, but the group properties are unknown. if we assume that the group properties are exchangeable, we can use a common prior distribution for the group properties.
+- if \(y_i\) has additional information \(x_i\) so that \(y_i\) are not exchangeable, but (\(y_i,x_i\)) still are exchangeable, then we can make a joint prior for \((y_i,x_i)\) or a condtional model \(y_i | x_i\).
+
+For the rat example, if we knoew specific batches of experiments were made in different laboratories we could assume partial exchangeability and use two level hierarchical model to account for variation within each laboratory and between laboratories.
+
+In general the usual way to model exchangeability with covariates is through conditional independence : \$p(\theta\_1,\ldots,\theta\_J) = (\int \prod\_j p(\theta\_j\textbar{}\phi,x\_j))p(\phi\textbar{} x)d\phi
+
+\hypertarget{objections-to-exchangeable-models}{%
+\subsection*{Objections to exchangeable models}\label{objections-to-exchangeable-models}}
+\addcontentsline{toc}{subsection}{Objections to exchangeable models}
+
+it is natural to object to exchangeability on the grounds that the units actually differ. For the rat example, one can argue that different rats were studied at different times across different laboratories, and therefore not exchangeable. However this information does \textbf{not} invalidate exchangeability, these differences in experimental conditions imply that \(\theta_j\) differ, but can still arise from a common parent distribution. If we had no information to distinguish them, we have a logical choice to assume exchangeability.
+
+\hypertarget{the-full-bayesian-treatment-of-the-hierarchical-model}{%
+\subsection*{The full Bayesian treatment of the hierarchical model}\label{the-full-bayesian-treatment-of-the-hierarchical-model}}
+\addcontentsline{toc}{subsection}{The full Bayesian treatment of the hierarchical model}
+
+let \(\phi\) be unknown with a prior \(p(\phi)\) then the joint prior is
+
+\begin{equation}
+p(\phi,\theta) = p(\phi)p(\theta| \phi)
+\end{equation}
+
+and the joint posterior is
+
+\begin{equation}
+p(\phi,\theta | y) \propto p(\phi,\theta)p(y| \phi, \theta) = p(\phi,\theta)p(y|\theta)
+\end{equation}
+
+The \(p(y | \phi,\theta)\) depends only on \(\theta\) the hyperparameters \(\phi\) only affects y through \(\theta\). This model includes the uncertainty about \(\phi\) in the model.
+
+\hypertarget{the-hyperprior-distribution}{%
+\section*{The hyperprior distribution}\label{the-hyperprior-distribution}}
+\addcontentsline{toc}{section}{The hyperprior distribution}
+
+In order to create a joint hyperprior for \((\phi,\theta)\) we must assign a prior distribution to \(\phi\). If little is known about \(\phi\) we can choose a diffuse prior, or noninformative prior, ensuring that the posterior is proper. Further assumptions about the prior must be checked for sensitivity in the hyperprior choice.
+
+The rat example the hyperparameters are \((\alpha,\beta)\) which determine the beta parameter \(\theta\).
+
+\hypertarget{posterior-predictive-distribution-1}{%
+\subsection*{Posterior predictive distribution}\label{posterior-predictive-distribution-1}}
+\addcontentsline{toc}{subsection}{Posterior predictive distribution}
+
+Hierarchical models are characterized by hyperparameters \(\phi\) and model parameters \(\theta\). There are two posterior predictive distributions that might be an interest
+- (1) the distribution of future observation \(\tilde{y}\) corresponding to an existing \(\theta_j\).
+- (2) the distribution of observations \(\tilde{y}\) corresponding to future \(\theta_j\), \(\tilde{\theta}\), drawn from the same superpopulation, common, population
+
+\hypertarget{bayesian-analysis-of-conjugate-hierarchical-models}{%
+\section{Bayesian analysis of conjugate hierarchical models}\label{bayesian-analysis-of-conjugate-hierarchical-models}}
+
+For large number of parameters is it difficult to plot contour plots of the numerous parameters simulated from the joint posterior \((\phi,\theta)\). For the rat example, we obtain simulations of the posterior distribution \(p(\theta,\phi | y)\) for the beta-binomial model for the rat-tumor for which the \textbf{population distribution} \(p(\theta|\phi)\) is conjugate to the likelihood \(p(y | \theta)\). For non-conjugate models , we must use MCMC.
+
+\hypertarget{analytic-derivation-of-conditional-and-marginal-distributions}{%
+\subsection*{Analytic derivation of conditional and marginal distributions}\label{analytic-derivation-of-conditional-and-marginal-distributions}}
+\addcontentsline{toc}{subsection}{Analytic derivation of conditional and marginal distributions}
+
+\begin{itemize}
+\item
+  \begin{enumerate}
+  \def\labelenumi{(\arabic{enumi})}
+  \tightlist
+  \item
+    write the joint posterior density \(p(\theta, \phi| y)\) in unnormalized form as a product of the hyperprior density \(p(\phi)\), the \textbf{population distribution} \(p(\theta| \phi)\) and the likelihood \(p(y|\theta)\).
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{(\arabic{enumi})}
+  \setcounter{enumi}{1}
+  \tightlist
+  \item
+    determine analytically the conditional posterior density of \(\theta\) given the hyperparameter \(\phi\), for fixed observed y this is a function of \(\phi, p(\theta | \phi,y)\).
+  \end{enumerate}
+\item
+  \begin{enumerate}
+  \def\labelenumi{(\arabic{enumi})}
+  \setcounter{enumi}{2}
+  \tightlist
+  \item
+    estimate \(\phi\) using the Bayesian paradigm, that is obtain its marginal posterior distribution \(p(\phi| y)\).
+  \end{enumerate}
+\end{itemize}
+
+The first step is immediate, and the second step is easy for conjugate models because conditional on \(\phi\) the population distribution for \(\theta\) is just the independent and identical distribution model \eqref{eq:fiveOne}. The conditional posterior density is a product of conjugate posterior densities for the components \(\theta_j\).
+
+The marginal posterior \(p(\phi| y )\) can be obtained using an integral
+\begin{equation}
+p(\phi|y) = \int p(\theta,\phi|y)d\theta
+\label{eq:fiveFour}
+\end{equation}
+
+For many models the marginal computed using albegra and conditional probability formula
+\begin{equation}
+p(\phi|y) = \frac{ p(\theta,\phi|y)}{ p(\theta|\phi|y)}
+\label{eq:fiveFive}
+\end{equation}
+
+This expression is useful because the numerator is just the joint posterior, and the denominator is the posterior distribution for \(\theta\) if \(\phi\) where known. So the denominator \(p(\theta| \phi, y)\) is regarded as a function of both \(\theta\) for fixed \(\phi, y\).
+
+\hypertarget{drawing-simulations-from-the-posterior-distribution}{%
+\subsection*{Drawing simulations from the posterior distribution}\label{drawing-simulations-from-the-posterior-distribution}}
+\addcontentsline{toc}{subsection}{Drawing simulations from the posterior distribution}
+
+The strategy for simulating posterior distribution for \(p(\theta,\phi | y)\) for simple hierarchical models follows
+
+-(1) draw the vector of hyperparameters \(\phi\) from its marginal posterior distribution \(p(\phi | y)\). If \(\phi\) is low-dimensional, the methods in Chapter 3 can be used, and for high dimensional problems, MCMC must be used.
+-(2) draw the parameter vector \(\theta\) from its conditional posterior distribution \(p(\theta| \phi, y)\) given the drawn value for \(\phi\). for simple examples \(p(\theta | \phi, y) = \prod p(\theta_j | \phi, y)\) the components \(\theta_j\) can be drawn independently, one at a time.
+-(3) if desired, draw the predictive values \(\tilde{y}\) from the posterior predictive distribution given the drawn \(\theta\). Depending on the problem it might be necessary to first draw \(\tilde{\theta}\) given \(\phi\), and then draw a future value from the distribution.
+
+\hypertarget{application-to-the-model-for-rat-tumors}{%
+\subsection*{Application to the model for rat tumors}\label{application-to-the-model-for-rat-tumors}}
+\addcontentsline{toc}{subsection}{Application to the model for rat tumors}
 
 \hypertarget{exercises-4}{%
 \section*{Exercises}\label{exercises-4}}
@@ -5720,6 +5838,136 @@ Another option is to model each school independently as separate models with kno
 \hypertarget{q11}{%
 \subsubsection*{Q11}\label{q11}}
 \addcontentsline{toc}{subsubsection}{Q11}
+
+For non conjugate models suppose that in the rat tumor example we had \(logit(\theta_j)\sim N(\mu,\tau^2)\) for j=1,\ldots,J and assume a non-informative prior for the hyperparameters.
+-(a) the joint posterior can be written as
+\begin{equation}
+   p(\theta,\mu,\tau|y ) = p(\theta,\mu,\tau)p(y|\theta,\mu,\tau) = p(\theta|\mu,\tau)p(\mu,\tau)p(y|\theta,\mu,\tau)
+   \end{equation}
+
+Note that \(p(\theta,\mu,\tau)\) is in terms of \(\theta\) and not on the logit scale, so we need the jacobian for change of variables.
+
+\[
+\begin{aligned}
+p(\theta|\mu,\tau)p(\mu,\tau)p(y|\theta,\mu,\tau) = p(\mu,\tau)\prod_j \frac{1}{\sqrt{2\pi}\tau}exp(\frac{-1}{2\tau^2}(logit(\theta_j -\mu)^2))\prod_j(\theta_j)^{y_{i}}(1-\theta_j)^{n_i-y_i} |dlogit(\theta)/d\theta| \\
+p(\theta|\mu,\tau)p(\mu,\tau)p(y|\theta,\mu,\tau) = p(\mu,\tau)\prod_j \frac{1}{\sqrt{2\pi}\tau}exp(\frac{-1}{2\tau^2}(logit(\theta_j -\mu)^2))\prod_j(\theta_j)^{y_{i}}(1-\theta_j)^{n_i-y_i}|\frac{1}{\theta(1-\theta)}|
+\end{aligned}
+\]
+-(b) we can not integrate this equation fully because it is not in a known family. Although we have separate factors in the equation, we can not analytically derive the integral in closed form.
+-(c) Using equation 5.5 \(p(\mu,\tau |y) = \frac{p(\theta,\mu,\tau | y)}{p(\theta| \mu,\tau, y)}\) we can not integrate the denominator \(p(\theta|mu,\tau,y)\) in closed form as a function of \(\mu,\tau\) which doesn't have a closed form solution.
+
+\hypertarget{q12}{%
+\subsubsection*{Q12}\label{q12}}
+\addcontentsline{toc}{subsubsection}{Q12}
+
+To find the conditional expection we use equation 5.20 and 5.17 from the text
+
+\[
+\begin{aligned}
+E[\theta_j | \tau, y ] &= E[ E(\theta_j| \mu, \tau, y) | \tau,y] \\
+& = E[ \hat{\theta_j} | \tau, y] =\frac{ 1/\sigma_j^2 \bar{y_{.j}}+1/\tau^2 E[\mu]}{1/\sigma_j^2+1/\tau^2} \\
+& = \frac{ 1/\sigma_j^2 \bar{y_{.j}}+1/\tau^2 \hat{\mu}}{1/\sigma_j^2+1/\tau^2} \\
+\text{where  } \hat{\mu} = \frac{\sum_j \frac{1}{\sigma_j^2+\tau^2}\bar{y_{.j}}}{\sum_j \frac{1}{\sigma_j^2+\tau^2}}
+\end{aligned}
+\]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{school}\OtherTok{\textless{}{-}}\FunctionTok{data.frame}\NormalTok{(}\AttributeTok{school=}\NormalTok{LETTERS[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{8}\NormalTok{],}
+                   \AttributeTok{yj =}\FunctionTok{c}\NormalTok{(}\DecValTok{28}\NormalTok{,}\DecValTok{8}\NormalTok{,}\SpecialCharTok{{-}}\DecValTok{3}\NormalTok{,}\DecValTok{7}\NormalTok{,}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{18}\NormalTok{,}\DecValTok{12}\NormalTok{),}
+                   \AttributeTok{sigmaj =} \FunctionTok{c}\NormalTok{(}\DecValTok{15}\NormalTok{,}\DecValTok{10}\NormalTok{,}\DecValTok{16}\NormalTok{,}\DecValTok{11}\NormalTok{,}\DecValTok{9}\NormalTok{,}\DecValTok{11}\NormalTok{,}\DecValTok{10}\NormalTok{,}\DecValTok{18}\NormalTok{))}
+\NormalTok{school}\SpecialCharTok{$}\NormalTok{sigma2j}\OtherTok{\textless{}{-}}\NormalTok{school}\SpecialCharTok{$}\NormalTok{sigmaj}\SpecialCharTok{\^{}}\DecValTok{2}
+
+\DocumentationTok{\#\# conditional expectation}
+
+\NormalTok{mu\_hat}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(allsigma2j,tau2,allybarj)\{}
+\NormalTok{   numer}\OtherTok{\textless{}{-}}\FunctionTok{sum}\NormalTok{( (}\DecValTok{1}\SpecialCharTok{/}\NormalTok{(allsigma2j}\SpecialCharTok{+}\NormalTok{tau2))}\SpecialCharTok{*}\NormalTok{allybarj)}
+\NormalTok{   denom}\OtherTok{\textless{}{-}}\FunctionTok{sum}\NormalTok{(}\DecValTok{1}\SpecialCharTok{/}\NormalTok{(allsigma2j}\SpecialCharTok{+}\NormalTok{tau2))}
+\NormalTok{   muhat}\OtherTok{=}\NormalTok{ numer}\SpecialCharTok{/}\NormalTok{denom}
+   \FunctionTok{return}\NormalTok{(muhat)}
+\NormalTok{\}}
+
+\NormalTok{conditionalExpectation}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(sigma2j,ybarj,tau2,allsigma2j,allybarj)\{}
+\NormalTok{  muhat}\OtherTok{\textless{}{-}}\FunctionTok{mu\_hat}\NormalTok{(allsigma2j, tau2,allybarj)}
+  
+\NormalTok{  a}\OtherTok{\textless{}{-}}\NormalTok{((}\DecValTok{1}\SpecialCharTok{/}\NormalTok{sigma2j)}\SpecialCharTok{*}\NormalTok{ybarj)}\SpecialCharTok{/}\NormalTok{(}\DecValTok{1}\SpecialCharTok{/}\NormalTok{sigma2j }\SpecialCharTok{+} \DecValTok{1}\SpecialCharTok{/}\NormalTok{tau2)}
+\NormalTok{  b}\OtherTok{\textless{}{-}}\NormalTok{ ((}\DecValTok{1}\SpecialCharTok{/}\NormalTok{tau2)}\SpecialCharTok{*}\NormalTok{muhat)}\SpecialCharTok{/}\NormalTok{(}\DecValTok{1}\SpecialCharTok{/}\NormalTok{sigma2j }\SpecialCharTok{+} \DecValTok{1}\SpecialCharTok{/}\NormalTok{tau2)}
+\NormalTok{  cond.mean}\OtherTok{\textless{}{-}}\NormalTok{a}\SpecialCharTok{+}\NormalTok{b}
+  \FunctionTok{return}\NormalTok{(cond.mean)}
+\NormalTok{\}}
+
+\NormalTok{tau\_seq }\OtherTok{=} \FunctionTok{seq}\NormalTok{(}\FloatTok{0.1}\NormalTok{,}\DecValTok{30}\NormalTok{,}\AttributeTok{by=}\FloatTok{0.01}\NormalTok{)}
+
+\NormalTok{  allmeans}\OtherTok{\textless{}{-}}\FunctionTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{, }\AttributeTok{nrow=}\FunctionTok{length}\NormalTok{(tau\_seq),}\AttributeTok{ncol=}\FunctionTok{nrow}\NormalTok{(school))}
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{nrow}\NormalTok{(school))\{  }
+\NormalTok{ aa}\OtherTok{\textless{}{-}}\FunctionTok{sapply}\NormalTok{(tau\_seq,}\ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{conditionalExpectation}\NormalTok{(school}\SpecialCharTok{$}\NormalTok{sigma2j[i],school}\SpecialCharTok{$}\NormalTok{yj[i],}\AttributeTok{tau2=}\NormalTok{x}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{,school}\SpecialCharTok{$}\NormalTok{sigma2j,school}\SpecialCharTok{$}\NormalTok{yj))}
+\NormalTok{ allmeans[,i]}\OtherTok{\textless{}{-}}\NormalTok{aa}
+\NormalTok{\} }
+  
+\FunctionTok{plot}\NormalTok{(tau\_seq,allmeans[,}\DecValTok{1}\NormalTok{],}\AttributeTok{ylim=}\FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{5}\NormalTok{,}\DecValTok{30}\NormalTok{),}\AttributeTok{ylab=}\StringTok{\textquotesingle{}Estimated Treatment Effects\textquotesingle{}}\NormalTok{, }\AttributeTok{xlab=}\StringTok{\textquotesingle{}tau\textquotesingle{}}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(tau\_seq,allmeans[,}\DecValTok{2}\NormalTok{],}\AttributeTok{col=}\StringTok{\textquotesingle{}green\textquotesingle{}}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(tau\_seq,allmeans[,}\DecValTok{3}\NormalTok{],}\AttributeTok{col=}\StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(tau\_seq,allmeans[,}\DecValTok{4}\NormalTok{],}\AttributeTok{col=}\StringTok{\textquotesingle{}blue\textquotesingle{}}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(tau\_seq,allmeans[,}\DecValTok{5}\NormalTok{],}\AttributeTok{col=}\StringTok{\textquotesingle{}yellow\textquotesingle{}}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(tau\_seq,allmeans[,}\DecValTok{6}\NormalTok{],}\AttributeTok{col=}\StringTok{\textquotesingle{}purple\textquotesingle{}}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(tau\_seq,allmeans[,}\DecValTok{7}\NormalTok{],}\AttributeTok{col=}\StringTok{\textquotesingle{}orange\textquotesingle{}}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(tau\_seq,allmeans[,}\DecValTok{8}\NormalTok{],}\AttributeTok{col=}\StringTok{\textquotesingle{}brown\textquotesingle{}}\NormalTok{)}
+
+\FunctionTok{legend}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{25}\NormalTok{, }
+       \AttributeTok{legend=}\FunctionTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{, }\StringTok{"B"}\NormalTok{,}\StringTok{"C"}\NormalTok{,}\StringTok{"D"}\NormalTok{,}\StringTok{"E"}\NormalTok{,}\StringTok{"F"}\NormalTok{,}\StringTok{"G"}\NormalTok{,}\StringTok{"H"}\NormalTok{),}
+       \AttributeTok{col=}\FunctionTok{c}\NormalTok{(}\StringTok{"black"}\NormalTok{, }\StringTok{"green"}\NormalTok{,}\StringTok{"red"}\NormalTok{,}\StringTok{"blue"}\NormalTok{,}\StringTok{"yellow"}\NormalTok{,}\StringTok{"purple"}\NormalTok{,}\StringTok{"orange"}\NormalTok{,}\StringTok{"brown"}\NormalTok{), }\AttributeTok{lty=}\DecValTok{1}\NormalTok{, }\AttributeTok{cex=}\FloatTok{0.8}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-71-1.pdf}
+For the \(V(\theta_j | \tau,y) = E[V(\theta_j | \mu,\tau,y)|\tau,y] + V[E(\theta_j | \mu,\tau,y)|\tau,y)]\) Using the equations for \(V_j , V_\mu\) from section 5 we derived the conditional variance.
+
+\[
+\begin{aligned}
+E[V(\theta_j | \mu,\tau,y)|\tau,y] + V[E(\theta_j | \mu,\tau,y)|\tau,y)] &= E[V_j | \tau, y] +V[\hat{\theta_j}| \tau, y] \\
+&= V_j +Vj^2(1/\tau^2)^2V_\mu
+\end{aligned}
+\]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ V\_mu}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(allsigma2j,tau2)\{}
+\NormalTok{   vinv}\OtherTok{\textless{}{-}}\FunctionTok{sum}\NormalTok{( }\DecValTok{1}\SpecialCharTok{/}\NormalTok{(allsigma2j}\SpecialCharTok{+}\NormalTok{tau2))}
+\NormalTok{   vmu}\OtherTok{=}\DecValTok{1}\SpecialCharTok{/}\NormalTok{vinv}
+   \FunctionTok{return}\NormalTok{(vmu)}
+\NormalTok{ \}}
+
+\NormalTok{conditionalVariance}\OtherTok{\textless{}{-}}\ControlFlowTok{function}\NormalTok{(sigma2j, tau2,allsigma2j)\{}
+\NormalTok{  vmu}\OtherTok{\textless{}{-}}\FunctionTok{V\_mu}\NormalTok{(allsigma2j,tau2)}
+\NormalTok{  Vj }\OtherTok{=} \DecValTok{1}\SpecialCharTok{/}\NormalTok{(}\DecValTok{1}\SpecialCharTok{/}\NormalTok{sigma2j}\SpecialCharTok{+}\DecValTok{1}\SpecialCharTok{/}\NormalTok{tau2) }
+\NormalTok{  cond.var}\OtherTok{\textless{}{-}}\NormalTok{Vj}\SpecialCharTok{+}\NormalTok{Vj}\SpecialCharTok{\^{}}\DecValTok{2}\SpecialCharTok{*}\NormalTok{(}\DecValTok{1}\SpecialCharTok{/}\NormalTok{tau2)}\SpecialCharTok{\^{}}\DecValTok{2}\SpecialCharTok{*}\NormalTok{vmu}
+  \FunctionTok{return}\NormalTok{(cond.var)}
+\NormalTok{\}}
+
+\NormalTok{tau\_seq }\OtherTok{=} \FunctionTok{seq}\NormalTok{(}\FloatTok{0.1}\NormalTok{,}\DecValTok{30}\NormalTok{,}\AttributeTok{by=}\FloatTok{0.01}\NormalTok{)}
+
+\NormalTok{  allsd}\OtherTok{\textless{}{-}}\FunctionTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{, }\AttributeTok{nrow=}\FunctionTok{length}\NormalTok{(tau\_seq),}\AttributeTok{ncol=}\FunctionTok{nrow}\NormalTok{(school))}
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{nrow}\NormalTok{(school))\{  }
+\NormalTok{ aa}\OtherTok{\textless{}{-}}\FunctionTok{sapply}\NormalTok{(tau\_seq,}\ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{conditionalVariance}\NormalTok{(school}\SpecialCharTok{$}\NormalTok{sigma2j[i],}\AttributeTok{tau2=}\NormalTok{x}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{,school}\SpecialCharTok{$}\NormalTok{sigma2j))}
+\NormalTok{ allsd[,i]}\OtherTok{\textless{}{-}}\FunctionTok{sqrt}\NormalTok{(aa)}
+\NormalTok{\} }
+  
+\FunctionTok{plot}\NormalTok{(tau\_seq,allsd[,}\DecValTok{1}\NormalTok{],}\AttributeTok{ylim=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{20}\NormalTok{),}\AttributeTok{ylab=}\StringTok{\textquotesingle{}Posterior Standard Deviation\textquotesingle{}}\NormalTok{, }\AttributeTok{xlab=}\StringTok{\textquotesingle{}tau\textquotesingle{}}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(tau\_seq,allsd[,}\DecValTok{2}\NormalTok{],}\AttributeTok{col=}\StringTok{\textquotesingle{}green\textquotesingle{}}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(tau\_seq,allsd[,}\DecValTok{3}\NormalTok{],}\AttributeTok{col=}\StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(tau\_seq,allsd[,}\DecValTok{4}\NormalTok{],}\AttributeTok{col=}\StringTok{\textquotesingle{}blue\textquotesingle{}}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(tau\_seq,allsd[,}\DecValTok{5}\NormalTok{],}\AttributeTok{col=}\StringTok{\textquotesingle{}yellow\textquotesingle{}}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(tau\_seq,allsd[,}\DecValTok{6}\NormalTok{],}\AttributeTok{col=}\StringTok{\textquotesingle{}purple\textquotesingle{}}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(tau\_seq,allsd[,}\DecValTok{7}\NormalTok{],}\AttributeTok{col=}\StringTok{\textquotesingle{}orange\textquotesingle{}}\NormalTok{)}
+\FunctionTok{lines}\NormalTok{(tau\_seq,allsd[,}\DecValTok{8}\NormalTok{],}\AttributeTok{col=}\StringTok{\textquotesingle{}brown\textquotesingle{}}\NormalTok{)}
+
+\FunctionTok{legend}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{15}\NormalTok{, }
+       \AttributeTok{legend=}\FunctionTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{, }\StringTok{"B"}\NormalTok{,}\StringTok{"C"}\NormalTok{,}\StringTok{"D"}\NormalTok{,}\StringTok{"E"}\NormalTok{,}\StringTok{"F"}\NormalTok{,}\StringTok{"G"}\NormalTok{,}\StringTok{"H"}\NormalTok{),}
+       \AttributeTok{col=}\FunctionTok{c}\NormalTok{(}\StringTok{"black"}\NormalTok{, }\StringTok{"green"}\NormalTok{,}\StringTok{"red"}\NormalTok{,}\StringTok{"blue"}\NormalTok{,}\StringTok{"yellow"}\NormalTok{,}\StringTok{"purple"}\NormalTok{,}\StringTok{"orange"}\NormalTok{,}\StringTok{"brown"}\NormalTok{), }\AttributeTok{lty=}\DecValTok{1}\NormalTok{, }\AttributeTok{cex=}\FloatTok{0.8}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-72-1.pdf}
 
 \hypertarget{sharing-your-book}{%
 \chapter{Sharing your book}\label{sharing-your-book}}

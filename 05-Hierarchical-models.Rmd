@@ -22,6 +22,7 @@ If no information, other than the data $y_j$ is availble to distinguish any of t
  
 \begin{equation}
 p(\theta|\phi) = \prod_j p(\theta_j| \phi)
+(\#eq:fiveOne)
 \end{equation}
 
 in general $\phi$ is unknown so we average over the uncertainty of $\phi$
@@ -35,6 +36,80 @@ This form is the mixture of independent identical distributions.
 
 A related result *de Finetti's theorem* states that as the limit of $J\to \infty$ any suitably exchangeable distribution on ($\theta_1,...,\theta_J)$ can be expressed as a mixture of identical and independent distributions.   This theorem connects exchangeability to IID assumptions routinely practiced.
 
+
+### Exchangeability when additional information is available on the units{-}
+observations often are not exchangeable, but are partially or *conditionally* exchangeable
+   - if observations can be grouped, we may make a hierarchical model where each group has its own sub-model, but the group properties are unknown.  if we assume that the group properties are exchangeable, we can use a common prior distribution for the group properties.
+   - if $y_i$ has additional information $x_i$ so that $y_i$ are not exchangeable, but ($y_i,x_i$) still are exchangeable, then we can make a joint prior for $(y_i,x_i)$ or a condtional model $y_i | x_i$.
+   
+For the rat example, if we knoew specific batches of experiments were made in different laboratories we could assume partial exchangeability and use two level hierarchical model to account for variation within each laboratory and between laboratories.  
+
+In general the usual way to model exchangeability with covariates is through conditional independence : $p(\theta_1,...,\theta_J) = (\int \prod_j p(\theta_j|\phi,x_j))p(\phi| x)d\phi
+
+### Objections to exchangeable models{-}
+it is natural to object to exchangeability on the grounds that the units actually differ.  For the rat example, one can argue that different rats were studied at different times across different laboratories, and therefore not exchangeable.  However this information does **not** invalidate exchangeability, these differences in experimental conditions imply that $\theta_j$ differ, but can still arise from a common parent distribution.  If we had no information to distinguish them, we have a logical choice to assume exchangeability.
+
+### The full Bayesian treatment of the hierarchical model{-}
+let $\phi$ be unknown with a prior $p(\phi)$ then the joint prior is
+
+\begin{equation}
+p(\phi,\theta) = p(\phi)p(\theta| \phi)
+\end{equation}
+
+and the joint posterior is 
+
+\begin{equation}
+p(\phi,\theta | y) \propto p(\phi,\theta)p(y| \phi, \theta) = p(\phi,\theta)p(y|\theta)
+\end{equation}
+
+The $p(y | \phi,\theta)$ depends only on $\theta$ the hyperparameters $\phi$ only affects y through $\theta$.  This model includes the uncertainty about $\phi$ in the model. 
+
+## The hyperprior distribution{-}
+In order to create a joint hyperprior for $(\phi,\theta)$ we must assign a prior distribution to $\phi$.  If little is known about $\phi$ we can choose a diffuse prior, or noninformative prior, ensuring that the posterior is proper.  Further assumptions about the prior must be checked for sensitivity in the hyperprior choice.
+
+The rat example the hyperparameters are $(\alpha,\beta)$ which determine the beta parameter $\theta$.
+
+### Posterior predictive distribution{-}
+Hierarchical models are characterized by hyperparameters $\phi$ and model parameters $\theta$.  There are two posterior predictive distributions that might be an interest
+   - (1) the distribution of future observation $\tilde{y}$ corresponding to an existing $\theta_j$.
+   - (2) the distribution of observations $\tilde{y}$ corresponding to future $\theta_j$, $\tilde{\theta}$, drawn from the same superpopulation, common, population
+   
+## Bayesian analysis of conjugate hierarchical models
+For large number of parameters is it difficult to plot contour plots of the numerous parameters simulated from the joint posterior $(\phi,\theta)$.  For the rat example, we obtain simulations of the posterior distribution $p(\theta,\phi | y)$ for the beta-binomial model for the rat-tumor for which the **population distribution** $p(\theta|\phi)$ is conjugate to the likelihood $p(y | \theta)$.  For non-conjugate models , we must use MCMC.
+
+### Analytic derivation of conditional and marginal distributions{-}
+
+   - (1) write the joint posterior density $p(\theta, \phi| y)$ in unnormalized form as a product of the hyperprior density $p(\phi)$, the **population distribution** $p(\theta| \phi)$ and the likelihood $p(y|\theta)$.
+   - (2) determine analytically the conditional posterior density of $\theta$ given the hyperparameter $\phi$, for fixed observed y this is a function of $\phi, p(\theta | \phi,y)$.
+   - (3) estimate $\phi$ using the Bayesian paradigm, that is obtain its marginal posterior distribution $p(\phi| y)$.
+  
+The first step is immediate, and the second step is easy for conjugate models because conditional on $\phi$ the population distribution for $\theta$ is just the independent and identical distribution model \@ref(eq:fiveOne).  The conditional posterior density is a product of conjugate posterior densities for the components $\theta_j$.
+
+The marginal posterior $p(\phi| y )$ can be obtained using an integral
+\begin{equation}
+p(\phi|y) = \int p(\theta,\phi|y)d\theta
+(\#eq:fiveFour)
+\end{equation}
+
+
+For many models the marginal computed using albegra and conditional probability formula
+\begin{equation}
+p(\phi|y) = \frac{ p(\theta,\phi|y)}{ p(\theta|\phi|y)}
+(\#eq:fiveFive)
+\end{equation}
+
+
+This expression is useful because the numerator is just the joint posterior, and the denominator is the posterior distribution for $\theta$ if $\phi$ where known.  So the denominator $p(\theta| \phi, y)$ is regarded as a function of both $\theta$ for fixed $\phi, y$.
+
+
+### Drawing simulations from the posterior distribution{-}
+ The strategy for simulating posterior distribution for $p(\theta,\phi | y)$ for simple hierarchical models follows
+ 
+   -(1) draw the vector of hyperparameters $\phi$ from its marginal posterior distribution $p(\phi | y)$.  If $\phi$ is low-dimensional, the methods in Chapter 3 can be used, and for high dimensional problems, MCMC must be used.
+   -(2) draw the parameter vector $\theta$ from its conditional posterior distribution $p(\theta| \phi, y)$ given the drawn value for $\phi$.  for simple examples $p(\theta | \phi, y) = \prod p(\theta_j | \phi, y)$ the components $\theta_j$ can be drawn independently, one at a time.
+   -(3) if desired, draw the predictive values $\tilde{y}$ from the posterior predictive distribution given the drawn $\theta$.  Depending on the problem it might be necessary to first draw $\tilde{\theta}$ given $\phi$, and then draw a future value from the distribution.
+   
+### Application to the model for rat tumors{-}
 
 
 ## Exercises{-}
@@ -491,4 +566,122 @@ As the limit $\tau \to \infty$ we the exponential term goes to 0 because $\tau$ 
   Another option is to model each school independently as separate models with known variance and i would use non-informative priors.
   
 #### Q11{-}
+For non conjugate models suppose that in the rat tumor example we had $logit(\theta_j)\sim N(\mu,\tau^2)$ for j=1,...,J and assume a non-informative prior for the hyperparameters.
+   -(a) the joint posterior can be written as
+   \begin{equation}
+   p(\theta,\mu,\tau|y ) = p(\theta,\mu,\tau)p(y|\theta,\mu,\tau) = p(\theta|\mu,\tau)p(\mu,\tau)p(y|\theta,\mu,\tau)
+   \end{equation}
+   
+Note that $p(\theta,\mu,\tau)$ is in terms of $\theta$ and not on the logit scale, so we need the jacobian for change of variables.     
 
+$$
+\begin{aligned}
+p(\theta|\mu,\tau)p(\mu,\tau)p(y|\theta,\mu,\tau) = p(\mu,\tau)\prod_j \frac{1}{\sqrt{2\pi}\tau}exp(\frac{-1}{2\tau^2}(logit(\theta_j -\mu)^2))\prod_j(\theta_j)^{y_{i}}(1-\theta_j)^{n_i-y_i} |dlogit(\theta)/d\theta| \\
+p(\theta|\mu,\tau)p(\mu,\tau)p(y|\theta,\mu,\tau) = p(\mu,\tau)\prod_j \frac{1}{\sqrt{2\pi}\tau}exp(\frac{-1}{2\tau^2}(logit(\theta_j -\mu)^2))\prod_j(\theta_j)^{y_{i}}(1-\theta_j)^{n_i-y_i}|\frac{1}{\theta(1-\theta)}|
+\end{aligned}
+$$
+   -(b) we can not integrate this equation fully because it is not in a known family.  Although we have separate factors in the equation, we can not analytically derive the integral in closed form.
+   -(c) Using equation 5.5 $p(\mu,\tau |y) = \frac{p(\theta,\mu,\tau | y)}{p(\theta| \mu,\tau, y)}$  we can not integrate the denominator $p(\theta|mu,\tau,y)$ in closed form as a function of $\mu,\tau$ which doesn't have a closed form solution.
+
+
+#### Q12{-}
+To find the conditional expection we use equation 5.20 and 5.17 from the text
+
+$$
+\begin{aligned}
+E[\theta_j | \tau, y ] &= E[ E(\theta_j| \mu, \tau, y) | \tau,y] \\
+& = E[ \hat{\theta_j} | \tau, y] =\frac{ 1/\sigma_j^2 \bar{y_{.j}}+1/\tau^2 E[\mu]}{1/\sigma_j^2+1/\tau^2} \\
+& = \frac{ 1/\sigma_j^2 \bar{y_{.j}}+1/\tau^2 \hat{\mu}}{1/\sigma_j^2+1/\tau^2} \\
+\text{where  } \hat{\mu} = \frac{\sum_j \frac{1}{\sigma_j^2+\tau^2}\bar{y_{.j}}}{\sum_j \frac{1}{\sigma_j^2+\tau^2}}
+\end{aligned}
+$$
+
+```{r}
+school<-data.frame(school=LETTERS[1:8],
+                   yj =c(28,8,-3,7,-1,1,18,12),
+                   sigmaj = c(15,10,16,11,9,11,10,18))
+school$sigma2j<-school$sigmaj^2
+
+## conditional expectation
+
+mu_hat<-function(allsigma2j,tau2,allybarj){
+   numer<-sum( (1/(allsigma2j+tau2))*allybarj)
+   denom<-sum(1/(allsigma2j+tau2))
+   muhat= numer/denom
+   return(muhat)
+}
+
+conditionalExpectation<-function(sigma2j,ybarj,tau2,allsigma2j,allybarj){
+  muhat<-mu_hat(allsigma2j, tau2,allybarj)
+  
+  a<-((1/sigma2j)*ybarj)/(1/sigma2j + 1/tau2)
+  b<- ((1/tau2)*muhat)/(1/sigma2j + 1/tau2)
+  cond.mean<-a+b
+  return(cond.mean)
+}
+
+tau_seq = seq(0.1,30,by=0.01)
+
+  allmeans<-matrix(0, nrow=length(tau_seq),ncol=nrow(school))
+for(i in 1:nrow(school)){  
+ aa<-sapply(tau_seq,function(x) conditionalExpectation(school$sigma2j[i],school$yj[i],tau2=x^2,school$sigma2j,school$yj))
+ allmeans[,i]<-aa
+} 
+  
+plot(tau_seq,allmeans[,1],ylim=c(-5,30),ylab='Estimated Treatment Effects', xlab='tau')
+lines(tau_seq,allmeans[,2],col='green')
+lines(tau_seq,allmeans[,3],col='red')
+lines(tau_seq,allmeans[,4],col='blue')
+lines(tau_seq,allmeans[,5],col='yellow')
+lines(tau_seq,allmeans[,6],col='purple')
+lines(tau_seq,allmeans[,7],col='orange')
+lines(tau_seq,allmeans[,8],col='brown')
+
+legend(0, 25, 
+       legend=c("A", "B","C","D","E","F","G","H"),
+       col=c("black", "green","red","blue","yellow","purple","orange","brown"), lty=1, cex=0.8)
+```
+For the $V(\theta_j | \tau,y) = E[V(\theta_j | \mu,\tau,y)|\tau,y] + V[E(\theta_j | \mu,\tau,y)|\tau,y)]$ Using the equations for $V_j , V_\mu$ from section 5 we derived the conditional variance.
+
+$$
+\begin{aligned}
+E[V(\theta_j | \mu,\tau,y)|\tau,y] + V[E(\theta_j | \mu,\tau,y)|\tau,y)] &= E[V_j | \tau, y] +V[\hat{\theta_j}| \tau, y] \\
+&= V_j +Vj^2(1/\tau^2)^2V_\mu
+\end{aligned}
+$$
+
+```{r}
+ V_mu<-function(allsigma2j,tau2){
+   vinv<-sum( 1/(allsigma2j+tau2))
+   vmu=1/vinv
+   return(vmu)
+ }
+
+conditionalVariance<-function(sigma2j, tau2,allsigma2j){
+  vmu<-V_mu(allsigma2j,tau2)
+  Vj = 1/(1/sigma2j+1/tau2) 
+  cond.var<-Vj+Vj^2*(1/tau2)^2*vmu
+  return(cond.var)
+}
+
+tau_seq = seq(0.1,30,by=0.01)
+
+  allsd<-matrix(0, nrow=length(tau_seq),ncol=nrow(school))
+for(i in 1:nrow(school)){  
+ aa<-sapply(tau_seq,function(x) conditionalVariance(school$sigma2j[i],tau2=x^2,school$sigma2j))
+ allsd[,i]<-sqrt(aa)
+} 
+  
+plot(tau_seq,allsd[,1],ylim=c(0,20),ylab='Posterior Standard Deviation', xlab='tau')
+lines(tau_seq,allsd[,2],col='green')
+lines(tau_seq,allsd[,3],col='red')
+lines(tau_seq,allsd[,4],col='blue')
+lines(tau_seq,allsd[,5],col='yellow')
+lines(tau_seq,allsd[,6],col='purple')
+lines(tau_seq,allsd[,7],col='orange')
+lines(tau_seq,allsd[,8],col='brown')
+
+legend(0, 15, 
+       legend=c("A", "B","C","D","E","F","G","H"),
+       col=c("black", "green","red","blue","yellow","purple","orange","brown"), lty=1, cex=0.8)
+```

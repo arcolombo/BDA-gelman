@@ -23,7 +23,7 @@
 <meta name="author" content="Anthony R. Colombo, Dr. Paul Marjoram" />
 
 
-<meta name="date" content="2022-09-09" />
+<meta name="date" content="2022-09-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -256,6 +256,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.2" data-path="hierarchical-models.html"><a href="hierarchical-models.html#exchangeability-and-hierarchical-models"><i class="fa fa-check"></i><b>5.2</b> Exchangeability and hierarchical models</a>
 <ul>
 <li class="chapter" data-level="" data-path="hierarchical-models.html"><a href="hierarchical-models.html#exchangeability-1"><i class="fa fa-check"></i>Exchangeability</a></li>
+<li class="chapter" data-level="" data-path="hierarchical-models.html"><a href="hierarchical-models.html#exchangeability-when-additional-information-is-available-on-the-units"><i class="fa fa-check"></i>Exchangeability when additional information is available on the units</a></li>
+<li class="chapter" data-level="" data-path="hierarchical-models.html"><a href="hierarchical-models.html#objections-to-exchangeable-models"><i class="fa fa-check"></i>Objections to exchangeable models</a></li>
+<li class="chapter" data-level="" data-path="hierarchical-models.html"><a href="hierarchical-models.html#the-full-bayesian-treatment-of-the-hierarchical-model"><i class="fa fa-check"></i>The full Bayesian treatment of the hierarchical model</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="hierarchical-models.html"><a href="hierarchical-models.html#the-hyperprior-distribution"><i class="fa fa-check"></i>The hyperprior distribution</a>
+<ul>
+<li class="chapter" data-level="" data-path="hierarchical-models.html"><a href="hierarchical-models.html#posterior-predictive-distribution-1"><i class="fa fa-check"></i>Posterior predictive distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="hierarchical-models.html"><a href="hierarchical-models.html#bayesian-analysis-of-conjugate-hierarchical-models"><i class="fa fa-check"></i><b>5.3</b> Bayesian analysis of conjugate hierarchical models</a>
+<ul>
+<li class="chapter" data-level="" data-path="hierarchical-models.html"><a href="hierarchical-models.html#analytic-derivation-of-conditional-and-marginal-distributions"><i class="fa fa-check"></i>Analytic derivation of conditional and marginal distributions</a></li>
+<li class="chapter" data-level="" data-path="hierarchical-models.html"><a href="hierarchical-models.html#drawing-simulations-from-the-posterior-distribution"><i class="fa fa-check"></i>Drawing simulations from the posterior distribution</a></li>
+<li class="chapter" data-level="" data-path="hierarchical-models.html"><a href="hierarchical-models.html#application-to-the-model-for-rat-tumors"><i class="fa fa-check"></i>Application to the model for rat tumors</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="hierarchical-models.html"><a href="hierarchical-models.html#exercises-4"><i class="fa fa-check"></i>Exercises</a>
 <ul>
@@ -318,8 +331,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>If no information, other than the data <span class="math inline">\(y_j\)</span> is availble to distinguish any of the <span class="math inline">\(\theta_j\)</span> from any others, and no ordering or grouping of parameters can be made, then by symmetry among the parameters called <em>exchangeability</em>.
 The joint distribution <span class="math inline">\(p(\theta_1,...,\theta_J)\)</span> is invariant to permutations of the indices (1,…,J). Generally, the less we know about a problem the more we can rely on the exchangeability assumption.</p>
 <p>The form of exchangeabile distribution each parameter <span class="math inline">\(\theta_j\)</span> as an independent sample from a prior population distribution governed by some unknown <span class="math inline">\(\phi\)</span> is written as</p>
-<p><span class="math display">\[\begin{equation}
+<p><span class="math display" id="eq:fiveOne">\[\begin{equation}
 p(\theta|\phi) = \prod_j p(\theta_j| \phi)
+\tag{5.1}
 \end{equation}\]</span></p>
 <p>in general <span class="math inline">\(\phi\)</span> is unknown so we average over the uncertainty of <span class="math inline">\(\phi\)</span></p>
 <p><span class="math display">\[\begin{equation}
@@ -327,6 +341,81 @@ p(\theta) = \int \prod_j p(\theta_j| \phi)* p(\phi)d\phi
 \end{equation}\]</span></p>
 <p>This form is the mixture of independent identical distributions.</p>
 <p>A related result <em>de Finetti’s theorem</em> states that as the limit of <span class="math inline">\(J\to \infty\)</span> any suitably exchangeable distribution on (<span class="math inline">\(\theta_1,...,\theta_J)\)</span> can be expressed as a mixture of identical and independent distributions. This theorem connects exchangeability to IID assumptions routinely practiced.</p>
+</div>
+<div id="exchangeability-when-additional-information-is-available-on-the-units" class="section level3 unnumbered hasAnchor">
+<h3>Exchangeability when additional information is available on the units<a href="hierarchical-models.html#exchangeability-when-additional-information-is-available-on-the-units" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>observations often are not exchangeable, but are partially or <em>conditionally</em> exchangeable
+- if observations can be grouped, we may make a hierarchical model where each group has its own sub-model, but the group properties are unknown. if we assume that the group properties are exchangeable, we can use a common prior distribution for the group properties.
+- if <span class="math inline">\(y_i\)</span> has additional information <span class="math inline">\(x_i\)</span> so that <span class="math inline">\(y_i\)</span> are not exchangeable, but (<span class="math inline">\(y_i,x_i\)</span>) still are exchangeable, then we can make a joint prior for <span class="math inline">\((y_i,x_i)\)</span> or a condtional model <span class="math inline">\(y_i | x_i\)</span>.</p>
+<p>For the rat example, if we knoew specific batches of experiments were made in different laboratories we could assume partial exchangeability and use two level hierarchical model to account for variation within each laboratory and between laboratories.</p>
+<p>In general the usual way to model exchangeability with covariates is through conditional independence : $p(_1,…,_J) = (_j p(_j|,x_j))p(| x)d</p>
+</div>
+<div id="objections-to-exchangeable-models" class="section level3 unnumbered hasAnchor">
+<h3>Objections to exchangeable models<a href="hierarchical-models.html#objections-to-exchangeable-models" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>it is natural to object to exchangeability on the grounds that the units actually differ. For the rat example, one can argue that different rats were studied at different times across different laboratories, and therefore not exchangeable. However this information does <strong>not</strong> invalidate exchangeability, these differences in experimental conditions imply that <span class="math inline">\(\theta_j\)</span> differ, but can still arise from a common parent distribution. If we had no information to distinguish them, we have a logical choice to assume exchangeability.</p>
+</div>
+<div id="the-full-bayesian-treatment-of-the-hierarchical-model" class="section level3 unnumbered hasAnchor">
+<h3>The full Bayesian treatment of the hierarchical model<a href="hierarchical-models.html#the-full-bayesian-treatment-of-the-hierarchical-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>let <span class="math inline">\(\phi\)</span> be unknown with a prior <span class="math inline">\(p(\phi)\)</span> then the joint prior is</p>
+<p><span class="math display">\[\begin{equation}
+p(\phi,\theta) = p(\phi)p(\theta| \phi)
+\end{equation}\]</span></p>
+<p>and the joint posterior is</p>
+<p><span class="math display">\[\begin{equation}
+p(\phi,\theta | y) \propto p(\phi,\theta)p(y| \phi, \theta) = p(\phi,\theta)p(y|\theta)
+\end{equation}\]</span></p>
+<p>The <span class="math inline">\(p(y | \phi,\theta)\)</span> depends only on <span class="math inline">\(\theta\)</span> the hyperparameters <span class="math inline">\(\phi\)</span> only affects y through <span class="math inline">\(\theta\)</span>. This model includes the uncertainty about <span class="math inline">\(\phi\)</span> in the model.</p>
+</div>
+</div>
+<div id="the-hyperprior-distribution" class="section level2 unnumbered hasAnchor">
+<h2>The hyperprior distribution<a href="hierarchical-models.html#the-hyperprior-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In order to create a joint hyperprior for <span class="math inline">\((\phi,\theta)\)</span> we must assign a prior distribution to <span class="math inline">\(\phi\)</span>. If little is known about <span class="math inline">\(\phi\)</span> we can choose a diffuse prior, or noninformative prior, ensuring that the posterior is proper. Further assumptions about the prior must be checked for sensitivity in the hyperprior choice.</p>
+<p>The rat example the hyperparameters are <span class="math inline">\((\alpha,\beta)\)</span> which determine the beta parameter <span class="math inline">\(\theta\)</span>.</p>
+<div id="posterior-predictive-distribution-1" class="section level3 unnumbered hasAnchor">
+<h3>Posterior predictive distribution<a href="hierarchical-models.html#posterior-predictive-distribution-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Hierarchical models are characterized by hyperparameters <span class="math inline">\(\phi\)</span> and model parameters <span class="math inline">\(\theta\)</span>. There are two posterior predictive distributions that might be an interest
+- (1) the distribution of future observation <span class="math inline">\(\tilde{y}\)</span> corresponding to an existing <span class="math inline">\(\theta_j\)</span>.
+- (2) the distribution of observations <span class="math inline">\(\tilde{y}\)</span> corresponding to future <span class="math inline">\(\theta_j\)</span>, <span class="math inline">\(\tilde{\theta}\)</span>, drawn from the same superpopulation, common, population</p>
+</div>
+</div>
+<div id="bayesian-analysis-of-conjugate-hierarchical-models" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Bayesian analysis of conjugate hierarchical models<a href="hierarchical-models.html#bayesian-analysis-of-conjugate-hierarchical-models" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>For large number of parameters is it difficult to plot contour plots of the numerous parameters simulated from the joint posterior <span class="math inline">\((\phi,\theta)\)</span>. For the rat example, we obtain simulations of the posterior distribution <span class="math inline">\(p(\theta,\phi | y)\)</span> for the beta-binomial model for the rat-tumor for which the <strong>population distribution</strong> <span class="math inline">\(p(\theta|\phi)\)</span> is conjugate to the likelihood <span class="math inline">\(p(y | \theta)\)</span>. For non-conjugate models , we must use MCMC.</p>
+<div id="analytic-derivation-of-conditional-and-marginal-distributions" class="section level3 unnumbered hasAnchor">
+<h3>Analytic derivation of conditional and marginal distributions<a href="hierarchical-models.html#analytic-derivation-of-conditional-and-marginal-distributions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><ol style="list-style-type: decimal">
+<li>write the joint posterior density <span class="math inline">\(p(\theta, \phi| y)\)</span> in unnormalized form as a product of the hyperprior density <span class="math inline">\(p(\phi)\)</span>, the <strong>population distribution</strong> <span class="math inline">\(p(\theta| \phi)\)</span> and the likelihood <span class="math inline">\(p(y|\theta)\)</span>.</li>
+</ol></li>
+<li><ol start="2" style="list-style-type: decimal">
+<li>determine analytically the conditional posterior density of <span class="math inline">\(\theta\)</span> given the hyperparameter <span class="math inline">\(\phi\)</span>, for fixed observed y this is a function of <span class="math inline">\(\phi, p(\theta | \phi,y)\)</span>.</li>
+</ol></li>
+<li><ol start="3" style="list-style-type: decimal">
+<li>estimate <span class="math inline">\(\phi\)</span> using the Bayesian paradigm, that is obtain its marginal posterior distribution <span class="math inline">\(p(\phi| y)\)</span>.</li>
+</ol></li>
+</ul>
+<p>The first step is immediate, and the second step is easy for conjugate models because conditional on <span class="math inline">\(\phi\)</span> the population distribution for <span class="math inline">\(\theta\)</span> is just the independent and identical distribution model <a href="hierarchical-models.html#eq:fiveOne">(5.1)</a>. The conditional posterior density is a product of conjugate posterior densities for the components <span class="math inline">\(\theta_j\)</span>.</p>
+<p>The marginal posterior <span class="math inline">\(p(\phi| y )\)</span> can be obtained using an integral
+<span class="math display" id="eq:fiveFour">\[\begin{equation}
+p(\phi|y) = \int p(\theta,\phi|y)d\theta
+\tag{5.2}
+\end{equation}\]</span></p>
+<p>For many models the marginal computed using albegra and conditional probability formula
+<span class="math display" id="eq:fiveFive">\[\begin{equation}
+p(\phi|y) = \frac{ p(\theta,\phi|y)}{ p(\theta|\phi|y)}
+\tag{5.3}
+\end{equation}\]</span></p>
+<p>This expression is useful because the numerator is just the joint posterior, and the denominator is the posterior distribution for <span class="math inline">\(\theta\)</span> if <span class="math inline">\(\phi\)</span> where known. So the denominator <span class="math inline">\(p(\theta| \phi, y)\)</span> is regarded as a function of both <span class="math inline">\(\theta\)</span> for fixed <span class="math inline">\(\phi, y\)</span>.</p>
+</div>
+<div id="drawing-simulations-from-the-posterior-distribution" class="section level3 unnumbered hasAnchor">
+<h3>Drawing simulations from the posterior distribution<a href="hierarchical-models.html#drawing-simulations-from-the-posterior-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The strategy for simulating posterior distribution for <span class="math inline">\(p(\theta,\phi | y)\)</span> for simple hierarchical models follows</p>
+<p>-(1) draw the vector of hyperparameters <span class="math inline">\(\phi\)</span> from its marginal posterior distribution <span class="math inline">\(p(\phi | y)\)</span>. If <span class="math inline">\(\phi\)</span> is low-dimensional, the methods in Chapter 3 can be used, and for high dimensional problems, MCMC must be used.
+-(2) draw the parameter vector <span class="math inline">\(\theta\)</span> from its conditional posterior distribution <span class="math inline">\(p(\theta| \phi, y)\)</span> given the drawn value for <span class="math inline">\(\phi\)</span>. for simple examples <span class="math inline">\(p(\theta | \phi, y) = \prod p(\theta_j | \phi, y)\)</span> the components <span class="math inline">\(\theta_j\)</span> can be drawn independently, one at a time.
+-(3) if desired, draw the predictive values <span class="math inline">\(\tilde{y}\)</span> from the posterior predictive distribution given the drawn <span class="math inline">\(\theta\)</span>. Depending on the problem it might be necessary to first draw <span class="math inline">\(\tilde{\theta}\)</span> given <span class="math inline">\(\phi\)</span>, and then draw a future value from the distribution.</p>
+</div>
+<div id="application-to-the-model-for-rat-tumors" class="section level3 unnumbered hasAnchor">
+<h3>Application to the model for rat tumors<a href="hierarchical-models.html#application-to-the-model-for-rat-tumors" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 </div>
 </div>
 <div id="exercises-4" class="section level2 unnumbered hasAnchor">
@@ -554,8 +643,8 @@ p(\theta) = \int \prod_j p(\theta_j| \phi)* p(\phi)d\phi
 <span id="cb326-15"><a href="hierarchical-models.html#cb326-15" aria-hidden="true" tabindex="-1"></a>  f<span class="ot">&lt;-</span>fbest[<span class="st">&#39;TRUE&#39;</span>]<span class="sc">/</span><span class="fu">sum</span>(fbest)</span>
 <span id="cb326-16"><a href="hierarchical-models.html#cb326-16" aria-hidden="true" tabindex="-1"></a>  g<span class="ot">&lt;-</span>gbest[<span class="st">&#39;TRUE&#39;</span>]<span class="sc">/</span><span class="fu">sum</span>(gbest)</span>
 <span id="cb326-17"><a href="hierarchical-models.html#cb326-17" aria-hidden="true" tabindex="-1"></a>  h<span class="ot">&lt;-</span>hbest[<span class="st">&#39;TRUE&#39;</span>]<span class="sc">/</span><span class="fu">sum</span>(hbest)</span></code></pre></div>
-<div id="q3-part-a" class="section level4 hasAnchor" number="5.2.0.1">
-<h4><span class="header-section-number">5.2.0.1</span> Q3 part a<a href="hierarchical-models.html#q3-part-a" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="q3-part-a" class="section level4 hasAnchor" number="5.3.0.1">
+<h4><span class="header-section-number">5.3.0.1</span> Q3 part a<a href="hierarchical-models.html#q3-part-a" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
 <li>5.3a this is correct and is very close to section 5 results.</li>
 </ul>
@@ -654,8 +743,8 @@ p(\theta) = \int \prod_j p(\theta_j| \phi)* p(\phi)d\phi
 <pre><code>##  TRUE 
 ## 0.088</code></pre>
 </div>
-<div id="q-5.3-part-b" class="section level4 hasAnchor" number="5.2.0.2">
-<h4><span class="header-section-number">5.2.0.2</span> Q 5.3 part b<a href="hierarchical-models.html#q-5.3-part-b" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="q-5.3-part-b" class="section level4 hasAnchor" number="5.3.0.2">
+<h4><span class="header-section-number">5.3.0.2</span> Q 5.3 part b<a href="hierarchical-models.html#q-5.3-part-b" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
 <li>5.3.b
 taking <span class="math inline">\(\tau \to \infty\)</span> we have <span class="math inline">\(\theta_j \sim N(y_j, \sigma^2_j)\)</span></li>
@@ -724,8 +813,8 @@ taking <span class="math inline">\(\tau \to \infty\)</span> we have <span class=
 ## G 0.6146218
 ## H 0.5000000</code></pre>
 </div>
-<div id="q-5.3.c" class="section level4 hasAnchor" number="5.2.0.3">
-<h4><span class="header-section-number">5.2.0.3</span> Q 5.3.c<a href="hierarchical-models.html#q-5.3.c" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="q-5.3.c" class="section level4 hasAnchor" number="5.3.0.3">
+<h4><span class="header-section-number">5.3.0.3</span> Q 5.3.c<a href="hierarchical-models.html#q-5.3.c" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
 <li>5.3.c
 Discussing the differences the intervals are much wider in the separate models for <span class="math inline">\(\theta_j\)</span> compared to the Bayesian model. This is because the Bayesian model borrows strenghts of associaton across other school information.</li>
@@ -752,8 +841,8 @@ Discussing the differences the intervals are much wider in the separate models f
 ## t7q   0.9487190 7.244206  9.623687 14.367122 25.85331
 ## t8q  -7.3113309 4.974897  7.888110 11.282060 27.24911</code></pre>
 </div>
-<div id="q-5.3-part-d" class="section level4 hasAnchor" number="5.2.0.4">
-<h4><span class="header-section-number">5.2.0.4</span> Q 5.3 part d<a href="hierarchical-models.html#q-5.3-part-d" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="q-5.3-part-d" class="section level4 hasAnchor" number="5.3.0.4">
+<h4><span class="header-section-number">5.3.0.4</span> Q 5.3 part d<a href="hierarchical-models.html#q-5.3-part-d" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
 <li>5.3 d
 setting <span class="math inline">\(\tau =0\)</span> creates <span class="math inline">\(\theta_j | \mu, \tau, y \sim N(\infty, 0)\)</span> because of the equation for <span class="math inline">\(\hat{\theta_j} = \infty/\infty\)</span> and <span class="math inline">\(V_j = 1/\infty =0\)</span>. the inferences for posterior for <span class="math inline">\(\mu | \tau, y\)</span> and <span class="math inline">\(\tau | y\)</span> are not degenerate. but for the parameters for <span class="math inline">\(\theta\)</span> these are degenerate. Setting <span class="math inline">\(\tau =0\)</span> means that the variance parameter goes to 0, which reduces all points to a point mass, and sets them equal (0 variability).</li>
@@ -821,6 +910,117 @@ Another option is to model each school independently as separate models with kno
 </div>
 <div id="q11" class="section level4 unnumbered hasAnchor">
 <h4>Q11<a href="hierarchical-models.html#q11" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>For non conjugate models suppose that in the rat tumor example we had <span class="math inline">\(logit(\theta_j)\sim N(\mu,\tau^2)\)</span> for j=1,…,J and assume a non-informative prior for the hyperparameters.
+-(a) the joint posterior can be written as
+<span class="math display">\[\begin{equation}
+   p(\theta,\mu,\tau|y ) = p(\theta,\mu,\tau)p(y|\theta,\mu,\tau) = p(\theta|\mu,\tau)p(\mu,\tau)p(y|\theta,\mu,\tau)
+   \end{equation}\]</span></p>
+<p>Note that <span class="math inline">\(p(\theta,\mu,\tau)\)</span> is in terms of <span class="math inline">\(\theta\)</span> and not on the logit scale, so we need the jacobian for change of variables.</p>
+<p><span class="math display">\[
+\begin{aligned}
+p(\theta|\mu,\tau)p(\mu,\tau)p(y|\theta,\mu,\tau) = p(\mu,\tau)\prod_j \frac{1}{\sqrt{2\pi}\tau}exp(\frac{-1}{2\tau^2}(logit(\theta_j -\mu)^2))\prod_j(\theta_j)^{y_{i}}(1-\theta_j)^{n_i-y_i} |dlogit(\theta)/d\theta| \\
+p(\theta|\mu,\tau)p(\mu,\tau)p(y|\theta,\mu,\tau) = p(\mu,\tau)\prod_j \frac{1}{\sqrt{2\pi}\tau}exp(\frac{-1}{2\tau^2}(logit(\theta_j -\mu)^2))\prod_j(\theta_j)^{y_{i}}(1-\theta_j)^{n_i-y_i}|\frac{1}{\theta(1-\theta)}|
+\end{aligned}
+\]</span>
+-(b) we can not integrate this equation fully because it is not in a known family. Although we have separate factors in the equation, we can not analytically derive the integral in closed form.
+-(c) Using equation 5.5 <span class="math inline">\(p(\mu,\tau |y) = \frac{p(\theta,\mu,\tau | y)}{p(\theta| \mu,\tau, y)}\)</span> we can not integrate the denominator <span class="math inline">\(p(\theta|mu,\tau,y)\)</span> in closed form as a function of <span class="math inline">\(\mu,\tau\)</span> which doesn’t have a closed form solution.</p>
+</div>
+<div id="q12" class="section level4 unnumbered hasAnchor">
+<h4>Q12<a href="hierarchical-models.html#q12" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>To find the conditional expection we use equation 5.20 and 5.17 from the text</p>
+<p><span class="math display">\[
+\begin{aligned}
+E[\theta_j | \tau, y ] &amp;= E[ E(\theta_j| \mu, \tau, y) | \tau,y] \\
+&amp; = E[ \hat{\theta_j} | \tau, y] =\frac{ 1/\sigma_j^2 \bar{y_{.j}}+1/\tau^2 E[\mu]}{1/\sigma_j^2+1/\tau^2} \\
+&amp; = \frac{ 1/\sigma_j^2 \bar{y_{.j}}+1/\tau^2 \hat{\mu}}{1/\sigma_j^2+1/\tau^2} \\
+\text{where  } \hat{\mu} = \frac{\sum_j \frac{1}{\sigma_j^2+\tau^2}\bar{y_{.j}}}{\sum_j \frac{1}{\sigma_j^2+\tau^2}}
+\end{aligned}
+\]</span></p>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="hierarchical-models.html#cb338-1" aria-hidden="true" tabindex="-1"></a>school<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">school=</span>LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>],</span>
+<span id="cb338-2"><a href="hierarchical-models.html#cb338-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">yj =</span><span class="fu">c</span>(<span class="dv">28</span>,<span class="dv">8</span>,<span class="sc">-</span><span class="dv">3</span>,<span class="dv">7</span>,<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">18</span>,<span class="dv">12</span>),</span>
+<span id="cb338-3"><a href="hierarchical-models.html#cb338-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">sigmaj =</span> <span class="fu">c</span>(<span class="dv">15</span>,<span class="dv">10</span>,<span class="dv">16</span>,<span class="dv">11</span>,<span class="dv">9</span>,<span class="dv">11</span>,<span class="dv">10</span>,<span class="dv">18</span>))</span>
+<span id="cb338-4"><a href="hierarchical-models.html#cb338-4" aria-hidden="true" tabindex="-1"></a>school<span class="sc">$</span>sigma2j<span class="ot">&lt;-</span>school<span class="sc">$</span>sigmaj<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb338-5"><a href="hierarchical-models.html#cb338-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb338-6"><a href="hierarchical-models.html#cb338-6" aria-hidden="true" tabindex="-1"></a><span class="do">## conditional expectation</span></span>
+<span id="cb338-7"><a href="hierarchical-models.html#cb338-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb338-8"><a href="hierarchical-models.html#cb338-8" aria-hidden="true" tabindex="-1"></a>mu_hat<span class="ot">&lt;-</span><span class="cf">function</span>(allsigma2j,tau2,allybarj){</span>
+<span id="cb338-9"><a href="hierarchical-models.html#cb338-9" aria-hidden="true" tabindex="-1"></a>   numer<span class="ot">&lt;-</span><span class="fu">sum</span>( (<span class="dv">1</span><span class="sc">/</span>(allsigma2j<span class="sc">+</span>tau2))<span class="sc">*</span>allybarj)</span>
+<span id="cb338-10"><a href="hierarchical-models.html#cb338-10" aria-hidden="true" tabindex="-1"></a>   denom<span class="ot">&lt;-</span><span class="fu">sum</span>(<span class="dv">1</span><span class="sc">/</span>(allsigma2j<span class="sc">+</span>tau2))</span>
+<span id="cb338-11"><a href="hierarchical-models.html#cb338-11" aria-hidden="true" tabindex="-1"></a>   muhat<span class="ot">=</span> numer<span class="sc">/</span>denom</span>
+<span id="cb338-12"><a href="hierarchical-models.html#cb338-12" aria-hidden="true" tabindex="-1"></a>   <span class="fu">return</span>(muhat)</span>
+<span id="cb338-13"><a href="hierarchical-models.html#cb338-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb338-14"><a href="hierarchical-models.html#cb338-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb338-15"><a href="hierarchical-models.html#cb338-15" aria-hidden="true" tabindex="-1"></a>conditionalExpectation<span class="ot">&lt;-</span><span class="cf">function</span>(sigma2j,ybarj,tau2,allsigma2j,allybarj){</span>
+<span id="cb338-16"><a href="hierarchical-models.html#cb338-16" aria-hidden="true" tabindex="-1"></a>  muhat<span class="ot">&lt;-</span><span class="fu">mu_hat</span>(allsigma2j, tau2,allybarj)</span>
+<span id="cb338-17"><a href="hierarchical-models.html#cb338-17" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb338-18"><a href="hierarchical-models.html#cb338-18" aria-hidden="true" tabindex="-1"></a>  a<span class="ot">&lt;-</span>((<span class="dv">1</span><span class="sc">/</span>sigma2j)<span class="sc">*</span>ybarj)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">/</span>sigma2j <span class="sc">+</span> <span class="dv">1</span><span class="sc">/</span>tau2)</span>
+<span id="cb338-19"><a href="hierarchical-models.html#cb338-19" aria-hidden="true" tabindex="-1"></a>  b<span class="ot">&lt;-</span> ((<span class="dv">1</span><span class="sc">/</span>tau2)<span class="sc">*</span>muhat)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">/</span>sigma2j <span class="sc">+</span> <span class="dv">1</span><span class="sc">/</span>tau2)</span>
+<span id="cb338-20"><a href="hierarchical-models.html#cb338-20" aria-hidden="true" tabindex="-1"></a>  cond.mean<span class="ot">&lt;-</span>a<span class="sc">+</span>b</span>
+<span id="cb338-21"><a href="hierarchical-models.html#cb338-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(cond.mean)</span>
+<span id="cb338-22"><a href="hierarchical-models.html#cb338-22" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb338-23"><a href="hierarchical-models.html#cb338-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb338-24"><a href="hierarchical-models.html#cb338-24" aria-hidden="true" tabindex="-1"></a>tau_seq <span class="ot">=</span> <span class="fu">seq</span>(<span class="fl">0.1</span>,<span class="dv">30</span>,<span class="at">by=</span><span class="fl">0.01</span>)</span>
+<span id="cb338-25"><a href="hierarchical-models.html#cb338-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb338-26"><a href="hierarchical-models.html#cb338-26" aria-hidden="true" tabindex="-1"></a>  allmeans<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow=</span><span class="fu">length</span>(tau_seq),<span class="at">ncol=</span><span class="fu">nrow</span>(school))</span>
+<span id="cb338-27"><a href="hierarchical-models.html#cb338-27" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(school)){  </span>
+<span id="cb338-28"><a href="hierarchical-models.html#cb338-28" aria-hidden="true" tabindex="-1"></a> aa<span class="ot">&lt;-</span><span class="fu">sapply</span>(tau_seq,<span class="cf">function</span>(x) <span class="fu">conditionalExpectation</span>(school<span class="sc">$</span>sigma2j[i],school<span class="sc">$</span>yj[i],<span class="at">tau2=</span>x<span class="sc">^</span><span class="dv">2</span>,school<span class="sc">$</span>sigma2j,school<span class="sc">$</span>yj))</span>
+<span id="cb338-29"><a href="hierarchical-models.html#cb338-29" aria-hidden="true" tabindex="-1"></a> allmeans[,i]<span class="ot">&lt;-</span>aa</span>
+<span id="cb338-30"><a href="hierarchical-models.html#cb338-30" aria-hidden="true" tabindex="-1"></a>} </span>
+<span id="cb338-31"><a href="hierarchical-models.html#cb338-31" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb338-32"><a href="hierarchical-models.html#cb338-32" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tau_seq,allmeans[,<span class="dv">1</span>],<span class="at">ylim=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">5</span>,<span class="dv">30</span>),<span class="at">ylab=</span><span class="st">&#39;Estimated Treatment Effects&#39;</span>, <span class="at">xlab=</span><span class="st">&#39;tau&#39;</span>)</span>
+<span id="cb338-33"><a href="hierarchical-models.html#cb338-33" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(tau_seq,allmeans[,<span class="dv">2</span>],<span class="at">col=</span><span class="st">&#39;green&#39;</span>)</span>
+<span id="cb338-34"><a href="hierarchical-models.html#cb338-34" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(tau_seq,allmeans[,<span class="dv">3</span>],<span class="at">col=</span><span class="st">&#39;red&#39;</span>)</span>
+<span id="cb338-35"><a href="hierarchical-models.html#cb338-35" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(tau_seq,allmeans[,<span class="dv">4</span>],<span class="at">col=</span><span class="st">&#39;blue&#39;</span>)</span>
+<span id="cb338-36"><a href="hierarchical-models.html#cb338-36" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(tau_seq,allmeans[,<span class="dv">5</span>],<span class="at">col=</span><span class="st">&#39;yellow&#39;</span>)</span>
+<span id="cb338-37"><a href="hierarchical-models.html#cb338-37" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(tau_seq,allmeans[,<span class="dv">6</span>],<span class="at">col=</span><span class="st">&#39;purple&#39;</span>)</span>
+<span id="cb338-38"><a href="hierarchical-models.html#cb338-38" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(tau_seq,allmeans[,<span class="dv">7</span>],<span class="at">col=</span><span class="st">&#39;orange&#39;</span>)</span>
+<span id="cb338-39"><a href="hierarchical-models.html#cb338-39" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(tau_seq,allmeans[,<span class="dv">8</span>],<span class="at">col=</span><span class="st">&#39;brown&#39;</span>)</span>
+<span id="cb338-40"><a href="hierarchical-models.html#cb338-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb338-41"><a href="hierarchical-models.html#cb338-41" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="dv">0</span>, <span class="dv">25</span>, </span>
+<span id="cb338-42"><a href="hierarchical-models.html#cb338-42" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend=</span><span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>,<span class="st">&quot;C&quot;</span>,<span class="st">&quot;D&quot;</span>,<span class="st">&quot;E&quot;</span>,<span class="st">&quot;F&quot;</span>,<span class="st">&quot;G&quot;</span>,<span class="st">&quot;H&quot;</span>),</span>
+<span id="cb338-43"><a href="hierarchical-models.html#cb338-43" aria-hidden="true" tabindex="-1"></a>       <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;green&quot;</span>,<span class="st">&quot;red&quot;</span>,<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;yellow&quot;</span>,<span class="st">&quot;purple&quot;</span>,<span class="st">&quot;orange&quot;</span>,<span class="st">&quot;brown&quot;</span>), <span class="at">lty=</span><span class="dv">1</span>, <span class="at">cex=</span><span class="fl">0.8</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-71-1.png" width="672" />
+For the <span class="math inline">\(V(\theta_j | \tau,y) = E[V(\theta_j | \mu,\tau,y)|\tau,y] + V[E(\theta_j | \mu,\tau,y)|\tau,y)]\)</span> Using the equations for <span class="math inline">\(V_j , V_\mu\)</span> from section 5 we derived the conditional variance.</p>
+<p><span class="math display">\[
+\begin{aligned}
+E[V(\theta_j | \mu,\tau,y)|\tau,y] + V[E(\theta_j | \mu,\tau,y)|\tau,y)] &amp;= E[V_j | \tau, y] +V[\hat{\theta_j}| \tau, y] \\
+&amp;= V_j +Vj^2(1/\tau^2)^2V_\mu
+\end{aligned}
+\]</span></p>
+<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="hierarchical-models.html#cb339-1" aria-hidden="true" tabindex="-1"></a> V_mu<span class="ot">&lt;-</span><span class="cf">function</span>(allsigma2j,tau2){</span>
+<span id="cb339-2"><a href="hierarchical-models.html#cb339-2" aria-hidden="true" tabindex="-1"></a>   vinv<span class="ot">&lt;-</span><span class="fu">sum</span>( <span class="dv">1</span><span class="sc">/</span>(allsigma2j<span class="sc">+</span>tau2))</span>
+<span id="cb339-3"><a href="hierarchical-models.html#cb339-3" aria-hidden="true" tabindex="-1"></a>   vmu<span class="ot">=</span><span class="dv">1</span><span class="sc">/</span>vinv</span>
+<span id="cb339-4"><a href="hierarchical-models.html#cb339-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">return</span>(vmu)</span>
+<span id="cb339-5"><a href="hierarchical-models.html#cb339-5" aria-hidden="true" tabindex="-1"></a> }</span>
+<span id="cb339-6"><a href="hierarchical-models.html#cb339-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb339-7"><a href="hierarchical-models.html#cb339-7" aria-hidden="true" tabindex="-1"></a>conditionalVariance<span class="ot">&lt;-</span><span class="cf">function</span>(sigma2j, tau2,allsigma2j){</span>
+<span id="cb339-8"><a href="hierarchical-models.html#cb339-8" aria-hidden="true" tabindex="-1"></a>  vmu<span class="ot">&lt;-</span><span class="fu">V_mu</span>(allsigma2j,tau2)</span>
+<span id="cb339-9"><a href="hierarchical-models.html#cb339-9" aria-hidden="true" tabindex="-1"></a>  Vj <span class="ot">=</span> <span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">/</span>sigma2j<span class="sc">+</span><span class="dv">1</span><span class="sc">/</span>tau2) </span>
+<span id="cb339-10"><a href="hierarchical-models.html#cb339-10" aria-hidden="true" tabindex="-1"></a>  cond.var<span class="ot">&lt;-</span>Vj<span class="sc">+</span>Vj<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">/</span>tau2)<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span>vmu</span>
+<span id="cb339-11"><a href="hierarchical-models.html#cb339-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(cond.var)</span>
+<span id="cb339-12"><a href="hierarchical-models.html#cb339-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb339-13"><a href="hierarchical-models.html#cb339-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb339-14"><a href="hierarchical-models.html#cb339-14" aria-hidden="true" tabindex="-1"></a>tau_seq <span class="ot">=</span> <span class="fu">seq</span>(<span class="fl">0.1</span>,<span class="dv">30</span>,<span class="at">by=</span><span class="fl">0.01</span>)</span>
+<span id="cb339-15"><a href="hierarchical-models.html#cb339-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb339-16"><a href="hierarchical-models.html#cb339-16" aria-hidden="true" tabindex="-1"></a>  allsd<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow=</span><span class="fu">length</span>(tau_seq),<span class="at">ncol=</span><span class="fu">nrow</span>(school))</span>
+<span id="cb339-17"><a href="hierarchical-models.html#cb339-17" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(school)){  </span>
+<span id="cb339-18"><a href="hierarchical-models.html#cb339-18" aria-hidden="true" tabindex="-1"></a> aa<span class="ot">&lt;-</span><span class="fu">sapply</span>(tau_seq,<span class="cf">function</span>(x) <span class="fu">conditionalVariance</span>(school<span class="sc">$</span>sigma2j[i],<span class="at">tau2=</span>x<span class="sc">^</span><span class="dv">2</span>,school<span class="sc">$</span>sigma2j))</span>
+<span id="cb339-19"><a href="hierarchical-models.html#cb339-19" aria-hidden="true" tabindex="-1"></a> allsd[,i]<span class="ot">&lt;-</span><span class="fu">sqrt</span>(aa)</span>
+<span id="cb339-20"><a href="hierarchical-models.html#cb339-20" aria-hidden="true" tabindex="-1"></a>} </span>
+<span id="cb339-21"><a href="hierarchical-models.html#cb339-21" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb339-22"><a href="hierarchical-models.html#cb339-22" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tau_seq,allsd[,<span class="dv">1</span>],<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">20</span>),<span class="at">ylab=</span><span class="st">&#39;Posterior Standard Deviation&#39;</span>, <span class="at">xlab=</span><span class="st">&#39;tau&#39;</span>)</span>
+<span id="cb339-23"><a href="hierarchical-models.html#cb339-23" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(tau_seq,allsd[,<span class="dv">2</span>],<span class="at">col=</span><span class="st">&#39;green&#39;</span>)</span>
+<span id="cb339-24"><a href="hierarchical-models.html#cb339-24" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(tau_seq,allsd[,<span class="dv">3</span>],<span class="at">col=</span><span class="st">&#39;red&#39;</span>)</span>
+<span id="cb339-25"><a href="hierarchical-models.html#cb339-25" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(tau_seq,allsd[,<span class="dv">4</span>],<span class="at">col=</span><span class="st">&#39;blue&#39;</span>)</span>
+<span id="cb339-26"><a href="hierarchical-models.html#cb339-26" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(tau_seq,allsd[,<span class="dv">5</span>],<span class="at">col=</span><span class="st">&#39;yellow&#39;</span>)</span>
+<span id="cb339-27"><a href="hierarchical-models.html#cb339-27" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(tau_seq,allsd[,<span class="dv">6</span>],<span class="at">col=</span><span class="st">&#39;purple&#39;</span>)</span>
+<span id="cb339-28"><a href="hierarchical-models.html#cb339-28" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(tau_seq,allsd[,<span class="dv">7</span>],<span class="at">col=</span><span class="st">&#39;orange&#39;</span>)</span>
+<span id="cb339-29"><a href="hierarchical-models.html#cb339-29" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(tau_seq,allsd[,<span class="dv">8</span>],<span class="at">col=</span><span class="st">&#39;brown&#39;</span>)</span>
+<span id="cb339-30"><a href="hierarchical-models.html#cb339-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb339-31"><a href="hierarchical-models.html#cb339-31" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="dv">0</span>, <span class="dv">15</span>, </span>
+<span id="cb339-32"><a href="hierarchical-models.html#cb339-32" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend=</span><span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>,<span class="st">&quot;C&quot;</span>,<span class="st">&quot;D&quot;</span>,<span class="st">&quot;E&quot;</span>,<span class="st">&quot;F&quot;</span>,<span class="st">&quot;G&quot;</span>,<span class="st">&quot;H&quot;</span>),</span>
+<span id="cb339-33"><a href="hierarchical-models.html#cb339-33" aria-hidden="true" tabindex="-1"></a>       <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;green&quot;</span>,<span class="st">&quot;red&quot;</span>,<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;yellow&quot;</span>,<span class="st">&quot;purple&quot;</span>,<span class="st">&quot;orange&quot;</span>,<span class="st">&quot;brown&quot;</span>), <span class="at">lty=</span><span class="dv">1</span>, <span class="at">cex=</span><span class="fl">0.8</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-72-1.png" width="672" /></p>
 
 </div>
 </div>

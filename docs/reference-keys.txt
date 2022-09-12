@@ -9,6 +9,9 @@ eq:logdensityquadratic
 eq:normalapprox
 eq:standardmultivariateapprox
 eq:classical
+eq:fiveOne
+eq:fiveFour
+eq:fiveFive
 eq:binom
 fundamentals-of-bayesian-inference
 general-notation-for-statistical-inference
@@ -37,6 +40,7 @@ taylor-series-approximation-of-the-information-matrix
 hierarchical-models
 constructing-a-parameterized-prior-distribution
 exchangeability-and-hierarchical-models
+bayesian-analysis-of-conjugate-hierarchical-models
 q3-part-a
 q-5.3-part-b
 q-5.3.c
